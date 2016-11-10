@@ -1,0 +1,45 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace WinForm集合
+{
+    public partial class 截屏实例 : Form
+    {
+        public 截屏实例()
+        {
+            InitializeComponent();
+        }
+
+        private void 截屏1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            System.Threading.Thread.Sleep(200);
+            Bitmap bit = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Graphics g = Graphics.FromImage(bit);
+            g.CopyFromScreen(new Point(0, 0), new Point(0, 0), bit.Size);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "bmp|*.bmp|jpg|*.jpg|gif|*.gif";
+            if (saveFileDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                bit.Save(saveFileDialog.FileName);
+            }
+            g.Dispose();
+            this.Visible = true;
+        }
+
+        private void 截屏2_Click(object sender, EventArgs e)
+        {
+            Bitmap bit = new Bitmap(this.Width, this.Height);
+            Graphics g = Graphics.FromImage(bit);
+            g.CopyFromScreen(this.Location, new Point(0, 0), bit.Size);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "bmp|*.bmp|jpg|*.jpg|gif|*.gif";
+            if (saveFileDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                bit.Save(saveFileDialog.FileName);
+            }
+            g.Dispose();
+        }
+    }
+}

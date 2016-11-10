@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../css/comment.css" rel="stylesheet" />
+    <script src="../js/comment.js" type="text/javascript"> </script>
+</head>
+<body>
+    <fieldset id="fd">
+        <table id="comment" cellspacing="0px">
+            <tr>
+                <th>评论
+                </th>
+            </tr>
+        </table>
+        <p>
+
+            <textarea cols="30" rows="5" id="txtarea"></textarea>
+            <input type="button" value="评论" onclick="AddComment()" />
+        </p>
+    </fieldset>
+    <form action="HTMLPage1.htm">
+        <table cellpadding="0px" cellspacing="0px">
+            <tr>
+                <th colspan="2">用户注册
+                </th>
+            </tr>
+            <tr>
+                <td class="lab">用户名:
+                </td>
+                <td>
+                    <input type="text" id="userNameId" name="UserName" onblur="validateUserName(this.value)" />
+                    <label id="userNameAttention">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">密码:
+                </td>
+                <td>
+                    <input type="password" id="UserPwdId" name="UserPwd" onblur="ValidatePwdLength(this.value)" />
+                    <label id="pwdAttention">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">确认密码:
+                </td>
+                <td>
+                    <input type="password" id="ConfirmUserPwd" name="UserPwd" onblur="validateUsePwd(this.value)" />
+                    <label id="passwordAttention">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">性别:
+                </td>
+                <td>
+                    <input type="radio" name="Sex" id="male" checked="checked" /><label for="male">男</label>
+                    <input type="radio" name="Sex" id="female" /><label for="female">女</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">地址:
+                </td>
+                <td>
+                    <select>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                    </select>
+                    <select>
+                        <option>A1</option>
+                        <option>A2</option>
+                        <option>A3</option>
+                        <option>A4</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">邮箱:
+                </td>
+                <td>
+                    <input type="text" name="Emali" id="EmailId" onblur="ValidateEmail(this.value)" />
+                    <label id="EmailAttention">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">手机号:
+                </td>
+                <td>
+                    <input type="text" name="PhoneNum" id="PhoneNumId" onblur="ValidatePhone(this.value)" />
+                    <label id="PhoneAttention">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="lab">
+                    <input type="reset" value="重置" />
+                </td>
+                <td>
+                    <input type="submit" onclick="IsSubmit()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

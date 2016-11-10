@@ -1,0 +1,24 @@
+﻿table
+{
+    border: 1px solid red;
+}
+
+td
+{
+    width: 300px;
+    border: 1px solid red;
+}
+
+th
+{
+    border: 1px solid red;
+    width: 200px;
+}
+#fd
+{
+    width: 200px;
+}
+.lab
+{
+    text-align: right;
+}

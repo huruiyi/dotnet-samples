@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/docs.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/ueditor/ueditor.config.js"></script>
+    <script src="~/ueditor/ueditor.all.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>t</title>
+    <style type="text/css">
+        #tt td {
+            width: 100px;
+            border: 1px salmon solid;
+            height: 40px;
+        }
+
+        #tt tr {
+            border: 1px salmon solid;
+        }
+
+        #tt {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Large modal -->
+    <input type="button" class="btn btn-default btn-group-xs " onclick="Test()" value="Model" />
+    <div class="modal fade" id="modeltest" style="background-color: #ffffff">
+        <div class="modal-dialog" style="background-color: #ff0000;width: 1200px">
+            <div class="modal-content" style="background-color: #8f37e8">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <table id="tt">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</body>
+</html>
+
+<script type="text/javascript">
+    function Test() {
+        $('#modeltest').modal('show').css({
+            width: $(this).width()
+        });
+    }
+</script>

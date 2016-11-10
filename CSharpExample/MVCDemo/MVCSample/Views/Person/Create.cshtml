@@ -1,0 +1,11 @@
+﻿@model MVCSample.Models.Person
+@{
+    ViewBag.Title = "Create";
+}
+<script src="../../Scripts/NotEqual.js"></script>
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="提交" />
+}

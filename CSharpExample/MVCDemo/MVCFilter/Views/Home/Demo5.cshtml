@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Demo5";
+}
+@using (Html.BeginForm("Demo6", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    <input type="submit" value="提交" />
+}

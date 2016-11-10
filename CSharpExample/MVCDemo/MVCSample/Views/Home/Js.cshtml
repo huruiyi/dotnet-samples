@@ -1,0 +1,93 @@
+﻿@using MVCSample.Tools;
+@{
+    ViewBag.Title = "Js";
+}
+
+<h2>Js</h2>
+
+@{
+    string logonHeader = "Logon";
+    string debuggingmessage = "";
+
+    if (IsPost)
+    {
+        string userstring = @Request.Form["username"];
+        string passwordstring = @Request.Form["password"];
+        this.LoginButtonClick(userstring, passwordstring);
+    }
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@logonHeader</title>
+</head>
+<body>
+    @functions
+        {
+        public void LoginButtonClick(string usernameparam, string passwordparam)
+        {
+            if (this.AuthenticateUser(usernameparam, passwordparam))
+            {
+                string token = this.CreateAuthenticationToken(usernameparam);
+                string returnUrl = @Request.QueryString["returnUrl"];
+                string redirectUrl = string.Format("{0}?jwt={1}", returnUrl, token);
+                this.Response.Redirect(redirectUrl);
+            }
+        }
+
+        private bool AuthenticateUser(string usernameparam, string passwordparam)
+        {
+            return !string.IsNullOrEmpty(usernameparam) && !string.IsNullOrEmpty(passwordparam);
+        }
+
+        private string CreateAuthenticationToken(string usernameparam)
+        {
+            TimeSpan t = (DateTime.UtcNow - new DateTime(1970, 1, 1));
+            int timestamp = (int)t.TotalSeconds;
+
+            var payload = new Dictionary<string, object>
+                {
+                    {"iat", timestamp},
+                    {"jti", Guid.NewGuid().ToString()},
+                    {"name", usernameparam},
+                    {"sharedkey", this.SharedKey}
+                };
+            string token = JsonWebToken.Encode(payload, SharedKey, JwtHashAlgorithm.HS256);
+            return token;
+        }
+
+        private void LogUserOff(string usernameparam)
+        {
+            if (!string.IsNullOrEmpty(usernameparam))
+            {
+            }
+        }
+
+        private string SharedKey
+        {
+            get { return "123456"; }
+        }
+
+    }
+    <form id="formAuthenticate" method="POST">
+        <p>@debuggingmessage</p>
+        <div id="innerLogOnBox">
+            <h1><label>@logonHeader</label></h1>
+            <span>
+                <label for="username">Username</label>
+                <input name="username" type="text" autocomplete="off" width="150px" />
+            </span>
+            <span>
+                <label for="password">Password</label>
+                <input name="password" type="password" autocomplete="off" width="150px" />
+            </span>
+            <span>
+                <label id="errorLabel"></label>
+            </span>
+            <input type="submit" value="Login" id="LoginButton" />
+        </div>
+    </form>
+</body>
+</html>

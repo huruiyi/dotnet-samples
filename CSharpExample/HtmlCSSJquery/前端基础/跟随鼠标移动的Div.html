@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        #div1 {
+            border: 1px solid red;
+            height: 300px;
+            width: 400px;
+            position: absolute;
+        }
+
+        #span1 {
+            position: relative;
+            top: -15px;
+            left: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.onmousemove = function () {
+                var d = document.getElementById("div1");
+                d.style.left = window.event.clientX + "px";
+                d.style.top = window.event.clientY + "px";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">This is a Div<span id="span1">SPAN</span></div>
+</body>
+</html>

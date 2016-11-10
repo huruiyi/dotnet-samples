@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>产品列表</title>
+    <style type="text/css">
+        .list {
+            width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+            .list th {
+                background-color: #0094ff;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                text-align: center;
+                padding: 5px;
+                border: 1px solid #000;
+            }
+
+            .list td {
+                text-align: center;
+                padding: 5px;
+                border: 1px solid #000;
+            }
+
+        .AlignRight {
+            text-align: right;
+        }
+
+        img {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <table class="list">
+        <tr>
+            <th>产品编号
+            </th>
+            <th>产品名称
+            </th>
+            <th>产品价格
+            </th>
+            <th>产品类型
+            </th>
+            <th>产品图片
+            </th>
+            <th>操作
+            </th>
+        </tr>
+        {@Product}
+    </table>
+</body>
+</html>

@@ -1,0 +1,254 @@
+Func <TResult> 委托	Visual Studio 2010
+封装一个不具有参数但却返回 TResult 参数指定的类型值的方法。
+
+命名空间：   System
+程序集：   System.Core（在 System.Core.dll 中）
+
+
+public delegate TResult Func<TResult>()
+
+
+J# 支持使用泛型 API，但是不支持新泛型 API 的声明。
+
+类型参数
+
+TResult
+
+    此委托封装的方法的返回值类型。 
+
+返回值
+类型： TResult
+此委托封装的方法的返回值。
+备注
+
+可以使用此委托表示一种能以参数形式传递的方法，而不用显式声明自定义委托。该方法必须与此委托定义的方法签名相对应。这意味着封装的方法不得具有参数，但必须返回值。
+
+
+若要引用不具有参数但却返回 void 的方法（或者在 Visual Basic 中，被声明为 Sub 而不是被声明为 Function 的方法），请改用 Action 委托。
+
+在使用 Func <TResult > 委托时，不必显式定义一个封装无参数方法的委托。例如，以下代码显式声明了一个名为 WriteMethod 的委托，并将对 OutputTarget.SendToFile 实例方法的引用分配给其委托实例。
+
+using System;
+using System.IO;
+
+delegate bool WriteMethod();
+
+public class TestDelegate
+{
+   public static void Main()
+   {
+      OutputTarget output = new OutputTarget();
+      WriteMethod methodCall = output.SendToFile;
+      if (methodCall())
+         Console.WriteLine("Success!"); 
+      else
+         Console.WriteLine("File write operation failed.");
+   }
+}
+
+public class OutputTarget
+{
+   public bool SendToFile()
+   {
+      try
+      {
+         string fn = Path.GetTempFileName();
+         StreamWriter sw = new StreamWriter(fn);
+         sw.WriteLine("Hello, World!");
+         sw.Close();
+         return true;
+      }  
+      catch
+      {
+         return false;
+      }
+   }
+}
+
+以下示例简化了此代码，它所用的方法是实例化 Func <TResult > 委托，而不是显式定义一个新委托并将命名方法分配给该委托。
+
+
+using System;
+using System.IO;
+
+public class TestDelegate
+{
+   public static void Main()
+   {
+      OutputTarget output = new OutputTarget();
+      Func<bool> methodCall = output.SendToFile;
+      if (methodCall())
+         Console.WriteLine("Success!"); 
+      else
+         Console.WriteLine("File write operation failed.");
+   }
+}
+
+public class OutputTarget
+{
+   public bool SendToFile()
+   {
+      try
+      {
+         string fn = Path.GetTempFileName();
+         StreamWriter sw = new StreamWriter(fn);
+         sw.WriteLine("Hello, World!");
+         sw.Close();
+         return true;
+      }  
+      catch
+      {
+         return false;
+      }
+   }
+}
+
+您可以按照以下示例所演示的那样在 C# 中将 Func <TResult > 委托与匿名方法一起使用。（有关匿名方法的简介，请参见 匿名方法（C# 编程指南）。）
+
+using System;
+using System.IO;
+
+public class Anonymous
+{
+   public static void Main()
+   {
+      OutputTarget output = new OutputTarget();
+      Func<bool> methodCall = delegate() { return output.SendToFile(); };
+      if (methodCall())
+         Console.WriteLine("Success!"); 
+      else
+         Console.WriteLine("File write operation failed.");
+   }
+}
+
+public class OutputTarget
+{
+   public bool SendToFile()
+   {
+      try
+      {
+         string fn = Path.GetTempFileName();
+         StreamWriter sw = new StreamWriter(fn);
+         sw.WriteLine("Hello, World!");
+         sw.Close();
+         return true;
+      }  
+      catch
+      {
+         return false;
+      }
+   }
+}
+
+您也可以按照以下示例所演示的那样将 lambda 表达式分配给 Func <T, TResult > 委托。（有关 lambda 表达式的简介，请参见 lambda 表达式和 Lambda 表达式（C# 编程指南）。）
+
+
+using System;
+using System.IO;
+
+public class Anonymous
+{
+   public static void Main()
+   {
+      OutputTarget output = new OutputTarget();
+      Func<bool> methodCall = () => output.SendToFile(); 
+      if (methodCall())
+         Console.WriteLine("Success!"); 
+      else
+         Console.WriteLine("File write operation failed.");
+   }
+}
+
+public class OutputTarget
+{
+   public bool SendToFile()
+   {
+      try
+      {
+         string fn = Path.GetTempFileName();
+         StreamWriter sw = new StreamWriter(fn);
+         sw.WriteLine("Hello, World!");
+         sw.Close();
+         return true;
+      }  
+      catch
+      {
+         return false;
+      }
+   }
+}
+
+Lambda 表达式的基础类型是泛型 Func 委托之一。这样能以参数形式传递 lambda 表达式，而不用显式将其分配给委托。尤其是，因为 System.Linq 命名空间中许多类型方法具有 Func 参数，因此可以给这些方法传递 lambda 表达式，而不用显式实例化 Func 委托。
+
+如果具有只在实际需要结果时才要执行的高开销计算，则可以将高开销函数分配给 Func <TResult > 委托。然后可以推迟到在表达式中使用访问惰性值的属性时执行此函数。下一部分中的示例演示了如何完成此过程。
+示例
+
+下面的示例演示如何使用不带参数的委托。此代码创建了一个具有 Func <TResult > 类型字段的名为 LazyValue 的泛型类。此委托字段可以存储所返回的类型值与 LazyValue 对象的类型参数相对应的任何函数引用。 LazyValue 类型也具有执行函数（如果尚未执行函数）并返回结果值的 Value 属性。
+
+此示例创建了两个方法并用调用这些方法的 lambda 表达式实例化两个 LazyValue 对象。Lambda 表达式并不采用参数，因为它们只需要调用方法。正如输出所显示的那样，只有当检索到每个 LazyValue 对象的值时才会执行这两个方法。
+
+
+using System;
+
+static class Func1
+{
+   public static void Main()
+   {
+      // Note that each lambda expression has no parameters.
+      LazyValue<int> lazyOne = new LazyValue<int>(() => ExpensiveOne());
+      LazyValue<long> lazyTwo = new LazyValue<long>(() => ExpensiveTwo("apple"));
+
+      Console.WriteLine("LazyValue objects have been created.");
+
+      // Get the values of the LazyValue objects.
+      Console.WriteLine(lazyOne.Value);
+      Console.WriteLine(lazyTwo.Value);
+   }
+
+   static int ExpensiveOne()
+   {
+      Console.WriteLine("\nExpensiveOne() is executing.");
+      return 1;
+   }
+
+   static long ExpensiveTwo(string input)
+   {
+      Console.WriteLine("\nExpensiveTwo() is executing.");
+      return (long)input.Length;
+   }
+}
+
+class LazyValue<T> where T : struct
+{
+   private Nullable<T> val;
+   private Func<T> getValue;
+
+   // Constructor.
+   public LazyValue(Func<T> func)
+   {
+      val = null;
+      getValue = func;
+   }
+
+   public T Value
+   {
+      get
+      {
+         if (val == null)
+            // Execute the delegate.
+            val = getValue();
+         return (T)val;
+      }
+   }
+}
+/* The example produces the following output:
+
+    LazyValue objects have been created.
+
+    ExpensiveOne() is executing.
+    1
+
+    ExpensiveTwo() is executing.
+    5
+*/    
+

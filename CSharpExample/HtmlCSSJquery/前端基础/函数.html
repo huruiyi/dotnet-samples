@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        //function aa(a,b)
+        //{
+        //    return a + b;
+        //}
+        //var c = aa( 12, 13 );
+        //alert(c);
+
+        //var sub = function ( a, b ) { return a + b };
+        //alert( sub( 11, 12 ) );
+
+        //var sum = function ( a, b ) { return a + b }( 1, 1 );
+        //alert(sum);
+
+        //function Person( sname, sage )
+        //{
+        //    this.StudentName = sname;
+        //    this.StudentAge = sage;
+        //    this.ShowStuInfo = function ()
+        //    {
+        //        alert( "姓名：" + this.StudentName + ",年龄：" + this.StudentAge )
+        //    };
+        //    return sname;
+        //}
+        //var li = Person( "李四", 20 );
+        //alert( li );
+        //var zhang = new Person( "张三", 19 );
+        //zhang.ShowStuInfo();
+
+        function getUserName() {
+            var inputName = document.getElementById("UserName").value;
+            alert("你输入的用户名是：" + inputName);
+
+        }
+        function getUserpassWord() {
+            var inputPwd = document.getElementsByName("pwd");
+            alert("你输入的密码是" + inputPwd);
+        }
+        //function Person( sname, sage )
+        //{
+        //    this.StudentName = sname;
+        //    var StudentAge = sage;
+        //    this.ShowStuInfo = function ()
+        //    {
+        //        alert( "姓名：" + this.StudentName + ",年龄：" + StudentAge )
+        //    };
+        //    this.setAge = function ( age )
+        //    {
+        //        if ( age <= 0 || age >= 110 )
+        //        {
+        //            return "你是妖精呀";
+        //        }
+        //        else
+        //        {
+        //            StudentAge = age;
+        //        }
+        //    }
+        //    this.getAge = function ()
+        //    {
+        //        return StudentAge;
+        //    }
+        //};
+        //var zhang = new Person( "张三", 19 );
+        //alert( zhang.getAge() );
+        //var setAgeResult = zhang.setAge( 200 );
+        //if ( setAgeResult )
+        //{
+        //    alert( setAgeResult );
+        //}
+        //zhang.StudentName = "小三";
+        //zhang.ShowStuInfo();
+
+        //function RuinFunction()
+        //{
+        //    this.f1 = function () { return "这是方法一"; };
+        //    this.f2 = function () { return "这是方法二" };
+        //}
+        //var f = new RuinFunction();
+        //alert( f.f1() );
+        //alert( f.f2() );
+
+        //function Ruin()
+        //{
+        //    this.f1 = function () { alert( "这是方法一" ); };
+        //    this.f2 = function () { alert( "这是方法二" ); };
+        //}
+        //$ = new Ruin();
+        //$.f1();
+        //$.f2();
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="UserName" /><input type="button" value="确定" onclick="getUserName();" /><br />
+    密码：<input type="password" name="pwd" /><input type="button" value="确定" onclick="getUserpassWord();" />
+</body>
+</html>

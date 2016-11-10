@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row panel panel-default ">
+    <div class="col-md-offset-4 col-md-4 panel-body ">
+        <form>
+            <div class="form-group has-success">
+                <div class="row">
+                    <div class="col-md-9 col-xs-8">
+                        <label class="control-label" for="inputSuccess1">用户名</label>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="inputSuccess1">
+            </div>
+            <div class="form-group has-warning">
+                <div class="row">
+                    <div class="col-md-9 col-xs-8">
+                        <label class="control-label" for="inputWarning1">密码</label>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="inputWarning1">
+            </div>
+            <div class="form-group has-error">
+                <div class="row">
+                    <div class="col-md-9 col-xs-8">
+                        <label class="control-label" for="inputError1">电子邮件</label>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="inputError1">
+            </div>
+            <div class="has-success hidden">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxSuccess" value="option1">
+                        Checkbox with success
+                    </label>
+                </div>
+            </div>
+            <div class="has-warning hidden">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxWarning" value="option1">
+                        Checkbox with warning
+                    </label>
+                </div>
+            </div>
+            <div class="has-error hidden">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxError" value="option1">
+                        Checkbox with error
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <button type="submit" class="btn btn-success col-xs-5 col-lg-5">登录</button>
+                    <div class="col-lg-2 col-xs-2"></div>
+                    <button type="submit" class="btn btn-success col-xs-5 col-lg-5">注册</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row panel panel-default">
+    <div class="col-md-offset-3 col-md-6 panel-body ">
+        <form class="form-horizontal has-success">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="用户名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">电子邮件</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="电子邮件">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4 col-lg-4"></div>
+                    <div class="col-xs-3 col-lg-3">
+                        <button type="submit" class="btn btn-success btn-block">登录</button>
+                    </div>
+                    <div class="col-xs-3 col-lg-3">
+                        <button type="submit" class="btn btn-success btn-block">注册</button>
+                    </div>
+                    <div class="col-xs-2 col-lg-2"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

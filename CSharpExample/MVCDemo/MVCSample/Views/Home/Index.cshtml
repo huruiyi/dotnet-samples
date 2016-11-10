@@ -1,0 +1,10 @@
+﻿@model MVCSample.Models.Person
+@{
+    ViewBag.Title = "Index";
+}
+
+@ViewData["Msg"]
+@MvcHtmlString.Create("<a href='http://www.sina.com'>新浪</a>")
+@(new MvcHtmlString(ViewBag.Msg))
+@Html.DisplayFor(m => m.Name);
+@Html.TextBoxFor(m => m.Age);

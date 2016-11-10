@@ -1,0 +1,39 @@
+﻿@model MVCSample.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Email)
+    </div>
+    <div class="editor-label">
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Password)
+    </div>
+    <div class="editor-label">
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(s => s.Password)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.RePassword)
+    </div>
+    <div class="editor-label">
+        @Html.PasswordFor(m => m.RePassword)
+        @Html.ValidationMessageFor(m => m.RePassword)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Phone)
+    </div>
+    <div class="editor-label">
+        @Html.TextBoxFor(m => m.Phone)
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+    <p>
+        <input type="submit" value="提交" />
+    </p>
+}

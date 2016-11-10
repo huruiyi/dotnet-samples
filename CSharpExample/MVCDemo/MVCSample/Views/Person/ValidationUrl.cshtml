@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "ValidationUrl";
+}
+
+<h2>ValidationUrl</h2>
+@using (Html.BeginForm())
+{
+    <input type="text" name="url" data-val="true" data-val-url="url格式有误" />
+    <span data-valmsg-replace="true" data-valmsg-for="url" class="field-validation-error"></span>
+    <input type="submit" value="提交" />
+}

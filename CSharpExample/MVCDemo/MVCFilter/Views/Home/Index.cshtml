@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+    const string a = "<a href='http://www.baidu.com'>百度</a>";
+}
+<style type="text/css">
+    p {
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+<p>
+    @Html.Raw(a)
+</p>
+
+<p>
+    @MvcHtmlString.Create(a)
+</p>
+
+<p>
+    @{
+        WriteLiteral("WriteLiteral方法：" + a);
+    }
+</p>
+
+<p>
+    @(new HtmlString(a))
+</p>
+
+<p>
+    Encode:@(Html.Encode(a))
+</p>
+
+<p>
+    当前用户: @ViewBag.UserName
+</p>
+
+<p>
+    当前用户: @HttpContext.Current.User.Identity.Name
+    <br />
+    是否授权:  @HttpContext.Current.User.Identity.IsAuthenticated
+</p>

@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "Ueditor";
+}
+
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+
+    function isFocus(e) {
+        alert(UE.getEditor('editor').isFocus());
+        UE.dom.domUtils.preventDefault(e);
+    }
+    function setblur(e) {
+        UE.getEditor('editor').blur();
+        UE.dom.domUtils.preventDefault(e);
+    }
+    function insertHtml() {
+        var value = prompt('插入html代码', '');
+        UE.getEditor('editor').execCommand('insertHtml', value);
+    }
+    function createEditor() {
+        enableBtn();
+        UE.getEditor('editor');
+    }
+    function getAllHtml() {
+        var content = UE.getEditor('editor').getContent();
+        $("#editorcontent").html(content);
+        $('#myModal').modal('show').css({ width: 'auto' });
+        //alert(UE.getEditor('editor').getAllHtml());
+    }
+    function getContent() {
+        //var arr = [];
+        //arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        //arr.push("内容为：");
+        //arr.push(UE.getEditor('editor').getContent());
+        //alert(arr.join("\n"));
+        alert(UE.getEditor('editor').getContent());
+    }
+    function getPlainTxt() {
+        var arr = [];
+        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getPlainTxt());
+        alert(arr.join('\n'));
+    }
+    function setContent(isAppendTo) {
+        var arr = [];
+        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+        alert(arr.join("\n"));
+    }
+    function setDisabled() {
+        UE.getEditor('editor').setDisabled('fullscreen');
+        disableBtn("enable");
+    }
+
+    function setEnabled() {
+        UE.getEditor('editor').setEnabled();
+        enableBtn();
+    }
+
+    function getText() {
+        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+        var range = UE.getEditor('editor').selection.getRange();
+        range.select();
+        var txt = UE.getEditor('editor').selection.getText();
+        alert(txt);
+    }
+
+    function getContentTxt() {
+        var arr = [];
+        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+        arr.push("编辑器的纯文本内容为：");
+        arr.push(UE.getEditor('editor').getContentTxt());
+        alert(arr.join("\n"));
+    }
+    function hasContent() {
+        var arr = [];
+        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+        arr.push("判断结果为：");
+        arr.push(UE.getEditor('editor').hasContents());
+        alert(arr.join("\n"));
+    }
+    function setFocus() {
+        UE.getEditor('editor').focus();
+    }
+    function deleteEditor() {
+        disableBtn();
+        UE.getEditor('editor').destroy();
+    }
+    function disableBtn(str) {
+        var div = document.getElementById('btns');
+        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            if (btn.id == str) {
+                UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+            } else {
+                btn.setAttribute("disabled", "true");
+            }
+        }
+    }
+    function enableBtn() {
+        var div = document.getElementById('btns');
+        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+        }
+    }
+
+    function getLocalData() {
+        alert(UE.getEditor('editor').execCommand("getlocaldata"));
+    }
+
+    function clearLocalData() {
+        UE.getEditor('editor').execCommand("clearlocaldata");
+        alert("已清空草稿箱");
+    }
+</script>
+<div class="panel panel-success">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" style="width: 1200px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">产品下线原因</h4>
+                </div>
+                <div class="modal-body" id="editorcontent">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12 panel-body">
+        <div class=""></div>
+        <script id="editor" type="text/plain" style="width:100%;height:500px;">
+        </script>
+        <div class="row">
+            <div class="col-md-3">
+                <input type="button" class="btn btn-block btn-success" value="发布" />
+            </div>
+            <div class="col-md-3">
+                <input type="button" class="btn btn-block btn-success" value="保存" />
+            </div>
+            <div class="col-md-3">
+                <input type="button" class="btn btn-block btn-success" value="清空" />
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block" onclick=" UE.getEditor('editor').setHeight(300)">设置高度为300默认关闭了自动长高</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2 "></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-block" onclick="getAllHtml()">获得整个html的内容</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn- btn-block" onclick="getContent()">获得内容</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-block" onclick="setContent()">写入内容</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-block" onclick="setContent(true)">追加内容</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 "></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-block " onclick="getContentTxt()">获得纯文本</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-block" onclick="getPlainTxt()">获得带格式的纯文本</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-block" onclick="hasContent()">判断是否有内容</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-block" onclick="setFocus()">使编辑器获得焦点</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 "></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-default btn-block" onmousedown="isFocus(event)">编辑器是否获得焦点</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-block" onmousedown="setblur(event)">编辑器失去焦点</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-block" onclick="getText()">获得当前选中的文本</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-block" onclick="insertHtml()">插入给定的内容</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 "></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-block" id="enable" onclick="setEnabled()">可以编辑</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-block" onclick="setDisabled()">不可编辑</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-block" onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-block" onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 "></div>
+
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-block" onclick="getLocalData()">获取草稿箱内容</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-block" onclick="clearLocalData()">清空草稿箱</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-block" onclick="createEditor()">
+                            创建编辑器
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-block" onclick="deleteEditor()">
+                            删除编辑器
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

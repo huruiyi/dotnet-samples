@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="js/js.js" type="text/javascript"></script>
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <fieldset>
+        <legend>全选</legend>
+        <input type="checkbox" id="checkall" onchange="checkAll()" />
+        <label for="checkall" title="全选">全选</label>
+        <input type="checkbox" id="basketball" /><label for="basketball">篮球</label>
+        <input type="checkbox" id="football" /><label for="football">足球</label>
+        <input type="checkbox" id="pingpang" /><label for="pingpang">乒乓球</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>onmouseover-onmouseout</legend>
+        <input type="button" value="哈哈" onmouseover="omover(this)" onmouseout="omout(this)" />
+        <input type="button" id="btn" disabled="disabled" value="请阅读此协议(10秒)" onclick="javascript: alert('可以注册了!!')" />
+    </fieldset>
+
+    <fieldset>
+        <legend>计算</legend>
+        <input type="text" id="sub1" />+
+        <input type="text" id="sub2" />=
+        <input type="text" id="sum" />
+        <input type="button" value="计算" id="calc" onclick="Calc()" />
+    </fieldset>
+
+    <fieldset>
+        <legend>元素的创建与附加</legend>
+        <input type="button" value="添加文本框" onclick="AddText()" />
+        <input type="button" value="添加超链接" onclick="AddLink()" />
+        <p id="pc">    </p>
+    </fieldset>
+    <fieldset>
+        <legend>省市联动</legend>
+        <select id="pro" onchange="proChange(this.value)">
+            <option value="江苏">江苏</option>
+            <option value="安徽">安徽</option>
+            <option value="河南">河南</option>
+        </select>
+        <select id="city"></select>
+    </fieldset>
+
+    <fieldset>
+        <legend>表格新增</legend>
+        <table>
+            <tr>
+                <td> 网站名称</td>
+                <td><input type="text" id="siteName" /></td>
+                <td>网站地址</td>
+                <td>
+                    <input type="text" id="siteUrl" />
+                </td>
+                <td>
+                    <input type="button" value="增加" onclick="addWebSite()" />
+                </td>
+            </tr>
+        </table>
+        <table id="tblSites">
+            <tr>
+                <th>
+                    网站名称
+                </th>
+                <th>
+                    网站地址
+                </th>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>other</legend>
+        <div onclick="onDivClick()">
+            <p onclick="onPClick(event)">
+                我是一个段落
+            </p>
+        </div>
+        <input type="text" value="请输入关键字" style="color: Gray" onblur="LoseSeachFocus(this)" onfocus="GetSearchFoucus(this)" />
+        <input type="button" value="Search" />
+    </fieldset>
+</body>
+</html>

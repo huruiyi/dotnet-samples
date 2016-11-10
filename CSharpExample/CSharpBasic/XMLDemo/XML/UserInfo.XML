@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Order>
+  <CustomerName>洪磊</CustomerName>
+  <CustomerNumber>HLK20130728</CustomerNumber>
+  <Items>
+    <OrderItem Name="电脑" Count="20" />
+    <OrderItem Name="电话" Count="10" Brand="SONY" />
+  </Items>
+</Order>

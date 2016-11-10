@@ -1,0 +1,21 @@
+﻿@model MVC.Sample.Models.MachineMessage
+@{
+    ViewBag.Title = "HostInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    td {
+        word-break: break-all;
+    }
+</style>
+<div class="panel panel-success">
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <tr>
+                <td width="20%">Key</td>
+                <td width="80%">Value</td>
+            </tr>
+            @Html.Raw(Model.Message)
+        </table>
+    </div>
+</div>

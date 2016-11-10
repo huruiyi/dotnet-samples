@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "AjaxComment";
+}
+
+<h2>AjaxComment</h2>
+<script type="text/javascript">
+    var xmlHttpRequest;
+    function Ajax() {
+        if (window.ActiveXObject) {
+            xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        else if (window.XMLHttpRequest) {
+            xmlHttpRequest = new XMLHttpRequest();
+        }
+        else {
+            document.getElementById("output").innerHTML = "Do not support Ajax.";
+        }
+        var targetUrl = "/Ajax/AjaxTarget?resource=" + document.getElementById("tbInput").value;
+        xmlHttpRequest.open("GET", targetUrl, true);
+        xmlHttpRequest.onreadystatechange = Success;
+        xmlHttpRequest.send(null);
+    }
+
+    function Success() {
+        if (xmlHttpRequest.readyState == 4) {
+            if (xmlHttpRequest.status == 200) {
+                document.getElementById("output").innerHTML += xmlHttpRequest.responseText + "<br />";
+            }
+        }
+    }
+</script>
+
+<input type="text" id="tbInput" />
+
+<div id="output">
+</div>
+<a href="#" onclick="Ajax();">Click me</a>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E949791B-B05E-4E26-B53A-8C94DBCA1D4B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GraphicsDemo</RootNamespace>
+    <AssemblyName>GraphicsDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Demo01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo01.Designer.cs">
+      <DependentUpon>Demo01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo02.Designer.cs">
+      <DependentUpon>Demo02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo03.Designer.cs">
+      <DependentUpon>Demo03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo04.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo04.Designer.cs">
+      <DependentUpon>Demo04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo05.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo05.Designer.cs">
+      <DependentUpon>Demo05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo06.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo06.Designer.cs">
+      <DependentUpon>Demo06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo07.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo07.Designer.cs">
+      <DependentUpon>Demo07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo08.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo08.Designer.cs">
+      <DependentUpon>Demo08.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo09.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo09.Designer.cs">
+      <DependentUpon>Demo09.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo10.Designer.cs">
+      <DependentUpon>Demo10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo11.Designer.cs">
+      <DependentUpon>Demo11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demo12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo12.Designer.cs">
+      <DependentUpon>Demo12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Demo01.resx">
+      <DependentUpon>Demo01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo02.resx">
+      <DependentUpon>Demo02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo03.resx">
+      <DependentUpon>Demo03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo04.resx">
+      <DependentUpon>Demo04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo05.resx">
+      <DependentUpon>Demo05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo06.resx">
+      <DependentUpon>Demo06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo07.resx">
+      <DependentUpon>Demo07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo08.resx">
+      <DependentUpon>Demo08.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo09.resx">
+      <DependentUpon>Demo09.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo10.resx">
+      <DependentUpon>Demo10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo11.resx">
+      <DependentUpon>Demo11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demo12.resx">
+      <DependentUpon>Demo12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

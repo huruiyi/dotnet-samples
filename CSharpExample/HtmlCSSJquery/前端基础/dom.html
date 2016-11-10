@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function qr() {
+            if (window.confirm("确认要删除")) {
+                alert("删除成功！");
+            }
+            else {
+                alert("未删除!");
+            }
+        }
+        function MyInput() {
+            var num = window.prompt("请输入一个数字", 0);
+            if (num) {
+                var a = parseInt(num)
+                alert("你输入的数字是：" + a);
+
+            }
+            else {
+                alert("Error");
+            }
+        }
+        function onMouseDown() {
+            alert("你点击了网页");
+        }
+
+        var CreaseNum = 10;
+        function MoveDiv() {
+            var divMove = document.getElementById("div1");
+            //alert(div1.offsetHeight);
+            //alert(div1.offsetWidth);
+            var width = div1.offsetWidth + CreaseNum;
+            var height = div1.offsetHeight + CreaseNum;
+            CreaseNum = CreaseNum + 0.02 * 0.5 * 9.8 * 9.8;
+            divMove.style.width = height + "px";
+            divMove.style.height = height + "px";
+        }
+        function AutoExpand() {
+            setInterval(MoveDiv, 500);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="点击事件" onclick="alert('你好呀')" /><br />
+    <input type="button" value="确认删除" onclick="qr()" /><br />
+    <input type="text" /><input type="button" value="确认" onclick="MyInput()" /><br />
+    <input type="button" value="动起来" onclick="AutoExpand()" />
+    <div id="div1" style="width: 50px; height: 50px; background-color: red; margin-left: 50px; position: fixed"></div>
+    <input type="color" />
+</body>
+</html>
