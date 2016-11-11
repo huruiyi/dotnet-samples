@@ -1,0 +1,16 @@
+﻿<#@ output extension=".txt" #>
+
+List of Squares:
+<#
+   for(int i = 0; i < 4; i++)
+   {  WriteSquareLine(i); }
+#>
+End of list.
+<#+   // Class feature block
+private void WriteSquareLine(int i)
+{
+#>
+   The square of <#= i #> is <#= i*i #>.
+<#+   
+}
+#>

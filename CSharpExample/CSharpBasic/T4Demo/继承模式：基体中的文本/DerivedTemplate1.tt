@@ -1,0 +1,22 @@
+﻿<#@ template language="C#" inherits="AbstractBaseTemplate1" #>
+<# 
+  // Set the base template properties:
+  base.Description = "Description for this derived class"; 
+
+  // Run the base template:
+  base.TransformText();
+
+
+#>
+End material for DerivedTemplate1.
+
+<#+
+// Provide a fragment specific to this derived template:
+
+protected override void SpecificFragment(int n)
+{
+#>
+   Specific to DerivedTemplate1 : <#= n #>
+<#+
+}
+#>

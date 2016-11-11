@@ -1,0 +1,10 @@
+﻿<#@ template language="C#" #>
+<#+
+protected void SharedText(int n)
+{
+#>
+   Shared Text <#= n #>
+<#+
+}
+// Insert more methods here if required.
+#>

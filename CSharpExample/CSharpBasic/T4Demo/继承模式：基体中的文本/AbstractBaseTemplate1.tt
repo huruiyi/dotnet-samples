@@ -1,0 +1,18 @@
+﻿<#@ template language="C#" #>
+
+Here is the description for this derived template:
+  <#= this.Description #>
+
+Here is the fragment specific to this derived template:
+<# 
+  this.PushIndent("  ");
+  SpecificFragment(42); 
+  this.PopIndent();
+#>
+End of common template.
+<#+ 
+  // State set by derived class before calling TextTransform:
+  protected string Description = "";
+  // 'abstract' method to be defined in derived classes:
+  protected virtual void SpecificFragment(int n) { }
+#>
