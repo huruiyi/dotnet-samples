@@ -15,7 +15,7 @@ namespace T4Demo.继承模式_基体中的文本
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+    #line 1 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DerivedTemplate1 : AbstractBaseTemplate1
     {
@@ -26,7 +26,7 @@ namespace T4Demo.继承模式_基体中的文本
         public override string TransformText()
         {
             
-            #line 2 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+            #line 2 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
  
   // Set the base template properties:
   base.Description = "Description for this derived class"; 
@@ -43,7 +43,7 @@ namespace T4Demo.继承模式_基体中的文本
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 13 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+        #line 13 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
 
 // Provide a fragment specific to this derived template:
 
@@ -54,28 +54,28 @@ protected override void SpecificFragment(int n)
         #line default
         #line hidden
         
-        #line 18 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+        #line 18 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
 this.Write("   Specific to DerivedTemplate1 : ");
 
         
         #line default
         #line hidden
         
-        #line 19 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+        #line 19 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(n));
 
         
         #line default
         #line hidden
         
-        #line 19 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+        #line 19 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 20 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
+        #line 20 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\DerivedTemplate1.tt"
 
 }
 

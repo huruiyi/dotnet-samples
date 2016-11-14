@@ -50,6 +50,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="继承模式：基体中的文本\AbstractBaseTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AbstractBaseTemplate1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="继承模式：基体中的文本\DerivedTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DerivedTemplate1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="继承模式：基方法中的片段\MyTextTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyTextTemplate1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="继承模式：基方法中的片段\SharedFragments.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedFragments.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -105,6 +125,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>类的定义几调用2.tt</DependentUpon>
+    </Content>
+    <Content Include="继承模式：基体中的文本\AbstractBaseTemplate1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AbstractBaseTemplate1.cs</LastGenOutput>
+    </Content>
+    <Content Include="继承模式：基体中的文本\DerivedTemplate1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DerivedTemplate1.cs</LastGenOutput>
+    </Content>
+    <Content Include="继承模式：基方法中的片段\MyTextTemplate1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MyTextTemplate1.cs</LastGenOutput>
+    </Content>
+    <Content Include="继承模式：基方法中的片段\SharedFragments.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SharedFragments.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

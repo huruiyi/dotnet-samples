@@ -19,37 +19,10 @@ using System.Xml;
 
 namespace ConApp
 {
-    public class A
-    {
-        public string P1 { get; set; }
-        public int P2 { get; set; }
-
-        public void M1()
-        {
-            Console.WriteLine("MI1....");
-        }
-
-        public string M2()
-        {
-            return string.Format("{0}:{1}", this.P1, this.P2);
-        }
-
-        public static void M2(string s)
-        {
-            Console.WriteLine(s);
-        }
-
-        protected string M2(string s, string s1)
-        {
-            return s + s1;
-        }
-    }
-
     internal class Program
     {
         public static unsafe void Main(string[] args)
         {
-            HashtableTest();
             Console.ReadKey();
         }
 
@@ -1217,47 +1190,41 @@ namespace ConApp
 
         public static void GetMethodsDemo()
         {
-            A a = new A();
-            Console.WriteLine(a.M2());
+            Type t = typeof(TestClass);
 
-            Type t = Type.GetType("ConApp.A");
-            Assembly ass = t.Assembly;
-            object obj = ass.CreateInstance("ConApp.A");
+            MethodInfo[] m01 = t.GetMethods(BindingFlags.CreateInstance);
+            MethodInfo[] m02 = t.GetMethods(BindingFlags.DeclaredOnly);
+            MethodInfo[] m03 = t.GetMethods(BindingFlags.Default);
+            MethodInfo[] m04 = t.GetMethods(BindingFlags.ExactBinding);
+            MethodInfo[] m05 = t.GetMethods(BindingFlags.FlattenHierarchy);
+            MethodInfo[] m06 = t.GetMethods(BindingFlags.GetField);
+            MethodInfo[] m07 = t.GetMethods(BindingFlags.GetProperty);
+            MethodInfo[] m08 = t.GetMethods(BindingFlags.IgnoreCase);
+            MethodInfo[] m09 = t.GetMethods(BindingFlags.IgnoreReturn);
+            MethodInfo[] m10 = t.GetMethods(BindingFlags.Instance);
+            MethodInfo[] m11 = t.GetMethods(BindingFlags.InvokeMethod);
+            MethodInfo[] m12 = t.GetMethods(BindingFlags.NonPublic);
+            MethodInfo[] m13 = t.GetMethods(BindingFlags.OptionalParamBinding);
+            MethodInfo[] m14 = t.GetMethods(BindingFlags.Public);
+            MethodInfo[] m15 = t.GetMethods(BindingFlags.PutDispProperty);
+            MethodInfo[] m16 = t.GetMethods(BindingFlags.PutRefDispProperty);
+            MethodInfo[] m17 = t.GetMethods(BindingFlags.SetField);
+            MethodInfo[] m18 = t.GetMethods(BindingFlags.SetProperty);
+            MethodInfo[] m19 = t.GetMethods(BindingFlags.Static);
+            MethodInfo[] m20 = t.GetMethods(BindingFlags.SuppressChangeType);
+            MethodInfo[] m21 = t.GetMethods();
 
-            // MemberFilter
-
-            MethodInfo m1 = t.GetMethod("M1");
-            m1.Invoke(obj, null);
-
-            MethodInfo[] m231 = t.GetMethods(BindingFlags.CreateInstance);
-            MethodInfo[] m232 = t.GetMethods(BindingFlags.DeclaredOnly);
-            MethodInfo[] m233 = t.GetMethods(BindingFlags.Default);
-            MethodInfo[] m234 = t.GetMethods(BindingFlags.ExactBinding);
-            MethodInfo[] m253 = t.GetMethods(BindingFlags.FlattenHierarchy);
-            MethodInfo[] m236 = t.GetMethods(BindingFlags.GetField);
-            MethodInfo[] m2354 = t.GetMethods(BindingFlags.GetProperty);
-            MethodInfo[] m23t = t.GetMethods(BindingFlags.IgnoreCase);
-            MethodInfo[] m23y = t.GetMethods(BindingFlags.IgnoreReturn);
-            MethodInfo[] m23hg = t.GetMethods(BindingFlags.Instance);
-            MethodInfo[] mg23 = t.GetMethods(BindingFlags.InvokeMethod);
-            MethodInfo[] m2h3 = t.GetMethods(BindingFlags.NonPublic);
-            MethodInfo[] m2j3 = t.GetMethods(BindingFlags.OptionalParamBinding);
-            MethodInfo[] m23j = t.GetMethods(BindingFlags.Public);
-            MethodInfo[] m23 = t.GetMethods(BindingFlags.PutDispProperty);
-            MethodInfo[] mh23 = t.GetMethods(BindingFlags.PutRefDispProperty);
-            MethodInfo[] m2f3 = t.GetMethods(BindingFlags.SetField);
-            MethodInfo[] m2gh3 = t.GetMethods(BindingFlags.SetProperty);
-            MethodInfo[] mk23 = t.GetMethods(BindingFlags.Static);
-            MethodInfo[] mgh23 = t.GetMethods(BindingFlags.SuppressChangeType);
-            MethodInfo[] mgh23f = t.GetMethods();
-
-            MethodInfo[] mgh23x = t.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public);
-
-            foreach (MethodInfo item in mgh23x)
+            MethodInfo[] m22 = t.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public);
+            foreach (MethodInfo item in m22)
             {
-                Console.WriteLine(item.IsVirtual + "  " + item.Name);
+                Console.WriteLine(item.Name);
             }
-            Console.WriteLine(ass.FullName); ;
+            Console.WriteLine();
+            MethodInfo[] m23 = t.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            foreach (MethodInfo item in m23)
+            {
+                Console.WriteLine(item.Name);
+            }
         }
 
         #endregion 30-反射获取方法名

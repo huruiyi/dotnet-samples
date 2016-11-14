@@ -7,7 +7,7 @@
 //     重新生成代码，则所做更改将丢失。
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace T4Demo.继承模式_基体中的文本
+namespace T4Demo.继承模式_基方法中的片段
 {
     using System;
     
@@ -15,9 +15,9 @@ namespace T4Demo.继承模式_基体中的文本
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
+    #line 1 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class AbstractBaseTemplate1 : AbstractBaseTemplate1Base
+    public partial class SharedFragments : SharedFragmentsBase
     {
 #line hidden
         /// <summary>
@@ -25,34 +25,43 @@ namespace T4Demo.继承模式_基体中的文本
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nHere is the description for this derived template:\r\n  ");
-            
-            #line 4 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Description));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\nHere is the fragment specific to this derived template:\r\n");
-            
-            #line 7 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
- 
-  this.PushIndent("  ");
-  SpecificFragment(42); 
-  this.PopIndent();
-
-            
-            #line default
-            #line hidden
-            this.Write("End of common template.\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 13 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
- 
-  // State set by derived class before calling TextTransform:
-  protected string Description = "";
-  // 'abstract' method to be defined in derived classes:
-  protected virtual void SpecificFragment(int n) { }
+        #line 2 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+
+protected void SharedText(int n)
+{
+
+        
+        #line default
+        #line hidden
+        
+        #line 5 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+this.Write("   Shared Text ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 6 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(n));
+
+        
+        #line default
+        #line hidden
+        
+        #line 6 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+this.Write("\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 7 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+
+}
+// Insert more methods here if required.
 
         
         #line default
@@ -66,7 +75,7 @@ namespace T4Demo.继承模式_基体中的文本
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class AbstractBaseTemplate1Base
+    public class SharedFragmentsBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

@@ -15,7 +15,7 @@ namespace T4Demo.继承模式_基方法中的片段
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\MyTextTemplate1.tt"
+    #line 1 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\MyTextTemplate1.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class MyTextTemplate1 : SharedFragments
     {
@@ -27,7 +27,7 @@ namespace T4Demo.继承模式_基方法中的片段
         {
             this.Write("begin 1\r\n   ");
             
-            #line 3 "E:\Workplace\new\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\MyTextTemplate1.tt"
+            #line 3 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\MyTextTemplate1.tt"
  SharedText(2); 
             
             #line default
