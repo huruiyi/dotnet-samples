@@ -1,6 +1,6 @@
-﻿namespace 资源管理器
+﻿namespace WinForm集合
 {
-    partial class Form1
+    partial class 简易资源管理器
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -39,7 +39,7 @@
             this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(-4, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(764, 404);
+            this.listView1.Size = new System.Drawing.Size(992, 652);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
@@ -70,16 +70,16 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // Form1
+            // 简易资源管理器
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 456);
+            this.ClientSize = new System.Drawing.Size(1040, 784);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.listView1);
-            this.Name = "Form1";
+            this.Name = "简易资源管理器";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -93,6 +93,7 @@
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOK;
+
     }
 }
 

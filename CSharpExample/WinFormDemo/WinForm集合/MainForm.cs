@@ -36,5 +36,15 @@ namespace WinForm集合
         {
             new 无边框移动2().ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            new 简易资源管理器().ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            new 图片操作_数据库().ShowDialog();
+        }
     }
 }

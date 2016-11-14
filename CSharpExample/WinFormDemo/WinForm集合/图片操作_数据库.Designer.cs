@@ -1,6 +1,6 @@
-﻿namespace 图片操作_数据库
+﻿namespace WinForm集合
 {
-    partial class Form1
+    partial class 图片操作_数据库
     {
         /// <summary>
         /// 必需的设计器变量。

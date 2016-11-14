@@ -21,8 +21,24 @@ namespace ConApp
 {
     internal class Program
     {
+        private delegate void AsycRun();
+
         public static unsafe void Main(string[] args)
         {
+            AsyncCallback ac = delegate (IAsyncResult aar)
+            {
+                Console.WriteLine("跑完了");
+                Console.WriteLine(aar.AsyncState);
+            };
+
+            AsycRun ar = delegate
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.Write(i + "\t");
+                }
+            };
+            ar.BeginInvoke(ac, "object");
             Console.ReadKey();
         }
 

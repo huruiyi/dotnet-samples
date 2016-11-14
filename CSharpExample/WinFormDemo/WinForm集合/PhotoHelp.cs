@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace 图片操作_数据库
+namespace WinForm集合
 {
     internal class PhotoHelp
     {

@@ -75,6 +75,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
+    <Compile Include="PhotoHelp.cs" />
+    <Compile Include="图片操作_数据库.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="图片操作_数据库.Designer.cs">
+      <DependentUpon>图片操作_数据库.cs</DependentUpon>
+    </Compile>
     <Compile Include="截屏实例.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +114,12 @@
     <Compile Include="简单委托.Designer.cs">
       <DependentUpon>简单委托.cs</DependentUpon>
     </Compile>
+    <Compile Include="简易资源管理器.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="简易资源管理器.Designer.cs">
+      <DependentUpon>简易资源管理器.cs</DependentUpon>
+    </Compile>
     <Compile Include="调用摄像头实例.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +128,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="图片操作_数据库.resx">
+      <DependentUpon>图片操作_数据库.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="截屏实例.resx">
       <DependentUpon>截屏实例.cs</DependentUpon>
@@ -139,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="简单委托.resx">
       <DependentUpon>简单委托.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="简易资源管理器.resx">
+      <DependentUpon>简易资源管理器.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="调用摄像头实例.resx">
       <DependentUpon>调用摄像头实例.cs</DependentUpon>

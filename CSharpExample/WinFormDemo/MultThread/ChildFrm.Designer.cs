@@ -34,14 +34,14 @@
             // 
             // txtSource
             // 
-            this.txtSource.Location = new System.Drawing.Point(94, 141);
+            this.txtSource.Location = new System.Drawing.Point(35, 68);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(100, 21);
             this.txtSource.TabIndex = 0;
             // 
             // btnSetMainTxt
             // 
-            this.btnSetMainTxt.Location = new System.Drawing.Point(94, 204);
+            this.btnSetMainTxt.Location = new System.Drawing.Point(168, 68);
             this.btnSetMainTxt.Name = "btnSetMainTxt";
             this.btnSetMainTxt.Size = new System.Drawing.Size(75, 23);
             this.btnSetMainTxt.TabIndex = 1;

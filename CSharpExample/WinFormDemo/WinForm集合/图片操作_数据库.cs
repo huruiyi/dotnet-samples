@@ -5,11 +5,11 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace 图片操作_数据库
+namespace WinForm集合
 {
-    public partial class Form1 : Form
+    public partial class 图片操作_数据库 : Form
     {
-        public Form1()
+        public 图片操作_数据库()
         {
             InitializeComponent();
         }

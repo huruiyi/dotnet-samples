@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.Remoting.Messaging;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,8 +38,6 @@ namespace MultThreadReviewConsole
             int[] sum = { 0 };
 
             object lck = new object();
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
             Parallel.For(1, 1000000, i =>
                                     {
                                         lock (lck)
@@ -50,21 +47,17 @@ namespace MultThreadReviewConsole
                                         Console.WriteLine("当前执行到 ：" + i + "@" + Thread.CurrentThread.ManagedThreadId);
                                         Thread.Sleep(1000);
                                     });
-            sw.Stop();
 
-            Console.WriteLine(sum[0] + "---" + sw.ElapsedMilliseconds);
+            Console.WriteLine(sum[0]);
 
             sum[0] = 0;
 
-            sw.Reset();
-            sw.Start();
             for (int i = 1; i < 1000000; i++)
             {
                 sum[0] += i;
             }
-            sw.Stop();
 
-            Console.WriteLine(sum[0] + "---" + sw.ElapsedMilliseconds);
+            Console.WriteLine(sum[0] + "---");
 
             #endregion 并行计算
 
