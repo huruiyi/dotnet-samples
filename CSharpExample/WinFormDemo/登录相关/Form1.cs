@@ -14,7 +14,7 @@ namespace 登陆窗体
         {
             if (textBox1.Text == "1" && textBox2.Text == "1")
             {
-                Program.b = true;
+                Program.Flag = true;
                 this.Close();
             }
         }

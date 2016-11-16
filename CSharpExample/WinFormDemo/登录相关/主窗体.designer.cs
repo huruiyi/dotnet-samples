@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(主窗体));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -41,9 +40,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(73, 54);
+            this.button1.Location = new System.Drawing.Point(155, 136);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 0;
             this.button1.Text = "打开2";
             this.button1.UseVisualStyleBackColor = false;
@@ -53,9 +52,9 @@
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(73, 115);
+            this.button2.Location = new System.Drawing.Point(155, 198);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 26);
+            this.button2.Size = new System.Drawing.Size(75, 33);
             this.button2.TabIndex = 1;
             this.button2.Text = "隐藏2";
             this.button2.UseVisualStyleBackColor = false;
@@ -65,9 +64,9 @@
             // 
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(73, 179);
+            this.button3.Location = new System.Drawing.Point(155, 260);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(75, 33);
             this.button3.TabIndex = 2;
             this.button3.Text = "关闭2";
             this.button3.UseVisualStyleBackColor = false;
@@ -77,9 +76,9 @@
             // 
             this.button4.BackColor = System.Drawing.Color.White;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(268, 54);
+            this.button4.Location = new System.Drawing.Point(350, 136);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(75, 33);
             this.button4.TabIndex = 4;
             this.button4.Text = "水平";
             this.button4.UseVisualStyleBackColor = false;
@@ -89,9 +88,9 @@
             // 
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(268, 118);
+            this.button5.Location = new System.Drawing.Point(350, 198);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(75, 33);
             this.button5.TabIndex = 4;
             this.button5.Text = "垂直";
             this.button5.UseVisualStyleBackColor = false;
@@ -101,9 +100,9 @@
             // 
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(268, 179);
+            this.button6.Location = new System.Drawing.Point(350, 260);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(75, 33);
             this.button6.TabIndex = 4;
             this.button6.Text = "层叠";
             this.button6.UseVisualStyleBackColor = false;
@@ -114,7 +113,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(632, 448);
             this.Controls.Add(this.button6);

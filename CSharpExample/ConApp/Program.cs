@@ -25,20 +25,29 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            AsyncCallback ac = delegate (IAsyncResult aar)
-            {
-                Console.WriteLine("跑完了");
-                Console.WriteLine(aar.AsyncState);
-            };
+            //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
+            //Console.WriteLine(name);
 
-            AsycRun ar = delegate
+            for (int i = 0; i < 100; i++)
             {
-                for (int i = 0; i < 100; i++)
-                {
-                    Console.Write(i + "\t");
-                }
-            };
-            ar.BeginInvoke(ac, "object");
+                Console.WriteLine($"{i} {1<<i}");
+            }
+      
+
+            //AsyncCallback ac = delegate (IAsyncResult aar)
+            //{
+            //    Console.WriteLine("跑完了");
+            //    Console.WriteLine(aar.AsyncState);
+            //};
+
+            //AsycRun ar = delegate
+            //{
+            //    for (int i = 0; i < 100; i++)
+            //    {
+            //        Console.Write(i + "\t");
+            //    }
+            //};
+            //ar.BeginInvoke(ac, "object");
             Console.ReadKey();
         }
 

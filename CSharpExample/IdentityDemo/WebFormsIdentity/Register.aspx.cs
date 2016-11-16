@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using System;
+using System.Linq;
+using System.Web;
 
 namespace WebFormsIdentity
 {
@@ -14,14 +11,10 @@ namespace WebFormsIdentity
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-   
-
-
             // Default UserStore constructor uses the default connection string named: DefaultConnection
             var userStore = new UserStore<IdentityUser>();
             var manager = new UserManager<IdentityUser>(userStore);
