@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Security.AccessControl;
+using System.Security.Policy;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,11 +29,41 @@ namespace ConApp
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
             //Console.WriteLine(name);
 
-            for (int i = 0; i < 100; i++)
-            {
-                Console.WriteLine($"{i} {1<<i}");
-            }
-      
+            #region 左移
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    Console.WriteLine($"{i} {1 << i}");
+            //}
+
+            #endregion 左移
+
+            //AppDomain.CurrentDomain.SetData("name", "Hello");
+            //string name = AppDomain.CurrentDomain.GetData("name").ToString();
+            //Console.WriteLine(name);
+
+
+            // Create application domain setup information
+            AppDomainSetup domaininfo = new AppDomainSetup();
+            domaininfo.ConfigurationFile = System.Environment.CurrentDirectory + "ADSetup.exe.config";
+            domaininfo.ApplicationBase = System.Environment.CurrentDirectory;
+
+            //Create evidence for the new appdomain from evidence of the current application domain
+            Evidence adevidence = AppDomain.CurrentDomain.Evidence;
+
+            // Create appdomain
+            AppDomain domain = AppDomain.CreateDomain("MyDomain", adevidence, domaininfo);
+
+            // Write out application domain information
+            Console.WriteLine("Host domain: " + AppDomain.CurrentDomain.FriendlyName);
+            Console.WriteLine("child domain: " + domain.FriendlyName);
+            Console.WriteLine();
+            Console.WriteLine("Configuration file is: " + domain.SetupInformation.ConfigurationFile);
+            Console.WriteLine("Application Base Directory is: " + domain.BaseDirectory);
+
+            AppDomain.Unload(domain);
+
+            #region 异步委托
 
             //AsyncCallback ac = delegate (IAsyncResult aar)
             //{
@@ -48,6 +79,9 @@ namespace ConApp
             //    }
             //};
             //ar.BeginInvoke(ac, "object");
+
+            #endregion 异步委托
+
             Console.ReadKey();
         }
 
@@ -186,7 +220,7 @@ namespace ConApp
             }
             Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
-            Publisher publisher = new Publisher();
+            Class.Publisher publisher = new Class.Publisher();
 
             publisher.SampleEvent += publisher_SampleEvent;
         }

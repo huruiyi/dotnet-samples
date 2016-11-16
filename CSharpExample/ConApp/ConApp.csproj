@@ -84,6 +84,7 @@
     <Compile Include="Class\Student.cs" />
     <Compile Include="Class\TestClass.cs" />
     <Compile Include="Class\Tom.cs" />
+    <Compile Include="CodeFolder1\DynamicDirectoryExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CodeFolder1\_16AsynchronousOperationsDemo.cs" />
