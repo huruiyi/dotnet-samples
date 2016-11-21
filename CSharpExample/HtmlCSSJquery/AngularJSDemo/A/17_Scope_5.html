@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+        body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>ng-controller</legend>
+        <div ng-app="mainApp" ng-controller="shapeController">
+            <p>
+                {{message}}
+                <br /> {{type}}
+            </p>
+            <div ng-controller="circleController">
+                <p>
+                    {{message}}
+                    <br /> {{type}}
+                </p>
+            </div>
+            <div ng-controller="squareController">
+                <p>
+                    {{message}}
+                    <br /> {{type}}
+                </p>
+            </div>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        var mainApp = angular.module("mainApp", []);
+
+      mainApp.controller("shapeController", function($scope) {
+         $scope.message = "In shape controller";
+         $scope.type = "Shape";
+      });
+
+      mainApp.controller("circleController", function($scope) {
+         $scope.message = "In circle controller";
+      });
+
+      mainApp.controller("squareController", function($scope) {
+         $scope.message = "In square controller";
+         $scope.type = "Square";
+      });
+    </script>
+</body>
+</html>

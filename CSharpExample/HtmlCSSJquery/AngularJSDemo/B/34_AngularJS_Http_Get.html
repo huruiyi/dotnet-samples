@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+
+           body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body ng-app="mainApp">
+    <fieldset>
+        <legend>ng-controller</legend>
+        <div ng-controller="studentController">
+            <table>
+                <tr>
+                    <th>名字</th>
+                    <th>号码</th>
+                    <th>百分比</th>
+                </tr>
+                <tr ng-repeat="student in students">
+                    <td>{{ student.Name }}</td>
+                    <td>{{ student.RollNo }}</td>
+                    <td>{{ student.Percentage }}</td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller('studentController', function($scope, $http) {
+           var url="34_AngularJS_Http_Get_Json.json";
+           $http.get(url).success( function(response) {
+              $scope.students = response;
+           });
+        });
+    </script>
+</body>
+</html>

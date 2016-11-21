@@ -7,9 +7,7 @@
     <script src="../Scripts/angular.js"></script>
 </head>
 <body>
-
     <div ng-app="myApp" ng-controller="siteCtrl">
-
         <ul>
             <li ng-repeat="x in names">
                 {{ x.Name + ', ' + x.Country }}
@@ -20,7 +18,7 @@
     <script>
         var app = angular.module('myApp', []);
         app.controller('siteCtrl', function ($scope, $http) {
-            $http.get("sites.Html")
+            $http.get("34_sites.Html")
             .success(function (response) { $scope.names = response.sites; });
         });
     </script>

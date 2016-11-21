@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+        body {
+            color: #f0f;
+            background: #ffffff;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        table {
+            width: 600px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid mediumturquoise;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+
+            table tr:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+
+        legend {
+            color: #f0f;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+            ul li {
+                padding: 0;
+                list-style: none;
+            }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>AngularJS过滤器应用示例</legend>
+        <div ng-app="mainApp" ng-controller="studentController">
+            <table border="0">
+                <tr>
+                    <td>Enter first name:</td>
+                    <td>
+                        <input type="text" ng-model="student.firstName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter last name: </td>
+                    <td>
+                        <input type="text" ng-model="student.lastName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter fees: </td>
+                    <td>
+                        <input type="text" ng-model="student.fees">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter subject: </td>
+                    <td>
+                        <input type="text" ng-model="subjectName">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Name in Upper Case: </td>
+                    <td>{{student.fullName() | uppercase}}</td>
+                </tr>
+                <tr>
+                    <td>Name in Lower Case: </td>
+                    <td>{{student.fullName() | lowercase}}</td>
+                </tr>
+
+                <tr>
+                    <td>fees: </td>
+                    <td>{{student.fees | currency}}</td>
+                </tr>
+                <tr>
+                    <td>Subject:</td>
+                    <td>
+                        <ul style="">
+                            <li ng-repeat="subject in student.subjects | filter: subjectName |orderBy:'marks'">
+                                <p>{{ subject.name + ', marks:' + subject.marks }}</p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Marks</th>
+                </tr>
+                <tr ng-repeat="subject in student.subjects">
+                    <td>{{ subject.name }}</td>
+                    <td>{{ subject.marks }}</td>
+                </tr>
+            </table>
+
+            <table border="0">
+                <tr>
+                    <td>姓:</td>
+                    <td>
+                        <input type="text" ng-model="student.firstName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>名: </td>
+                    <td>
+                        <input type="text" ng-model="student.lastName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>名字: </td>
+                    <td>{{student.fullName()}}</td>
+                </tr>
+                <tr>
+                    <td>科目:</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <th>名字</th>
+                                <th>标记</th>
+                            </tr>
+                            <tr ng-repeat="subject in student.subjects">
+                                <td>{{ subject.name }}</td>
+                                <td>{{ subject.marks }}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0">
+                <tr>
+                    <td>
+                        <input type="checkbox" ng-model="enableDisableButton">Disable Button
+                    </td>
+                    <td>
+                        <button ng-disabled="enableDisableButton">点击我!</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" ng-model="showHide1">显示按钮
+                    </td>
+                    <td>
+                        <button ng-show="showHide1">Click Me!</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" ng-model="showHide2">隐藏按钮
+                    </td>
+                    <td>
+                        <button ng-hide="showHide2">Click Me!</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Total click: {{ clickCounter }}</p>
+                    </td>
+                    <td>
+                        <button ng-click="clickCounter = clickCounter + 1">点击我!</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var app = angular.module("mainApp", []);
+            app.controller('studentController', function ($scope) {
+                $scope.student = {
+                    firstName: "胡",
+                    lastName: "ruiyi",
+                    fees: 500,
+                    subjects: [
+                       { name: '物理', marks: 70 },
+                       { name: '化学', marks: 80 },
+                       { name: '数学', marks: 65 },
+                       { name: 'C', marks: 90 },
+                       { name: 'C#', marks: 80 },
+                       { name: 'Js', marks: 69 },
+                       { name: '外语', marks: 87 }
+                    ],
+                    fullName: function () {
+                        var studentObject;
+                        studentObject = $scope.student;
+                        return studentObject.firstName + " " + studentObject.lastName;
+                    }
+                };
+            });
+        </script>
+    </fieldset>
+</body>
+</html>

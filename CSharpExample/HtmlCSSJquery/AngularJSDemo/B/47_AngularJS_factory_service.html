@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+         body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>ng-controller</legend>
+        <div ng-app="mainApp" ng-controller="CalcController">
+            <p>
+                输入一个数字:
+                <input type="number" ng-model="number" />
+                <button ng-click="square()">X<sup>2</sup></button>
+            <p>结果: {{result}}</p>
+        </div>
+    </fieldset>
+
+    <script type="text/javascript">
+        var mainApp = angular.module("mainApp", []);
+        mainApp.factory('MathService', function () {
+            var factory = {};
+            factory.multiply = function (a, b) {
+                return a * b
+            }
+            return factory;
+        });
+
+        mainApp.service('CalcService', function (MathService) {
+            this.square = function (a) {
+                return MathService.multiply(a, a);
+            }
+        });
+
+        mainApp.controller('CalcController', function ($scope, CalcService) {
+            $scope.square = function () {
+                $scope.result = CalcService.square($scope.number);
+            }
+        });
+    </script>
+</body>
+</html>
