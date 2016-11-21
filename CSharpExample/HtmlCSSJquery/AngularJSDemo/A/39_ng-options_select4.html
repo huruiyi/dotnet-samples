@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>选择一辆车:</p>
+        <select ng-model="selectedCar" ng-options="y.brand for (x, y) in cars"></select>
+        <p>你选择的是: {{selectedCar.brand}}</p>
+        <p>型号为: {{selectedCar.model}}</p>
+        <p>颜色为: {{selectedCar.color}}</p>
+
+        <p>下拉列表中的选项也可以是对象的属性。</p>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.cars = {
+                car01: { brand: "Ford", model: "Mustang", color: "red" },
+                car02: { brand: "Fiat", model: "500", color: "white" },
+                car03: { brand: "Volvo", model: "XC90", color: "black" }
+            }
+        });
+    </script>
+</body>
+</html>

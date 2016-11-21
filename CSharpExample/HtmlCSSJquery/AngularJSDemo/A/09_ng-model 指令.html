@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        名字: <input ng-model="name">
+        <fieldset>
+            <legend>双向绑定</legend>
+            名字: <input ng-model="name">
+            <h1>你输入了: {{name}}</h1>
+        </fieldset>
+    </div>
+    <div>
+        ng-model 指令根据表单域的状态添加/移除以下类：
+        <ul>
+            <li>
+                ng-empty
+            </li>
+            <li>
+                ng-not-empty
+            </li>
+            <li>
+                ng-touched
+            </li>
+            <li>
+                ng-untouched
+            </li>
+            <li>
+                ng-valid
+            </li>
+            <li>
+                ng-invalid
+            </li>
+            <li>
+                ng-dirty
+            </li>
+            <li>
+                ng-pending
+            </li>
+            <li>
+                ng-pristine
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.name = "John Doe";
+        });
+    </script>
+</body>
+</html>

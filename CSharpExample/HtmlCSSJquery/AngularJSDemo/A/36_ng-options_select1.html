@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <p>选择网站:</p>
+
+        <select ng-model="selectedSite" ng-options="x.site for x in sites"></select>
+
+        <h1>你选择的是: {{selectedSite.site}}</h1>
+        <p>网址为: {{selectedSite.url}}</p>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.sites = [
+                 { site: "Google", url: "http://www.google.com" },
+                 { site: "Runoob", url: "http://www.runoob.com" },
+                 { site: "Taobao", url: "http://www.taobao.com" }
+            ];
+        });
+    </script>
+
+    <p>该实例演示了使用 ng-options  指令来创建下拉列表，选中的值是一个对象。</p>
+</body>
+</html>

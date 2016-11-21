@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+        body {
+            background-color: lightgoldenrodyellow;
+        }
+
+       
+            table#tb1, table#tb2 {
+                width: 49%;
+                text-align:center;
+            }
+
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+            table tr:nth-child(odd) {
+                background-color: #f1f1f1;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="customersCtrl">
+        <table id="tb1">
+            <tr ng-repeat="x in names">
+                <td>{{ x.ID }}</td>
+                <td>{{ x.Name }}</td>
+                <td>{{ x.CountryCode }}</td>
+                <td>{{ x.District }}</td>
+                <td>{{ x.Population }}</td>
+            </tr>
+        </table>
+        <table id="tb2">
+            <tr>
+                <th colspan="5">
+                    按Name排序
+                </th>
+            </tr>
+            <tr ng-repeat="x in names | orderBy : 'Name'">
+                <td>{{ $index +1 }}</td>
+                <!--<td>{{ x.ID }}</td>-->
+                <td>{{ x.Name | uppercase}}</td>
+                <td>{{ x.CountryCode  }}</td>
+                <td>{{ x.District }}</td>
+                <td>{{ x.Population }}</td>
+            </tr>
+        </table>
+
+        <table>
+            <tr ng-repeat="x in names">
+                <td ng-if="$odd" style="background-color:#dfe0a2">
+                    {{ x.Name }}
+                </td>
+                <td ng-if="$even">
+                    {{ x.CountryCode }}
+                </td>
+                <td ng-if="$odd" style="background-color:#9a65e6">
+                    {{ x.District }}
+                </td>
+                <td ng-if="$even">
+                    {{ x.Population }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function ($scope, $http) {
+            $http.get("/Service/Demo.ashx?action=GetCountrys")
+            .success(function (response) {
+                debugger;
+                $scope.names = response;
+            });
+        });
+    </script>
+</body>
+</html>

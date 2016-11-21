@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <!--ng-model指令可以将输入域的值与AngularJS创建的变量绑定-->
+    <div data-ng-app="myApp" data-ng-controller="Ctrl">
+        名字：<input type="text" data-ng-model="name" />
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('Ctrl', function ($scope) {
+            $scope.name = 'John Doe';
+        })
+    </script>
+    <hr />
+
+    <!--双向绑定-->
+    <div id="dblBind" data-ng-app="dblBind" data-ng-controller="dblCtrl">
+        名字：<input type="text" data-ng-model="name" />
+        <h1>你输入了：{{name}}</h1>
+    </div>
+    <script>
+        var dblBind = angular.module('dblBind', []);
+        dblBind.controller('dblCtrl', function ($scope) {
+            $scope.name = 'John Doe';
+        })
+        angular.bootstrap(document.getElementById('dblBind'), ['dblBind']);
+    </script>
+    <hr />
+
+    <!--验证用户输入-->
+    <form data-ng-app="myForm" name="myFormValid">
+        <!--注意ng-app的值与name值不能相同-->
+        Email:
+        <input type="email" name="myEmail" data-ng-model="text" />
+        <span data-ng-show="myFormValid.myEmail.$error.email">不是一个合法的邮箱地址</span>
+    </form>
+    <script>
+        var myFormApp = angular.module('myFormApp', []);
+        angular.bootstrap(document.getElementsByName('myFormValid'), ['myFormApp']);
+    </script>
+    <hr />
+
+    <!--应用状态-->
+    <!--ng-model可以为应用程序提供状态值(valid,dirty,touched,error)-->
+    <form data-ng-app="myForm2" name="appStatus" data-ng-init="myText='test@163.com'">
+        <p>
+            Email:
+            <input type="email" data-ng-model="myText" name="myEmail" required />
+        </p>
+        <h1>状态</h1>
+        <!--$valid ng-valid   Boolean 告诉我们这一项当前基于你设定的规则是否验证通过-->
+        <!--$invalid   ng-invalid Boolean 告诉我们这一项当前基于你设定的规则是否验证未通过-->
+        <!--$pristine  ng-pristine    Boolean 如果表单或者输入框没有使用则为True-->
+        <!--$dirty ng-dirty   Boolean 如果表单或者输入框有使用到则为True-->
+        is valid:{{appStatus.myEmail.$valid}}
+        is dirty:{{appStatus.myEmail.$dirty}}
+        is change:{{appStatus.myEmail.$touched}}
+        is invalid:{{appStatus.myEmail.$invalid}}
+        is pristine:{{appStatus.myEmail.$pristine}}
+        is error:{{appStatus.myEmail.$error}}
+    </form>
+    <script>
+        var appStatus = angular.module('appStatus', []);
+        angular.bootstrap(document.getElementsByName('appStatus'), ['appStatus']);
+    </script>
+    <hr />
+
+    <!--ng-model指令基于他们的状态为HTML元素提供了CSS类-->
+    <style>
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+    </style>
+    <form data-ng-app="cssTestApp" name="cssTest">
+        输入你的名字：
+        <input type="text" name="myName" data-ng-model="text" required />
+        is valid:{{cssTest.myName.$valid}}
+    </form>
+    <script>
+        var cssTestApp = angular.module('cssTestApp', []);
+        angular.bootstrap(document.getElementsByName('cssTest'), ['cssTestApp']);
+    </script>
+    <!--ng-model指令可根据表单域的状态添加/移除以下类-->
+    <!--ng-empty,ng-not-empty,ng-touched,ng-untouched,ng-valid,ng-invalid,ng-dirty,ng-pending,ng-pristine-->
+</body>
+</html>

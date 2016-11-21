@@ -269,6 +269,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "代码集合", "CSharpExamp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T4Demo", "CSharpExample\CSharpBasic\T4Demo\T4Demo.csproj", "{6A928F85-820E-4B69-90A2-B5120407B914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSDemo", "CSharpExample\HtmlCSSJquery\AngularJSDemo\AngularJSDemo.csproj", "{66205740-CF5B-48F8-8585-8362530633B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1499,6 +1501,18 @@ Global
 		{6A928F85-820E-4B69-90A2-B5120407B914}.Release|x64.Build.0 = Release|Any CPU
 		{6A928F85-820E-4B69-90A2-B5120407B914}.Release|x86.ActiveCfg = Release|Any CPU
 		{6A928F85-820E-4B69-90A2-B5120407B914}.Release|x86.Build.0 = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|x64.Build.0 = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|x86.Build.0 = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|x64.ActiveCfg = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|x64.Build.0 = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1621,6 +1635,7 @@ Global
 		{5B25DDCB-0DDC-46A2-B439-C38F75F86B54} = {536ABE09-03D8-47B1-8045-21E52564BCEF}
 		{8CBA892D-54D8-4EFE-974B-31DD9458E548} = {06C16E7D-3D22-4591-99A0-2F101B470506}
 		{6A928F85-820E-4B69-90A2-B5120407B914} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
+		{66205740-CF5B-48F8-8585-8362530633B3} = {99840D73-F740-47F3-854F-9310C2286698}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35

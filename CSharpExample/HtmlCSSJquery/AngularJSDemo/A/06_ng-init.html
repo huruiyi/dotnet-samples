@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style  type="text/css">
+       .attention{
+           border:1px solid #808080;
+           padding-left:10px;
+       }
+    </style>
+</head>
+<body>
+    <div ng-app="" ng-init="quantity=10;cost=5;firstName='John';lastName='Doe';person={firstName:'John',lastName:'Doe'};points=[1,15,19,2,40]">
+        <p>总价： {{ quantity * cost }}</p>
+        <p>总价： <span ng-bind="quantity * cost"></span></p>
+
+        <p>姓名： {{ firstName + " " + lastName }}</p>
+        <p>姓名： <span ng-bind="firstName + ' ' + lastName"></span></p>
+
+        <p>姓为 {{ person.lastName }}</p>
+        <p>名为 {{ person.firstName }}</p>
+
+        <p>姓为 <span ng-bind="person.lastName"></span></p>
+        <p>名为 <span ng-bind="person.firstName"></span></p>
+
+        <p>points第三个值为 {{ points[2] }}</p>
+        <p>points第三个值为 <span ng-bind="points[2]"></span></p>
+
+        <div class="attention">
+            <p>
+                AngularJS 表达式 与 JavaScript 表达式
+
+            </p>
+            <p>
+                类似于 JavaScript 表达式，AngularJS 表达式可以包含字母，操作符，变量。
+
+            </p>
+            <p>
+                与 JavaScript 表达式不同，AngularJS 表达式可以写在 HTML 中。
+
+            </p>
+            <p>
+                与 JavaScript 表达式不同，AngularJS 表达式不支持条件判断，循环及异常。
+
+            </p>
+            <p>
+                与 JavaScript 表达式不同，AngularJS 表达式支持过滤器。
+
+            </p>
+        </div>
+       
+    </div>
+</body>
+</html>
