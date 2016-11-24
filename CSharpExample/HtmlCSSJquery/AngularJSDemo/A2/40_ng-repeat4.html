@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="expressionExample">
+        <div ng-controller="ExampleController" class="expressions">
+            Expression:
+            <input type='text' ng-model="expr" size="80" />
+            <button ng-click="addExp(expr)">Evaluate</button>
+            <ul>
+                <li ng-repeat="expr in exprs track by $index">
+                    [ <a href="" ng-click="removeExp($index)">X</a> ]
+                    <code>{{expr}}</code> => <span ng-bind="$parent.$eval(expr)"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module('expressionExample', []);
+        app.controller('ExampleController', ['$scope', function ($scope) {
+            var exprs = $scope.exprs = [];
+            $scope.expr = '3*10|currency';
+            $scope.addExp = function (expr) {
+                exprs.push(expr);
+            };
+
+            $scope.removeExp = function (index) {
+                exprs.splice(index, 1);
+            };
+        }]);
+
+        it('should allow user expression testing', function () {
+            element(by.css('.expressions button')).click();
+            var lis = element(by.css('.expressions ul')).all(by.repeater('expr in exprs'));
+            expect(lis.count()).toBe(1);
+            expect(lis.get(0).getText()).toEqual('[ X ] 3*10|currency => $30.00');
+        });
+    </script>
+</body>
+</html>

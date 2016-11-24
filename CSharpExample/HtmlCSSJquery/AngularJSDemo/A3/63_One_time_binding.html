@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body ng-app="oneTimeBidingExampleApp">
+    <div ng-controller="EventController">
+        <button ng-click="clickMe($event)">Click Me</button>
+        <p id="one-time-binding-example">One time binding: {{::name}}</p>
+        <p id="normal-binding-example">Normal binding: {{name}}</p>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module('oneTimeBidingExampleApp', []);
+        app.controller('EventController', ['$scope', function ($scope) {
+            var counter = 0;
+            var names = ['Igor', 'Misko', 'Chirayu', 'Lucas'];
+            /*
+             * expose the event object to the scope
+             */
+            $scope.clickMe = function (clickEvent) {
+                $scope.name = names[counter % names.length];
+                counter++;
+            };
+        }]);
+    </script>
+</body>
+</html>
