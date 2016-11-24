@@ -69,9 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="A1\04_expression_demo2.html" />
-    <Content Include="A1\04_expression_demo1 - 复制%283%29.html" />
-    <Content Include="A1\04_expression_demo1 - 复制%284%29.html" />
-    <Content Include="A1\04_expression_demo1 - 复制.html" />
     <Content Include="A1\17_Scope_5.html" />
     <Content Include="A2\40_controller.js" />
     <Content Include="A2\40_module.js" />
