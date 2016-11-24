@@ -93,6 +93,9 @@
     <Content Include="A4_form\form6.html" />
     <Content Include="A4_form\form7.html" />
     <Content Include="A4_form\form8.html" />
+    <Content Include="ng_demo\ngModelOptions\demo3.html" />
+    <Content Include="ng_demo\ngModelOptions\demo2.html" />
+    <Content Include="ng_demo\ngModelOptions\demo1.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
@@ -994,6 +997,7 @@
       <DependentUpon>Demo.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
