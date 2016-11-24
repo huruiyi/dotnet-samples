@@ -92,6 +92,7 @@
     <Content Include="position练习.htm" />
     <Content Include="select.html" />
     <Content Include="Table.htm" />
+    <Content Include="table.html" />
     <Content Include="块级元素行内元素.html" />
     <Content Include="屏幕分辨率.html" />
     <Content Include="表单元素.htm" />

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        table, td, caption {
+            border: 1px solid #808080;
+            border-collapse: collapse;
+            height: 40px;
+            text-align: center;
+        }
+
+        td {
+            width: 100px;
+        }
+
+        input[type=button] {
+            border: solid 1px #9526e2;
+            background-color: mediumpurple;
+            color: #ffffff;
+            height: 30px;
+        }
+
+            input[type=button]:hover {
+                background-color: #1253c7;
+                color: #ffffff;
+            }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            //alert("好久没用了");
+            document.getElementById("btnCreateTable").onclick = function () {
+                var tableRef = document.getElementById("TableA");
+                var len = tableRef.rows.length;
+                var newRow = tableRef.insertRow(-1);
+
+                var newCell0 = newRow.insertCell(0);
+                var newText0 = document.createTextNode('row' + (len + 1) + "Cel1");
+                newCell0.appendChild(newText0);
+
+                var newCell1 = newRow.insertCell(1);
+                var newText1 = document.createTextNode('Cel2');
+                newCell1.appendChild(newText1);
+
+                var newCell2 = newRow.insertCell(2);
+                var celInput = document.createElement("input");
+                celInput.type = "button";
+                celInput.value = "删除行";
+                celInput.onclick = function () {
+                    this.parentElement.parentElement.remove()
+                }
+                newCell2.appendChild(celInput);
+            }
+            document.getElementById("btnDeleteRow").onclick = function () {
+                var tableRef = document.getElementById("TableA");
+                if (tableRef.rows.length > 0) {
+                    tableRef.deleteRow(-1);
+                }
+            }
+            document.getElementById("btncreateCaption").onclick = function () {
+                var tableRef = document.getElementById("TableA");
+                var cap = tableRef.createCaption();
+                cap.innerHTML = "Information";
+            }
+            document.getElementById("btnCreateTHead").onclick = function () {
+                var tableRef = document.getElementById("TableA");
+                var cap = tableRef.createTHead();
+                var newRow = cap.insertRow(0);
+                var newCell = newRow.insertCell(0);
+                newCell.setAttribute("colspan", "3");
+                var newText1 = document.createTextNode('Head');
+                newCell.appendChild(newText1);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id="btnCreateTable" type="button" value="创建表格" />
+    <input id="btnDeleteRow" type="button" value="删除最后一行" />
+    <input id="btncreateCaption" type="button" value="CreateCaption" />
+    <input id="btnCreateTHead" type="button" value="CreateTHead" />
+    <table id="TableA">
+            
+    </table>
+</body>
+</html>
