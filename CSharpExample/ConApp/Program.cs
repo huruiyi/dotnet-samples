@@ -42,7 +42,6 @@ namespace ConApp
             //string name = AppDomain.CurrentDomain.GetData("name").ToString();
             //Console.WriteLine(name);
 
-
             // Create application domain setup information
             AppDomainSetup domaininfo = new AppDomainSetup();
             domaininfo.ConfigurationFile = System.Environment.CurrentDirectory + "ADSetup.exe.config";
