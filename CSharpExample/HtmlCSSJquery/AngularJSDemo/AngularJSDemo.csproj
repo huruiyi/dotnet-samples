@@ -93,6 +93,7 @@
     <Content Include="A4_form\form6.html" />
     <Content Include="A4_form\form7.html" />
     <Content Include="A4_form\form8.html" />
+    <Content Include="Global.asax" />
     <Content Include="ng_demo\ngModelOptions\demo3.html" />
     <Content Include="ng_demo\ngModelOptions\demo2.html" />
     <Content Include="ng_demo\ngModelOptions\demo1.html" />
@@ -991,6 +992,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Model\City.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Demo.ashx.cs">

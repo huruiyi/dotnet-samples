@@ -21,6 +21,14 @@ namespace AngularJSDemo.Service
                     GetCountrys(context);
                     break;
 
+                case "GetJsonPName":
+                    GetJsonPName(context);
+                    break;
+
+                case "GetJsonPMsg":
+                    GetJsonPMsg(context);
+                    break;
+
                 default:
                     break;
             }
@@ -54,6 +62,55 @@ namespace AngularJSDemo.Service
                 }
             }
             context.Response.Write(JsonConvert.SerializeObject(response));
+        }
+
+        /*
+        $.ajax({
+            type : "get",
+            async:false,
+            url : "http://localhost:801/Service/Demo.ashx?action=GetJsonPName",
+            dataType : "jsonp",
+            jsonp: "callbackparam",
+            jsonpCallback:"success_jsonpCallback",
+            success : function(json){
+                alert(json[0].name);
+            },
+            error:function(){
+                alert('fail');
+            }
+        });
+        */
+
+        /// <summary>
+        /// Jsonp请求示例
+        /// </summary>
+        /// <param name="context"></param>
+        public void GetJsonPName(HttpContext context)
+        {
+            context.Response.ContentType = "text/plain";
+            string callbackFunName = context.Request["callbackparam"];
+            context.Response.Write(callbackFunName + "([{ name:\"John\"}])");
+        }
+
+        /*
+        function GetJsonPMsg() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:801/Service/Demo.ashx?action=GetJsonPMsg",
+                dataType: "jsonp",
+                jsonp: "callback",
+                success: function(json) {
+                    alert(json.msg);
+                }
+            });
+        }
+        */
+
+        public void GetJsonPMsg(HttpContext context)
+        {
+            context.Response.ContentType = "text/html";
+            string callback = context.Request.Params["callback"];
+            context.Response.Write(callback + "({\"msg\":\"JSONP Test!\"})");
         }
 
         public bool IsReusable
