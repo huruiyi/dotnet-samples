@@ -12,7 +12,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Security.AccessControl;
-using System.Security.Policy;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,6 +25,47 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            #region 网站的默认名称(协议和应用程序池)
+
+            //ServerManager manager = new ServerManager();
+            //foreach (Microsoft.Web.Administration.Site s in manager.Sites)
+            //{
+            //    ApplicationDefaults d = s.ApplicationDefaults;
+            //    Console.WriteLine("Site: {0}", s.Name);
+            //    Console.WriteLine("  |--Default Application Pool:  {0}", d.ApplicationPoolName);
+            //    Console.WriteLine("  +--Default Protocols Enabled: {0}\r\n", d.EnabledProtocols);
+            //}
+
+            #endregion 网站的默认名称(协议和应用程序池)
+
+            #region 网站下的站点获取
+
+            //ServerManager iis = new ServerManager();
+            //foreach (Microsoft.Web.Administration.Site item in iis.Sites)
+            //{
+            //    //item.Start();
+            //    //item.Stop();
+            //    foreach (ConfigurationMethod itemMethod in item.Methods)
+            //    {
+            //        if (itemMethod.Name == "Stop")
+            //        {
+            //            ConfigurationMethodInstance methodInstance = itemMethod.CreateInstance();
+            //            methodInstance.Execute();
+            //        }
+            //        Console.WriteLine(itemMethod.Name);
+            //    }
+
+            //    Console.WriteLine("网站:{0},状态：{1} ", item.Name, item.State);
+            //    foreach (Application app in item.Applications)
+            //    {
+            //        Console.WriteLine("\t应用程序池:{0}", app.ApplicationPoolName);
+            //        Console.WriteLine("\t      应用:{0}", app.Path);
+            //        Console.WriteLine();
+            //    }
+            //}
+
+            #endregion 网站下的站点获取
+
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
             //Console.WriteLine(name);
 
@@ -42,25 +82,25 @@ namespace ConApp
             //string name = AppDomain.CurrentDomain.GetData("name").ToString();
             //Console.WriteLine(name);
 
-            // Create application domain setup information
-            AppDomainSetup domaininfo = new AppDomainSetup();
-            domaininfo.ConfigurationFile = System.Environment.CurrentDirectory + "ADSetup.exe.config";
-            domaininfo.ApplicationBase = System.Environment.CurrentDirectory;
+            //// Create application domain setup information
+            //AppDomainSetup domaininfo = new AppDomainSetup();
+            //domaininfo.ConfigurationFile = Environment.CurrentDirectory + "ADSetup.exe.config";
+            //domaininfo.ApplicationBase = Environment.CurrentDirectory;
 
-            //Create evidence for the new appdomain from evidence of the current application domain
-            Evidence adevidence = AppDomain.CurrentDomain.Evidence;
+            ////Create evidence for the new appdomain from evidence of the current application domain
+            //Evidence adevidence = AppDomain.CurrentDomain.Evidence;
 
-            // Create appdomain
-            AppDomain domain = AppDomain.CreateDomain("MyDomain", adevidence, domaininfo);
+            //// Create appdomain
+            //AppDomain domain = AppDomain.CreateDomain("MyDomain", adevidence, domaininfo);
 
-            // Write out application domain information
-            Console.WriteLine("Host domain: " + AppDomain.CurrentDomain.FriendlyName);
-            Console.WriteLine("child domain: " + domain.FriendlyName);
-            Console.WriteLine();
-            Console.WriteLine("Configuration file is: " + domain.SetupInformation.ConfigurationFile);
-            Console.WriteLine("Application Base Directory is: " + domain.BaseDirectory);
+            //// Write out application domain information
+            //Console.WriteLine("Host domain: " + AppDomain.CurrentDomain.FriendlyName);
+            //Console.WriteLine("child domain: " + domain.FriendlyName);
+            //Console.WriteLine();
+            //Console.WriteLine("Configuration file is: " + domain.SetupInformation.ConfigurationFile);
+            //Console.WriteLine("Application Base Directory is: " + domain.BaseDirectory);
 
-            AppDomain.Unload(domain);
+            //AppDomain.Unload(domain);
 
             #region 异步委托
 
