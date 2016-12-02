@@ -25,6 +25,16 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            DirectorySecurity security = new DirectorySecurity();
+            const string path = @"D:\temp";
+            //设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
+            security.AddAccessRule(new FileSystemAccessRule("NETWORK SERVICE",
+                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+                PropagationFlags.None, AccessControlType.Allow));
+            security.AddAccessRule(new FileSystemAccessRule("Everyone",
+                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+            Directory.SetAccessControl(path, security);
+
             #region 网站的默认名称(协议和应用程序池)
 
             //ServerManager manager = new ServerManager();
