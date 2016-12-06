@@ -732,6 +732,96 @@ namespace ConApp
 
         #endregion 14-HashtableTest
 
+        #region 15-基本数据类型
+
+        public static void BasicType()
+        {
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("short.MinValue:" + short.MinValue);
+            Console.WriteLine("short.MaxValue:" + short.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("int.MinValue:" + int.MinValue);
+            Console.WriteLine("int.MaxValue:" + int.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("Int16.MinValue:" + Int16.MinValue);
+            Console.WriteLine("Int16.MaxValue:" + Int16.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("Int32.MinValue:" + Int32.MinValue);
+            Console.WriteLine("Int32.MaxValue:" + Int32.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("Int64.MinValue:" + Int64.MinValue);
+            Console.WriteLine("Int64.MaxValue:" + Int64.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("UInt16.MinValue:" + UInt16.MinValue);
+            Console.WriteLine("UInt16.MaxValue:" + UInt16.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("UInt32.MinValue:" + UInt32.MinValue);
+            Console.WriteLine("UInt32.MaxValue:" + UInt32.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("UInt64.MinValue:" + UInt64.MinValue);
+            Console.WriteLine("UInt64.MaxValue:" + UInt64.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("byte.MinValue:" + byte.MinValue);
+            Console.WriteLine("byte.MaxValue:" + byte.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("Byte.MinValue:" + Byte.MinValue);
+            Console.WriteLine("Byte.MaxValue:" + Byte.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("sbyte.MinValue:" + sbyte.MinValue);
+            Console.WriteLine("sbyte.MaxValue:" + sbyte.MaxValue);
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("SByte.MinValue:" + SByte.MinValue);
+            Console.WriteLine("SByte.MaxValue" + SByte.MaxValue);
+            Console.WriteLine("**************************************************");
+        }
+
+        #endregion 15-基本数据类型
+
+        #region 16-YieldDemo
+
+        /*
+        foreach (int i in YieldPower(2, 8))
+        {
+            Console.Write("{0} ", i);
+        }
+        */
+
+        public static IEnumerable YieldPower(int number, int exponent)
+        {
+            int counter = 0;
+            int result = 1;
+            while (counter++ < exponent)
+            {
+                result = result * number;
+                yield return result;
+            }
+        }
+
+        #endregion 16-YieldDemo
+
+        #region 17-GetEnumeratorTest
+
+        public static void GetEnumeratorTest()
+        {
+            ArrayList arr = new ArrayList() { 12, 13, 1, 4, 15, 16, 17 };
+            IEnumerator iEnumerator = arr.GetEnumerator();
+            while (iEnumerator.MoveNext())
+            {
+                Console.WriteLine(iEnumerator.Current);
+            }
+        }
+
+        #endregion 17-GetEnumeratorTest
+
+        #region 18-DateTimeDemo
+        public static void DateTimeTest()
+        {
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = DateTime.Now.AddDays(12);
+            TimeSpan timeSpan = endTime.Subtract(startTime);
+            Console.WriteLine(timeSpan.Days);
+        }
+        #endregion
         #region 20-WeakReferenceDemo
 
         public static void WeakRefenceDemo()
@@ -1333,6 +1423,8 @@ namespace ConApp
             {
                 Console.WriteLine(item.Name);
             }
+            string methodName1 = MethodInfo.GetCurrentMethod().Name;
+            string methodName2 = MethodBase.GetCurrentMethod().Name;
         }
 
         #endregion 30-反射获取方法名
