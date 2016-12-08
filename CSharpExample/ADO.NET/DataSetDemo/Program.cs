@@ -326,7 +326,6 @@ namespace DataSetDemo
             }
         }
 
-
         public static DataSet CreateCmdsAndUpdate(string sql)
         {
             DataSet ds = new DataSet();
@@ -458,6 +457,72 @@ namespace DataSetDemo
             {
                 Console.WriteLine(dr[0] + "  " + dr["aAdmin"] + "  " + dr["aPassword"]);
             }
+        }
+
+        public static void DataTableDemo1()
+        {
+            DataTable table = new DataTable("table");
+
+            DataColumn idColumn = new DataColumn("id", typeof(Int32)) { AutoIncrement = true };
+            DataColumn itemColumn = new DataColumn("item", typeof(string));
+            table.Columns.Add(idColumn);
+            table.Columns.Add(itemColumn);
+
+            for (int i = 0; i < 10; i++)
+            {
+                DataRow newRow = table.NewRow();
+                newRow["item"] = "Item " + i;
+                table.Rows.Add(newRow);
+            }
+            table.AcceptChanges();
+
+            DataRowCollection itemColumns = table.Rows;
+            itemColumns[0].Delete();
+            itemColumns[2].Delete();
+            itemColumns[3].Delete();
+            itemColumns[5].Delete();
+            Console.WriteLine(itemColumns[3].RowState.ToString());
+
+            // Reject changes on one deletion.
+            itemColumns[3].RejectChanges();
+
+            // Change the value of the column so it stands out.
+            itemColumns[3]["item"] = "Deleted, Undeleted, Edited";
+
+            // Accept changes on others.
+            table.AcceptChanges();
+
+            // Print the remaining row values.
+            foreach (DataRow row in table.Rows)
+            {
+                Console.WriteLine(row[0] + "\table" + row[1]);
+            }
+        }
+
+        public static void DataTableDemo2()
+        {
+            const string connectionString = "Data Source=.;Initial Catalog=BBS;uid=sa;pwd=sa";
+            DataTable dt = new DataTable("Student");
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter("select * from Student", con))
+                {
+                    sda.Fill(dt);
+                }
+            }
+
+            DataView dv = dt.DefaultView;
+            dv.RowFilter = "Province='河南'";
+            dt = dv.ToTable(true, "Name", "Sex", "Province");
+
+            dv.AllowDelete = true;
+            dv.Delete(2);
+            foreach (DataRow dataRow in dt.Rows)
+            {
+                Console.WriteLine(dataRow[0] + "  " + dataRow[1] + " " + dataRow[2]);
+            }
+
+            dv.Dispose();
         }
     }
 }
