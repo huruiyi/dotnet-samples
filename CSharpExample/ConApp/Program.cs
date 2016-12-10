@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Security.AccessControl;
@@ -21,19 +22,90 @@ namespace ConApp
 {
     internal class Program
     {
+        public delegate void ConPort(int port);
+
         private delegate void AsycRun();
 
         public static unsafe void Main(string[] args)
         {
-            DirectorySecurity security = new DirectorySecurity();
-            const string path = @"D:\temp";
-            //设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
-            security.AddAccessRule(new FileSystemAccessRule("NETWORK SERVICE",
-                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
-                PropagationFlags.None, AccessControlType.Allow));
-            security.AddAccessRule(new FileSystemAccessRule("Everyone",
-                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-            Directory.SetAccessControl(path, security);
+            //for (int i = 100; i < 1000; i++)
+            //{
+            //    Thread t = new Thread(() =>
+            //    {
+            //        Console.Write(i+"\t");
+            //    });
+            //    t.Start();
+            //    t.Join();
+            //}
+
+            #region 多线程查询端口情况
+
+            //for (int i = 1; i <= 8; i++)
+            //{
+            //    ParameterizedThreadStart pts = x =>
+            //     {
+            //         for (int j = 1000 * ((int)x - 1) + 1; j <= 1000 * (int)x; j++)
+            //         {
+            //             PortCon(j);
+            //         }
+            //     };
+
+            //    Thread t = new Thread(pts);
+            //    t.Start(i);
+            //}
+
+            #endregion 多线程查询端口情况
+
+            #region 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
+
+            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
+            foreach (TcpConnectionInformation t in connections)
+            {
+                Console.Write("Local endpoint: {0} ", t.LocalEndPoint.ToString());
+                Console.Write("Remote endpoint: {0} ", t.RemoteEndPoint.ToString());
+                Console.WriteLine("{0}", t.State);
+            }
+
+            #endregion 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
+
+            #region TCP检查端口是否打开
+
+            //IPAddress ip = IPAddress.Parse("127.0.0.1");
+            //IPEndPoint point = new IPEndPoint(ip, 80);
+            //try
+            //{
+            //    TcpClient tcp = new TcpClient();
+            //    tcp.Connect(point);
+            //    Console.WriteLine("打开的端口");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("已开启的端口");
+            //}
+
+            #endregion TCP检查端口是否打开
+
+            #region Http检查端口是否打开
+
+            //HttpListener httpListner = new HttpListener();
+            //httpListner.Prefixes.Add("http://*:8080/");
+            //httpListner.Start();
+            //Console.WriteLine("Port: 8080 status: " + (PortInUse(8080) ? "in use" : "not in use"));
+
+            #endregion Http检查端口是否打开
+
+            #region 文件权限相关
+            //DirectorySecurity security = new DirectorySecurity();
+            //const string path = @"D:\temp";
+            ////设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
+            //security.AddAccessRule(new FileSystemAccessRule("NETWORK SERVICE",
+            //    FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+            //    PropagationFlags.None, AccessControlType.Allow));
+            //security.AddAccessRule(new FileSystemAccessRule("Everyone",
+            //    FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+            //Directory.SetAccessControl(path, security); 
+            #endregion
 
             #region 网站的默认名称(协议和应用程序池)
 
@@ -814,6 +886,7 @@ namespace ConApp
         #endregion 17-GetEnumeratorTest
 
         #region 18-DateTimeDemo
+
         public static void DateTimeTest()
         {
             DateTime startTime = DateTime.Now;
@@ -821,7 +894,51 @@ namespace ConApp
             TimeSpan timeSpan = endTime.Subtract(startTime);
             Console.WriteLine(timeSpan.Days);
         }
-        #endregion
+
+        #endregion 18-DateTimeDemo
+
+        #region 19-查看端口是否被占用
+
+        public static bool PortInUse(int port)
+        {
+            bool inUse = false;
+
+            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
+
+            foreach (IPEndPoint endPoint in ipEndPoints)
+            {
+                if (endPoint.Port == port)
+                {
+                    inUse = true;
+                    break;
+                }
+            }
+            return inUse;
+        }
+
+        public static void PortCon(object port)
+        {
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
+            IPEndPoint point = new IPEndPoint(ip, (int)port);
+            try
+            {
+                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                sock.Connect(point);
+                Console.WriteLine("{0}成功!", point);
+            }
+            catch (SocketException e)
+            {
+                if (e.ErrorCode != 10061)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                Console.WriteLine("{0}失败", port);
+            }
+        }
+
+        #endregion 19-查看端口是否被占用
+
         #region 20-WeakReferenceDemo
 
         public static void WeakRefenceDemo()
