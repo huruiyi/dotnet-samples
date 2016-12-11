@@ -1,4 +1,4 @@
-﻿namespace WinForm集合
+﻿namespace WinFormDemo
 {
     partial class 调用摄像头实例
     {

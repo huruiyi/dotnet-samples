@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     internal class PhotoHelp
     {

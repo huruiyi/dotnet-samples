@@ -3,9 +3,9 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
-    public partial class Form1 : Form
+    public partial class 无边框移动3 : Form
     {
         private int IniY;
         private int IniX;
@@ -16,7 +16,7 @@ namespace WinForm集合
         private int UpY;
         private int UpX;
 
-        public Form1()
+        public 无边框移动3()
         {
             InitializeComponent();
         }

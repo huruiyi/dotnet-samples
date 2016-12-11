@@ -1,4 +1,4 @@
-﻿namespace WinForm集合
+﻿namespace WinFormDemo
 {
     partial class 截屏实例
     {

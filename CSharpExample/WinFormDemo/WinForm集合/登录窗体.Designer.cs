@@ -1,4 +1,4 @@
-﻿namespace WinForm集合
+﻿namespace WinFormDemo
 {
     partial class 登录窗体
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loginControl1 = new WinForm集合.LoginControl();
+            this.loginControl1 = new LoginControl();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 

@@ -7,8 +7,8 @@
     <ProjectGuid>{5B25DDCB-0DDC-46A2-B439-C38F75F86B54}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WinForm集合</RootNamespace>
-    <AssemblyName>WinForm集合</AssemblyName>
+    <RootNamespace>WinFormDemo</RootNamespace>
+    <AssemblyName>WinFormDemo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -56,6 +56,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,11 +72,11 @@
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="无边框移动3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="无边框移动3.Designer.cs">
+      <DependentUpon>无边框移动3.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginControl.cs">
       <SubType>UserControl</SubType>
@@ -125,6 +126,12 @@
     <Compile Include="无边框移动2.Designer.cs">
       <DependentUpon>无边框移动2.cs</DependentUpon>
     </Compile>
+    <Compile Include="添加Windows账户.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="添加Windows账户.Designer.cs">
+      <DependentUpon>添加Windows账户.cs</DependentUpon>
+    </Compile>
     <Compile Include="登录窗体.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,8 +162,8 @@
     <Compile Include="调用摄像头实例.Designer.cs">
       <DependentUpon>调用摄像头实例.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="无边框移动3.resx">
+      <DependentUpon>无边框移动3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
@@ -178,6 +185,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="数据绑定.resx">
       <DependentUpon>数据绑定.cs</DependentUpon>
@@ -187,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="无边框移动2.resx">
       <DependentUpon>无边框移动2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="添加Windows账户.resx">
+      <DependentUpon>添加Windows账户.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="登录窗体.resx">
       <DependentUpon>登录窗体.cs</DependentUpon>

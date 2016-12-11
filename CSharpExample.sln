@@ -247,7 +247,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCFilter", "CSharpExample\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacDemo", "CSharpExample\AutofacDemo\AutofacDemoV3\AutofacDemo\AutofacDemo.csproj", "{D7023BBA-15C3-4CE0-B750-D4AD3557AAA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm集合", "CSharpExample\WinFormDemo\WinForm集合\WinForm集合.csproj", "{5B25DDCB-0DDC-46A2-B439-C38F75F86B54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormDemo", "CSharpExample\WinFormDemo\WinForm集合\WinFormDemo.csproj", "{5B25DDCB-0DDC-46A2-B439-C38F75F86B54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "代码集合", "CSharpExample\TheadDemo\代码集合\代码集合.csproj", "{8CBA892D-54D8-4EFE-974B-31DD9458E548}"
 EndProject

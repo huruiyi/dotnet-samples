@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     public partial class 截屏实例 : Form
     {

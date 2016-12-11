@@ -1,4 +1,4 @@
-﻿namespace WinForm集合
+﻿namespace WinFormDemo
 {
     partial class MainForm
     {
@@ -45,11 +45,15 @@
             this.buttonCustomShape = new System.Windows.Forms.Button();
             this.buttonCenter = new System.Windows.Forms.Button();
             this.buttonCustomPosition = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(61, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
@@ -60,6 +64,7 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(246, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 23);
@@ -70,6 +75,7 @@
             // 
             // button3
             // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(431, 21);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(138, 23);
@@ -80,7 +86,8 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(61, 96);
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(61, 76);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(138, 23);
             this.button4.TabIndex = 2;
@@ -90,7 +97,8 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(246, 96);
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(246, 76);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 23);
             this.button5.TabIndex = 3;
@@ -100,7 +108,8 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(431, 96);
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Location = new System.Drawing.Point(431, 76);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(138, 23);
             this.button6.TabIndex = 4;
@@ -110,7 +119,8 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(61, 180);
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Location = new System.Drawing.Point(61, 131);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(138, 23);
             this.button7.TabIndex = 5;
@@ -120,7 +130,8 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(246, 180);
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Location = new System.Drawing.Point(246, 131);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(138, 23);
             this.button8.TabIndex = 6;
@@ -130,7 +141,8 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(431, 180);
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Location = new System.Drawing.Point(431, 131);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(138, 23);
             this.button9.TabIndex = 7;
@@ -147,6 +159,7 @@
             this.groupBox1.Controls.Add(this.buttonCustomShape);
             this.groupBox1.Controls.Add(this.buttonCenter);
             this.groupBox1.Controls.Add(this.buttonCustomPosition);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(61, 246);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(508, 139);
@@ -188,6 +201,7 @@
             // 
             // buttonCustomShape
             // 
+            this.buttonCustomShape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustomShape.Location = new System.Drawing.Point(241, 59);
             this.buttonCustomShape.Name = "buttonCustomShape";
             this.buttonCustomShape.Size = new System.Drawing.Size(202, 23);
@@ -198,6 +212,7 @@
             // 
             // buttonCenter
             // 
+            this.buttonCenter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCenter.Location = new System.Drawing.Point(241, 101);
             this.buttonCenter.Name = "buttonCenter";
             this.buttonCenter.Size = new System.Drawing.Size(202, 23);
@@ -208,6 +223,7 @@
             // 
             // buttonCustomPosition
             // 
+            this.buttonCustomPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustomPosition.Location = new System.Drawing.Point(241, 13);
             this.buttonCustomPosition.Name = "buttonCustomPosition";
             this.buttonCustomPosition.Size = new System.Drawing.Size(202, 23);
@@ -216,16 +232,52 @@
             this.buttonCustomPosition.UseVisualStyleBackColor = true;
             this.buttonCustomPosition.Click += new System.EventHandler(this.buttonCustomPosition_Click);
             // 
+            // button10
+            // 
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Location = new System.Drawing.Point(61, 187);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(138, 23);
+            this.button10.TabIndex = 3;
+            this.button10.Text = "10-无边框移动3";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(246, 187);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(138, 23);
+            this.button11.TabIndex = 3;
+            this.button11.Text = "11-添加Windows账户";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Location = new System.Drawing.Point(431, 187);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(138, 23);
+            this.button12.TabIndex = 9;
+            this.button12.Text = "12-打开我的电脑";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 459);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -259,5 +311,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }

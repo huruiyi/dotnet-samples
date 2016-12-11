@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
    
     public class CustomButton : Button

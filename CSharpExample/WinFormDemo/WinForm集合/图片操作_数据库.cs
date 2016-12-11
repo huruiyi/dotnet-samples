@@ -5,7 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     public partial class 图片操作_数据库 : Form
     {

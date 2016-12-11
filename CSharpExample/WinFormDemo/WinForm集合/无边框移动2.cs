@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     public partial class 无边框移动2 : Form
     {

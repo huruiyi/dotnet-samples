@@ -9,7 +9,7 @@ using Size = System.Drawing.Size;
 /// <summary>
 ///  注意添加WindowsBase.dll
 /// </summary>
-namespace WinForm集合
+namespace WinFormDemo
 {
     public partial class 调用摄像头实例 : Form
     {

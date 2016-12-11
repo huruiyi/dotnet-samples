@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     public partial class 简易资源管理器 : Form
     {

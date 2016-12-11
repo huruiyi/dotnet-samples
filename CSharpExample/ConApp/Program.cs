@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
@@ -30,6 +31,7 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            GetCurrentInstall();
             //for (int i = 100; i < 1000; i++)
             //{
             //    Thread t = new Thread(() =>
@@ -98,6 +100,7 @@ namespace ConApp
             #endregion Http检查端口是否打开
 
             #region 文件权限相关
+
             //DirectorySecurity security = new DirectorySecurity();
             //const string path = @"D:\temp";
             ////设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
@@ -106,8 +109,9 @@ namespace ConApp
             //    PropagationFlags.None, AccessControlType.Allow));
             //security.AddAccessRule(new FileSystemAccessRule("Everyone",
             //    FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-            //Directory.SetAccessControl(path, security); 
-            #endregion
+            //Directory.SetAccessControl(path, security);
+
+            #endregion 文件权限相关
 
             #region 网站的默认名称(协议和应用程序池)
 
@@ -1249,7 +1253,8 @@ namespace ConApp
             }
         }
 
-        public static void TasKdemo2() {
+        public static void TasKdemo2()
+        {
             List<Person> pers1 = new List<Person>();
             List<Person> pers2 = new List<Person>();
             List<Person> pers3 = new List<Person>();
@@ -1309,6 +1314,7 @@ namespace ConApp
                 }
             );
         }
+
         public static void GetPseronList1(List<Person> pers)
         {
             for (int i = 0; i < 5; i++)
@@ -1358,6 +1364,7 @@ namespace ConApp
                 Console.WriteLine("p5Listp{0}创建成功", i);
             }
         }
+
         #endregion 22-TaskDemo
 
         #region 23-SpinWaitDemo
@@ -1657,7 +1664,7 @@ namespace ConApp
 
         #endregion 30-反射获取方法名
 
-        #region  31-HttpListenerDemo
+        #region 31-HttpListenerDemo
 
         public static void HttpListenerDemo()
         {
@@ -1676,11 +1683,12 @@ namespace ConApp
             output.Close();
             listener.Stop();
         }
-        #endregion
+
+        #endregion 31-HttpListenerDemo
 
         #region 32-XmlSerializerDemo
 
-        public             static void XmlSerializerDemo()
+        public static void XmlSerializerDemo()
         {
             RequestPlatform model = new RequestPlatform
             {
@@ -1699,7 +1707,75 @@ namespace ConApp
             tw.Close();
             Console.WriteLine(sb.ToString());
         }
-        #endregion
+
+        #endregion 32-XmlSerializerDemo
+
+        public static void EnvironmentDemo()
+        {
+            string commandLine = Environment.CommandLine;
+            string currentDirectory = Environment.CurrentDirectory;
+            int currentManagedThreadId = Environment.CurrentManagedThreadId;
+            //int ecode = Environment.ExitCode;
+            //Environment.Exit(ecode);
+            string[] cas = Environment.GetCommandLineArgs();
+            string ev = Environment.GetEnvironmentVariable("Path");
+            Environment.GetLogicalDrives();
+            bool is64 = Environment.Is64BitOperatingSystem;
+            bool is64p = Environment.Is64BitProcess;
+            string machineName = Environment.MachineName;
+            string nl = Environment.NewLine;
+            OperatingSystem osVersion = Environment.OSVersion;
+            int processorCount = Environment.ProcessorCount;
+            string systemDirectory = Environment.SystemDirectory;
+            int systemPageSize = Environment.SystemPageSize;
+            int tickCount = Environment.TickCount;
+            string userDomainName = Environment.UserDomainName;
+            string userName = Environment.UserName;
+            Version v = Environment.Version;
+            long workingSet = Environment.WorkingSet;
+            string computerName = Environment.GetEnvironmentVariable("ComputerName");
+        }
+
+        public static void RegistryDemo()
+        {
+            Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE");
+            if (rk != null)
+            {
+                String[] names = rk.GetSubKeyNames();
+                foreach (string item in names)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+        }
+
+        public static void GetCurrentInstall()
+        {
+            StringBuilder result = new StringBuilder();
+            for (int index = 0; ; index++)
+            {
+                StringBuilder productCode = new StringBuilder(39);
+                if (MsiEnumProducts(index, productCode) != 0)
+                {
+                    break;
+                }
+
+                foreach (string property in new string[] { "ProductName", "Publisher", "VersionString", })
+                {
+                    int charCount = 512;
+                    StringBuilder value = new StringBuilder(charCount);
+
+                    if (MsiGetProductInfo(productCode.ToString(), property, value, ref charCount) == 0)
+                    {
+                        value.Length = charCount;
+                        result.AppendLine(value.ToString());
+                    }
+                }
+                result.AppendLine();
+            }
+            Console.WriteLine(result.ToString());
+        }
+
         #region 反射系列
 
         public static void ReflectionClass1Demo()
@@ -1861,5 +1937,11 @@ namespace ConApp
         }
 
         #endregion 反射系列
+
+        [DllImport("msi.dll", SetLastError = true)]
+        private static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);
+
+        [DllImport("msi.dll", SetLastError = true)]
+        private static extern int MsiGetProductInfo(string szProduct, string szProperty, StringBuilder lpValueBuf, ref int pcchValueBuf);
     }
 }

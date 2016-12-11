@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     public class SortedBindingList<T> : BindingList<T>, IRaiseItemChangedEvents
     {

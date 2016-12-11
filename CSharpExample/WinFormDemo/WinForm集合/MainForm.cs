@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace WinForm集合
+namespace WinFormDemo
 {
     public partial class MainForm : Form
     {
@@ -80,6 +80,28 @@ namespace WinForm集合
             自定义窗体 fm = new 自定义窗体();
             fm.ShowDialog();
             this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            new 无边框移动3().ShowDialog();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            new 添加Windows账户().ShowDialog();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("::{20D04FE0-3AEA-1069-A2D8-08002B30309D}");
+            System.Diagnostics.Process.Start("explorer.exe", "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}");
+
+            // System.Diagnostics.Process.Start("explorer.exe");
+            System.Diagnostics.Process.Start("explorer.exe", " ::{450D8FBA-AD25-11D0-98A8-0800361B1103}");
+
+            //var s3 = new ActiveXObject("wscript.shell");
+            //s3.run("explorer.exe ::{450D8FBA-AD25-11D0-98A8-0800361B1103}");
         }
     }
 }

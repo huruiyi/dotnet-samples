@@ -1,6 +1,6 @@
-﻿namespace WinForm集合
+﻿namespace WinFormDemo
 {
-    partial class Form1
+    partial class 无边框移动3
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.customButton1 = new WinForm集合.CustomButton();
+            this.customButton1 = new WinFormDemo.CustomButton();
             this.SuspendLayout();
             // 
             // button1
@@ -53,7 +53,7 @@
             // 
             // customButton1
             // 
-            this.customButton1.A = WinForm集合.Eenum.A1;
+            this.customButton1.A = WinFormDemo.Eenum.A1;
             this.customButton1.Location = new System.Drawing.Point(12, 151);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(75, 23);
