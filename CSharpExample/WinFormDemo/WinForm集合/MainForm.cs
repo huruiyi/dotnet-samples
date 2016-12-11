@@ -10,16 +10,19 @@ namespace WinForm集合
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            截屏实例 demo = new 截屏实例();
-            demo.ShowDialog();
+            new 截屏实例().ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            调用摄像头实例 demo = new 调用摄像头实例();
-            demo.ShowDialog();
+            new 调用摄像头实例().ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -45,6 +48,38 @@ namespace WinForm集合
         private void button7_Click(object sender, EventArgs e)
         {
             new 图片操作_数据库().ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            new 登录窗体().ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            new 数据绑定().ShowDialog();
+        }
+
+        private void buttonCustomPosition_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+            int.TryParse(textBox1.Text, out x);
+            int.TryParse(textBox2.Text, out y);
+            自定义窗体 fm = new 自定义窗体(x, y);
+            fm.ShowDialog();
+        }
+
+        private void buttonCustomShape_Click_1(object sender, EventArgs e)
+        {
+            自定义窗体 fm = new 自定义窗体(true);
+            fm.ShowDialog();
+        }
+
+        private void buttonCenter_Click(object sender, EventArgs e)
+        {
+            自定义窗体 fm = new 自定义窗体();
+            fm.ShowDialog();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -56,25 +55,25 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.button5 = new System.Windows.Forms.Button();
             this.lblinfo = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gbox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.gbox2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "这是Form2窗体";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(76, 149);
+            this.button1.Location = new System.Drawing.Point(31, 68);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 37);
+            this.button1.Size = new System.Drawing.Size(299, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "求1--100的和";
             this.button1.UseVisualStyleBackColor = true;
@@ -82,21 +81,21 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(76, 62);
+            this.textBox1.Location = new System.Drawing.Point(33, 29);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.Size = new System.Drawing.Size(148, 21);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(76, 112);
+            this.textBox2.Location = new System.Drawing.Point(200, 29);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
+            this.textBox2.Size = new System.Drawing.Size(130, 21);
             this.textBox2.TabIndex = 2;
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(242, 62);
+            this.maskedTextBox1.Location = new System.Drawing.Point(153, 29);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(187, 21);
             this.maskedTextBox1.TabIndex = 3;
@@ -104,15 +103,15 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(272, 90);
+            this.richTextBox1.Location = new System.Drawing.Point(21, 22);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(244, 112);
+            this.richTextBox1.Size = new System.Drawing.Size(317, 112);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(272, 242);
+            this.button2.Location = new System.Drawing.Point(21, 174);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 23);
             this.button2.TabIndex = 5;
@@ -122,7 +121,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(441, 242);
+            this.button3.Location = new System.Drawing.Point(190, 174);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 23);
             this.button3.TabIndex = 5;
@@ -135,11 +134,12 @@
             this.groupBox1.Controls.Add(this.checkBox5);
             this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(623, 32);
+            this.groupBox1.Location = new System.Drawing.Point(413, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(269, 179);
+            this.groupBox1.Size = new System.Drawing.Size(285, 179);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "爱好";
@@ -147,7 +147,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 110);
+            this.checkBox5.Location = new System.Drawing.Point(55, 133);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(60, 16);
             this.checkBox5.TabIndex = 1;
@@ -158,7 +158,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(119, 63);
+            this.checkBox4.Location = new System.Drawing.Point(168, 86);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(60, 16);
             this.checkBox4.TabIndex = 1;
@@ -169,7 +169,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(6, 63);
+            this.checkBox3.Location = new System.Drawing.Point(55, 86);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(48, 16);
             this.checkBox3.TabIndex = 1;
@@ -180,7 +180,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(119, 17);
+            this.checkBox2.Location = new System.Drawing.Point(168, 40);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(60, 16);
             this.checkBox2.TabIndex = 1;
@@ -191,7 +191,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 17);
+            this.checkBox1.Location = new System.Drawing.Point(52, 40);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(60, 16);
             this.checkBox1.TabIndex = 0;
@@ -201,7 +201,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(639, 242);
+            this.button4.Location = new System.Drawing.Point(168, 129);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 7;
@@ -212,7 +212,7 @@
             // lblHobby
             // 
             this.lblHobby.AutoSize = true;
-            this.lblHobby.Location = new System.Drawing.Point(646, 345);
+            this.lblHobby.Location = new System.Drawing.Point(96, 91);
             this.lblHobby.Name = "lblHobby";
             this.lblHobby.Size = new System.Drawing.Size(0, 12);
             this.lblHobby.TabIndex = 8;
@@ -223,15 +223,15 @@
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(37, 312);
+            this.panel1.Location = new System.Drawing.Point(28, 148);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(330, 100);
+            this.panel1.Size = new System.Drawing.Size(221, 74);
             this.panel1.TabIndex = 2;
             // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(216, 49);
+            this.radioButton3.Location = new System.Drawing.Point(153, 29);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(47, 16);
             this.radioButton3.TabIndex = 1;
@@ -242,7 +242,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(115, 49);
+            this.radioButton2.Location = new System.Drawing.Point(96, 29);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(47, 16);
             this.radioButton2.TabIndex = 1;
@@ -254,7 +254,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 49);
+            this.radioButton1.Location = new System.Drawing.Point(34, 29);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(47, 16);
             this.radioButton1.TabIndex = 1;
@@ -277,15 +277,15 @@
             this.panel2.Controls.Add(this.radioButton5);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.radioButton4);
-            this.panel2.Location = new System.Drawing.Point(623, 312);
+            this.panel2.Location = new System.Drawing.Point(28, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(356, 100);
+            this.panel2.Size = new System.Drawing.Size(221, 81);
             this.panel2.TabIndex = 2;
             // 
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(221, 58);
+            this.radioButton6.Location = new System.Drawing.Point(153, 35);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(47, 16);
             this.radioButton6.TabIndex = 1;
@@ -296,7 +296,7 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(120, 58);
+            this.radioButton5.Location = new System.Drawing.Point(96, 35);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(47, 16);
             this.radioButton5.TabIndex = 1;
@@ -307,7 +307,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 11);
+            this.label3.Location = new System.Drawing.Point(6, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 0;
@@ -317,7 +317,7 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Checked = true;
-            this.radioButton4.Location = new System.Drawing.Point(8, 58);
+            this.radioButton4.Location = new System.Drawing.Point(34, 35);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(47, 16);
             this.radioButton4.TabIndex = 1;
@@ -327,7 +327,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(441, 402);
+            this.button5.Location = new System.Drawing.Point(98, 244);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 9;
@@ -338,33 +338,81 @@
             // lblinfo
             // 
             this.lblinfo.AutoSize = true;
-            this.lblinfo.Location = new System.Drawing.Point(439, 447);
+            this.lblinfo.Location = new System.Drawing.Point(448, 454);
             this.lblinfo.Name = "lblinfo";
             this.lblinfo.Size = new System.Drawing.Size(0, 12);
             this.lblinfo.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 12);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "MaskedTextBox验证:";
+            // 
+            // gbox2
+            // 
+            this.gbox2.Controls.Add(this.panel2);
+            this.gbox2.Controls.Add(this.lblHobby);
+            this.gbox2.Controls.Add(this.panel1);
+            this.gbox2.Controls.Add(this.button5);
+            this.gbox2.Location = new System.Drawing.Point(413, 244);
+            this.gbox2.Name = "gbox2";
+            this.gbox2.Size = new System.Drawing.Size(285, 273);
+            this.gbox2.TabIndex = 12;
+            this.gbox2.TabStop = false;
+            this.gbox2.Text = "班级专业获取";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Location = new System.Drawing.Point(27, 39);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(356, 133);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "求和";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.maskedTextBox1);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(27, 191);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(356, 80);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "验证";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.richTextBox1);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Location = new System.Drawing.Point(27, 292);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(356, 225);
+            this.groupBox4.TabIndex = 15;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "字体设置";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1063, 502);
+            this.ClientSize = new System.Drawing.Size(734, 561);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbox2);
             this.Controls.Add(this.lblinfo);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblHobby);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
             this.Name = "Form2";
-            this.Text = "爱好";
+            this.Text = "Form2窗体";
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.Form2_Activated);
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -375,14 +423,19 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.gbox2.ResumeLayout(false);
+            this.gbox2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -410,5 +463,10 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblinfo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox gbox2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

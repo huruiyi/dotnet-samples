@@ -14,7 +14,7 @@ namespace WinForm集合
     public partial class 调用摄像头实例 : Form
     {
         private FilterInfoCollection videoDevices;
-        private VideoCaptureDevice videoSource;
+        //private VideoCaptureDevice videoSource;
 
         public 调用摄像头实例()
         {

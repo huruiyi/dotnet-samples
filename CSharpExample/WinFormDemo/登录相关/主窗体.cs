@@ -10,19 +10,34 @@ namespace 登陆窗体
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void tileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void tileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void openForm2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.Show();
             form2.MdiParent = this;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void hideForm2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.OpenForms["Form2"].Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void closeForm2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Application.OpenForms["Form2"].Close();
 
@@ -42,21 +57,6 @@ namespace 登陆窗体
             {
                 if (fm.Name == "Form2") fm.Close();
             }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.LayoutMdi(MdiLayout.Cascade);
         }
     }
 }

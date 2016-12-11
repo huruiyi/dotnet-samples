@@ -17,7 +17,7 @@ namespace SyncAsyncAPM
         private delegate void ShowStateDelegate(string value);
 
         private readonly ShowStateDelegate _showStateCallback;
-        private SynchronizationContext sc;
+        //private SynchronizationContext sc;
 
         public Demo_APM()
         {

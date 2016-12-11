@@ -1,33 +1,16 @@
-﻿/****************************** Module Header ******************************\
-* Module Name:    Default.aspx.cs
-* Project:        CSASPNETImageEditUpload
-* Copyright (c) Microsoft Corporation
-*
-* The project shows up how to insert,edit or update an image and store
-* it into Sql database.
-* 
-* This source is subject to the Microsoft Public License.
-* See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
-* All other rights reserved.
-\***************************************************************************/
-
+﻿using System;
 using System.Collections.Generic;
-using System.Web.UI.WebControls;
-using System;
-using System.Data.SqlClient;
 using System.IO;
-
+using System.Web.UI.WebControls;
 
 namespace CSASPNETImageEditUpload
 {
     public partial class _Default : System.Web.UI.Page
     {
-        // Static types of common images for checking.
         private static List<string> imgytpes = new List<string>()
         {
             ".BMP",".GIF",".JPG",".PNG"
         };
-
 
         /// <summary>
         /// Read all records into GridView.
@@ -55,7 +38,6 @@ namespace CSASPNETImageEditUpload
             }
         }
 
-
         /// <summary>
         /// Validate whether data satisfies the type of image.
         /// </summary>
@@ -66,7 +48,6 @@ namespace CSASPNETImageEditUpload
                 args.IsValid = imgytpes.IndexOf(System.IO.Path.GetExtension(args.Value).ToUpper()) >= 0;
             }
         }
-
 
         /// <summary>
         /// After checking the validation of the image type,
@@ -88,10 +69,10 @@ namespace CSASPNETImageEditUpload
 
                 if (cv.IsValid && fup.PostedFile.FileName.Trim() != "")
                 {
-                    e.Values["PersonImage"] = File.ReadAllBytes(fup.PostedFile.FileName);
+                    //  e.Values["PersonImage"] = File.ReadAllBytes(fup.PostedFile.FileName);
+                    e.Values["PersonImage"] = fup.FileBytes;
                     e.Values["PersonImageType"] = fup.PostedFile.ContentType;
                 }
-
             }
             else
             {
@@ -101,7 +82,6 @@ namespace CSASPNETImageEditUpload
                 fvPersonDetails.DefaultMode = FormViewMode.ReadOnly;
             }
         }
-
 
         /// <summary>
         /// After checking the validation of the image type,
@@ -124,7 +104,6 @@ namespace CSASPNETImageEditUpload
             }
         }
 
-
         /// <summary>
         /// After updated, re-databind data and select the first one as default.
         /// </summary>
@@ -133,7 +112,6 @@ namespace CSASPNETImageEditUpload
             gvPersonOverView.DataBind();
             gvPersonOverView.SelectedIndex = gvPersonOverView.SelectedRow.RowIndex;
         }
-
 
         /// <summary>
         /// After inserted successfully, re-databind data,select the first one as default,
@@ -146,7 +124,6 @@ namespace CSASPNETImageEditUpload
             fvPersonDetails.ChangeMode(FormViewMode.ReadOnly);
             fvPersonDetails.DefaultMode = FormViewMode.ReadOnly;
         }
-
 
         /// <summary>
         /// After deleted successfully, re-databind data.
@@ -178,7 +155,6 @@ namespace CSASPNETImageEditUpload
                 {
                     gvPersonOverView.SelectedIndex = delindex;
                 }
-
             }
 
             // If has no records, change to insert mode for insering new records.
@@ -188,7 +164,6 @@ namespace CSASPNETImageEditUpload
                 fvPersonDetails.DefaultMode = FormViewMode.Insert;
             }
         }
-
 
         /// <summary>
         /// To show detail image and information in the FormView when GridView's
@@ -200,7 +175,6 @@ namespace CSASPNETImageEditUpload
             fvPersonDetails.DefaultMode = FormViewMode.ReadOnly;
         }
 
-
         /// <summary>
         /// Keep the row index into ViewState for the usage of Item_Deleted.
         /// </summary>
@@ -209,7 +183,6 @@ namespace CSASPNETImageEditUpload
             ViewState["delindex"] = gvPersonOverView.SelectedIndex;
         }
 
-
         /// <summary>
         /// Keep the insertState into Session to avoid the duplicated inserting
         /// after refreshing page.
@@ -217,7 +190,6 @@ namespace CSASPNETImageEditUpload
         protected void fvPersonDetails_ModeChanging(object sender, FormViewModeEventArgs e)
         {
             Session["insertstate"] = (e.NewMode == FormViewMode.Insert);
-
         }
     }
 }

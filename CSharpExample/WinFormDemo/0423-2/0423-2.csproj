@@ -50,13 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddStuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddStuForm.Designer.cs">
-      <DependentUpon>AddStuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DBHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,47 +74,8 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form5.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form5.Designer.cs">
-      <DependentUpon>Form5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form6.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form6.Designer.cs">
-      <DependentUpon>Form6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GradeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GradeForm.Designer.cs">
-      <DependentUpon>GradeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudentFrom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StudentFrom.Designer.cs">
-      <DependentUpon>StudentFrom.cs</DependentUpon>
-    </Compile>
-    <Compile Include="updateStuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="updateStuForm.Designer.cs">
-      <DependentUpon>updateStuForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="AddStuForm.resx">
-      <DependentUpon>AddStuForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,18 +88,6 @@
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form5.resx">
-      <DependentUpon>Form5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form6.resx">
-      <DependentUpon>Form6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GradeForm.resx">
-      <DependentUpon>GradeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -156,12 +98,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StudentFrom.resx">
-      <DependentUpon>StudentFrom.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="updateStuForm.resx">
-      <DependentUpon>updateStuForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

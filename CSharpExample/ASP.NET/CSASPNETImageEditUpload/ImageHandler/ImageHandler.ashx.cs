@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.IO;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Web;
 
 namespace CSASPNETImageEditUpload
 {
     /// <summary>
     /// Connected to the DataBase,
-    /// If the specific record has image,read out the specific row's 
+    /// If the specific record has image,read out the specific row's
     /// image byte collection as well as image type, output it.
     /// If not, output the default image instead.
     /// </summary>
@@ -23,11 +21,9 @@ namespace CSASPNETImageEditUpload
         {
             using (SqlCommand cmd = new SqlCommand())
             {
-                cmd.Connection = new SqlConnection(
-                    ConfigurationManager.ConnectionStrings["db_PersonsConnectionString"].ConnectionString);
+                cmd.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["db_PersonsConnectionString"].ConnectionString);
                 cmd.Connection.Open();
-                cmd.CommandText = "select PersonImage,PersonImageType from tb_personInfo" +
-                    " where id=" + context.Request.QueryString["id"];
+                cmd.CommandText = "select PersonImage,PersonImageType from tb_personInfo where id=" + context.Request.QueryString["id"];
 
                 SqlDataReader reader = cmd.ExecuteReader(
                     CommandBehavior.CloseConnection | CommandBehavior.SingleRow);
@@ -61,8 +57,7 @@ namespace CSASPNETImageEditUpload
                     }
                     else
                     {
-                        imgbytes = File.ReadAllBytes(context.Server.MapPath
-                            ("~/DefaultImage/DefaultImage.JPG"));
+                        imgbytes = File.ReadAllBytes(context.Server.MapPath("~/DefaultImage/DefaultImage.JPG"));
                         imgtype = "image/pjpeg";
                         context.Response.ContentType = imgtype;
                         context.Response.BinaryWrite(imgbytes);

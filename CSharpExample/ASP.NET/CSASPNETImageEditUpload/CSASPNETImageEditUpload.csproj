@@ -62,10 +62,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\db_Persons.mdf" />
-    <Content Include="App_Data\db_Persons_log.LDF">
-      <DependentUpon>db_Persons.mdf</DependentUpon>
-    </Content>
     <Content Include="Default.aspx" />
     <Content Include="DefaultImage\DefaultImage.JPG" />
     <Content Include="ReadMe.txt" />
@@ -94,6 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImageHandler\ImageHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

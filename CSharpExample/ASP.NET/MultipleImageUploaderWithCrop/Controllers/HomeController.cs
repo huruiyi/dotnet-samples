@@ -43,7 +43,7 @@ namespace MultipleImageUploaderWithCrop.Controllers
                         image.Save(Server.MapPath("~/UploadedImages/" + imageData.FileName));
                         uploadResult.Add(imageData.FileName, true);
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         uploadResult.Add(imageData.FileName, false);
                     }

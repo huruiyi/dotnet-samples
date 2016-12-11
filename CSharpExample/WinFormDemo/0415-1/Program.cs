@@ -15,6 +15,7 @@ namespace _0415_1
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
+
             Form1 f1 = new Form1();
             f1.ShowDialog();
             if (IsValid)

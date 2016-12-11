@@ -19,11 +19,13 @@ namespace _0412_1
                 sum += i;
                 System.Diagnostics.Debug.Print("第{0}次循环：{1}", i, sum);
             }
-        }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            maskedTextBox1.ValidatingType = typeof(System.Int32);
+            sum = 0;
+            for (int i = Convert.ToInt32(textBox1.Text); i <= Convert.ToInt32(textBox2.Text); i++)
+            {
+                sum += i;
+            }
+            MessageBox.Show("结果：" + sum);
         }
 
         private void Form2_Shown(object sender, EventArgs e)
@@ -33,6 +35,11 @@ namespace _0412_1
         private void Form2_Activated(object sender, EventArgs e)
         {
             textBox2.Focus();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            maskedTextBox1.ValidatingType = typeof(System.Int32);
         }
 
         private void maskedTextBox1_TypeValidationCompleted(object sender, TypeValidationEventArgs e)

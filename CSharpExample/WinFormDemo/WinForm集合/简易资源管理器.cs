@@ -79,7 +79,7 @@ namespace WinForm集合
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

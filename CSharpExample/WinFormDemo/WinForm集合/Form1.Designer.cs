@@ -30,6 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.customButton1 = new WinForm集合.CustomButton();
             this.SuspendLayout();
             // 
             // button1
@@ -50,11 +51,22 @@
             this.textBox1.Size = new System.Drawing.Size(512, 340);
             this.textBox1.TabIndex = 1;
             // 
+            // customButton1
+            // 
+            this.customButton1.A = WinForm集合.Eenum.A1;
+            this.customButton1.Location = new System.Drawing.Point(12, 151);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.Size = new System.Drawing.Size(75, 23);
+            this.customButton1.TabIndex = 2;
+            this.customButton1.Text = "自定义按钮控件";
+            this.customButton1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 419);
+            this.Controls.Add(this.customButton1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -80,5 +92,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
+        private CustomButton customButton1;
     }
 }

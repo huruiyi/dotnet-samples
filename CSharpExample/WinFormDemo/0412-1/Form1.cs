@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace _0412_1
@@ -14,7 +13,6 @@ namespace _0412_1
         public Form1()
         {
             InitializeComponent();
-            SetBtnOkText();
         }
 
         public Form1(string name)
@@ -24,43 +22,13 @@ namespace _0412_1
             this.Text = name;
         }
 
-        public void SetBtnOkText()
-        {
-            btnOk.Text = "生成Button控件";
-        }
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    btnNew[i, j] = new Button();
-                    btnNew[i, j].Location = new Point(0 + j * 40, 10 + i * 30);
-                    btnNew[i, j].Size = new Size(40, 30);
-                    btnNew[i, j].Text = (i + 1).ToString() + "," + (j + 1).ToString();
-                    this.btnNew[i, j].Click += new System.EventHandler(this.btnNew_Click);
-
-                    this.Controls.Add(btnNew[i, j]);
-                }
-            }
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            MessageBox.Show(btn.Text);
-            btn.BackColor = Color.Red;
-            btn.Enabled = false;
-        }
-
-        private void btnOk_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2 { MdiParent = this, Name = "Form2" };
+            Form2 f2 = new Form2
+            {
+                MdiParent = this,
+                Name = "Form2"
+            };
             f2.Show();
         }
 
@@ -85,22 +53,21 @@ namespace _0412_1
             // Application.OpenForms["f2"].Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Application.OpenForms["Form3"].Hide();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Application.OpenForms["Form3"].Show();
-        }
-
         private void 打开Form2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
             f2.MdiParent = this;
             f2.Name = "Form2";
             f2.Show();
+        }
+
+        private void 关闭Form2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form[] mdiChildren = this.MdiChildren;
+            foreach (Form fm in mdiChildren)
+            {
+                if (fm.Name == "Form2") fm.Close();
+            }
         }
 
         private void 打开Form3ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,13 +78,14 @@ namespace _0412_1
             f3.Show();
         }
 
-        private void 关闭Form2ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            Form[] mdiChildren = this.MdiChildren;
-            foreach (Form fm in mdiChildren)
-            {
-                if (fm.Name == "Form2") fm.Close();
-            }
+            Application.OpenForms["Form3"].Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms["Form3"].Show();
         }
 
         private void 关闭Form3ToolStripMenuItem_Click(object sender, EventArgs e)
