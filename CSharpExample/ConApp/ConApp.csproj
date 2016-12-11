@@ -67,11 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\City.cs" />
+    <Compile Include="Class\ComplainModel.cs" />
     <Compile Include="Class\Extension.cs" />
     <Compile Include="Class\MathTest.cs" />
     <Compile Include="Class\MyCollection.cs" />
     <Compile Include="Class\MyCollection2.cs" />
     <Compile Include="Class\MyEnumerator.cs" />
+    <Compile Include="Class\Order.cs" />
     <Compile Include="Class\Person.cs" />
     <Compile Include="Class\PointRef.cs" />
     <Compile Include="Class\Points.cs" />

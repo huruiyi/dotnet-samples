@@ -14,9 +14,11 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace ConApp
 {
@@ -1173,7 +1175,7 @@ namespace ConApp
 
         #region 22-TaskDemo
 
-        public static void TasKdemo()
+        public static void TasKdemo1()
         {
             CancellationTokenSource source = new CancellationTokenSource();
             CancellationToken token = source.Token;
@@ -1247,6 +1249,115 @@ namespace ConApp
             }
         }
 
+        public static void TasKdemo2() {
+            List<Person> pers1 = new List<Person>();
+            List<Person> pers2 = new List<Person>();
+            List<Person> pers3 = new List<Person>();
+            List<Person> pers4 = new List<Person>();
+            List<Person> pers5 = new List<Person>();
+            Task tack = Task.Factory.StartNew(delegate ()
+            {
+                GetPseronList1(pers1);
+                GetPseronList2(pers2);
+                GetPseronList3(pers3);
+                GetPseronList4(pers4);
+                GetPseronList5(pers5);
+            });
+            tack.ContinueWith(delegate (Task task)
+            {
+                Console.WriteLine("执行完成");
+            });
+        }
+
+        public static void TasKWhenAll3()
+        {
+            List<Person> pers1 = new List<Person>();
+            List<Person> pers2 = new List<Person>();
+            List<Person> pers3 = new List<Person>();
+            List<Person> pers4 = new List<Person>();
+            List<Person> pers5 = new List<Person>();
+            Task t1 = Task.Run(() => { GetPseronList1(pers1); });
+            Task t2 = Task.Run(() => { GetPseronList2(pers2); });
+            Task t3 = Task.Run(() => { GetPseronList3(pers3); });
+            Task t4 = Task.Run(() => { GetPseronList4(pers4); });
+            Task t5 = Task.Run(() => { GetPseronList5(pers5); });
+
+            Task tb = Task.WhenAll(t1, t2, t3, t4, t5);
+            tb.ContinueWith((Task tt) => { Console.WriteLine("执行完成"); });
+        }
+
+        public static void TaskContinueWithDemo()
+        {
+            List<Person> pers1 = new List<Person>();
+            List<Person> pers2 = new List<Person>();
+            List<Person> pers3 = new List<Person>();
+            List<Person> pers4 = new List<Person>();
+            List<Person> pers5 = new List<Person>();
+            Task task = Task.Factory.StartNew(() =>
+            {
+                Parallel.Invoke(
+                    delegate () { GetPseronList1(pers1); },
+                    delegate () { GetPseronList2(pers2); },
+                    delegate () { GetPseronList3(pers3); },
+                    delegate () { GetPseronList4(pers4); },
+                    delegate () { GetPseronList5(pers5); });
+            });
+            Task.WaitAll();
+            task.ContinueWith(delegate (Task tt)
+                {
+                    Console.WriteLine("执行完成");
+                }
+            );
+        }
+        public static void GetPseronList1(List<Person> pers)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                pers.Add(new Person { Name = "pl1Name" + i, Age = i });
+                Thread.Sleep(100 * i);
+                Console.WriteLine("p1Listp{0}创建成功", i);
+            }
+        }
+
+        public static void GetPseronList2(List<Person> pers)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                pers.Add(new Person { Name = "pl1Name" + i, Age = i });
+                Thread.Sleep(100 * i);
+                Console.WriteLine("p2Listp{0}创建成功", i);
+            }
+        }
+
+        public static void GetPseronList3(List<Person> pers)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                pers.Add(new Person { Name = "pl2Name" + i, Age = i });
+                Thread.Sleep(100 * i);
+                Console.WriteLine("p3Listp{0}创建成功", i);
+            }
+        }
+
+        public static void GetPseronList4(List<Person> pers)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                pers.Add(new Person { Name = "pl3Name" + i, Age = i });
+                Thread.Sleep(100 * i);
+                Console.WriteLine("p4Listp{0}创建成功", i);
+            }
+        }
+
+        public static void GetPseronList5(List<Person> pers)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                pers.Add(new Person { Name = "pl4Name" + i, Age = i });
+                Thread.Sleep(100 * i);
+                Console.WriteLine("p5Listp{0}创建成功", i);
+            }
+        }
         #endregion 22-TaskDemo
 
         #region 23-SpinWaitDemo
@@ -1546,6 +1657,49 @@ namespace ConApp
 
         #endregion 30-反射获取方法名
 
+        #region  31-HttpListenerDemo
+
+        public static void HttpListenerDemo()
+        {
+            HttpListener listener = new HttpListener();
+            listener.Prefixes.Add("http://localhost:1231/");
+            listener.Start();
+            Console.WriteLine("Listening...");
+            HttpListenerContext context = listener.GetContext();
+            HttpListenerRequest request = context.Request;
+            HttpListenerResponse response = context.Response;
+            string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
+            byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+            response.ContentLength64 = buffer.Length;
+            Stream output = response.OutputStream;
+            output.Write(buffer, 0, buffer.Length);
+            output.Close();
+            listener.Stop();
+        }
+        #endregion
+
+        #region 32-XmlSerializerDemo
+
+        public             static void XmlSerializerDemo()
+        {
+            RequestPlatform model = new RequestPlatform
+            {
+                CheckCode = "180014190010",
+                Token = "H29G3-MZTKQ535-D7T95OAK-1PKOEV48",
+                AplData = new AplDataPlatform
+                {
+                    Code = "01"
+                }
+            };
+
+            StringBuilder sb = new StringBuilder();
+            StringWriter tw = new StringWriter(sb);
+            XmlSerializer sz = new XmlSerializer(typeof(RequestPlatform));
+            sz.Serialize(tw, model);
+            tw.Close();
+            Console.WriteLine(sb.ToString());
+        }
+        #endregion
         #region 反射系列
 
         public static void ReflectionClass1Demo()
