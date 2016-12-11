@@ -1,4 +1,4 @@
-﻿namespace _0415_1
+﻿namespace day0415
 {
     partial class MainForm
     {
@@ -44,7 +44,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_0415_1.Properties.Resources.Friend;
             this.pictureBox1.Location = new System.Drawing.Point(71, 77);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(126, 108);

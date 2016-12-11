@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace _0423_1
+namespace day0423
 {
     public partial class Form4 : Form
     {

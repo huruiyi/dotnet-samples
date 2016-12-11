@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _0415_1
+namespace day0415
 {
     public partial class Form2 : Form
     {

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace _0412_1
+namespace day0412
 {
     public partial class Form1 : Form
     {

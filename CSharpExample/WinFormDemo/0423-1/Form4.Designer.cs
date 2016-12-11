@@ -1,4 +1,4 @@
-﻿namespace _0423_1
+﻿namespace day0423
 {
     partial class Form4
     {

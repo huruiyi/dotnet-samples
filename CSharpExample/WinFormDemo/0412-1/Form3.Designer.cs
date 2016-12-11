@@ -1,4 +1,4 @@
-﻿namespace _0412_1
+﻿namespace day0412
 {
     partial class Form3
     {
@@ -139,7 +139,7 @@
             // 
             // btnrigthall
             // 
-            this.btnrigthall.Location = new System.Drawing.Point(204, 42);
+            this.btnrigthall.Location = new System.Drawing.Point(204, 35);
             this.btnrigthall.Name = "btnrigthall";
             this.btnrigthall.Size = new System.Drawing.Size(75, 23);
             this.btnrigthall.TabIndex = 5;
@@ -149,7 +149,7 @@
             // 
             // btnrigth
             // 
-            this.btnrigth.Location = new System.Drawing.Point(204, 71);
+            this.btnrigth.Location = new System.Drawing.Point(204, 66);
             this.btnrigth.Name = "btnrigth";
             this.btnrigth.Size = new System.Drawing.Size(75, 23);
             this.btnrigth.TabIndex = 5;
@@ -159,7 +159,7 @@
             // 
             // btnleftall
             // 
-            this.btnleftall.Location = new System.Drawing.Point(204, 100);
+            this.btnleftall.Location = new System.Drawing.Point(204, 97);
             this.btnleftall.Name = "btnleftall";
             this.btnleftall.Size = new System.Drawing.Size(75, 23);
             this.btnleftall.TabIndex = 5;
@@ -169,7 +169,7 @@
             // 
             // btnleft
             // 
-            this.btnleft.Location = new System.Drawing.Point(204, 129);
+            this.btnleft.Location = new System.Drawing.Point(204, 128);
             this.btnleft.Name = "btnleft";
             this.btnleft.Size = new System.Drawing.Size(75, 23);
             this.btnleft.TabIndex = 5;
@@ -179,7 +179,7 @@
             // 
             // btnselectall
             // 
-            this.btnselectall.Location = new System.Drawing.Point(70, 173);
+            this.btnselectall.Location = new System.Drawing.Point(41, 160);
             this.btnselectall.Name = "btnselectall";
             this.btnselectall.Size = new System.Drawing.Size(75, 23);
             this.btnselectall.TabIndex = 5;
@@ -189,7 +189,7 @@
             // 
             // btnnonselect
             // 
-            this.btnnonselect.Location = new System.Drawing.Point(158, 173);
+            this.btnnonselect.Location = new System.Drawing.Point(129, 160);
             this.btnnonselect.Name = "btnnonselect";
             this.btnnonselect.Size = new System.Drawing.Size(75, 23);
             this.btnnonselect.TabIndex = 5;
@@ -208,7 +208,7 @@
             "计网1201",
             "计网1202",
             "计网1203"});
-            this.checkedListBox1.Location = new System.Drawing.Point(53, 24);
+            this.checkedListBox1.Location = new System.Drawing.Point(21, 20);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(202, 116);
             this.checkedListBox1.TabIndex = 6;
@@ -216,7 +216,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(48, 53);
+            this.comboBox1.Location = new System.Drawing.Point(25, 27);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 7;
@@ -225,7 +225,7 @@
             // lblbanji
             // 
             this.lblbanji.AutoSize = true;
-            this.lblbanji.Location = new System.Drawing.Point(46, 112);
+            this.lblbanji.Location = new System.Drawing.Point(23, 72);
             this.lblbanji.Name = "lblbanji";
             this.lblbanji.Size = new System.Drawing.Size(65, 12);
             this.lblbanji.TabIndex = 8;
@@ -262,9 +262,9 @@
             this.groupBox1.Controls.Add(this.btnrigthall);
             this.groupBox1.Controls.Add(this.btnleftall);
             this.groupBox1.Controls.Add(this.btnleft);
-            this.groupBox1.Location = new System.Drawing.Point(26, 432);
+            this.groupBox1.Location = new System.Drawing.Point(12, 314);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 189);
+            this.groupBox1.Size = new System.Drawing.Size(484, 189);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "班级选择";
@@ -273,7 +273,7 @@
             // 
             this.groupBox2.Controls.Add(this.comboBox3);
             this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Location = new System.Drawing.Point(584, 432);
+            this.groupBox2.Location = new System.Drawing.Point(522, 318);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(223, 185);
             this.groupBox2.TabIndex = 11;
@@ -284,9 +284,9 @@
             // 
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.lblbanji);
-            this.groupBox3.Location = new System.Drawing.Point(797, 86);
+            this.groupBox3.Location = new System.Drawing.Point(587, 59);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(194, 229);
+            this.groupBox3.Size = new System.Drawing.Size(158, 229);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "系统字体";
@@ -296,9 +296,9 @@
             this.groupBox4.Controls.Add(this.btnnonselect);
             this.groupBox4.Controls.Add(this.btnselectall);
             this.groupBox4.Controls.Add(this.checkedListBox1);
-            this.groupBox4.Location = new System.Drawing.Point(426, 86);
+            this.groupBox4.Location = new System.Drawing.Point(308, 59);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(321, 229);
+            this.groupBox4.Size = new System.Drawing.Size(244, 229);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "全选反选";
@@ -310,9 +310,9 @@
             this.groupBox5.Controls.Add(this.btnall);
             this.groupBox5.Controls.Add(this.lstkc);
             this.groupBox5.Controls.Add(this.txtkc);
-            this.groupBox5.Location = new System.Drawing.Point(26, 86);
+            this.groupBox5.Location = new System.Drawing.Point(12, 59);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(352, 229);
+            this.groupBox5.Size = new System.Drawing.Size(267, 229);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "选项操作";
@@ -321,7 +321,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 798);
+            this.ClientSize = new System.Drawing.Size(768, 569);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);

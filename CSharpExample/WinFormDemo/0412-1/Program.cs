@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _0412_1
+namespace day0412
 {
     internal static class Program
     {

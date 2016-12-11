@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _0415_1
+namespace day0415
 {
-    internal static class Program
+    public static class Program
     {
         public static bool IsValid = false;
 

@@ -1,4 +1,4 @@
-﻿namespace _0415_1
+﻿namespace day0415
 {
     partial class Form1
     {
@@ -93,7 +93,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::_0415_1.Properties.Resources.Ripple;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Controls.Add(this.btnLogin);

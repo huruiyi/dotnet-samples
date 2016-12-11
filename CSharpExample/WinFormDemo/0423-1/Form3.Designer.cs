@@ -1,4 +1,4 @@
-﻿namespace _0423_1
+﻿namespace day0423
 {
     partial class Form3
     {
@@ -42,9 +42,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 135);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 87);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(773, 194);
+            this.richTextBox1.Size = new System.Drawing.Size(834, 194);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 329);
+            this.ClientSize = new System.Drawing.Size(834, 281);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace _0423_1
+namespace day0423
 {
     public partial class Form3 : Form
     {
@@ -50,21 +50,22 @@ namespace _0423_1
                 sr.Close();
                 fs.Close();
             }
+            //else
+            //{
+            //    MessageBox.Show("请输入文件路径！");
+            //}
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string spath, dpath;
+          
             openFileDialog1.Title = "请选择要复制的文件";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                spath = openFileDialog1.FileName;
                 saveFileDialog1.Title = "请选择保存位置";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    dpath = saveFileDialog1.FileName;
-
-                    File.Copy(spath, dpath, true);
+                    File.Copy(openFileDialog1.FileName, saveFileDialog1.FileName, true);
                 }
             }
         }
