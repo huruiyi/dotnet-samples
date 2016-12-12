@@ -1,6 +1,6 @@
-﻿namespace day0423
+﻿namespace day0412
 {
-    partial class Form3
+    partial class Form7
     {
         /// <summary>
         /// Required designer variable.

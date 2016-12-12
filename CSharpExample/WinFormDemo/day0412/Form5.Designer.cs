@@ -1,6 +1,6 @@
-﻿namespace day0423
+﻿namespace day0412
 {
-    partial class Form1
+    partial class Form5
     {
         /// <summary>
         /// 必需的设计器变量。

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace day0423
+namespace day0412
 {
-    public partial class Form2 : Form
+    public partial class Form6 : Form
     {
-        public Form2()
+        public Form6()
         {
             InitializeComponent();
         }
