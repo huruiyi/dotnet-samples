@@ -59,6 +59,7 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,10 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\CitiesListResponse.cs" />
     <Compile Include="Class\City.cs" />
     <Compile Include="Class\ComplainModel.cs" />
     <Compile Include="Class\DynamicClass.cs" />
     <Compile Include="Class\Extension.cs" />
+    <Compile Include="Class\IISMangerment.cs" />
     <Compile Include="Class\MathTest.cs" />
     <Compile Include="Class\MyCollection.cs" />
     <Compile Include="Class\MyCollection2.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Class\Student.cs" />
     <Compile Include="Class\TestClass.cs" />
     <Compile Include="Class\Tom.cs" />
+    <Compile Include="Class\ValidateAgeAttribute.cs" />
     <Compile Include="CodeFolder1\DynamicDirectoryExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,7 +119,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Net.Tools\Net.Tools.csproj">
+      <Project>{5aea4be4-2533-423f-b983-f3cc238e87e6}</Project>
+      <Name>Net.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>

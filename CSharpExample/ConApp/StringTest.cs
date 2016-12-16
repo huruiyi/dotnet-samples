@@ -11,7 +11,6 @@ namespace ConsoleAppTest
     {
         private static void Main1(string[] args)
         {
-            string s = "1";
             Console.WriteLine("1".Equals("1")); ;
             string newPwd = Password.EncryptPassword("abc123456");
             string orgPwd = Password.DecryptPassword(newPwd);

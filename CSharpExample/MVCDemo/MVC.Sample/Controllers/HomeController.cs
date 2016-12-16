@@ -15,6 +15,17 @@ namespace MVC.Sample.Controllers
             return View();
         }
 
+        public ActionResult PersonXml()
+        {
+            var model = new Person
+            {
+                FirstName = "Brad",
+                LastName = "Wilson",
+                Blog = "http://bradwilson.typepad.com"
+            };
+            return new XmlResult(model);
+        }
+
         public ActionResult About()
         {
             return View();

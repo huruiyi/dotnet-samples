@@ -1,4 +1,5 @@
 ﻿using ConApp.Class;
+using Net.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -34,7 +36,7 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            SendEmail();
+            XMLDemo2();
             //for (int i = 100; i < 1000; i++)
             //{
             //    Thread t = new Thread(() =>
@@ -65,14 +67,14 @@ namespace ConApp
 
             #region 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
 
-            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
-            TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
-            foreach (TcpConnectionInformation t in connections)
-            {
-                Console.Write("Local endpoint: {0} ", t.LocalEndPoint.ToString());
-                Console.Write("Remote endpoint: {0} ", t.RemoteEndPoint.ToString());
-                Console.WriteLine("{0}", t.State);
-            }
+            //IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            //TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
+            //foreach (TcpConnectionInformation t in connections)
+            //{
+            //    Console.Write(@"Local endpoint: {0} ", t.LocalEndPoint);
+            //    Console.Write(@"Remote endpoint: {0} ", t.RemoteEndPoint);
+            //    Console.WriteLine(@"{0}", t.State);
+            //}
 
             #endregion 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
 
@@ -115,47 +117,6 @@ namespace ConApp
             //Directory.SetAccessControl(path, security);
 
             #endregion 文件权限相关
-
-            #region 网站的默认名称(协议和应用程序池)
-
-            //ServerManager manager = new ServerManager();
-            //foreach (Microsoft.Web.Administration.Site s in manager.Sites)
-            //{
-            //    ApplicationDefaults d = s.ApplicationDefaults;
-            //    Console.WriteLine("Site: {0}", s.Name);
-            //    Console.WriteLine("  |--Default Application Pool:  {0}", d.ApplicationPoolName);
-            //    Console.WriteLine("  +--Default Protocols Enabled: {0}\r\n", d.EnabledProtocols);
-            //}
-
-            #endregion 网站的默认名称(协议和应用程序池)
-
-            #region 网站下的站点获取
-
-            //ServerManager iis = new ServerManager();
-            //foreach (Microsoft.Web.Administration.Site item in iis.Sites)
-            //{
-            //    //item.Start();
-            //    //item.Stop();
-            //    foreach (ConfigurationMethod itemMethod in item.Methods)
-            //    {
-            //        if (itemMethod.Name == "Stop")
-            //        {
-            //            ConfigurationMethodInstance methodInstance = itemMethod.CreateInstance();
-            //            methodInstance.Execute();
-            //        }
-            //        Console.WriteLine(itemMethod.Name);
-            //    }
-
-            //    Console.WriteLine("网站:{0},状态：{1} ", item.Name, item.State);
-            //    foreach (Application app in item.Applications)
-            //    {
-            //        Console.WriteLine("\t应用程序池:{0}", app.ApplicationPoolName);
-            //        Console.WriteLine("\t      应用:{0}", app.Path);
-            //        Console.WriteLine();
-            //    }
-            //}
-
-            #endregion 网站下的站点获取
 
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
             //Console.WriteLine(name);
@@ -255,27 +216,27 @@ namespace ConApp
             Console.WriteLine($"Season.夏={Season.夏}");
             Console.WriteLine($"(int)Season.夏={(int)Season.夏}");
 
-            int b = (int)Season.春;
+            const int b = (int)Season.春;
             Console.WriteLine(b);
             Console.WriteLine((Season)b);
 
-            Season s = (Season)100;
-            int e = (int)s;
+            const Season s = (Season)100;
+            const int e = (int)s;
             Console.WriteLine(s);
             Console.WriteLine(e);
         }
 
         public static void EnumDemo02_Parse()
         {
-            string a = "夏";
+            const string a = "夏";
             try
             {
                 Season season = (Season)(Enum.Parse(typeof(Season), a));
-                Console.WriteLine("season=" + season);
+                Console.WriteLine(@"season=" + season);
             }
             catch
             {
-                Console.WriteLine("无此枚举");
+                Console.WriteLine(@"无此枚举");
             }
         }
 
@@ -283,7 +244,7 @@ namespace ConApp
         {
             Season s = Season.冬;
             Console.WriteLine($"d={Enum.Format(typeof(Season), s, "d")} x={Enum.Format(typeof(Season), s, "x")} g={Enum.Format(typeof(Season), s, "g")} f={Enum.Format(typeof(Season), s, "f")}");
-            Season se = Season.夏 | Season.秋 | Season.冬;
+            const Season se = Season.夏 | Season.秋 | Season.冬;
             Console.WriteLine(se);
 
             Console.WriteLine(Enum.GetName(typeof(Season), 4));
@@ -314,11 +275,11 @@ namespace ConApp
         public static void EventDemo()
         {
             ExampleMethod(p2: "");
-            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             ExampleMethod(WriteLetter("A"), b: WriteLetter("B"), c: WriteLetter("C"));
             ExampleMethod(WriteLetter("A"), c: WriteLetter("C"), b: WriteLetter("B"));
-            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             var methods = new List<Action>();
             foreach (var word in new string[] { "hello", "world" })
@@ -328,13 +289,13 @@ namespace ConApp
 
             methods[0]();
             methods[1]();
-            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             var lines = new List<IEnumerable<string>>();
             int[] numbers = { 1, 2, 3 };
             char[] letters = { 'a', 'b', 'c' };
 
-            foreach (var number in numbers)
+            foreach (int number in numbers)
             {
                 var line = from letter in letters
                            select number.ToString() + letter;
@@ -348,7 +309,7 @@ namespace ConApp
                     Console.Write(entry + " ");
                 Console.WriteLine();
             }
-            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             Class.Publisher publisher = new Class.Publisher();
 
@@ -367,12 +328,12 @@ namespace ConApp
 
         public static void ExampleMethod(string p1 = null, object p2 = null)
         {
-            Console.WriteLine("ExampleMethod: p2 is object");
+            Console.WriteLine(@"ExampleMethod: p2 is object");
         }
 
         public static void ExampleMethod(string p2 = null, object p1 = null, params int[] p3)
         {
-            Console.WriteLine("ExampleMethod: p2 is string");
+            Console.WriteLine(@"ExampleMethod: p2 is string");
         }
 
         private static void publisher_SampleEvent(object sender, SampleEventArgs e)
@@ -415,11 +376,11 @@ namespace ConApp
             string[] args = { };
             if (args.Length == 0 || args[0].Length == 0)
             {
-                Console.WriteLine("You must specify the name of a host computer.");
+                Console.WriteLine(@"You must specify the name of a host computer.");
                 return;
             }
             IAsyncResult result = Dns.BeginGetHostEntry(args[0], null, null);
-            Console.WriteLine("Processing request for information...");
+            Console.WriteLine(@"Processing request for information...");
 
             while (result.IsCompleted != true)
             {
@@ -434,24 +395,24 @@ namespace ConApp
                 IPAddress[] addresses = host.AddressList;
                 if (aliases.Length > 0)
                 {
-                    Console.WriteLine("Aliases");
-                    for (int i = 0; i < aliases.Length; i++)
+                    Console.WriteLine(@"Aliases");
+                    foreach (string t in aliases)
                     {
-                        Console.WriteLine("{0}", aliases[i]);
+                        Console.WriteLine(t);
                     }
                 }
                 if (addresses.Length > 0)
                 {
-                    Console.WriteLine("Addresses");
-                    for (int i = 0; i < addresses.Length; i++)
+                    Console.WriteLine(@"Addresses");
+                    foreach (IPAddress t in addresses)
                     {
-                        Console.WriteLine("{0}", addresses[i].ToString());
+                        Console.WriteLine(t);
                     }
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine("An exception occurred while processing the request: {0}", e.Message);
+                Console.WriteLine(@"An exception occurred while processing the request: {0}", e.Message);
             }
         }
 
@@ -536,11 +497,11 @@ namespace ConApp
 
             if (args.Length == 0 || args[0].Length == 0)
             {
-                Console.WriteLine("You must specify the name of a host computer.");
+                Console.WriteLine(@"You must specify the name of a host computer.");
                 return;
             }
             IAsyncResult result = Dns.BeginGetHostEntry(args[0], null, null);
-            Console.WriteLine("Processing your request for information...");
+            Console.WriteLine(@"Processing your request for information...");
             try
             {
                 IPHostEntry host = Dns.EndGetHostEntry(result);
@@ -548,24 +509,24 @@ namespace ConApp
                 IPAddress[] addresses = host.AddressList;
                 if (aliases.Length > 0)
                 {
-                    Console.WriteLine("Aliases");
+                    Console.WriteLine(@"Aliases");
                     foreach (string t in aliases)
                     {
-                        Console.WriteLine("{0}", t);
+                        Console.WriteLine(@"{0}", t);
                     }
                 }
                 if (addresses.Length > 0)
                 {
-                    Console.WriteLine("Addresses");
+                    Console.WriteLine(@"Addresses");
                     foreach (IPAddress t in addresses)
                     {
-                        Console.WriteLine("{0}", t.ToString());
+                        Console.WriteLine(@"{0}", t);
                     }
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine("An exception occurred while processing the request: {0}", e.Message);
+                Console.WriteLine(@"An exception occurred while processing the request: {0}", e.Message);
             }
         }
 
@@ -661,7 +622,7 @@ namespace ConApp
                     new Equip {Name = "N2", AttackValue = 123},
                     new Equip {Name = "N3", AttackValue = 123},
                 },
-                Hobbys = new string[] { "h1", "h2", "h3", "h4" },
+                Hobbys = new[] { "h1", "h2", "h3", "h4" },
                 Attributes = attrs
             };
             Console.WriteLine(typeof(List<>).Name);
@@ -958,12 +919,12 @@ namespace ConApp
             {
                 math = mathReference.Target as MathTest;
                 math.Value = 30;
-                Console.WriteLine("Value field of math variable contains " + math.Value);
-                Console.WriteLine("Square of 30 is " + math.GetSquare());
+                Console.WriteLine(@"Value field of math variable contains " + math.Value);
+                Console.WriteLine(@"Square of 30 is " + math.GetSquare());
             }
             else
             {
-                Console.WriteLine("Reference is not available.");
+                Console.WriteLine(@"Reference is not available.");
             }
 
             GC.Collect();
@@ -974,7 +935,7 @@ namespace ConApp
             }
             else
             {
-                Console.WriteLine("Reference is not available.");
+                Console.WriteLine(@"Reference is not available.");
             }
         }
 
@@ -1093,14 +1054,14 @@ namespace ConApp
 
         public static unsafe void UsePointerToPoint()
         {
-            Point point;
-            Point* p = &point;
+            PointTest point;
+            PointTest* p = &point;
             p->x = 100;
             p->y = 200;
             Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + p->ToString());
 
-            Point point2;
-            Point* p2 = &point2;
+            PointTest point2;
+            PointTest* p2 = &point2;
             (*p2).x = 100;
             (*p2).y = 200;
             Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + (*p2).ToString());
@@ -1462,7 +1423,7 @@ namespace ConApp
 
         #region 25-XMLDemo
 
-        public static void XMLDemo()
+        public static void XMLDemo1()
         {
             //删除节点
             //XDocument XMLDoc = XDocument.Load(path);
@@ -1484,6 +1445,31 @@ namespace ConApp
             {
                 Console.WriteLine(xmlNode["name"].InnerText, xmlNode["students"].InnerText);
             }
+        }
+
+        public static void XMLDemo2()
+        {
+            CitiesListResponse response = new CitiesListResponse
+            {
+                Result = new Result
+                {
+                    Value = "123465",
+                    Code = "001"
+                },
+                CitiesList = new CityObj[]
+                {
+                    new CityObj {PinYin="suzhou",Value="苏州" ,HasOutService="123",Info="苏州",Population=123456},
+                    new CityObj {PinYin="wuxi",Value="无锡" ,HasOutService="234",Info="无锡",Population=234567},
+                    new CityObj {PinYin="nanjing",Value="南京" ,HasOutService="456",Info="南京",Population=345678},
+                }
+            };
+            string str = XmlSerializeHelper.Serializer(response);
+            Console.WriteLine(str);
+            Console.ReadLine();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(CitiesListResponse));
+            serializer.Serialize(Console.Out, response);
+            Console.Read();
         }
 
         #endregion 25-XMLDemo
@@ -1842,10 +1828,10 @@ namespace ConApp
             ConstructorInfo[] p = typeof(ReflectionClass1).GetConstructors();
             Console.WriteLine(p.Length);
 
-            for (int i = 0; i < p.Length; i++)
+            foreach (ConstructorInfo t in p)
             {
-                Console.WriteLine(p[i].IsStatic + "  " + p[i].DeclaringType);
-                MethodBody mb = p[i].GetMethodBody();
+                Console.WriteLine(t.IsStatic + "_" + t.DeclaringType);
+                MethodBody mb = t.GetMethodBody();
             }
 
             #endregion Demo1 GetConstructors()
@@ -1853,9 +1839,9 @@ namespace ConApp
             ConstructorInfo[] p1 = typeof(ReflectionClass1).GetConstructors(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
             Console.WriteLine(p1.Length);
 
-            for (int i = 0; i < p1.Length; i++)
+            foreach (ConstructorInfo t in p1)
             {
-                Console.WriteLine(p1[i].IsStatic);
+                Console.WriteLine(t.IsStatic);
             }
         }
 
@@ -1917,7 +1903,7 @@ namespace ConApp
                     Console.Write(" " + pi[i].Name);  // 方法的参数名
                     if (i + 1 < pi.Length)
                     {
-                        Console.Write(", ");
+                        Console.Write(",");
                     }
                 }
                 Console.Write(")");
@@ -1952,23 +1938,22 @@ namespace ConApp
         /// </summary>
         public static void ReflectionClass5Demo()
         {
-            /// <summary>
-            ///  在这之前的阐述中，由于Class类型的对象是都是显式创建的，
-            ///  因此使用反射技术调用Class类中的方法是没有任何优势的，
-            ///  还不如以普通方式调用方便简单呢。
-            ///  但是，如果对象是在运行时动态创建的，反射功能的优势就会显示出来。
-            ///  在这种情况下，要先获取一个构造函数列表，然后调用列表中的某个构造函数，创建一个该类型的实例。
-            ///  通过这种机制，可以在运行时实例化任意类型的对象，而不必在声明语句中指定类型。
-            /// </summary>
+            /*
+            在这之前的阐述中，由于Class类型的对象是都是显式创建的，
+            因此使用反射技术调用Class类中的方法是没有任何优势的，
+            还不如以普通方式调用方便简单呢。
+            但是，如果对象是在运行时动态创建的，反射功能的优势就会显示出来。
+            在这种情况下，要先获取一个构造函数列表，然后调用列表中的某个构造函数，创建一个该类型的实例。
+            通过这种机制，可以在运行时实例化任意类型的对象，而不必在声明语句中指定类型。
+            */
             Type t = typeof(ReflectionClass5);
-            int val;
-            ConstructorInfo[] ci = t.GetConstructors();  //使用这个方法获取构造函数列表
+            ConstructorInfo[] ci = t.GetConstructors(); //使用这个方法获取构造函数列表
 
             int x;
             for (x = 0; x < ci.Length; x++)
             {
                 ParameterInfo[] pi = ci[x].GetParameters(); //获取当前构造函数的参数列表
-                if (pi.Length == 2) break;    //如果当前构造函数有2个参数，则跳出循环
+                if (pi.Length == 2) break; //如果当前构造函数有2个参数，则跳出循环
             }
 
             if (x == ci.Length)
@@ -1979,7 +1964,7 @@ namespace ConApp
             object[] consargs = new object[2];
             consargs[0] = 10;
             consargs[1] = 20;
-            object reflectOb = ci[x].Invoke(consargs);  //实例化一个这个构造函数有两个参数的类型对象,如果参数为空，则为null
+            object reflectOb = ci[x].Invoke(consargs); //实例化一个这个构造函数有两个参数的类型对象,如果参数为空，则为null
             ReflectionClass5 ac5 = reflectOb as ReflectionClass5;
             //实例化后，调用ConApp5中的方法
             MethodInfo[] mi = t.GetMethods(BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance);
@@ -1987,8 +1972,8 @@ namespace ConApp
             {
                 if (m.Name.Equals("sum", StringComparison.Ordinal))
                 {
-                    val = (int)m.Invoke(reflectOb, null);  //由于实例化类型对象的时候是用的两个参数的构造函数，所以这里返回的结构为30
-                    Console.WriteLine(" sum is " + val);  //输出 sum is 30
+                    int val = (int)m.Invoke(reflectOb, null);
+                    Console.WriteLine(@" sum is " + val); //输出 sum is 30
                 }
             }
         }
@@ -2037,6 +2022,46 @@ namespace ConApp
         }
 
         #endregion 控制台文本输出
+
+        public async static void AsyncTest()
+        {
+            using (StreamWriter writer = File.CreateText("ConsoleOutput.txt"))
+            {
+                await writer.WriteLineAsync("First line of example");
+                await writer.WriteLineAsync("and second line");
+            }
+        }
+
+        public static void ValidateAttribute()
+        {
+            Person person = new Person { Name = "TT", Age = 20 };
+            Type type = person.GetType();
+            PropertyInfo propertyInfo = type.GetProperty("Age");
+            ValidateAgeAttribute validateAgeAttribute = (ValidateAgeAttribute)Attribute.GetCustomAttribute(propertyInfo, typeof(ValidateAgeAttribute));
+            Console.WriteLine("允许的最大年龄：" + validateAgeAttribute.MaxAge);
+            validateAgeAttribute.Validate(person.Age);
+            Console.WriteLine(validateAgeAttribute.ValidateResult);
+        }
+
+        public static void FontImage()
+        {
+            //设置画布字体
+            Font drawFont = new Font("宋体", 12);
+            //实例一个画布起始位置为1.1
+            Bitmap image = new Bitmap(1, 1);
+            Graphics g = Graphics.FromImage(image);
+            //string text = File.ReadAllText("D:\\xx.html", Encoding.GetEncoding("GB2312"));
+            string text = "互联网出版许可证编号新出网证(京)";
+            SizeF sf = g.MeasureString(text, drawFont, 1024); //设置一个显示的宽度
+            image = new Bitmap(image, new Size(Convert.ToInt32(sf.Width), Convert.ToInt32(sf.Height)));
+            g = Graphics.FromImage(image);
+            g.Clear(Color.White);
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            g.DrawString(text, drawFont, Brushes.Black, new RectangleF(new PointF(0, 0), sf));
+            image.Save("D:\\1.jpg", System.Drawing.Imaging.ImageFormat.Png);
+            g.Dispose();
+            image.Dispose();
+        }
 
         public static void DataTableDemo1()
         {

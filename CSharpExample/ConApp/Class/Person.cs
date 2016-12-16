@@ -20,6 +20,7 @@ namespace ConApp.Class
 
         public List<Order> Orders { get; set; }
 
+        [ValidateAge(50, "")]
         public int Age { get; set; }
     }
 

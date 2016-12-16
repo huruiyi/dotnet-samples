@@ -69,6 +69,7 @@
     <Compile Include="Security\NetUser.cs" />
     <Compile Include="Security\WinUserHelper.cs" />
     <Compile Include="ShellContextMenu.cs" />
+    <Compile Include="XmlSerializeUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

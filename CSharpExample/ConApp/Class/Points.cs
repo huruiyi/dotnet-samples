@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConApp.Class
 {
-    public struct Point
+    public struct PointTest
     {
         public int x;
         public int y;
