@@ -7,18 +7,19 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{04C086B9-3FE4-467A-9372-8B1824E35AC8}</ProjectGuid>
+    <ProjectGuid>{38697878-425D-4CF3-9C0C-DB6800886F3A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Button</RootNamespace>
-    <AssemblyName>Button</AssemblyName>
+    <RootNamespace>Html_Css_Js</RootNamespace>
+    <AssemblyName>Html+Css+Js</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,16 +58,42 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="926作业.html" />
     <Content Include="Buttons.html" />
     <Content Include="css\animate.min.css" />
+    <Content Include="css\bootstrap.css" />
     <Content Include="css\buttons.css" />
+    <Content Include="css\comment.css" />
+    <Content Include="css\css.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\grids.css" />
     <Content Include="css\showcase.css" />
     <Content Include="css\style.css" />
+    <Content Include="Demo.htm" />
+    <Content Include="dom.html" />
+    <Content Include="fontStyle.html" />
+    <Content Include="HtmlDiv.html" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="HtmlPage2.html" />
+    <Content Include="Images\0.jpg" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7.jpg" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Images\loading1.jpg" />
+    <Content Include="Images\loading2.jpg" />
+    <Content Include="Images\loading3.jpg" />
+    <Content Include="Index.htm" />
     <Content Include="js\buttons.js" />
+    <Content Include="js\comment.js" />
+    <Content Include="css\layout.css" />
     <Content Include="js\handlebars.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\js.js" />
     <Content Include="js\polyfill.js" />
     <Content Include="js\prettify.min.js" />
     <Content Include="js\projects.js" />
@@ -74,12 +101,45 @@
     <Content Include="js\showcase.js" />
     <Content Include="js\smooth-scroll.js" />
     <Content Include="js\ZeroClipboard.js" />
+    <Content Include="JS_String.html" />
+    <Content Include="layout1.html" />
+    <Content Include="layout2.html" />
+    <Content Include="loading.html" />
+    <Content Include="LoginPage.htm" />
+    <Content Include="option.html" />
+    <Content Include="position练习.htm" />
+    <Content Include="rotate.html" />
+    <Content Include="select.html" />
+    <Content Include="table.html" />
+    <Content Include="块级元素行内元素.html" />
+    <Content Include="屏幕分辨率.html" />
+    <Content Include="表单元素.htm" />
+    <Content Include="走马灯效果.html" />
+    <Content Include="跟随鼠标移动的Div.html" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Web.config" />
+    <Content Include="二级树型菜单1.html" />
+    <Content Include="函数.html" />
+    <Content Include="函数加方法.html" />
+    <Content Include="反转.html" />
+    <Content Include="图片-setInterval.html" />
+    <Content Include="广告设计.html" />
+    <Content Include="新增评论.htm" />
+    <Content Include="模拟多态.html" />
+    <Content Include="模拟继承.html" />
+    <Content Include="瀑布流.html" />
+    <Content Include="简单JS.html" />
+    <Content Include="网页布局.html" />
+    <Content Include="网页布局练习.html" />
+    <Content Include="网页底部布局.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -102,7 +162,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:21217/</IISUrl>
+          <IISUrl>http://localhost:5807/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

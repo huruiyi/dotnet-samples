@@ -3,12 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
+using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
@@ -18,6 +20,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -31,7 +34,7 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            GetCurrentInstall();
+            SendEmail();
             //for (int i = 100; i < 1000; i++)
             //{
             //    Thread t = new Thread(() =>
@@ -1666,7 +1669,7 @@ namespace ConApp
 
         #region 31-HttpListenerDemo
 
-        public static void HttpListenerDemo()
+        public static void HttpListenerDemo1()
         {
             HttpListener listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:1231/");
@@ -1682,6 +1685,30 @@ namespace ConApp
             output.Write(buffer, 0, buffer.Length);
             output.Close();
             listener.Stop();
+        }
+
+        public static void HttpListenerDemo2()
+        {
+            if (HttpListener.IsSupported)
+            {
+                HttpListener listener = new HttpListener();
+                listener.Prefixes.Add("http://+:8080/");
+                listener.Start();
+                while (true)
+                {
+                    Console.Write(DateTime.Now.ToString());
+                    HttpListenerContext context = listener.GetContext();
+                    string page = context.Request.Url.LocalPath.Replace("/", "");
+                    String query = context.Request.Url.Query.Replace("?", "");
+                    StreamReader sr = new StreamReader(context.Request.InputStream);
+                    Console.WriteLine(sr.ReadToEnd());
+                    Console.WriteLine("接收到请求{0}{1}", page, query);
+                    StreamWriter sw = new StreamWriter(context.Response.OutputStream);
+                    sw.Write("Hello World!");
+                    sw.Flush();
+                    context.Response.Close();
+                }
+            }
         }
 
         #endregion 31-HttpListenerDemo
@@ -1710,6 +1737,8 @@ namespace ConApp
 
         #endregion 32-XmlSerializerDemo
 
+        #region Environment信息获取
+
         public static void EnvironmentDemo()
         {
             string commandLine = Environment.CommandLine;
@@ -1736,6 +1765,10 @@ namespace ConApp
             string computerName = Environment.GetEnvironmentVariable("ComputerName");
         }
 
+        #endregion Environment信息获取
+
+        #region 获取注册表的建
+
         public static void RegistryDemo()
         {
             Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE");
@@ -1748,6 +1781,10 @@ namespace ConApp
                 }
             }
         }
+
+        #endregion 获取注册表的建
+
+        #region 获取电脑已安装软件
 
         public static void GetCurrentInstall()
         {
@@ -1775,6 +1812,26 @@ namespace ConApp
             }
             Console.WriteLine(result.ToString());
         }
+
+        #endregion 获取电脑已安装软件
+
+        #region 下载相关
+
+        public static void DownLoadDemo1()
+        {
+            WebClient webClient = new WebClient();
+            byte[] bytes = webClient.DownloadData("http://img1.40017.cn/cn/s/yry/img/shouceV1.1.pdf");
+            HttpContext.Current.Response.BinaryWrite(bytes);
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode("示例图片abc12.pdf"));
+        }
+
+        public static void DownLoadDemo2()
+        {
+            HttpContext.Current.Response.WriteFile(@"H:\Workplace\WebApp\Image\示例图片abc12.jpg", true);
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode("示例图片abc12.jpg"));
+        }
+
+        #endregion 下载相关
 
         #region 反射系列
 
@@ -1937,6 +1994,142 @@ namespace ConApp
         }
 
         #endregion 反射系列
+
+        #region 发送邮件
+
+        public static void SendEmail()
+        {
+            SmtpClient client = new SmtpClient("smtp.163.com", 25)
+            {
+                Credentials = new NetworkCredential("13372171750@163.com", "mima")
+            };
+            using (MailMessage msg = new MailMessage())
+            {
+                msg.From = new MailAddress("13372171750@163.com");
+                msg.Subject = "Subject..........Greetings from Visual C# Recipes";
+                msg.Body = "Body.................This is a message from Recipe 10-07 of";
+                msg.Attachments.Add(new Attachment(@"ConsoleOutput.txt", "text/plain"));
+                msg.Attachments.Add(new Attachment(@"ConApp.exe", "application/octet-stream"));
+                msg.To.Add(new MailAddress("807776962@qq.com"));
+
+                client.Send(msg);
+            }
+            Console.WriteLine("发送成功");
+        }
+
+        #endregion 发送邮件
+
+        #region 控制台文本输出
+
+        public static void StreamWriterSetOut()
+        {
+            StreamWriter sw = new StreamWriter(@"ConsoleOutput.txt");
+            Console.SetOut(sw);
+
+            Console.WriteLine("Here is the result:");
+            Console.WriteLine("Processing......");
+            Console.WriteLine("OK!");
+
+            sw.Flush();
+            sw.Close();
+
+            //控制台输出重定向: > F:\Test\ConsoleOutput.txt
+        }
+
+        #endregion 控制台文本输出
+
+        public static void DataTableDemo1()
+        {
+            //DataTable table = new DataTable();
+            //table.Columns.AddRange(new DataColumn[]
+            //{
+            //    new DataColumn("Resource_Id"),
+            //    new DataColumn("TA"),
+            //    new DataColumn("TB"),
+            //    new DataColumn("TC"),
+            //    new DataColumn("TD")
+            //});
+            //table.Rows.Add(1, 1, 2, 0, 0);
+            //table.Rows.Add(1, 3, 0, 3, 4);
+            //table.Rows.Add(2, 5, 6, 0, 0);
+            //table.Rows.Add(2, 7, 0, 7, 8);
+
+            //var aa = from t in table.AsEnumerable()
+            //         group t by new { t1 = t.Field<string>("Resource_Id") } into m
+            //         select new
+            //         {
+            //             name = m.Key.t1,
+            //             score = m.Sum(n => n.Field<decimal>("TA"))
+            //         };
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("name", typeof(string)),
+                new DataColumn("sex", typeof(string)),
+                new DataColumn("score", typeof(int))
+            });
+            dt.Rows.Add(new object[] { "张三", "男", 1 });
+            dt.Rows.Add(new object[] { "张三", "男", 4 });
+            dt.Rows.Add(new object[] { "李四", "男", 100 });
+            dt.Rows.Add(new object[] { "李四", "女", 90 });
+            dt.Rows.Add(new object[] { "王五", "女", 77 });
+            DataTable dtResult = dt.Clone();
+            DataTable dtName = dt.DefaultView.ToTable(true, "name", "sex");
+            for (int i = 0; i < dtName.Rows.Count; i++)
+            {
+                DataRow[] rows = dt.Select("name='" + dtName.Rows[i]["name"] + "' and sex='" + dtName.Rows[i]["sex"] + "'");
+                //temp用来存储筛选出来的数据
+                DataTable temp = dtResult.Clone();
+                foreach (DataRow row in rows)
+                {
+                    temp.Rows.Add(row.ItemArray);
+                }
+
+                DataRow dr = dtResult.NewRow();
+                dr[0] = dtName.Rows[i][0].ToString();
+                dr[1] = temp.Compute("sum(score)", "");
+                dtResult.Rows.Add(dr);
+            }
+        }
+
+        public static void DataTableDemo2()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[] { new DataColumn("name", typeof(string)),
+                                         new DataColumn("sex", typeof(string)),
+                                         new DataColumn("score", typeof(decimal)) });
+            dt.Rows.Add(new object[] { "张三", "男", 1 });
+            dt.Rows.Add(new object[] { "张三", "男", 4 });
+            dt.Rows.Add(new object[] { "李四", "男", 100 });
+            dt.Rows.Add(new object[] { "李四", "女", 90 });
+            dt.Rows.Add(new object[] { "王五", "女", 77 });
+            var query = from t in dt.AsEnumerable()
+                        group t by new { t1 = t.Field<string>("name"), t2 = t.Field<string>("sex") } into m
+                        select new
+                        {
+                            name = m.Key.t1,
+                            sex = m.Key.t2,
+                            score = m.Sum(n => n.Field<decimal>("score"))
+                        };
+            if (query.ToList().Count > 0)
+            {
+                query.ToList().ForEach(q =>
+                {
+                    Console.WriteLine(q.name + "," + q.sex + "," + q.score);
+                });
+            }
+        }
+
+        public static void DynamicTest()
+        {
+            dynamic d = new DynamicClass();
+            d.X = 123;
+            d.Y = "123";
+            //d.Z = 123.456; 未包含Z的定义
+            Console.WriteLine(d.Test(123));
+            Console.WriteLine(d.Test("123"));
+            Console.WriteLine(d.Test(123.456));
+        }
 
         [DllImport("msi.dll", SetLastError = true)]
         private static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);

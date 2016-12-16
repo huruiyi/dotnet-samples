@@ -59,6 +59,7 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Class\City.cs" />
     <Compile Include="Class\ComplainModel.cs" />
+    <Compile Include="Class\DynamicClass.cs" />
     <Compile Include="Class\Extension.cs" />
     <Compile Include="Class\MathTest.cs" />
     <Compile Include="Class\MyCollection.cs" />
