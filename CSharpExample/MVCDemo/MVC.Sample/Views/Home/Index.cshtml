@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MVC.Sample.Models.Person
+@{
     ViewBag.Title = "首页";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,6 +10,20 @@
 </script>
 <div class="row panel panel-success">
     <div class="col-xs-12 col-md-8 panel-body">
+
+        <div class="panel panel-success" style="box-shadow:2px 2px 3px #aaaaaa">
+
+            <div class="panel-footer">
+                <div class="row">
+                    @ViewData["Msg"]
+                    @MvcHtmlString.Create("<a href='http://www.sina.com'>新浪</a>")
+                    @(new MvcHtmlString(ViewBag.Msg))
+                    @Html.DisplayFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Age)
+                </div>
+            </div>
+        </div>
+
         <div class="panel panel-success" style="box-shadow:2px 2px 3px #aaaaaa">
             <div class="panel-heading">
                 <label class="title">《仙剑奇侠传》电影版开机 胡歌回归刘亦菲未定</label>
@@ -147,7 +162,8 @@
                 <div class="row">
                     <div class="col-xs-2"></div>
                     <button type="button" class="btn btn-default btn-sm col-xs-2">
-                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 赞</button>
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 赞
+                    </button>
                     <button type="button" class="btn btn-default btn-sm col-xs-2">
                         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> 踩
                     </button>

@@ -1,6 +1,7 @@
 ﻿using MVC.Sample.Models;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 using System.Web.Mvc;
@@ -12,7 +13,10 @@ namespace MVC.Sample.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Message = "欢迎使用 ASP.NET MVC!";
+            ViewBag.Msg = "<a href='http://www.baidu.com'>百度</a>";
+            Person p = new Person { Name = "Qingqing", Age = 21 };
+            return View(p);
         }
 
         public ActionResult PersonXml()
@@ -28,7 +32,24 @@ namespace MVC.Sample.Controllers
 
         public ActionResult About()
         {
-            return View();
+            List<Person> pers = new List<Person>
+            {
+                new Person {Name = "Tom", Age = 20},
+                new Person {Name = "Jarry", Age = 22},
+                new Person {Name = "Macheal", Age = 23},
+                new Person {Name = "Kangkang", Age = 20},
+            };
+
+            List<SelectListItem> items = new List<SelectListItem>
+            {
+                new SelectListItem {Text = "Action", Value = "0"},
+                new SelectListItem {Text = "Drama", Value = "1"},
+                new SelectListItem {Text = "Comedy", Value = "2", Selected = true},
+                new SelectListItem {Text = "Science Fiction", Value = "3"}
+            };
+
+            ViewBag.MovieType = items;
+            return View(pers);
         }
 
         public ActionResult HostInfo()
@@ -202,6 +223,11 @@ namespace MVC.Sample.Controllers
         }
 
         public ActionResult Modal()
+        {
+            return View();
+        }
+
+        public ActionResult JsonWebTokenDemo()
         {
             return View();
         }
