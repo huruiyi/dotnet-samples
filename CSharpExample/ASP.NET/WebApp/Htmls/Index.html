@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .alginRight {
+            text-align: right;
+        }
+
+        td {
+            border: 1px solid green;
+            width: 200px;
+        }
+
+        #div1 {
+            height: 800px;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        table {
+            padding-top: 300px;
+            width: 500px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <form action="Login" method="post">
+            <table>
+                <tr>
+                    <td class="alginRight">
+                        用户名:
+                    </td>
+                    <td>
+                        <input type="text" name="username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="alginRight">
+                        密码:
+                    </td>
+
+                    <td>
+                        <input type="text" name="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="alginRight">
+                        <input type="submit" value="登录" />
+                    </td>
+                    <td>
+                        <input type="reset" value="重填" />
+                        <a href="Register">注册用户</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

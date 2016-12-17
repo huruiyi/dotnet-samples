@@ -2,6 +2,6 @@
 {
     public interface PrinterFace
     {
-        void print(string content);
+        void Print(string content);
     }
 }

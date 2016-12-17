@@ -41,12 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dog.cs" />
-    <Compile Include="Master.cs" />
-    <Compile Include="Penguin.cs" />
-    <Compile Include="Pet.cs" />
+    <Compile Include="SamplePerson\ISpeak.cs" />
+    <Compile Include="SamplePerson\Person.cs" />
+    <Compile Include="SamplePerson\Studnet.cs" />
+    <Compile Include="SamplePerson\Teacher.cs" />
+    <Compile Include="SamplePet\Dog.cs" />
+    <Compile Include="SamplePet\Master.cs" />
+    <Compile Include="SamplePet\Penguin.cs" />
+    <Compile Include="SamplePet\Pet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleStorage\Computer.cs" />
+    <Compile Include="SampleStorage\Dictionary.cs" />
+    <Compile Include="SampleStorage\FlashDish.cs" />
+    <Compile Include="SampleStorage\MobileStorage.cs" />
+    <Compile Include="SampleStorage\Mp3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

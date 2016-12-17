@@ -23,10 +23,9 @@ namespace CSASPNETImageEditUpload
             {
                 cmd.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["db_PersonsConnectionString"].ConnectionString);
                 cmd.Connection.Open();
-                cmd.CommandText = "select PersonImage,PersonImageType from tb_personInfo where id=" + context.Request.QueryString["id"];
+                cmd.CommandText = "select PersonImage,PersonImageType from PersonInfo where id=" + context.Request.QueryString["id"];
 
-                SqlDataReader reader = cmd.ExecuteReader(
-                    CommandBehavior.CloseConnection | CommandBehavior.SingleRow);
+                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection | CommandBehavior.SingleRow);
 
                 if (reader.Read())
                 {

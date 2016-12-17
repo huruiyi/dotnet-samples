@@ -11,7 +11,7 @@
             Course = course;
         }
 
-        public string detail()
+        public string ShowDetail()
         {
             return string.Format("本人是{0}教员,教授课程为{1}", Name, Course);
         }

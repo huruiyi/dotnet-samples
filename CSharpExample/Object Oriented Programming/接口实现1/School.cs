@@ -16,14 +16,14 @@
             printer = p;
         }
 
-        public string detail()
+        public string ShowDetail()
         {
             return string.Format("这里是{0}校区", Name);
         }
 
         public void print(Introduceable intro)
         {
-            printer.print(intro.detail());
+            printer.Print(intro.ShowDetail());
         }
     }
 }
