@@ -124,20 +124,20 @@ namespace Net.Tools
             Console.WriteLine("MultiBlock {0:00}: {1}", size, BytesToStr(sha.Hash));
         }
 
-        //public string EncryptPassword(string PasswordString, string PasswordFormat)
-        //{
-        //    string encryptPassword = null;
-        //    if (PasswordFormat == "SHA1")
-        //    {
-        //        encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "SHA1");
-        //    }
-        //    else if (PasswordFormat == "MD5")
+        public string EncryptPassword(string PasswordString, string PasswordFormat)
+        {
+            string encryptPassword = null;
+            if (PasswordFormat == "SHA1")
+            {
+                encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "SHA1");
+            }
+            else if (PasswordFormat == "MD5")
 
-        //    {
-        //        encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "MD5");
-        //    }
-        //    return encryptPassword;
-        //}
+            {
+                encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "MD5");
+            }
+            return encryptPassword;
+        }
     }
 
     public class EncryptionDecryption
