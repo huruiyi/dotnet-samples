@@ -223,6 +223,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicSample", "CSharpExampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritSample", "CSharpExample\Object Oriented Programming\InheritSample\InheritSample.csproj", "{F20C131F-2385-4E2B-917C-CD063FC47DBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "聊天室", "CSharpExample\NetworkingCommunication\聊天室\聊天室.csproj", "{FA1C4502-2B44-4B73-B995-2B790B2557FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1571,6 +1573,18 @@ Global
 		{F20C131F-2385-4E2B-917C-CD063FC47DBE}.Release|x64.Build.0 = Release|Any CPU
 		{F20C131F-2385-4E2B-917C-CD063FC47DBE}.Release|x86.ActiveCfg = Release|Any CPU
 		{F20C131F-2385-4E2B-917C-CD063FC47DBE}.Release|x86.Build.0 = Release|Any CPU
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Debug|x64.ActiveCfg = Debug|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Debug|x86.ActiveCfg = Debug|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Debug|x86.Build.0 = Debug|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Release|Any CPU.ActiveCfg = Release|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Release|Mixed Platforms.Build.0 = Release|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Release|x64.ActiveCfg = Release|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Release|x86.ActiveCfg = Release|x86
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1669,6 +1683,7 @@ Global
 		{1350B1D9-1089-4BD4-834F-8E272597640C} = {06C16E7D-3D22-4591-99A0-2F101B470506}
 		{14556FAE-A481-4850-B70D-B02E5D14470B} = {06C16E7D-3D22-4591-99A0-2F101B470506}
 		{F20C131F-2385-4E2B-917C-CD063FC47DBE} = {7F448831-5E59-47B1-920A-8D2FF954502F}
+		{FA1C4502-2B44-4B73-B995-2B790B2557FB} = {B9A5DFF7-423C-437A-9B3C-95C09A5A9B1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
