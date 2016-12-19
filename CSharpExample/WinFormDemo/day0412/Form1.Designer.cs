@@ -414,7 +414,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackgroundImage = global::_0412_1.Properties.Resources.bullet;
+            this.menuStrip1.BackgroundImage = global::day0412.Properties.Resources.bullet;
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
@@ -439,7 +439,7 @@
             // 
             // 退出ToolStripMenuItem
             // 
-            this.退出ToolStripMenuItem.Image = global::_0412_1.Properties.Resources.bullet;
+            this.退出ToolStripMenuItem.Image = global::day0412.Properties.Resources.bullet;
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             this.退出ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
@@ -467,7 +467,7 @@
             // 
             // 打开Form2ToolStripMenuItem
             // 
-            this.打开Form2ToolStripMenuItem.Image = global::_0412_1.Properties.Resources.exclam;
+            this.打开Form2ToolStripMenuItem.Image = global::day0412.Properties.Resources.exclam;
             this.打开Form2ToolStripMenuItem.Name = "打开Form2ToolStripMenuItem";
             this.打开Form2ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.打开Form2ToolStripMenuItem.Text = "打开Form2";
@@ -475,7 +475,7 @@
             // 
             // 打开Form3ToolStripMenuItem
             // 
-            this.打开Form3ToolStripMenuItem.Image = global::_0412_1.Properties.Resources.Autumn;
+            this.打开Form3ToolStripMenuItem.Image = global::day0412.Properties.Resources.Autumn;
             this.打开Form3ToolStripMenuItem.Name = "打开Form3ToolStripMenuItem";
             this.打开Form3ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.打开Form3ToolStripMenuItem.Text = "打开Form3";

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _0412_1.Properties {
+namespace day0412.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

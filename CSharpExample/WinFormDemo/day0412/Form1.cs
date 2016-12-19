@@ -60,7 +60,8 @@ namespace day0412
             Form[] mdiChildren = this.MdiChildren;
             foreach (Form fm in mdiChildren)
             {
-                if (fm.Name == "Form2") fm.Close();
+                if (fm.Name == "Form2")
+                    fm.Close();
             }
         }
 
