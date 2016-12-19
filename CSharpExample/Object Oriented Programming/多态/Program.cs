@@ -1,4 +1,5 @@
 ﻿using System;
+using 多态.SamplePerson;
 using 多态.SamplePet;
 using 多态.SampleStorage;
 
@@ -68,8 +69,8 @@ namespace 多态
             ISpeak istu = new Studnet();
             istu.Speak();
             Studnet stu = new Studnet("Tom", "male", 18, "English");
-            stu._AA = "123456789";
-            Console.WriteLine(stu._AA);
+            stu.AA = "123456789";
+            Console.WriteLine(stu.AA);
         }
     }
 }

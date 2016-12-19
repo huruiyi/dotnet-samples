@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.lbMsg = new System.Windows.Forms.Label();
+            this.txtMsg = new System.Windows.Forms.TextBox();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.lbStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -48,84 +49,98 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "IP:";
             // 
-            // textBox1
+            // txtIP
             // 
-            this.textBox1.Location = new System.Drawing.Point(60, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtIP.Location = new System.Drawing.Point(42, 24);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(185, 21);
+            this.txtIP.TabIndex = 1;
+            this.txtIP.Text = "127.0.0.1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(190, 30);
+            this.label2.Location = new System.Drawing.Point(237, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "label1";
+            this.label2.Text = "端口：";
             // 
-            // textBox2
+            // txtPort
             // 
-            this.textBox2.Location = new System.Drawing.Point(237, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 1;
+            this.txtPort.Location = new System.Drawing.Point(284, 26);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(100, 21);
+            this.txtPort.TabIndex = 1;
+            this.txtPort.Text = "8888";
             // 
-            // label3
+            // lbMsg
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 383);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label1";
+            this.lbMsg.AutoSize = true;
+            this.lbMsg.Location = new System.Drawing.Point(13, 383);
+            this.lbMsg.Name = "lbMsg";
+            this.lbMsg.Size = new System.Drawing.Size(41, 12);
+            this.lbMsg.TabIndex = 0;
+            this.lbMsg.Text = "消息：";
             // 
-            // textBox3
+            // txtMsg
             // 
-            this.textBox3.Location = new System.Drawing.Point(60, 380);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(324, 21);
-            this.textBox3.TabIndex = 1;
+            this.txtMsg.Location = new System.Drawing.Point(60, 380);
+            this.txtMsg.Name = "txtMsg";
+            this.txtMsg.Size = new System.Drawing.Size(324, 21);
+            this.txtMsg.TabIndex = 1;
             // 
-            // button1
+            // btnConnect
             // 
-            this.button1.Location = new System.Drawing.Point(401, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnConnect.Location = new System.Drawing.Point(390, 24);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.TabIndex = 2;
+            this.btnConnect.Text = "连接";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // richTextBox1
+            // txtLog
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 65);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(461, 296);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.txtLog.Location = new System.Drawing.Point(15, 65);
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(461, 296);
+            this.txtLog.TabIndex = 3;
+            this.txtLog.Text = "";
             // 
-            // button2
+            // btnSend
             // 
-            this.button2.Location = new System.Drawing.Point(390, 378);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSend.Location = new System.Drawing.Point(390, 378);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 2;
+            this.btnSend.Text = "发送";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(411, 9);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(59, 12);
+            this.lbStatus.TabIndex = 4;
+            this.lbStatus.Text = "未连接...";
             // 
             // ChatClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 434);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lbStatus);
+            this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.btnConnect);
+            this.Controls.Add(this.txtMsg);
+            this.Controls.Add(this.lbMsg);
+            this.Controls.Add(this.txtPort);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIP);
             this.Controls.Add(this.label1);
             this.Name = "ChatClient";
             this.Text = "ChatClient";
@@ -137,13 +152,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.Label lbMsg;
+        private System.Windows.Forms.TextBox txtMsg;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.RichTextBox txtLog;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Label lbStatus;
     }
 }

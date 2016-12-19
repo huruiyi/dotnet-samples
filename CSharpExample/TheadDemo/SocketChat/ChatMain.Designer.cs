@@ -29,16 +29,20 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtLog = new System.Windows.Forms.RichTextBox();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtMsg = new System.Windows.Forms.TextBox();
-            this.txtIP = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
+            this.txtIP = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.lbStatus = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMsg = new System.Windows.Forms.TextBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.btnStarClient = new System.Windows.Forms.Button();
+            this.btnSendShake = new System.Windows.Forms.Button();
+            this.btnSendFile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,65 +60,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // txtLog
-            // 
-            this.txtLog.Location = new System.Drawing.Point(1, 91);
-            this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(600, 256);
-            this.txtLog.TabIndex = 1;
-            this.txtLog.Text = "";
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(508, 388);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 2;
-            this.btnSend.Text = "发送";
-            this.btnSend.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "绑定IP：";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 393);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "消息:";
-            // 
-            // txtMsg
-            // 
-            this.txtMsg.Location = new System.Drawing.Point(53, 390);
-            this.txtMsg.Name = "txtMsg";
-            this.txtMsg.Size = new System.Drawing.Size(420, 21);
-            this.txtMsg.TabIndex = 3;
-            // 
-            // txtIP
-            // 
-            this.txtIP.Location = new System.Drawing.Point(71, 30);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(132, 21);
-            this.txtIP.TabIndex = 3;
-            this.txtIP.Text = "192.168.1.100";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(209, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "绑定端口：";
-            // 
             // txtPort
             // 
             this.txtPort.Location = new System.Drawing.Point(273, 32);
@@ -122,6 +67,14 @@
             this.txtPort.Size = new System.Drawing.Size(132, 21);
             this.txtPort.TabIndex = 3;
             this.txtPort.Text = "8888";
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(71, 30);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(132, 21);
+            this.txtIP.TabIndex = 3;
+            this.txtIP.Text = "127.0.0.1";
             // 
             // btnStart
             // 
@@ -144,13 +97,107 @@
             this.lbStatus.TabIndex = 0;
             this.lbStatus.Text = "停止....";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(209, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "绑定端口：";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "绑定IP：";
+            // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(1, 91);
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(417, 256);
+            this.txtLog.TabIndex = 1;
+            this.txtLog.Text = "";
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(508, 388);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 2;
+            this.btnSend.Text = "发送";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 393);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "消息:";
+            // 
+            // txtMsg
+            // 
+            this.txtMsg.Location = new System.Drawing.Point(53, 390);
+            this.txtMsg.Name = "txtMsg";
+            this.txtMsg.Size = new System.Drawing.Size(420, 21);
+            this.txtMsg.TabIndex = 3;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(427, 91);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(174, 260);
+            this.checkedListBox1.TabIndex = 4;
+            // 
+            // btnStarClient
+            // 
+            this.btnStarClient.Location = new System.Drawing.Point(15, 443);
+            this.btnStarClient.Name = "btnStarClient";
+            this.btnStarClient.Size = new System.Drawing.Size(75, 23);
+            this.btnStarClient.TabIndex = 5;
+            this.btnStarClient.Text = "启动客户端";
+            this.btnStarClient.UseVisualStyleBackColor = true;
+            this.btnStarClient.Click += new System.EventHandler(this.btnStarClient_Click);
+            // 
+            // btnSendShake
+            // 
+            this.btnSendShake.Location = new System.Drawing.Point(129, 443);
+            this.btnSendShake.Name = "btnSendShake";
+            this.btnSendShake.Size = new System.Drawing.Size(75, 23);
+            this.btnSendShake.TabIndex = 2;
+            this.btnSendShake.Text = "发送闪屏";
+            this.btnSendShake.UseVisualStyleBackColor = true;
+            this.btnSendShake.Click += new System.EventHandler(this.btnSendShake_Click);
+            // 
+            // btnSendFile
+            // 
+            this.btnSendFile.Location = new System.Drawing.Point(232, 443);
+            this.btnSendFile.Name = "btnSendFile";
+            this.btnSendFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSendFile.TabIndex = 2;
+            this.btnSendFile.Text = "发送文件";
+            this.btnSendFile.UseVisualStyleBackColor = true;
+            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
+            // 
             // ChatMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 478);
+            this.Controls.Add(this.btnStarClient);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.txtMsg);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSendFile);
+            this.Controls.Add(this.btnSendShake);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.groupBox1);
@@ -176,5 +223,9 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMsg;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Button btnStarClient;
+        private System.Windows.Forms.Button btnSendShake;
+        private System.Windows.Forms.Button btnSendFile;
     }
 }

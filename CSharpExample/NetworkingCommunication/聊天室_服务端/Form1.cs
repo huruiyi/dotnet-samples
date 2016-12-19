@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace 聊天室_服务端
+namespace 聊天室
 {
     public partial class Form1 : Form
     {
@@ -27,13 +27,9 @@ namespace 聊天室_服务端
             socketserver.Bind(endPoint);
             socketserver.Listen(10);
 
-            #region 监听新的连接
-
             socketThread = new Thread(SocketAccept);
             socketThread.IsBackground = true;
             socketThread.Start();
-
-            #endregion 监听新的连接
 
             txtMsg.Text = @"打开服务器成功" + "\r\n";
         }
@@ -54,6 +50,11 @@ namespace 聊天室_服务端
             string sendMsg = txtInputmsg.Text;
             byte[] byteMsg = Encoding.UTF8.GetBytes(sendMsg);
             socketClient.Send(byteMsg);
+        }
+
+        private void btnOpenClient_Click(object sender, EventArgs e)
+        {
+            new Form2().Show();
         }
     }
 }
