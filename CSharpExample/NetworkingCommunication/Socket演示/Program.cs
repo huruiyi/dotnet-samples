@@ -100,5 +100,104 @@ namespace Socket演示
             Console.Write("线程池\t" + oje + Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(10);
         }
+
+        public static string data = null;
+
+        public static void SocketServer()
+        {
+            byte[] bytes = new byte[1024];
+
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+
+            Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            try
+            {
+                listener.Bind(localEndPoint);
+                listener.Listen(10);
+
+                while (true)
+                {
+                    Console.WriteLine("Waiting for a connection...");
+                    Socket handler = listener.Accept();
+                    data = null;
+
+                    while (true)
+                    {
+                        bytes = new byte[1024];
+                        int bytesRec = handler.Receive(bytes);
+                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        if (data.IndexOf("<EOF>") > -1)
+                        {
+                            break;
+                        }
+                    }
+
+                    Console.WriteLine("Text received : {0}", data);
+
+                    byte[] msg = Encoding.ASCII.GetBytes(data);
+
+                    handler.Send(msg);
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            Console.WriteLine("\nPress ENTER to continue...");
+        }
+
+        public static void SocketClient()
+        {
+            byte[] bytes = new byte[1024];
+
+            try
+            {
+                IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
+                ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+                IPAddress ipAddress = ipHostInfo.AddressList[0];
+                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+
+                Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                try
+                {
+                    sender.Connect(remoteEP);
+
+                    Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
+
+                    byte[] msg = Encoding.ASCII.GetBytes("This is a test<EOF>");
+
+                    int bytesSent = sender.Send(msg);
+
+                    int bytesRec = sender.Receive(bytes);
+                    Console.WriteLine("Echoed test = {0}", Encoding.ASCII.GetString(bytes, 0, bytesRec));
+
+                    sender.Shutdown(SocketShutdown.Both);
+                    sender.Close();
+                }
+                catch (ArgumentNullException ane)
+                {
+                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                }
+                catch (SocketException se)
+                {
+                    Console.WriteLine("SocketException : {0}", se.ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
     }
 }

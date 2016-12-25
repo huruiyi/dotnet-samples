@@ -102,6 +102,7 @@
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\OrederHandler.cs" />
     <Compile Include="Handler\RegisterHandler.cs" />
+    <Compile Include="HttpModule\ModuleTest.cs" />
     <Compile Include="Infrastructure\SQLHelper.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Shopping.cs" />
