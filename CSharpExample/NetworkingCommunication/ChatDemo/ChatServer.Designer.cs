@@ -135,7 +135,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // ChatServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,7 +149,7 @@
             this.Controls.Add(this.txtIp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form2";
+            this.Name = "ChatServer";
             this.Text = "服务端";
             this.d.ResumeLayout(false);
             this.ResumeLayout(false);

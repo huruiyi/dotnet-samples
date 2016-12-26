@@ -16,7 +16,6 @@ namespace ChatDemo
         }
 
         private Socket ServerSocket = null;
-        private Thread AcceptThread = null;
 
         private void btnopenServices_Click(object sender, EventArgs e)
         {
@@ -27,7 +26,7 @@ namespace ChatDemo
             ServerSocket.Listen(10);
             richMsg.AppendText("打开服务器成功\r\n");
 
-            AcceptThread = new Thread(AcceptSocket);
+            Thread AcceptThread = new Thread(AcceptSocket);
             AcceptThread.IsBackground = true;
             AcceptThread.Start();
         }

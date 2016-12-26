@@ -16,7 +16,6 @@ namespace ChatDemo
         }
 
         private Socket ClientSocket = null;
-        private Thread ReceiveThread = null;
 
         private void btnConServices_Click(object sender, EventArgs e)
         {
@@ -26,7 +25,7 @@ namespace ChatDemo
             ClientSocket.Connect(ServerPoint);
             richMsg.AppendText("连接服务器成功.\r\n");
 
-            ReceiveThread = new Thread(ReceiveMsg);
+            Thread ReceiveThread = new Thread(ReceiveMsg);
             ReceiveThread.IsBackground = true;
             ReceiveThread.Start();
         }
