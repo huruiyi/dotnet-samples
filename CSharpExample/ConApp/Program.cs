@@ -28,6 +28,13 @@ using System.Xml.Serialization;
 
 namespace ConApp
 {
+    public class Test
+    {
+        public string A { get; set; } = "12";
+
+        public int B { get; set; }
+    }
+
     internal class Program
     {
         public delegate void ConPort(int port);
@@ -36,6 +43,50 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            string useridsTr = "1,2,3,4,3,2,1,4,5,7,8,";
+            string[] idsStr = useridsTr.TrimEnd(',').Split(',');
+
+            if (idsStr != null && idsStr.Any())
+            {
+                IEnumerable<string> userId = idsStr.Distinct();
+                foreach (string item in userId)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            Console.WriteLine("*********************************************");
+            List<int> ids = new List<int>();
+            ids.AddRange(new List<int> { 1, 2, 3, 4 });
+            ids.AddRange(new List<int> { 5, 6, 7, 8 });
+            ids.AddRange(new List<int> { 9, 10, 11, 12 });
+
+            int idg = Convert.ToInt32(Math.Ceiling(ids.Count / 5.0));
+
+            List<int> sInts = new List<int>();
+            for (int i = 1; i <= idg; i++)
+            {
+                sInts = new List<int>();
+                sInts.AddRange(ids.Skip((i - 1) * 5).Take(5));
+
+                string jboNumbers = sInts.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
+
+                Console.WriteLine(jboNumbers);
+            }
+            /*
+                2016/12/18 0:00:00
+                2016/12/19 0:00:00
+
+                2016/12/6 0:00:00
+                2016/12/7 0:00:00
+            */
+            Console.WriteLine(DateTime.Today.AddDays(-3));
+            Console.WriteLine(DateTime.Today.AddDays(-2));
+
+            Console.WriteLine(DateTime.Today.AddDays(-15));
+            Console.WriteLine(DateTime.Today.AddDays(-14));
+            Test t = new Test();
+            Console.WriteLine(t.A);
+
             #region 实现IIS应用池的远程回收
 
             //ServerManager manager = ServerManager.OpenRemote("184.12.15.157");
