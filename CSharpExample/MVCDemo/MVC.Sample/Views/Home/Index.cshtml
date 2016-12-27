@@ -3,13 +3,43 @@
     ViewBag.Title = "首页";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery.multiuploader.crop.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#myUploader').imageUploaderCut({
+            proceedCallBack: uploadCallBack
+        });
+        function uploadCallBack(jsonString) {
+            $.ajax({
+                url: '/Home/UploadToServer',
+                type: 'POST',
+                dataType: 'json',
+                data: jsonString,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data, event) {
+                    //do redirect
+                },
+                error: function (data, event) {
+                    //do redirect
+                }
+            });
+        }
     });
 </script>
 <div class="row panel panel-success">
     <div class="col-xs-12 col-md-8 panel-body">
+
+        <div class="panel panel-success" style="box-shadow:2px 2px 3px #aaaaaa">
+            <div class="panel-footer">
+                <div class="row">
+                    @using (Html.BeginForm("Index", "Upload", FormMethod.Post, new { enctype = "multipart/form-data", id = "uploadForm" }))
+                    {
+                        <div id="myUploader"></div>
+                    }
+                </div>
+            </div>
+        </div>
 
         <div class="panel panel-success" style="box-shadow:2px 2px 3px #aaaaaa">
 
@@ -19,7 +49,9 @@
                     @MvcHtmlString.Create("<a href='http://www.sina.com'>新浪</a>")
                     @(new MvcHtmlString(ViewBag.Msg))
                     @Html.DisplayFor(m => m.Name)
-                    @Html.TextBoxFor(m => m.Age)
+                    @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+                    @Html.ActionLink("导出到ExportExcel", "ExportExcel", "Home", new { @class = "btn btn-default" })
+                    @Html.ActionLink("导出到ExportExce2", "ExportExce2", "Home", new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
