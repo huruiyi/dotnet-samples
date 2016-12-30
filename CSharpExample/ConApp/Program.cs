@@ -44,7 +44,7 @@ namespace ConApp
         public static unsafe void Main(string[] args)
         {
             AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
-            string app2 = System.Reflection.Assembly.GetEntryAssembly().Location;
+            string app2 = Assembly.GetEntryAssembly().Location;
             string name = AppDomain.CurrentDomain.FriendlyName;
 
             string str1 = Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。
@@ -85,13 +85,7 @@ namespace ConApp
 
                 Console.WriteLine(jboNumbers);
             }
-            /*
-                2016/12/18 0:00:00
-                2016/12/19 0:00:00
 
-                2016/12/6 0:00:00
-                2016/12/7 0:00:00
-            */
             Console.WriteLine(DateTime.Today.AddDays(-3));
             Console.WriteLine(DateTime.Today.AddDays(-2));
 
