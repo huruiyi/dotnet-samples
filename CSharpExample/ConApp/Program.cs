@@ -1,4 +1,5 @@
 ﻿using ConApp.Class;
+using Microsoft.Web.Administration;
 using Net.Tools;
 using System;
 using System.Collections;
@@ -18,6 +19,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
+using System.Security.Policy;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
@@ -28,319 +30,33 @@ using System.Xml.Serialization;
 
 namespace ConApp
 {
-    public class Test
-    {
-        public string A { get; set; } = "12";
-
-        public int B { get; set; }
-    }
-
     internal class Program
     {
         public delegate void ConPort(int port);
 
         private delegate void AsycRun();
 
-        public static unsafe void Main(string[] args)
+        public static unsafe void Main1(string[] args)
         {
-            AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
-            string app2 = Assembly.GetEntryAssembly().Location;
-            string name = AppDomain.CurrentDomain.FriendlyName;
-
-            string str1 = Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。
-            string str2 = Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。
-            string str3 = Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。
-            string str4 = AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。
-            //string str5 = Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。
-            //string str6 = Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。
-            string str7 = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
-
-            string exePath = app2;
-            string useridsTr = "1,2,3,4,3,2,1,4,5,7,8,";
-            string[] idsStr = useridsTr.TrimEnd(',').Split(',');
-
-            if (idsStr != null && idsStr.Any())
-            {
-                IEnumerable<string> userId = idsStr.Distinct();
-                foreach (string item in userId)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-            Console.WriteLine("*********************************************");
-            List<int> ids = new List<int>();
-            ids.AddRange(new List<int> { 1, 2, 3, 4 });
-            ids.AddRange(new List<int> { 5, 6, 7, 8 });
-            ids.AddRange(new List<int> { 9, 10, 11, 12 });
-
-            int idg = Convert.ToInt32(Math.Ceiling(ids.Count / 5.0));
-
-            List<int> sInts = new List<int>();
-            for (int i = 1; i <= idg; i++)
-            {
-                sInts = new List<int>();
-                sInts.AddRange(ids.Skip((i - 1) * 5).Take(5));
-
-                string jboNumbers = sInts.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
-
-                Console.WriteLine(jboNumbers);
-            }
-
-            Console.WriteLine(DateTime.Today.AddDays(-3));
-            Console.WriteLine(DateTime.Today.AddDays(-2));
-
-            Console.WriteLine(DateTime.Today.AddDays(-15));
-            Console.WriteLine(DateTime.Today.AddDays(-14));
-            Test t = new Test();
-            Console.WriteLine(t.A);
-
-            #region 实现IIS应用池的远程回收
-
-            //ServerManager manager = ServerManager.OpenRemote("184.12.15.157");
-            //ApplicationPoolCollection appPools = manager.ApplicationPools;
-            //foreach (var ap in appPools)
-            //{
-            //    ap.Recycle();
-            //}
-            /*
-             * 回收注意事项：
-                1.需要添加引用 C:\Windows\System32\inetsrv\Microsoft.Web.Administration.dll ,然后using Microsoft.Web.Administration;
-                2.远程账号需要有管理员权限；
-                3.远程主机的账号密码添加在服务器的凭据管理器中 (控制面板->凭据管理器) ，能成功使用mstsc 登录即可；
-                4.远程主机需要关闭UAC！！ 因为这个问题卡了好几个礼拜才无意发现。
-             */
-
-            #endregion 实现IIS应用池的远程回收
-
-            #region ConfigurationSection
-
-            //const string siteName = "fairy.vip";
-
-            //using (ServerManager manager = new ServerManager())
-            //{
-            //    //获得 IIS 站点信息。
-            //    var site = manager.Sites[siteName];
-
-            //    //获得站点根目录下的“Web.Config”文件配置信息。
-            //    Configuration config = site.GetWebConfiguration();
-
-            //    ConfigurationSection httpRedirectSection = config.GetSection("system.webServer/httpRedirect");
-            //    /*
-            //     * 设置节点参数。
-            //     * enabled：是否启用。
-            //     * destination：目标 URL 或者文件。
-            //     * exactDestination：
-            //     * httpResponseStatus：
-            //     */
-            //    httpRedirectSection["enabled"] = false;
-            //    httpRedirectSection["destination"] = @"http://www.rapid.com/error/500$S$Q";
-            //    httpRedirectSection["exactDestination"] = true;
-            //    httpRedirectSection["httpResponseStatus"] = @"Temporary";
-
-            //    //回收应用程序池。
-            //    manager.ApplicationPools[siteName].Recycle();
-
-            //    //提交。
-            //    manager.CommitChanges();
-            //}
-
-            #endregion ConfigurationSection
-
             #region 运行时控制：得到当前正在处理的请求
 
-            //using (ServerManager manager = new ServerManager())
-            //{
-            //    foreach (WorkerProcess w3wp in manager.WorkerProcesses)
-            //    {
-            //        Console.WriteLine("W3WP ()", w3wp.ProcessId);
+            using (ServerManager manager = new ServerManager())
+            {
+                foreach (WorkerProcess w3wp in manager.WorkerProcesses)
+                {
+                    Console.WriteLine("W3WP()", w3wp.ProcessId);
 
-            //        foreach (Request request in w3wp.GetRequests(0))
-            //        {
-            //            Console.WriteLine(" - ,,", request.Url, request.ClientIPAddr, request.TimeElapsed, request.TimeInState);
-            //        }
-            //    }
-            //}
+                    foreach (Request request in w3wp.GetRequests(0))
+                    {
+                        Console.WriteLine(" - ,,", request.Url, request.ClientIPAddr, request.TimeElapsed, request.TimeInState);
+                    }
+                }
+            }
 
             #endregion 运行时控制：得到当前正在处理的请求
 
-            #region aspnet_isapi
-
-            //const string isAPI_partialPath = @"v4.0.30319\aspnet_isapi.dll";
-            //using (ServerManager manager = new ServerManager())
-            //{
-            //    Configuration config = manager.GetApplicationHostConfiguration();
-
-            //    ConfigurationSection section = config.GetSection("system.webServer/security/isapiCgiRestriction");
-
-            //    foreach (ConfigurationElement item in section.GetCollection())
-            //    {
-            //        if (item.Attributes.Count > 0 && item.Attributes["path"].Value != null && item.Attributes["path"].Value.ToString().EndsWith(isAPI_partialPath))
-            //        {
-            //            item.Attributes["allowed"].Value = true;
-            //        }
-            //    }
-            //    manager.CommitChanges();
-            //}
-
-            #endregion aspnet_isapi
-
-            #region 添加扩展
-
-            ////appcmd.exe set config -section:system.webServer/security/isapiCgiRestriction /+"[path='C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll',allowed='True',groupId='ContosoGroup',description='Contoso Extension']" /commit:apphost
-            //using (ServerManager serverManager = new ServerManager())
-            //{
-            //    Configuration config = serverManager.GetApplicationHostConfiguration();
-            //    ConfigurationSection isapiCgiRestrictionSection = config.GetSection("system.webServer/security/isapiCgiRestriction");
-            //    ConfigurationElementCollection isapiCgiRestrictionCollection = isapiCgiRestrictionSection.GetCollection();
-
-            //    ConfigurationElement addElement = isapiCgiRestrictionCollection.CreateElement("add");
-            //    addElement["path"] = @"C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll";
-            //    addElement["allowed"] = true;
-            //    addElement["groupId"] = @"ContosoGroup";
-            //    addElement["description"] = @"Contoso Extension";
-            //    isapiCgiRestrictionCollection.Add(addElement);
-
-            //    serverManager.CommitChanges();
-            //}
-
-            #endregion 添加扩展
-
-            XMLDemo2();
-            //for (int i = 100; i < 1000; i++)
-            //{
-            //    Thread t = new Thread(() =>
-            //    {
-            //        Console.Write(i+"\t");
-            //    });
-            //    t.Start();
-            //    t.Join();
-            //}
-
-            #region 多线程查询端口情况
-
-            //for (int i = 1; i <= 8; i++)
-            //{
-            //    ParameterizedThreadStart pts = x =>
-            //     {
-            //         for (int j = 1000 * ((int)x - 1) + 1; j <= 1000 * (int)x; j++)
-            //         {
-            //             PortCon(j);
-            //         }
-            //     };
-
-            //    Thread t = new Thread(pts);
-            //    t.Start(i);
-            //}
-
-            #endregion 多线程查询端口情况
-
-            #region 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
-
-            //IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
-            //TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
-            //foreach (TcpConnectionInformation t in connections)
-            //{
-            //    Console.Write(@"Local endpoint: {0} ", t.LocalEndPoint);
-            //    Console.Write(@"Remote endpoint: {0} ", t.RemoteEndPoint);
-            //    Console.WriteLine(@"{0}", t.State);
-            //}
-
-            #endregion 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
-
-            #region TCP检查端口是否打开
-
-            //IPAddress ip = IPAddress.Parse("127.0.0.1");
-            //IPEndPoint point = new IPEndPoint(ip, 80);
-            //try
-            //{
-            //    TcpClient tcp = new TcpClient();
-            //    tcp.Connect(point);
-            //    Console.WriteLine("打开的端口");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("已开启的端口");
-            //}
-
-            #endregion TCP检查端口是否打开
-
-            #region Http检查端口是否打开
-
-            //HttpListener httpListner = new HttpListener();
-            //httpListner.Prefixes.Add("http://*:8080/");
-            //httpListner.Start();
-            //Console.WriteLine("Port: 8080 status: " + (PortInUse(8080) ? "in use" : "not in use"));
-
-            #endregion Http检查端口是否打开
-
-            #region 文件权限相关
-
-            //DirectorySecurity security = new DirectorySecurity();
-            //const string path = @"D:\temp";
-            ////设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
-            //security.AddAccessRule(new FileSystemAccessRule("NETWORK SERVICE",
-            //    FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
-            //    PropagationFlags.None, AccessControlType.Allow));
-            //security.AddAccessRule(new FileSystemAccessRule("Everyone",
-            //    FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-            //Directory.SetAccessControl(path, security);
-
-            #endregion 文件权限相关
-
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
             //Console.WriteLine(name);
-
-            #region 左移
-
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    Console.WriteLine($"{i} {1 << i}");
-            //}
-
-            #endregion 左移
-
-            //AppDomain.CurrentDomain.SetData("name", "Hello");
-            //string name = AppDomain.CurrentDomain.GetData("name").ToString();
-            //Console.WriteLine(name);
-
-            //// Create application domain setup information
-            //AppDomainSetup domaininfo = new AppDomainSetup();
-            //domaininfo.ConfigurationFile = Environment.CurrentDirectory + "ADSetup.exe.config";
-            //domaininfo.ApplicationBase = Environment.CurrentDirectory;
-
-            ////Create evidence for the new appdomain from evidence of the current application domain
-            //Evidence adevidence = AppDomain.CurrentDomain.Evidence;
-
-            //// Create appdomain
-            //AppDomain domain = AppDomain.CreateDomain("MyDomain", adevidence, domaininfo);
-
-            //// Write out application domain information
-            //Console.WriteLine("Host domain: " + AppDomain.CurrentDomain.FriendlyName);
-            //Console.WriteLine("child domain: " + domain.FriendlyName);
-            //Console.WriteLine();
-            //Console.WriteLine("Configuration file is: " + domain.SetupInformation.ConfigurationFile);
-            //Console.WriteLine("Application Base Directory is: " + domain.BaseDirectory);
-
-            //AppDomain.Unload(domain);
-
-            #region 异步委托
-
-            //AsyncCallback ac = delegate (IAsyncResult aar)
-            //{
-            //    Console.WriteLine("跑完了");
-            //    Console.WriteLine(aar.AsyncState);
-            //};
-
-            //AsycRun ar = delegate
-            //{
-            //    for (int i = 0; i < 100; i++)
-            //    {
-            //        Console.Write(i + "\t");
-            //    }
-            //};
-            //ar.BeginInvoke(ac, "object");
-
-            #endregion 异步委托
 
             Console.ReadKey();
         }
@@ -1662,7 +1378,7 @@ namespace ConApp
 
         #region 27-DirectorySecurity
 
-        public static void DirectorySecurityDemo()
+        public static void DirectorySecurityDemo0()
         {
             IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
 
@@ -1690,6 +1406,19 @@ namespace ConApp
             {
                 Console.WriteLine("Incorrect directory provided!");
             }
+        }
+
+        public static void DirectorySecurityDemo1()
+        {
+            DirectorySecurity security = new DirectorySecurity();
+            const string path = @"D:\temp";
+            //设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
+            security.AddAccessRule(new FileSystemAccessRule("NETWORK SERVICE",
+                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+                PropagationFlags.None, AccessControlType.Allow));
+            security.AddAccessRule(new FileSystemAccessRule("Everyone",
+                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+            Directory.SetAccessControl(path, security);
         }
 
         #endregion 27-DirectorySecurity
@@ -2330,5 +2059,346 @@ namespace ConApp
 
         [DllImport("msi.dll", SetLastError = true)]
         private static extern int MsiGetProductInfo(string szProduct, string szProperty, StringBuilder lpValueBuf, ref int pcchValueBuf);
+
+        public static void PathDemo()
+        {
+            AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
+            string app2 = Assembly.GetEntryAssembly().Location;
+            string name = AppDomain.CurrentDomain.FriendlyName;
+
+            string str1 = Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。
+            string str2 = Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。
+            string str3 = Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。
+            string str4 = AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。
+            string str5 = System.Windows.Forms.Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。
+            string str6 = System.Windows.Forms.Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。
+            string str7 = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
+        }
+
+        public static void MathDemo()
+        {
+            List<int> ids = new List<int>();
+            ids.AddRange(new List<int> { 1, 2, 3, 4 });
+            ids.AddRange(new List<int> { 5, 6, 7, 8 });
+            ids.AddRange(new List<int> { 9, 10, 11, 12 });
+
+            int idg = Convert.ToInt32(Math.Ceiling(ids.Count / 5.0));
+
+            List<int> sInts = new List<int>();
+            for (int i = 1; i <= idg; i++)
+            {
+                sInts = new List<int>();
+                sInts.AddRange(ids.Skip((i - 1) * 5).Take(5));
+
+                string jboNumbers = sInts.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
+
+                Console.WriteLine(jboNumbers);
+            }
+        }
+
+        public static void AddIsapiCgi()
+        {
+            //appcmd.exe set config -section:system.webServer/security/isapiCgiRestriction /+"[path='C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll',allowed='True',groupId='ContosoGroup',description='Contoso Extension']" /commit:apphost
+            using (ServerManager serverManager = new ServerManager())
+            {
+                Configuration config = serverManager.GetApplicationHostConfiguration();
+                ConfigurationSection isapiCgiRestrictionSection = config.GetSection("system.webServer/security/isapiCgiRestriction");
+                ConfigurationElementCollection isapiCgiRestrictionCollection = isapiCgiRestrictionSection.GetCollection();
+
+                ConfigurationElement addElement = isapiCgiRestrictionCollection.CreateElement("add");
+                addElement["path"] = @"C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll";
+                addElement["allowed"] = true;
+                addElement["groupId"] = @"ContosoGroup";
+                addElement["description"] = @"Contoso Extension";
+                isapiCgiRestrictionCollection.Add(addElement);
+                serverManager.CommitChanges();
+            }
+        }
+
+        #region 实现IIS应用池的远程回收
+
+        public static void RemoteRecycle()
+        {
+            ServerManager manager = ServerManager.OpenRemote("184.12.15.157");
+            ApplicationPoolCollection appPools = manager.ApplicationPools;
+            foreach (var ap in appPools)
+            {
+                ap.Recycle();
+            }
+            /*
+             * 回收注意事项：
+                1.需要添加引用 C:\Windows\System32\inetsrv\Microsoft.Web.Administration.dll ,然后using Microsoft.Web.Administration;
+                2.远程账号需要有管理员权限；
+                3.远程主机的账号密码添加在服务器的凭据管理器中 (控制面板->凭据管理器) ，能成功使用mstsc 登录即可；
+                4.远程主机需要关闭UAC！！ 因为这个问题卡了好几个礼拜才无意发现。
+             */
+        }
+
+        #endregion 实现IIS应用池的远程回收
+
+        public static void ConfigurationSectionDemo0()
+        {
+            const string siteName = "fairy.vip";
+
+            using (ServerManager manager = new ServerManager())
+            {
+                //获得 IIS 站点信息。
+                var site = manager.Sites[siteName];
+
+                //获得站点根目录下的“Web.Config”文件配置信息。
+                Configuration config = site.GetWebConfiguration();
+
+                ConfigurationSection httpRedirectSection = config.GetSection("system.webServer/httpRedirect");
+                /*
+                 * 设置节点参数。
+                 * enabled：是否启用。
+                 * destination：目标 URL 或者文件。
+                 * exactDestination：
+                 * httpResponseStatus：
+                 */
+                httpRedirectSection["enabled"] = false;
+                httpRedirectSection["destination"] = @"http://www.rapid.com/error/500$S$Q";
+                httpRedirectSection["exactDestination"] = true;
+                httpRedirectSection["httpResponseStatus"] = @"Temporary";
+
+                //回收应用程序池。
+                manager.ApplicationPools[siteName].Recycle();
+
+                //提交。
+                manager.CommitChanges();
+            }
+        }
+
+        public static void ConfigurationSectionDemo1()
+        {
+            const string isAPI_partialPath = @"v4.0.30319\aspnet_isapi.dll";
+            using (ServerManager manager = new ServerManager())
+            {
+                Configuration config = manager.GetApplicationHostConfiguration();
+
+                ConfigurationSection section = config.GetSection("system.webServer/security/isapiCgiRestriction");
+
+                foreach (ConfigurationElement item in section.GetCollection())
+                {
+                    if (item.Attributes.Count > 0 && item.Attributes["path"].Value != null && item.Attributes["path"].Value.ToString().EndsWith(isAPI_partialPath))
+                    {
+                        item.Attributes["allowed"].Value = true;
+                    }
+                }
+                manager.CommitChanges();
+            }
+        }
+
+        #region 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
+
+        public static void GetIPDemo()
+        {
+            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
+            foreach (TcpConnectionInformation t in connections)
+            {
+                Console.Write(@"Local endpoint: {0} ", t.LocalEndPoint);
+                Console.Write(@"Remote endpoint: {0} ", t.RemoteEndPoint);
+                Console.WriteLine(@"{0}", t.State);
+            }
+        }
+
+        #endregion 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
+
+        #region TCP检查端口是否打开
+
+        public static void PortISOpen0()
+        {
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
+            IPEndPoint point = new IPEndPoint(ip, 80);
+            try
+            {
+                TcpClient tcp = new TcpClient();
+                tcp.Connect(point);
+                Console.WriteLine("打开的端口");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("已开启的端口");
+            }
+        }
+
+        #endregion TCP检查端口是否打开
+
+        #region Http检查端口是否打开
+
+        public static void PortISOpen1()
+        {
+            HttpListener httpListner = new HttpListener();
+            httpListner.Prefixes.Add("http://*:8080/");
+            httpListner.Start();
+            Console.WriteLine("Port: 8080 status: " + (PortInUse(8080) ? "in use" : "not in use"));
+        }
+
+        #endregion Http检查端口是否打开
+
+        #region 异步委托
+
+        public static void AsyncCallbackDemo()
+        {
+            AsyncCallback ac = delegate (IAsyncResult aar)
+            {
+                Console.WriteLine("跑完了");
+                Console.WriteLine(aar.AsyncState);
+            };
+
+            AsycRun ar = delegate
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.Write(i + "\t");
+                }
+            };
+            ar.BeginInvoke(ac, "object");
+        }
+
+        #endregion 异步委托
+
+        #region 多线程查询端口情况
+
+        public static void Demo()
+        {
+            for (int i = 1; i <= 8; i++)
+            {
+                ParameterizedThreadStart pts = x =>
+                {
+                    for (int j = 1000 * ((int)x - 1) + 1; j <= 1000 * (int)x; j++)
+                    {
+                        PortCon(j);
+                    }
+                };
+
+                Thread t = new Thread(pts);
+                t.Start(i);
+            }
+        }
+
+        #endregion 多线程查询端口情况
+
+        public static void AppDomainDemo()
+        {
+            AppDomain.CurrentDomain.SetData("name", "Hello");
+            string name = AppDomain.CurrentDomain.GetData("name").ToString();
+            Console.WriteLine(name);
+
+            // Create application domain setup information
+            AppDomainSetup domaininfo = new AppDomainSetup();
+            domaininfo.ConfigurationFile = Environment.CurrentDirectory + "ADSetup.exe.config";
+            domaininfo.ApplicationBase = Environment.CurrentDirectory;
+
+            //Create evidence for the new appdomain from evidence of the current application domain
+            Evidence adevidence = AppDomain.CurrentDomain.Evidence;
+
+            // Create appdomain
+            AppDomain domain = AppDomain.CreateDomain("MyDomain", adevidence, domaininfo);
+
+            // Write out application domain information
+            Console.WriteLine("Host domain: " + AppDomain.CurrentDomain.FriendlyName);
+            Console.WriteLine("child domain: " + domain.FriendlyName);
+            Console.WriteLine();
+            Console.WriteLine("Configuration file is: " + domain.SetupInformation.ConfigurationFile);
+            Console.WriteLine("Application Base Directory is: " + domain.BaseDirectory);
+
+            AppDomain.Unload(domain);
+        }
+
+
+        #region 把csv文件中的联系人姓名和电话显示出来。简单模拟csv文件，csv文件就是使用,分割数据的文本
+        public static void ReadAllLinesDemo()
+        {
+
+            // 姓名：张三 电话：15001111113
+
+            string[] lines = File.ReadAllLines("1.csv", Encoding.Default);
+
+            string[] arr = new string[lines.Length];
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string tmp = lines[i].Replace("\"", "");
+                string[] array = tmp.Split(',');
+                if (array.Length == 3)
+                {
+                    arr[i] = string.Format("{0} {1}", array[0] + array[1], array[2]);
+                }
+                else
+                {
+                    arr[i] = null;
+                }
+            }
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(arr[i]))
+                {
+                    Console.WriteLine(arr[i]);
+                }
+            }
+        }
+        #endregion
+
+
+        #region 简单泛型
+        public static void GenericDemo<T>(T s, T t) where T : class
+        {
+            Console.WriteLine(s == t);
+        }
+
+        public static void TestGenericDemo()
+        {
+            string s1 = "target";
+            StringBuilder sb = new StringBuilder("target");
+            string s2 = sb.ToString();
+            GenericDemo(s1, s2);
+
+
+            CreateInstance<Person>(5);
+            Person b = CreateBossInstance<Person>(3);
+            b.Name = "Wb";
+        }
+
+        private static T CreateInstance<T>(int n) where T : new()
+        {
+            T t = default(T);
+            for (int i = 0; i < n; i++)
+            {
+                t = new T();
+            }
+            return t;
+        }
+
+        private static T CreateBossInstance<T>(int n) where T : Person, new()
+        {
+            T t = default(T);
+            for (int i = 0; i < n; i++)
+            {
+                t = new T();
+            }
+            return t;
+        }
+        #endregion
+
+
+        #region 反转字符串
+        public static string ReverseDemo(string str)
+        {
+            //反转字符串
+            char[] arr = str.ToCharArray();
+
+            for (int i = 0; i < arr.Length / 2; i++)
+            {
+                char tmp = arr[i];
+                arr[i] = arr[arr.Length - i - 1];
+                arr[arr.Length - i - 1] = tmp;
+            }
+            //string s = new string(arr);
+            return string.Join("", arr);
+        } 
+        #endregion
     }
 }

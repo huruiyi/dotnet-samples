@@ -1,8 +1,11 @@
 ﻿using Microsoft.Build.Evaluation;
 using Microsoft.Build.Utilities;
 using Net.Tools.MSBuild;
+using Net.Tools.Shell;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
@@ -12,11 +15,106 @@ namespace Net.Tools
 {
     internal class Program
     {
+        public static SecureString ReadString()
+        {
+            SecureString str = new SecureString();
+
+            ConsoleKeyInfo nextChar = Console.ReadKey(true);
+
+            while (nextChar.Key != ConsoleKey.Enter)
+            {
+                if (nextChar.Key == ConsoleKey.Backspace)
+                {
+                    if (str.Length > 0)
+                    {
+                        str.RemoveAt(str.Length - 1);
+
+                        Console.Write(nextChar.KeyChar);
+                        Console.Write(" ");
+                        Console.Write(nextChar.KeyChar);
+                    }
+                    else
+                    {
+                        Console.Beep();
+                    }
+                }
+                else
+                {
+                    str.AppendChar(nextChar.KeyChar);
+                    Console.Write("*");
+                }
+
+                nextChar = Console.ReadKey(true);
+            }
+
+            str.MakeReadOnly();
+            return str;
+        }
+
+        [STAThread]
         private static void Main(string[] args)
         {
-            Stream dataArray = null;
-            HashAlgorithm sha = new SHA1CryptoServiceProvider();
-            byte[] result = sha.ComputeHash(dataArray);
+            Clipboard.SetDataObject("https://msdn.microsoft.com/zh-cn/library/system.windows.forms.clipboard.getdataobject(v=vs.110).aspx");
+
+            string clipboardData = "";
+            IDataObject iData = Clipboard.GetDataObject();
+
+            if (iData.GetDataPresent(DataFormats.Text))
+            {
+                clipboardData = (String)iData.GetData(DataFormats.Text);
+            }
+            else
+            {
+                clipboardData = "Could not retrieve data off the clipboard.";
+            }
+            Console.WriteLine(clipboardData);
+
+            #region 用户名密码验证
+
+            string user = "";
+
+            Console.Write("Enter the user name: ");
+            user = Console.ReadLine();
+
+            Console.Write("Enter the user's password: ");
+            using (SecureString pword = ReadString())
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+
+                startInfo.FileName = "notepad.exe";
+                startInfo.UserName = user;
+                startInfo.Password = pword;
+                startInfo.UseShellExecute = false;
+
+                using (Process process = new Process())
+                {
+                    process.StartInfo = startInfo;
+
+                    try
+                    {
+                        process.Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("\n\nCould not start Notepad process.");
+                        Console.WriteLine(ex);
+                    }
+                }
+            }
+
+            Console.WriteLine("\n\nMain method complete. Press Enter.");
+            Console.ReadLine();
+
+            #endregion 用户名密码验证
+
+            //Shortcut
+
+            ShortcutHelper.CreateShortcut(Environment.SpecialFolder.Desktop.ToString());
+            ShortcutHelper.CreateShortcut(Environment.SpecialFolder.StartMenu.ToString());
+
+            //Stream dataArray = null;
+            //HashAlgorithm sha = new SHA1CryptoServiceProvider();
+            //byte[] result = sha.ComputeHash(dataArray);
 
             RandomNumberGenerator rnd = RandomNumberGenerator.Create();
 

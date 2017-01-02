@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace SelfLinqDemo
 {
     internal class Program
     {
+        protected static IEnumerable<Fruit> Fruits { get; set; }
+
+        static Program()
+        {
+            Fruits = new List<Fruit>()
+            {
+                new Fruit(07,"苹果", "红色" ),
+                new Fruit(10,"橙子", "橙色" ),
+                new Fruit(04,"葡萄", "绿色"),
+                new Fruit(12,"无花果", "棕色" ),
+                new Fruit(02,"葡萄干", "红色" ),
+                new Fruit(10,"香蕉", "黄色" ),
+                new Fruit(07,"樱桃", "红色" )
+            };
+        }
+
         private static void Main(string[] args)
         {
-            Demo1();
-            Demo2();
-            Demo3();
-            Demo4();
-            Demo5();
-            Demo6();
-            Demo7();
-            Demo8();
-            Demo9();
-
+            DataTableEnumerable();
             Console.ReadKey();
         }
 
@@ -331,5 +339,62 @@ namespace SelfLinqDemo
         }
 
         #endregion Linq9-Order By
+
+        public static void ToLookupDemo()
+        {
+            ILookup<string, Fruit> lookup = Fruits.ToLookup(e => e.Color);
+            IEnumerator<IGrouping<string, Fruit>> groups = lookup.GetEnumerator();
+            while (groups.MoveNext())
+            {
+                IGrouping<string, Fruit> group = groups.Current;
+                Console.WriteLine("Group for {0}", group.Key);
+                foreach (Fruit fruit in group)
+                {
+                    Console.WriteLine($"new Fruit({fruit.ShelfLife},{ fruit.Name},{fruit.Color})");
+                }
+                Console.WriteLine("\r\n");
+            }
+        }
+
+        public static void ToDictionaryDemo()
+        {
+            Dictionary<string, Fruit> dictionary = Fruits.ToDictionary(e => e.Name);
+            foreach (KeyValuePair<string, Fruit> kvp in dictionary)
+            {
+                Console.WriteLine("Name: {0} Color: {1} Shelf Life: {2} days.", kvp.Key, kvp.Value.Color, kvp.Value.ShelfLife);
+            }
+        }
+
+        public static void DataTableEnumerable()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("Field0", typeof(int));
+            table.Columns.Add("Field1", typeof(string));
+            table.Columns.Add("Field2", typeof(string));
+            table.Rows.Add(new object[] { 001, "f11", "f21" });
+            table.Rows.Add(new object[] { 002, "f12", "f22" });
+            table.Rows.Add(new object[] { 003, "f13", "f23" });
+            table.Rows.Add(new object[] { 004, "f14", "f24" });
+            table.Rows.Add(new object[] { 005, "f15", "f25" });
+            table.Rows.Add(new object[] { 006, "f16", "f26" });
+            table.Rows.Add(new object[] { 007, "f17", "f27" });
+            table.Rows.Add(new object[] { 008, "f18", "f28" });
+            table.Rows.Add(new object[] { 009, "f19", "f29" });
+
+            IEnumerable<string> dtEnum = from e in table.AsEnumerable()
+                                         select e.Field<string>("Field1");
+
+            EnumerableRowCollection dFruit = from e in table.AsEnumerable()
+                         select new
+                         {
+                             ShelfLife = e.Field<int>("Field0"),
+                             Name = e.Field<string>("Field1"),
+                             Color = e.Field<string>("Field2")
+                         };
+            foreach (string str in dtEnum)
+            {
+                Console.WriteLine("Element {0}", str);
+            }
+        }
     }
 }

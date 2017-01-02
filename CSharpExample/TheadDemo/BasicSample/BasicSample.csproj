@@ -49,6 +49,7 @@
     <Compile Include="Demo4.cs" />
     <Compile Include="Demo5.cs" />
     <Compile Include="Demo6.cs" />
+    <Compile Include="Demo7.cs" />
     <Compile Include="IExample.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Work.cs" />

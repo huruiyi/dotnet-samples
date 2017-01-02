@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assembly\DynamicAssembly.cs" />
     <Compile Include="ComputerInfo.cs" />
     <Compile Include="ConvertHelper.cs" />
     <Compile Include="LogHelper.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Security\NetUser.cs" />
     <Compile Include="Security\WinUserHelper.cs" />
     <Compile Include="ShellContextMenu.cs" />
+    <Compile Include="Shell\ShortcutHelper.cs" />
     <Compile Include="Web\IISHelper.cs" />
     <Compile Include="XmlSerializeUtil.cs" />
   </ItemGroup>
@@ -85,6 +87,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
