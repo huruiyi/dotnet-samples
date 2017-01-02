@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConApp.Class
 {
-    internal class ReflectionClass1
+    public class ReflectionClass1
     {
         public ReflectionClass1()
         {

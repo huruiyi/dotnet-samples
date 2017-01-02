@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConApp.Class
 {
-    internal class Tom : Student
+    public class Tom : Student
     {
         public string Hobby { get; set; }
         public int Popularity { get; set; }

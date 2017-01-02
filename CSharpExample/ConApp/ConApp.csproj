@@ -74,7 +74,6 @@
     <Compile Include="Class\ComplainModel.cs" />
     <Compile Include="Class\DynamicClass.cs" />
     <Compile Include="Class\Extension.cs" />
-    <Compile Include="Class\IISMangerment.cs" />
     <Compile Include="Class\MathTest.cs" />
     <Compile Include="Class\MyCollection.cs" />
     <Compile Include="Class\MyCollection2.cs" />
@@ -114,8 +113,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SecurityPassword.cs" />
-    <Compile Include="StringTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

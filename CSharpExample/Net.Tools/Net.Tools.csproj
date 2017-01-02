@@ -60,10 +60,12 @@
     <Compile Include="Assembly\DynamicAssembly.cs" />
     <Compile Include="ComputerInfo.cs" />
     <Compile Include="ConvertHelper.cs" />
+    <Compile Include="Http\HttpHelper.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="MSBuild\BasicFileLogger.cs" />
     <Compile Include="MSBuild\MockEngine.cs" />
     <Compile Include="MSBuild\MockLogger.cs" />
+    <Compile Include="Net\IISMangerment.cs" />
     <Compile Include="PrimeHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Security\EncodingHelper.cs" />
     <Compile Include="Security\MD5Helper.cs" />
     <Compile Include="Security\NetUser.cs" />
+    <Compile Include="Security\SecurityPassword.cs" />
     <Compile Include="Security\WinUserHelper.cs" />
     <Compile Include="ShellContextMenu.cs" />
     <Compile Include="Shell\ShortcutHelper.cs" />

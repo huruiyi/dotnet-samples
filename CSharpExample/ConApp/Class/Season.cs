@@ -3,7 +3,7 @@
 namespace ConApp.Class
 {
     [Flags]
-    internal enum Season
+    public enum Season
     {
         春 = 10,
         夏,

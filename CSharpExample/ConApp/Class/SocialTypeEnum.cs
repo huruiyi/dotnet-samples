@@ -2,7 +2,7 @@
 
 namespace ConApp.Class
 {
-    internal enum SocialTypeEnum : int
+    public enum SocialTypeEnum : int
     {
         [Description("脸书")]
         Facebook = 1,
