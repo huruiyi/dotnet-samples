@@ -1,4 +1,5 @@
 ﻿using ConApp.Class;
+using ConApp.CodeFolder1;
 using Microsoft.Web.Administration;
 using Net.Tools;
 using System;
@@ -36,25 +37,9 @@ namespace ConApp
 
         private delegate void AsycRun();
 
-        public static unsafe void Main1(string[] args)
+        public static unsafe void Main(string[] args)
         {
-            #region 运行时控制：得到当前正在处理的请求
-
-            using (ServerManager manager = new ServerManager())
-            {
-                foreach (WorkerProcess w3wp in manager.WorkerProcesses)
-                {
-                    Console.WriteLine("W3WP()", w3wp.ProcessId);
-
-                    foreach (Request request in w3wp.GetRequests(0))
-                    {
-                        Console.WriteLine(" - ,,", request.Url, request.ClientIPAddr, request.TimeElapsed, request.TimeInState);
-                    }
-                }
-            }
-
-            #endregion 运行时控制：得到当前正在处理的请求
-
+            DynamicDirectoryExample.Main20();
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
             //Console.WriteLine(name);
 
@@ -485,15 +470,23 @@ namespace ConApp
             proIP.StandardInput.WriteLine("exit");
             string strResult = proIP.StandardOutput.ReadToEnd();
             proIP.Close();
-
             Console.WriteLine(strResult);
+
+            Process compiler = new Process();
+            compiler.StartInfo.FileName = "csc.exe";
+            compiler.StartInfo.Arguments = "/r:System.dll /out:sample.exe stdstr.cs";
+            compiler.StartInfo.UseShellExecute = false;
+            compiler.StartInfo.RedirectStandardOutput = true;
+            compiler.Start();
+            Console.WriteLine(compiler.StandardOutput.ReadToEnd());
+            compiler.WaitForExit();
         }
 
         #endregion 11-ExcuteXCopyCmd
 
         #region 12-属性相关
 
-        public static void PropertyInfoTest()
+        public static void PropertyInfoDemo()
         {
             Dictionary<int, string> attrs = new Dictionary<int, string> { { 1, "1" } };
             Person person = new Person
@@ -545,9 +538,9 @@ namespace ConApp
 
         #endregion 12-属性相关
 
-        #region 13-EnumTest
+        #region 13-EnumDemo
 
-        public static void EnumTest()
+        public static void EnumDemo()
         {
             string idField = ((MemberExpression)((Expression<Func<City, int>>)(c => c.CityId)).Body).Member.Name;
             string textField = ((MemberExpression)((Expression<Func<City, string>>)(c => c.CityName)).Body).Member.Name;
@@ -572,11 +565,11 @@ namespace ConApp
             object[] result7 = ste.GetField(SocialTypeEnum.Facebook.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
         }
 
-        #endregion 13-EnumTest
+        #endregion 13-EnumDemo
 
-        #region 14-HashtableTest
+        #region 14-HashtableDemo
 
-        public static void HashtableTest()
+        public static void HashtableDemo()
         {
             Hashtable hashtable1 = new Hashtable();
             hashtable1.Add("zd", "600719");
@@ -657,7 +650,7 @@ namespace ConApp
             }
         }
 
-        #endregion 14-HashtableTest
+        #endregion 14-HashtableDemo
 
         #region 15-基本数据类型
 
@@ -726,9 +719,9 @@ namespace ConApp
 
         #endregion 16-YieldDemo
 
-        #region 17-GetEnumeratorTest
+        #region 17-GetEnumeratorDemo
 
-        public static void GetEnumeratorTest()
+        public static void GetEnumeratorDemo()
         {
             ArrayList arr = new ArrayList() { 12, 13, 1, 4, 15, 16, 17 };
             IEnumerator iEnumerator = arr.GetEnumerator();
@@ -738,11 +731,11 @@ namespace ConApp
             }
         }
 
-        #endregion 17-GetEnumeratorTest
+        #endregion 17-GetEnumeratorDemo
 
         #region 18-DateTimeDemo
 
-        public static void DateTimeTest()
+        public static void DateTimeDemo()
         {
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now.AddDays(12);
@@ -798,11 +791,11 @@ namespace ConApp
 
         public static void WeakRefenceDemo()
         {
-            WeakReference mathReference = new WeakReference(new MathTest());
-            MathTest math;
+            WeakReference mathReference = new WeakReference(new MathDemo());
+            MathDemo math;
             if (mathReference.IsAlive)
             {
-                math = mathReference.Target as MathTest;
+                math = mathReference.Target as MathDemo;
                 math.Value = 30;
                 Console.WriteLine(@"Value field of math variable contains " + math.Value);
                 Console.WriteLine(@"Square of 30 is " + math.GetSquare());
@@ -816,7 +809,7 @@ namespace ConApp
 
             if (mathReference.IsAlive)
             {
-                math = mathReference.Target as MathTest;
+                math = mathReference.Target as MathDemo;
             }
             else
             {
@@ -939,14 +932,14 @@ namespace ConApp
 
         public static unsafe void UsePointerToPoint()
         {
-            PointTest point;
-            PointTest* p = &point;
+            PointDemo point;
+            PointDemo* p = &point;
             p->x = 100;
             p->y = 200;
             Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + p->ToString());
 
-            PointTest point2;
-            PointTest* p2 = &point2;
+            PointDemo point2;
+            PointDemo* p2 = &point2;
             (*p2).x = 100;
             (*p2).y = 200;
             Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + (*p2).ToString());
@@ -1510,7 +1503,7 @@ namespace ConApp
 
         public static void GetMethodsDemo()
         {
-            Type t = typeof(TestClass);
+            Type t = typeof(ClassDemo);
 
             MethodInfo[] m01 = t.GetMethods(BindingFlags.CreateInstance);
             MethodInfo[] m02 = t.GetMethods(BindingFlags.DeclaredOnly);
@@ -1916,12 +1909,12 @@ namespace ConApp
             sw.Flush();
             sw.Close();
 
-            //控制台输出重定向: > F:\Test\ConsoleOutput.txt
+            //控制台输出重定向: > F:\ConsoleOutput.txt
         }
 
         #endregion 控制台文本输出
 
-        public async static void AsyncTest()
+        public async static void AsyncDemo()
         {
             using (StreamWriter writer = File.CreateText("ConsoleOutput.txt"))
             {
@@ -2043,15 +2036,15 @@ namespace ConApp
             }
         }
 
-        public static void DynamicTest()
+        public static void DynamicDemo()
         {
             dynamic d = new DynamicClass();
             d.X = 123;
             d.Y = "123";
             //d.Z = 123.456; 未包含Z的定义
-            Console.WriteLine(d.Test(123));
-            Console.WriteLine(d.Test("123"));
-            Console.WriteLine(d.Test(123.456));
+            Console.WriteLine(d.Return(123));
+            Console.WriteLine(d.Return("123"));
+            Console.WriteLine(d.Return(123.456));
         }
 
         [DllImport("msi.dll", SetLastError = true)]
@@ -2063,16 +2056,20 @@ namespace ConApp
         public static void PathDemo()
         {
             AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
-            string app2 = Assembly.GetEntryAssembly().Location;
-            string name = AppDomain.CurrentDomain.FriendlyName;
+            string entryAssemblyLocation = Assembly.GetEntryAssembly().Location;
 
             string str1 = Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。
             string str2 = Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。
             string str3 = Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。
-            string str4 = AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。
-            string str5 = System.Windows.Forms.Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。
-            string str6 = System.Windows.Forms.Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。
-            string str7 = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
+            string str4 = System.Windows.Forms.Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。
+            string str5 = System.Windows.Forms.Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。
+            string str6 = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
+            string str7 = AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。
+            string str8 = AppDomain.CurrentDomain.FriendlyName;
+
+            Assembly executingAssembly = Assembly.GetExecutingAssembly();
+            string codeBase = executingAssembly.CodeBase;
+            string location = executingAssembly.Location;
         }
 
         public static void MathDemo()
@@ -2096,25 +2093,6 @@ namespace ConApp
             }
         }
 
-        public static void AddIsapiCgi()
-        {
-            //appcmd.exe set config -section:system.webServer/security/isapiCgiRestriction /+"[path='C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll',allowed='True',groupId='ContosoGroup',description='Contoso Extension']" /commit:apphost
-            using (ServerManager serverManager = new ServerManager())
-            {
-                Configuration config = serverManager.GetApplicationHostConfiguration();
-                ConfigurationSection isapiCgiRestrictionSection = config.GetSection("system.webServer/security/isapiCgiRestriction");
-                ConfigurationElementCollection isapiCgiRestrictionCollection = isapiCgiRestrictionSection.GetCollection();
-
-                ConfigurationElement addElement = isapiCgiRestrictionCollection.CreateElement("add");
-                addElement["path"] = @"C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll";
-                addElement["allowed"] = true;
-                addElement["groupId"] = @"ContosoGroup";
-                addElement["description"] = @"Contoso Extension";
-                isapiCgiRestrictionCollection.Add(addElement);
-                serverManager.CommitChanges();
-            }
-        }
-
         #region 实现IIS应用池的远程回收
 
         public static void RemoteRecycle()
@@ -2135,6 +2113,27 @@ namespace ConApp
         }
 
         #endregion 实现IIS应用池的远程回收
+
+        #region IIS配置相关
+
+        public static void AddIsapiCgi()
+        {
+            //appcmd.exe set config -section:system.webServer/security/isapiCgiRestriction /+"[path='C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll',allowed='True',groupId='ContosoGroup',description='Contoso Extension']" /commit:apphost
+            using (ServerManager serverManager = new ServerManager())
+            {
+                Configuration config = serverManager.GetApplicationHostConfiguration();
+                ConfigurationSection isapiCgiRestrictionSection = config.GetSection("system.webServer/security/isapiCgiRestriction");
+                ConfigurationElementCollection isapiCgiRestrictionCollection = isapiCgiRestrictionSection.GetCollection();
+
+                ConfigurationElement addElement = isapiCgiRestrictionCollection.CreateElement("add");
+                addElement["path"] = @"C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll";
+                addElement["allowed"] = true;
+                addElement["groupId"] = @"ContosoGroup";
+                addElement["description"] = @"Contoso Extension";
+                isapiCgiRestrictionCollection.Add(addElement);
+                serverManager.CommitChanges();
+            }
+        }
 
         public static void ConfigurationSectionDemo0()
         {
@@ -2188,6 +2187,39 @@ namespace ConApp
                 manager.CommitChanges();
             }
         }
+
+        public static void AppSetingSet()
+        {
+            using (ServerManager serverManager = new ServerManager())
+            {
+                Configuration config = serverManager.GetWebConfiguration("Default Web Site");
+                ConfigurationSection appSettingsSection = config.GetSection("appSettings");
+                ConfigurationElementCollection appSettingsCollection = appSettingsSection.GetCollection();
+                ConfigurationElement addElement = appSettingsCollection.CreateElement("add");
+                addElement["key"] = @"key1";
+                addElement["value"] = @"value1";
+                appSettingsCollection.Add(addElement);
+                serverManager.CommitChanges();
+            }
+        }
+
+        public static void GetIISRequest()
+        {
+            using (ServerManager manager = new ServerManager())
+            {
+                foreach (WorkerProcess w3wp in manager.WorkerProcesses)
+                {
+                    Console.WriteLine("W3WP()", w3wp.ProcessId);
+
+                    foreach (Request request in w3wp.GetRequests(0))
+                    {
+                        Console.WriteLine(" - ,,", request.Url, request.ClientIPAddr, request.TimeElapsed, request.TimeInState);
+                    }
+                }
+            }
+        }
+
+        #endregion IIS配置相关
 
         #region 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
 
@@ -2280,6 +2312,8 @@ namespace ConApp
 
         #endregion 多线程查询端口情况
 
+        #region 应用程序域
+
         public static void AppDomainDemo()
         {
             AppDomain.CurrentDomain.SetData("name", "Hello");
@@ -2307,11 +2341,12 @@ namespace ConApp
             AppDomain.Unload(domain);
         }
 
+        #endregion 应用程序域
 
         #region 把csv文件中的联系人姓名和电话显示出来。简单模拟csv文件，csv文件就是使用,分割数据的文本
+
         public static void ReadAllLinesDemo()
         {
-
             // 姓名：张三 电话：15001111113
 
             string[] lines = File.ReadAllLines("1.csv", Encoding.Default);
@@ -2340,22 +2375,22 @@ namespace ConApp
                 }
             }
         }
-        #endregion
 
+        #endregion 把csv文件中的联系人姓名和电话显示出来。简单模拟csv文件，csv文件就是使用,分割数据的文本
 
         #region 简单泛型
+
         public static void GenericDemo<T>(T s, T t) where T : class
         {
             Console.WriteLine(s == t);
         }
 
-        public static void TestGenericDemo()
+        public static void GenericDemo()
         {
             string s1 = "target";
             StringBuilder sb = new StringBuilder("target");
             string s2 = sb.ToString();
             GenericDemo(s1, s2);
-
 
             CreateInstance<Person>(5);
             Person b = CreateBossInstance<Person>(3);
@@ -2381,10 +2416,11 @@ namespace ConApp
             }
             return t;
         }
-        #endregion
 
+        #endregion 简单泛型
 
         #region 反转字符串
+
         public static string ReverseDemo(string str)
         {
             //反转字符串
@@ -2398,7 +2434,88 @@ namespace ConApp
             }
             //string s = new string(arr);
             return string.Join("", arr);
-        } 
-        #endregion
+        }
+
+        #endregion 反转字符串
+
+        #region ManualResetEventSlimDemo
+
+        public static void ManualResetEventSlimDemo()
+        {
+            MRES_SetWaitReset();
+            MRES_SpinCountWaitHandle();
+        }
+
+        // Demonstrates:
+        //      ManualResetEventSlim construction
+        //      ManualResetEventSlim.Wait()
+        //      ManualResetEventSlim.Set()
+        //      ManualResetEventSlim.Reset()
+        //      ManualResetEventSlim.IsSet
+        private static void MRES_SetWaitReset()
+        {
+            ManualResetEventSlim mres1 = new ManualResetEventSlim(false); // initialize as unsignaled
+            ManualResetEventSlim mres2 = new ManualResetEventSlim(false); // initialize as unsignaled
+            ManualResetEventSlim mres3 = new ManualResetEventSlim(true);  // initialize as signaled
+
+            // Start an asynchronous Task that manipulates mres3 and mres2
+            var observer = Task.Factory.StartNew(() =>
+            {
+                mres1.Wait();
+                Console.WriteLine("observer sees signaled mres1!");
+                Console.WriteLine("observer resetting mres3...");
+                mres3.Reset(); // should switch to unsignaled
+                Console.WriteLine("observer signalling mres2");
+                mres2.Set();
+            });
+
+            Console.WriteLine("main thread: mres3.IsSet = {0} (should be true)", mres3.IsSet);
+            Console.WriteLine("main thread signalling mres1");
+            mres1.Set(); // This will "kick off" the observer Task
+            mres2.Wait(); // This won't return until observer Task has finished resetting mres3
+            Console.WriteLine("main thread sees signaled mres2!");
+            Console.WriteLine("main thread: mres3.IsSet = {0} (should be false)", mres3.IsSet);
+
+            // It's good form to Dispose() a ManualResetEventSlim when you're done with it
+            observer.Wait(); // make sure that this has fully completed
+            mres1.Dispose();
+            mres2.Dispose();
+            mres3.Dispose();
+        }
+
+        // Demonstrates:
+        //      ManualResetEventSlim construction w/ SpinCount
+        //      ManualResetEventSlim.WaitHandle
+        private static void MRES_SpinCountWaitHandle()
+        {
+            // Construct a ManualResetEventSlim with a SpinCount of 1000
+            // Higher spincount => longer time the MRES will spin-wait before taking lock
+            ManualResetEventSlim mres1 = new ManualResetEventSlim(false, 1000);
+            ManualResetEventSlim mres2 = new ManualResetEventSlim(false, 1000);
+
+            Task bgTask = Task.Factory.StartNew(() =>
+            {
+                // Just wait a little
+                Thread.Sleep(100);
+
+                // Now signal both MRESes
+                Console.WriteLine("Task signalling both MRESes");
+                mres1.Set();
+                mres2.Set();
+            });
+
+            // A common use of MRES.WaitHandle is to use MRES as a participant in
+            // WaitHandle.WaitAll/WaitAny.  Note that accessing MRES.WaitHandle will
+            // result in the unconditional inflation of the underlying ManualResetEvent.
+            WaitHandle.WaitAll(new WaitHandle[] { mres1.WaitHandle, mres2.WaitHandle });
+            Console.WriteLine("WaitHandle.WaitAll(mres1.WaitHandle, mres2.WaitHandle) completed.");
+
+            // Clean up
+            bgTask.Wait();
+            mres1.Dispose();
+            mres2.Dispose();
+        }
+
+        #endregion ManualResetEventSlimDemo
     }
 }

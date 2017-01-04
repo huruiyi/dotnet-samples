@@ -11,7 +11,7 @@ namespace ConApp.Class
         public dynamic X;
         public dynamic Y { get; set; }
 
-        public dynamic Test(dynamic d)
+        public dynamic Return(dynamic d)
         {
             if (d is int)
             {

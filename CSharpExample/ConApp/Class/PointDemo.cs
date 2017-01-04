@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConApp.Class
+﻿namespace ConApp.Class
 {
-    public struct PointTest
+    public struct PointDemo
     {
         public int x;
         public int y;

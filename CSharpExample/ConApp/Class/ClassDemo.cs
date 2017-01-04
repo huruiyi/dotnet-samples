@@ -2,7 +2,7 @@
 
 namespace ConApp.Class
 {
-    public class TestClass
+    public class ClassDemo
     {
         public string P1 { get; set; }
 

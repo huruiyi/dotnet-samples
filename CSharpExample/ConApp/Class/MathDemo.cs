@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConApp.Class
+﻿namespace ConApp.Class
 {
-    public class MathTest
+    public class MathDemo
     {
         public int Value;
 

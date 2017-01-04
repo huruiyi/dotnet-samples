@@ -4,9 +4,9 @@ using System.Reflection.Emit;
 
 namespace ConApp.CodeFolder1
 {
-    internal class DynamicDirectoryExample : MarshalByRefObject
+    public class DynamicDirectoryExample : MarshalByRefObject
     {
-        private static void Main20()
+        public static void Main20()
         {
             // Prepare to create a new application domain.
             AppDomainSetup setup = new AppDomainSetup();
@@ -41,7 +41,10 @@ namespace ConApp.CodeFolder1
 
             // Create an instance of the Example class in the application domain,
             // and call its Test method to load the dynamic assembly and use it.
-            DynamicDirectoryExample ex = (DynamicDirectoryExample)ad.CreateInstanceAndUnwrap(typeof(DynamicDirectoryExample).Assembly.FullName, "DynamicDirectoryExample");
+
+            string assemblyName = typeof(DynamicDirectoryExample).Assembly.FullName;
+            string typeName = "DynamicDirectoryExample";
+            DynamicDirectoryExample ex = (DynamicDirectoryExample)ad.CreateInstanceAndUnwrap(assemblyName, typeName);
             ex.Test();
         }
 

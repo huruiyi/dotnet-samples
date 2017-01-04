@@ -74,14 +74,14 @@
     <Compile Include="Class\ComplainModel.cs" />
     <Compile Include="Class\DynamicClass.cs" />
     <Compile Include="Class\Extension.cs" />
-    <Compile Include="Class\MathTest.cs" />
+    <Compile Include="Class\MathDemo.cs" />
     <Compile Include="Class\MyCollection.cs" />
     <Compile Include="Class\MyCollection2.cs" />
     <Compile Include="Class\MyEnumerator.cs" />
     <Compile Include="Class\Order.cs" />
     <Compile Include="Class\Person.cs" />
     <Compile Include="Class\PointRef.cs" />
-    <Compile Include="Class\Points.cs" />
+    <Compile Include="Class\PointDemo.cs" />
     <Compile Include="Class\Publisher.cs" />
     <Compile Include="Class\ReflectionClass1.cs" />
     <Compile Include="Class\ReflectionClass2.cs" />
@@ -93,7 +93,7 @@
     <Compile Include="Class\Season.cs" />
     <Compile Include="Class\SocialTypeEnum.cs" />
     <Compile Include="Class\Student.cs" />
-    <Compile Include="Class\TestClass.cs" />
+    <Compile Include="Class\ClassDemo.cs" />
     <Compile Include="Class\Tom.cs" />
     <Compile Include="Class\ValidateAgeAttribute.cs" />
     <Compile Include="CodeFolder1\DynamicDirectoryExample.cs" />
