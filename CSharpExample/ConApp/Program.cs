@@ -142,7 +142,32 @@ namespace ConApp
 
         #region 03-EventDemo
 
-        public static void EventDemo()
+        private static int WriteLetter(string letter)
+        {
+            Console.Write(letter + " ");
+            return 1;
+        }
+
+        private static void ExampleMethod(int a, int b, int c)
+        {
+        }
+
+        public static void ExampleMethod(string p1 = null, object p2 = null)
+        {
+            Console.WriteLine(@"ExampleMethod: p2 is object");
+        }
+
+        public static void ExampleMethod(string p2 = null, object p1 = null, params int[] p3)
+        {
+            Console.WriteLine(@"ExampleMethod: p2 is string");
+        }
+
+        private static void publisher_SampleEvent(object sender, SampleEventArgs e)
+        {
+            Console.WriteLine("e.Text:" + e.Text);
+        }
+
+        public static void EventDemo1()
         {
             ExampleMethod(p2: "");
             Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -186,29 +211,28 @@ namespace ConApp
             publisher.SampleEvent += publisher_SampleEvent;
         }
 
-        private static int WriteLetter(string letter)
+        public static void EventDemo2()
         {
-            Console.Write(letter + " ");
-            return 1;
-        }
+            var dealer = new CarDealer();
 
-        private static void ExampleMethod(int a, int b, int c)
-        {
-        }
+            var c1 = new Consumer("Consumer1");
 
-        public static void ExampleMethod(string p1 = null, object p2 = null)
-        {
-            Console.WriteLine(@"ExampleMethod: p2 is object");
-        }
+            dealer.NewCarInfo += c1.NewCarIsHere;
+            dealer.NewCar("Mercedes");
 
-        public static void ExampleMethod(string p2 = null, object p1 = null, params int[] p3)
-        {
-            Console.WriteLine(@"ExampleMethod: p2 is string");
-        }
+            Console.WriteLine("\r\n");
 
-        private static void publisher_SampleEvent(object sender, SampleEventArgs e)
-        {
-            Console.WriteLine("e.Text:" + e.Text);
+            var c2 = new Consumer("Consumer2");
+
+            dealer.NewCarInfo += c2.NewCarIsHere;
+            dealer.NewCar("Ferrari");
+
+            Console.WriteLine("\r\n");
+
+            dealer.NewCarInfo -= c2.NewCarIsHere;
+            dealer.NewCar("Red Bull Racing");
+
+            System.Console.ReadKey();
         }
 
         #endregion 03-EventDemo
@@ -2517,5 +2541,42 @@ namespace ConApp
         }
 
         #endregion ManualResetEventSlimDemo
+    }
+
+    public class CarInfoEventArgs : EventArgs
+    {
+        public CarInfoEventArgs(string car)
+        {
+            Car = car;
+        }
+
+        public string Car { get; }
+    }
+
+    public class CarDealer
+    {
+        public event EventHandler<CarInfoEventArgs> NewCarInfo;
+
+        public void NewCar(string car)
+        {
+            Console.WriteLine($"CarDealer, new car {car}");
+
+            NewCarInfo?.Invoke(this, new CarInfoEventArgs(car));
+        }
+    }
+
+    public class Consumer
+    {
+        private string _name;
+
+        public Consumer(string name)
+        {
+            _name = name;
+        }
+
+        public void NewCarIsHere(object sender, CarInfoEventArgs e)
+        {
+            Console.WriteLine($"{_name}: car {e.Car} is new");
+        }
     }
 }
