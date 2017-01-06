@@ -28,6 +28,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
+using System.Collections.ObjectModel;
 
 namespace ConApp
 {
@@ -39,9 +42,9 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            DynamicDirectoryExample.Main20();
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
             //Console.WriteLine(name);
+            RunPowerShellCmd();
 
             Console.ReadKey();
         }
@@ -2541,6 +2544,43 @@ namespace ConApp
         }
 
         #endregion ManualResetEventSlimDemo
+
+        public static void RunPowerShellCmd()
+        {
+            /*
+             using System.Management.Automation;
+             using System.Management.Automation.Runspaces;
+             */
+            // code from 1-code.codeprojet.com
+            // Create a RunSpace to host the Powershell script enviroment 
+            // using RunspaceFactory.CreateRunSpace
+            Runspace runSpace = RunspaceFactory.CreateRunspace();
+            runSpace.Open();
+
+            // Create a Pipeline to host commands to be executed using 
+            // Runspace.CreatePipeline
+            Pipeline pipeLine = runSpace.CreatePipeline();
+
+            // Create a Command object by passing the command to the constructor
+            Command getProcessCStarted = new Command("Get-Process");
+
+            // Add parameters to the Command. 
+            getProcessCStarted.Parameters.Add("name", "C*");
+
+            // Add the commands to the Pipeline
+            pipeLine.Commands.Add(getProcessCStarted);
+
+            // Run all commands in the current pipeline by calling Pipeline.Invoke. 
+            // It returns a System.Collections.ObjectModel.Collection object. 
+            // In this example, the executed script is "Get-Process -name C*".
+            Collection<PSObject> cNameProcesses = pipeLine.Invoke();
+
+            foreach (PSObject psObject in cNameProcesses)
+            {
+                Process process = psObject.BaseObject as Process;
+                Console.WriteLine("Process Name: {0}", process.ProcessName);
+            }
+        }
     }
 
     public class CarInfoEventArgs : EventArgs
