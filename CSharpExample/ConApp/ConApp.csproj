@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Calculator.cs" />
     <Compile Include="Class\CitiesListResponse.cs" />
     <Compile Include="Class\City.cs" />
     <Compile Include="Class\ComplainModel.cs" />
@@ -155,6 +156,7 @@
     <EmbeddedResource Include="Resource\XML.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Class\Calculator.py" />
     <Content Include="Data\TestDbSQL.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

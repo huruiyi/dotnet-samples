@@ -2063,16 +2063,7 @@ namespace ConApp
             }
         }
 
-        public static void DynamicDemo()
-        {
-            dynamic d = new DynamicClass();
-            d.X = 123;
-            d.Y = "123";
-            //d.Z = 123.456; 未包含Z的定义
-            Console.WriteLine(d.Return(123));
-            Console.WriteLine(d.Return("123"));
-            Console.WriteLine(d.Return(123.456));
-        }
+      
 
         [DllImport("msi.dll", SetLastError = true)]
         private static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);
@@ -2581,6 +2572,50 @@ namespace ConApp
                 Console.WriteLine("Process Name: {0}", process.ProcessName);
             }
         }
+
+        #region Demo
+        public static void DynamicDemo0()
+        {
+            dynamic d = new DynamicClass();
+            d.X = 123;
+            d.Y = "123";
+            //d.Z = 123.456; 未包含Z的定义
+            Console.WriteLine(d.Return(123));
+            Console.WriteLine(d.Return("123"));
+            Console.WriteLine(d.Return(123.456));
+        }
+        static void DynamicDemo1()
+        {
+            dynamic calc = Calculator.GetCalculator();
+            int r = calc.Add(2, 3);
+            Console.WriteLine(r);
+        }
+        static void StaticDemo()
+        {
+            var calc = new Calculator();
+            int r = calc.Add(2, 3);
+            Console.WriteLine(r);
+        }
+
+        static void IronPython()
+        {
+            // http://ironpython.codeplex.com
+           // var engine = Python.CreateEngine();
+           // dynamic scope = engine.ImportModule("Calculator");
+
+          //  var calc = scope.GetCalculator();
+           // int r = calc.Add(2, 3);
+           // Console.WriteLine(r);
+        } 
+
+        static void ClassDemo()
+        {
+            StaticDemo();
+            DynamicDemo0();
+            DynamicDemo1();
+            IronPython();
+        }
+        #endregion
     }
 
     public class CarInfoEventArgs : EventArgs
