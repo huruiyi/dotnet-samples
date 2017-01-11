@@ -213,6 +213,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatDemo", "CSharpExample\N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService", "CSharpExample\NetworkingCommunication\WindowsService\WindowsService.csproj", "{8F6AB101-860F-4201-B90A-06F7CE29B490}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CPP", "CPP", "{AB12498E-6AF2-4EC8-96AC-3D94BCF1AE5B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chapter 2", "CSharpExample\CPPCSharp\CPP\Chapter 2\Chapter 2.vcxproj", "{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chapter 3", "CSharpExample\CPPCSharp\CPP\Chapter 3\Chapter 3.vcxproj", "{12448D0E-27F3-4499-93C9-9BE299CFE08B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1501,6 +1507,34 @@ Global
 		{8F6AB101-860F-4201-B90A-06F7CE29B490}.Release|x64.Build.0 = Release|Any CPU
 		{8F6AB101-860F-4201-B90A-06F7CE29B490}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F6AB101-860F-4201-B90A-06F7CE29B490}.Release|x86.Build.0 = Release|Any CPU
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|x64.ActiveCfg = Debug|x64
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|x64.Build.0 = Debug|x64
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|x86.ActiveCfg = Debug|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Debug|x86.Build.0 = Debug|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|Any CPU.ActiveCfg = Release|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|x64.ActiveCfg = Release|x64
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|x64.Build.0 = Release|x64
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|x86.ActiveCfg = Release|Win32
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8}.Release|x86.Build.0 = Release|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|x64.ActiveCfg = Debug|x64
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|x64.Build.0 = Debug|x64
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|x86.ActiveCfg = Debug|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Debug|x86.Build.0 = Debug|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|Any CPU.ActiveCfg = Release|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|x64.ActiveCfg = Release|x64
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|x64.Build.0 = Release|x64
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|x86.ActiveCfg = Release|Win32
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1594,6 +1628,9 @@ Global
 		{F20C131F-2385-4E2B-917C-CD063FC47DBE} = {7F448831-5E59-47B1-920A-8D2FF954502F}
 		{9F0C370B-A537-4F7B-9EFC-2DE4376FE31F} = {B9A5DFF7-423C-437A-9B3C-95C09A5A9B1A}
 		{8F6AB101-860F-4201-B90A-06F7CE29B490} = {B9A5DFF7-423C-437A-9B3C-95C09A5A9B1A}
+		{AB12498E-6AF2-4EC8-96AC-3D94BCF1AE5B} = {C4555BA2-DD75-4C05-87C1-CD26B19CA43F}
+		{41C8234F-6D6F-46BA-B527-0E5F1A1DB2C8} = {AB12498E-6AF2-4EC8-96AC-3D94BCF1AE5B}
+		{12448D0E-27F3-4499-93C9-9BE299CFE08B} = {AB12498E-6AF2-4EC8-96AC-3D94BCF1AE5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
