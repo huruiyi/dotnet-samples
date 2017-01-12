@@ -110,22 +110,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 6\and.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\cctypes.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\cinfish.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\cingolf.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\condit.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\enum.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\if.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\ifelse.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\ifelseif.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\jump.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\more_and.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\not.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\or.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\outfile.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\sumafile.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 6\switch.cpp" />
+    <ClInclude Include="fun.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 6\01and.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\02cctypes.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\03cinfish.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\04cingolf.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\05condit.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\06enum.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\07if.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\08ifelse.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\09ifelseif.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\10jump.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\11more_and.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\12not.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\13or.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\14outfile.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\15sumafile.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 6\16switch.cpp" />
+    <ClCompile Include="00.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

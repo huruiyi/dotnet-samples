@@ -337,6 +337,7 @@ namespace MVC.Sample.Controllers
                     }
                     catch (Exception ex)
                     {
+                        System.Diagnostics.Debug.Write(ex.Message);
                         uploadResult.Add(imageData.FileName, false);
                     }
                 }

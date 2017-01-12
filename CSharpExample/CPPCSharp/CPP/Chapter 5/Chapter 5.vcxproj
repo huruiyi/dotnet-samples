@@ -18,6 +18,33 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 5\01bigstep.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\02block.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\03compstr1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\04compstr2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\05dowhile.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\06equal.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\07express.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\08forloop.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\09formore.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\10forstr1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\11forstr2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\12nested.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\13nestedcl.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\14num_test.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\15plus_one.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\16textin1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\17textin2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\18textin3.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\19textin4.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\20waiting.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 5\21while.cpp" />
+    <ClCompile Include="00.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fun.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C9D1A138-6E16-4A6C-90AD-D4DEC0DD63E4}</ProjectGuid>
     <RootNamespace>Chapter5</RootNamespace>
@@ -109,29 +136,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 5\bigstep.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\block.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\compstr1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\compstr2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\dowhile.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\equal.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\express.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\forloop.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\formore.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\forstr1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\forstr2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\nested.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\nestedcl.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\num_test.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\plus_one.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\textin1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\textin2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\textin3.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\textin4.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\waiting.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 5\while.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

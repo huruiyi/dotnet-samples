@@ -110,30 +110,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 4\addpntrs.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\address.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\arraynew.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\arrayone.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\arrstruct.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\assgn_st.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\choices.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\delete.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\init_ptr.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\instr1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\instr2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\instr3.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\mixtypes.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\newstrct.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\numstr.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\pointer.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\ptrstr.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\strings.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\strtype1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\strtype2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\strtype3.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\strtype4.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\structur.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 4\use_new.cpp" />
+    <ClInclude Include="fun.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 4\01addpntrs.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\02address.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\03arraynew.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\04arrayone.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\05arrstruct.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\06assgn_st.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\07choices.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\08delete.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\09init_ptr.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\10instr1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\11instr2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\12instr3.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\13mixtypes.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\14newstrct.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\15numstr.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\16pointer.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\17ptrstr.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\18strings.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\19strtype1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\20strtype2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\21strtype3.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\22strtype4.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\23structur.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 4\24use_new.cpp" />
+    <ClCompile Include="00.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

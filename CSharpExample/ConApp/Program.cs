@@ -2270,7 +2270,7 @@ namespace ConApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine("已开启的端口");
+                Console.WriteLine("已开启的端口:"+ex.Message);
             }
         }
 
