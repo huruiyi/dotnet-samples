@@ -1199,6 +1199,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\json\c.js" />
+    <Content Include="Scripts\json\Collapsed.gif" />
+    <Content Include="Scripts\json\demo.JPG" />
+    <Content Include="Scripts\json\Expanded.gif" />
+    <Content Include="Scripts\json\index.htm" />
+    <Content Include="Scripts\json\m.js" />
+    <Content Include="Scripts\json\s.css" />
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
@@ -1487,6 +1494,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\ToolsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
     <Compile Include="Global.asax.cs">
@@ -1550,6 +1558,8 @@
     <Content Include="Views\Movies\Edit.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Home\JsonWebTokenDemo.cshtml" />
+    <Content Include="Views\Tools\Index.cshtml" />
+    <Content Include="Views\Tools\Json.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
