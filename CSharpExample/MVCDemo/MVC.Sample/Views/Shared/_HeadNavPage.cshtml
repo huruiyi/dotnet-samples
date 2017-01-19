@@ -10,10 +10,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Panel", "about", "home")</li>
-                <li>@Html.ActionLink("Host", "hostinfo", "home")</li>
+                <li>
+                    @Html.ActionLink("Panel", "about", "home")
+                </li>
+                <li>
+                    @Html.ActionLink("Host", "hostinfo", "home")
+                </li>
                 <li>
                     @Html.ActionLink("Ueditor", "ueditor", "home")
+                </li>
+                <li>
+                    @Html.ActionLink("Tools", "tab", "tools")
                 </li>
                 <li role="presentation" class="dropdown">
                     <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#jsontab" role="tab" data-toggle="tab" id="">Json</a>
+    </li>
+    <li role="presentation">
+        <a href="#profile" role="tab" data-toggle="tab">Profile</a>
+    </li>
+    <li role="presentation">
+        <a href="#messages" role="tab" data-toggle="tab">Messages</a>
+    </li>
+    <li role="presentation">
+        <a href="#settings" role="tab" data-toggle="tab">Settings</a>
+    </li>
+</ul>
+
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsontab">
+        @Html.Action("Json")
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">b...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">c...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">d...</div>
+</div>
+
