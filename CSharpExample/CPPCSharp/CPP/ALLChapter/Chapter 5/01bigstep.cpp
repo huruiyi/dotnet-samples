@@ -1,6 +1,6 @@
 // bigstep.cpp -- count as directed
 #include <iostream>
-int main01()
+int main()
 {
 	using std::cout;    // a using declaration
     using std::cin;

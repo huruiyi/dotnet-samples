@@ -2,7 +2,7 @@
 #include <iostream>
 #include "coordin.h" // structure templates, function prototypes
 using namespace std;
-int main()
+int main03()
 {
     rect rplace;
     polar pplace;

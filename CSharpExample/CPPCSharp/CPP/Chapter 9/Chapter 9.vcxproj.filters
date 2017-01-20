@@ -15,49 +15,49 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 9\autoscp.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\autoscp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\external.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\external.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\file1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\file1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\file2.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\file2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\namesp.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\namesp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\newplace.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\newplace.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\static.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\static.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\support.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\support.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\twofile1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\twofile1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\twofile2.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\twofile2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 9\usenmsp.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 9\usenmsp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 9\coordin.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 9\coordin.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 9\namesp.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 9\namesp.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 9\newer.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 9\newer.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

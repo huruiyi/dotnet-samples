@@ -117,10 +117,6 @@
     <ClCompile Include="..\ALLChapter\Chapter 2\05ourfunc.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 2\06sqrt.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 2\07test.cpp" />
-    <ClCompile Include="00.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="fun.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

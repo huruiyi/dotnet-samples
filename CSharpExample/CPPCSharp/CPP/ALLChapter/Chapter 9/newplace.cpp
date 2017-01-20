@@ -4,7 +4,7 @@
 const int BUF = 512;
 const int N = 5;
 char buffer[BUF];      // chunk of memory
-int main()
+int main04()
 {
     using namespace std;
 

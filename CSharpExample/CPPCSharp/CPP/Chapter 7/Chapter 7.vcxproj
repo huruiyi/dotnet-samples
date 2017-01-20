@@ -18,6 +18,28 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 7\01arfupt.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\02arfupt1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\03arrfun1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\04arrfun2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\05arrfun3.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\06arrfun4.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\07arrobj.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\08calling.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\09fun_ptr.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\10lotto.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\11protos.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\12recur.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\13ruler.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\14strctptr.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\15strgback.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\16strgfun.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\17structfun.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\18topfive.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\19travel.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 7\20twoarg.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8936EAFB-3F39-43F6-945F-A6D8AA9B30B1}</ProjectGuid>
     <RootNamespace>Chapter7</RootNamespace>
@@ -109,28 +131,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arfupt.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\arfupt1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun3.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun4.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrobj.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\calling.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\fun_ptr.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\lotto.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\protos.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\recur.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\ruler.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\strctptr.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\strgback.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\strgfun.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\structfun.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\topfive.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\travel.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 7\twoarg.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

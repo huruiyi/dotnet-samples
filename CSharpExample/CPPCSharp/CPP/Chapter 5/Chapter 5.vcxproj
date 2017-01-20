@@ -40,10 +40,6 @@
     <ClCompile Include="..\ALLChapter\Chapter 5\19textin4.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 5\20waiting.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 5\21while.cpp" />
-    <ClCompile Include="00.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="fun.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C9D1A138-6E16-4A6C-90AD-D4DEC0DD63E4}</ProjectGuid>

@@ -15,55 +15,55 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 8\arrtemp.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\01arrtemp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\choices.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\02choices.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\cubes.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\03cubes.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\filefunct.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\04filefunct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\firstref.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\05firstref.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\funtemp.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\06funtemp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\inline.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\07inline.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\left.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\08left.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\leftover.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\09leftover.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\secref.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\10secref.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\strc_ref.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\11strc_ref.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\strquote.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\12strquote.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\strtref.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\13strtref.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\swaps.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\14swaps.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\tempover.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\15tempover.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\twoswap.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\16twoswap.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 8\twotemps.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 8\17twotemps.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

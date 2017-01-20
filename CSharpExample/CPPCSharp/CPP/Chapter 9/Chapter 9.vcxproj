@@ -18,6 +18,24 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 9\autoscp.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\external.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\file1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\file2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\namesp.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\newplace.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\static.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\support.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\twofile1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\twofile2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 9\usenmsp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ALLChapter\Chapter 9\coordin.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 9\namesp.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 9\newer.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F10A03E3-FB41-4FEB-A6E4-6BB3016A1630}</ProjectGuid>
     <RootNamespace>Chapter9</RootNamespace>
@@ -109,24 +127,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 9\autoscp.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\external.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\file1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\file2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\namesp.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\newplace.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\static.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\support.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\twofile1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\twofile2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 9\usenmsp.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 9\coordin.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 9\namesp.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 9\newer.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

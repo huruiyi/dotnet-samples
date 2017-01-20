@@ -110,9 +110,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="fun.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\ALLChapter\Chapter 4\01addpntrs.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 4\02address.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 4\03arraynew.cpp" />
@@ -137,7 +134,6 @@
     <ClCompile Include="..\ALLChapter\Chapter 4\22strtype4.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 4\23structur.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 4\24use_new.cpp" />
-    <ClCompile Include="00.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

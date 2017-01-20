@@ -6,7 +6,7 @@ const int ArSize = 10;
 // function prototype
 void strcount(const char * str);
 
-int main()
+int main05()
 {
     using namespace std;
     char input[ArSize];

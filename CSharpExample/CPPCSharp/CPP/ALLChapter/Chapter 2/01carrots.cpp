@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-int main01()
+int main()
 {
     using namespace std;
     

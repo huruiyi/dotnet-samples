@@ -6,45 +6,54 @@
     <h3 id="HeaderSubTitle">JSON格式化及高亮:</h3>
     <textarea id="RawJson" class="form-control" style="height:300px;"></textarea>
 </div>
-<div id="ControlsRow" class="panel form">
-    <input class="btn btn-default" type="Button" value="格式化" onclick="Process()" />
-    <span id="TabSizeHolder">
-        缩进量
-        <select id="TabSize" onchange="TabSizeChanged()" class="form-control">
-            <option value="1">1</option>
-            <option value="2" selected="selected">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-    </span>
-    <label for="QuoteKeys">
-        <input type="checkbox" id="QuoteKeys" onclick="QuoteKeysClicked()" checked="checked" />
-        引号
-    </label>&nbsp;
-    <a href="javascript:void(0);" onclick="SelectAllClicked()">全选</a>
-    &nbsp;
-    <span id="CollapsibleViewHolder">
-        <label for="CollapsibleView">
-            <input type="checkbox" id="CollapsibleView" onclick="CollapsibleViewClicked()" checked="checked" />
-            显示控制
-        </label>
-    </span>
-    <span id="CollapsibleViewDetail">
-        <a href="javascript:void(0);" onclick="ExpandAllClicked()">展开</a>
-        <a href="javascript:void(0);" onclick="CollapseAllClicked()">叠起</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(3)">2级</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(4)">3级</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(5)">4级</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(6)">5级</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(7)">6级</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(8)">7级</a>
-        <a href="javascript:void(0);" onclick="CollapseLevel(9)">8级</a>
-    </span>
+<div id="ControlsRow">
+    <table class="table table-bordered text-center">
+        <tr>
+            <td>
+                <input class="btn btn-default" type="Button" value="格式化" onclick="Process()" />
+            </td>
+            <td>
+                <select id="TabSize" onchange="TabSizeChanged()" class="form-control">
+                    <option value="0">缩进量</option>
+                    <option value="1">1</option>
+                    <option value="2" selected="selected">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </td>
+            <td>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="QuoteKeys" onclick="QuoteKeysClicked()" checked="checked">引号
+                    </label>
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-default"  onclick="SelectAllClicked()">复制结果</button>
+            </td>
+            <td>
+                <label for="CollapsibleView">
+                    <input type="checkbox" id="CollapsibleView" onclick="CollapsibleViewClicked()" checked="checked" />
+                    显示控制
+                </label>
+                <div class="btn-group" id="CollapsibleViewDetail">
+                    <button type="button" class="btn btn-default" onclick="ExpandAllClicked()">展开</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseAllClicked()">叠起</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(3)">2级</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(4)">3级</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(5)">4级</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(6)">5级</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(7)">6级</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(8)">7级</button>
+                    <button type="button" class="btn btn-default" onclick="CollapseLevel(9)">8级</button>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <div id="Canvas" class="Canvas">
-
 </div>
 
 <script type="text/javascript" src="@Url.Content("~/Scripts/json/c.js")"></script>

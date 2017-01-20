@@ -261,7 +261,6 @@ namespace MVC.Sample.Controllers
 
                 //Load the datatable into the sheet, starting from cell A1. Print the column names on row 1
                 ws.Cells["A1"].LoadFromDataTable(tbl, true);
-
                 //Format the header for column 1-3
                 using (ExcelRange rng = ws.Cells["A1:C1"])
                 {

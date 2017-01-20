@@ -15,11 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fun.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\ALLChapter\Chapter 4\01addpntrs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -90,9 +85,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\ALLChapter\Chapter 4\24use_new.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="00.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

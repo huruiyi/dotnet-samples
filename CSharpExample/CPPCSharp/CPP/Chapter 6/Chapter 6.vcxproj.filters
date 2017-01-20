@@ -15,11 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fun.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\ALLChapter\Chapter 6\01and.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -66,9 +61,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\ALLChapter\Chapter 6\16switch.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="00.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

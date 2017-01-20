@@ -8,7 +8,7 @@ double warming = 0.3;       // warming defined
 void update(double dt);
 void local();
 
-int main()                  // uses global variable
+int main02()                  // uses global variable
 {
     using namespace std;
     cout << "Global warming is " << warming << " degrees.\n";

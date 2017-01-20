@@ -78,13 +78,5 @@
     <ClCompile Include="..\ALLChapter\Chapter 5\21while.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="00.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="fun.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

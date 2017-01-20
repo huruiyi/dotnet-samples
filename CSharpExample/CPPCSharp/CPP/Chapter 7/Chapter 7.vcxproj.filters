@@ -15,64 +15,64 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arfupt.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\01arfupt.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arfupt1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\02arfupt1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\03arrfun1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun2.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\04arrfun2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun3.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\05arrfun3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrfun4.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\06arrfun4.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\arrobj.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\07arrobj.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\calling.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\08calling.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\fun_ptr.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\09fun_ptr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\lotto.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\10lotto.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\protos.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\11protos.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\recur.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\12recur.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\ruler.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\13ruler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\strctptr.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\14strctptr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\strgback.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\15strgback.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\strgfun.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\16strgfun.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\structfun.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\17structfun.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\topfive.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\18topfive.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\travel.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\19travel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 7\twoarg.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 7\20twoarg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

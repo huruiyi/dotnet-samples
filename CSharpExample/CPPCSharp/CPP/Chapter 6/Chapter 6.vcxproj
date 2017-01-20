@@ -110,9 +110,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="fun.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\ALLChapter\Chapter 6\01and.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 6\02cctypes.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 6\03cinfish.cpp" />
@@ -129,7 +126,6 @@
     <ClCompile Include="..\ALLChapter\Chapter 6\14outfile.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 6\15sumafile.cpp" />
     <ClCompile Include="..\ALLChapter\Chapter 6\16switch.cpp" />
-    <ClCompile Include="00.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
