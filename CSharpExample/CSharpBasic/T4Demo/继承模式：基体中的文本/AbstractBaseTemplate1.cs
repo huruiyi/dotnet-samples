@@ -15,7 +15,7 @@ namespace T4Demo.继承模式_基体中的文本
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
+    #line 1 "D:\code\code\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AbstractBaseTemplate1 : AbstractBaseTemplate1Base
     {
@@ -27,14 +27,14 @@ namespace T4Demo.继承模式_基体中的文本
         {
             this.Write("\r\nHere is the description for this derived template:\r\n  ");
             
-            #line 4 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
+            #line 4 "D:\code\code\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.Description));
             
             #line default
             #line hidden
             this.Write("\r\n\r\nHere is the fragment specific to this derived template:\r\n");
             
-            #line 7 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
+            #line 7 "D:\code\code\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
  
   this.PushIndent("  ");
   SpecificFragment(42); 
@@ -47,7 +47,7 @@ namespace T4Demo.继承模式_基体中的文本
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 13 "E:\Workplace\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
+        #line 13 "D:\code\code\CSharpExample\CSharpExample\CSharpBasic\T4Demo\继承模式：基体中的文本\AbstractBaseTemplate1.tt"
  
   // State set by derived class before calling TextTransform:
   protected string Description = "";
