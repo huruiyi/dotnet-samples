@@ -15,70 +15,70 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime2.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime3.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\randwalk.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\randwalk.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\stone.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\stone.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\stone1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\stone1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\stonewt.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\stonewt.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\stonewt1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\stonewt1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime0.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime0.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime2.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime3.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 11\vect.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 11\vect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime0.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime0.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime1.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime1.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime2.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime2.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime3.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime3.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 11\stonewt.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\stonewt.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 11\stonewt1.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\stonewt1.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 11\vect.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 11\vect.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1621,7 +1621,8 @@ namespace ConApp
 
         public static void XmlSerializerDemo()
         {
-            RequestPlatform model = new RequestPlatform
+            //XmlMapping
+            XMLPlatformModel model = new XMLPlatformModel
             {
                 CheckCode = "180014190010",
                 Token = "H29G3-MZTKQ535-D7T95OAK-1PKOEV48",
@@ -1633,7 +1634,7 @@ namespace ConApp
 
             StringBuilder sb = new StringBuilder();
             StringWriter tw = new StringWriter(sb);
-            XmlSerializer sz = new XmlSerializer(typeof(RequestPlatform));
+            XmlSerializer sz = new XmlSerializer(typeof(XMLPlatformModel));
             sz.Serialize(tw, model);
             tw.Close();
             Console.WriteLine(sb.ToString());

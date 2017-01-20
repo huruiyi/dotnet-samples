@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 12\bank.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\placenew1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\placenew2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\queue.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\sayings1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\sayings2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\string1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\strngbad.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 12\vegnews.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ALLChapter\Chapter 12\queue.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 12\string1.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 12\strngbad.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{395947F9-4F1A-41B0-8D3C-B8B749937E1D}</ProjectGuid>
     <RootNamespace>Chapter12</RootNamespace>
@@ -109,22 +125,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 12\bank.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\placenew1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\placenew2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\queue.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\sayings1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\sayings2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\string1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\strngbad.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 12\vegnews.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 12\queue.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 12\string1.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 12\strngbad.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

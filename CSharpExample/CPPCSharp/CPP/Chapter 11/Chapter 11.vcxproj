@@ -18,6 +18,31 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\mytime3.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\randwalk.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\stone.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\stone1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\stonewt.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\stonewt1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime0.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime2.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\usetime3.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 11\vect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime0.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime1.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime2.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 11\mytime3.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 11\stonewt.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 11\stonewt1.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 11\vect.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE83E9A8-A327-4DFB-A3F3-B7357BFB11B8}</ProjectGuid>
     <RootNamespace>Chapter11</RootNamespace>
@@ -109,31 +134,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\mytime3.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\randwalk.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\stone.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\stone1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\stonewt.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\stonewt1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime0.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime2.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\usetime3.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 11\vect.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime0.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime1.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime2.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 11\mytime3.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 11\stonewt.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 11\stonewt1.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 11\vect.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

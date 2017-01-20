@@ -33,7 +33,7 @@ public class AsynchronousClient
     private static ManualResetEvent receiveDone = new ManualResetEvent(false);
 
     // The response from the remote device.
-    private static String response = String.Empty;
+    private static string response = string.Empty;
 
     private static void StartClient()
     {
@@ -147,7 +147,7 @@ public class AsynchronousClient
         }
     }
 
-    private static void Send(Socket client, String data)
+    private static void Send(Socket client, string data)
     {
         // Convert the string data to byte data using ASCII encoding.
         byte[] byteData = Encoding.ASCII.GetBytes(data);
@@ -177,7 +177,7 @@ public class AsynchronousClient
         }
     }
 
-    public static int Main(String[] args)
+    public static int Main(string[] args)
     {
         StartClient();
         return 0;

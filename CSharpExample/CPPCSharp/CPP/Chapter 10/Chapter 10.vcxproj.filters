@@ -15,52 +15,52 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stack.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stacker.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stacker.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock00.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock00.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock01.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock01.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock10.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock10.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock20.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock20.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stocks.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\stocks.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\temp20.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\temp20.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\usestok0.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\usestok0.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\usestok1.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\usestok1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\temp\Chapter 10\usestok2.cpp">
+    <ClCompile Include="..\ALLChapter\Chapter 10\usestok2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 10\stack.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 10\stack.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 10\stock00.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 10\stock00.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 10\stock10.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 10\stock10.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\temp\Chapter 10\stock20.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="..\ALLChapter\Chapter 10\stock20.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

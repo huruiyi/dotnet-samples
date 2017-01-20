@@ -18,6 +18,25 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ALLChapter\Chapter 10\stack.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\stacker.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock00.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock01.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock10.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\stock20.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\stocks.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\temp20.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\usestok0.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\usestok1.cpp" />
+    <ClCompile Include="..\ALLChapter\Chapter 10\usestok2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ALLChapter\Chapter 10\stack.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 10\stock00.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 10\stock10.h" />
+    <ClInclude Include="..\ALLChapter\Chapter 10\stock20.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5D40FCBD-ED66-4D3B-A3CD-782CB3D36359}</ProjectGuid>
     <RootNamespace>Chapter10</RootNamespace>
@@ -109,25 +128,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\temp\Chapter 10\stack.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\stacker.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock00.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock01.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock10.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\stock20.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\stocks.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\temp20.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\usestok0.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\usestok1.cpp" />
-    <ClCompile Include="..\..\..\temp\Chapter 10\usestok2.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\temp\Chapter 10\stack.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 10\stock00.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 10\stock10.h" />
-    <ClInclude Include="..\..\..\temp\Chapter 10\stock20.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
