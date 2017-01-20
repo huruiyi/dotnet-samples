@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConApp", "CSharpExample\ConApp\ConApp.csproj", "{999D9AFB-E920-4519-8519-EBF2A07888F5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutofacDemo", "AutofacDemo", "{38506985-E9E6-457C-ADF2-1078A02DDDA1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutofacDemoV1", "AutofacDemoV1", "{A5AE30B6-3369-4F75-A6D5-F90AD7F08235}"
@@ -211,6 +209,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatDemo", "CSharpExample\N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService", "CSharpExample\NetworkingCommunication\WindowsService\WindowsService.csproj", "{8F6AB101-860F-4201-B90A-06F7CE29B490}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConApp", "CSharpExample\CSharpBasic\ConApp\ConApp.csproj", "{999D9AFB-E920-4519-8519-EBF2A07888F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -223,22 +223,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x64.Build.0 = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x86.Build.0 = Debug|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x64.ActiveCfg = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x64.Build.0 = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x86.ActiveCfg = Release|Any CPU
-		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x86.Build.0 = Release|Any CPU
 		{323C4774-F577-46C8-BB6F-97EFB376FC0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{323C4774-F577-46C8-BB6F-97EFB376FC0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{323C4774-F577-46C8-BB6F-97EFB376FC0A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -1483,6 +1467,22 @@ Global
 		{8F6AB101-860F-4201-B90A-06F7CE29B490}.Release|x64.Build.0 = Release|Any CPU
 		{8F6AB101-860F-4201-B90A-06F7CE29B490}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F6AB101-860F-4201-B90A-06F7CE29B490}.Release|x86.Build.0 = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x64.Build.0 = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Debug|x86.Build.0 = Debug|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x64.ActiveCfg = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x64.Build.0 = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x86.ActiveCfg = Release|Any CPU
+		{999D9AFB-E920-4519-8519-EBF2A07888F5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1575,6 +1575,7 @@ Global
 		{F20C131F-2385-4E2B-917C-CD063FC47DBE} = {7F448831-5E59-47B1-920A-8D2FF954502F}
 		{9F0C370B-A537-4F7B-9EFC-2DE4376FE31F} = {B9A5DFF7-423C-437A-9B3C-95C09A5A9B1A}
 		{8F6AB101-860F-4201-B90A-06F7CE29B490} = {B9A5DFF7-423C-437A-9B3C-95C09A5A9B1A}
+		{999D9AFB-E920-4519-8519-EBF2A07888F5} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35

@@ -121,7 +121,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Net.Tools\Net.Tools.csproj">
+    <ProjectReference Include="..\..\Net.Tools\Net.Tools.csproj">
       <Project>{5aea4be4-2533-423f-b983-f3cc238e87e6}</Project>
       <Name>Net.Tools</Name>
     </ProjectReference>
