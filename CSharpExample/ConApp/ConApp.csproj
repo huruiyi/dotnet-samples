@@ -74,46 +74,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\Calculator.cs" />
-    <Compile Include="Class\CitiesListResponse.cs" />
-    <Compile Include="Class\City.cs" />
-    <Compile Include="Class\ComplainModel.cs" />
-    <Compile Include="Class\DynamicClass.cs" />
-    <Compile Include="Class\Extension.cs" />
-    <Compile Include="Class\MathDemo.cs" />
-    <Compile Include="Class\MyCollection.cs" />
-    <Compile Include="Class\MyCollection2.cs" />
-    <Compile Include="Class\MyEnumerator.cs" />
-    <Compile Include="Class\Order.cs" />
-    <Compile Include="Class\Person.cs" />
-    <Compile Include="Class\PointRef.cs" />
-    <Compile Include="Class\PointDemo.cs" />
-    <Compile Include="Class\Publisher.cs" />
-    <Compile Include="Class\ReflectionClass1.cs" />
-    <Compile Include="Class\ReflectionClass2.cs" />
-    <Compile Include="Class\ReflectionClass3.cs" />
-    <Compile Include="Class\ReflectionClass4.cs" />
-    <Compile Include="Class\ReflectionClass5.cs" />
-    <Compile Include="Class\SampleEventArgs.cs" />
-    <Compile Include="Class\MyListExt.cs" />
-    <Compile Include="Class\Season.cs" />
-    <Compile Include="Class\SocialTypeEnum.cs" />
-    <Compile Include="Class\Student.cs" />
-    <Compile Include="Class\ClassDemo.cs" />
-    <Compile Include="Class\Tom.cs" />
-    <Compile Include="Class\ValidateAgeAttribute.cs" />
-    <Compile Include="CodeFolder1\DynamicDirectoryExample.cs" />
+    <Compile Include="Model\Calculator.cs" />
+    <Compile Include="Model\CitiesListResponse.cs" />
+    <Compile Include="Model\XMLPlatformModel.cs" />
+    <Compile Include="Model\XMLRequestModel.cs" />
+    <Compile Include="Model\DynamicClass.cs" />
+    <Compile Include="Model\Extension.cs" />
+    <Compile Include="Model\MathDemo.cs" />
+    <Compile Include="Model\MyCollection1.cs" />
+    <Compile Include="Model\MyCollection2.cs" />
+    <Compile Include="Model\MyEnumerator.cs" />
+    <Compile Include="Model\MyThread.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\PointRef.cs" />
+    <Compile Include="Model\PointDemo.cs" />
+    <Compile Include="Model\Publisher.cs" />
+    <Compile Include="Model\ReflectionClass1.cs" />
+    <Compile Include="Model\ReflectionClass2.cs" />
+    <Compile Include="Model\ReflectionClass3.cs" />
+    <Compile Include="Model\ReflectionClass4.cs" />
+    <Compile Include="Model\ReflectionClass5.cs" />
+    <Compile Include="Model\SampleEventArgs.cs" />
+    <Compile Include="Model\MyListExt.cs" />
+    <Compile Include="Model\SocialTypeEnum.cs" />
+    <Compile Include="Model\ClassDemo.cs" />
+    <Compile Include="Model\ValidateAgeAttribute.cs" />
+    <Compile Include="OtherDemo\_9DynamicDirectoryExample.cs" />
+    <Compile Include="OtherDemo\_3AsyncDelegateDemo.cs" />
+    <Compile Include="OtherDemo\_4AsyncCallback.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeFolder1\_16AsynchronousOperationsDemo.cs" />
-    <Compile Include="CodeFolder1\_11AsynchronousOperations.cs" />
-    <Compile Include="CodeFolder1\_12Asynchronous_Delegates.cs" />
-    <Compile Include="CodeFolder1\_13AsyncDelegateDemo.cs" />
-    <Compile Include="CodeFolder1\_14AsyncCallback.cs" />
-    <Compile Include="CodeFolder1\_15IOOperate.cs" />
-    <Compile Include="CodeFolder1\_17匿名函数.cs" />
-    <Compile Include="CodeFolder1\_18Export_Import.cs" />
-    <Compile Include="CodeFolder1\_19DirectorySecurity.cs" />
+    <Compile Include="OtherDemo\_6AsynchronousOperationsDemo.cs" />
+    <Compile Include="OtherDemo\_1AsynchronousOperations.cs" />
+    <Compile Include="OtherDemo\_2Asynchronous_Delegates.cs" />
+    <Compile Include="OtherDemo\_5IOOperate.cs" />
+    <Compile Include="OtherDemo\_7Export_Import.cs" />
+    <Compile Include="OtherDemo\_8DirectorySecurity.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,7 +152,7 @@
     <EmbeddedResource Include="Resource\XML.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Class\Calculator.py" />
+    <Content Include="Model\Calculator.py" />
     <Content Include="Data\TestDbSQL.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

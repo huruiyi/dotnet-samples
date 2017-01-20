@@ -37,33 +37,33 @@ namespace DelegateDemo
         }
     }
 
-    internal class DelegateDemo4 : IDelegateDemo
+    public class DelegateDemo4 : IDelegateDemo
     {
-        internal delegate bool D1();
+        public delegate bool D1();
 
-        internal delegate bool D2(int i);
+        public delegate bool D2(int i);
 
-        internal delegate string Mul(int a);
+        public delegate string Mul(int a);
 
-        private D1 _del1;
-        private D2 _del2;
+        public D1 Del1;
+        public D2 Del2;
 
         public void TestMethod(int input)
         {
             int j = 0;
-            _del1 = () => { j = 10; return j > input; };
-            _del2 = x => x == j;
+            Del1 = () => { j = 10; return j > input; };
+            Del2 = x => x == j;
             Console.WriteLine("j = {0}", j);
-            bool boolResult = _del1();
+            bool boolResult = Del1();
             Console.WriteLine("j = {0}. b = {1}", j, boolResult);
         }
 
-        private static string MulMethod(int i)
+        public static string MulMethod(int i)
         {
             return "你输入的是:" + i;
         }
 
-        private static bool M1(int a)
+        public static bool M1(int a)
         {
             if (a >= 5)
             {
@@ -84,21 +84,13 @@ namespace DelegateDemo
             Mul mul0 = b => (string.Format("{0}的平方是{1}", b, b * b));
             // Mul mul0 = (int b) => (string.Format("{0}的平方是{1}", b, b * b));
             Console.WriteLine(mul0(8));
-            Console.WriteLine();
 
             Mul mul1 = a => ("你输入的是一个整数");
             //Mul mul1 =(int a) => ("你输入的是一个整数");
             Console.WriteLine(mul1(12));
-            Console.WriteLine();
 
             Mul mul2 = MulMethod;
             Console.WriteLine(mul2(12));
-            Console.WriteLine();
-
-            DelegateDemo4 test = new DelegateDemo4();
-            test.TestMethod(5);
-            bool result = test._del2(10);
-            Console.WriteLine(result);
 
             Func<int, bool> myFunc = x => x == 5;
             bool r = myFunc(4); // returns false of course
@@ -130,6 +122,16 @@ namespace DelegateDemo
 
             //=3
             List<int> intequal3 = Common.FilterListOfInt(ints, i => i == 3);
+
+            Func<int, bool> del = a => a > 2;
+
+            List<int> myIntLst = new List<int>() { 1, 2, 3, 4, 5, 6, 87 };
+
+            DelegateDemo4 test = new DelegateDemo4();
+            test.TestMethod(5);
+            var result0 = test.Del2(10);
+            var result1 = myIntLst.Where(del);
+            var result2 = myIntLst.Where(a => a > 2);
         }
     }
 }

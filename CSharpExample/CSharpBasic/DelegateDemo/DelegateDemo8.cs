@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace DelegateDemo
 {
@@ -26,6 +27,14 @@ namespace DelegateDemo
             return a * b;
         }
 
+        private static int AddStatic(int a, int b)
+        {
+            Console.WriteLine("AddStatic 执行了...、" + Thread.CurrentThread.ManagedThreadId + "\r\n");
+
+            Thread.Sleep(3000);
+
+            return a + b;
+        }
         public void Invoke()
         {
             DelMath del1 = new DelMath(Add);
@@ -43,6 +52,31 @@ namespace DelegateDemo
             Console.WriteLine(del3(12, 3));
             DelMath del4 = (a, b) => a + b;
             Console.WriteLine(del4(123, 456));
+
+
+            DelMath delLambda0 = delegate (int i, int i1) { return i + i1; };
+            delLambda0(3, 2);
+
+            DelMath delLambda1 = (i, i1) => { return i + i1; };
+            delLambda1(3, 2);
+
+            DelMath delLambda2 = (i, i1) => i + i1;
+            delLambda2(3, 2);
+
+            Console.WriteLine(" 主线程是：{0}", Thread.CurrentThread.ManagedThreadId);
+
+            DelMath myDel = new DelMath(AddStatic);
+
+            //myDel(1,3)
+            IAsyncResult delResult = myDel.BeginInvoke(3, 4, null, 2);
+
+            while (!delResult.IsCompleted)
+            {
+                //主线程干其他事
+            }
+            int addResult = myDel.EndInvoke(delResult);
+            Console.WriteLine("主线程获得结果是：{0}", addResult);
+
             myDelMath1 mdm = delegate (int a, int b, int c)
             {
                 return a + b + c;

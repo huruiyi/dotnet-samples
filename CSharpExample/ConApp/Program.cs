@@ -1,10 +1,10 @@
-﻿using ConApp.Class;
-using ConApp.CodeFolder1;
+﻿using ConApp.Model;
 using Microsoft.Web.Administration;
 using Net.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,11 +13,14 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Net;
 using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Policy;
@@ -28,10 +31,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using System.Collections.ObjectModel;
-using System.Reflection.Emit;
 
 namespace ConApp
 {
@@ -43,9 +42,8 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            ExpressionDemo();
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
-            //Console.WriteLine(name);
-            RunPowerShellCmd();
 
             Console.ReadKey();
         }
@@ -54,7 +52,7 @@ namespace ConApp
 
         public static void Cus_foreach()
         {
-            MyCollection myCol = new MyCollection();
+            MyCollection1 myCol = new MyCollection1();
             foreach (var a in myCol)
             {
                 Console.WriteLine(a);
@@ -87,14 +85,14 @@ namespace ConApp
 
         public static void EnumDemo01()
         {
-            Console.WriteLine($"Season.夏={Season.夏}");
-            Console.WriteLine($"(int)Season.夏={(int)Season.夏}");
+            Console.WriteLine($"SocialTypeEnum.Facebook={SocialTypeEnum.Facebook}");
+            Console.WriteLine($"(int)SocialTypeEnum.Facebook={(int)SocialTypeEnum.Facebook}");
 
-            const int b = (int)Season.春;
+            const int b = (int)SocialTypeEnum.Facebook;
             Console.WriteLine(b);
-            Console.WriteLine((Season)b);
+            Console.WriteLine((SocialTypeEnum)b);
 
-            const Season s = (Season)100;
+            const SocialTypeEnum s = (SocialTypeEnum)10;
             const int e = (int)s;
             Console.WriteLine(s);
             Console.WriteLine(e);
@@ -102,11 +100,11 @@ namespace ConApp
 
         public static void EnumDemo02_Parse()
         {
-            const string a = "夏";
+            const string a = "Twitter";
             try
             {
-                Season season = (Season)(Enum.Parse(typeof(Season), a));
-                Console.WriteLine(@"season=" + season);
+                SocialTypeEnum social = (SocialTypeEnum)(Enum.Parse(typeof(SocialTypeEnum), a));
+                Console.WriteLine(@"SocialTypeEnum=" + social);
             }
             catch
             {
@@ -116,27 +114,31 @@ namespace ConApp
 
         public static void EnumDemo3_Format()
         {
-            Season s = Season.冬;
-            Console.WriteLine($"d={Enum.Format(typeof(Season), s, "d")} x={Enum.Format(typeof(Season), s, "x")} g={Enum.Format(typeof(Season), s, "g")} f={Enum.Format(typeof(Season), s, "f")}");
-            const Season se = Season.夏 | Season.秋 | Season.冬;
+            SocialTypeEnum s = SocialTypeEnum.GooglePlus;
+            Console.WriteLine($@"
+                    d={Enum.Format(typeof(SocialTypeEnum), s, "d")}
+                    x={Enum.Format(typeof(SocialTypeEnum), s, "x")}
+                    g={Enum.Format(typeof(SocialTypeEnum), s, "g")}
+                    f={Enum.Format(typeof(SocialTypeEnum), s, "f")}");
+            const SocialTypeEnum se = SocialTypeEnum.Facebook | SocialTypeEnum.GooglePlus | SocialTypeEnum.Twitter;
             Console.WriteLine(se);
 
-            Console.WriteLine(Enum.GetName(typeof(Season), 4));
+            Console.WriteLine(Enum.GetName(typeof(SocialTypeEnum), 10));
         }
 
         public static void EnumDemo04_GetNames()
         {
-            Type season = typeof(Season);
-            foreach (string s in Enum.GetNames(season))
+            Type type = typeof(SocialTypeEnum);
+            foreach (string s in Enum.GetNames(type))
             {
-                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(season, Enum.Parse(season, s), "d"));
+                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(type, Enum.Parse(type, s), "d"));
             }
         }
 
         public static void EnumDemo05_GetValues()
         {
-            Type season = typeof(Season);
-            foreach (int i in Enum.GetValues(season))
+            Type type = typeof(SocialTypeEnum);
+            foreach (int i in Enum.GetValues(type))
             {
                 Console.WriteLine(i);
             }
@@ -210,7 +212,7 @@ namespace ConApp
             }
             Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
-            Class.Publisher publisher = new Class.Publisher();
+            Model.Publisher publisher = new Model.Publisher();
 
             publisher.SampleEvent += publisher_SampleEvent;
         }
@@ -570,9 +572,6 @@ namespace ConApp
 
         public static void EnumDemo()
         {
-            string idField = ((MemberExpression)((Expression<Func<City, int>>)(c => c.CityId)).Body).Member.Name;
-            string textField = ((MemberExpression)((Expression<Func<City, string>>)(c => c.CityName)).Body).Member.Name;
-
             for (int i = 0; i < 5; i++)
             {
                 var enumName = Enum.GetName(typeof(SocialTypeEnum), i);
@@ -664,17 +663,17 @@ namespace ConApp
             list.Add(hashtableItem1);
             list.Add(hashtableItem2);
 
-            Tom a = new Tom("小王", 20, '男', "篮球", 12345);
-            Tom b = new Tom("小李", 21, '女', "排球", 22345);
-            Tom c = new Tom("小胡", 22, '男', "足球", 32345);
+            Person a = new Person("小王", 20, '男', 12345);
+            Person b = new Person("小李", 21, '女', 22345);
+            Person c = new Person("小胡", 22, '男', 32345);
             ArrayList array = new ArrayList();
             array.Add(a);
             array.Add(b);
             array.Add(c);
-            foreach (Tom item in array)
+            foreach (Person item in array)
             {
-                Tom tom = (Tom)item;
-                Console.WriteLine(tom.Name + " " + tom.Age + " " + tom.Sex);
+                Person p = item;
+                Console.WriteLine(p.Name + " " + p.Age + " " + p.Sex);
             }
         }
 
@@ -2064,8 +2063,6 @@ namespace ConApp
             }
         }
 
-      
-
         [DllImport("msi.dll", SetLastError = true)]
         private static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);
 
@@ -2270,7 +2267,7 @@ namespace ConApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine("已开启的端口:"+ex.Message);
+                Console.WriteLine("已开启的端口:" + ex.Message);
             }
         }
 
@@ -2333,7 +2330,7 @@ namespace ConApp
 
         #region 应用程序域
 
-        public static void AppDomainDemo()
+        public static void AppDomainDemo1()
         {
             AppDomain.CurrentDomain.SetData("name", "Hello");
             string name = AppDomain.CurrentDomain.GetData("name").ToString();
@@ -2358,6 +2355,29 @@ namespace ConApp
             Console.WriteLine("Application Base Directory is: " + domain.BaseDirectory);
 
             AppDomain.Unload(domain);
+        }
+
+        public static void AppDomainDemo2()
+        {
+            // AppDomain.Unload(AppDomain.CurrentDomain);
+
+            if (AppDomain.CurrentDomain.IsDefaultAppDomain())
+            {
+                Console.WriteLine("hellp");
+            }
+
+            //我们自己写一个AppDomain
+            // 设置应用程序域
+            AppDomainSetup appDomainSetup = new AppDomainSetup();
+
+            //设置程序集不共享
+            appDomainSetup.LoaderOptimization = LoaderOptimization.SingleDomain;
+
+            // 主应用程序域创建 程序域
+            AppDomain appDomain = AppDomain.CreateDomain("MultThread", null, appDomainSetup);
+            // 程序域  执行exe
+            // 每个应用程序域  只能执行一个exe，但是可以加载多个 dll
+            appDomain.ExecuteAssembly("ConApp.exe");
         }
 
         #endregion 应用程序域
@@ -2544,26 +2564,26 @@ namespace ConApp
              using System.Management.Automation.Runspaces;
              */
             // code from 1-code.codeprojet.com
-            // Create a RunSpace to host the Powershell script enviroment 
+            // Create a RunSpace to host the Powershell script enviroment
             // using RunspaceFactory.CreateRunSpace
             Runspace runSpace = RunspaceFactory.CreateRunspace();
             runSpace.Open();
 
-            // Create a Pipeline to host commands to be executed using 
+            // Create a Pipeline to host commands to be executed using
             // Runspace.CreatePipeline
             Pipeline pipeLine = runSpace.CreatePipeline();
 
             // Create a Command object by passing the command to the constructor
             Command getProcessCStarted = new Command("Get-Process");
 
-            // Add parameters to the Command. 
+            // Add parameters to the Command.
             getProcessCStarted.Parameters.Add("name", "C*");
 
             // Add the commands to the Pipeline
             pipeLine.Commands.Add(getProcessCStarted);
 
-            // Run all commands in the current pipeline by calling Pipeline.Invoke. 
-            // It returns a System.Collections.ObjectModel.Collection object. 
+            // Run all commands in the current pipeline by calling Pipeline.Invoke.
+            // It returns a System.Collections.ObjectModel.Collection object.
             // In this example, the executed script is "Get-Process -name C*".
             Collection<PSObject> cNameProcesses = pipeLine.Invoke();
 
@@ -2575,6 +2595,7 @@ namespace ConApp
         }
 
         #region Demo
+
         public static void DynamicDemo0()
         {
             dynamic d = new DynamicClass();
@@ -2585,28 +2606,30 @@ namespace ConApp
             Console.WriteLine(d.Return("123"));
             Console.WriteLine(d.Return(123.456));
         }
-        static void DynamicDemo1()
+
+        private static void DynamicDemo1()
         {
             dynamic calc = Calculator.GetCalculator();
             int r = calc.Add(2, 3);
             Console.WriteLine(r);
         }
-        static void StaticDemo()
+
+        private static void StaticDemo()
         {
             var calc = new Calculator();
             int r = calc.Add(2, 3);
             Console.WriteLine(r);
         }
 
-        static void IronPython()
+        private static void IronPython()
         {
             // http://ironpython.codeplex.com
-           // var engine = Python.CreateEngine();
-           // dynamic scope = engine.ImportModule("Calculator");
+            // var engine = Python.CreateEngine();
+            // dynamic scope = engine.ImportModule("Calculator");
 
-          //  var calc = scope.GetCalculator();
-           // int r = calc.Add(2, 3);
-           // Console.WriteLine(r);
+            //  var calc = scope.GetCalculator();
+            // int r = calc.Add(2, 3);
+            // Console.WriteLine(r);
         }
 
         public void BulidMethod()
@@ -2646,7 +2669,6 @@ namespace ConApp
 
         public void BulidMethodRet()
         {
-
             //得到当前的应用程序域
             AppDomain appDm = AppDomain.CurrentDomain;
             //初始化AssemblyName的一个实例
@@ -2661,11 +2683,7 @@ namespace ConApp
             TypeBuilder tb = mb.DefineType("HelloEmit", TypeAttributes.Public | TypeAttributes.Class);
 
             //动态的为类里创建一个方法
-            MethodBuilder mdb = tb.DefineMethod(
-                "HelloWorldReturn",
-                MethodAttributes.Public,
-                typeof(string),
-                new Type[] { typeof(string), typeof(string) });
+            MethodBuilder mdb = tb.DefineMethod("HelloWorldReturn", MethodAttributes.Public, typeof(string), new Type[] { typeof(string), typeof(string) });
 
             //得到该方法的ILGenerator
             ILGenerator ilG = mdb.GetILGenerator();
@@ -2693,14 +2711,26 @@ namespace ConApp
             MethodInfo mdi = tp.GetMethod("HelloWorldReturn");
             mdi.Invoke(ob, new object[] { "Hello Lind", "OK" });
         }
-        static void ClassDemo()
+
+        private static void ClassDemo()
         {
             StaticDemo();
             DynamicDemo0();
             DynamicDemo1();
             IronPython();
         }
-        #endregion
+
+        #endregion Demo
+
+        #region ExpressionDemo
+
+        public static void ExpressionDemo()
+        {
+            string idField = ((MemberExpression)((Expression<Func<Person, int>>)(c => c.Age)).Body).Member.Name;
+            string textField = ((MemberExpression)((Expression<Func<Person, string>>)(c => c.Name)).Body).Member.Name;
+        }
+
+        #endregion ExpressionDemo
     }
 
     public class CarInfoEventArgs : EventArgs
