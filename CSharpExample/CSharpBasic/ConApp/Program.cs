@@ -1,5 +1,6 @@
 ﻿using ConApp.Model;
 using Microsoft.Web.Administration;
+using Microsoft.Win32;
 using Net.Tools;
 using System;
 using System.Collections;
@@ -10,6 +11,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -22,7 +25,9 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Security.AccessControl;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Security.Principal;
 using System.Text;
@@ -42,7 +47,7 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            ExpressionDemo();
+            ParallelTask();
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
 
             Console.ReadKey();
@@ -1017,6 +1022,25 @@ namespace ConApp
             Console.WriteLine("The size of Point is {0}.", sizeof(Point));
         }
 
+        public unsafe static void PointDemo()
+        {
+            int[] arry = null;
+            arry = new int[10];
+            fixed (int* pi = arry)
+            {
+                Console.WriteLine("array = 0x{0:x}", (int)pi);
+            }
+            int[] intArr = { 12, 13, 14, 15, 16 };
+            for (int i = 0; i < intArr.Length; i++)
+            {
+                Console.WriteLine("array = 0x{0:x}", intArr[i]);
+            }
+            fixed (int* p = intArr)
+            {
+                Console.WriteLine((int)p);
+            }
+        }
+
         /*
           由于涉及指针类型，因此 stackalloc 要求不安全上下文。 有关更多信息，请参见 不安全代码和指针（C# 编程指南）。
           stackalloc 类似于 C 运行库中的 _alloca。
@@ -1942,6 +1966,218 @@ namespace ConApp
 
         #endregion 控制台文本输出
 
+        #region Md5Token
+
+        #region GetMd5
+
+        public static string GetMd5(string input, string charset)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] data = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(input));
+            StringBuilder builder = new StringBuilder(32);
+            foreach (byte t in data)
+            {
+                builder.Append(t.ToString("x2"));
+            }
+            return builder.ToString();
+        }
+
+        #endregion GetMd5
+
+        #region GetTokenDemo
+
+        public static void Md5TokenDemo()
+        {
+            string timestamp = DateTime.Now.ToString();
+
+            DateTime stamp;
+            DateTime.TryParse(timestamp, out stamp);
+            StringBuilder securityKey = new StringBuilder();
+
+            securityKey.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("MM"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("dd"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
+
+            string key = GetMd5(securityKey.ToString(), "UTF-8");
+
+            Console.WriteLine(timestamp + "\t" + key);
+
+            bool falg = CheckTokenDemo(timestamp, key);
+
+            Console.WriteLine(falg ? "Success" : "Fail");
+        }
+
+        #endregion GetTokenDemo
+
+        #region CheckTokenDemo
+
+        public static bool CheckTokenDemo(string timestamp, string key)
+        {
+            if (string.IsNullOrEmpty(timestamp) || string.IsNullOrEmpty(key))
+            {
+                return false;
+            }
+
+            DateTime stamp;
+            try
+            {
+                stamp = DateTime.Parse(timestamp);
+            }
+            catch
+            {
+                return false;
+            }
+
+            TimeSpan timeSpan = new TimeSpan(0, 0, 8);
+            if ((DateTime.Now - stamp) <= timeSpan)
+            {
+                StringBuilder s = new StringBuilder();
+
+                s.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
+                s.Append(GetMd5(stamp.ToString("MM"), "UTF-8"));
+                s.Append(GetMd5(stamp.ToString("dd"), "UTF-8"));
+                s.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
+                s.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
+                s.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
+
+                if (key == GetMd5(s.ToString(), "UTF-8"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion CheckTokenDemo
+
+        #endregion Md5Token
+
+        #region ParallelTask
+
+        public static void ParallelTask()
+        {
+            Console.WriteLine("Start......");
+            Task.Factory.StartNew(delegate
+            {
+                M1();
+                M2();
+                M3();
+            });
+            Parallel.Invoke(new[] { new Action(M1), new Action(M2), new Action(M3) });
+            Console.WriteLine("End......");
+        }
+
+        public static void M1()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Thread.Sleep(1000);
+
+                Console.WriteLine("M1............");
+            }
+        }
+
+        public static void M2()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Thread.Sleep(1000);
+
+                Console.WriteLine("M2............");
+            }
+        }
+
+        public static void M3()
+        {
+            Thread.Sleep(1000);
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("M3............");
+            }
+        }
+
+        #endregion ParallelTask
+
+        #region 差集交集并集
+
+        public static void PrintIntList(IEnumerable<int> list)
+        {
+            foreach (int item in list)
+            {
+                Console.Write(item.ToString().PadLeft(2, '0') + "\t");
+            }
+            Console.WriteLine();
+        }
+
+        public static void PrintIntList(List<int> list1, List<int> list2)
+        {
+            Console.Write("list1:");
+            PrintIntList(list1);
+
+            Console.WriteLine();
+            PrintIntList(list1);
+            Console.WriteLine();
+        }
+
+        public static void ExceptIntersectUnion()
+        {
+            List<int> list1 = new List<int>();
+            list1.Add(10);
+            list1.Add(1);
+            list1.Add(4);
+            list1.Add(5);
+            list1.Add(8);
+            list1.Sort();
+
+            List<int> list2 = new List<int>();
+            list2.Add(1);
+            list2.Add(28);
+            list2.Add(4);
+            list2.Add(8);
+            list2.Add(18);
+            list2.Sort();
+
+            PrintIntList(list1, list2);
+            Console.WriteLine("+++++++++++++++++++差集+++++++++++++++++++");
+            IEnumerable<int> nList1 = list1.Except(list2);
+            Console.WriteLine();
+            Console.WriteLine("list1.Except(list2)");
+            PrintIntList(nList1);
+
+            IEnumerable<int> nList2 = list2.Except(list1);
+            Console.WriteLine();
+            Console.WriteLine("list2.Except(list1)");
+            PrintIntList(nList2);
+
+            Console.WriteLine("+++++++++++++++++++交集+++++++++++++++++++");
+            IEnumerable<int> nList3 = list1.Intersect(list2);
+            Console.WriteLine();
+            Console.WriteLine("list1.Intersect(list2)");
+            PrintIntList(nList3);
+
+            IEnumerable<int> nList4 = list2.Intersect(list1);
+            Console.WriteLine();
+            Console.WriteLine("list2.Intersect(list1)");
+            PrintIntList(nList4);
+
+            Console.WriteLine("+++++++++++++++++++并集+++++++++++++++++++");
+            IEnumerable<int> nList5 = list2.Union(list1);
+            Console.WriteLine();
+            Console.WriteLine("list2.Union(list1)");
+            PrintIntList(nList5);
+
+            IEnumerable<int> nList6 = list1.Union(list2);
+            Console.WriteLine();
+            Console.WriteLine("list1.Union(list2)");
+            PrintIntList(nList6);
+        }
+
+        #endregion 差集交集并集
+
         public async static void AsyncDemo()
         {
             using (StreamWriter writer = File.CreateText("ConsoleOutput.txt"))
@@ -1950,6 +2186,8 @@ namespace ConApp
                 await writer.WriteLineAsync("and second line");
             }
         }
+
+        #region 特性相关
 
         public static void ValidateAttribute()
         {
@@ -1961,6 +2199,10 @@ namespace ConApp
             validateAgeAttribute.Validate(person.Age);
             Console.WriteLine(validateAgeAttribute.ValidateResult);
         }
+
+        #endregion 特性相关
+
+        #region 文件生成
 
         public static void FontImage()
         {
@@ -1981,6 +2223,8 @@ namespace ConApp
             g.Dispose();
             image.Dispose();
         }
+
+        #endregion 文件生成
 
         public static void DataTableDemo1()
         {
@@ -2732,6 +2976,496 @@ namespace ConApp
         }
 
         #endregion ExpressionDemo
+
+        #region MyRegion
+
+        public static void BitmapDemo0()
+        {
+            Bitmap bmp = new Bitmap(600, 500);
+            Graphics dc = Graphics.FromImage(bmp);
+            RectangleF[] rects = dc.Clip.GetRegionScans(new Matrix());
+
+            for (int i = 0; i < rects.GetLength(0); i++)
+                Console.WriteLine("clip: " + rects[i].ToString());
+
+            Console.WriteLine("VisibleClipBounds: " + dc.VisibleClipBounds);
+            Console.WriteLine("IsVisible Point 650, 650: " + dc.IsVisible(650, 650));
+            Console.WriteLine("IsVisible Point 0, 0: " + dc.IsVisible(0.0f, 0.0f));
+
+            Console.WriteLine("IsVisible Rectangle (20,20,100,100): " + dc.IsVisible(new Rectangle(20, 20, 100, 100)));
+            Console.WriteLine("IsVisible Rectangle (1000, 1000,100,100): " + dc.IsVisible(new RectangleF(1000, 1000, 100, 100)));
+        }
+
+        public static void BitmapDemo1()
+        {
+            float width = 400.0F;
+            float height = 800.0F;
+            Bitmap bmp = new Bitmap((int)width, (int)height);
+            Graphics gr = Graphics.FromImage(bmp);
+            gr.Clear(Color.White);
+
+            int LINES = 32;
+            float MAX_THETA = (.80F * 90.0F);
+            float THETA = (2 * MAX_THETA / (LINES - 1));
+
+            GraphicsState oldState = gr.Save();
+
+            Pen blackPen = new Pen(Color.Black, 2.0F);
+            gr.TranslateTransform(width / 2.0F, height / 2.0F);
+            gr.RotateTransform(MAX_THETA);
+            for (int i = 0; i < LINES; i++)
+            {
+                gr.DrawLine(blackPen, -2.0F * width, 0.0F, 2.0F * width, 0.0F);
+                gr.RotateTransform(-THETA);
+            }
+
+            gr.Restore(oldState);
+
+            Pen redPen = new Pen(Color.Red, 6F);
+            gr.DrawLine(redPen, width / 4F, 0F, width / 4F, height);
+            gr.DrawLine(redPen, 3F * width / 4F, 0F, 3F * width / 4F, height);
+
+            /* save image in all the formats */
+            bmp.Save("hering.png", ImageFormat.Png);
+            Console.WriteLine("output file hering.png");
+            bmp.Save("hering.jpg", ImageFormat.Jpeg);
+            Console.WriteLine("output file hering.jpg");
+            bmp.Save("hering.bmp", ImageFormat.Bmp);
+            Console.WriteLine("output file hering.bmp");
+        }
+
+        public static void TaskActionDemo()
+        {
+            Action<object> action = (object obj) =>
+            {
+                Console.WriteLine("Task={0}, obj={1}, Thread={2}", Task.CurrentId, obj, Thread.CurrentThread.ManagedThreadId);
+            };
+
+            // Construct an unstarted task
+            Task t1 = new Task(action, "alpha");
+
+            // Construct a started task
+            Task t2 = Task.Factory.StartNew(action, "beta");
+
+            // Block the main thread to demonstate that t2 is executing
+            t2.Wait();
+
+            t1.Start();
+
+            Console.WriteLine("t1 has been launched. (Main Thread={0})", Thread.CurrentThread.ManagedThreadId);
+
+            // Wait for the task to finish.
+            // You may optionally provide a timeout interval or a cancellation token
+            // to mitigate situations when the task takes too long to finish.
+            t1.Wait();
+
+            // Construct an unstarted task
+            Task t3 = new Task(action, "gamma");
+
+            // Run it synchronously
+            t3.RunSynchronously();
+
+            // Although the task was run synchronously, it is a good practice
+            // to wait for it in the event exceptions were thrown by the task.
+            t3.Wait();
+        }
+
+        public static void ReflectDemo()
+        {
+            Person p1 = new Person
+            {
+                Name = "p1",
+
+                Equips = new List<Equip>
+                {
+                 new Equip {AttackValue=1,Name="0N1"  },
+                 new Equip {AttackValue=2,Name="0N2"  },
+                 new Equip {AttackValue=3,Name="0N3"  }
+                }
+            };
+
+            Type t1 = p1.GetType();
+            PropertyInfo[] pi1 = t1.GetProperties();
+
+            var type = pi1[2].PropertyType.IsGenericType;
+
+            var p2type = pi1[2].PropertyType;
+
+            var tyep = typeof(List<Person>);
+        }
+
+        public static object CreateGeneric(Type generic, Type innerType, params object[] args)
+        {
+            Type specificType = generic.MakeGenericType(new Type[] { innerType });
+            return Activator.CreateInstance(specificType, args);
+        }
+
+        public static void CreateGenericDemo()
+        {
+            object genericList = CreateGeneric(typeof(List<>), typeof(Person));
+            var orderList = genericList as List<Person>;
+            orderList.Add(new Person { });
+            orderList.Add(new Person { });
+            orderList.Add(new Person { });
+            orderList.Add(new Person { });
+        }
+
+        public static void StackDemo()
+        {
+            Stack stack = new Stack();
+            stack.Push("a");
+            stack.Push("b");
+            stack.Push("c");
+            stack.Push("d");
+            stack.Push("e");
+            stack.Push("f");
+            stack.Push("g");
+            stack.Push("h");
+            Console.WriteLine(stack.Peek());
+            Console.WriteLine(stack.Count);
+        }
+
+        public static void TaskCancellationTokenSource()
+        {
+            CancellationTokenSource source = new CancellationTokenSource();
+            CancellationToken token = source.Token;
+
+            Random rnd = new Random();
+            object lockObj = new object();
+
+            List<Task<int[]>> tasks = new List<Task<int[]>>();
+            TaskFactory factory = new TaskFactory(token);
+            for (int taskCtr = 0; taskCtr <= 10; taskCtr++)
+            {
+                int iteration = taskCtr + 1;
+                tasks.Add(factory.StartNew(() =>
+                {
+                    int value;
+                    int[] values = new int[10];
+                    for (int ctr = 1; ctr <= 10; ctr++)
+                    {
+                        lock (lockObj)
+                        {
+                            value = rnd.Next(0, 101);
+                        }
+                        if (value == 0)
+                        {
+                            source.Cancel();
+                            Console.WriteLine("Cancelling at task {0}", iteration);
+                            break;
+                        }
+                        values[ctr - 1] = value;
+                    }
+                    return values;
+                }, token));
+            }
+            try
+            {
+                Task<double> fTask =
+                factory.ContinueWhenAll(tasks.ToArray(), (results) =>
+                {
+                    Console.WriteLine("Calculating overall mean...");
+                    long sum = 0;
+                    int n = 0;
+                    foreach (var t in results)
+                    {
+                        foreach (var r in t.Result)
+                        {
+                            sum += r;
+                            n++;
+                        }
+                    }
+                    return sum / (double)n;
+                }, token);
+                Console.WriteLine("The mean is {0}.", fTask.Result);
+            }
+            catch (AggregateException ae)
+            {
+                foreach (Exception e in ae.InnerExceptions)
+                {
+                    if (e is TaskCanceledException)
+                    {
+                        Console.WriteLine("Unable to compute mean: {0}", e.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Exception: " + e.GetType().Name);
+                    }
+                }
+            }
+            finally
+            {
+                source.Dispose();
+            }
+        }
+
+        public static bool GetPicThumbnail(string sourceFile, string dFile, int dHeight, int dWidth, int flag)
+        {
+            Image iSource = Image.FromFile(sourceFile);
+            ImageFormat tFormat = iSource.RawFormat;
+            int sW, sH;
+
+            //按比例缩放
+            Size temSize = new Size(iSource.Width, iSource.Height);
+            if (temSize.Width > dHeight || temSize.Width > dWidth) //将**改成c#中的或者操作符号
+            {
+                if ((temSize.Width * dHeight) > (temSize.Height * dWidth))
+                {
+                    sW = dWidth;
+                    sH = (dWidth * temSize.Height) / temSize.Width;
+                }
+                else
+                {
+                    sH = dHeight;
+                    sW = (temSize.Width * dHeight) / temSize.Height;
+                }
+            }
+            else
+            {
+                sW = temSize.Width;
+
+                sH = temSize.Height;
+            }
+
+            Bitmap ob = new Bitmap(dWidth, dHeight);
+            Graphics g = Graphics.FromImage(ob);
+            g.Clear(Color.WhiteSmoke);
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.DrawImage(iSource, new Rectangle((dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0, iSource.Width, iSource.Height, GraphicsUnit.Pixel);
+            g.Dispose();
+
+            //以下代码为保存图片时，设置压缩质量
+
+            EncoderParameters ep = new EncoderParameters();
+            long[] qy = new long[1];
+            qy[0] = flag;
+            //设置压缩的比例1-100
+
+            EncoderParameter eParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qy);
+            ep.Param[0] = eParam;
+            try
+            {
+                ImageCodecInfo[] arrayIci = ImageCodecInfo.GetImageEncoders();
+
+                ImageCodecInfo jpegIcIinfo = arrayIci.FirstOrDefault(t => t.FormatDescription.Equals("JPEG"));
+
+                if (jpegIcIinfo != null)
+                {
+                    ob.Save(dFile, jpegIcIinfo, ep);
+                }
+                else
+                {
+                    ob.Save(dFile, tFormat);
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                iSource.Dispose();
+
+                ob.Dispose();
+            }
+        }
+
+        public static bool GetThumImage2(string sourceFile, long quality, int multiple, string outputFile)
+        {
+            try
+            {
+                Bitmap sourceImage = new Bitmap(sourceFile);
+                ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/jpeg");
+                System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, quality);
+                myEncoderParameters.Param[0] = myEncoderParameter;
+                float xWidth = sourceImage.Width;
+                float yWidth = sourceImage.Height;
+                Bitmap newImage = new Bitmap((int)(xWidth / multiple), (int)(yWidth / multiple));
+                Graphics g = Graphics.FromImage(newImage);
+
+                g.DrawImage(sourceImage, 0, 0, xWidth / multiple, yWidth / multiple);
+                g.Dispose();
+                newImage.Save(outputFile, myImageCodecInfo, myEncoderParameters);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool GetThumImage(string sourceFile, long quality, int multiple, string outputFile)
+        {
+            try
+            {
+                long imageQuality = quality;
+                Bitmap sourceImage = new Bitmap(sourceFile);
+                ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/jpeg");
+                System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, imageQuality);
+                myEncoderParameters.Param[0] = myEncoderParameter;
+                float xWidth = sourceImage.Width;
+                float yWidth = sourceImage.Height;
+                Bitmap newImage = new Bitmap((int)(xWidth / multiple), (int)(yWidth / multiple));
+                Graphics g = Graphics.FromImage(newImage);
+                g.DrawImage(sourceImage, 0, 0, xWidth / multiple, yWidth / multiple);
+                g.Dispose();
+                newImage.Save(outputFile, myImageCodecInfo, myEncoderParameters);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
+        {
+            int j;
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                    return encoders[j];
+            }
+            return null;
+        }
+
+        #endregion MyRegion
+
+        public static void DSADemo()
+        {
+            // Create a digital signature based on RSA encryption.
+            SignatureDescription rsaSignature = CreateRSAPKCS1Signature();
+            ShowProperties(rsaSignature);
+
+            // Create a digital signature based on DSA encryption.
+            SignatureDescription dsaSignature = CreateDSASignature();
+            ShowProperties(dsaSignature);
+
+            // Create a HashAlgorithm using the digest algorithm of the signature.
+            HashAlgorithm hashAlgorithm = dsaSignature.CreateDigest();
+            Console.WriteLine("\nHash algorithm for the DigestAlgorithm property:"
+                + " " + hashAlgorithm.ToString());
+
+            // Create an AsymmetricSignatureFormatter instance using the DSA key.
+            DSA dsa = DSA.Create();
+            AsymmetricSignatureFormatter asymmetricFormatter = CreateDSAFormatter(dsa);
+
+            // Create an AsymmetricSignatureDeformatter instance using the
+            // DSA key.
+            AsymmetricSignatureDeformatter asymmetricDeformatter = CreateDSADeformatter(dsa);
+
+            Console.WriteLine("This sample completed successfully; " + "press Enter to exit.");
+            Console.ReadLine();
+        }
+
+        // Create a SignatureDescription for RSA encryption.
+        private static SignatureDescription CreateRSAPKCS1Signature()
+        {
+            SignatureDescription signatureDescription = new SignatureDescription();
+
+            // Set the key algorithm property for RSA encryption.
+            signatureDescription.KeyAlgorithm =
+                "System.Security.Cryptography.RSACryptoServiceProvider";
+
+            // Set the digest algorithm for RSA encryption using the
+            // SHA1 provider.
+            signatureDescription.DigestAlgorithm = "System.Security.Cryptography.SHA1CryptoServiceProvider";
+
+            // Set the formatter algorithm with the RSAPKCS1 formatter.
+            signatureDescription.FormatterAlgorithm = "System.Security.Cryptography.RSAPKCS1SignatureFormatter";
+
+            // Set the formatter algorithm with the RSAPKCS1 deformatter.
+            signatureDescription.DeformatterAlgorithm = "System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
+
+            return signatureDescription;
+        }
+
+        // Create a SignatureDescription using a constructed SecurityElement for
+        // DSA encryption.
+        private static SignatureDescription CreateDSASignature()
+        {
+            SecurityElement securityElement = new SecurityElement("DSASignature");
+
+            // Create new security elements for the four algorithms.
+            securityElement.AddChild(new SecurityElement("Key", "System.Security.Cryptography.DSACryptoServiceProvider"));
+            securityElement.AddChild(new SecurityElement("Digest", "System.Security.Cryptography.SHA1CryptoServiceProvider"));
+            securityElement.AddChild(new SecurityElement("Formatter", "System.Security.Cryptography.DSASignatureFormatter"));
+            securityElement.AddChild(new SecurityElement("Deformatter", "System.Security.Cryptography.DSASignatureDeformatter"));
+
+            SignatureDescription signatureDescription = new SignatureDescription(securityElement);
+
+            return signatureDescription;
+        }
+
+        // Create a signature formatter for DSA encryption.
+        private static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
+        {
+            // Create a DSA signature formatter for encryption.
+            SignatureDescription signatureDescription = new SignatureDescription();
+            signatureDescription.FormatterAlgorithm = "System.Security.Cryptography.DSASignatureFormatter";
+
+            AsymmetricSignatureFormatter asymmetricFormatter = signatureDescription.CreateFormatter(dsa);
+
+            Console.WriteLine("\nCreated formatter : " + asymmetricFormatter.ToString());
+            return asymmetricFormatter;
+        }
+
+        // Create a signature deformatter for DSA decryption.
+        private static AsymmetricSignatureDeformatter CreateDSADeformatter(DSA dsa)
+        {
+            // Create a DSA signature deformatter to verify the signature.
+            SignatureDescription signatureDescription = new SignatureDescription();
+            signatureDescription.DeformatterAlgorithm = "System.Security.Cryptography.DSASignatureDeformatter";
+
+            AsymmetricSignatureDeformatter asymmetricDeformatter = signatureDescription.CreateDeformatter(dsa);
+
+            Console.WriteLine("\nCreated deformatter : " + asymmetricDeformatter.ToString());
+            return asymmetricDeformatter;
+        }
+
+        // Display to the console the properties of the specified
+        // SignatureDescription.
+        private static void ShowProperties(
+            SignatureDescription signatureDescription)
+        {
+            // Retrieve the class path for the specified SignatureDescription.
+            string classDescription = signatureDescription.ToString();
+
+            string deformatterAlgorithm = signatureDescription.DeformatterAlgorithm;
+            string formatterAlgorithm = signatureDescription.FormatterAlgorithm;
+            string digestAlgorithm = signatureDescription.DigestAlgorithm;
+            string keyAlgorithm = signatureDescription.KeyAlgorithm;
+
+            Console.WriteLine("\n** " + classDescription + " **");
+            Console.WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm);
+            Console.WriteLine("FormatterAlgorithm : " + formatterAlgorithm);
+            Console.WriteLine("DigestAlgorithm : " + digestAlgorithm);
+            Console.WriteLine("KeyAlgorithm : " + keyAlgorithm);
+        }
+
+        public static void Run()
+        {
+            string fileName = "";
+            string ShortFileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+            //打开子键节点
+            using (RegistryKey refKey =
+                Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true) ??
+                Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"))
+            {
+                if (refKey != null)
+                    refKey.SetValue(ShortFileName, fileName);
+            }
+        }
     }
 
     public class CarInfoEventArgs : EventArgs

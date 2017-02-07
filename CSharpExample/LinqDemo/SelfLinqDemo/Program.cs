@@ -385,16 +385,52 @@ namespace SelfLinqDemo
                                          select e.Field<string>("Field1");
 
             EnumerableRowCollection dFruit = from e in table.AsEnumerable()
-                         select new
-                         {
-                             ShelfLife = e.Field<int>("Field0"),
-                             Name = e.Field<string>("Field1"),
-                             Color = e.Field<string>("Field2")
-                         };
+                                             select new
+                                             {
+                                                 ShelfLife = e.Field<int>("Field0"),
+                                                 Name = e.Field<string>("Field1"),
+                                                 Color = e.Field<string>("Field2")
+                                             };
             foreach (string str in dtEnum)
             {
                 Console.WriteLine("Element {0}", str);
             }
+        }
+
+        public static void LinqDemo()
+        {
+            List<OrderInfo> list = new List<OrderInfo>
+            {
+                new OrderInfo{BookingDate = "2016-2-1",Charges = 12,Number = "S1",Amount = 20},
+                new OrderInfo{BookingDate = "2016-2-1",Charges = 16,Number = "S2",Amount = 72},
+                new OrderInfo{BookingDate = "2016-2-2",Charges = 17,Number = "S3",Amount = 34},
+                new OrderInfo{BookingDate = "2016-2-2",Charges = 14,Number = "S2",Amount = 24},
+                new OrderInfo{BookingDate = "2016-2-3",Charges = 15,Number = "S1",Amount = 25},
+                new OrderInfo{BookingDate = "2016-2-1",Charges = 18,Number = "S2",Amount = 65}
+            };
+            var newlist0 = from orderInfo in list
+                           group orderInfo by orderInfo.BookingDate into g
+                           select new
+                           {
+                               BookingDate = g.Key,
+                               SerialNumber = g.Aggregate(string.Empty, (current, item) => current + (item.Number + ",")).TrimEnd(',')
+                           };
+
+            var newlist = from orderInfo in list
+                          group orderInfo by orderInfo.BookingDate into g
+                          select new
+                          {
+                              BookingDate = g.Key,
+                              ProductTotalCharges = g.Sum(x => x.Charges),
+                              TotalAmount = g.Sum(x => x.Amount)
+                          };
+
+            decimal sum = list.Sum(m => m.Amount);
+            Console.WriteLine(sum);
+
+            List<int> orderIdList = new List<int> { 1, 2, 3, 5, 8, 98, 9, 65, 5, 5615, 1 };
+            var ids = orderIdList.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
+            Console.WriteLine(ids);
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Build.Evaluation;
 using Microsoft.Build.Utilities;
 using Net.Tools.MSBuild;
-using Net.Tools.Shell;
+using Net.Tools.Security;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security;
@@ -54,63 +55,14 @@ namespace Net.Tools
         [STAThread]
         private static void Main(string[] args)
         {
-            Clipboard.SetDataObject("https://msdn.microsoft.com/zh-cn/library/system.windows.forms.clipboard.getdataobject(v=vs.110).aspx");
+            Personb a = new Personb("小王", 20, '男', 12345);
+            string appSecret = "123456";
+            string requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(a);
 
-            string clipboardData = "";
-            IDataObject iData = Clipboard.GetDataObject();
+            string token = new MD5Helper().GetToken(appSecret, requestJson);
 
-            if (iData.GetDataPresent(DataFormats.Text))
-            {
-                clipboardData = (String)iData.GetData(DataFormats.Text);
-            }
-            else
-            {
-                clipboardData = "Could not retrieve data off the clipboard.";
-            }
-            Console.WriteLine(clipboardData);
-
-            #region 用户名密码验证
-
-            string user = "";
-
-            Console.Write("Enter the user name: ");
-            user = Console.ReadLine();
-
-            Console.Write("Enter the user's password: ");
-            using (SecureString pword = ReadString())
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-
-                startInfo.FileName = "notepad.exe";
-                startInfo.UserName = user;
-                startInfo.Password = pword;
-                startInfo.UseShellExecute = false;
-
-                using (Process process = new Process())
-                {
-                    process.StartInfo = startInfo;
-
-                    try
-                    {
-                        process.Start();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("\n\nCould not start Notepad process.");
-                        Console.WriteLine(ex);
-                    }
-                }
-            }
-
-            Console.WriteLine("\n\nMain method complete. Press Enter.");
-            Console.ReadLine();
-
-            #endregion 用户名密码验证
-
-            //Shortcut
-
-            ShortcutHelper.CreateShortcut(Environment.SpecialFolder.Desktop.ToString());
-            ShortcutHelper.CreateShortcut(Environment.SpecialFolder.StartMenu.ToString());
+            //ShortcutHelper.CreateShortcut(Environment.SpecialFolder.Desktop.ToString());
+            //ShortcutHelper.CreateShortcut(Environment.SpecialFolder.StartMenu.ToString());
 
             //Stream dataArray = null;
             //HashAlgorithm sha = new SHA1CryptoServiceProvider();
@@ -235,6 +187,61 @@ namespace Net.Tools
                 encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "MD5");
             }
             return encryptPassword;
+        }
+
+        public static void ClipboardDemo()
+        {
+            Clipboard.SetDataObject("https://msdn.microsoft.com/zh-cn/library/system.windows.forms.clipboard.getdataobject(v=vs.110).aspx");
+
+            string clipboardData = "";
+            IDataObject iData = Clipboard.GetDataObject();
+
+            if (iData.GetDataPresent(DataFormats.Text))
+            {
+                clipboardData = (string)iData.GetData(DataFormats.Text);
+            }
+            else
+            {
+                clipboardData = "Could not retrieve data off the clipboard.";
+            }
+            Console.WriteLine(clipboardData);
+        }
+
+        public static void ProcessStartInfoDemo()
+        {
+            string user = "";
+
+            Console.Write("Enter the user name: ");
+            user = Console.ReadLine();
+
+            Console.Write("Enter the user's password: ");
+            using (SecureString pword = ReadString())
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+
+                startInfo.FileName = "notepad.exe";
+                startInfo.UserName = user;
+                startInfo.Password = pword;
+                startInfo.UseShellExecute = false;
+
+                using (Process process = new Process())
+                {
+                    process.StartInfo = startInfo;
+
+                    try
+                    {
+                        process.Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("\n\nCould not start Notepad process.");
+                        Console.WriteLine(ex);
+                    }
+                }
+            }
+
+            Console.WriteLine("\n\nMain method complete. Press Enter.");
+            Console.ReadLine();
         }
     }
 
@@ -451,6 +458,31 @@ namespace Net.Tools
             {
                 return decryptString;
             }
+        }
+    }
+
+    public class Personb
+    {
+        public string Name { get; set; }
+
+        public double Salary { get; set; }
+
+        public char Sex { get; set; }
+
+        public string[] Hobbys { get; set; }
+
+        public Dictionary<int, string> Attributes { get; set; }
+
+        public int Age { get; set; }
+
+        public int Sallary { get; set; }
+
+        public Personb(string name, int age, char sex, int sallary)
+        {
+            this.Name = name;
+            this.Age = age;
+            this.Sex = sex;
+            this.Sallary = sallary;
         }
     }
 }

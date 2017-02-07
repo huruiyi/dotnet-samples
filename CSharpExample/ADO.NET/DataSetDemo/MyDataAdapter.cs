@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace DataSetDemo
 {
-    class MyDataAdapter
+    internal class MyDataAdapter
     {
         private string sql;
         private SqlConnection con;

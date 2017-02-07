@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace 学习项目.Properties {
+namespace WFAppAdo.Net.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,11 +26,11 @@ namespace 学习项目.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=916Test;Persist Security Info=True;User ID=sa;Passw" +
-            "ord=sa")]
-        public string _916TestConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ExampleDb;Persist Security Info=True;User ID=sa;Pas" +
+            "sword=sa")]
+        public string ExampleDbConnectionString {
             get {
-                return ((string)(this["_916TestConnectionString"]));
+                return ((string)(this["ExampleDbConnectionString"]));
             }
         }
     }
