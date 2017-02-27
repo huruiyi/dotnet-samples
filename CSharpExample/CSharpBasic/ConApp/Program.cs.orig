@@ -50,6 +50,7 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+<<<<<<< HEAD
             Console.WriteLine(true ^ false);
             Console.WriteLine(true ^ true);
             Console.WriteLine(false ^ false);
@@ -80,6 +81,9 @@ namespace ConApp
             Console.WriteLine(a);
             Console.WriteLine(b);
             Console.WriteLine(c);
+=======
+         
+>>>>>>> ed594b2242b0c5f4be96e9b79b0fe483233e6794
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
 
             Console.ReadKey();

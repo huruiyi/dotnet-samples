@@ -89,6 +89,10 @@
     <Content Include="Page\FormSample\FormsAuthenticationTicketTest.aspx" />
     <Content Include="Page\FormSample\FormsIdentityTest.aspx" />
     <Content Include="Page\FormSample\Logon.aspx" />
+    <Content Include="Page\HttpError403.aspx" />
+    <Content Include="Page\HttpError403.html" />
+    <Content Include="Page\Page1.aspx" />
+    <Content Include="Page\RewritePath.aspx" />
     <Content Include="Page\SessionSample\LoginTemp.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -141,6 +145,27 @@
     </Compile>
     <Compile Include="Page\FormSample\Logon.aspx.designer.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\HttpError403.aspx.cs">
+      <DependentUpon>HttpError403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\HttpError403.aspx.designer.cs">
+      <DependentUpon>HttpError403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Page1.aspx.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Page1.aspx.designer.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\RewritePath.aspx.cs">
+      <DependentUpon>RewritePath.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\RewritePath.aspx.designer.cs">
+      <DependentUpon>RewritePath.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\SessionSample\LoginHandler.cs" />
     <Compile Include="Page\SessionSample\SesionHandler.cs" />

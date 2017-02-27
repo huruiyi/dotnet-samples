@@ -12,8 +12,18 @@ namespace UseCPPDLL
         [DllImport("User32.dll")]
         public static extern int MessageBox(int h, string m, string c, int type);
 
+        //[DllImport("User32.dll")]
+        //public static extern int MessageBox(int hParent, string msg, string caption, int type);
+
+        [DllImport("User32.DLL")]
+        public static extern void LockWorkStation();
+
         private static void Main()
         {
+            //MessageBox(0, "How to use attribute in .NET", "Anytao_net", 0);
+
+            LockWorkStation();
+
             Console.ReadKey();
             int result = CPPDLL.Add(10, 20);
             Console.WriteLine("10 + 20 = {0}", result);

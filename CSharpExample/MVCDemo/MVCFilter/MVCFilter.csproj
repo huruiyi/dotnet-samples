@@ -126,10 +126,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FormDemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IIdentityDemo1Controller.cs" />
     <Compile Include="Controllers\IIdentityDemo2Controller.cs" />
     <Compile Include="Controllers\IIdentityDemo3Controller.cs" />
+    <Compile Include="Controllers\IIdentityDemo4Controller.cs" />
     <Compile Include="Fliters\_0Exception\Cus_ExceptionFilter.cs" />
     <Compile Include="Fliters\_0Exception\Cus_HandleErrorAttribute.cs" />
     <Compile Include="Fliters\_1Authentication_Authorization\Cus_AuthorizeAttribute_IAuthorizationFilter.cs" />
@@ -179,6 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\FormDemo\" />
+    <Folder Include="Views\IIdentityDemo4\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
