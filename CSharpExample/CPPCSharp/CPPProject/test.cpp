@@ -2,6 +2,7 @@
 #include <vector>
 #include <iomanip>
 #include <stdarg.h>
+#include <windows.h> 
 using std::cout;
 using std::endl;
 using std::setw;
@@ -97,7 +98,7 @@ void main5()
 	printf("Average of 5, 10, 15 = %f\n", average(3, 5, 10, 15));
 	system("pause");
 }
-int main()
+int main6()
 {
 	using namespace std;
 
@@ -128,4 +129,34 @@ int main()
 	cin.get();
 
 	return 0;
+}
+void main() {
+	while (-1)
+	{
+		cout << "-11111111111" << endl;
+		break;
+	}
+	while (0)
+	{
+		cout << "-00000000000" << endl;
+		break;
+	}
+	while (1)
+	{
+		cout << "+11111111111" << endl;
+		break;
+	}
+
+	int a = 1;
+	do
+	{
+		cout << a << endl;
+		a++;
+	} while (a <= 12);
+	loadimage
+	for (; a < 100; a++)
+	{
+		cout << a << endl;
+	}
+	getchar();
 }

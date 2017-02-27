@@ -47,7 +47,36 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            ParallelTask();
+            Console.WriteLine(true ^ false);
+            Console.WriteLine(true ^ true);
+            Console.WriteLine(false ^ false);
+            Console.WriteLine(false ^ true);
+            Console.WriteLine(Environment.NewLine);
+
+            Console.WriteLine(true & false);
+            Console.WriteLine(true & true);
+            Console.WriteLine(false & false);
+            Console.WriteLine(false & true);
+            Console.WriteLine(Environment.NewLine);
+
+            Console.WriteLine(true | false);
+            Console.WriteLine(true | true);
+            Console.WriteLine(false | false);
+            Console.WriteLine(false | true);
+            Console.WriteLine(Environment.NewLine);
+
+            int i = 0;
+            if (false & i++ == 1)
+            {
+                Console.WriteLine("Test.///////////////////////");
+            }
+            List<int> intlist = new List<int>();
+            int a = 1 ^ 1;
+            int b = 1 & 1;
+            int c = 1 | 1;
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            Console.WriteLine(c);
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
 
             Console.ReadKey();
