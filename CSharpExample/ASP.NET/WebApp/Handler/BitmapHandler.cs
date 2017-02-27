@@ -16,41 +16,70 @@ namespace WebApp.Handler
 
         public void ProcessRequest(HttpContext context)
         {
-            //var drawFont = new Font("宋体", 12);
-            //var image = new Bitmap(1, 1);
-            //Graphics g = Graphics.FromImage(image);
-            //SizeF sf = g.MeasureString("文本信息", drawFont, 1024); //设置一个显示的宽度
+            context.Response.ContentType = "image/jpeg";
 
-            //image = new Bitmap(image, new Size(Convert.ToInt32(sf.Width), Convert.ToInt32(sf.Height)));
-            //g = Graphics.FromImage(image);
-            //g.Clear(Color.Red);
-            //g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-            //g.DrawString("文本信息", drawFont, Brushes.Black, new RectangleF(new PointF(0, 0), sf));
-            //image.Save(context.Response.OutputStream, ImageFormat.Png);
-            //context.Response.ContentType = "image/png";
-
-            ////image.Save("D:\\1.jpg", ImageFormat.Png);
-            ////g.Dispose();
-            ////image.Dispose();
-
-            int width = 500;
-            int height = 150;
-            using (Bitmap bitmap = new Bitmap(width, height))
+            using (Image image = new Bitmap(100, 20))
             {
-                using (Graphics graphic = Graphics.FromImage(bitmap))
+                using (Graphics graphics = Graphics.FromImage(image))
                 {
-                    graphic.Clear(Color.Purple);
-                    graphic.DrawString("仙剑奇侠传", new Font("微软雅黑", 30), Brushes.Yellow, 100, 50);
-                    graphic.DrawLine(new Pen(Color.White), new Point(1, 10), new Point(3, 18));
-                    graphic.DrawLine(new Pen(Color.White), new Point(3, 14), new Point(6, 38));
-                    graphic.DrawLine(new Pen(Color.White), new Point(100, 10), new Point(30, 18));
-                    graphic.DrawLine(new Pen(Color.White), new Point(150, 19), new Point(38, 39));
-                    bitmap.Save(context.Response.OutputStream, ImageFormat.Jpeg);
+                    graphics.DrawString("同程网络科技", new Font("微软雅黑", 12), Brushes.OrangeRed, new PointF(0, 0));
+                    image.Save(context.Response.OutputStream, ImageFormat.Jpeg);
                 }
             }
-
-            context.Response.ContentType = "image/JPEG";
-            context.Response.Flush();
         }
+
+        #region Demo2
+
+        //public void ProcessRequest(HttpContext context)
+        //{
+        //    int width = 500;
+        //    int height = 150;
+        //    using (Bitmap bitmap = new Bitmap(width, height))
+        //    {
+        //        using (Graphics graphic = Graphics.FromImage(bitmap))
+        //        {
+        //            graphic.Clear(Color.Purple);
+        //            graphic.DrawString("仙剑奇侠传", new Font("微软雅黑", 30), Brushes.Yellow, 100, 50);
+        //            graphic.DrawLine(new Pen(Color.White), new Point(1, 10), new Point(3, 18));
+        //            graphic.DrawLine(new Pen(Color.White), new Point(3, 14), new Point(6, 38));
+        //            graphic.DrawLine(new Pen(Color.White), new Point(100, 10), new Point(30, 18));
+        //            graphic.DrawLine(new Pen(Color.White), new Point(150, 19), new Point(38, 39));
+        //            bitmap.Save(context.Response.OutputStream, ImageFormat.Jpeg);
+        //        }
+        //    }
+
+        //    context.Response.ContentType = "image/JPEG";
+        //    context.Response.Flush();
+        //}
+
+        #endregion Demo2
+
+        #region Demo3
+
+        //public void ProcessRequest(HttpContext context)
+        //{
+        //    #region Demo2
+
+        //    var drawFont = new Font("宋体", 12);
+        //    var image = new Bitmap(1, 1);
+        //    Graphics g = Graphics.FromImage(image);
+        //    SizeF sf = g.MeasureString("文本信息", drawFont, 1024); //设置一个显示的宽度
+
+        //    image = new Bitmap(image, new Size(Convert.ToInt32(sf.Width), Convert.ToInt32(sf.Height)));
+        //    g = Graphics.FromImage(image);
+        //    g.Clear(Color.Red);
+        //    g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+        //    g.DrawString("文本信息", drawFont, Brushes.Black, new RectangleF(new PointF(0, 0), sf));
+        //    image.Save(context.Response.OutputStream, ImageFormat.Png);
+        //    context.Response.ContentType = "image/png";
+
+        //    //image.Save("D:\\1.jpg", ImageFormat.Png);
+        //    //g.Dispose();
+        //    //image.Dispose();
+
+        //    #endregion Demo2
+        //}
+
+        #endregion Demo3
     }
 }

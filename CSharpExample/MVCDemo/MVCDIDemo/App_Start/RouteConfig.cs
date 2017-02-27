@@ -18,6 +18,14 @@ namespace MVCDIDemo
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute("Product", "Product/{controller}/{action}/{id}",
+              new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+              new[] { "MvcApplication3.Controllers.Product" });
+
+            routes.MapRoute("Resource", "Resource/{controller}/{action}/{id}",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "MvcApplication3.Controllers.Resource" });
         }
     }
 }
