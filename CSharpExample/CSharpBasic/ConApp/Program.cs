@@ -50,6 +50,20 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            DateTime d1 = new DateTime(2017,1,1);
+
+            int days=(DateTime.Now - d1).Days;
+            Console.WriteLine(days);
+            Console.WriteLine(d1);
+            Console.ReadKey();
+
+            List<int> xxx = new List<int> { 5987, 5987, 5906, 6045, 5758, 6106, 5995, 5896, 5902, 5953, 5959, 5894, 5898, 5851, 5977, 5871, 5853, 5892, 5985, 5956, 5877, 5801, 5942, 5793, 5876, 5888, 5972, 5876, 6082, 6063, 5887, 5870, 6074, 5915, 6051, 6102, 5922, 5935, 5955, 6007, 5983, 5968, 5904, 5982, 6046, 6003, 5916, 5940, 5945, 5967, 5917, 6050, 5960, 6018, 5978, 5909, 5948, 5974, 5975, 6077, 6107, 6103, 6079, 6110, 6023, 6097, 6094, 6088, 6109, 6096, 6096 };
+            IEnumerable<int> ii = xxx.Distinct();
+            foreach (int item in ii)
+            {
+                Console.Write(item + ",");
+            }
+            Console.ReadKey();
             Console.WriteLine(true ^ false);
             Console.WriteLine(true ^ true);
             Console.WriteLine(false ^ false);
