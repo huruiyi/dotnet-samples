@@ -175,6 +175,8 @@
     <EmbeddedResource Include="Resource\XML.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\ExampleDbSQL.sql" />
+    <Content Include="Data\ProductManageSQL.sql" />
     <Content Include="Model\Calculator.py" />
     <Content Include="Data\TestDbSQL.sql" />
   </ItemGroup>

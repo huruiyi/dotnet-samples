@@ -15,6 +15,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Management.Automation;
@@ -35,6 +36,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -46,11 +48,12 @@ namespace ConApp
 
         public delegate void ConPort(int port);
 
-        private delegate void AsycRun();
+        public delegate void AsycRun();
 
         public static unsafe void Main(string[] args)
         {
-         
+            TestShowCursor();
+            //Marshal.
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
 
             Console.ReadKey();
@@ -156,13 +159,13 @@ namespace ConApp
 
         #region 03-EventDemo
 
-        private static int WriteLetter(string letter)
+        public static int WriteLetter(string letter)
         {
             Console.Write(letter + " ");
             return 1;
         }
 
-        private static void ExampleMethod(int a, int b, int c)
+        public static void ExampleMethod(int a, int b, int c)
         {
         }
 
@@ -176,7 +179,7 @@ namespace ConApp
             Console.WriteLine(@"ExampleMethod: p2 is string");
         }
 
-        private static void publisher_SampleEvent(object sender, SampleEventArgs e)
+        public static void publisher_SampleEvent(object sender, SampleEventArgs e)
         {
             Console.WriteLine("e.Text:" + e.Text);
         }
@@ -901,7 +904,7 @@ namespace ConApp
         /// 求平方
         /// </summary>
         /// <param name="p"></param>
-        private static unsafe void SquareIntPointer(int* p)
+        public static unsafe void SquareIntPointer(int* p)
         {
             *p *= *p;
         }
@@ -1017,7 +1020,7 @@ namespace ConApp
             Console.WriteLine("Point is: {0}", pt);
         }
 
-        private static unsafe void UseSizeOfOperator()
+        public static unsafe void UseSizeOfOperator()
         {
             Console.WriteLine("The size of short is {0}.", sizeof(short));
             Console.WriteLine("The size of int is {0}.", sizeof(int));
@@ -1699,6 +1702,29 @@ namespace ConApp
 
         #endregion Environment信息获取
 
+        #region 硬盘信息查询
+
+        public static void GetDriverInfo()
+        {
+            DriveInfo[] alldrive = DriveInfo.GetDrives();
+            foreach (DriveInfo item in alldrive)
+            {
+                Console.WriteLine("驱动器:{0}", item.Name);
+                Console.WriteLine(" 类型:{0}", item.DriveType);
+                if (item.IsReady)
+                {
+                    Console.WriteLine(" 卷标:{0}", item.VolumeLabel);
+                    Console.WriteLine(" 文件系统:{0}", item.DriveFormat);
+                    Console.WriteLine(" 当前用户可用空间:{0,15}字节", item.AvailableFreeSpace);
+                    Console.WriteLine(" 可用空间        :{0,15}字节", item.TotalFreeSpace);
+                    Console.WriteLine(" 磁盘总大小:     :{0,15}字节", item.TotalSize);
+                }
+                Console.ReadKey();
+            }
+        }
+
+        #endregion 硬盘信息查询
+
         #region 获取注册表的建
 
         public static void RegistryDemo()
@@ -1716,7 +1742,15 @@ namespace ConApp
 
         #endregion 获取注册表的建
 
-        #region 获取电脑已安装软件
+        #region DllImport Demo
+
+        #region 01:获取电脑已安装软件
+
+        [DllImport("msi.dll", SetLastError = true)]
+        public static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);
+
+        [DllImport("msi.dll", SetLastError = true)]
+        public static extern int MsiGetProductInfo(string szProduct, string szProperty, StringBuilder lpValueBuf, ref int pcchValueBuf);
 
         public static void GetCurrentInstall()
         {
@@ -1745,7 +1779,117 @@ namespace ConApp
             Console.WriteLine(result.ToString());
         }
 
-        #endregion 获取电脑已安装软件
+        #endregion 01:获取电脑已安装软件
+
+        #region 02:设置鼠标位置
+
+        //BOOL WINAPI SetCursorPos(
+        //  _In_ int X,
+        //  _In_ int Y
+        //);
+
+        [DllImport("User32.dll")]
+        public static extern bool SetCursorPos(int x, int y);
+
+        public static void SetCursorPosDemo()
+        {
+            int x = 0;
+            int y = 0;
+            int time = 0;
+            while (true)
+            {
+                SetCursorPos(x, y);
+                Thread.Sleep(100);
+                x += 10;
+                y += 10;
+                time++;
+                if (time == 100)
+                {
+                    break;
+                }
+            }
+        }
+
+        #endregion 02:设置鼠标位置
+
+        #region 03:获取鼠标位置
+
+        public struct Point
+        {
+            public int x;
+            public int y;
+        }
+
+        //BOOL WINAPI GetCursorPos(
+        //  _Out_ LPPOINT lpPoint
+        //);
+
+        [DllImport("User32.dll")]
+        public static extern bool GetCursorPos(out Point p);
+
+        public static void GetPostition()
+        {
+            Point p;
+            GetCursorPos(out p);
+            Console.WriteLine(p.x + " " + p.y);
+        }
+
+        #endregion 03:获取鼠标位置
+
+        #region 04:SetClipboardData
+
+        //HANDLE WINAPI SetClipboardData(
+        //_In_ UINT   uFormat,
+        //_In_opt_ HANDLE hMem
+        //);
+
+        #endregion 04:SetClipboardData
+
+        #region 05:ShowCursor
+
+        [DllImport("User32.dll")]
+        public static extern int ShowCursor(bool flag);
+
+        //int WINAPI ShowCursor(
+        //_In_ BOOL bShow
+        //);
+
+        public static void TestShowCursor()
+        {
+            int i = 1;
+            while (true)
+            {
+                if (i % 2 == 0)
+                {
+                    ShowCursor(false);
+                }
+                else
+                {
+                    ShowCursor(true);
+                }
+                i++;
+            }
+        }
+
+        #endregion 05:ShowCursor
+
+        #endregion DllImport Demo
+
+        #region 截屏
+
+        public static void GetScreen()
+        {
+            Screen s = Screen.PrimaryScreen;
+            Bitmap result = new Bitmap(s.Bounds.Width, s.Bounds.Height);
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                //g.CopyFromScreen(s.Bounds.Location, System.Drawing.Point.Empty, s.Bounds.Size);
+                g.CopyFromScreen(new System.Drawing.Point(0, 0), System.Drawing.Point.Empty, s.Bounds.Size);
+            }
+            result.Save("1.jpg");
+        }
+
+        #endregion 截屏
 
         #region 下载相关
 
@@ -2311,12 +2455,6 @@ namespace ConApp
             }
         }
 
-        [DllImport("msi.dll", SetLastError = true)]
-        private static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);
-
-        [DllImport("msi.dll", SetLastError = true)]
-        private static extern int MsiGetProductInfo(string szProduct, string szProperty, StringBuilder lpValueBuf, ref int pcchValueBuf);
-
         public static void PathDemo()
         {
             AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
@@ -2684,7 +2822,7 @@ namespace ConApp
             b.Name = "Wb";
         }
 
-        private static T CreateInstance<T>(int n) where T : new()
+        public static T CreateInstance<T>(int n) where T : new()
         {
             T t = default(T);
             for (int i = 0; i < n; i++)
@@ -2694,7 +2832,7 @@ namespace ConApp
             return t;
         }
 
-        private static T CreateBossInstance<T>(int n) where T : Person, new()
+        public static T CreateBossInstance<T>(int n) where T : Person, new()
         {
             T t = default(T);
             for (int i = 0; i < n; i++)
@@ -2739,7 +2877,7 @@ namespace ConApp
         //      ManualResetEventSlim.Set()
         //      ManualResetEventSlim.Reset()
         //      ManualResetEventSlim.IsSet
-        private static void MRES_SetWaitReset()
+        public static void MRES_SetWaitReset()
         {
             ManualResetEventSlim mres1 = new ManualResetEventSlim(false); // initialize as unsignaled
             ManualResetEventSlim mres2 = new ManualResetEventSlim(false); // initialize as unsignaled
@@ -2773,7 +2911,7 @@ namespace ConApp
         // Demonstrates:
         //      ManualResetEventSlim construction w/ SpinCount
         //      ManualResetEventSlim.WaitHandle
-        private static void MRES_SpinCountWaitHandle()
+        public static void MRES_SpinCountWaitHandle()
         {
             // Construct a ManualResetEventSlim with a SpinCount of 1000
             // Higher spincount => longer time the MRES will spin-wait before taking lock
@@ -2804,6 +2942,8 @@ namespace ConApp
         }
 
         #endregion ManualResetEventSlimDemo
+
+        #region PowerShell命令
 
         public static void RunPowerShellCmd()
         {
@@ -2842,6 +2982,8 @@ namespace ConApp
             }
         }
 
+        #endregion PowerShell命令
+
         #region Demo
 
         public static void DynamicDemo0()
@@ -2855,21 +2997,21 @@ namespace ConApp
             Console.WriteLine(d.Return(123.456));
         }
 
-        private static void DynamicDemo1()
+        public static void DynamicDemo1()
         {
             dynamic calc = Calculator.GetCalculator();
             int r = calc.Add(2, 3);
             Console.WriteLine(r);
         }
 
-        private static void StaticDemo()
+        public static void StaticDemo()
         {
             var calc = new Calculator();
             int r = calc.Add(2, 3);
             Console.WriteLine(r);
         }
 
-        private static void IronPython()
+        public static void IronPython()
         {
             // http://ironpython.codeplex.com
             // var engine = Python.CreateEngine();
@@ -2960,7 +3102,7 @@ namespace ConApp
             mdi.Invoke(ob, new object[] { "Hello Lind", "OK" });
         }
 
-        private static void ClassDemo()
+        public static void ClassDemo()
         {
             StaticDemo();
             DynamicDemo0();
@@ -3329,7 +3471,7 @@ namespace ConApp
             }
         }
 
-        private static ImageCodecInfo GetEncoderInfo(string mimeType)
+        public static ImageCodecInfo GetEncoderInfo(string mimeType)
         {
             int j;
             ImageCodecInfo[] encoders;
@@ -3343,6 +3485,23 @@ namespace ConApp
         }
 
         #endregion MyRegion
+
+        #region 串行端口资源
+
+        public static void GetPortNamesDemo()
+        {
+            string[] ports = SerialPort.GetPortNames();
+
+            Console.WriteLine("The following serial ports were found:");
+
+            // Display each port name to the console.
+            foreach (string port in ports)
+            {
+                Console.WriteLine(port);
+            }
+        }
+
+        #endregion 串行端口资源
 
         public static void DSADemo()
         {
@@ -3372,7 +3531,7 @@ namespace ConApp
         }
 
         // Create a SignatureDescription for RSA encryption.
-        private static SignatureDescription CreateRSAPKCS1Signature()
+        public static SignatureDescription CreateRSAPKCS1Signature()
         {
             SignatureDescription signatureDescription = new SignatureDescription();
 
@@ -3395,7 +3554,7 @@ namespace ConApp
 
         // Create a SignatureDescription using a constructed SecurityElement for
         // DSA encryption.
-        private static SignatureDescription CreateDSASignature()
+        public static SignatureDescription CreateDSASignature()
         {
             SecurityElement securityElement = new SecurityElement("DSASignature");
 
@@ -3411,7 +3570,7 @@ namespace ConApp
         }
 
         // Create a signature formatter for DSA encryption.
-        private static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
+        public static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
         {
             // Create a DSA signature formatter for encryption.
             SignatureDescription signatureDescription = new SignatureDescription();
@@ -3424,7 +3583,7 @@ namespace ConApp
         }
 
         // Create a signature deformatter for DSA decryption.
-        private static AsymmetricSignatureDeformatter CreateDSADeformatter(DSA dsa)
+        public static AsymmetricSignatureDeformatter CreateDSADeformatter(DSA dsa)
         {
             // Create a DSA signature deformatter to verify the signature.
             SignatureDescription signatureDescription = new SignatureDescription();
@@ -3438,7 +3597,7 @@ namespace ConApp
 
         // Display to the console the properties of the specified
         // SignatureDescription.
-        private static void ShowProperties(SignatureDescription signatureDescription)
+        public static void ShowProperties(SignatureDescription signatureDescription)
         {
             // Retrieve the class path for the specified SignatureDescription.
             string classDescription = signatureDescription.ToString();
@@ -3547,7 +3706,7 @@ namespace ConApp
             }
         }
 
-        private static SQLiteParameter CreateSqliteParameter(string name, DbType type, int size, object value)
+        public static SQLiteParameter CreateSqliteParameter(string name, DbType type, int size, object value)
         {
             SQLiteParameter parm = new SQLiteParameter(name, type, size);
             parm.Value = value;
@@ -3555,6 +3714,60 @@ namespace ConApp
         }
 
         #endregion SQLiteDemo
+
+        #region 链表
+
+        public static void LinkNodeDemo()
+        {
+            LinkNode node = new LinkNode();
+            node.Value = 1;
+
+            node.Next = new LinkNode();
+            node.Next.Value = 2;
+
+            node.Next.Next = new LinkNode();
+            node.Next.Next.Value = 3;
+            node.Next.Next.Next = null;
+
+            ShowLinkNode0(node);
+
+            ShowLinkNode1(node);
+        }
+
+        public static void ShowLinkNode0(LinkNode node)
+        {
+            Console.WriteLine(node.Value);
+            if (node.Next == null)
+            {
+                return;
+            }
+            else
+            {
+                ShowLinkNode0(node.Next);
+            }
+        }
+
+        public static void ShowLinkNode1(LinkNode node)
+        {
+            for (LinkNode n = node; ; n = n.Next)
+            {
+                Console.WriteLine(n.Value);
+
+                if (n.Next == null)
+                {
+                    break;
+                }
+            }
+        }
+
+        public class LinkNode
+        {
+            public int Value { get; set; }
+
+            public LinkNode Next { get; set; }
+        }
+
+        #endregion 链表
     }
 
     public class CarInfoEventArgs : EventArgs
@@ -3581,7 +3794,7 @@ namespace ConApp
 
     public class Consumer
     {
-        private string _name;
+        public string _name;
 
         public Consumer(string name)
         {
