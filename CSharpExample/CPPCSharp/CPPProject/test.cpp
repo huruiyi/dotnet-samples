@@ -2,6 +2,7 @@
 #include <vector>
 #include <iomanip>
 #include <stdarg.h>
+#include <windows.h>
 using std::cout;
 using std::endl;
 using std::setw;
@@ -97,7 +98,8 @@ void main5()
 	printf("Average of 5, 10, 15 = %f\n", average(3, 5, 10, 15));
 	system("pause");
 }
-int main()
+
+int main6()
 {
 	using namespace std;
 
@@ -128,4 +130,69 @@ int main()
 	cin.get();
 
 	return 0;
+}
+
+void main7() {
+	while (-1)
+	{
+		cout << "-11111111111" << endl;
+		break;
+	}
+	while (0)
+	{
+		cout << "-00000000000" << endl;
+		break;
+	}
+	while (1)
+	{
+		cout << "+11111111111" << endl;
+		break;
+	}
+
+	int a = 1;
+	do
+	{
+		cout << a << endl;
+		a++;
+	} while (a <= 12);
+	for (; a < 100; a++)
+	{
+		cout << a << endl;
+	}
+	getchar();
+}
+/*
+Data Types
+This topic lists the data types most commonly used in the Microsoft Foundation Class Library. Most of the data types are exactly the same as those in the Windows Software Development Kit (SDK), while others are unique to MFC.
+Commonly used Windows SDK and MFC data types are as follows: BOOL A Boolean value.
+BSTR A 32-bit character pointer.
+BYTE An 8-bit integer that is not signed.
+COLORREF A 32-bit value used as a color value.
+DWORD A 32-bit unsigned integer or the address of a segment and its associated offset.
+LONG A 32-bit signed integer.
+LPARAM A 32-bit value passed as a parameter to a window procedure or callback function.
+LPCSTR A 32-bit pointer to a constant character string.
+LPSTR A 32-bit pointer to a character string.
+LPCTSTR A 32-bit pointer to a constant character string that is portable for Unicode and DBCS.
+LPTSTR A 32-bit pointer to a character string that is portable for Unicode and DBCS.
+LPVOID A 32-bit pointer to an unspecified type.
+LRESULT A 32-bit value returned from a window procedure or callback function.
+UINT A 16-bit unsigned integer on Windows versions 3.0 and 3.1; a 32-bit unsigned integer on Win32.
+WNDPROC A 32-bit pointer to a window procedure.
+WORD A 16-bit unsigned integer.
+WPARAM A value passed as a parameter to a window procedure or callback function: 16 bits on Windows versions 3.0 and 3.1; 32 bits on Win32.
+Data types unique to the Microsoft Foundation Class Library include the following:
+POSITION A value used to denote the position of an element in a collection; used by MFC collection classes. LPCRECT A 32-bit pointer to a constant (nonmodifiable) RECT structure.
+然而，在实际情况中，DWORD会根据操作系统的不同，被定义成了不同的长度，比如vs8(xp)中，DWORD被定义成了如下的类型：
+typedef unsigned long DWORD; 而unsigned long 的长度则是4个字节即32位，如果是在64位的操作系统中，这个长度可能会更长，这需要取决于当前操作系统以及开发环境等有关方面，具体可以参考相关的帮助说明！
+*/
+void main()
+{
+	int a = 12;
+	cout << sizeof(a) << endl;
+
+	DWORD b = 12;
+	cout << sizeof(b) << endl;
+
+	getchar();
 }

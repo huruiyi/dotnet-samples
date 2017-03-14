@@ -52,8 +52,10 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+<<<<<<< HEAD
             TestShowCursor();
             //Marshal.
+=======
             DateTime d1 = new DateTime(2017,1,1);
 
             int days=(DateTime.Now - d1).Days;
@@ -98,6 +100,7 @@ namespace ConApp
             Console.WriteLine(a);
             Console.WriteLine(b);
             Console.WriteLine(c);
+>>>>>>> 99887fb300a4d5680bff427cba7b5c91aa071581
             //string name = Assembly.GetExecutingAssembly().GetType().Namespace;
 
             Console.ReadKey();
