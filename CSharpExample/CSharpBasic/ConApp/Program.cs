@@ -52,11 +52,12 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            TestShowCursor();
+            XMLDemo3();
+            XMLDemo5();
             //Marshal.
-            DateTime d1 = new DateTime(2017,1,1);
+            DateTime d1 = new DateTime(2017, 1, 1);
 
-            int days=(DateTime.Now - d1).Days;
+            int days = (DateTime.Now - d1).Days;
             Console.WriteLine(days);
             Console.WriteLine(d1);
             Console.ReadKey();
@@ -585,8 +586,7 @@ namespace ConApp
                     new Equip {Name = "N2", AttackValue = 123},
                     new Equip {Name = "N3", AttackValue = 123},
                 },
-                Hobbys = new[] { "h1", "h2", "h3", "h4" },
-                Attributes = attrs
+                Hobbys = new[] { "h1", "h2", "h3", "h4" }
             };
             Console.WriteLine(typeof(List<>).Name);
             PropertyInfo[] propertyInfos = typeof(Person).GetProperties();
@@ -609,7 +609,6 @@ namespace ConApp
                 {
                     p.SetValue(person, '男', null);
                 }
-
                 //if (p.PropertyType.IsGenericType)
                 //{
                 //    p.SetValue(person, new List<Equip>{
@@ -717,19 +716,6 @@ namespace ConApp
             list.Add(hashtableItem);
             list.Add(hashtableItem1);
             list.Add(hashtableItem2);
-
-            Person a = new Person("小王", 20, '男', 12345);
-            Person b = new Person("小李", 21, '女', 22345);
-            Person c = new Person("小胡", 22, '男', 32345);
-            ArrayList array = new ArrayList();
-            array.Add(a);
-            array.Add(b);
-            array.Add(c);
-            foreach (Person item in array)
-            {
-                Person p = item;
-                Console.WriteLine(p.Name + " " + p.Age + " " + p.Sex);
-            }
         }
 
         #endregion 14-HashtableDemo
@@ -1091,6 +1077,19 @@ namespace ConApp
             }
         }
 
+        public unsafe static void GetPointDemo()
+        {
+            unsafe
+            {
+                int x = 10;
+                int* p = &x;
+                int tenAddress = (int)p;
+                Console.WriteLine("address:{0}", tenAddress);
+                Console.WriteLine(Convert.ToString(tenAddress, 2));
+                Console.ReadKey();
+            }
+        }
+
         /*
           由于涉及指针类型，因此 stackalloc 要求不安全上下文。 有关更多信息，请参见 不安全代码和指针（C# 编程指南）。
           stackalloc 类似于 C 运行库中的 _alloca。
@@ -1117,6 +1116,148 @@ namespace ConApp
                 Console.WriteLine(fib[i]);
             }
         }
+
+        private static void Demo1()
+        {
+            unsafe
+            {
+                int[] array = { 10, 20, 30, 40, 50 };
+                fixed (int* ptr = array)
+                {
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        //Console.WriteLine("array = 0x{0:x}", (int)(ptr+i));
+                        Console.WriteLine("{0}--{1}--{2}--0x{3:x}", i, *(ptr + i), array[i], (int)(ptr + i));
+                        //Console.WriteLine("Content of the {0}th element of the array: Using pointer: {1}, Using array index: {2}", i, *(ptr + i), array[i]);
+                    }
+                }
+            }
+        }
+
+        private static void Demo2()
+        {
+            var s = "Hello"; // stores given string into HashSet where all string are strored in .NET
+                             // due string immutability
+
+            unsafe // allows write to read-only memory
+            {
+                fixed (char* c = s) // get pointer to string originally stored in read only memory
+                    for (int i = 0; i < s.Length; i++)
+                        c[i] = 'a';     // change data in memory allocated for original "Hello"
+            }
+            Console.WriteLine("Hello"); // .NET looks on address in memory where it expect
+                                        // data for string "Hello" but it was just changed
+                                        // Displays: "aaaaa"
+        }
+
+        private static void Demo3()
+        {
+            unsafe
+            {
+                int[] a = { 1, 2, 3 };
+                fixed (int* b = a)
+                {
+                    Console.WriteLine(b[4]);
+                }
+            }
+        }
+
+        private static void Demo4()
+        {
+            int[] array = { 1, 2, 3, 4, 5, 6 };
+            unsafe
+            {
+                fixed (int* ptr = array)
+                {
+                    for (int i = 0; i <= array.Length; i++)
+                    {
+                        *(ptr + i) = 0;
+                    }
+                }
+            }
+        }
+
+        //静态变量存储在堆上，查看指针时需用fixed固定
+        private static int m_sZ = 100;
+
+        //普通数据成员，也是放在堆上了，查看指针时需用fixed固定
+        private int m_nData = 100;
+
+        //等价于C/C++的 #define 语句，不分配内存
+        private const int PI = 31415;
+
+        //http://blog.csdn.net/dijkstar/article/details/9204707
+        private static unsafe void Demo5()
+        {
+            //简单的结构变量放在栈上，无需fixed
+            XYZ stData = new XYZ();
+            stData.a = 100;
+            Console.WriteLine("结构变量= 0x{0:x}", (int)&stData);
+
+            //数组变量的声明放在了栈上，数据放在了堆上，需用fixed固定
+            int[] arry = null;
+            arry = new int[10];
+            fixed (int* p = arry)
+            {
+                Console.WriteLine("array = 0x{0:x}", (int)p);
+            }
+
+            //这些放在栈上的变量，可以直接使用指针指向
+            //从打印的指针的数据看，int是4字节的，double是8字节的
+            int y = 10;
+            int z = 100;
+            double f = 0.90;
+            Console.WriteLine("本地变量y = 0x{0:X}, z = 0x{1:X}", (int)&y, (int)&z);
+            Console.WriteLine("本地变量f = 0x{0:X}", (int)&f);
+
+            //下面失败
+            //fixed (int* p = &P.PI)
+            //{
+            //}
+
+            //放在堆里面的数据的地址，就必须用fixed语句！
+            string ss = "Helo";
+            fixed (char* p = ss)
+            {
+                Console.WriteLine("字符串地址= 0x{0:x}", (int)p);
+            }
+
+            Program P = new Program();
+            //这个是类对象，放在堆里面
+            fixed (int* p = &P.m_nData)
+            {
+                Console.WriteLine("普通类成员变量 = 0x{0:X}", (int)p);
+            }
+
+            //静态成员变量在堆上
+            fixed (int* p = &m_sZ)
+            {
+                Console.WriteLine("静态成员变量 = 0x{0:X}", (int)p);
+            }
+
+            //下面是每种类型的占用字节个数
+            Console.Write("\n\n下面是每种类型的占用字节个数\n");
+            Console.WriteLine("sizeof(void *) = {0}", sizeof(void*));
+            Console.WriteLine("sizeof(int) = {0}, * = {1}", sizeof(int), sizeof(int*));//4
+            Console.WriteLine("sizeof(long) = {0}, * = {1}", sizeof(long), sizeof(long*));//8
+            Console.WriteLine("sizeof(byte) = {0}, * = {1}", sizeof(byte), sizeof(byte*));//1
+            Console.WriteLine("sizeof(bool) = {0}, * = {1}", sizeof(bool), sizeof(bool*));//1
+            Console.WriteLine("sizeof(float) = {0}, * = {1}", sizeof(float), sizeof(float*));//4
+            Console.WriteLine("sizeof(double) = {0}, * = {1}", sizeof(double), sizeof(double*));//8
+            Console.WriteLine("sizeof(decimal) = {0}, * = {1}", sizeof(decimal), sizeof(decimal*));//16
+            Console.WriteLine("sizeof(char) = {0}, * = {1}", sizeof(char), sizeof(char*));//
+            Console.WriteLine("sizeof(XYZ) = {0}, * = {1}", sizeof(XYZ), sizeof(XYZ*));//
+            //Console.WriteLine("sizeof(object) = {0}, * = {1}", sizeof(object), sizeof(object*));//16
+            //Console.WriteLine("sizeof(C) = {0}, * = {1}", sizeof(C), sizeof(C*));//16
+        }
+
+        private struct XYZ
+        {
+            public int a;
+            public int b;
+            public int c;
+            private bool b1;
+        };
 
         #endregion 21-不安全代码
 
@@ -1435,11 +1576,11 @@ namespace ConApp
                     Value = "123465",
                     Code = "001"
                 },
-                CitiesList = new CityObj[]
+                CitiesList = new City[]
                 {
-                    new CityObj {PinYin="suzhou",Value="苏州" ,HasOutService="123",Info="苏州",Population=123456},
-                    new CityObj {PinYin="wuxi",Value="无锡" ,HasOutService="234",Info="无锡",Population=234567},
-                    new CityObj {PinYin="nanjing",Value="南京" ,HasOutService="456",Info="南京",Population=345678},
+                    new City {PinYin="suzhou",Value="苏州" ,HasOutService="123",Info="苏州",Population=123456},
+                    new City {PinYin="wuxi",Value="无锡" ,HasOutService="234",Info="无锡",Population=234567},
+                    new City {PinYin="nanjing",Value="南京" ,HasOutService="456",Info="南京",Population=345678},
                 }
             };
             string str = XmlSerializeHelper.Serializer(response);
@@ -1449,6 +1590,83 @@ namespace ConApp
             XmlSerializer serializer = new XmlSerializer(typeof(CitiesListResponse));
             serializer.Serialize(Console.Out, response);
             Console.Read();
+        }
+
+        public static void XMLDemo3()
+        {
+            string xmlString = @"﻿<?xml version='1.0' encoding='utf-8'?>
+                                            <GetCitiesListResponse xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+                                            <Result Code='000000'>成功</Result>
+                                            <CitiesList>
+                                            <City PinYin='beijing' HasOutService='Y'>北京</City>
+                                            <City PinYin='shanghai' HasOutService='Y'>上海</City>
+                                            </CitiesList>
+                                            </GetCitiesListResponse>";
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(CitiesListResponse));
+
+            using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(xmlString)))
+            {
+                Object obj = xmlSerializer.Deserialize(memoryStream);
+            }
+        }
+
+        public static void XMLDemo4()
+        {
+            int i = 10;
+            //声明Xml序列化对象实例serializer
+            XmlSerializer serializer = new XmlSerializer(typeof(int));
+            //执行序列化并将序列化结果输出到控制台
+            serializer.Serialize(Console.Out, i);
+        }
+
+        public static string ObjectToXMl(object p)
+        {
+            string result = "";
+            XmlSerializer xmlSerializer = new XmlSerializer(p.GetType());
+            //  xmlSerializer.Serialize(Console.Out, p);
+            Encoding encoding2 = new UTF8Encoding(false);
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, encoding2))
+                {
+                    XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+                    xmlSerializerNamespaces.Add("", "");
+                    xmlSerializer.Serialize(xmlTextWriter, p, xmlSerializerNamespaces);
+                    result = Encoding.UTF8.GetString(memoryStream.ToArray());
+                }
+            }
+            return result;
+        }
+
+        public static void XMLDemo5()
+        {
+            Person p = new Person
+            {
+                Name = "N1",
+                Sex = '男',
+                Age = 20,
+                Hobbys = new[] { "hobby1", "hobby2" }
+            };
+            ObjectToXMl(p);
+        }
+
+        public static void XMLDemo6()
+        {
+            Cat cWhite = new Cat { Color = "White", Speed = 10, Saying = "White cat" };
+            Cat cBlack = new Cat { Color = "Black", Speed = 15, Saying = "Black cat" };
+
+            CatCollection cc = new CatCollection
+            {
+                Cats = new[] { cWhite, cBlack }
+            };
+
+            //序列化这个对象
+            XmlSerializer serializer = new XmlSerializer(typeof(CatCollection));
+
+            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add("", "");
+            serializer.Serialize(Console.Out, cc, xmlSerializerNamespaces);
         }
 
         #endregion 25-XMLDemo
@@ -2156,6 +2374,39 @@ namespace ConApp
         }
 
         #endregion 控制台文本输出
+
+        #region TupleDemo
+
+        public static List<Tuple<int, List<string>>> CreateTule()
+        {
+            List<Tuple<int, List<string>>> tuplerList = new List<Tuple<int, List<string>>>();
+            Tuple<int, List<string>> tuples1 = Tuple.Create(1, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples2 = Tuple.Create(2, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples3 = Tuple.Create(3, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples4 = Tuple.Create(4, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples5 = Tuple.Create(5, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples6 = Tuple.Create(6, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples7 = Tuple.Create(7, new List<string> { "xxxxxxx", "ccccccccc" });
+            tuplerList.AddRange(new[] { tuples1, tuples2, tuples3, tuples4, tuples5, tuples6, tuples7 });
+            return tuplerList;
+        }
+
+        public static void TupleDemo()
+        {
+            List<Tuple<int, List<string>>> vs = CreateTule();
+            foreach (Tuple<int, List<string>> tuple in vs)
+            {
+                if (tuple.Item1 == 5)
+                {
+                    foreach (string s in tuple.Item2)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+            }
+        }
+
+        #endregion TupleDemo
 
         #region Md5Token
 
@@ -3293,10 +3544,6 @@ namespace ConApp
         {
             object genericList = CreateGeneric(typeof(List<>), typeof(Person));
             var orderList = genericList as List<Person>;
-            orderList.Add(new Person { });
-            orderList.Add(new Person { });
-            orderList.Add(new Person { });
-            orderList.Add(new Person { });
         }
 
         public static void StackDemo()

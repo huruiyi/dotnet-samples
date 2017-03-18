@@ -4,10 +4,6 @@ namespace ConApp.Model
 {
     public class Person
     {
-        public Person()
-        {
-        }
-
         public string Name { get; set; }
 
         public double Salary { get; set; }
@@ -18,20 +14,12 @@ namespace ConApp.Model
 
         public string[] Hobbys { get; set; }
 
-        public Dictionary<int, string> Attributes { get; set; }
+      //  public Dictionary<int, string> Attributes { get; set; }
 
         [ValidateAge(50, "")]
         public int Age { get; set; }
 
         public int Sallary { get; set; }
-
-        public Person(string name, int age, char sex, int sallary)
-        {
-            this.Name = name;
-            this.Age = age;
-            this.Sex = sex;
-            this.Sallary = sallary;
-        }
     }
 
     public class Equip

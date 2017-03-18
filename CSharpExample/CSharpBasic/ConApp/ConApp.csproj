@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Calculator.cs" />
+    <Compile Include="Model\Cat.cs" />
     <Compile Include="Model\CitiesListResponse.cs" />
     <Compile Include="Model\XMLPlatformModel.cs" />
     <Compile Include="Model\XMLRequestModel.cs" />

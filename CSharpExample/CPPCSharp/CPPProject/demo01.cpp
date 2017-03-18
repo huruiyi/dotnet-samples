@@ -11,11 +11,11 @@ using namespace std;
 int main1()
 {
 	int num1{ 1234 }, num2{ 5678 };
-	cout << endl;                                // Start on a new line
+	cout << endl;                                 // Start on a new line
 	cout << setw(10) << num1 << setw(6) << num2;  // Output two values
-	cout << endl;                                // Start on a new line
+	cout << endl;                                 // Start on a new line
 	system("pause");
-	return 0;                                    // Exit program
+	return 0;                                         // Exit program
 }
 
 void main2()
@@ -163,8 +163,12 @@ void main7() {
 }
 /*
 Data Types
-This topic lists the data types most commonly used in the Microsoft Foundation Class Library. Most of the data types are exactly the same as those in the Windows Software Development Kit (SDK), while others are unique to MFC.
+
+This topic lists the data types most commonly used in the Microsoft Foundation Class Library.
+Most of the data types are exactly the same as those in the Windows Software Development Kit (SDK),
+while others are unique to MFC.
 Commonly used Windows SDK and MFC data types are as follows: BOOL A Boolean value.
+
 BSTR A 32-bit character pointer.
 BYTE An 8-bit integer that is not signed.
 COLORREF A 32-bit value used as a color value.
@@ -186,7 +190,7 @@ POSITION A value used to denote the position of an element in a collection; used
 然而，在实际情况中，DWORD会根据操作系统的不同，被定义成了不同的长度，比如vs8(xp)中，DWORD被定义成了如下的类型：
 typedef unsigned long DWORD; 而unsigned long 的长度则是4个字节即32位，如果是在64位的操作系统中，这个长度可能会更长，这需要取决于当前操作系统以及开发环境等有关方面，具体可以参考相关的帮助说明！
 */
-void main()
+void main8()
 {
 	int a = 12;
 	cout << sizeof(a) << endl;
@@ -194,5 +198,40 @@ void main()
 	DWORD b = 12;
 	cout << sizeof(b) << endl;
 
+	getchar();
+}
+
+void main9()
+{
+	char s[50] = "abcdefghijklmnopqrstuvwxyz";
+	printf("%d", sizeof(s));
+	printf("%d", strlen(s));
+
+	char arr1[5] = "A";
+	char arr2[5] = { 'A','B','C','D','E' };
+	char arr3[5];
+	char arr4[] = "ABCDE";
+	//char arr5[5] = "ABCDE";
+	char arr6[5] = "ABCD";
+
+	printf("sizeof(arr1)=%d\n", sizeof(arr1));
+	printf("strlen(arr1)=%d\n", strlen(arr1));
+
+	printf("sizeof(arr2)=%d\n", sizeof(arr2));
+	printf("strlen(arr2)=%d\n", strlen(arr2));
+
+	printf("sizeof(arr3)=%d\n", sizeof(arr3));
+	printf("strlen(arr3)=%d\n", strlen(arr3));
+
+	printf("sizeof(arr4)=%d\n", sizeof(arr4));
+	printf("strlen(arr4)=%d\n", strlen(arr4));
+
+	//printf("sizeof(arr5)=%d\n", sizeof(arr5));
+	//printf("strlen(arr5)=%d\n", strlen(arr5));
+
+	printf("sizeof(arr6)=%d\n", sizeof(arr6));
+	printf("strlen(arr6)=%d\n", strlen(arr6));
+
+	system("pause");
 	getchar();
 }

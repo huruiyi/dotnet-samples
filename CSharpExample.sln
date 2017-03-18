@@ -207,6 +207,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConApp", "CSharpExample\CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFAppAdo.Net", "CSharpExample\ADO.NET\WFAppAdo.Net\WFAppAdo.Net.csproj", "{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project_declspec", "CSharpExample\CPPCSharp\Project_declspec\Project_declspec.vcxproj", "{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1455,6 +1457,20 @@ Global
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}.Release|x64.Build.0 = Release|Any CPU
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}.Release|x86.ActiveCfg = Release|Any CPU
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}.Release|x86.Build.0 = Release|Any CPU
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|x64.ActiveCfg = Debug|x64
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|x64.Build.0 = Debug|x64
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|x86.ActiveCfg = Debug|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Debug|x86.Build.0 = Debug|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|x64.ActiveCfg = Release|x64
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|x64.Build.0 = Release|x64
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|x86.ActiveCfg = Release|Win32
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1546,6 +1562,7 @@ Global
 		{8F6AB101-860F-4201-B90A-06F7CE29B490} = {B9A5DFF7-423C-437A-9B3C-95C09A5A9B1A}
 		{999D9AFB-E920-4519-8519-EBF2A07888F5} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B} = {21CBCAA7-BDA7-43FF-98DC-0229101C4E5D}
+		{DD09A968-4A2F-4BD1-98FE-CCBE4C3AC34C} = {C4555BA2-DD75-4C05-87C1-CD26B19CA43F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35

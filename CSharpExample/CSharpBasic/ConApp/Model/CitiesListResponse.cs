@@ -2,13 +2,13 @@
 
 namespace ConApp.Model
 {
-    [XmlRoot("Response")]
+    [XmlRoot("GetCitiesListResponse")]
     public class CitiesListResponse
     {
         public Result Result { get; set; }
 
         [XmlArray("CitiesList"), XmlArrayItem("City")]
-        public CityObj[] CitiesList { get; set; }
+        public City[] CitiesList { get; set; }
     }
 
     public class Result
@@ -21,12 +21,12 @@ namespace ConApp.Model
     }
 
     [XmlRoot("City")]
-    public class CityObj
+    public class City
     {
-        [XmlAttribute("PY")]
+        [XmlAttribute("PinYin")]
         public string PinYin { get; set; }
 
-        [XmlAttribute("HOS")]
+        [XmlAttribute("HasOutService")]
         public string HasOutService { get; set; }
 
         [XmlText]
