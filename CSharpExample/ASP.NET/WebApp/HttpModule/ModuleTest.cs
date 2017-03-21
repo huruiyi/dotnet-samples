@@ -22,8 +22,8 @@ namespace WebApp.HttpModule
         {
             context.LogRequest += new EventHandler(OnLogRequest);
 
-            context.BeginRequest += context_BeginRequest;
-            context.EndRequest += context_EndRequest;
+            //context.BeginRequest += context_BeginRequest;
+            //context.EndRequest += context_EndRequest;
         }
 
         private void context_EndRequest(object sender, EventArgs e)

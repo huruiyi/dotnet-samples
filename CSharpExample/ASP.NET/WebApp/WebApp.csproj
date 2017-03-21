@@ -60,6 +60,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Handler\Graphics1.ashx" />
+    <Content Include="Handler\Graphics2.ashx" />
+    <Content Include="Handler\Graphics3.ashx" />
+    <Content Include="Handler\HttpWebRequestImage.ashx" />
+    <Content Include="Handler\HttpRequestDemo.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -100,9 +105,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handler\BitmapHandler.cs" />
     <Compile Include="Handler\DetailGoodsHandler.cs" />
     <Compile Include="Handler\DisplayGoodsHandler.cs" />
+    <Compile Include="Handler\Graphics1.ashx.cs">
+      <DependentUpon>Graphics1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Graphics2.ashx.cs">
+      <DependentUpon>Graphics2.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Graphics3.ashx.cs">
+      <DependentUpon>Graphics3.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\HttpRequestDemo.ashx.cs">
+      <DependentUpon>HttpRequestDemo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\HttpWebRequestImage.ashx.cs">
+      <DependentUpon>HttpWebRequestImage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\OrederHandler.cs" />
     <Compile Include="Handler\RegisterHandler.cs" />

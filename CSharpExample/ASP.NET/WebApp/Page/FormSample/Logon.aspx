@@ -10,7 +10,7 @@
 <script runat="server">
     void Logon_Click(object sender, EventArgs e)
     {
-        if ((txtUserName.Text == "huruiyi") && (UserPass.Text == "huruiyi123456"))
+        if ((txtUserName.Text == "admin") && (UserPass.Text == "123456"))
         {
             FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, Persist.Checked);
         }
@@ -28,16 +28,16 @@
             <tr>
                 <td>E-mail address:</td>
                 <td>
-                    <asp:TextBox ID="txtUserName" runat="server" /></td>
+                    <asp:TextBox ID="txtUserName" runat="server"  Text="admin"/></td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtUserName"
-                        Display="Dynamic" ErrorMessage="Cannot be empty." runat="server" />
+                        Display="Dynamic" ErrorMessage="Cannot be empty." runat="server"  />
                 </td>
             </tr>
             <tr>
                 <td>Password:</td>
                 <td>
-                    <asp:TextBox ID="UserPass" TextMode="Password" runat="server" />
+                    <asp:TextBox ID="UserPass" TextMode="Password" runat="server" Text="123456" />
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="UserPass"
