@@ -5,13 +5,6 @@ namespace WebApiDemo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Title = "Home Page";
-
-            return View();
-        }
-
         public ContentResult Index(string callback)
         {
             var a = new { UserName = "UserName", Email = "Email" };
