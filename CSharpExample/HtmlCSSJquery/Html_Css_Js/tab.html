@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        #menu {
+            width: 360px;
+            overflow: hidden;
+            margin: 100px auto;
+            border: 1px solid #f1c40f;
+        }
+
+            #menu #nav {
+                display: block;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+                #menu #nav li {
+                    float: left;
+                    width: 120px;
+                }
+
+                    #menu #nav li a {
+                        display: block;
+                        line-height: 27px;
+                        text-decoration: none;
+                        padding: 0 0 0 5px;
+                        text-align: center;
+                        color: #ba55d3;
+                    }
+
+        #menu_con {
+            width: 358px;
+            height: 135px;
+            border-top: none;
+        }
+
+        .tag {
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .selected {
+            background: #27ae60;
+            color: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        var tabs = function () {
+            function tag(name, elem) {
+                return (elem || document).getElementsByTagName(name);
+            }
+
+            function first(elem) {
+                elem = elem.firstChild;
+                return elem && elem.nodeType == 1 ? elem : next(elem);
+            }
+
+            function next(elem) {
+                do {
+                    elem = elem.nextSibling;
+                }
+                while (elem && elem.nodeType != 1)//元素节点:返回1,,属性节点:返回 2
+                return elem;
+            }
+
+            return {
+                set: function (elemId, tabId) {
+                    var elem = tag("li", document.getElementById(elemId));
+                    var tabs = tag("div", document.getElementById(tabId));
+                    var listNum = elem.length;
+                    var tabNum = tabs.length;
+                    var i = 0;
+                    for (i = 0; i < listNum; i++) {
+                        elem[i].onclick = (function (i) {
+                            return function () {
+                                for (var j = 0; j < tabNum; j++) {
+                                    if (i == j) {
+                                        tabs[j].style.display = "block";
+                                        alert(elem[j].firstChild);
+                                        elem[j].firstChild.className = "selected";
+                                    } else {
+                                        tabs[j].style.display = "none";
+                                        elem[j].firstChild.className = "";
+                                    }
+                                }
+                            }
+                        })(i);
+                    }
+                }
+            }
+        }();
+        window.onload = function () {
+            tabs.set("nav", "menu_con");//执行
+        }
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <!--tag标题-->
+        <ul id="nav">
+            <li><a href="#" class="selected">jQuery特效</a></li>
+            <li><a href="#" class="">tab切换</a></li>
+            <li><a href="#" class="">菜单导航</a></li>
+        </ul>
+        <!--二级菜单-->
+        <div id="menu_con">
+            <div class="tag" style="display:block">
+                这里是jQuery特效内容列表
+            </div>
+            <div class="tag" style="display:none">
+                这里是tab切换效果
+            </div>
+            <div class="tag" style="display:none">
+                这里是菜单导航效果
+            </div>
+        </div>
+    </div>
+</body>
+</html>

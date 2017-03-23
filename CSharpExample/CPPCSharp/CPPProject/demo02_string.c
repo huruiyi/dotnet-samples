@@ -290,7 +290,7 @@ void PutsDemo()
 	getchar();
 }
 
-void main()
+void main123()
 {
 	//getc
 	//putc

@@ -111,6 +111,7 @@
     <Content Include="position练习.htm" />
     <Content Include="rotate.html" />
     <Content Include="select.html" />
+    <Content Include="tab.html" />
     <Content Include="table.html" />
     <Content Include="块级元素行内元素.html" />
     <Content Include="导航框架\frame_a.html" />
