@@ -142,5 +142,14 @@ namespace WinFormDemo
                 MessageBox.Show("你点击了Cancel");
             }
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            new Notepad().ShowDialog();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

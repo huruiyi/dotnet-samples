@@ -336,9 +336,9 @@
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(138, 23);
             this.button18.TabIndex = 3;
-            this.button18.Text = "18";
+            this.button18.Text = "18-简单记事本";
             this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button16_Click);
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // button19
             // 
@@ -349,6 +349,7 @@
             this.button19.TabIndex = 3;
             this.button19.Text = "19";
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button20
             // 
