@@ -21,7 +21,7 @@ template <typename C> void print(const string& s, const C& c)
 	cout << endl;
 }
 
-int main()
+void main03a()
 {
 	vector<int> v(16);
 	iota(v.begin(), v.end(), 0);

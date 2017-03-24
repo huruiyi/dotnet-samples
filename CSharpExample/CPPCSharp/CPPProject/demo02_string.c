@@ -1,7 +1,9 @@
 /* memcpy example */
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 /*
 http://www.cplusplus.com/reference/cstring/
@@ -328,4 +330,93 @@ void main123()
 	//puts
 
 	PutsDemo();
+}
+
+/*整形内存分配*/
+
+void MallocInt()
+{
+	int *p = (int *)malloc(sizeof(int) * 4);//s指向了一个堆的内存地址
+
+	*(p) = 1;
+	*(p + 1) = 10;
+	*(p + 2) = 100;
+	*(p + 3) = 1000;
+
+	printf("s = %p\n", p);
+	printf("s = %p\n", p + 1);
+	printf("s = %p\n", p + 2);
+	printf("s = %p\n", p + 3);
+
+	printf("size(s)=%d\n", sizeof(p));
+	printf("size(s)=%d\n", sizeof(p + 1));
+	printf("size(s)=%d\n", sizeof(p + 2));
+	printf("size(s)=%d\n", sizeof(p + 3));
+}
+
+MallocChar() {
+	char *p = (char *)malloc(sizeof(char) * 4);//s指向了一个堆的内存地址
+	printf("p = %p\n", p);
+	printf("***********赋值前*************");
+	printf("sizeof(p) = %d\n", sizeof(p));
+	printf("strlen(p) = %d\n", strlen(p));
+	strcpy(p, "abcd");
+	printf("***********赋值后*************");
+	printf("sizeof(p) = %d\n", sizeof(p));
+	printf("strlen(p) = %d\n", strlen(p));
+}
+typedef   unsigned   char   byte;
+
+void SizeOfdDemo()
+{
+	printf("%d\n", sizeof(char));
+	printf("%d\n", sizeof(int));
+	printf("%d\n", sizeof(float));
+	printf("%d\n", sizeof(long));
+	printf("%d\n", sizeof(long long));
+}
+void main0()
+{
+	char *ptr = (char*)malloc(0);
+	if (ptr == NULL)
+	{
+		puts("Gota null pointer");
+	}
+	else
+	{
+		puts("Gota valid pointer");
+	}
+
+	getchar();
+}
+void main()
+{
+	int *p = (int *)malloc(4 * sizeof(int));   //16个字节
+	printf("old %p\n", p);
+	//realloc 函数可以给已经存在的空间扩充大小
+	p = realloc(p, 40 * sizeof(int));
+	printf("new %p\n", p);
+	//40个内存空间
+	if (p != NULL)
+	{
+		//申请成功做的事情
+		*p = 10;
+		*(p + 1) = 100;
+		*(p + 2) = 1000;
+		*(p + 3) = 10000;   //存放4个整数
+
+		*(p + 39) = 1;
+		printf("%d\n", *(p + 39));
+	}
+	else
+	{
+		//内存申请失败
+		printf("内存申请失败!\n");
+	}
+
+	for (int i = 0;i < 40;i++) {
+		printf("%d\t", *(p + i));
+	}
+
+	getchar();
 }

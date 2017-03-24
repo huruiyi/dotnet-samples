@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <stdarg.h>
 #include <windows.h>
+
 using std::cout;
 using std::endl;
 using std::setw;
@@ -132,7 +133,8 @@ int main6()
 	return 0;
 }
 
-void main7() {
+void main7()
+{
 	while (-1)
 	{
 		cout << "-11111111111" << endl;
@@ -235,3 +237,61 @@ void main9()
 	system("pause");
 	getchar();
 }
+
+void main10()
+{
+	char a1[] = { "hello" };
+	printf("%s\n", a1);
+
+	printf("%d\n", sizeof(a1));
+
+	char a2[3] = { 'a','b','\0' };
+	printf("%s\t%d\t%d", a2, sizeof(a2), strlen(a2));
+
+	getchar();
+}
+
+void main11()
+{
+	char * ps = "Good Morning";
+
+	while (*ps)
+	{
+		putchar(*ps++);
+		printf("\t");
+	}
+
+	getchar();
+}
+
+void main12()
+{
+	int i, j, *p = NULL;
+	printf("Please enter the size for allocation\n");
+	scanf_s("%d", &i);
+	p = (int*)calloc(i, sizeof(int));
+
+	printf("%p\n", p);
+	if (p)
+	{
+		printf("Please enter %d datas\n");
+		for (j = 0;j < i;j++)
+		{
+			scanf_s("%d", &p[j]);
+		}
+	}
+	else
+	{
+		printf("Allocation is fail\n");
+		 
+	}
+
+	printf("The datas are\n");
+	for (j = 0;j < i;j++)
+	{
+		printf("%d\t", p[j]);
+	}
+}
+
+
+ 
