@@ -97,6 +97,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventSample\CarDealer.cs" />
+    <Compile Include="EventSample\CarInfoEventArgs.cs" />
+    <Compile Include="EventSample\Consumer.cs" />
+    <Compile Include="Samples\AlgorithmDemo.cs" />
+    <Compile Include="Samples\DllImportDemo.cs" />
+    <Compile Include="Samples\GraphicsDemo.cs" />
     <Compile Include="Model\Calculator.cs" />
     <Compile Include="Model\Cat.cs" />
     <Compile Include="Model\CitiesListResponse.cs" />
@@ -110,8 +116,6 @@
     <Compile Include="Model\MyEnumerator.cs" />
     <Compile Include="Model\MyThread.cs" />
     <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\PointRef.cs" />
-    <Compile Include="Model\PointDemo.cs" />
     <Compile Include="Model\Publisher.cs" />
     <Compile Include="Model\ReflectionClass1.cs" />
     <Compile Include="Model\ReflectionClass2.cs" />
@@ -139,6 +143,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Samples\SecurityDemo.cs" />
+    <Compile Include="Samples\SQLiteDemo.cs" />
+    <Compile Include="Samples\UnsafeDemo.cs" />
+    <Compile Include="Samples\XMLDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -181,6 +189,7 @@
     <Content Include="Model\Calculator.py" />
     <Content Include="Data\TestDbSQL.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\..\..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -70,6 +70,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsymmetricAlgorithmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsymmetricAlgorithmForm.designer.cs">
+      <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="Key事件.Designer.cs">
       <DependentUpon>Key事件.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SymmetricAlgorithmsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymmetricAlgorithmsForm.designer.cs">
+      <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SyncAsyncAPMForm\APM实例.cs">
       <SubType>Form</SubType>
@@ -211,6 +223,9 @@
     <Compile Include="Notepad.designer.cs">
       <DependentUpon>Notepad.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AsymmetricAlgorithmForm.resx">
+      <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataSynchronization\DSForm1.resx">
       <DependentUpon>DSForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Key事件.resx">
       <DependentUpon>Key事件.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymmetricAlgorithmsForm.resx">
+      <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SyncAsyncAPMForm\APM实例.resx">
       <DependentUpon>APM实例.cs</DependentUpon>

@@ -150,6 +150,12 @@ namespace WinFormDemo
 
         private void button19_Click(object sender, EventArgs e)
         {
+            new SymmetricAlgorithmForm().ShowDialog();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            new AsymmetricAlgorithmForm().ShowDialog();
         }
     }
 }

@@ -292,7 +292,7 @@ void PutsDemo()
 	getchar();
 }
 
-void main123()
+void GetPutsDemo()
 {
 	//getc
 	//putc
@@ -332,9 +332,37 @@ void main123()
 	PutsDemo();
 }
 
-/*整形内存分配*/
+void SizeOfdDemo()
+{
+	printf("%d\n", sizeof(char));
+	printf("%d\n", sizeof(int));
+	printf("%d\n", sizeof(float));
+	printf("%d\n", sizeof(long));
+	printf("%d\n", sizeof(long long));
+}
 
-void MallocInt()
+void MallocDemo5()
+{
+	int* p1 = (int*)malloc(4 * sizeof(int));  // allocates enough for an array of 4 int
+	int* p2 = (int*)malloc(sizeof(int[4])); // same, naming the type directly
+	int* p3 = (int*)malloc(4 * sizeof *p3);   // same, without repeating the type name
+
+	if (p1)
+	{
+		for (int n = 0; n < 4; ++n) // populate the array
+		{
+			p1[n] = n*n;
+		}
+		for (int n = 0; n < 4; ++n) // print it back out
+		{
+			printf("%d\t%d ---------%p\t%p \n", p1[n], *(p1 + n), &p1[n], p1 + n);
+		}
+	}
+	free(p1);
+	free(p2);
+	free(p3);
+}
+void MallocDemo4()
 {
 	int *p = (int *)malloc(sizeof(int) * 4);//s指向了一个堆的内存地址
 
@@ -354,7 +382,7 @@ void MallocInt()
 	printf("size(s)=%d\n", sizeof(p + 3));
 }
 
-MallocChar() {
+void MallocDemo3() {
 	char *p = (char *)malloc(sizeof(char) * 4);//s指向了一个堆的内存地址
 	printf("p = %p\n", p);
 	printf("***********赋值前*************");
@@ -365,18 +393,9 @@ MallocChar() {
 	printf("sizeof(p) = %d\n", sizeof(p));
 	printf("strlen(p) = %d\n", strlen(p));
 }
-typedef   unsigned   char   byte;
 
-void SizeOfdDemo()
-{
-	printf("%d\n", sizeof(char));
-	printf("%d\n", sizeof(int));
-	printf("%d\n", sizeof(float));
-	printf("%d\n", sizeof(long));
-	printf("%d\n", sizeof(long long));
-}
-void main0()
-{
+typedef   unsigned   char   byte;
+void MallocDemo2() {
 	char *ptr = (char*)malloc(0);
 	if (ptr == NULL)
 	{
@@ -386,11 +405,27 @@ void main0()
 	{
 		puts("Gota valid pointer");
 	}
-
-	getchar();
 }
-void main()
-{
+
+void MallocDemo1() {
+	int i, n;
+	char * buffer;
+
+	printf("How long do you want the string? ");
+	scanf("%d", &i);
+
+	buffer = (char*)malloc(i + 1);
+	if (buffer == NULL) exit(1);
+
+	for (n = 0; n < i; n++)
+		buffer[n] = rand() % 26 + 'a';
+	buffer[i] = '\0';
+
+	printf("Random string: %s\n", buffer);
+	free(buffer);
+}
+
+void ReallocDemo1() {
 	int *p = (int *)malloc(4 * sizeof(int));   //16个字节
 	printf("old %p\n", p);
 	//realloc 函数可以给已经存在的空间扩充大小
@@ -417,6 +452,68 @@ void main()
 	for (int i = 0;i < 40;i++) {
 		printf("%d\t", *(p + i));
 	}
+	free(p);
+}
+
+void ReallocDemo2() {
+	int input, n;
+	int count = 0;
+	int* numbers = NULL;
+	int* more_numbers = NULL;
+
+	do {
+		printf("Enter an integer value (0 to end): ");
+		scanf("%d", &input);
+		count++;
+
+		more_numbers = (int*)realloc(numbers, count * sizeof(int));
+
+		if (more_numbers != NULL) {
+			numbers = more_numbers;
+			numbers[count - 1] = input;
+		}
+		else {
+			free(numbers);
+			puts("Error (re)allocating memory");
+			exit(1);
+		}
+	} while (input != 0);
+
+	printf("Numbers entered: ");
+	for (n = 0;n < count;n++) printf("%d ", numbers[n]);
+	free(numbers);
+}
+
+void AllocDemo() {
+	int * buffer1, *buffer2, *buffer3;
+	buffer1 = (int*)malloc(100 * sizeof(int));
+	buffer2 = (int*)calloc(100, sizeof(int));
+	buffer3 = (int*)realloc(buffer2, 500 * sizeof(int));
+	free(buffer1);
+	free(buffer3);
+}
+
+void CallocDemo()
+{
+	int i, n;
+	int * pData;
+	printf("Amount of numbers to be entered: ");
+	scanf("%d", &i);
+	pData = (int*)calloc(i, sizeof(int));
+	if (pData == NULL) exit(1);
+	for (n = 0;n < i;n++)
+	{
+		printf("Enter number #%d: ", n + 1);
+		scanf("%d", &pData[n]);
+	}
+	printf("You have entered: ");
+	for (n = 0;n < i;n++) printf("%d ", pData[n]);
+	free(pData);
+}
+
+void main()
+{
+	MallocDemo5();
 
 	getchar();
 }

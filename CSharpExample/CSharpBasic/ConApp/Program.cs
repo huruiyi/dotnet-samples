@@ -1,7 +1,7 @@
-﻿using ConApp.Model;
+﻿using ConApp.EventSample;
+using ConApp.Model;
 using Microsoft.Web.Administration;
 using Microsoft.Win32;
-using Net.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +9,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -26,8 +23,6 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Security;
 using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Security.Policy;
@@ -37,24 +32,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace ConApp
 {
-    internal class Program
+    public partial class Program
     {
-        public const string SqliteFilePath = "sqlitedb.db";
-
         public delegate void ConPort(int port);
 
         public delegate void AsycRun();
 
         public static unsafe void Main(string[] args)
         {
-            XMLDemo3();
-            XMLDemo5();
             //Marshal.
+
             DateTime d1 = new DateTime(2017, 1, 1);
 
             int days = (DateTime.Now - d1).Days;
@@ -887,383 +877,39 @@ namespace ConApp
 
         #endregion 20-WeakReferenceDemo
 
-        #region 21-不安全代码
+        #region 21-Environment信息获取
 
-        public unsafe static void ArrPrintDemo()
+        public static void EnvironmentDemo()
         {
-            const int al = 10;
-            byte[] ints = new byte[al];
-            //for (int i = 0; i < 50000; i++)
-            //{
-            //    new object();
-            //}
-
-            fixed (byte* ip = ints)
-            {
-                for (int i = 0; i < al; i++)
-                {
-                    Console.WriteLine(Guid.NewGuid().GetHashCode());
-                    ip[i] = (byte)new Random().Next(0, 256);
-                }
-            }
-
-            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
-            Array.ForEach(ints, b => Console.WriteLine(b));
+            string commandLine = Environment.CommandLine;
+            string currentDirectory = Environment.CurrentDirectory;
+            int currentManagedThreadId = Environment.CurrentManagedThreadId;
+            //int ecode = Environment.ExitCode;
+            //Environment.Exit(ecode);
+            string[] cas = Environment.GetCommandLineArgs();
+            string ev = Environment.GetEnvironmentVariable("Path");
+            Environment.GetLogicalDrives();
+            bool is64 = Environment.Is64BitOperatingSystem;
+            bool is64p = Environment.Is64BitProcess;
+            string machineName = Environment.MachineName;
+            string nl = Environment.NewLine;
+            OperatingSystem osVersion = Environment.OSVersion;
+            int processorCount = Environment.ProcessorCount;
+            string systemDirectory = Environment.SystemDirectory;
+            int systemPageSize = Environment.SystemPageSize;
+            int tickCount = Environment.TickCount;
+            string userDomainName = Environment.UserDomainName;
+            string userName = Environment.UserName;
+            Version v = Environment.Version;
+            long workingSet = Environment.WorkingSet;
+            string computerName = Environment.GetEnvironmentVariable("ComputerName");
         }
 
-        public static unsafe void SquarePtrParamDemo(int i)
-        {
-            SquareIntPointer(&i);
-            Console.WriteLine(i);
-        }
-
-        public static void SafeSwapDemo()
-        {
-            int i = 10, j = 20;
-            SafeSwap(ref i, ref j);
-            Console.WriteLine("Values after safe swap: i = {0}, j = {1}", i, j);
-
-            unsafe
-            {
-                UnsafeSwap(&i, &j);
-            }
-            Console.WriteLine("Values after safe swap: i = {0}, j = {1}", i, j);
-        }
-
-        /// <summary>
-        /// 求平方
-        /// </summary>
-        /// <param name="p"></param>
-        public static unsafe void SquareIntPointer(int* p)
-        {
-            *p *= *p;
-        }
-
-        /// <summary>
-        /// 交换两个数
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
-        public static void SafeSwap(ref int i, ref int j)
-        {
-            int temp = i;
-            i = j;
-            j = temp;
-        }
-
-        /// <summary>
-        /// 交换两个数
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
-        public static unsafe void UnsafeSwap(int* i, int* j)
-        {
-            int temp = *i;
-            *i = *j;
-            *j = temp;
-        }
-
-        public static unsafe void UnsafeAddDemo1()
-        {
-            int[] a = new int[2];
-            a[0] = 1;
-            a[1] = 2;
-            int b = 3;
-            int res = UnsafeAdd1(a, b);
-            Console.WriteLine(res);
-
-            unsafe
-            {
-                int num = 5;
-                int* intp = &num;
-
-                int result = UnsafeAdd2(num, intp);
-                Console.WriteLine(result);
-            }
-        }
-
-        public static int UnsafeAdd1(int[] a, int b)
-        {
-            unsafe
-            {
-                fixed (int* pa = a)//此处将锁住a，使得在fixed操作块内，a不会被CLR移动
-                {
-                    return *pa + b;
-                }
-            }
-        }
-
-        public unsafe static int UnsafeAdd2(int a, int* b)//此处使用 指针，需要加入非安全代码关键字unsafe
-        {
-            return a + *b;
-        }
-
-        public static unsafe void UsePointerToPoint()
-        {
-            PointDemo point;
-            PointDemo* p = &point;
-            p->x = 100;
-            p->y = 200;
-            Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + p->ToString());
-
-            PointDemo point2;
-            PointDemo* p2 = &point2;
-            (*p2).x = 100;
-            (*p2).y = 200;
-            Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + (*p2).ToString());
-        }
-
-        public static unsafe void UnsafeStackAlloc()
-        {
-            char* p = stackalloc char[256];
-            for (int k = 0; k < 256; k++)
-            {
-                p[k] = (char)k;
-            }
-        }
-
-        public static unsafe void PrintValueAndAddress()
-        {
-            int myInt;
-
-            int* ptrToMyInt = &myInt;
-
-            *ptrToMyInt = 123;
-
-            Console.WriteLine("Vsalue of myInt {0}", myInt);
-            Console.WriteLine("Address of myInt {0:X}", (int)&ptrToMyInt);
-        }
-
-        public static unsafe void UseAndPinPoint()
-        {
-            PointRef pt = new PointRef();
-            pt.x = 5;
-            pt.y = 6;
-
-            // pin pt in place so it will not be moved or GC-ed.
-            fixed (int* p = &pt.x)
-            {
-                // Use int* variable here!
-            }
-
-            // pt is now unpinned, and ready to be GC-ed once the method completes.
-            Console.WriteLine("Point is: {0}", pt);
-        }
-
-        public static unsafe void UseSizeOfOperator()
-        {
-            Console.WriteLine("The size of short is {0}.", sizeof(short));
-            Console.WriteLine("The size of int is {0}.", sizeof(int));
-            Console.WriteLine("The size of long is {0}.", sizeof(long));
-            Console.WriteLine("The size of Point is {0}.", sizeof(Point));
-        }
-
-        public unsafe static void PointDemo()
-        {
-            int[] arry = null;
-            arry = new int[10];
-            fixed (int* pi = arry)
-            {
-                Console.WriteLine("array = 0x{0:x}", (int)pi);
-            }
-            int[] intArr = { 12, 13, 14, 15, 16 };
-            for (int i = 0; i < intArr.Length; i++)
-            {
-                Console.WriteLine("array = 0x{0:x}", intArr[i]);
-            }
-            fixed (int* p = intArr)
-            {
-                Console.WriteLine((int)p);
-            }
-        }
-
-        public unsafe static void GetPointDemo()
-        {
-            unsafe
-            {
-                int x = 10;
-                int* p = &x;
-                int tenAddress = (int)p;
-                Console.WriteLine("address:{0}", tenAddress);
-                Console.WriteLine(Convert.ToString(tenAddress, 2));
-                Console.ReadKey();
-            }
-        }
-
-        /*
-          由于涉及指针类型，因此 stackalloc 要求不安全上下文。 有关更多信息，请参见 不安全代码和指针（C# 编程指南）。
-          stackalloc 类似于 C 运行库中的 _alloca。
-          以下代码示例计算并演示 Fibonacci 序列中的前 20 个数字。 每个数字是先前两个数字的和。
-          在代码中，大小足够容纳 20 个 int 类型元素的内存块是在堆栈上分配的，而不是在堆上分配的。
-          该块的地址存储在 fib 指针中。 此内存不受垃圾回收的制约，因此不必将其钉住（通过使用 fixed）。
-          内存块的生存期受限于定义它的方法的生存期。 不能在方法返回之前释放内存。
-      */
-
-        public static unsafe void Demo28()
-        {
-            const int arraySize = 20;
-            int* fib = stackalloc int[arraySize];
-            int* p = fib;
-            // The sequence begins with 1, 1.
-            *p++ = *p++ = 1;
-            for (int i = 2; i < arraySize; ++i, ++p)
-            {
-                // Sum the previous two numbers.
-                *p = p[-1] + p[-2];
-            }
-            for (int i = 0; i < arraySize; ++i)
-            {
-                Console.WriteLine(fib[i]);
-            }
-        }
-
-        private static void Demo1()
-        {
-            unsafe
-            {
-                int[] array = { 10, 20, 30, 40, 50 };
-                fixed (int* ptr = array)
-                {
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        //Console.WriteLine("array = 0x{0:x}", (int)(ptr+i));
-                        Console.WriteLine("{0}--{1}--{2}--0x{3:x}", i, *(ptr + i), array[i], (int)(ptr + i));
-                        //Console.WriteLine("Content of the {0}th element of the array: Using pointer: {1}, Using array index: {2}", i, *(ptr + i), array[i]);
-                    }
-                }
-            }
-        }
-
-        private static void Demo2()
-        {
-            var s = "Hello"; // stores given string into HashSet where all string are strored in .NET
-                             // due string immutability
-
-            unsafe // allows write to read-only memory
-            {
-                fixed (char* c = s) // get pointer to string originally stored in read only memory
-                    for (int i = 0; i < s.Length; i++)
-                        c[i] = 'a';     // change data in memory allocated for original "Hello"
-            }
-            Console.WriteLine("Hello"); // .NET looks on address in memory where it expect
-                                        // data for string "Hello" but it was just changed
-                                        // Displays: "aaaaa"
-        }
-
-        private static void Demo3()
-        {
-            unsafe
-            {
-                int[] a = { 1, 2, 3 };
-                fixed (int* b = a)
-                {
-                    Console.WriteLine(b[4]);
-                }
-            }
-        }
-
-        private static void Demo4()
-        {
-            int[] array = { 1, 2, 3, 4, 5, 6 };
-            unsafe
-            {
-                fixed (int* ptr = array)
-                {
-                    for (int i = 0; i <= array.Length; i++)
-                    {
-                        *(ptr + i) = 0;
-                    }
-                }
-            }
-        }
-
-        //静态变量存储在堆上，查看指针时需用fixed固定
-        private static int m_sZ = 100;
-
-        //普通数据成员，也是放在堆上了，查看指针时需用fixed固定
-        private int m_nData = 100;
-
-        //等价于C/C++的 #define 语句，不分配内存
-        private const int PI = 31415;
-
-        //http://blog.csdn.net/dijkstar/article/details/9204707
-        private static unsafe void Demo5()
-        {
-            //简单的结构变量放在栈上，无需fixed
-            XYZ stData = new XYZ();
-            stData.a = 100;
-            Console.WriteLine("结构变量= 0x{0:x}", (int)&stData);
-
-            //数组变量的声明放在了栈上，数据放在了堆上，需用fixed固定
-            int[] arry = null;
-            arry = new int[10];
-            fixed (int* p = arry)
-            {
-                Console.WriteLine("array = 0x{0:x}", (int)p);
-            }
-
-            //这些放在栈上的变量，可以直接使用指针指向
-            //从打印的指针的数据看，int是4字节的，double是8字节的
-            int y = 10;
-            int z = 100;
-            double f = 0.90;
-            Console.WriteLine("本地变量y = 0x{0:X}, z = 0x{1:X}", (int)&y, (int)&z);
-            Console.WriteLine("本地变量f = 0x{0:X}", (int)&f);
-
-            //下面失败
-            //fixed (int* p = &P.PI)
-            //{
-            //}
-
-            //放在堆里面的数据的地址，就必须用fixed语句！
-            string ss = "Helo";
-            fixed (char* p = ss)
-            {
-                Console.WriteLine("字符串地址= 0x{0:x}", (int)p);
-            }
-
-            Program P = new Program();
-            //这个是类对象，放在堆里面
-            fixed (int* p = &P.m_nData)
-            {
-                Console.WriteLine("普通类成员变量 = 0x{0:X}", (int)p);
-            }
-
-            //静态成员变量在堆上
-            fixed (int* p = &m_sZ)
-            {
-                Console.WriteLine("静态成员变量 = 0x{0:X}", (int)p);
-            }
-
-            //下面是每种类型的占用字节个数
-            Console.Write("\n\n下面是每种类型的占用字节个数\n");
-            Console.WriteLine("sizeof(void *) = {0}", sizeof(void*));
-            Console.WriteLine("sizeof(int) = {0}, * = {1}", sizeof(int), sizeof(int*));//4
-            Console.WriteLine("sizeof(long) = {0}, * = {1}", sizeof(long), sizeof(long*));//8
-            Console.WriteLine("sizeof(byte) = {0}, * = {1}", sizeof(byte), sizeof(byte*));//1
-            Console.WriteLine("sizeof(bool) = {0}, * = {1}", sizeof(bool), sizeof(bool*));//1
-            Console.WriteLine("sizeof(float) = {0}, * = {1}", sizeof(float), sizeof(float*));//4
-            Console.WriteLine("sizeof(double) = {0}, * = {1}", sizeof(double), sizeof(double*));//8
-            Console.WriteLine("sizeof(decimal) = {0}, * = {1}", sizeof(decimal), sizeof(decimal*));//16
-            Console.WriteLine("sizeof(char) = {0}, * = {1}", sizeof(char), sizeof(char*));//
-            Console.WriteLine("sizeof(XYZ) = {0}, * = {1}", sizeof(XYZ), sizeof(XYZ*));//
-            //Console.WriteLine("sizeof(object) = {0}, * = {1}", sizeof(object), sizeof(object*));//16
-            //Console.WriteLine("sizeof(C) = {0}, * = {1}", sizeof(C), sizeof(C*));//16
-        }
-
-        private struct XYZ
-        {
-            public int a;
-            public int b;
-            public int c;
-            private bool b1;
-        };
-
-        #endregion 21-不安全代码
+        #endregion 21-Environment信息获取
 
         #region 22-TaskDemo
 
-        public static void TasKdemo1()
+        public static void TaskCancellationTokenDemo1()
         {
             CancellationTokenSource source = new CancellationTokenSource();
             CancellationToken token = source.Token;
@@ -1324,6 +970,80 @@ namespace ConApp
                     if (e is TaskCanceledException)
                     {
                         Console.WriteLine("Unable to compute mean: {0}", ((TaskCanceledException)e).Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Exception: " + e.GetType().Name);
+                    }
+                }
+            }
+            finally
+            {
+                source.Dispose();
+            }
+        }
+
+        public static void TaskCancellationTokenDemo2()
+        {
+            CancellationTokenSource source = new CancellationTokenSource();
+            CancellationToken token = source.Token;
+
+            Random rnd = new Random();
+            object lockObj = new object();
+
+            List<Task<int[]>> tasks = new List<Task<int[]>>();
+            TaskFactory factory = new TaskFactory(token);
+            for (int taskCtr = 0; taskCtr <= 10; taskCtr++)
+            {
+                int iteration = taskCtr + 1;
+                tasks.Add(factory.StartNew(() =>
+                {
+                    int value;
+                    int[] values = new int[10];
+                    for (int ctr = 1; ctr <= 10; ctr++)
+                    {
+                        lock (lockObj)
+                        {
+                            value = rnd.Next(0, 101);
+                        }
+                        if (value == 0)
+                        {
+                            source.Cancel();
+                            Console.WriteLine("Cancelling at task {0}", iteration);
+                            break;
+                        }
+                        values[ctr - 1] = value;
+                    }
+                    return values;
+                }, token));
+            }
+            try
+            {
+                Task<double> fTask =
+                factory.ContinueWhenAll(tasks.ToArray(), (results) =>
+                {
+                    Console.WriteLine("Calculating overall mean...");
+                    long sum = 0;
+                    int n = 0;
+                    foreach (var t in results)
+                    {
+                        foreach (var r in t.Result)
+                        {
+                            sum += r;
+                            n++;
+                        }
+                    }
+                    return sum / (double)n;
+                }, token);
+                Console.WriteLine("The mean is {0}.", fTask.Result);
+            }
+            catch (AggregateException ae)
+            {
+                foreach (Exception e in ae.InnerExceptions)
+                {
+                    if (e is TaskCanceledException)
+                    {
+                        Console.WriteLine("Unable to compute mean: {0}", e.Message);
                     }
                     else
                     {
@@ -1541,135 +1261,28 @@ namespace ConApp
 
         #endregion 24进制转换_Bin_Oct_Dec_Hex
 
-        #region 25-XMLDemo
+        #region 25-硬盘信息查询
 
-        public static void XMLDemo1()
+        public static void GetDriverInfo()
         {
-            //删除节点
-            //XDocument XMLDoc = XDocument.Load(path);
-            //XElement elment = (from xml1 in XMLDoc.Descendants("Node")
-            //                   select xml1).FirstOrDefault();
-            //elment.Remove();
-            //XMLDoc.Save(path);
-
-            string xmlInfo = Properties.Resources.XML;
-
-            DirectoryInfo basrDir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            DirectoryInfo codeDir = basrDir.Parent.Parent;
-            string path = Path.Combine(codeDir.FullName, "Resource", "XML.xml");
-
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(path);
-            XmlNodeList xmlNodeList = xmlDocument.SelectNodes("/info/collage");
-            foreach (XmlNode xmlNode in xmlNodeList)
+            DriveInfo[] alldrive = DriveInfo.GetDrives();
+            foreach (DriveInfo item in alldrive)
             {
-                Console.WriteLine(xmlNode["name"].InnerText, xmlNode["students"].InnerText);
-            }
-        }
-
-        public static void XMLDemo2()
-        {
-            CitiesListResponse response = new CitiesListResponse
-            {
-                Result = new Result
+                Console.WriteLine("驱动器:{0}", item.Name);
+                Console.WriteLine(" 类型:{0}", item.DriveType);
+                if (item.IsReady)
                 {
-                    Value = "123465",
-                    Code = "001"
-                },
-                CitiesList = new City[]
-                {
-                    new City {PinYin="suzhou",Value="苏州" ,HasOutService="123",Info="苏州",Population=123456},
-                    new City {PinYin="wuxi",Value="无锡" ,HasOutService="234",Info="无锡",Population=234567},
-                    new City {PinYin="nanjing",Value="南京" ,HasOutService="456",Info="南京",Population=345678},
+                    Console.WriteLine(" 卷标:{0}", item.VolumeLabel);
+                    Console.WriteLine(" 文件系统:{0}", item.DriveFormat);
+                    Console.WriteLine(" 当前用户可用空间:{0,15}字节", item.AvailableFreeSpace);
+                    Console.WriteLine(" 可用空间        :{0,15}字节", item.TotalFreeSpace);
+                    Console.WriteLine(" 磁盘总大小:     :{0,15}字节", item.TotalSize);
                 }
-            };
-            string str = XmlSerializeHelper.Serializer(response);
-            Console.WriteLine(str);
-            Console.ReadLine();
-
-            XmlSerializer serializer = new XmlSerializer(typeof(CitiesListResponse));
-            serializer.Serialize(Console.Out, response);
-            Console.Read();
-        }
-
-        public static void XMLDemo3()
-        {
-            string xmlString = @"﻿<?xml version='1.0' encoding='utf-8'?>
-                                            <GetCitiesListResponse xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
-                                            <Result Code='000000'>成功</Result>
-                                            <CitiesList>
-                                            <City PinYin='beijing' HasOutService='Y'>北京</City>
-                                            <City PinYin='shanghai' HasOutService='Y'>上海</City>
-                                            </CitiesList>
-                                            </GetCitiesListResponse>";
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(CitiesListResponse));
-
-            using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(xmlString)))
-            {
-                Object obj = xmlSerializer.Deserialize(memoryStream);
+                Console.ReadKey();
             }
         }
 
-        public static void XMLDemo4()
-        {
-            int i = 10;
-            //声明Xml序列化对象实例serializer
-            XmlSerializer serializer = new XmlSerializer(typeof(int));
-            //执行序列化并将序列化结果输出到控制台
-            serializer.Serialize(Console.Out, i);
-        }
-
-        public static string ObjectToXMl(object p)
-        {
-            string result = "";
-            XmlSerializer xmlSerializer = new XmlSerializer(p.GetType());
-            //  xmlSerializer.Serialize(Console.Out, p);
-            Encoding encoding2 = new UTF8Encoding(false);
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                using (XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, encoding2))
-                {
-                    XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
-                    xmlSerializerNamespaces.Add("", "");
-                    xmlSerializer.Serialize(xmlTextWriter, p, xmlSerializerNamespaces);
-                    result = Encoding.UTF8.GetString(memoryStream.ToArray());
-                }
-            }
-            return result;
-        }
-
-        public static void XMLDemo5()
-        {
-            Person p = new Person
-            {
-                Name = "N1",
-                Sex = '男',
-                Age = 20,
-                Hobbys = new[] { "hobby1", "hobby2" }
-            };
-            ObjectToXMl(p);
-        }
-
-        public static void XMLDemo6()
-        {
-            Cat cWhite = new Cat { Color = "White", Speed = 10, Saying = "White cat" };
-            Cat cBlack = new Cat { Color = "Black", Speed = 15, Saying = "Black cat" };
-
-            CatCollection cc = new CatCollection
-            {
-                Cats = new[] { cWhite, cBlack }
-            };
-
-            //序列化这个对象
-            XmlSerializer serializer = new XmlSerializer(typeof(CatCollection));
-
-            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
-            xmlSerializerNamespaces.Add("", "");
-            serializer.Serialize(Console.Out, cc, xmlSerializerNamespaces);
-        }
-
-        #endregion 25-XMLDemo
+        #endregion 25-硬盘信息查询
 
         #region 26-WebRequestDemo
 
@@ -1909,84 +1522,6 @@ namespace ConApp
 
         #endregion 31-HttpListenerDemo
 
-        #region 32-XmlSerializerDemo
-
-        public static void XmlSerializerDemo()
-        {
-            //XmlMapping
-            XMLPlatformModel model = new XMLPlatformModel
-            {
-                CheckCode = "180014190010",
-                Token = "H29G3-MZTKQ535-D7T95OAK-1PKOEV48",
-                AplData = new AplDataPlatform
-                {
-                    Code = "01"
-                }
-            };
-
-            StringBuilder sb = new StringBuilder();
-            StringWriter tw = new StringWriter(sb);
-            XmlSerializer sz = new XmlSerializer(typeof(XMLPlatformModel));
-            sz.Serialize(tw, model);
-            tw.Close();
-            Console.WriteLine(sb.ToString());
-        }
-
-        #endregion 32-XmlSerializerDemo
-
-        #region Environment信息获取
-
-        public static void EnvironmentDemo()
-        {
-            string commandLine = Environment.CommandLine;
-            string currentDirectory = Environment.CurrentDirectory;
-            int currentManagedThreadId = Environment.CurrentManagedThreadId;
-            //int ecode = Environment.ExitCode;
-            //Environment.Exit(ecode);
-            string[] cas = Environment.GetCommandLineArgs();
-            string ev = Environment.GetEnvironmentVariable("Path");
-            Environment.GetLogicalDrives();
-            bool is64 = Environment.Is64BitOperatingSystem;
-            bool is64p = Environment.Is64BitProcess;
-            string machineName = Environment.MachineName;
-            string nl = Environment.NewLine;
-            OperatingSystem osVersion = Environment.OSVersion;
-            int processorCount = Environment.ProcessorCount;
-            string systemDirectory = Environment.SystemDirectory;
-            int systemPageSize = Environment.SystemPageSize;
-            int tickCount = Environment.TickCount;
-            string userDomainName = Environment.UserDomainName;
-            string userName = Environment.UserName;
-            Version v = Environment.Version;
-            long workingSet = Environment.WorkingSet;
-            string computerName = Environment.GetEnvironmentVariable("ComputerName");
-        }
-
-        #endregion Environment信息获取
-
-        #region 硬盘信息查询
-
-        public static void GetDriverInfo()
-        {
-            DriveInfo[] alldrive = DriveInfo.GetDrives();
-            foreach (DriveInfo item in alldrive)
-            {
-                Console.WriteLine("驱动器:{0}", item.Name);
-                Console.WriteLine(" 类型:{0}", item.DriveType);
-                if (item.IsReady)
-                {
-                    Console.WriteLine(" 卷标:{0}", item.VolumeLabel);
-                    Console.WriteLine(" 文件系统:{0}", item.DriveFormat);
-                    Console.WriteLine(" 当前用户可用空间:{0,15}字节", item.AvailableFreeSpace);
-                    Console.WriteLine(" 可用空间        :{0,15}字节", item.TotalFreeSpace);
-                    Console.WriteLine(" 磁盘总大小:     :{0,15}字节", item.TotalSize);
-                }
-                Console.ReadKey();
-            }
-        }
-
-        #endregion 硬盘信息查询
-
         #region 获取注册表的建
 
         public static void RegistryDemo()
@@ -2003,139 +1538,6 @@ namespace ConApp
         }
 
         #endregion 获取注册表的建
-
-        #region DllImport Demo
-
-        #region 01:获取电脑已安装软件
-
-        [DllImport("msi.dll", SetLastError = true)]
-        public static extern int MsiEnumProducts(int iProductIndex, StringBuilder lpProductBuf);
-
-        [DllImport("msi.dll", SetLastError = true)]
-        public static extern int MsiGetProductInfo(string szProduct, string szProperty, StringBuilder lpValueBuf, ref int pcchValueBuf);
-
-        public static void GetCurrentInstall()
-        {
-            StringBuilder result = new StringBuilder();
-            for (int index = 0; ; index++)
-            {
-                StringBuilder productCode = new StringBuilder(39);
-                if (MsiEnumProducts(index, productCode) != 0)
-                {
-                    break;
-                }
-
-                foreach (string property in new string[] { "ProductName", "Publisher", "VersionString", })
-                {
-                    int charCount = 512;
-                    StringBuilder value = new StringBuilder(charCount);
-
-                    if (MsiGetProductInfo(productCode.ToString(), property, value, ref charCount) == 0)
-                    {
-                        value.Length = charCount;
-                        result.AppendLine(value.ToString());
-                    }
-                }
-                result.AppendLine();
-            }
-            Console.WriteLine(result.ToString());
-        }
-
-        #endregion 01:获取电脑已安装软件
-
-        #region 02:设置鼠标位置
-
-        //BOOL WINAPI SetCursorPos(
-        //  _In_ int X,
-        //  _In_ int Y
-        //);
-
-        [DllImport("User32.dll")]
-        public static extern bool SetCursorPos(int x, int y);
-
-        public static void SetCursorPosDemo()
-        {
-            int x = 0;
-            int y = 0;
-            int time = 0;
-            while (true)
-            {
-                SetCursorPos(x, y);
-                Thread.Sleep(100);
-                x += 10;
-                y += 10;
-                time++;
-                if (time == 100)
-                {
-                    break;
-                }
-            }
-        }
-
-        #endregion 02:设置鼠标位置
-
-        #region 03:获取鼠标位置
-
-        public struct Point
-        {
-            public int x;
-            public int y;
-        }
-
-        //BOOL WINAPI GetCursorPos(
-        //  _Out_ LPPOINT lpPoint
-        //);
-
-        [DllImport("User32.dll")]
-        public static extern bool GetCursorPos(out Point p);
-
-        public static void GetPostition()
-        {
-            Point p;
-            GetCursorPos(out p);
-            Console.WriteLine(p.x + " " + p.y);
-        }
-
-        #endregion 03:获取鼠标位置
-
-        #region 04:SetClipboardData
-
-        //HANDLE WINAPI SetClipboardData(
-        //_In_ UINT   uFormat,
-        //_In_opt_ HANDLE hMem
-        //);
-
-        #endregion 04:SetClipboardData
-
-        #region 05:ShowCursor
-
-        [DllImport("User32.dll")]
-        public static extern int ShowCursor(bool flag);
-
-        //int WINAPI ShowCursor(
-        //_In_ BOOL bShow
-        //);
-
-        public static void TestShowCursor()
-        {
-            int i = 1;
-            while (true)
-            {
-                if (i % 2 == 0)
-                {
-                    ShowCursor(false);
-                }
-                else
-                {
-                    ShowCursor(true);
-                }
-                i++;
-            }
-        }
-
-        #endregion 05:ShowCursor
-
-        #endregion DllImport Demo
 
         #region 截屏
 
@@ -2338,7 +1740,7 @@ namespace ConApp
         {
             SmtpClient client = new SmtpClient("smtp.163.com", 25)
             {
-                Credentials = new NetworkCredential("13372171750@163.com", "mima")
+                Credentials = new NetworkCredential("13372171750@163.com", "mail163")
             };
             using (MailMessage msg = new MailMessage())
             {
@@ -2620,15 +2022,6 @@ namespace ConApp
 
         #endregion 差集交集并集
 
-        public async static void AsyncDemo()
-        {
-            using (StreamWriter writer = File.CreateText("ConsoleOutput.txt"))
-            {
-                await writer.WriteLineAsync("First line of example");
-                await writer.WriteLineAsync("and second line");
-            }
-        }
-
         #region 特性相关
 
         public static void ValidateAttribute()
@@ -2667,128 +2060,6 @@ namespace ConApp
         }
 
         #endregion 文件生成
-
-        public static void DataTableDemo1()
-        {
-            //DataTable table = new DataTable();
-            //table.Columns.AddRange(new DataColumn[]
-            //{
-            //    new DataColumn("Resource_Id"),
-            //    new DataColumn("TA"),
-            //    new DataColumn("TB"),
-            //    new DataColumn("TC"),
-            //    new DataColumn("TD")
-            //});
-            //table.Rows.Add(1, 1, 2, 0, 0);
-            //table.Rows.Add(1, 3, 0, 3, 4);
-            //table.Rows.Add(2, 5, 6, 0, 0);
-            //table.Rows.Add(2, 7, 0, 7, 8);
-
-            //var aa = from t in table.AsEnumerable()
-            //         group t by new { t1 = t.Field<string>("Resource_Id") } into m
-            //         select new
-            //         {
-            //             name = m.Key.t1,
-            //             score = m.Sum(n => n.Field<decimal>("TA"))
-            //         };
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("name", typeof(string)),
-                new DataColumn("sex", typeof(string)),
-                new DataColumn("score", typeof(int))
-            });
-            dt.Rows.Add(new object[] { "张三", "男", 1 });
-            dt.Rows.Add(new object[] { "张三", "男", 4 });
-            dt.Rows.Add(new object[] { "李四", "男", 100 });
-            dt.Rows.Add(new object[] { "李四", "女", 90 });
-            dt.Rows.Add(new object[] { "王五", "女", 77 });
-            DataTable dtResult = dt.Clone();
-            DataTable dtName = dt.DefaultView.ToTable(true, "name", "sex");
-            for (int i = 0; i < dtName.Rows.Count; i++)
-            {
-                DataRow[] rows = dt.Select("name='" + dtName.Rows[i]["name"] + "' and sex='" + dtName.Rows[i]["sex"] + "'");
-                //temp用来存储筛选出来的数据
-                DataTable temp = dtResult.Clone();
-                foreach (DataRow row in rows)
-                {
-                    temp.Rows.Add(row.ItemArray);
-                }
-
-                DataRow dr = dtResult.NewRow();
-                dr[0] = dtName.Rows[i][0].ToString();
-                dr[1] = temp.Compute("sum(score)", "");
-                dtResult.Rows.Add(dr);
-            }
-        }
-
-        public static void DataTableDemo2()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] { new DataColumn("name", typeof(string)),
-                                         new DataColumn("sex", typeof(string)),
-                                         new DataColumn("score", typeof(decimal)) });
-            dt.Rows.Add(new object[] { "张三", "男", 1 });
-            dt.Rows.Add(new object[] { "张三", "男", 4 });
-            dt.Rows.Add(new object[] { "李四", "男", 100 });
-            dt.Rows.Add(new object[] { "李四", "女", 90 });
-            dt.Rows.Add(new object[] { "王五", "女", 77 });
-            var query = from t in dt.AsEnumerable()
-                        group t by new { t1 = t.Field<string>("name"), t2 = t.Field<string>("sex") } into m
-                        select new
-                        {
-                            name = m.Key.t1,
-                            sex = m.Key.t2,
-                            score = m.Sum(n => n.Field<decimal>("score"))
-                        };
-            if (query.ToList().Count > 0)
-            {
-                query.ToList().ForEach(q =>
-                {
-                    Console.WriteLine(q.name + "," + q.sex + "," + q.score);
-                });
-            }
-        }
-
-        public static void PathDemo()
-        {
-            AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
-            string entryAssemblyLocation = Assembly.GetEntryAssembly().Location;
-
-            string str1 = Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。
-            string str2 = Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。
-            string str3 = Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。
-            string str4 = System.Windows.Forms.Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。
-            string str5 = System.Windows.Forms.Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。
-            string str6 = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
-            string str7 = AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。
-            string str8 = AppDomain.CurrentDomain.FriendlyName;
-
-            Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            string codeBase = executingAssembly.CodeBase;
-            string location = executingAssembly.Location;
-        }
-
-        public static void MathDemo()
-        {
-            List<int> ids = new List<int>();
-            ids.AddRange(new List<int> { 1, 2, 3, 4 });
-            ids.AddRange(new List<int> { 5, 6, 7, 8 });
-            ids.AddRange(new List<int> { 9, 10, 11, 12 });
-
-            int idg = Convert.ToInt32(Math.Ceiling(ids.Count / 5.0));
-
-            List<int> sInts = new List<int>();
-            for (int i = 1; i <= idg; i++)
-            {
-                sInts = new List<int>();
-                sInts.AddRange(ids.Skip((i - 1) * 5).Take(5));
-
-                string jboNumbers = sInts.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
-
-                Console.WriteLine(jboNumbers);
-            }
-        }
 
         #region 实现IIS应用池的远程回收
 
@@ -3279,7 +2550,136 @@ namespace ConApp
 
         #endregion PowerShell命令
 
-        #region Demo
+        public async static void AsyncDemo()
+        {
+            using (StreamWriter writer = File.CreateText("ConsoleOutput.txt"))
+            {
+                await writer.WriteLineAsync("First line of example");
+                await writer.WriteLineAsync("and second line");
+            }
+        }
+
+        public static void DataTableDemo1()
+        {
+            //DataTable table = new DataTable();
+            //table.Columns.AddRange(new DataColumn[]
+            //{
+            //    new DataColumn("Resource_Id"),
+            //    new DataColumn("TA"),
+            //    new DataColumn("TB"),
+            //    new DataColumn("TC"),
+            //    new DataColumn("TD")
+            //});
+            //table.Rows.Add(1, 1, 2, 0, 0);
+            //table.Rows.Add(1, 3, 0, 3, 4);
+            //table.Rows.Add(2, 5, 6, 0, 0);
+            //table.Rows.Add(2, 7, 0, 7, 8);
+
+            //var aa = from t in table.AsEnumerable()
+            //         group t by new { t1 = t.Field<string>("Resource_Id") } into m
+            //         select new
+            //         {
+            //             name = m.Key.t1,
+            //             score = m.Sum(n => n.Field<decimal>("TA"))
+            //         };
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("name", typeof(string)),
+                new DataColumn("sex", typeof(string)),
+                new DataColumn("score", typeof(int))
+            });
+            dt.Rows.Add(new object[] { "张三", "男", 1 });
+            dt.Rows.Add(new object[] { "张三", "男", 4 });
+            dt.Rows.Add(new object[] { "李四", "男", 100 });
+            dt.Rows.Add(new object[] { "李四", "女", 90 });
+            dt.Rows.Add(new object[] { "王五", "女", 77 });
+            DataTable dtResult = dt.Clone();
+            DataTable dtName = dt.DefaultView.ToTable(true, "name", "sex");
+            for (int i = 0; i < dtName.Rows.Count; i++)
+            {
+                DataRow[] rows = dt.Select("name='" + dtName.Rows[i]["name"] + "' and sex='" + dtName.Rows[i]["sex"] + "'");
+                //temp用来存储筛选出来的数据
+                DataTable temp = dtResult.Clone();
+                foreach (DataRow row in rows)
+                {
+                    temp.Rows.Add(row.ItemArray);
+                }
+
+                DataRow dr = dtResult.NewRow();
+                dr[0] = dtName.Rows[i][0].ToString();
+                dr[1] = temp.Compute("sum(score)", "");
+                dtResult.Rows.Add(dr);
+            }
+        }
+
+        public static void DataTableDemo2()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[] { new DataColumn("name", typeof(string)),
+                                         new DataColumn("sex", typeof(string)),
+                                         new DataColumn("score", typeof(decimal)) });
+            dt.Rows.Add(new object[] { "张三", "男", 1 });
+            dt.Rows.Add(new object[] { "张三", "男", 4 });
+            dt.Rows.Add(new object[] { "李四", "男", 100 });
+            dt.Rows.Add(new object[] { "李四", "女", 90 });
+            dt.Rows.Add(new object[] { "王五", "女", 77 });
+            var query = from t in dt.AsEnumerable()
+                        group t by new { t1 = t.Field<string>("name"), t2 = t.Field<string>("sex") } into m
+                        select new
+                        {
+                            name = m.Key.t1,
+                            sex = m.Key.t2,
+                            score = m.Sum(n => n.Field<decimal>("score"))
+                        };
+            if (query.ToList().Count > 0)
+            {
+                query.ToList().ForEach(q =>
+                {
+                    Console.WriteLine(q.name + "," + q.sex + "," + q.score);
+                });
+            }
+        }
+
+        public static void PathDemo()
+        {
+            AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
+            string entryAssemblyLocation = Assembly.GetEntryAssembly().Location;
+
+            string str1 = Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。
+            string str2 = Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。
+            string str3 = Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。
+            string str4 = System.Windows.Forms.Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。
+            string str5 = System.Windows.Forms.Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。
+            string str6 = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
+            string str7 = AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。
+            string str8 = AppDomain.CurrentDomain.FriendlyName;
+
+            Assembly executingAssembly = Assembly.GetExecutingAssembly();
+            string codeBase = executingAssembly.CodeBase;
+            string location = executingAssembly.Location;
+        }
+
+        public static void MathDemo()
+        {
+            List<int> ids = new List<int>();
+            ids.AddRange(new List<int> { 1, 2, 3, 4 });
+            ids.AddRange(new List<int> { 5, 6, 7, 8 });
+            ids.AddRange(new List<int> { 9, 10, 11, 12 });
+
+            int idg = Convert.ToInt32(Math.Ceiling(ids.Count / 5.0));
+
+            List<int> sInts = new List<int>();
+            for (int i = 1; i <= idg; i++)
+            {
+                sInts = new List<int>();
+                sInts.AddRange(ids.Skip((i - 1) * 5).Take(5));
+
+                string jboNumbers = sInts.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
+
+                Console.WriteLine(jboNumbers);
+            }
+        }
 
         public static void DynamicDemo0()
         {
@@ -3304,17 +2704,6 @@ namespace ConApp
             var calc = new Calculator();
             int r = calc.Add(2, 3);
             Console.WriteLine(r);
-        }
-
-        public static void IronPython()
-        {
-            // http://ironpython.codeplex.com
-            // var engine = Python.CreateEngine();
-            // dynamic scope = engine.ImportModule("Calculator");
-
-            //  var calc = scope.GetCalculator();
-            // int r = calc.Add(2, 3);
-            // Console.WriteLine(r);
         }
 
         public void BulidMethod()
@@ -3397,81 +2786,10 @@ namespace ConApp
             mdi.Invoke(ob, new object[] { "Hello Lind", "OK" });
         }
 
-        public static void ClassDemo()
-        {
-            StaticDemo();
-            DynamicDemo0();
-            DynamicDemo1();
-            IronPython();
-        }
-
-        #endregion Demo
-
-        #region ExpressionDemo
-
         public static void ExpressionDemo()
         {
             string idField = ((MemberExpression)((Expression<Func<Person, int>>)(c => c.Age)).Body).Member.Name;
             string textField = ((MemberExpression)((Expression<Func<Person, string>>)(c => c.Name)).Body).Member.Name;
-        }
-
-        #endregion ExpressionDemo
-
-        #region MyRegion
-
-        public static void BitmapDemo0()
-        {
-            Bitmap bmp = new Bitmap(600, 500);
-            Graphics dc = Graphics.FromImage(bmp);
-            RectangleF[] rects = dc.Clip.GetRegionScans(new Matrix());
-
-            for (int i = 0; i < rects.GetLength(0); i++)
-                Console.WriteLine("clip: " + rects[i].ToString());
-
-            Console.WriteLine("VisibleClipBounds: " + dc.VisibleClipBounds);
-            Console.WriteLine("IsVisible Point 650, 650: " + dc.IsVisible(650, 650));
-            Console.WriteLine("IsVisible Point 0, 0: " + dc.IsVisible(0.0f, 0.0f));
-
-            Console.WriteLine("IsVisible Rectangle (20,20,100,100): " + dc.IsVisible(new Rectangle(20, 20, 100, 100)));
-            Console.WriteLine("IsVisible Rectangle (1000, 1000,100,100): " + dc.IsVisible(new RectangleF(1000, 1000, 100, 100)));
-        }
-
-        public static void BitmapDemo1()
-        {
-            float width = 400.0F;
-            float height = 800.0F;
-            Bitmap bmp = new Bitmap((int)width, (int)height);
-            Graphics gr = Graphics.FromImage(bmp);
-            gr.Clear(Color.White);
-
-            int LINES = 32;
-            float MAX_THETA = (.80F * 90.0F);
-            float THETA = (2 * MAX_THETA / (LINES - 1));
-
-            GraphicsState oldState = gr.Save();
-
-            Pen blackPen = new Pen(Color.Black, 2.0F);
-            gr.TranslateTransform(width / 2.0F, height / 2.0F);
-            gr.RotateTransform(MAX_THETA);
-            for (int i = 0; i < LINES; i++)
-            {
-                gr.DrawLine(blackPen, -2.0F * width, 0.0F, 2.0F * width, 0.0F);
-                gr.RotateTransform(-THETA);
-            }
-
-            gr.Restore(oldState);
-
-            Pen redPen = new Pen(Color.Red, 6F);
-            gr.DrawLine(redPen, width / 4F, 0F, width / 4F, height);
-            gr.DrawLine(redPen, 3F * width / 4F, 0F, 3F * width / 4F, height);
-
-            /* save image in all the formats */
-            bmp.Save("hering.png", ImageFormat.Png);
-            Console.WriteLine("output file hering.png");
-            bmp.Save("hering.jpg", ImageFormat.Jpeg);
-            Console.WriteLine("output file hering.jpg");
-            bmp.Save("hering.bmp", ImageFormat.Bmp);
-            Console.WriteLine("output file hering.bmp");
         }
 
         public static void TaskActionDemo()
@@ -3561,348 +2879,16 @@ namespace ConApp
             Console.WriteLine(stack.Count);
         }
 
-        public static void TaskCancellationTokenSource()
-        {
-            CancellationTokenSource source = new CancellationTokenSource();
-            CancellationToken token = source.Token;
-
-            Random rnd = new Random();
-            object lockObj = new object();
-
-            List<Task<int[]>> tasks = new List<Task<int[]>>();
-            TaskFactory factory = new TaskFactory(token);
-            for (int taskCtr = 0; taskCtr <= 10; taskCtr++)
-            {
-                int iteration = taskCtr + 1;
-                tasks.Add(factory.StartNew(() =>
-                {
-                    int value;
-                    int[] values = new int[10];
-                    for (int ctr = 1; ctr <= 10; ctr++)
-                    {
-                        lock (lockObj)
-                        {
-                            value = rnd.Next(0, 101);
-                        }
-                        if (value == 0)
-                        {
-                            source.Cancel();
-                            Console.WriteLine("Cancelling at task {0}", iteration);
-                            break;
-                        }
-                        values[ctr - 1] = value;
-                    }
-                    return values;
-                }, token));
-            }
-            try
-            {
-                Task<double> fTask =
-                factory.ContinueWhenAll(tasks.ToArray(), (results) =>
-                {
-                    Console.WriteLine("Calculating overall mean...");
-                    long sum = 0;
-                    int n = 0;
-                    foreach (var t in results)
-                    {
-                        foreach (var r in t.Result)
-                        {
-                            sum += r;
-                            n++;
-                        }
-                    }
-                    return sum / (double)n;
-                }, token);
-                Console.WriteLine("The mean is {0}.", fTask.Result);
-            }
-            catch (AggregateException ae)
-            {
-                foreach (Exception e in ae.InnerExceptions)
-                {
-                    if (e is TaskCanceledException)
-                    {
-                        Console.WriteLine("Unable to compute mean: {0}", e.Message);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Exception: " + e.GetType().Name);
-                    }
-                }
-            }
-            finally
-            {
-                source.Dispose();
-            }
-        }
-
-        public static bool GetPicThumbnail(string sourceFile, string dFile, int dHeight, int dWidth, int flag)
-        {
-            Image iSource = Image.FromFile(sourceFile);
-            ImageFormat tFormat = iSource.RawFormat;
-            int sW, sH;
-
-            //按比例缩放
-            Size temSize = new Size(iSource.Width, iSource.Height);
-            if (temSize.Width > dHeight || temSize.Width > dWidth) //将**改成c#中的或者操作符号
-            {
-                if ((temSize.Width * dHeight) > (temSize.Height * dWidth))
-                {
-                    sW = dWidth;
-                    sH = (dWidth * temSize.Height) / temSize.Width;
-                }
-                else
-                {
-                    sH = dHeight;
-                    sW = (temSize.Width * dHeight) / temSize.Height;
-                }
-            }
-            else
-            {
-                sW = temSize.Width;
-
-                sH = temSize.Height;
-            }
-
-            Bitmap ob = new Bitmap(dWidth, dHeight);
-            Graphics g = Graphics.FromImage(ob);
-            g.Clear(Color.WhiteSmoke);
-            g.CompositingQuality = CompositingQuality.HighQuality;
-            g.SmoothingMode = SmoothingMode.HighQuality;
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.DrawImage(iSource, new Rectangle((dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0, iSource.Width, iSource.Height, GraphicsUnit.Pixel);
-            g.Dispose();
-
-            //以下代码为保存图片时，设置压缩质量
-
-            EncoderParameters ep = new EncoderParameters();
-            long[] qy = new long[1];
-            qy[0] = flag;
-            //设置压缩的比例1-100
-
-            EncoderParameter eParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qy);
-            ep.Param[0] = eParam;
-            try
-            {
-                ImageCodecInfo[] arrayIci = ImageCodecInfo.GetImageEncoders();
-
-                ImageCodecInfo jpegIcIinfo = arrayIci.FirstOrDefault(t => t.FormatDescription.Equals("JPEG"));
-
-                if (jpegIcIinfo != null)
-                {
-                    ob.Save(dFile, jpegIcIinfo, ep);
-                }
-                else
-                {
-                    ob.Save(dFile, tFormat);
-                }
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                iSource.Dispose();
-
-                ob.Dispose();
-            }
-        }
-
-        public static bool GetThumImage2(string sourceFile, long quality, int multiple, string outputFile)
-        {
-            try
-            {
-                Bitmap sourceImage = new Bitmap(sourceFile);
-                ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/jpeg");
-                System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
-                EncoderParameters myEncoderParameters = new EncoderParameters(1);
-                EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, quality);
-                myEncoderParameters.Param[0] = myEncoderParameter;
-                float xWidth = sourceImage.Width;
-                float yWidth = sourceImage.Height;
-                Bitmap newImage = new Bitmap((int)(xWidth / multiple), (int)(yWidth / multiple));
-                Graphics g = Graphics.FromImage(newImage);
-
-                g.DrawImage(sourceImage, 0, 0, xWidth / multiple, yWidth / multiple);
-                g.Dispose();
-                newImage.Save(outputFile, myImageCodecInfo, myEncoderParameters);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public static bool GetThumImage(string sourceFile, long quality, int multiple, string outputFile)
-        {
-            try
-            {
-                long imageQuality = quality;
-                Bitmap sourceImage = new Bitmap(sourceFile);
-                ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/jpeg");
-                System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
-                EncoderParameters myEncoderParameters = new EncoderParameters(1);
-                EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, imageQuality);
-                myEncoderParameters.Param[0] = myEncoderParameter;
-                float xWidth = sourceImage.Width;
-                float yWidth = sourceImage.Height;
-                Bitmap newImage = new Bitmap((int)(xWidth / multiple), (int)(yWidth / multiple));
-                Graphics g = Graphics.FromImage(newImage);
-                g.DrawImage(sourceImage, 0, 0, xWidth / multiple, yWidth / multiple);
-                g.Dispose();
-                newImage.Save(outputFile, myImageCodecInfo, myEncoderParameters);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public static ImageCodecInfo GetEncoderInfo(string mimeType)
-        {
-            int j;
-            ImageCodecInfo[] encoders;
-            encoders = ImageCodecInfo.GetImageEncoders();
-            for (j = 0; j < encoders.Length; ++j)
-            {
-                if (encoders[j].MimeType == mimeType)
-                    return encoders[j];
-            }
-            return null;
-        }
-
-        #endregion MyRegion
-
-        #region 串行端口资源
-
         public static void GetPortNamesDemo()
         {
             string[] ports = SerialPort.GetPortNames();
 
             Console.WriteLine("The following serial ports were found:");
 
-            // Display each port name to the console.
             foreach (string port in ports)
             {
                 Console.WriteLine(port);
             }
-        }
-
-        #endregion 串行端口资源
-
-        public static void DSADemo()
-        {
-            // Create a digital signature based on RSA encryption.
-            SignatureDescription rsaSignature = CreateRSAPKCS1Signature();
-            ShowProperties(rsaSignature);
-
-            // Create a digital signature based on DSA encryption.
-            SignatureDescription dsaSignature = CreateDSASignature();
-            ShowProperties(dsaSignature);
-
-            // Create a HashAlgorithm using the digest algorithm of the signature.
-            HashAlgorithm hashAlgorithm = dsaSignature.CreateDigest();
-            Console.WriteLine("\nHash algorithm for the DigestAlgorithm property:"
-                + " " + hashAlgorithm.ToString());
-
-            // Create an AsymmetricSignatureFormatter instance using the DSA key.
-            DSA dsa = DSA.Create();
-            AsymmetricSignatureFormatter asymmetricFormatter = CreateDSAFormatter(dsa);
-
-            // Create an AsymmetricSignatureDeformatter instance using the
-            // DSA key.
-            AsymmetricSignatureDeformatter asymmetricDeformatter = CreateDSADeformatter(dsa);
-
-            Console.WriteLine("This sample completed successfully; " + "press Enter to exit.");
-            Console.ReadLine();
-        }
-
-        // Create a SignatureDescription for RSA encryption.
-        public static SignatureDescription CreateRSAPKCS1Signature()
-        {
-            SignatureDescription signatureDescription = new SignatureDescription();
-
-            // Set the key algorithm property for RSA encryption.
-            signatureDescription.KeyAlgorithm =
-                "System.Security.Cryptography.RSACryptoServiceProvider";
-
-            // Set the digest algorithm for RSA encryption using the
-            // SHA1 provider.
-            signatureDescription.DigestAlgorithm = "System.Security.Cryptography.SHA1CryptoServiceProvider";
-
-            // Set the formatter algorithm with the RSAPKCS1 formatter.
-            signatureDescription.FormatterAlgorithm = "System.Security.Cryptography.RSAPKCS1SignatureFormatter";
-
-            // Set the formatter algorithm with the RSAPKCS1 deformatter.
-            signatureDescription.DeformatterAlgorithm = "System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
-
-            return signatureDescription;
-        }
-
-        // Create a SignatureDescription using a constructed SecurityElement for
-        // DSA encryption.
-        public static SignatureDescription CreateDSASignature()
-        {
-            SecurityElement securityElement = new SecurityElement("DSASignature");
-
-            // Create new security elements for the four algorithms.
-            securityElement.AddChild(new SecurityElement("Key", "System.Security.Cryptography.DSACryptoServiceProvider"));
-            securityElement.AddChild(new SecurityElement("Digest", "System.Security.Cryptography.SHA1CryptoServiceProvider"));
-            securityElement.AddChild(new SecurityElement("Formatter", "System.Security.Cryptography.DSASignatureFormatter"));
-            securityElement.AddChild(new SecurityElement("Deformatter", "System.Security.Cryptography.DSASignatureDeformatter"));
-
-            SignatureDescription signatureDescription = new SignatureDescription(securityElement);
-
-            return signatureDescription;
-        }
-
-        // Create a signature formatter for DSA encryption.
-        public static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
-        {
-            // Create a DSA signature formatter for encryption.
-            SignatureDescription signatureDescription = new SignatureDescription();
-            signatureDescription.FormatterAlgorithm = "System.Security.Cryptography.DSASignatureFormatter";
-
-            AsymmetricSignatureFormatter asymmetricFormatter = signatureDescription.CreateFormatter(dsa);
-
-            Console.WriteLine("\nCreated formatter : " + asymmetricFormatter.ToString());
-            return asymmetricFormatter;
-        }
-
-        // Create a signature deformatter for DSA decryption.
-        public static AsymmetricSignatureDeformatter CreateDSADeformatter(DSA dsa)
-        {
-            // Create a DSA signature deformatter to verify the signature.
-            SignatureDescription signatureDescription = new SignatureDescription();
-            signatureDescription.DeformatterAlgorithm = "System.Security.Cryptography.DSASignatureDeformatter";
-
-            AsymmetricSignatureDeformatter asymmetricDeformatter = signatureDescription.CreateDeformatter(dsa);
-
-            Console.WriteLine("\nCreated deformatter : " + asymmetricDeformatter.ToString());
-            return asymmetricDeformatter;
-        }
-
-        // Display to the console the properties of the specified
-        // SignatureDescription.
-        public static void ShowProperties(SignatureDescription signatureDescription)
-        {
-            // Retrieve the class path for the specified SignatureDescription.
-            string classDescription = signatureDescription.ToString();
-
-            string deformatterAlgorithm = signatureDescription.DeformatterAlgorithm;
-            string formatterAlgorithm = signatureDescription.FormatterAlgorithm;
-            string digestAlgorithm = signatureDescription.DigestAlgorithm;
-            string keyAlgorithm = signatureDescription.KeyAlgorithm;
-
-            Console.WriteLine("\n** " + classDescription + " **");
-            Console.WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm);
-            Console.WriteLine("FormatterAlgorithm : " + formatterAlgorithm);
-            Console.WriteLine("DigestAlgorithm : " + digestAlgorithm);
-            Console.WriteLine("KeyAlgorithm : " + keyAlgorithm);
         }
 
         #region 开机启动
@@ -3922,179 +2908,5 @@ namespace ConApp
         }
 
         #endregion 开机启动
-
-        #region SQLiteDemo
-
-        public static void SQLiteCreate()
-        {
-            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + SqliteFilePath))
-            {
-                using (SQLiteCommand comm = conn.CreateCommand())
-                {
-                    conn.Open();
-
-                    comm.CommandText = @"CREATE TABLE COMPANY(
-                                                ID INTEGER PRIMARY KEY   AUTOINCREMENT,
-                                                NAME           TEXT      NOT NULL,
-                                                AGE            INT       NOT NULL,
-                                                ADDRESS        CHAR(50),
-                                                SALARY         REAL
-                                            );";
-                    comm.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public static void SQLiteSelect()
-        {
-            DataSet ds = new DataSet();
-            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + SqliteFilePath))
-            {
-                using (SQLiteCommand comm = conn.CreateCommand())
-                {
-                    conn.Open();
-
-                    //comm.Parameters.Clear();
-                    comm.CommandText = "Select * From COMPANY";
-                    //  comm.CommandText = "SELECT * FROM sqlite_master WHERE type = 'table' and name='COMPANY'";
-
-                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm))
-                    {
-                        adapter.Fill(ds);
-                    }
-                }
-            }
-        }
-
-        public static void SQLiteInsert()
-        {
-            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + SqliteFilePath))
-            {
-                using (SQLiteCommand comm = conn.CreateCommand())
-                {
-                    conn.Open();
-
-                    #region 1.1插入数据
-
-                    comm.CommandText = @"INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY) VALUES ( 'Paul', 32, 'California', 20000.00 );";
-                    comm.ExecuteNonQuery();
-
-                    #endregion 1.1插入数据
-
-                    #region 1.2使用参数插入数据
-
-                    //comm.CommandText = "INSERT INTO COMPANY VALUES(@id,@name)";
-                    //comm.Parameters.AddRange(
-                    //    new[]
-                    //    {
-                    //        CreateSqliteParameter("@id", DbType.Int32, 4, 11),
-                    //        CreateSqliteParameter("@name", DbType.String, 10, "Hello 11")
-                    //    });
-                    //comm.ExecuteNonQuery();
-
-                    #endregion 1.2使用参数插入数据
-                }
-            }
-        }
-
-        public static SQLiteParameter CreateSqliteParameter(string name, DbType type, int size, object value)
-        {
-            SQLiteParameter parm = new SQLiteParameter(name, type, size);
-            parm.Value = value;
-            return parm;
-        }
-
-        #endregion SQLiteDemo
-
-        #region 链表
-
-        public static void LinkNodeDemo()
-        {
-            LinkNode node = new LinkNode();
-            node.Value = 1;
-
-            node.Next = new LinkNode();
-            node.Next.Value = 2;
-
-            node.Next.Next = new LinkNode();
-            node.Next.Next.Value = 3;
-            node.Next.Next.Next = null;
-
-            ShowLinkNode0(node);
-
-            ShowLinkNode1(node);
-        }
-
-        public static void ShowLinkNode0(LinkNode node)
-        {
-            Console.WriteLine(node.Value);
-            if (node.Next == null)
-            {
-                return;
-            }
-            else
-            {
-                ShowLinkNode0(node.Next);
-            }
-        }
-
-        public static void ShowLinkNode1(LinkNode node)
-        {
-            for (LinkNode n = node; ; n = n.Next)
-            {
-                Console.WriteLine(n.Value);
-
-                if (n.Next == null)
-                {
-                    break;
-                }
-            }
-        }
-
-        public class LinkNode
-        {
-            public int Value { get; set; }
-
-            public LinkNode Next { get; set; }
-        }
-
-        #endregion 链表
-    }
-
-    public class CarInfoEventArgs : EventArgs
-    {
-        public CarInfoEventArgs(string car)
-        {
-            Car = car;
-        }
-
-        public string Car { get; }
-    }
-
-    public class CarDealer
-    {
-        public event EventHandler<CarInfoEventArgs> NewCarInfo;
-
-        public void NewCar(string car)
-        {
-            Console.WriteLine($"CarDealer, new car {car}");
-
-            NewCarInfo?.Invoke(this, new CarInfoEventArgs(car));
-        }
-    }
-
-    public class Consumer
-    {
-        public string _name;
-
-        public Consumer(string name)
-        {
-            _name = name;
-        }
-
-        public void NewCarIsHere(object sender, CarInfoEventArgs e)
-        {
-            Console.WriteLine($"{_name}: car {e.Car} is new");
-        }
     }
 }

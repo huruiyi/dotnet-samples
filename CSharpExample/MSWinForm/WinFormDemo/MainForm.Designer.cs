@@ -347,7 +347,7 @@
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(138, 23);
             this.button19.TabIndex = 3;
-            this.button19.Text = "19";
+            this.button19.Text = "19-对称算法加密";
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
@@ -358,8 +358,9 @@
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(138, 23);
             this.button20.TabIndex = 3;
-            this.button20.Text = "20";
+            this.button20.Text = "20-非对称算法加密";
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button21
             // 

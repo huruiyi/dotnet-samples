@@ -18,7 +18,7 @@ namespace WinFormDemo
         private const int SC_MAXIMIZE = 0xF030;//最大化信息
         private const int SC_MINIMIZE = 0xF020;//最小化信息
 
-        protected override void WndProc(ref Message m)
+        protected override void WndProc(ref System.Windows.Forms.Message m)
         {
             switch (m.Msg)
             {
