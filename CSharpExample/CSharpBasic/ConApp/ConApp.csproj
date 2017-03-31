@@ -144,6 +144,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Samples\SecurityDemo.cs" />
+    <Compile Include="Samples\SortsDemo.cs" />
     <Compile Include="Samples\SQLiteDemo.cs" />
     <Compile Include="Samples\UnsafeDemo.cs" />
     <Compile Include="Samples\XMLDemo.cs" />
