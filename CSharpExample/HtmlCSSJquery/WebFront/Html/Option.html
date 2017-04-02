@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>下拉列表框常用属性</title>
+    <script type="text/javascript">
+        function bgChange() {
+            var objSel = document.getElementById("selColor");
+            var newColor = objSel.options[objSel.selectedIndex].text;
+            document.bgColor = newColor;
+            selObj.selectedIndex = -1;
+        }
+    </script>
+</head>
+
+<body>
+    <b>改变背景颜色</b>
+    <br />
+    <form>
+        <select onChange="bgChange();" id="selColor">
+            <option>Red</option>
+            <option>Orange</option>
+            <option>Yellow</option>
+            <option>Green</option>
+            <option>Blue</option>
+            <option>Indigo</option>
+            <option>Violet</option>
+            <option>White</option>
+            <option>pink</option>
+        </select>
+    </form>
+</body>
+</html>
