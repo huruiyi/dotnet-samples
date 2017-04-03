@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        //页面加载
+        onload = function () {
+
+            //获取每个按钮
+
+            var btns = document.getElementsByName('name');
+            //为每个按钮注册一个单击事件
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].onclick = function () {
+
+                    //把每一个按钮都变成哭的内容
+                    for (var j = 0; j < btns.length; j++) {
+                        btns[j].value = '呜呜呜.....';
+                    }
+                    //当前这个按钮笑了
+                    this.value = '哈哈..哈.';
+                };
+            }
+        };
+       
+    
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="呜呜呜....." />
+    <input type="button" name="name" value="呜呜呜....." />
+    <input type="button" name="name" value="呜呜呜....." />
+    <input type="button" name="name" value="呜呜呜....." />
+    <input type="button" name="name" value="呜呜呜....." />
+    <input type="button" name="name" value="呜呜呜....." />
+</body>
+</html>

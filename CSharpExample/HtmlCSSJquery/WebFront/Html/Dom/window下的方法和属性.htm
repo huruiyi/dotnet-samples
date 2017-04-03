@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        onload = function () {
+
+            document.getElementById('btn').onclick = function () {
+
+                //让页面重新导航,下面的方式在IE浏览器中可以,在火狐和谷歌浏览器中不行
+                // window.navigate('http://www.baidu.com');
+                //兼容的写法.每个浏览器都可以---以后就写这种方式
+                window.location.href = 'http://www.baidu.com';
+                //弹框的一个方法
+                //                if (confirm('是否关闭?')) {
+                //                    alert('关闭了');
+
+                //                } else {
+                //                    alert('取消关闭了');
+                //                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="关闭" id="btn" />
+</body>
+</html>

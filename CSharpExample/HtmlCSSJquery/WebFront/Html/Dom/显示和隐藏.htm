@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            document.getElementById('btnAll').onclick = function () {
+
+                var cks = document.getElementsByTagName('input');
+                for (var i = 0; i < cks.length; i++) {
+                    cks[i].checked = true;
+                }
+
+            };
+            document.getElementById('btnNoAll').onclick = function () {
+
+                var cks = document.getElementsByTagName('input');
+                for (var i = 0; i < cks.length; i++) {
+                    cks[i].checked = false;
+                }
+
+            };
+
+            document.getElementById('btnFx').onclick = function () {
+
+                var cks = document.getElementsByTagName('input');
+                for (var i = 0; i < cks.length; i++) {
+                    cks[i].checked = !cks[i].checked;
+
+                }
+
+            };
+
+        };
+
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="全选" id="btnAll" />
+    <input type="button" name="name" value="全不选" id="btnNoAll" />
+    <input type="button" name="name" value="反选" id="btnFx" />
+    <fieldset>
+        <legend>爱好和兴趣</legend>
+        <input type="checkbox" name="nam1e" value="1" />打篮球
+        <input type="checkbox" name="n2ame" value="1" />打足球
+        <input type="checkbox" name="n3ame" value="1" />打铅球
+    </fieldset>
+</body>
+</html>
+

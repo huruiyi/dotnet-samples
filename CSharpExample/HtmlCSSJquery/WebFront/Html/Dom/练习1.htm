@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        //案例1：创建三个输入文本框，当光标离开文本框的时候如果文本框为空，则将文本框背景色设置为红色，如果不为空则为白色。
+
+        onload = function () {
+
+            //获取所有的文本框
+            var inputs = document.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == 'text') {//是不是文本框
+                    //为每个文本框注册一个光标离开的事件
+                    inputs[i].onblur = function () {
+                        if (this.value.length == 0) {
+                            this.style.backgroundColor = 'red';
+                        } else {
+                            this.style.backgroundColor = '';//恢复为默认颜色
+                        }
+                    };
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="button" name="name" value="按钮" />
+</body>
+</html>

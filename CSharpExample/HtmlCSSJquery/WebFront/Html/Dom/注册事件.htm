@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            // document.getElementById('btn1').onclick = f1;
+            //document.getElementById('btn2').onclick = f2;
+            //简单的方式，匿名函数
+            document.getElementById('btn1').onclick = function () {
+                alert('第一个');
+            };
+        };
+
+        //        function f1() {
+        //            alert('第一个');
+        //        }
+        //        function f2() {
+        //            alert('第二个');
+        //        }
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="第一个按钮" id="btn1" />
+    <input type="button" name="name" value="第二个按钮" id="btn2" />
+</body>
+</html>

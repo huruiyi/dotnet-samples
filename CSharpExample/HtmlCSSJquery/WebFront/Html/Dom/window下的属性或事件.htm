@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+
+        //点击该按钮 让网页定向到百度的页面
+        onload = function () {
+            document.getElementById('btn').onclick = function () {
+                //不熟,跳转
+                // window.location.href = 'http://www.baidu.com';
+                //刷新
+                window.location.reload();//刷新
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="去百度" id="btn" />
+</body>
+</html>

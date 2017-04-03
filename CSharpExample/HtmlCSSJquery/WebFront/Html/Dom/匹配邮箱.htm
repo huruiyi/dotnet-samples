@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            document.getElementById('txt').onblur = function () {
+                var reg = /\w+((-w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+/;
+                if (reg.test(this.value)) {
+                    this.style.backgroundColor = 'red';
+                  
+                } else {
+                
+                    this.style.backgroundColor = '';
+                }
+
+            };
+        };
+
+    </script>
+</head>
+<body>
+    <input type="text" name="name" value="" id="txt" />
+</body>
+</html>

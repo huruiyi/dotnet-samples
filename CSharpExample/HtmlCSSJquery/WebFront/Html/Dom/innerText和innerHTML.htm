@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+
+        onload = function () {
+
+            document.getElementById('btn1').onclick = function () {
+                //把内容以纯文本的形式写入到层中
+                document.getElementById('dv').innerText = '<font face="全新硬笔行书简" color="red">这是层</font>';
+            };
+            document.getElementById('btn2').onclick = function () {
+                //以html标签的效果展示
+                document.getElementById('dv').innerHTML = '<font face="全新硬笔行书简" color="red">这是层</font>';
+            };
+            //=====================================================================
+            document.getElementById('btn3').onclick = function () {
+                //把元素中的(显示的)内容以文本的方式展示出来
+                alert(document.getElementById('dv').innerText);
+            };
+            document.getElementById('btn4').onclick = function () {
+                //把元素中的html形式展示出来
+                alert(document.getElementById('dv').innerHTML);
+            };
+            document.getElementById('btn5').onclick = function () {
+                //IE设置纯文本用innerText,火狐用的是textContent
+
+                // document.getElementById('dv').textContent = '<a href="http://www.baidu.com">百度</a>';
+                //能力检测
+                if (typeof(document.getElementById('dv').innerText)=='string') {
+                    document.getElementById('dv').innerText = '<font face="全新硬笔行书简" color="red">这是层</font>';
+                } else {
+                    document.getElementById('dv').textContent = '<a href="http://www.baidu.com">百度</a>';
+                }
+            };
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="设置innerText" id="btn1" />
+    <input type="button" name="name" value="设置innerHTML" id="btn2" />
+    <input type="button" name="name" value="显示innerText" id="btn3" />
+    <input type="button" name="name" value="显示innerHTML" id="btn4" />
+
+    <input type="button" name="name" value="设置textContent(火狐)" id="btn5" />
+
+    <div id="dv" style=" width:350px; height:250px; border:1px solid red;">
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+   <style type="text/css">
+      /*标签选择器*/
+        div
+        {
+            width: 300px;
+            height: 200px;
+            background-color: Green;
+            border: 1px dashed red;
+        }
+        /*类选择器*/
+        .cls
+        {
+            background-color: Black;
+        }
+        /*id选择器*/
+        #dv
+        {
+            background-color: Yellow;
+        }
+        /*标签选择器<类选择器<id选择器==优先级别,*/
+    </style>
+   
+    <!--<link href="01.css" rel="stylesheet" type="text/css" />-->
+</head>
+<!--元素和元素之间的距离用margin-->
+<body style="margin: 0">
+    <!--div是块级元素,层，非块级元素<span></span>-->
+    <!-- style=" height:300px; background-color:Green; width:300px; border:2px solid red;"-->
+    <div class="cls" id="dv">
+    </div>
+</body>
+</html>

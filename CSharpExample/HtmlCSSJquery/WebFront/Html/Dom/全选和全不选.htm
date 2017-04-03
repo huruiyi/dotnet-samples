@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+            //全选
+            document.getElementById('btnAll').onclick = function () {
+
+                var cks = document.getElementsByName('ck1');
+                for (var i = 0; i < cks.length; i++) {
+                    cks[i].checked = true;
+                }
+            };
+
+            //全不选
+            document.getElementById('btnNoAll').onclick = function () {
+
+                var cks = document.getElementsByName('ck1');
+                for (var i = 0; i < cks.length; i++) {
+                    cks[i].checked = false;
+                }
+            };
+            //反选
+            document.getElementById('btnFanXuan').onclick = function () {
+
+                var cks = document.getElementsByName('ck1');
+                for (var i = 0; i < cks.length; i++) {
+                    cks[i].checked = !cks[i].checked;
+                }
+            };
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="全选" id="btnAll" />
+    <input type="button" name="name" value="全不选" id="btnNoAll" />
+    <input type="button" name="name" value="反选" id="btnFanXuan" />
+    <br />
+    <input type="checkbox" name="ck1" value="1" />吃饭
+    <input type="checkbox" name="ck1" value="2" />睡觉
+    <input type="checkbox" name="ck1" value="3" />打豆豆
+    <input type="checkbox" name="ck1" value="4" />打足球
+    <input type="checkbox" name="ck1" value="5" />打铅球
+</body>
+</html>

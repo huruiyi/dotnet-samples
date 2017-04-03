@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        onload = function () {
+
+            var txts = document.getElementsByTagName('input'); //获取所有的input标签
+            for (var i = 0; i < txts.length; i++) {
+                if (txts[i].type == 'text') {//文本框
+                    //按下
+                    txts[i].onkeydown = function () {
+
+                        if (window.event.keyCode == 13) {
+                            window.event.keyCode = 9;
+                        }
+                    };
+
+
+
+                }
+            }
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" />
+</body>
+</html>

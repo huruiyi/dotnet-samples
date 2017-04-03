@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+       // onload = function () {
+
+//            document.getElementById('dv').onmousemove = function () {
+
+
+//                //兼容的写法
+//                if (arguments.length>0) {
+//                    //火狐
+//                    document.title = arguments[0].clientX + '==' + arguments[0].clientY;
+//                } else {
+//                    //IE
+//                    document.title = window.event.clientX + '==' + window.event.clientY;
+//                }
+
+
+                //通过下面的方式发现火狐浏览器有参数
+                // alert(arguments.length);
+                // alert(arguments[0]);
+                //火狐的写法
+               // document.title = arguments[0].clientX + '==' + arguments[0].clientY;
+                //相对于页面的左上角的坐标,横坐标和纵坐标
+                //document.title = window.event.clientX + '==' + window.event.clientY;
+                //相对于屏幕左上角的坐标
+                // document.title = window.event.screenX + '==' + window.event.screenY;
+                //相对于当前层的左上角的坐标
+                // document.title = window.event.offsetX + '==' + window.event.offsetY;
+//            };
+//        };
+//    
+    </script>
+
+
+    <script type="text/javascript">
+
+        //关于键的问题
+
+        onload = function () {
+
+            document.getElementById('dv').onmousedown = function () {
+
+                if (window.event.altKey) {
+                    alert('按下了alt键');
+                } else if (window.event.shiftKey) {
+                    alert('按下了shift键');
+                } else if (window.event.ctrlKey) {
+                    alert('按下了ctrl键');
+                } else {
+                    alert('只按下了鼠标');
+                }
+            };
+        };
+    
+    
+    </script>
+</head>
+<body>
+<div id="dv" style=" width:300px; height:200px; background-color:Green;">
+
+</div>
+</body>
+</html>

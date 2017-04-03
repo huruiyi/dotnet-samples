@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        img {
+            position: absolute; /*完全脱离*/
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+    <script type="text/javascript">
+        onload = function () {
+            //第一步 脱离文档流
+            //第二步 设置事件
+            document.onmousemove = function () {
+                //第三步 设置坐标
+                //获取图片
+                var imObj = document.getElementById('im');
+                imObj.style.left = window.event.clientX + 'px';
+                imObj.style.top = window.event.clientY + 'px';
+            };
+        };
+    </script>
+</head>
+<body>
+    <img src="../../Images/bird.gif" id="im" />
+</body>
+</html>

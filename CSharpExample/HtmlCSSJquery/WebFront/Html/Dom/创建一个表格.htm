@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+
+        var dic = { "百度": "http://www.baidu.com", "传智播客": "http://www.itcast.cn", "谷歌": "http://www.google.com" };
+        //根据键值对创建表格
+
+        onload = function () {
+
+            document.getElementById('btn').onclick = function () {
+
+                //创建一个表格
+                var tbObj = document.createElement('table');
+                tbObj.border = '1'; //边框
+                //根据键值对的个数创建行
+                for (var item in dic) {
+
+                    //创建行
+                    var trObj = document.createElement('tr');
+                    //创建单元格
+                    var tdObj1 = document.createElement('td');
+                    if (typeof (tdObj1.innerText) == 'string') {//检测
+                        tdObj1.innerText = item; //显示文本
+                    } else {
+                        tdObj1.textContent = item;
+                    }
+
+                    //创建单元格
+                    var tdObj2 = document.createElement('td');
+                    tdObj2.innerHTML = '<a href="' + dic[item] + '">' + item + '</a>';
+                    //单元格添加到行中
+                    trObj.appendChild(tdObj1);
+                    trObj.appendChild(tdObj2);
+
+
+                    //行添加到表中
+                    tbObj.appendChild(trObj);
+                }
+                //把表格添加到body中
+                document.body.appendChild(tbObj);
+            };
+        };
+
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="创建表格" id="btn" />
+</body>
+</html>

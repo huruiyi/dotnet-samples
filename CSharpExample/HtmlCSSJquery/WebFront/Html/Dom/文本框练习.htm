@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            //获取文本框注册获得焦点的事件
+            document.getElementById('txt').onfocus = function () {
+
+                if (this.value == '请输入搜索关键词' && this.style.color == 'gray') {
+                    this.value = '';
+                    //改变字体颜色
+                    this.style.color = 'black';
+                }
+            };
+            //失去焦点
+            document.getElementById('txt').onblur = function () {
+
+                if (this.value == '') {
+                    this.style.color = 'gray';
+                    this.value = '请输入搜索关键词';
+                }
+            };
+        };
+
+    </script>
+</head>
+<body>
+    <input type="text" name="name" value="请输入搜索关键词" style=" color:Gray;" id="txt" />
+</body>
+</html>
+

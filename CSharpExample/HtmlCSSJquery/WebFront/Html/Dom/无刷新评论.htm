@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            document.getElementById('btn').onclick = function () {
+
+                //获取昵称
+                var name = document.getElementById('txt').value;
+                //获取内容
+                var tt = document.getElementById('txtContent').value;
+
+                //添加到表中
+                //创建行,创建单元格
+                var trObj = document.createElement('tr');
+                var tdObj1 = document.createElement('td');
+                var tdObj2 = document.createElement('td');
+                tdObj1.innerText = name; //显示昵称
+                tdObj2.innerText = tt; //显示内容
+                //把单元格添加到行中
+                trObj.appendChild(tdObj1);
+                trObj.appendChild(tdObj2);
+                document.getElementById('tb').appendChild(trObj);
+            };
+        };
+
+    </script>
+</head>
+<body>
+    <table border="1" id="tb">
+        <tr>
+            <td>
+                猫猫
+            </td>
+            <td>
+                我好困
+            </td>
+        </tr>
+    </table>
+    昵称:
+    <input type="text" name="name" value="" id="txt" />
+    <br />
+    <textarea rows="10" clos="10" id="txtContent"></textarea>
+    <br />
+    <input type="button" name="name" value="提交" id="btn" />
+
+</body>
+</html>
+

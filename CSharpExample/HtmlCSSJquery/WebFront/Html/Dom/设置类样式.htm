@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+    .cls
+    {
+        width:300px;
+        height:200px;
+        background-color:Red;
+        }
+    
+    </style>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            document.getElementById('btn').onclick = function () {
+                //为层添加类样式,不是class
+                document.getElementById('dv').className = 'cls';
+            };
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="添加样式" id="btn" />
+    <div id="dv">
+
+    </div>
+</body>
+</html>

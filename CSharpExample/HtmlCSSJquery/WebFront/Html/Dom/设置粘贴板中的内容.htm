@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+    //页面加载
+        onload = function () {
+            //复制
+            document.body.oncopy = function () {
+            //时间间隔
+                setTimeout(function () {
+                    //获取粘贴板中的内容
+                    var txt = clipboardData.getData('text') + '    本文出自于网络百度百科';
+                    //设置内容
+                    clipboardData.setData('text', txt); //设置
+                }, 100);
+             
+            };
+
+        };
+    
+    
+    </script>
+</head>
+<body>
+李白（公元701年－公元762年），字太白，号青莲居士，又号“谪仙人”。是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。与杜甫并称为“李杜”，为了与另两位诗人李商隐与杜牧即“小李杜”区别，杜甫与李白又合称“大李杜”。其人爽朗大方，爱饮酒作诗，喜交友。天宝初，入长安，贺知章见了，称为谪仙人，荐于唐玄宗，待诏翰林。[1]
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        onload = function () {
+            var dic = { "百度": "http://www.baidu.com", "传智播客": "http://www.itcast.cn", "谷歌": "http://www.google.com" };
+
+
+            document.getElementById('btn').onclick = function () {
+
+                //创建表格
+
+                var tbObj = document.createElement('table');
+                tbObj.border = "1";
+                for (var key in dic) {
+                    //创建行
+
+                    var trObj = document.createElement('tr');
+
+                    //创建单元格
+                    var tdObj1 = document.createElement('td');
+
+                    if (typeof (tdObj1.innerText) == 'string') {
+                        tdObj1.innerText = key; //文字
+                    } else {
+                        tdObj1.textContent = key;
+                    }
+                    var tdObj2 = document.createElement('td');
+                    tdObj2.innerHTML = '<a href="' + dic[key] + '">' + key + '</a>';
+
+                    //单元格加到行中
+
+                    trObj.appendChild(tdObj1);
+                    trObj.appendChild(tdObj2);
+
+                    //行添加到表中
+                    tbObj.appendChild(trObj);
+                }
+                //表添加到body中
+                document.body.appendChild(tbObj);
+            };
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="创建表格" id="btn" />
+</body>
+</html>

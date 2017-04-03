@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        onload = function () {
+
+            document.getElementById('btn').onclick = function () {
+
+                //这个是获取这个页面中所有的tr
+                // var trs= document.getElementsByTagName('tr');
+                //获取指定的表中的tr
+                var trs = document.getElementById('tb').getElementsByTagName('tr');
+                for (var i = 0; i < trs.length; i++) {
+                    if (i % 2 == 0) {
+                        trs[i].style.backgroundColor = '';
+                    } else {
+                        trs[i].style.backgroundColor = 'yellow';
+                    }
+                }
+            };
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="表格隔行变色" id="btn" />
+    <table border="1" id="tb">
+        <tr>
+            <td>周润发
+            </td>
+             <td>刘德华
+            </td>
+             <td>周星驰
+            </td>
+        </tr>
+         <tr>
+            <td>周润发
+            </td>
+             <td>刘德华
+            </td>
+             <td>周星驰
+            </td>
+        </tr>
+         <tr>
+            <td>周润发
+            </td>
+             <td>刘德华
+            </td>
+             <td>周星驰
+            </td>
+        </tr>
+         <tr>
+            <td>周润发
+            </td>
+             <td>刘德华
+            </td>
+             <td>周星驰
+            </td>
+        </tr>
+         <tr>
+            <td>周润发
+            </td>
+             <td>刘德华
+            </td>
+             <td>周星驰
+            </td>
+        </tr>
+         <tr>
+            <td>周润发
+            </td>
+             <td>刘德华
+            </td>
+             <td>周星驰
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

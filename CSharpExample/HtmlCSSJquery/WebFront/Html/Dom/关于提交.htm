@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+
+
+            document.getElementById('fm').onsubmit = function () {
+
+                if (document.getElementById('txt').value == '') {
+                    return false;
+                }
+            };
+
+            document.getElementById('dv').onclick = function () {
+                //调用提交按钮的单击
+                 document.getElementById('sm').click();
+                //第二种方式
+               // document.getElementById('fm').submit(); //表单的提交方法
+            };
+        };
+    
+    </script>
+</head>
+<body>
+    <form action="http://www.baidu.com/?" method="get" id="fm">
+
+     <input style=" width:300px" type="text" name="name" value="" id="txt" />
+    <input type="submit" name="name" value="百度一下" id="sm" />
+    <div id="dv" style=" width:300px; height:200px; background-color:Green;">
+    </div>
+    </form>
+   
+</body>
+</html>

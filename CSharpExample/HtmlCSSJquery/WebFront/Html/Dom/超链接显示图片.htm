@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        onload = function () {
+
+            //动态创建的
+
+            document.getElementById('al').onmouseover = function () {
+
+                //层只能创建一次
+                if (!document.getElementById('dv')) {
+                    //document.body.removeChild(document.getElementById('dv'));
+                    //创建层
+                    var dvObj = document.createElement('div');
+                    dvObj.id = "dv";
+                    //创建图片标签
+                    var imObj = document.createElement('img');
+                    imObj.src = '../../Images/0.jpg';
+                    imObj.height = 500;
+                    imObj.width = 700;
+                    //图片加到div中
+                    dvObj.appendChild(imObj);
+
+                    //脱离文档流
+
+                    dvObj.style.position = 'absolute';
+                    dvObj.style.left = this.offsetLeft + 'px'; //左侧距离
+                    //上面距离
+                    dvObj.style.top = this.offsetTop + this.offsetHeight + 'px';
+
+                    //层加到body中
+                    document.body.appendChild(dvObj);
+                }
+
+            };
+            document.getElementById('al').onmouseout = function () {
+
+                if (document.getElementById('dv')) {
+                    document.body.removeChild(document.getElementById('dv'));
+                }
+            };
+        };
+    
+    </script>
+</head>
+<body>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+曾经有个人在传智播客讲课,<a id="al" href="http://www.itcast.cn">小黑</a>这个人很猥琐是谁？
+</body>
+</html>

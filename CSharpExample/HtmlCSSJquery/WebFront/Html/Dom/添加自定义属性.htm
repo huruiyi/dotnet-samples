@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        onload = function () {
+            alert(window.navigator.userAgent); //检测浏览器
+
+            //页面加载后每个单元格会自动的添加一个属性还有值
+            var tds = document.getElementById('tb').getElementsByTagName('td');
+            for (var i = 0; i < tds.length; i++) {
+                tds[i].setAttribute('score', (i + 1) * 10);
+                tds[i].onclick = function () {
+                    alert(this.getAttribute('score'));//获取每个单元格的属性的值
+                };
+            }
+
+        };
+    
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="显示效果" id="btn" />
+    <table border="1" id="tb">
+        <tr>
+            <td>
+                第1个
+            </td>
+            <td>
+                第2个
+            </td>
+            <td>
+                第3个
+            </td>
+            <td>
+                第4个
+            </td>
+            <td>
+                第5个
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

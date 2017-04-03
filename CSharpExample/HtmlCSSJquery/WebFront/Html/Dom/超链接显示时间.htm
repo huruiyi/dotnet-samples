@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+    //页面加载
+        onload = function () {
+
+            document.getElementById('al').onclick = function (evt) {
+
+                if (window.event.altKey) {
+                    alert(new Date().toLocaleTimeString());
+                    //阻止重新跳转
+                    //取消默认事件
+                    // window.event.returnValue = false;ie
+                    //arguments[0].preventDefault();火狐
+                    return false;//推荐的
+                }
+            };
+
+        };
+    
+    </script>
+</head>
+<body>
+    <a href="http://www.baidu.com" id="al">百度</a>
+</body>
+</html>

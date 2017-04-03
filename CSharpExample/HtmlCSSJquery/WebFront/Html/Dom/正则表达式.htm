@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        //        var msg = '哈哈';
+        //        var reg = new RegExp(/\d+/);
+        //       //判断字符串和正则表达式是否匹配
+        //        alert( reg.test(msg));
+        //表示全局范围
+        var msg = '中国移动:10086,中国联通:10010,中国电信:10000';
+        var reg = /\d{5}/g;
+
+        var result;
+        while ((result = reg.exec(msg)) != null) {
+            alert(result);
+        }
+        //        var result = reg.exec(msg);
+        //        alert(result);
+        //        alert(reg.exec(msg));
+        //        alert(reg.exec(msg));
+        //        alert(reg.exec(msg));
+        //        alert(reg.exec(msg));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

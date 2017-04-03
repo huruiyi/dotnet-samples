@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+    div
+    {
+        width:300px;
+        height:200px;
+        background-color:Yellow;
+        }
+    
+    </style>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            document.getElementById('btn').onclick = function () {
+                var dvObj = document.getElementById('dv');
+                if (typeof (dvObj.style.styleFloat) == 'string') {
+                    dvObj.style.styleFloat = 'right';
+                } else {
+                    dvObj.style.cssFloat = 'right';
+                }
+
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="浮动" id="btn" />
+    <div id="dv">
+    </div>
+</body>
+</html>

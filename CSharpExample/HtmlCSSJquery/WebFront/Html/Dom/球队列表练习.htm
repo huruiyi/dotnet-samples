@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+
+            var lis = document.getElementById('uu1').getElementsByTagName('li');
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].onmouseover = function () {//鼠标进入
+
+                    this.style.backgroundColor = 'red';
+                };
+                lis[i].onmouseout = function () {//鼠标离开
+                    this.style.backgroundColor = '';
+                };
+            }
+        };
+    
+    </script>
+</head>
+<body>
+    <ul id="uu1" style=" cursor:pointer;">
+        <li>热火</li>
+        <li>湖人</li>
+        <li>火箭</li>
+        <li>骑士</li>
+        <li>马刺</li>
+        <li>凯尔特人</li>
+        <li>灰熊</li>
+    </ul>
+</body>
+</html>
