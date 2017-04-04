@@ -23,7 +23,6 @@
             div.style.position = "absolute";
             div.style.left = event.clientX + "px";
             div.style.top = event.clientY + "px";
-            
 
         }
 
@@ -40,7 +39,7 @@
             node.appendChild(textNode);
             document.getElementById("pointInfo").appendChild(node);
 
-            if (event.clientX<=0) return;
+            if (event.clientX <= 0) return;
             var div = document.getElementById("divObj");
             div.style.position = "absolute";
             div.style.left = event.clientX + "px";
@@ -79,7 +78,7 @@
 </head>
 
 <body>
-    <div id="divObj" ondrag="A(event)" ondragstart="    B(event)" ondragend="    C(event)" ondragenter="    D(event)" ondragover="    E(event)" ondragleave="    F(event)" ondrop="    G(event)" draggable="true"> </div>
+    <div id="divObj" ondrag="A(event)" ondragstart=" B(event)" ondragend=" C(event)" ondragenter=" D(event)" ondragover=" E(event)" ondragleave=" F(event)" ondrop=" G(event)" draggable="true"> </div>
     <p id="pointInfo" style="width:300px;height:300px;overflow-x:scroll"></p>
 </body>
 </html>

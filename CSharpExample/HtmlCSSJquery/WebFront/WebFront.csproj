@@ -65,10 +65,17 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Html\Case\BootstrapMenu.html" />
+    <Content Include="Html\Case\登录弹框.html" />
+    <Content Include="Html\CSS3\旋转.html" />
     <Content Include="Html\Dom\innerText和innerHTML.htm" />
+    <Content Include="Html\Dom\window对象.html" />
     <Content Include="Html\Dom\创建一个表格.htm" />
     <Content Include="Html\Dom\无刷新评论.htm" />
     <Content Include="Html\Dom\兼容写法.htm" />
+    <Content Include="Html\Dom\滚动条.html" />
+    <Content Include="Html\Case\简单拖拽1.html" />
+    <Content Include="Html\Case\简单拖拽2.html" />
+    <Content Include="Html\Case\简单拖拽3.html" />
     <Content Include="Html\Dom\设置类样式.htm" />
     <Content Include="Html\Dom\能力检测.htm" />
     <Content Include="Html\Dom\练习1.htm" />
@@ -99,6 +106,13 @@
     <Content Include="Html\Dom\文本框自增.htm" />
     <Content Include="Html\Dom\跑马灯.htm" />
     <Content Include="Html\Dom\三个事件的区别.htm" />
+    <Content Include="Html\Dom\遮罩层.html" />
+    <Content Include="Html\JQuery\45表格隔行变色.html" />
+    <Content Include="Html\JQuery\导航菜单.html" />
+    <Content Include="Html\JQuery\布局.html" />
+    <Content Include="Html\JQuery\自动完成.html" />
+    <Content Include="Html\JQuery\键盘.html" />
+    <Content Include="Html\JQuery\鼠标移动.html" />
     <Content Include="Html\JS\01js.js" />
     <Content Include="Html\JS\01显示时间.htm" />
     <Content Include="Html\JS\02点击超链接显示时间.htm" />
@@ -115,6 +129,22 @@
     <Content Include="Html\JS\13Array内容.htm" />
     <Content Include="Html\JS\14练习.htm" />
     <Content Include="Html\JS\15原型.htm" />
+    <Content Include="Html\Other\01insertCell.html" />
+    <Content Include="Html\Other\02map.html" />
+    <Content Include="Html\Other\03appendChild.html" />
+    <Content Include="Html\Other\04this全局对象.html" />
+    <Content Include="Html\Other\05Border-color.html" />
+    <Content Include="Html\Other\06Table-td遍历.html" />
+    <Content Include="Html\Other\07REST与SOA的异同.html" />
+    <Content Include="Html\Other\1.html" />
+    <Content Include="Html\Other\Css.css" />
+    <Content Include="Html\Other\dialog.css" />
+    <Content Include="Html\Other\jquery-1.10.2.js" />
+    <Content Include="Html\Other\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="Html\Other\jquery.js" />
+    <Content Include="Html\Other\tabs2_demo.html" />
+    <Content Include="Html\Other\关键字过滤.html" />
+    <Content Include="Html\Other\显示与隐藏 -siblings.html" />
     <Content Include="Images\bird.gif" />
     <Content Include="Html\Dom\window下的属性或事件.htm" />
     <Content Include="Html\Dom\css介绍.htm" />
@@ -202,6 +232,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Html\Other\Get-ComputerInfo.ps1" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
