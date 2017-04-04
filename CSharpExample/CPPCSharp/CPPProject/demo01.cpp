@@ -283,7 +283,6 @@ void main12()
 	else
 	{
 		printf("Allocation is fail\n");
-		 
 	}
 
 	printf("The datas are\n");
@@ -292,6 +291,3 @@ void main12()
 		printf("%d\t", p[j]);
 	}
 }
-
-
- 
