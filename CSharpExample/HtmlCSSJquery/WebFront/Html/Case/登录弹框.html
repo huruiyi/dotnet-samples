@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+    <title>
+        登录弹框
+    </title>
+    <style type="text/css">
+        body {
+            height: 1200px;
+        }
+
+        #loginDiv {
+            height: 300px;
+            width: 300px;
+            position: absolute;
+            box-shadow: -1px 3px 15px #aaa;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            LoginShow();
+        }
+        window.onresize = function () {
+            LoginShow();
+        }
+        function LoginShow() {
+            var lh = document.getElementById("loginDiv").offsetHeight;
+            var lw = document.getElementById("loginDiv").offsetWidth;
+
+            var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+            var scy = document.body.scrollTop || window.scrollY;
+            var topp = ((h - lh) / 2) + "px";
+            document.getElementById("loginDiv").style.top = topp;
+            var leftp = ((w - lw) / 2) + "px";
+            document.getElementById("loginDiv").style.left = leftp;
+            console.log(topp + "  " + leftp);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="loginDiv">
+    </div>
+</body>
+</html>

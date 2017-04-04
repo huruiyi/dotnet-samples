@@ -1,0 +1,119 @@
+﻿  <link href="Css.css" rel="stylesheet"/>
+  <link href="jquery-1.10.2.js" rel="stylesheet"/>
+  
+  <link href="jquery-ui-1.9.2.custom.min.css" rel="stylesheet"/>
+
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-labelledby="ui-id-3" style="outline: 0px; z-index: 1012; position: absolute; height: auto; width: 800px; top: 95px; left: 394px; display: block;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-id-3" class="ui-dialog-title">编辑线路</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a></div><div id="uiDialogDiv" class="uiCommonDialog ui-dialog-content ui-widget-content" scrolltop="0" scrollleft="0" style="width: 100%; min-height: 0px; height: 610px;">
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-solid">
+                <div class="box-header">
+                </div>
+            </div>
+            <div class="box-body">
+                <form id="editTravelCruiseProduct" action="/DistributionZZY/EdittravelZZYProduct" onsubmit="return contentFirstObj.beforeSubmitCheck();" class="form-horizontal form-bordered" method="post" data-ajax="true">
+                    <!--第一步-->
+                    <div id="first_step" class="">
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">产品特色：</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control input-sm" name="SubTitle" id="SubTitle" maxlength="200">
+                            </div>
+                            <div class="col-xs-4"><div class="alert alert-danger alert-dismissable alert-sm"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>产品描述不能为空!</div></div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">产品类型：</label>
+                            <div class="col-xs-6">
+                                <select id="GroupType" class="input-sm">
+                                            <option value="-1">请选择</option>
+                                                <option value="0">短线游</option>
+                                                <option value="1">长线游</option>
+                                                    <option value="2">出境游</option>
+                                                <option value="3">其他</option>
+
+                                </select>
+                                &nbsp; &nbsp;<select id="CategoryID" class="input-sm" name="CategoryID"><option value="-1">请选择</option></select>
+                            </div>
+                            <div class="col-xs-4" id="GroupTypeMsg"></div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">排序：</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control input-sm" name="SortIndex" id="SortIndex" value="">
+                                <span class="help-block text-red">排序说明：数值越小显示越靠前.排序1-8的线路会展示在客户端首页</span>
+                            </div>
+                            <div class="col-xs-4"><div class="alert alert-danger alert-dismissable alert-sm"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>请输入排序值!</div></div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">加价：</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control input-sm" name="SallAddPrice" maxlength="10" id="SallAddPrice" value="0">
+                                <span class="help-block text-red"></span>
+                            </div>
+                            <div class="col-xs-4"></div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">推荐级别：</label>
+                            <div class="col-xs-6">
+                                <label class="radio-inline"> <input checked="checked" data-val="true" data-val-number="字段 RecommendLevel 必须是一个数字。" data-val-required="RecommendLevel 字段是必需的。" id="RecommendLevel" name="RecommendLevel" type="radio" value="0">无</label>
+                                <label class="radio-inline"> <input id="RecommendLevel" name="RecommendLevel" type="radio" value="1">热点</label>
+                                <label class="radio-inline"> <input id="RecommendLevel" name="RecommendLevel" type="radio" value="2">推荐</label>
+                                <label class="radio-inline"> <input id="RecommendLevel" name="RecommendLevel" type="radio" value="3">特价</label>
+                                <label class="radio-inline"> <input id="RecommendLevel" name="RecommendLevel" type="radio" value="4">爆品</label>
+                                <label class="radio-inline"> <input id="RecommendLevel" name="RecommendLevel" type="radio" value="5">抢购</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">广告图：</label>
+                            <div class="col-xs-6">
+                                <input type="hidden" readonly="readonly" name="AdvUrl" id="AdvUrl">
+                                <a class="btn btn-primary btn-flat btn-sm" style="vertical-align: top;" data-target="#ImgUploadModal" data-toggle="modal" href="../ImageLibs/ImageLibsComponent?spm=635864710193401407">选择图片</a>
+                                    <img data-src="holder.js/900x420" class="img-thumbnail" data-holder-rendered="true" style="width: 150px; height: 70px;" alt="900x420" src="http://img1.40017.cn/cn/y/14/z/03/bg_22.png">
+
+                                <span class="help-block text-red">广告图片尺寸为：宽900*高420，大小限制在100K内</span>
+                            </div>
+                            <div class="col-xs-4" id="previewMsg"></div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-2 control-label">幻灯图：</label>
+                            <div class="col-xs-6">
+                                <table class="table table-bordered" id="tab">
+                                    <tbody><tr>
+                                        <td colspan="2">
+                                            <input type="button" class="btn btn-primary btn-sm btn-flat" add-attr="add-slide" value="添加">
+                                            <input type="button" class="btn btn-danger btn-sm btn-flat" delete-attr="delete-slide" value="删除">
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                                <span class="help-block text-red" style="margin-top: -16px">幻灯图片尺寸为：宽900*高510，大小限制在100K内</span>
+                                <span class="help-block text-red" style="margin-top: -5px">幻灯图片只能上传四张</span>
+                            </div>
+                            <div class="col-xs-4" id="slideMsg">
+                            </div>
+                        </div>
+                        <input data-val="true" data-val-number="字段 TravelZZYProductId 必须是一个数字。" data-val-required="TravelZZYProductId 字段是必需的。" id="TravelZZYProductId" name="TravelZZYProductId" type="hidden" value="106">
+                        <div class="form-group col-xs-12" style="text-align: center;">
+                            <button type="submit" value="保存" class="btn btn-primary  btn-flat ">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="HiddenCategoryID" value="0">
+<script type="text/javascript" src="/Script/edittravelcruiseproduct.js?v=201503180403"></script>
+<script type="text/javascript">
+    if (!$("#ImageLib")[0])
+        $('<div id="ImageLib">' +
+            '<input type="hidden" value="900" name="Imgwidth" class="Img-width">' +
+            '<input type="hidden" value="420" name="Imgheight" class="Img-height">' +
+            '<input type="hidden" value="#AdvUrl" name="target" class="Img-target">' +
+            '<div aria-hidden="true" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" id="ImgUploadModal" class="modal fade ImgUploadModal">' +
+            '</div><div tabindex="-1" role="dialog" aria-labelledby="Img-modal-label" aria-hidden="true" id="Img-modal" class="modal fade"></div></div>').appendTo(top.window.$("body"));
+</script>
+
+</div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div></div>

@@ -1,0 +1,75 @@
+<!DOCTYPE <html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        REST与SOA的异同
+    </title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        td:first-child {
+            text-align: right;
+            padding-right: 8px;
+        }
+        
+        tr,
+        td {
+            border: 1px solid #abc;
+            padding-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                Rest
+            </td>
+            <td>
+                它基于HTTP协议，是一种明确构建在客户端/服务端体系结构上的一种风格。特征如下：
+                <br> 1、网络上的资源都被抽象为资源，这些资源都具有唯一的统一资源标识符(URI：Uniform Resource Identiter)，这些资源都是自我们描述的。这些资源使用HTTP内容标头类型指定。如：XML、JSON、HTML、PNG等。
+                <br> 2、服务的使用者通过HTTP协议的标准动作(Get、Put、Post、Delete)通过统一的接口对资源进行操作。
+                <br> 3、对资源进行的操作不会改变它的URI。
+                <br> 4、客户端、服务端之间的交互是没有状态的。由于这种无状态行，服务端不需要为每个客户端维护Context
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SOA的特征
+            </td>
+            <td>
+                1、通过网络终结点对外提供服务。
+                <br> 2、粗粒度的服务接口。
+            </td>
+        </tr>
+        <tr>
+            <td>
+                REST与SOA的共同点
+            </td>
+            <td>
+                REST与SOA两者，虽有不同点，但是他们都作为服务的不同架构风格，具有服务的一般属性。具体如下：
+                <br>1、统一的服务契约接口与服务接口
+                <br>2、松散的耦合。
+                <br>3、只要有权限都可以进行访问
+            </td>
+        </tr>
+        <tr>
+            <td>
+                REST与SOA的不同点
+            </td>
+            <td>
+                1、REST风格下的，只有一种协议，那就是HTTP。而SOA下的WCF就和多种协议了。如：TCP、HTTP、MSMQ等多种协议
+                <br>2、使用方式上的不同。REST只要客户端能够模拟HTTP请求，通过标准的HTTP动作，都可以进行访问。它使用的是HTTPChannel管道，而SOA使用的管道有HTTPChannel、TcpChannel、RPC等多种。
+                <br>3、REST寄宿时，虽然可以选择多种寄宿方式，但必须有应用服务器的支持。
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

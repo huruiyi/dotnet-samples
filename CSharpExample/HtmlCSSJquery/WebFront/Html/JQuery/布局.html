@@ -1,0 +1,308 @@
+﻿<html>
+
+<head>
+    <title>
+    </title>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            LoginShow();
+
+            document.getElementById("rightLi").onclick = function () {
+                LoginShow();
+            }
+            document.getElementById("btnClose").onclick = function () {
+                document.getElementById("loginDiv").style.display = "none";
+            }
+
+            var lm = document.getElementsByClassName("leftmenu");
+            for (var i = 0; i < lm.length; i++) {
+                lm[i].onclick = function () {
+                    for (var j = 0; j < lm.length; j++) {
+                        document.getElementById("listItemm" + (j + 1)).style.display = "none";
+                    }
+                    var thisDis = document.getElementById("listItem" + this.id).style.display;
+                    if (thisDis == "block") {
+                        document.getElementById("listItem" + this.id).style.display = "none";
+                    } else {
+                        document.getElementById("listItem" + this.id).style.display = "block";
+                    }
+                }
+            }
+        }
+        window.onresize = function () {
+            LoginShow();
+        }
+
+        function LoginShow() {
+            var lh = document.getElementById("loginDiv").offsetHeight;
+            var lw = document.getElementById("loginDiv").offsetWidth;
+
+            var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+            document.getElementById("loginDiv").style.display = "block";
+
+            var topp = ((h - lh) / 2) + "px";
+            document.getElementById("loginDiv").style.top = topp;
+            var leftp = ((w - lw) / 2) + "px";
+            document.getElementById("loginDiv").style.left = leftp;
+            console.log(topp + "  " + leftp);
+        }
+    </script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #rightLi {
+            float: right;
+        }
+
+        #container {
+            height: 100%;
+        }
+
+        #headNav {
+            background-color: peachpuff;
+            height: 60PX;
+        }
+
+            #headNav ul {
+                width: 80%;
+                margin: 0 AUTO;
+                background-color: #9b95c9;
+            }
+
+                #headNav ul li {
+                    display: inline-block;
+                    background-color: #77ac98;
+                    padding: 10px;
+                    margin: 0 AUTO;
+                    line-height: 40px;
+                }
+
+                    #headNav ul li:hover {
+                        background-color: #cde6c7;
+                    }
+
+                    #headNav ul li a {
+                        text-decoration: none;
+                    }
+
+        #mainContent {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        #divContentRight {
+            width: 80%;
+            height: 90%;
+            float: left;
+        }
+
+        #divFooter {
+            clear: both;
+            height: 20px;
+            background-color: purple;
+        }
+
+        #divContentLeft {
+            width: 20%;
+            height: 90%;
+            float: left;
+        }
+
+            #divContentLeft li {
+                background-color: #ffffff;
+                display: list-item;
+                line-height: 25px;
+                margin: 10px;
+            }
+
+        .leftmenu {
+            background: #ffffff;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+
+            .leftmenu:hover {
+                background: #d9d6c3;
+            }
+
+        .menuitem {
+            display: none;
+        }
+
+            .menuitem a {
+                padding: 0;
+                margin: 0;
+            }
+
+            .menuitem ul li {
+                background-color: #808000;
+                padding: 5px;
+            }
+
+                .menuitem ul li:hover {
+                    background-color: Red;
+                }
+
+                .menuitem ul li a {
+                    text-decoration: none;
+                }
+
+        #loginDiv {
+            height: 300px;
+            width: 300px;
+            background-color: #708090;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="headNav">
+            <ul>
+                <li>
+                    <a href="#">鲜花礼品</a>
+                </li>
+                <li>
+                    <a href="#">自助订花</a>
+                </li>
+                <li>
+                    <a href="#">绿色植物</a>
+                </li>
+                <li>
+                    <a href="#">花之物语</a>
+                </li>
+                <li>
+                    <a href="#">会员中心</a>
+                </li>
+                <li>
+                    <a href="#">联系我们</a>
+                </li>
+                <li>
+                    <a href="#">支付方式</a>
+                </li>
+                <li id="rightLi">
+                    <a href="#">登录</a>
+                </li>
+            </ul>
+        </div>
+        <div id="mainContent">
+            <div id="divContentLeft">
+                <div>
+                    <div class="leftmenu" id="m1">
+                        菜单1
+                    </div>
+                    <div class="menuitem" id="listItemm1">
+                        <ul>
+                            <li>
+                                <a href="http://www.baidu.com" target="rightRame">菜单1=>百度</a>
+                            </li>
+                            <li>
+                                <a href="http://www.sina.com" target="rightRame">菜单1=>新浪</a>
+                            </li>
+                            <li>
+                                <a href="http://www.qq.com" target="rightRame">菜单1=>腾讯</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单1=>花之物语</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单1=>会员中心</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单1=>联系我们</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单1=>支付方式</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="leftmenu" id="m2">
+                        菜单2
+                    </div>
+                    <div class="menuitem" id="listItemm2">
+                        <ul>
+                            <li>
+                                <a href="#">菜单2=>鲜花礼品</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单2=>自助订花</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单2=>绿色植物</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单2=>花之物语</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单2=>会员中心</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单2=>联系我们</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单2=>支付方式</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="leftmenu" id="m3">
+                        菜单3
+                    </div>
+                    <div class="menuitem" id="listItemm3">
+                        <ul>
+                            <li>
+                                <a href="#">菜单3=>鲜花礼品</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单3=>自助订花</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单3=>绿色植物</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单3=>花之物语</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单3=>会员中心</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单3=>联系我们</a>
+                            </li>
+                            <li>
+                                <a href="#">菜单3=>支付方式</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="divContentRight">
+                <iframe name="rightRame" frameborder="0" width="100%" height="100%" src="http://www.baidu.com"></iframe>
+            </div>
+        </div>
+        <div id="divFooter"></div>
+    </div>
+    <div id="loginDiv">
+        <input type="button" id="btnClose" value="关闭" />
+    </div>
+</body>
+
+</html>
