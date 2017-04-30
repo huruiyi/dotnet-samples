@@ -13,6 +13,22 @@ namespace WebApiDemo.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
+            List<object> obj = new List<object>();
+
+            for (int i = 0; i < 500; i++)
+            {
+                obj.Add(new
+                {
+                    a = i,
+                    b = i.ToString("x"),
+                    c = i.ToString("x2"),
+                    d = Convert.ToString(i, 2),
+                    e = Convert.ToString(i, 8),
+                    f = Convert.ToString(i, 16)
+                });
+                Console.WriteLine($"{i.ToString()} {i.ToString("x")} {i.ToString("x2")} {Convert.ToString(i, 2)} {Convert.ToString(i, 8)} {Convert.ToString(i, 16)}");
+            }
+
             return new string[] { "value1", "value2" };
         }
 

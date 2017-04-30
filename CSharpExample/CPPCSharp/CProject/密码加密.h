@@ -12,5 +12,5 @@ char * stringjiami(char *password, char *string);
 //×Ö·û´®½âÃÜ
 char * stringjiemi(char *password, char *jiastring);
 int  getfilesize(char * path);
-void filejiami(char *path, char *pathjia, char *jiapassword[]);
-void filejiemi(char *pathjia, char *pathjie, char *jiapassword[]);
+void filejiami(char *path, char *pathjia, char *jiapassword);
+void filejiemi(char *pathjia, char *pathjie, char *jiapassword);

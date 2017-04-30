@@ -83,7 +83,7 @@ char * stringjiemi(char *password, char *jiastring)
 	return  jiastring;
 }
 
-void filejiami(char *path, char *pathjia, char *password[] )
+void filejiami(char *path, char *pathjia, char *password)
 {
 	FILE *pfr, *pfw;
 	pfr = fopen(path, "rb");

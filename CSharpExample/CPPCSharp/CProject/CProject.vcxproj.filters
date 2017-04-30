@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="default.cpp">
+    <ClCompile Include="密码加密.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="密码加密.c">
+    <ClCompile Include="demo01.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="demo02.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,5 +29,13 @@
     <ClInclude Include="密码加密.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CProject.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

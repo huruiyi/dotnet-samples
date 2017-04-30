@@ -30,61 +30,61 @@
 <div class="row panel panel-success">
     <div class="col-xs-12 col-md-8 panel-body">
 
-            <div class="panel panel-body">
+        @*<div class="panel panel-body">
                 <div class="row">
                     @using (Html.BeginForm("Index", "Upload", FormMethod.Post, new { enctype = "multipart/form-data", id = "uploadForm" }))
                     {
                         <div id="myUploader"></div>
                     }
                 </div>
-            </div>
+            </div>*@
 
-            <div class="panel panel-body">
-                <div class="row">
-                    <table class="table table-bordered text-center">
-                        <tr>
-                            <td>
-                                ViewData
-                            </td>
-                            <td>
-                                @ViewData["Msg"]
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                MvcHtmlString.Create
-                            </td>
-                            <td>
-                                @MvcHtmlString.Create("<a href='http://www.sina.com'>新浪</a>")
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                MvcHtmlString
-                            </td>
-                            <td>
-                                @(new MvcHtmlString(ViewBag.Msg))
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                姓名
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => m.Name)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                年龄
-                            </td>
-                            <td>
-                                @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+        <div class="panel panel-body">
+            <div class="row">
+                <table class="table table-bordered text-center">
+                    <tr>
+                        <td>
+                            ViewData
+                        </td>
+                        <td>
+                            @ViewData["Msg"]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            MvcHtmlString.Create
+                        </td>
+                        <td>
+                            @MvcHtmlString.Create("<a href='http://www.sina.com'>新浪</a>")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            MvcHtmlString
+                        </td>
+                        <td>
+                            @(new MvcHtmlString(ViewBag.Msg))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            姓名
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => m.Name)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            年龄
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                </table>
             </div>
+        </div>
 
         <div class="panel panel-success" style="box-shadow:2px 2px 3px #aaaaaa">
             <div class="panel-heading">
@@ -261,7 +261,6 @@
                 </div>
             </div>
         </div>
-
         <div class="jumbotron">
             <h3>明天你好!</h3>
             <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>

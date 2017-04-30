@@ -43,6 +43,8 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            Bin_Oct_Dec_Hex();
+            Console.ReadKey();
             //Marshal.
 
             DateTime d1 = new DateTime(2017, 1, 1);

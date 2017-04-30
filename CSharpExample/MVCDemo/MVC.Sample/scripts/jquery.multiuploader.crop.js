@@ -7,7 +7,7 @@
 			apertureHeight: options.apertureHeight || 300,
 			proceedCallBack: options.proceedCallBack
 		};
-		this.append('<input type="file"  name="files" value="" multiple="multiple" accept="image/*" id="' + innerOptions.fileInputId + '"/>');
+        this.append('<input type="file" class="btn btn-default file"  name="files" value="" multiple="multiple" accept="image/*" id="' + innerOptions.fileInputId + '"/>');
 		this.append('<input type="button" class="btn btn-default" name="getCroppedImagesJson" value="I am done"/>');
 		this.append('<div id="cropContainer"></div>');
 		$('#' + innerOptions.fileInputId).change(function (e) {

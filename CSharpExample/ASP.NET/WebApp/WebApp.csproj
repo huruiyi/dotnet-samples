@@ -65,6 +65,7 @@
     <Content Include="Handler\Graphics3.ashx" />
     <Content Include="Handler\HttpWebRequestImage.ashx" />
     <Content Include="Handler\HttpRequestDemo.ashx" />
+    <Content Include="Handler\进制间转换.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -76,6 +77,7 @@
     <Content Include="Global.asax" />
     <Content Include="Htmls\DetailGoods.html" />
     <Content Include="Htmls\DisplayGoodsTemp.html" />
+    <Content Include="Htmls\进制间转化.html" />
     <Content Include="Htmls\Index.html" />
     <Content Include="Htmls\MyOrders.html" />
     <Content Include="Htmls\Register.html" />
@@ -125,6 +127,9 @@
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\OrederHandler.cs" />
     <Compile Include="Handler\RegisterHandler.cs" />
+    <Compile Include="Handler\进制间转换.ashx.cs">
+      <DependentUpon>进制间转换.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HttpModule\ModuleTest.cs" />
     <Compile Include="Infrastructure\SQLHelper.cs" />
     <Compile Include="Models\Product.cs" />

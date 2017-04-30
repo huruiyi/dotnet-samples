@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        table {
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid green;
+            width: 200px;
+        }
+
+        #div1 {
+            height: 800px;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        table {
+            padding-top: 300px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            InitData();
+        }
+        function InitData() {
+            //1.创建异步对象
+            var ajaxObj = new XMLHttpRequest();
+
+            // 2.设置请求的url等参数
+            // 参数1 请求的方法 参数2 请求的url
+            ajaxObj.open("get", "http://localhost:801/Handler/进制间转换.ashx");
+
+            // 3.发送请求
+            ajaxObj.send();
+            // 假设 有一个 接返回数据的 方法ajaxObj.get();
+            // 4.注册事件
+            // onreadystatechange  状态改变就会调用
+            // 如果要在 数据完美请求回来的时候 才调用 我们需要手动的 写一些判断的逻辑
+            ajaxObj.onreadystatechange = function () {
+
+                // 为了保证 数据 完整回来,我们一般会判断 两个值
+                if (ajaxObj.readyState == 4 && ajaxObj.status == 200) {
+
+                    // 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
+                    // 5.在注册的事件中 获取 返回的 内容 并修改页面的显示
+
+                    // 数据是保存在 异步对象的 属性中
+                    /*
+                        Bin：二进制
+                        Oct：八进制
+                        Dec：十进制
+                        Hex：十六进制
+                        Hex：十六进制
+                        Hex：十六进制
+                    */
+                    var jsonStr = ajaxObj.responseText;
+                    // 修改页面的显示
+                    var jsonObj = JSON.parse(jsonStr);
+                    var html = "<table>";
+                    for (var i = 0; i < jsonObj.length; i++) {
+                        html += "</tr>";
+                        html += "<td style='width:200px'>" + GetFourStr(jsonObj[i].Bin) + "</td>"
+                        html += "<td>" + jsonObj[i].Oct + "</td>"
+                        html += "<td>" + jsonObj[i].Dec + "</td>"
+                        html += "<td>" + jsonObj[i].Hex1 + "</td>"
+                        html += "<td>" + jsonObj[i].Hex2 + "</td>"
+                        html += "<td>" + jsonObj[i].Hex3 + "</td>"
+                        html += "</tr>";
+                    }
+                    html += "</table>";
+                    document.querySelector('body').innerHTML = html;
+                }
+
+            }
+        }
+
+        function GetFourStr(str) {
+            var result = str.substring(str.length - 4) + " ";
+            str = str.substring(0, str.length - 4);
+            while (str.length > 4) {
+                result = str.substring(str.length - 4) + " " + result;
+                str = str.substring(0, str.length - 4);
+            }
+            var text = str + " " + result;
+            var onepostion = text.indexOf('1');
+            var before = text.substring(0, onepostion)
+            var after = text.substring(onepostion)
+            if (onepostion == -1) {
+                return before + after.trim();
+            }
+            else {
+                return before + "<lable style='color:red;font-weight: bolder;'>" + after.trim() + "</label>";
+            }l
+        }
+
+        var obj = {
+            1: "value1",
+            "2": "value2",
+            count: 3,
+            person: [ //数组结构JSON对象，可以嵌套使用
+                {
+                    id: 1,
+                    name: "张三"
+                },
+                {
+                    id: 2,
+                    name: "李四"
+                }
+            ],
+            object: { //对象结构JSON对象
+                id: 1,
+                msg: "对象里的对象"
+            }
+        };
+
+        function FunJson() {
+            console.log(obj);
+        }
+
+        function FunJsonStr() {
+            console.log(JSON.stringify(obj));
+        }
+
+        function FunJsonParse() {
+            var jsonStr = JSON.stringify(obj);
+            var jsonObj = JSON.parse(jsonStr);
+            console.log(jsonObj);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
