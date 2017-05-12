@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConApp
@@ -12,8 +14,7 @@ namespace ConApp
         {
             ConfigurationValidatorBase valBase;
 
-            RegexStringValidatorAttribute rstrValAttr =
-            new RegexStringValidatorAttribute(@"\w+\S*");
+            RegexStringValidatorAttribute rstrValAttr = new RegexStringValidatorAttribute(@"\w+\S*");
 
             // Get the regular expression string.
             string regex = rstrValAttr.Regex;
