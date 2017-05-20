@@ -175,6 +175,12 @@
     <Compile Include="无边框移动2.Designer.cs">
       <DependentUpon>无边框移动2.cs</DependentUpon>
     </Compile>
+    <Compile Include="无边框移动4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="无边框移动4.Designer.cs">
+      <DependentUpon>无边框移动4.cs</DependentUpon>
+    </Compile>
     <Compile Include="添加Windows账户.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,12 @@
     </Compile>
     <Compile Include="Notepad.designer.cs">
       <DependentUpon>Notepad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="闪屏.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="闪屏.Designer.cs">
+      <DependentUpon>闪屏.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AsymmetricAlgorithmForm.resx">
       <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
@@ -281,6 +293,9 @@
     <EmbeddedResource Include="无边框移动2.resx">
       <DependentUpon>无边框移动2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="无边框移动4.resx">
+      <DependentUpon>无边框移动4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="添加Windows账户.resx">
       <DependentUpon>添加Windows账户.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Notepad.resx">
       <DependentUpon>Notepad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="闪屏.resx">
+      <DependentUpon>闪屏.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

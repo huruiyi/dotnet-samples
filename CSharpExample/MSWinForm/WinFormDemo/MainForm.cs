@@ -157,5 +157,20 @@ namespace WinFormDemo
         {
             new AsymmetricAlgorithmForm().ShowDialog();
         }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            new 无边框移动2().ShowDialog();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            new 无边框移动1().ShowDialog();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            new 无边框移动4().ShowDialog();
+        }
     }
 }

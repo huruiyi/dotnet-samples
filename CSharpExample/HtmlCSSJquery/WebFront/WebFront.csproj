@@ -107,6 +107,7 @@
     <Content Include="Html\Dom\跑马灯.htm" />
     <Content Include="Html\Dom\三个事件的区别.htm" />
     <Content Include="Html\Dom\遮罩层.html" />
+    <Content Include="Html\Html5\简单表单验证.html" />
     <Content Include="Html\JQuery\45表格隔行变色.html" />
     <Content Include="Html\JQuery\导航菜单.html" />
     <Content Include="Html\JQuery\布局.html" />
@@ -129,6 +130,8 @@
     <Content Include="Html\JS\13Array内容.htm" />
     <Content Include="Html\JS\14练习.htm" />
     <Content Include="Html\JS\15原型.htm" />
+    <Content Include="Html\Layout1.html" />
+    <Content Include="Html\Layout2.html" />
     <Content Include="Html\Other\01insertCell.html" />
     <Content Include="Html\Other\02map.html" />
     <Content Include="Html\Other\03appendChild.html" />
@@ -145,6 +148,7 @@
     <Content Include="Html\Other\tabs2_demo.html" />
     <Content Include="Html\Other\关键字过滤.html" />
     <Content Include="Html\Other\显示与隐藏 -siblings.html" />
+    <Content Include="Html\表单元素2.html" />
     <Content Include="Images\bird.gif" />
     <Content Include="Html\Dom\window下的属性或事件.htm" />
     <Content Include="Html\Dom\css介绍.htm" />
@@ -329,14 +333,16 @@
     <Content Include="Html\Dom\网页布局2.html" />
     <Content Include="Html\Dom\网页布局3.html" />
     <Content Include="Html\Dom\网页布局4.html" />
-    <Content Include="Html\表单元素.htm" />
+    <Content Include="Html\表单元素1.htm" />
     <Content Include="Html\走马灯效果.html" />
     <Content Include="Html\跟随鼠标移动的Div.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Html\Html5\images\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

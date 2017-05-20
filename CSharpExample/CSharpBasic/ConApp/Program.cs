@@ -1522,6 +1522,68 @@ namespace ConApp
             }
         }
 
+        public static void HttpListenerDemo3()
+        {
+            // 检查系统是否支持
+            if (!HttpListener.IsSupported)
+            {
+                throw new System.InvalidOperationException("使用 HttpListener 必须为 Windows XP SP2 或 Server 2003 以上系统！");
+            }
+            // 注意前缀必须以 / 正斜杠结尾
+            string[] prefixes = new string[] { "http://localhost:49152/" };
+            // 创建监听器.
+            HttpListener listener = new HttpListener();
+            // 增加监听的前缀.
+            foreach (string s in prefixes)
+            {
+                listener.Prefixes.Add(s);
+            }
+            // 开始监听
+            listener.Start();
+            Console.WriteLine("监听中...");
+            while (true)
+            {
+                // 注意: GetContext 方法将阻塞线程，直到请求到达
+                HttpListenerContext context = listener.GetContext();
+                // 取得请求对象
+                HttpListenerRequest request = context.Request;
+                Console.WriteLine("{0} {1} HTTP/1.1", request.HttpMethod, request.RawUrl);
+                Console.WriteLine("Accept: {0}", string.Join(",", request.AcceptTypes));
+                Console.WriteLine("Accept-Language: {0}", string.Join(",", request.UserLanguages));
+                Console.WriteLine("User-Agent: {0}", request.UserAgent);
+                Console.WriteLine("Accept-Encoding: {0}", request.Headers["Accept-Encoding"]);
+                Console.WriteLine("Connection: {0}", request.KeepAlive ? "Keep-Alive" : "close");
+                Console.WriteLine("Host: {0}", request.UserHostName);
+                Console.WriteLine("Pragma: {0}", request.Headers["Pragma"]);
+                // 取得回应对象
+                HttpListenerResponse response = context.Response;
+                // 构造回应内容
+                string responseString =
+                                @"<html>
+                                    <head>
+                                        <title>From HttpListener Server</title>
+                                    </head>
+                                    <body>
+                                        <h1>Hello, world.</h1>
+                                    </body>
+                                   </html>";
+                // 设置回应头部内容，长度，编码
+                response.ContentLength64 = System.Text.Encoding.UTF8.GetByteCount(responseString);
+                response.ContentType = "text/html; charset=UTF-8";
+                // 输出回应内容
+                System.IO.Stream output = response.OutputStream;
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(output);
+                writer.Write(responseString);
+                // 必须关闭输出流
+                writer.Close();
+
+                if (Console.KeyAvailable)
+                    break;
+            }
+            // 关闭服务器
+            listener.Stop();
+        }
+
         #endregion 31-HttpListenerDemo
 
         #region 获取注册表的建
@@ -2910,5 +2972,60 @@ namespace ConApp
         }
 
         #endregion 开机启动
+
+        public static void 四则运算位运算()
+        {
+            char c1 = 'A';
+            char c2 = '\u0038';
+            Console.WriteLine("字符型变量c1={1},c2={0}", c1, c2);
+            sbyte b1 = -12;
+            byte b2 = 12;
+            Console.WriteLine("字节型变量b1={0},无符号字节型变量b2={1}", b1, b2);
+            short s1 = -012;         //十进制
+            ushort s2 = 16;
+            Console.WriteLine("短整型变量s1={0},无符号短整型变量s2={1}", s1, s2);
+            int i1 = -0x48bF;      //十六进制
+            uint i2 = 12;
+            Console.WriteLine("整型变量i1={0},无符号整型变量i2={1}", i1, i2);
+            long l1 = 0X2Dcfa6;
+            ulong l2 = 0x2dcfa6L;    //整型常量加后缀L或l,说明为long型
+            Console.WriteLine("长整型变量l1={0},无符号长整型变量l2={1}", l1, l2);
+            float f1 = 1;
+            float f2 = 22f;          //加后缀f，将浮点型常量说明为float型
+            float f3 = .26f;
+            Console.WriteLine("单精度浮点型变量f1={0},f2={1},f3={2}", f1, f2, f3);
+            double d1 = 22D;          //加后缀D，将浮点型常量说明为double型
+            double d2 = 2e2;          //double型常量
+            double d3 = -2.1e12d;     //double型常量可以加后缀D或d
+            decimal d4 = 22;
+            decimal d5 = -2.1e12m;     //加后缀m，将浮点数型常量说明为decimal型
+            Console.WriteLine("双精度浮点型变量d1={0},d2={1},d3={2}", d1, d2, d3);
+            Console.WriteLine("十进制小数型变量d4={0},d5={1}", d4, d5);
+
+            int x = 5, y = 10, z = -128;
+            Console.WriteLine("{0}&{1}={2}", x, y, (x & y));
+            Console.WriteLine("{0}|{1}={2}", x, y, (x | y));
+            Console.WriteLine("{0}^{1}={2}", x, y, (x ^ y));
+            Console.WriteLine("~{0}={1}", x, (~x));
+            Console.WriteLine("{0}<<{1}={2}", z, x, (z << x));
+            Console.WriteLine("{0}>>{1}={2}", z, x, (z >> x));
+
+            char c1 = 'D', c2;
+            sbyte sb1 = 1, sb2 = 2, sb3;
+            byte b1 = 1, b2 = 2, b3;
+            short s1 = 3, s2 = 4, s3;
+            ushort us1 = 3, us2 = 4, us3;
+
+            c2 = (char)(c1 + 'A');
+            Console.WriteLine("char c2={0}", c2);
+            sb3 = (sbyte)(sb1 - sb2);
+            Console.WriteLine("sbyte  sb3={0}", sb3);
+            b3 = (byte)(b1 * b2);
+            Console.WriteLine("byte  b3={0}", b3);
+            s3 = (short)(s1 / s2);
+            Console.WriteLine("short  s3={0}", s3);
+            us3 = (ushort)(us1 & us2);
+            Console.WriteLine("ushort  us3={0}", us3);
+        }
     }
 }

@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -83,6 +84,7 @@
     <Compile Include="ShellContextMenu.cs" />
     <Compile Include="Shell\ShortcutHelper.cs" />
     <Compile Include="Web\IISHelper.cs" />
+    <Compile Include="Web\IISWorker.cs" />
     <Compile Include="XmlSerializeUtil.cs" />
   </ItemGroup>
   <ItemGroup>
