@@ -2973,7 +2973,7 @@ namespace ConApp
 
         #endregion 开机启动
 
-        public static void 四则运算位运算()
+        public static void 四则运算位运算1()
         {
             char c1 = 'A';
             char c2 = '\u0038';
@@ -3009,7 +3009,10 @@ namespace ConApp
             Console.WriteLine("~{0}={1}", x, (~x));
             Console.WriteLine("{0}<<{1}={2}", z, x, (z << x));
             Console.WriteLine("{0}>>{1}={2}", z, x, (z >> x));
+        }
 
+        public static void 四则运算位运算2()
+        {
             char c1 = 'D', c2;
             sbyte sb1 = 1, sb2 = 2, sb3;
             byte b1 = 1, b2 = 2, b3;
