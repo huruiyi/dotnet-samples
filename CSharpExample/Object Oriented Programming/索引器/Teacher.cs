@@ -1,6 +1,6 @@
 ﻿namespace 索引器
 {
-    internal class Teacher
+    internal class Teachers
     {
         private Student[] students = new Student[3];
 

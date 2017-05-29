@@ -11,7 +11,7 @@ namespace 索引器
 
         private static void Demo0()
         {
-            Teacher teacher = new Teacher();
+            Teachers teacher = new Teachers();
             teacher[0] = new Student("小明", 19, "男");
             teacher[0].Say();
             teacher[1] = new Student("小红", 20, "女");
