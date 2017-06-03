@@ -1584,6 +1584,55 @@ namespace ConApp
             listener.Stop();
         }
 
+        private static HttpListener listener;
+        private static Thread listenThread1;
+
+        public static void HttpListenerDemo4()
+        {
+            listener = new HttpListener();
+            listener.Prefixes.Add("http://localhost:8000/");
+            listener.Prefixes.Add("http://127.0.0.1:8000/");
+            listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
+
+            listener.Start();
+            listenThread1 = new Thread(new ParameterizedThreadStart(startlistener));
+            listenThread1.Start();
+        }
+
+        public static void startlistener(object s)
+        {
+            while (true)
+            {
+                var result = listener.BeginGetContext(ListenerCallback, listener);
+                result.AsyncWaitHandle.WaitOne();
+            }
+        }
+
+        public static void ListenerCallback(IAsyncResult result)
+        {
+            var context = listener.EndGetContext(result);
+            Thread.Sleep(1000);
+            var data_text = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding).ReadToEnd();
+
+            //functions used to decode json encoded data.
+            //JavaScriptSerializer js = new JavaScriptSerializer();
+            //var data1 = Uri.UnescapeDataString(data_text);
+            //string da = Regex.Unescape(data_text);
+            //var unserialized = js.Deserialize(data_text, typeof(String));
+
+            var cleaned_data = System.Web.HttpUtility.UrlDecode(data_text);
+
+            context.Response.StatusCode = 200;
+            context.Response.StatusDescription = "OK";
+
+            var headerText = context.Request.Headers["mycustomHeader"];
+
+            context.Response.Headers["mycustomResponseHeader"] = "mycustomResponse";
+
+            MessageBox.Show(cleaned_data);
+            context.Response.Close();
+        }
+
         #endregion 31-HttpListenerDemo
 
         #region 获取注册表的建
