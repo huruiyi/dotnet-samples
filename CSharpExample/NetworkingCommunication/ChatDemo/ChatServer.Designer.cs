@@ -38,7 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lvClient = new System.Windows.Forms.ListView();
+            this.gboxClient = new System.Windows.Forms.GroupBox();
             this.d.SuspendLayout();
+            this.gboxClient.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConServices
@@ -48,14 +51,14 @@
             this.btnConServices.Name = "btnConServices";
             this.btnConServices.Size = new System.Drawing.Size(75, 23);
             this.btnConServices.TabIndex = 24;
-            this.btnConServices.Text = "连接服务器";
+            this.btnConServices.Text = "启动服务器";
             this.btnConServices.UseVisualStyleBackColor = true;
             this.btnConServices.Click += new System.EventHandler(this.btnConServices_Click);
             // 
             // btnSendMsg
             // 
             this.btnSendMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendMsg.Location = new System.Drawing.Point(385, 316);
+            this.btnSendMsg.Location = new System.Drawing.Point(385, 495);
             this.btnSendMsg.Name = "btnSendMsg";
             this.btnSendMsg.Size = new System.Drawing.Size(75, 23);
             this.btnSendMsg.TabIndex = 23;
@@ -65,10 +68,10 @@
             // 
             // txtSendMsg
             // 
-            this.txtSendMsg.Location = new System.Drawing.Point(25, 316);
+            this.txtSendMsg.Location = new System.Drawing.Point(15, 495);
             this.txtSendMsg.Multiline = true;
             this.txtSendMsg.Name = "txtSendMsg";
-            this.txtSendMsg.Size = new System.Drawing.Size(345, 21);
+            this.txtSendMsg.Size = new System.Drawing.Size(355, 21);
             this.txtSendMsg.TabIndex = 22;
             // 
             // d
@@ -76,7 +79,7 @@
             this.d.Controls.Add(this.richMsg);
             this.d.Location = new System.Drawing.Point(12, 40);
             this.d.Name = "d";
-            this.d.Size = new System.Drawing.Size(460, 270);
+            this.d.Size = new System.Drawing.Size(448, 435);
             this.d.TabIndex = 21;
             this.d.TabStop = false;
             this.d.Text = "消息窗口";
@@ -86,7 +89,7 @@
             this.richMsg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richMsg.Location = new System.Drawing.Point(3, 17);
             this.richMsg.Name = "richMsg";
-            this.richMsg.Size = new System.Drawing.Size(454, 250);
+            this.richMsg.Size = new System.Drawing.Size(442, 415);
             this.richMsg.TabIndex = 4;
             this.richMsg.Text = "";
             // 
@@ -96,7 +99,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(83, 21);
             this.txtPort.TabIndex = 20;
-            this.txtPort.Text = "10001";
+            this.txtPort.Text = "12345";
             // 
             // txtIp
             // 
@@ -135,11 +138,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lvClient
+            // 
+            this.lvClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvClient.Location = new System.Drawing.Point(3, 17);
+            this.lvClient.Name = "lvClient";
+            this.lvClient.Size = new System.Drawing.Size(312, 490);
+            this.lvClient.TabIndex = 25;
+            this.lvClient.UseCompatibleStateImageBehavior = false;
+            this.lvClient.View = System.Windows.Forms.View.List;
+            this.lvClient.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvClient_ItemSelectionChanged);
+            this.lvClient.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvClient_KeyDown);
+            // 
+            // gboxClient
+            // 
+            this.gboxClient.Controls.Add(this.lvClient);
+            this.gboxClient.Location = new System.Drawing.Point(486, 8);
+            this.gboxClient.Name = "gboxClient";
+            this.gboxClient.Size = new System.Drawing.Size(318, 510);
+            this.gboxClient.TabIndex = 26;
+            this.gboxClient.TabStop = false;
+            this.gboxClient.Text = "客户端地址";
+            // 
             // ChatServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 351);
+            this.ClientSize = new System.Drawing.Size(822, 537);
+            this.Controls.Add(this.gboxClient);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnConServices);
             this.Controls.Add(this.btnSendMsg);
@@ -152,6 +178,7 @@
             this.Name = "ChatServer";
             this.Text = "服务端";
             this.d.ResumeLayout(false);
+            this.gboxClient.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,6 +196,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListView lvClient;
+        private System.Windows.Forms.GroupBox gboxClient;
     }
 }
 

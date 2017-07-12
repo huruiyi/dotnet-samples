@@ -37,6 +37,7 @@
             this.txtIp = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.d.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +46,9 @@
             this.btnopenServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnopenServices.Location = new System.Drawing.Point(312, 11);
             this.btnopenServices.Name = "btnopenServices";
-            this.btnopenServices.Size = new System.Drawing.Size(144, 23);
+            this.btnopenServices.Size = new System.Drawing.Size(52, 23);
             this.btnopenServices.TabIndex = 16;
-            this.btnopenServices.Text = "打开服务器";
+            this.btnopenServices.Text = "连接";
             this.btnopenServices.UseVisualStyleBackColor = true;
             this.btnopenServices.Click += new System.EventHandler(this.btnopenServices_Click);
             // 
@@ -95,7 +96,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(85, 21);
             this.txtPort.TabIndex = 12;
-            this.txtPort.Text = "10001";
+            this.txtPort.Text = "12345";
             // 
             // txtIp
             // 
@@ -123,11 +124,23 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "IP地址:";
             // 
-            // Form1
+            // btnClose
+            // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(381, 11);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 17;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // ChatClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 351);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnopenServices);
             this.Controls.Add(this.btnSendMsg);
             this.Controls.Add(this.txtSendMsg);
@@ -136,7 +149,7 @@
             this.Controls.Add(this.txtIp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "ChatClient";
             this.Text = "客户端";
             this.d.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -155,6 +168,7 @@
         private System.Windows.Forms.TextBox txtIp;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 

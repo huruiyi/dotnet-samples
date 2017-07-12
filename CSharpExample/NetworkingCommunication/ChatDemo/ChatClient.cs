@@ -15,36 +15,48 @@ namespace ChatDemo
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private Socket ServerSocket = null;
+        private Socket ClientSocket = null;
 
         private void btnopenServices_Click(object sender, EventArgs e)
         {
+            ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ip = IPAddress.Parse(txtIp.Text);
             IPEndPoint ServerPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
-            ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            ServerSocket.Bind(ServerPoint);
-            ServerSocket.Listen(10);
-            richMsg.AppendText("打开服务器成功\r\n");
+            ClientSocket.Connect(ServerPoint);
+            richMsg.AppendText("连接服务器成功.\r\n");
+            this.Text = ClientSocket.LocalEndPoint.ToString();
 
-            Thread AcceptThread = new Thread(AcceptSocket);
-            AcceptThread.IsBackground = true;
-            AcceptThread.Start();
+            Thread ReceiveThread = new Thread(ReceiveMsg);
+            ReceiveThread.IsBackground = true;
+            ReceiveThread.Start();
+            btnopenServices.Enabled = false;
         }
 
-        private bool isListenMsg = true;
-        private Socket ClientSocket = null;
-
-        public void AcceptSocket()
+        public void ReceiveMsg()
         {
-            //监听的客户端套接字(ClientSocket)
-            ClientSocket = ServerSocket.Accept();
-            richMsg.AppendText("有客户端连接\r\n");
-            while (isListenMsg)
+            string endpoint = ClientSocket.LocalEndPoint.ToString();
+            while (true)
             {
-                byte[] receiveMsg = new byte[1024 * 11024];
-                int resulTLength = ClientSocket.Receive(receiveMsg);
-                string receiveStringMsg = Encoding.UTF8.GetString(receiveMsg, 0, resulTLength);
-                richMsg.AppendText(receiveStringMsg + "\r\n");
+                try
+                {
+                    byte[] bytes = new byte[1024 * 1024];
+                    int resultLength = ClientSocket.Receive(bytes);
+                    string resultString = Encoding.UTF8.GetString(bytes, 0, resultLength);
+
+                    richMsg.AppendText(resultString + "\r\n");
+                }
+                catch (Exception exc)
+                {
+                    //SocketException ex = exc as SocketException;
+                    //if (ex.SocketErrorCode == SocketError.ConnectionAborted)
+                    //{
+                    //    richMsg.AppendText(string.Format("{0}关闭了连接\r\n", endpoint));
+                    //}
+                    //else
+                    //{
+                    //    richMsg.AppendText(string.Format("异常\r\n"));
+                    //}
+                }
             }
         }
 
@@ -53,6 +65,11 @@ namespace ChatDemo
             //客户端向服务端发消息
             byte[] SendMsg = Encoding.UTF8.GetBytes(txtSendMsg.Text);
             ClientSocket.Send(SendMsg);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            ClientSocket.Close();
         }
     }
 }
