@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -65,7 +66,7 @@ namespace ChatDemo
         {
             Socket client = (Socket)objClient;
             richMsg.AppendText(string.Format("{0}有客户端连接\r\n", client.RemoteEndPoint.ToString()));
-            while (true)
+            while (true&& client.Connected)
             {
                 try
                 {
@@ -98,23 +99,52 @@ namespace ChatDemo
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new ChatClient().Show();
-        }
-
-        private void lvClient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void lvClient_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             //获取要发送信息的客户端地址
             currentSelectedIp = e.Item.Text;
         }
 
-        private void lvClient_KeyDown(object sender, KeyEventArgs e)
+        private bool IsMouseDown = false;
+        private Point mouseOffset;
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
+            IsMouseDown = false;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsMouseDown == true)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X, mouseOffset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                IsMouseDown = true;
+            }
+            mouseOffset = new Point(-e.X, -e.Y);
+        }
+
+        private void btnOpenClient_Click(object sender, EventArgs e)
+        {
+            new ChatClient().Show();
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

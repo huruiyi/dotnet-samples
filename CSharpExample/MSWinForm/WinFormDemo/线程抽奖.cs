@@ -15,6 +15,7 @@ namespace WinFormDemo
     {
         public 线程抽奖()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             CreateLabels();
         }
@@ -27,7 +28,8 @@ namespace WinFormDemo
                 {
                     Text = i.ToString(),
                     AutoSize = true,
-                    Location = new Point(50 * i + 50, 50)
+                    Location = new Point(60 * i + 50, 50),
+                    Font = new Font(new FontFamily("微软雅黑"), 12)
                 };
 
                 lbList.Add(label);

@@ -29,7 +29,7 @@ namespace WinFormDemo
             if (isCustomStyle)
             {
                 this.FormBorderStyle = FormBorderStyle.None;
-                this.BackColor = Color.AliceBlue;
+                this.BackColor = Color.Purple;
             }
             this.StartPosition = FormStartPosition.CenterScreen;
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChatDemo.Properties;
+using System;
+using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -20,22 +22,24 @@ namespace ChatDemo
         private void btnopenServices_Click(object sender, EventArgs e)
         {
             ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //ClientSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
             IPAddress ip = IPAddress.Parse(txtIp.Text);
             IPEndPoint ServerPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
             ClientSocket.Connect(ServerPoint);
             richMsg.AppendText("连接服务器成功.\r\n");
-            this.Text = ClientSocket.LocalEndPoint.ToString();
+            this.Text = "客户端" + ClientSocket.LocalEndPoint.ToString();
 
             Thread ReceiveThread = new Thread(ReceiveMsg);
             ReceiveThread.IsBackground = true;
             ReceiveThread.Start();
             btnopenServices.Enabled = false;
+            btnSendMsg.Enabled = true;
         }
 
         public void ReceiveMsg()
         {
             string endpoint = ClientSocket.LocalEndPoint.ToString();
-            while (true)
+            while (true&& ClientSocket.Connected)
             {
                 try
                 {
@@ -69,7 +73,55 @@ namespace ChatDemo
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            btnSendMsg.Enabled = false;
+            btnopenServices.Enabled = true;
             ClientSocket.Close();
+        }
+
+        private void ChatClient_DoubleClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private bool IsMouseDown = false;
+        private Point mouseOffset;
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsMouseDown == true)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X, mouseOffset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            IsMouseDown = false;
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                IsMouseDown = true;
+            }
+            mouseOffset = new Point(-e.X, -e.Y);
+        }
+
+        private void ChatClient_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

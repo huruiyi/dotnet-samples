@@ -33,7 +33,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(162, 346);
+            this.btnStart.Location = new System.Drawing.Point(177, 141);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 3;
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 406);
+            this.ClientSize = new System.Drawing.Size(434, 196);
             this.Controls.Add(this.btnStart);
             this.Name = "线程抽奖";
             this.Text = "线程抽奖";

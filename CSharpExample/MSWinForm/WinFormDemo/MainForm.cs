@@ -54,16 +54,6 @@ namespace WinFormDemo
             new 简单委托().ShowDialog();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            new 无边框移动1().ShowDialog();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            new 无边框移动2().ShowDialog();
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             new 简易资源管理器().ShowDialog();
@@ -171,6 +161,16 @@ namespace WinFormDemo
         private void button24_Click(object sender, EventArgs e)
         {
             new 无边框移动4().ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new 闪屏().ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new 线程抽奖().ShowDialog();
         }
     }
 }
