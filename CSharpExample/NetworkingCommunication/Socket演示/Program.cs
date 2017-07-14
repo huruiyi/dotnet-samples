@@ -158,8 +158,8 @@ namespace Socket演示
 
             try
             {
-                IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
-                ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+                //IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());//已过时
+                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 

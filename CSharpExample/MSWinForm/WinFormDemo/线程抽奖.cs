@@ -70,7 +70,7 @@ namespace WinFormDemo
                             lbList[i].Text = random.Next(1, 10).ToString();
                         }
                         //让线程停顿一下
-                        Thread.Sleep(300);
+                        Thread.Sleep(100);
                     }
                 }).Start();
             }

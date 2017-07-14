@@ -69,7 +69,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "01-截屏";
+            this.button1.Text = "截屏";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -80,7 +80,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "02-调用摄像头";
+            this.button2.Text = "调用摄像头";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -91,7 +91,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(138, 23);
             this.button3.TabIndex = 1;
-            this.button3.Text = "03-委托实例";
+            this.button3.Text = "委托实例";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -102,7 +102,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(138, 23);
             this.button6.TabIndex = 4;
-            this.button6.Text = "06-资源管理器";
+            this.button6.Text = "资源管理器";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -113,7 +113,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(138, 23);
             this.button7.TabIndex = 5;
-            this.button7.Text = "07-保存图片到数据库";
+            this.button7.Text = "保存图片到数据库";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -124,7 +124,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(138, 23);
             this.button8.TabIndex = 6;
-            this.button8.Text = "08-登录窗体";
+            this.button8.Text = "登录窗体";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -135,7 +135,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(138, 23);
             this.button9.TabIndex = 7;
-            this.button9.Text = "09-数据绑定";
+            this.button9.Text = "数据绑定";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -239,7 +239,7 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(138, 23);
             this.button11.TabIndex = 3;
-            this.button11.Text = "11-添加Windows账户";
+            this.button11.Text = "添加Windows账户";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -250,7 +250,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(138, 23);
             this.button12.TabIndex = 9;
-            this.button12.Text = "12-打开我的电脑";
+            this.button12.Text = "打开我的电脑";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
@@ -261,7 +261,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(138, 23);
             this.button13.TabIndex = 3;
-            this.button13.Text = "13-APM实例";
+            this.button13.Text = "APM实例";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -272,7 +272,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(138, 23);
             this.button14.TabIndex = 3;
-            this.button14.Text = "14-Async实例";
+            this.button14.Text = "Async实例";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
@@ -283,7 +283,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(138, 23);
             this.button15.TabIndex = 3;
-            this.button15.Text = "15-Sync实例";
+            this.button15.Text = "Sync实例";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
@@ -294,7 +294,7 @@
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(138, 23);
             this.button16.TabIndex = 3;
-            this.button16.Text = "16-数据同步";
+            this.button16.Text = "数据同步";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -305,7 +305,7 @@
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(138, 23);
             this.button17.TabIndex = 3;
-            this.button17.Text = "17-MessageBox实例";
+            this.button17.Text = "MessageBox实例";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -316,7 +316,7 @@
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(138, 23);
             this.button18.TabIndex = 3;
-            this.button18.Text = "18-简单记事本";
+            this.button18.Text = "简单记事本";
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
@@ -327,7 +327,7 @@
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(138, 23);
             this.button19.TabIndex = 3;
-            this.button19.Text = "19-对称算法加密";
+            this.button19.Text = "对称算法加密";
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
@@ -338,7 +338,7 @@
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(138, 23);
             this.button20.TabIndex = 3;
-            this.button20.Text = "20-非对称算法加密";
+            this.button20.Text = "非对称算法加密";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
@@ -382,7 +382,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(138, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "20-闪屏";
+            this.button4.Text = "闪屏";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -393,7 +393,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 23);
             this.button5.TabIndex = 3;
-            this.button5.Text = "20-闪屏";
+            this.button5.Text = "线程抽奖";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 

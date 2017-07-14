@@ -36,9 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.RichTextBox();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtMsg = new System.Windows.Forms.TextBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.btnStarClient = new System.Windows.Forms.Button();
             this.btnSendShake = new System.Windows.Forms.Button();
@@ -123,32 +120,6 @@
             this.txtLog.TabIndex = 1;
             this.txtLog.Text = "";
             // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(508, 388);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 2;
-            this.btnSend.Text = "发送";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 393);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "消息:";
-            // 
-            // txtMsg
-            // 
-            this.txtMsg.Location = new System.Drawing.Point(53, 390);
-            this.txtMsg.Name = "txtMsg";
-            this.txtMsg.Size = new System.Drawing.Size(420, 21);
-            this.txtMsg.TabIndex = 3;
-            // 
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
@@ -194,11 +165,8 @@
             this.ClientSize = new System.Drawing.Size(613, 478);
             this.Controls.Add(this.btnStarClient);
             this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.txtMsg);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSendFile);
             this.Controls.Add(this.btnSendShake);
-            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.groupBox1);
             this.Name = "ChatMain";
@@ -206,7 +174,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -220,9 +187,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox txtLog;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMsg;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnStarClient;
         private System.Windows.Forms.Button btnSendShake;

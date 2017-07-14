@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace SocketChat
 {
     public partial class ChatMain : Form
     {
-        List<Socket> clientSocketList = new List<Socket>();
+        private List<Socket> clientSocketList = new List<Socket>();
 
         public ChatMain()
         {
@@ -44,7 +40,6 @@ namespace SocketChat
             //线程池开启 监听客户端连接
             ThreadPool.QueueUserWorkItem(new WaitCallback(this.StatAccept), socket);
             this.txtLog.Text += "服务端开始监听客户端连接了....\r\n";
-
         }
 
         public void StatAccept(Object obje)
@@ -57,15 +52,9 @@ namespace SocketChat
 
                 //客户端代理socket对象的队列里面去
                 clientSocketList.Add(proxSocket);
-
+                checkedListBox1.Items.Add(proxSocket.LocalEndPoint.ToString());
                 //拿到客户端的端口和ip
                 this.txtLog.Text += proxSocket.RemoteEndPoint.ToString() + "\r\n";
-
-                //跟客户端进行通信 通过：proxSocket
-
-                //proxSocket.Send()
-
-                //proxSocket.Receive()
 
                 ThreadPool.QueueUserWorkItem(new WaitCallback(this.StartReciveClientData), proxSocket);
             }
@@ -79,7 +68,6 @@ namespace SocketChat
             {
                 while (sokcet.Connected)
                 {
-
                     byte[] buffer = new byte[1024 * 1024 * 1];
                     int realLenth = sokcet.Receive(buffer, 0, buffer.Length, SocketFlags.None);
                     string strResult = Encoding.Default.GetString(buffer, 0, realLenth);
@@ -92,32 +80,7 @@ namespace SocketChat
 
                 //从客户端 代理socketlist 中移除
                 clientSocketList.Remove(sokcet);
-
-            }
-        }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            foreach (var socket in clientSocketList)
-            {
-                //try
-                //{
-                //    string strTxt = this.txtMsg.Text;
-
-                //    byte[] data = Encoding.Default.GetBytes(strTxt);
-
-                //    socket.Send(data, 0, data.Length, SocketFlags.None);
-                //}
-                //catch (Exception ex)
-                //{
-
-                //    socket.Close();
-                //    clientSocketList.Remove(socket);
-                //}
-
-                SocketConnection.SendTxt(socket, this.txtMsg.Text);
-
-
+                checkedListBox1.Items.Remove(sokcet.LocalEndPoint.ToString());
             }
         }
 
@@ -127,10 +90,7 @@ namespace SocketChat
             {
                 ChatClient chatClientFrm = new ChatClient();
                 chatClientFrm.ShowDialog();
-
             }, null);
-
-
         }
 
         /// <summary>
@@ -154,7 +114,7 @@ namespace SocketChat
         private void btnSendFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 foreach (var socket in clientSocketList)
                 {

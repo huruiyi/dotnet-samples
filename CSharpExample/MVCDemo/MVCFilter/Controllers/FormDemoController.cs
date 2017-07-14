@@ -32,7 +32,7 @@ namespace MVCFilter.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public ContentResult User()
+        public new ContentResult User()
         {
             return Content("你是普通用户");
         }

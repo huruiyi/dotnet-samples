@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
-using Size = System.Drawing.Size;
 
 /// <summary>
 ///  注意添加WindowsBase.dll
@@ -54,9 +53,12 @@ namespace WinFormDemo
         private void CameraConn()
         {
             VideoCaptureDevice videoSource = new VideoCaptureDevice(videoDevices[tscbxCameras.SelectedIndex].MonikerString);
-            videoSource.DesiredFrameSize = new Size(600, 640);
-            videoSource.DesiredFrameRate = 1;
 
+            //videoSource.DesiredFrameSize = new Size(600, 640);
+            //videoSource.DesiredFrameRate = 1;
+
+            VideoCapabilities[] capa = videoSource.SnapshotCapabilities;
+            videoSource.VideoResolution = capa[0];
             videoSourcePlayer.VideoSource = videoSource;
             videoSourcePlayer.Start();
         }

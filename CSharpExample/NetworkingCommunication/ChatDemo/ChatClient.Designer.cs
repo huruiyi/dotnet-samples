@@ -41,13 +41,14 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbMin = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
+            this.pbMin = new System.Windows.Forms.PictureBox();
+            this.btnShake = new System.Windows.Forms.Button();
             this.d.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMin)).BeginInit();
             this.SuspendLayout();
             // 
             // btnopenServices
@@ -68,9 +69,9 @@
             this.btnSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnSendMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMsg.ForeColor = System.Drawing.Color.White;
-            this.btnSendMsg.Location = new System.Drawing.Point(417, 316);
+            this.btnSendMsg.Location = new System.Drawing.Point(417, 306);
             this.btnSendMsg.Name = "btnSendMsg";
-            this.btnSendMsg.Size = new System.Drawing.Size(75, 51);
+            this.btnSendMsg.Size = new System.Drawing.Size(72, 32);
             this.btnSendMsg.TabIndex = 15;
             this.btnSendMsg.Text = "发送消息";
             this.btnSendMsg.UseVisualStyleBackColor = false;
@@ -79,10 +80,10 @@
             // txtSendMsg
             // 
             this.txtSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.txtSendMsg.Location = new System.Drawing.Point(15, 318);
+            this.txtSendMsg.Location = new System.Drawing.Point(15, 308);
             this.txtSendMsg.Multiline = true;
             this.txtSendMsg.Name = "txtSendMsg";
-            this.txtSendMsg.Size = new System.Drawing.Size(383, 49);
+            this.txtSendMsg.Size = new System.Drawing.Size(383, 30);
             this.txtSendMsg.TabIndex = 14;
             // 
             // d
@@ -90,7 +91,7 @@
             this.d.Controls.Add(this.richMsg);
             this.d.Location = new System.Drawing.Point(12, 39);
             this.d.Name = "d";
-            this.d.Size = new System.Drawing.Size(483, 273);
+            this.d.Size = new System.Drawing.Size(480, 261);
             this.d.TabIndex = 13;
             this.d.TabStop = false;
             this.d.Text = "消息窗口";
@@ -101,7 +102,7 @@
             this.richMsg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richMsg.Location = new System.Drawing.Point(3, 17);
             this.richMsg.Name = "richMsg";
-            this.richMsg.Size = new System.Drawing.Size(477, 253);
+            this.richMsg.Size = new System.Drawing.Size(474, 241);
             this.richMsg.TabIndex = 4;
             this.richMsg.Text = "";
             // 
@@ -157,6 +158,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.groupBox1.Controls.Add(this.btnShake);
             this.groupBox1.Controls.Add(this.btnSendMsg);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.label1);
@@ -170,7 +172,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(0, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(512, 379);
+            this.groupBox1.Size = new System.Drawing.Size(519, 393);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "客户端";
@@ -183,22 +185,11 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(512, 27);
+            this.panel1.Size = new System.Drawing.Size(519, 27);
             this.panel1.TabIndex = 19;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
-            // 
-            // pbMin
-            // 
-            this.pbMin.Image = ((System.Drawing.Image)(resources.GetObject("pbMin.Image")));
-            this.pbMin.Location = new System.Drawing.Point(453, 0);
-            this.pbMin.Name = "pbMin";
-            this.pbMin.Size = new System.Drawing.Size(27, 27);
-            this.pbMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMin.TabIndex = 0;
-            this.pbMin.TabStop = false;
-            this.pbMin.Click += new System.EventHandler(this.pbMin_Click);
             // 
             // pbClose
             // 
@@ -211,25 +202,48 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
+            // pbMin
+            // 
+            this.pbMin.Image = ((System.Drawing.Image)(resources.GetObject("pbMin.Image")));
+            this.pbMin.Location = new System.Drawing.Point(453, 0);
+            this.pbMin.Name = "pbMin";
+            this.pbMin.Size = new System.Drawing.Size(27, 27);
+            this.pbMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMin.TabIndex = 0;
+            this.pbMin.TabStop = false;
+            this.pbMin.Click += new System.EventHandler(this.pbMin_Click);
+            // 
+            // btnShake
+            // 
+            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnShake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShake.ForeColor = System.Drawing.Color.White;
+            this.btnShake.Location = new System.Drawing.Point(417, 348);
+            this.btnShake.Name = "btnShake";
+            this.btnShake.Size = new System.Drawing.Size(72, 32);
+            this.btnShake.TabIndex = 15;
+            this.btnShake.Text = "发送闪屏";
+            this.btnShake.UseVisualStyleBackColor = false;
+            this.btnShake.Click += new System.EventHandler(this.btnSendMsg_Click);
+            // 
             // ChatClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.ClientSize = new System.Drawing.Size(512, 412);
+            this.ClientSize = new System.Drawing.Size(519, 426);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ChatClient";
             this.Text = "客户端";
-            this.Load += new System.EventHandler(this.ChatClient_Load);
             this.DoubleClick += new System.EventHandler(this.ChatClient_DoubleClick);
             this.d.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -250,6 +264,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.PictureBox pbMin;
+        private System.Windows.Forms.Button btnShake;
     }
 }
 

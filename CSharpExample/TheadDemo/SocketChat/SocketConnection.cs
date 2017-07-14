@@ -7,35 +7,6 @@ namespace SocketChat
 {
     public class SocketConnection
     {
-        #region 连接服务器端
-
-        //可以有重载
-
-        /// <summary>
-        ///  连接服务器端
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="port"></param>
-        /// <returns></returns>
-        public static Socket ConnectServer(string ip, int port)
-        {
-            Socket socket = null;
-
-            try
-            {
-                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-                socket.Connect(ip, port);
-            }
-            catch (System.Exception ex)
-            {
-            }
-
-            return socket;
-        }
-
-        #endregion 连接服务器端
-
         #region 给端 发送消息的一个封装
 
         /// <summary>
@@ -46,7 +17,7 @@ namespace SocketChat
         /// <returns></returns>
         public static bool SendData(Socket socket, byte[] data)
         {
-            socket.Send(data, 0, data.Length, 0);
+            int sendLength = socket.Send(data, 0, data.Length, 0);
             return true;
         }
 

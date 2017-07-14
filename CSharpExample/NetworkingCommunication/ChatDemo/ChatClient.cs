@@ -1,5 +1,4 @@
-﻿using ChatDemo.Properties;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
@@ -26,20 +25,37 @@ namespace ChatDemo
             IPAddress ip = IPAddress.Parse(txtIp.Text);
             IPEndPoint ServerPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
             ClientSocket.Connect(ServerPoint);
+
+            //ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //ClientSocket.Connect(this.txtIP.Text, int.Parse(this.txtPort.Text));
+
             richMsg.AppendText("连接服务器成功.\r\n");
             this.Text = "客户端" + ClientSocket.LocalEndPoint.ToString();
 
-            Thread ReceiveThread = new Thread(ReceiveMsg);
-            ReceiveThread.IsBackground = true;
-            ReceiveThread.Start();
+            #region ThreadReceiveMsg
+
+            //Thread ReceiveThread = new Thread(ThreadReceiveMsg)
+            //{
+            //    IsBackground = true
+            //};
+            //ReceiveThread.Start();
+
+            #endregion ThreadReceiveMsg
+
+            #region ThreadPoolReceiveMsg
+
+            ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadPoolReceiveMsg), ClientSocket);
+
+            #endregion ThreadPoolReceiveMsg
+
             btnopenServices.Enabled = false;
             btnSendMsg.Enabled = true;
         }
 
-        public void ReceiveMsg()
+        public void ThreadReceiveMsg()
         {
             string endpoint = ClientSocket.LocalEndPoint.ToString();
-            while (true&& ClientSocket.Connected)
+            while (true && ClientSocket.Connected)
             {
                 try
                 {
@@ -64,11 +80,42 @@ namespace ChatDemo
             }
         }
 
+        public void ThreadPoolReceiveMsg(Object obj)
+        {
+            Socket socket = (Socket)obj;
+            while (true && socket.Connected)
+            {
+                try
+                {
+                    byte[] bytes = new byte[1024 * 1024];
+                    int resultLength = socket.Receive(bytes);
+                    string resultString = Encoding.UTF8.GetString(bytes, 0, resultLength);
+
+                    richMsg.AppendText(resultString + "\r\n");
+                }
+                catch (Exception exc)
+                {
+                    //SocketException ex = exc as SocketException;
+                    //if (ex.SocketErrorCode == SocketError.ConnectionAborted)
+                    //{
+                    //    richMsg.AppendText(string.Format("{0}关闭了连接\r\n", endpoint));
+                    //}
+                    //else
+                    //{
+                    //    richMsg.AppendText(string.Format("异常\r\n"));
+                    //}
+                }
+            }
+        }
+
         private void btnSendMsg_Click(object sender, EventArgs e)
         {
-            //客户端向服务端发消息
-            byte[] SendMsg = Encoding.UTF8.GetBytes(txtSendMsg.Text);
-            ClientSocket.Send(SendMsg);
+            if (ClientSocket.Connected)
+            {
+                //客户端向服务端发消息
+                byte[] SendMsg = Encoding.UTF8.GetBytes(txtSendMsg.Text);
+                ClientSocket.Send(SendMsg);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -108,10 +155,6 @@ namespace ChatDemo
                 IsMouseDown = true;
             }
             mouseOffset = new Point(-e.X, -e.Y);
-        }
-
-        private void ChatClient_Load(object sender, EventArgs e)
-        {
         }
 
         private void pbClose_Click(object sender, EventArgs e)

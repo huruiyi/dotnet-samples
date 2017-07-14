@@ -45,6 +45,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.pbMin = new System.Windows.Forms.PictureBox();
+            this.btnShake = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gboxClient.SuspendLayout();
             this.rbMessage.SuspendLayout();
@@ -58,6 +59,7 @@
             this.groupBox1.Controls.Add(this.gboxClient);
             this.groupBox1.Controls.Add(this.btnOpenClient);
             this.groupBox1.Controls.Add(this.btnConServices);
+            this.groupBox1.Controls.Add(this.btnShake);
             this.groupBox1.Controls.Add(this.btnSendMsg);
             this.groupBox1.Controls.Add(this.txtSendMsg);
             this.groupBox1.Controls.Add(this.rbMessage);
@@ -68,7 +70,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(677, 379);
+            this.groupBox1.Size = new System.Drawing.Size(677, 393);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "服务端";
@@ -76,9 +78,9 @@
             // gboxClient
             // 
             this.gboxClient.Controls.Add(this.lvClient);
-            this.gboxClient.Location = new System.Drawing.Point(505, 18);
+            this.gboxClient.Location = new System.Drawing.Point(505, 14);
             this.gboxClient.Name = "gboxClient";
-            this.gboxClient.Size = new System.Drawing.Size(163, 351);
+            this.gboxClient.Size = new System.Drawing.Size(163, 363);
             this.gboxClient.TabIndex = 36;
             this.gboxClient.TabStop = false;
             this.gboxClient.Text = "客户端地址";
@@ -89,7 +91,7 @@
             this.lvClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvClient.Location = new System.Drawing.Point(3, 17);
             this.lvClient.Name = "lvClient";
-            this.lvClient.Size = new System.Drawing.Size(157, 331);
+            this.lvClient.Size = new System.Drawing.Size(157, 343);
             this.lvClient.TabIndex = 25;
             this.lvClient.UseCompatibleStateImageBehavior = false;
             this.lvClient.View = System.Windows.Forms.View.List;
@@ -100,7 +102,7 @@
             this.btnOpenClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnOpenClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenClient.ForeColor = System.Drawing.Color.White;
-            this.btnOpenClient.Location = new System.Drawing.Point(404, 21);
+            this.btnOpenClient.Location = new System.Drawing.Point(404, 17);
             this.btnOpenClient.Name = "btnOpenClient";
             this.btnOpenClient.Size = new System.Drawing.Size(75, 23);
             this.btnOpenClient.TabIndex = 34;
@@ -113,7 +115,7 @@
             this.btnConServices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnConServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConServices.ForeColor = System.Drawing.Color.White;
-            this.btnConServices.Location = new System.Drawing.Point(328, 21);
+            this.btnConServices.Location = new System.Drawing.Point(328, 17);
             this.btnConServices.Name = "btnConServices";
             this.btnConServices.Size = new System.Drawing.Size(75, 23);
             this.btnConServices.TabIndex = 35;
@@ -126,9 +128,9 @@
             this.btnSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnSendMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMsg.ForeColor = System.Drawing.Color.White;
-            this.btnSendMsg.Location = new System.Drawing.Point(416, 318);
+            this.btnSendMsg.Location = new System.Drawing.Point(419, 304);
             this.btnSendMsg.Name = "btnSendMsg";
-            this.btnSendMsg.Size = new System.Drawing.Size(75, 51);
+            this.btnSendMsg.Size = new System.Drawing.Size(75, 32);
             this.btnSendMsg.TabIndex = 33;
             this.btnSendMsg.Text = "发送消息";
             this.btnSendMsg.UseVisualStyleBackColor = false;
@@ -137,16 +139,16 @@
             // txtSendMsg
             // 
             this.txtSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.txtSendMsg.Location = new System.Drawing.Point(20, 320);
+            this.txtSendMsg.Location = new System.Drawing.Point(20, 306);
             this.txtSendMsg.Multiline = true;
             this.txtSendMsg.Name = "txtSendMsg";
-            this.txtSendMsg.Size = new System.Drawing.Size(383, 49);
+            this.txtSendMsg.Size = new System.Drawing.Size(383, 30);
             this.txtSendMsg.TabIndex = 32;
             // 
             // rbMessage
             // 
             this.rbMessage.Controls.Add(this.richMsg);
-            this.rbMessage.Location = new System.Drawing.Point(17, 50);
+            this.rbMessage.Location = new System.Drawing.Point(17, 46);
             this.rbMessage.Name = "rbMessage";
             this.rbMessage.Size = new System.Drawing.Size(477, 253);
             this.rbMessage.TabIndex = 31;
@@ -166,7 +168,7 @@
             // txtPort
             // 
             this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.txtPort.Location = new System.Drawing.Point(222, 23);
+            this.txtPort.Location = new System.Drawing.Point(222, 19);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(83, 21);
             this.txtPort.TabIndex = 30;
@@ -175,7 +177,7 @@
             // txtIp
             // 
             this.txtIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.txtIp.Location = new System.Drawing.Point(82, 23);
+            this.txtIp.Location = new System.Drawing.Point(82, 19);
             this.txtIp.Name = "txtIp";
             this.txtIp.Size = new System.Drawing.Size(80, 21);
             this.txtIp.TabIndex = 29;
@@ -184,7 +186,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 26);
+            this.label2.Location = new System.Drawing.Point(181, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 28;
@@ -193,7 +195,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 29);
+            this.label1.Location = new System.Drawing.Point(29, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 27;
@@ -235,11 +237,24 @@
             this.pbMin.TabStop = false;
             this.pbMin.Click += new System.EventHandler(this.pbMin_Click);
             // 
+            // btnShake
+            // 
+            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnShake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShake.ForeColor = System.Drawing.Color.White;
+            this.btnShake.Location = new System.Drawing.Point(419, 345);
+            this.btnShake.Name = "btnShake";
+            this.btnShake.Size = new System.Drawing.Size(75, 32);
+            this.btnShake.TabIndex = 33;
+            this.btnShake.Text = "发送闪屏";
+            this.btnShake.UseVisualStyleBackColor = false;
+            this.btnShake.Click += new System.EventHandler(this.btnShake_Click);
+            // 
             // ChatServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 412);
+            this.ClientSize = new System.Drawing.Size(677, 426);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -274,6 +289,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.PictureBox pbMin;
+        private System.Windows.Forms.Button btnShake;
     }
 }
 

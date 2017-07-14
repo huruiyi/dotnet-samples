@@ -32,11 +32,8 @@
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
-            this.lbMsg = new System.Windows.Forms.Label();
-            this.txtMsg = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.RichTextBox();
-            this.btnSend = new System.Windows.Forms.Button();
             this.lbStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -74,22 +71,6 @@
             this.txtPort.TabIndex = 1;
             this.txtPort.Text = "8888";
             // 
-            // lbMsg
-            // 
-            this.lbMsg.AutoSize = true;
-            this.lbMsg.Location = new System.Drawing.Point(13, 383);
-            this.lbMsg.Name = "lbMsg";
-            this.lbMsg.Size = new System.Drawing.Size(41, 12);
-            this.lbMsg.TabIndex = 0;
-            this.lbMsg.Text = "消息：";
-            // 
-            // txtMsg
-            // 
-            this.txtMsg.Location = new System.Drawing.Point(60, 380);
-            this.txtMsg.Name = "txtMsg";
-            this.txtMsg.Size = new System.Drawing.Size(324, 21);
-            this.txtMsg.TabIndex = 1;
-            // 
             // btnConnect
             // 
             this.btnConnect.Location = new System.Drawing.Point(390, 24);
@@ -108,16 +89,6 @@
             this.txtLog.TabIndex = 3;
             this.txtLog.Text = "";
             // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(390, 378);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 2;
-            this.btnSend.Text = "发送";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
@@ -131,13 +102,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 434);
+            this.ClientSize = new System.Drawing.Size(487, 366);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.txtLog);
-            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.txtMsg);
-            this.Controls.Add(this.lbMsg);
             this.Controls.Add(this.txtPort);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtIP);
@@ -155,11 +123,8 @@
         private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPort;
-        private System.Windows.Forms.Label lbMsg;
-        private System.Windows.Forms.TextBox txtMsg;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.RichTextBox txtLog;
-        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Label lbStatus;
     }
 }
