@@ -130,10 +130,7 @@ namespace UdpDemo
 
                 // Uses the IPEndPoint object to determine which of these two hosts responded.
                 Console.WriteLine("This is the message you received " + returnData.ToString());
-                Console.WriteLine("This message was sent from " +
-                                            RemoteIpEndPoint.Address.ToString() +
-                                            " on their port number " +
-                                            RemoteIpEndPoint.Port.ToString());
+                Console.WriteLine("This message was sent from " + RemoteIpEndPoint.Address.ToString() + " on their port number " + RemoteIpEndPoint.Port.ToString());
 
                 udpClient.Close();
                 udpClientB.Close();
@@ -202,8 +199,8 @@ namespace UdpDemo
 
         public static void ReceiveCallback(IAsyncResult ar)
         {
-            UdpClient u = (UdpClient)((UdpState)(ar.AsyncState)).u;
-            IPEndPoint e = (IPEndPoint)((UdpState)(ar.AsyncState)).e;
+            UdpClient u = ((UdpState)(ar.AsyncState)).Client;
+            IPEndPoint e = ((UdpState)(ar.AsyncState)).EndPonint;
 
             Byte[] receiveBytes = u.EndReceive(ar, ref e);
             string receiveString = Encoding.ASCII.GetString(receiveBytes);
@@ -215,12 +212,12 @@ namespace UdpDemo
         public static void ReceiveMessages()
         {
             // Receive a message and write it to the console.
-            IPEndPoint e = new IPEndPoint(IPAddress.Any, 8080);
-            UdpClient u = new UdpClient(e);
+            IPEndPoint endponit = new IPEndPoint(IPAddress.Any, 8080);
+            UdpClient client = new UdpClient(endponit);
 
             UdpState s = new UdpState();
-            s.e = e;
-            s.u = u;
+            s.EndPonint = endponit;
+            s.Client = client;
 
             Console.WriteLine("listening for messages");
             u.BeginReceive(new AsyncCallback(ReceiveCallback), s);

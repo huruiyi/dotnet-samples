@@ -5,7 +5,7 @@ namespace UdpDemo
 {
     internal class UdpState
     {
-        internal IPEndPoint e;
-        internal UdpClient u;
+        internal IPEndPoint EndPonint;
+        internal UdpClient Client;
     }
 }

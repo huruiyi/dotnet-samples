@@ -46,13 +46,24 @@ namespace TCP演示
                 string responseHeader = string.Format("Content-Type: text/html;charset=utf-8\r\nContent-Length:{0}\r\n", repsonseBytes.Length);
                 byte[] responseHeaderBytes = Encoding.UTF8.GetBytes(responseHeader);
 
-                stream.Write(statusLineBytes, 0, statusLineBytes.Length);
-                stream.Write(responseHeaderBytes, 0, responseHeaderBytes.Length);
-                stream.Write(responseSpaceBytes, 0, responseSpaceBytes.Length);
-                stream.Write(repsonseBytes, 0, repsonseBytes.Length);
-                stream.Close();
+                try
+                {
+                    stream.Write(statusLineBytes, 0, statusLineBytes.Length);
+                    stream.Write(responseHeaderBytes, 0, responseHeaderBytes.Length);
+                    stream.Write(responseSpaceBytes, 0, responseSpaceBytes.Length);
+                    stream.Write(repsonseBytes, 0, repsonseBytes.Length);
+                }
 
-                client.Close();
+                catch (Exception exc)
+                {
+
+                }
+                finally
+                {
+                    stream.Close();
+                    client.Close();
+                    client.Dispose();
+                }
 
                 if (Console.KeyAvailable)
                 {

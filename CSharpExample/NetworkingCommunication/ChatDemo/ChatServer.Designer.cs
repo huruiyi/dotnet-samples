@@ -34,6 +34,7 @@
             this.lvClient = new System.Windows.Forms.ListView();
             this.btnOpenClient = new System.Windows.Forms.Button();
             this.btnConServices = new System.Windows.Forms.Button();
+            this.btnShake = new System.Windows.Forms.Button();
             this.btnSendMsg = new System.Windows.Forms.Button();
             this.txtSendMsg = new System.Windows.Forms.TextBox();
             this.rbMessage = new System.Windows.Forms.GroupBox();
@@ -45,7 +46,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.pbMin = new System.Windows.Forms.PictureBox();
-            this.btnShake = new System.Windows.Forms.Button();
+            this.btnSendFile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gboxClient.SuspendLayout();
             this.rbMessage.SuspendLayout();
@@ -59,6 +60,7 @@
             this.groupBox1.Controls.Add(this.gboxClient);
             this.groupBox1.Controls.Add(this.btnOpenClient);
             this.groupBox1.Controls.Add(this.btnConServices);
+            this.groupBox1.Controls.Add(this.btnSendFile);
             this.groupBox1.Controls.Add(this.btnShake);
             this.groupBox1.Controls.Add(this.btnSendMsg);
             this.groupBox1.Controls.Add(this.txtSendMsg);
@@ -122,6 +124,19 @@
             this.btnConServices.Text = "启动服务器";
             this.btnConServices.UseVisualStyleBackColor = false;
             this.btnConServices.Click += new System.EventHandler(this.btnConServices_Click);
+            // 
+            // btnShake
+            // 
+            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnShake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShake.ForeColor = System.Drawing.Color.White;
+            this.btnShake.Location = new System.Drawing.Point(419, 345);
+            this.btnShake.Name = "btnShake";
+            this.btnShake.Size = new System.Drawing.Size(75, 32);
+            this.btnShake.TabIndex = 33;
+            this.btnShake.Text = "发送闪屏";
+            this.btnShake.UseVisualStyleBackColor = false;
+            this.btnShake.Click += new System.EventHandler(this.btnShake_Click);
             // 
             // btnSendMsg
             // 
@@ -237,18 +252,18 @@
             this.pbMin.TabStop = false;
             this.pbMin.Click += new System.EventHandler(this.pbMin_Click);
             // 
-            // btnShake
+            // btnSendFile
             // 
-            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnShake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShake.ForeColor = System.Drawing.Color.White;
-            this.btnShake.Location = new System.Drawing.Point(419, 345);
-            this.btnShake.Name = "btnShake";
-            this.btnShake.Size = new System.Drawing.Size(75, 32);
-            this.btnShake.TabIndex = 33;
-            this.btnShake.Text = "发送闪屏";
-            this.btnShake.UseVisualStyleBackColor = false;
-            this.btnShake.Click += new System.EventHandler(this.btnShake_Click);
+            this.btnSendFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSendFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendFile.ForeColor = System.Drawing.Color.White;
+            this.btnSendFile.Location = new System.Drawing.Point(328, 345);
+            this.btnSendFile.Name = "btnSendFile";
+            this.btnSendFile.Size = new System.Drawing.Size(75, 32);
+            this.btnSendFile.TabIndex = 33;
+            this.btnSendFile.Text = "发送文件";
+            this.btnSendFile.UseVisualStyleBackColor = false;
+            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
             // 
             // ChatServer
             // 
@@ -290,6 +305,7 @@
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.PictureBox pbMin;
         private System.Windows.Forms.Button btnShake;
+        private System.Windows.Forms.Button btnSendFile;
     }
 }
 

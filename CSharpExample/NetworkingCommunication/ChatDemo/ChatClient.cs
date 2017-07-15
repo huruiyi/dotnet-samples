@@ -26,6 +26,28 @@ namespace ChatDemo
             IPEndPoint ServerPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
             ClientSocket.Connect(ServerPoint);
 
+            #region Poll
+
+            if (!ClientSocket.Connected)
+            {
+                Console.WriteLine("Unable to connect to host");
+            }
+            // Use the SelectWrite enumeration to obtain Socket status.
+            if (ClientSocket.Poll(-1, SelectMode.SelectWrite))
+            {
+                Console.WriteLine("This Socket is writable.");
+            }
+            else if (ClientSocket.Poll(-1, SelectMode.SelectRead))
+            {
+                Console.WriteLine("This Socket is readable.");
+            }
+            else if (ClientSocket.Poll(-1, SelectMode.SelectError))
+            {
+                Console.WriteLine("This Socket has an error.");
+            }
+
+            #endregion Poll
+
             //ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             //ClientSocket.Connect(this.txtIP.Text, int.Parse(this.txtPort.Text));
 
@@ -83,6 +105,7 @@ namespace ChatDemo
         public void ThreadPoolReceiveMsg(Object obj)
         {
             Socket socket = (Socket)obj;
+
             while (true && socket.Connected)
             {
                 try
@@ -95,6 +118,7 @@ namespace ChatDemo
                 }
                 catch (Exception exc)
                 {
+                    socket.Dispose();
                     //SocketException ex = exc as SocketException;
                     //if (ex.SocketErrorCode == SocketError.ConnectionAborted)
                     //{
