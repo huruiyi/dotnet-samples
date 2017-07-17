@@ -7,8 +7,8 @@
     <ProjectGuid>{163C0737-580B-4E44-BAC9-F4798648667C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UDPTest</RootNamespace>
-    <AssemblyName>UDPTest</AssemblyName>
+    <RootNamespace>UDPChat</RootNamespace>
+    <AssemblyName>UDPChat</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

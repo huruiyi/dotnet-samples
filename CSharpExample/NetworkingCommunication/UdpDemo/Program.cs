@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 
 //https://msdn.microsoft.com/zh-cn/library/system.net.sockets.udpclient(v=vs.110).aspx
+
 namespace UdpDemo
 {
     internal class Program
@@ -220,7 +221,7 @@ namespace UdpDemo
             s.Client = client;
 
             Console.WriteLine("listening for messages");
-            u.BeginReceive(new AsyncCallback(ReceiveCallback), s);
+            client.BeginReceive(new AsyncCallback(ReceiveCallback), s);
 
             // Do some work while we wait for a message. For this example,
             // we'll just sleep
@@ -250,8 +251,7 @@ namespace UdpDemo
 
             // send the message
             // the destination is defined by the call to .Connect()
-            u.BeginSend(sendBytes, sendBytes.Length,
-                        new AsyncCallback(SendCallback), u);
+            u.BeginSend(sendBytes, sendBytes.Length, new AsyncCallback(SendCallback), u);
 
             // Do some work while we wait for the send to complete. For
             // this example, we'll just sleep

@@ -34,6 +34,7 @@
             this.lvClient = new System.Windows.Forms.ListView();
             this.btnOpenClient = new System.Windows.Forms.Button();
             this.btnConServices = new System.Windows.Forms.Button();
+            this.btnSendFile = new System.Windows.Forms.Button();
             this.btnShake = new System.Windows.Forms.Button();
             this.btnSendMsg = new System.Windows.Forms.Button();
             this.txtSendMsg = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.pbMin = new System.Windows.Forms.PictureBox();
-            this.btnSendFile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gboxClient.SuspendLayout();
             this.rbMessage.SuspendLayout();
@@ -125,6 +125,19 @@
             this.btnConServices.UseVisualStyleBackColor = false;
             this.btnConServices.Click += new System.EventHandler(this.btnConServices_Click);
             // 
+            // btnSendFile
+            // 
+            this.btnSendFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSendFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendFile.ForeColor = System.Drawing.Color.White;
+            this.btnSendFile.Location = new System.Drawing.Point(328, 345);
+            this.btnSendFile.Name = "btnSendFile";
+            this.btnSendFile.Size = new System.Drawing.Size(75, 32);
+            this.btnSendFile.TabIndex = 33;
+            this.btnSendFile.Text = "发送文件";
+            this.btnSendFile.UseVisualStyleBackColor = false;
+            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
+            // 
             // btnShake
             // 
             this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -168,7 +181,6 @@
             this.rbMessage.Size = new System.Drawing.Size(477, 253);
             this.rbMessage.TabIndex = 31;
             this.rbMessage.TabStop = false;
-            this.rbMessage.Text = "消息窗口";
             // 
             // richMsg
             // 
@@ -183,7 +195,7 @@
             // txtPort
             // 
             this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.txtPort.Location = new System.Drawing.Point(222, 19);
+            this.txtPort.Location = new System.Drawing.Point(222, 21);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(83, 21);
             this.txtPort.TabIndex = 30;
@@ -192,7 +204,7 @@
             // txtIp
             // 
             this.txtIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.txtIp.Location = new System.Drawing.Point(82, 19);
+            this.txtIp.Location = new System.Drawing.Point(82, 21);
             this.txtIp.Name = "txtIp";
             this.txtIp.Size = new System.Drawing.Size(80, 21);
             this.txtIp.TabIndex = 29;
@@ -201,7 +213,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 22);
+            this.label2.Location = new System.Drawing.Point(181, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 28;
@@ -251,19 +263,6 @@
             this.pbMin.TabIndex = 2;
             this.pbMin.TabStop = false;
             this.pbMin.Click += new System.EventHandler(this.pbMin_Click);
-            // 
-            // btnSendFile
-            // 
-            this.btnSendFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSendFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendFile.ForeColor = System.Drawing.Color.White;
-            this.btnSendFile.Location = new System.Drawing.Point(328, 345);
-            this.btnSendFile.Name = "btnSendFile";
-            this.btnSendFile.Size = new System.Drawing.Size(75, 32);
-            this.btnSendFile.TabIndex = 33;
-            this.btnSendFile.Text = "发送文件";
-            this.btnSendFile.UseVisualStyleBackColor = false;
-            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
             // 
             // ChatServer
             // 

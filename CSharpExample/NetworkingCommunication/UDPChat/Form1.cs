@@ -1,14 +1,56 @@
 ﻿using System;
+using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace UDPTest
+namespace UDPChat
 {
     public partial class Form1 : Form
     {
+        #region 状态控制
+
+        private bool IsMouseDown = false;
+        private Point mouseOffset;
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            IsMouseDown = false;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsMouseDown == true)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X, mouseOffset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                IsMouseDown = true;
+            }
+            mouseOffset = new Point(-e.X, -e.Y);
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion 状态控制
+
         public Form1()
         {
             InitializeComponent();
@@ -40,12 +82,21 @@ namespace UDPTest
             // 匿名发送
             //udpcSend = new UdpClient(0);             // 自动分配本地IPv4地址
 
-            // 实名发送
-            IPEndPoint localIpep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 12345); // 本机IP，指定的端口号
+            IPEndPoint localIpep = new IPEndPoint(IPAddress.Parse(txtIp.Text), Convert.ToInt32(txtPort.Text)); // 本机IP，指定的端口号
             udpcSend = new UdpClient(localIpep);
 
             Thread thrSend = new Thread(SendMessage);
             thrSend.Start(txtSendMssg.Text);
+
+            Thread thrReceive = new Thread(ReveiveMessage);
+            thrReceive.Start();
+        }
+
+        private void ReveiveMessage(object obj)
+        {
+            //IPEndPoint remoteIpep = new IPEndPoint(IPAddress.Parse(txtClentIp.Text), Convert.ToInt32(txtClientPort.Text));
+            //byte[] receiveByte = udpcSend.Receive(ref remoteIpep);
+            //string reeiveMsg = Encoding.Unicode.GetString(receiveByte);
         }
 
         /// <summary>
@@ -57,7 +108,7 @@ namespace UDPTest
             string message = (string)obj;
             byte[] sendbytes = Encoding.Unicode.GetBytes(message);
 
-            IPEndPoint remoteIpep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8848); // 发送到的IP地址和端口号
+            IPEndPoint remoteIpep = new IPEndPoint(IPAddress.Parse(txtClentIp.Text), Convert.ToInt32(txtClientPort.Text));
 
             udpcSend.Send(sendbytes, sendbytes.Length, remoteIpep);
             udpcSend.Close();
@@ -84,7 +135,7 @@ namespace UDPTest
         {
             if (!IsUdpcRecvStart) // 未监听的情况，开始监听
             {
-                IPEndPoint localIpep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8848); // 本机IP和监听端口号
+                IPEndPoint localIpep = new IPEndPoint(IPAddress.Parse(txtClentIp.Text), Convert.ToInt32(txtClientPort.Text)); // 本机IP和监听端口号
 
                 udpcRecv = new UdpClient(localIpep);
 
@@ -94,9 +145,9 @@ namespace UDPTest
                 IsUdpcRecvStart = true;
                 ShowMessage(txtRecvMssg, "UDP监听器已成功启动");
             }
-            else                  // 正在监听的情况，终止监听
+            else
             {
-                thrRecv.Abort(); // 必须先关闭这个线程，否则会异常
+                thrRecv.Abort();
                 udpcRecv.Close();
 
                 IsUdpcRecvStart = false;

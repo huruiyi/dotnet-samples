@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -13,6 +12,9 @@ namespace ChatDemo
     public partial class ChatServer : Form
     {
         #region 窗体状态控制
+
+        private bool IsMouseDown = false;
+        private Point mouseOffset;
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -165,9 +167,6 @@ namespace ChatDemo
             currentSelectedIp = e.Item.Text;
         }
 
-        private bool IsMouseDown = false;
-        private Point mouseOffset;
-
         private void btnOpenClient_Click(object sender, EventArgs e)
         {
             //new ChatClient().Show();
@@ -198,6 +197,7 @@ namespace ChatDemo
         }
 
         #region 震动，文件保存
+
         public void Shanke()
         {
             Random random = new Random();
@@ -211,21 +211,20 @@ namespace ChatDemo
             }
         }
 
-
         public void SaveFile()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                byte[] buffer = new byte[1024 * 1024];
-                int realLength = socket.Receive(buffer, 0, buffer.Length, 0);
+                //byte[] buffer = new byte[1024 * 1024];
+                //int realLength = ClientSocket.Receive(buffer, 0, buffer.Length, 0);
 
-                byte[] fileData = new byte[realLength - 1];
-                Buffer.BlockCopy(buffer, 1, fileData, 0, realLength - 1);
-                File.WriteAllBytes(saveFileDialog.FileName, fileData);
-
+                //byte[] fileData = new byte[realLength - 1];
+                //Buffer.BlockCopy(buffer, 1, fileData, 0, realLength - 1);
+                //File.WriteAllBytes(saveFileDialog.FileName, fileData);
             }
         }
-        #endregion
+
+        #endregion 震动，文件保存
     }
 }

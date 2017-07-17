@@ -89,7 +89,7 @@ namespace ChatDemo
                 }
                 catch (Exception exc)
                 {
-                    //SocketException ex = exc as SocketException;
+                    SocketException ex = exc as SocketException;
                     //if (ex.SocketErrorCode == SocketError.ConnectionAborted)
                     //{
                     //    richMsg.AppendText(string.Format("{0}关闭了连接\r\n", endpoint));
