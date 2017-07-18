@@ -19,12 +19,12 @@ public class StateObject
     public StringBuilder sb = new StringBuilder();
 }
 
-public class AsynchronousSocketListener
+public class AsynchronousServer
 {
     // Thread signal.
     public static ManualResetEvent allDone = new ManualResetEvent(false);
 
-    public AsynchronousSocketListener()
+    public AsynchronousServer()
     {
     }
 
