@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.DirectoryServices;
 
 namespace Net.Tools.Web
@@ -20,8 +21,9 @@ namespace Net.Tools.Web
                 string version = entry.Properties["MajorIISVersionNumber"].Value.ToString();
                 return version;
             }
-            catch (Exception se)
+            catch (Exception ex)
             {
+                Debug.Write(ex.Message);
                 //说明一点:IIS5.0中没有(int)entry.Properties["MajorIISVersionNumber"].Value;属性，将抛出异常 证明版本为 5.0
                 return string.Empty;
             }

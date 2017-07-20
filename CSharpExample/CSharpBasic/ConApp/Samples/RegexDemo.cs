@@ -12,7 +12,7 @@ namespace ConApp
     {
         public static void Demo0()
         {
-            ConfigurationValidatorBase valBase;
+            //ConfigurationValidatorBase valBase;
 
             RegexStringValidatorAttribute rstrValAttr = new RegexStringValidatorAttribute(@"\w+\S*");
 
