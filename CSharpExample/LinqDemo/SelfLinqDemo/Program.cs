@@ -381,6 +381,11 @@ namespace SelfLinqDemo
             table.Rows.Add(new object[] { 008, "f18", "f28" });
             table.Rows.Add(new object[] { 009, "f19", "f29" });
 
+            EnumerableRowCollection<DataRow> rows = table.AsEnumerable().Where(a => a.Field<string>("Field1").ToString()== "f11");
+            foreach (DataRow item in rows)
+            {
+                Console.WriteLine(item["Field0"]+"  "+item["Field1"]+"  "+ item["Field2"]);
+            }
             IEnumerable<string> dtEnum = from e in table.AsEnumerable()
                                          select e.Field<string>("Field1");
 

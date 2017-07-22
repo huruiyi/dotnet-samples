@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,22 +67,22 @@
 
     function isFocus(e){
         alert(UE.getEditor('editor').isFocus());
-        UE.dom.domUtils.preventDefault(e);
+        UE.dom.domUtils.preventDefault(e)
     }
     function setblur(e){
         UE.getEditor('editor').blur();
-        UE.dom.domUtils.preventDefault(e);
+        UE.dom.domUtils.preventDefault(e)
     }
     function insertHtml() {
         var value = prompt('插入html代码', '');
-        UE.getEditor('editor').execCommand('insertHtml', value);
+        UE.getEditor('editor').execCommand('insertHtml', value)
     }
     function createEditor() {
         enableBtn();
         UE.getEditor('editor');
     }
     function getAllHtml() {
-        alert(UE.getEditor('editor').getAllHtml());
+        alert(UE.getEditor('editor').getAllHtml())
     }
     function getContent() {
         var arr = [];
@@ -96,7 +96,7 @@
         arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
         arr.push("内容为：");
         arr.push(UE.getEditor('editor').getPlainTxt());
-        alert(arr.join('\n'));
+        alert(arr.join('\n'))
     }
     function setContent(isAppendTo) {
         var arr = [];
@@ -119,7 +119,7 @@
         var range = UE.getEditor('editor').selection.getRange();
         range.select();
         var txt = UE.getEditor('editor').selection.getText();
-        alert(txt);
+        alert(txt)
     }
 
     function getContentTxt() {
@@ -168,7 +168,7 @@
 
     function clearLocalData () {
         UE.getEditor('editor').execCommand( "clearlocaldata" );
-        alert("已清空草稿箱");
+        alert("已清空草稿箱")
     }
 </script>
 </body>
