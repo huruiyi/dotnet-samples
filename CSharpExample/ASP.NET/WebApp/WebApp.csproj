@@ -66,6 +66,7 @@
     <Content Include="Handler\HttpWebRequestImage.ashx" />
     <Content Include="Handler\HttpRequestDemo.ashx" />
     <Content Include="Handler\进制间转换.ashx" />
+    <Content Include="Handler\Graphics4.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -117,6 +118,9 @@
     </Compile>
     <Compile Include="Handler\Graphics3.ashx.cs">
       <DependentUpon>Graphics3.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Graphics4.ashx.cs">
+      <DependentUpon>Graphics4.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\HttpRequestDemo.ashx.cs">
       <DependentUpon>HttpRequestDemo.ashx</DependentUpon>

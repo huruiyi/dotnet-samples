@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Net.Tools
 {
-    internal class Program
+    public  class Program
     {
         public static SecureString ReadString()
         {
@@ -243,6 +244,8 @@ namespace Net.Tools
             Console.WriteLine("\n\nMain method complete. Press Enter.");
             Console.ReadLine();
         }
+
+     
     }
 
     public class EncryptionDecryption

@@ -224,11 +224,6 @@ namespace MVC.Sample.Controllers
             return View(model);
         }
 
-        public ActionResult Ueditor()
-        {
-            return View();
-        }
-
         public ActionResult Modal()
         {
             return View();

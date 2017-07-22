@@ -122,6 +122,7 @@
     <Compile Include="MSBuild\MockEngine.cs" />
     <Compile Include="MSBuild\MockLogger.cs" />
     <Compile Include="Net\IISMangerment.cs" />
+    <Compile Include="ObjectHelper.cs" />
     <Compile Include="PrimeHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
