@@ -6,16 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web.Security;
 using System.Windows.Forms;
 
 namespace Net.Tools
 {
-    public  class Program
+    public class Program
     {
         public static SecureString ReadString()
         {
@@ -56,23 +54,10 @@ namespace Net.Tools
         [STAThread]
         private static void Main(string[] args)
         {
-            Personb a = new Personb("小王", 20, '男', 12345);
-            string appSecret = "123456";
-            string requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(a);
-
-            string token = new MD5Helper().GetToken(appSecret, requestJson);
-
-            //ShortcutHelper.CreateShortcut(Environment.SpecialFolder.Desktop.ToString());
-            //ShortcutHelper.CreateShortcut(Environment.SpecialFolder.StartMenu.ToString());
-
-            //Stream dataArray = null;
-            //HashAlgorithm sha = new SHA1CryptoServiceProvider();
-            //byte[] result = sha.ComputeHash(dataArray);
-
             RandomNumberGenerator rnd = RandomNumberGenerator.Create();
-
             byte[] input = new byte[20];
             rnd.GetBytes(input);
+            rnd.Dispose();
 
             Console.WriteLine("Input        : {0}\n", BytesToStr(input));
             PrintHash(input);
@@ -90,7 +75,16 @@ namespace Net.Tools
             Console.ReadKey();
         }
 
-        public void ShellContextMenuTest()
+        public static void GetMd5Demo()
+        {
+            PersonSecret a = new PersonSecret("小王", 20, '男', 12345);
+            string appSecret = "123456";
+            string requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(a);
+            string token = new MD5Helper().GetToken(appSecret, requestJson);
+            Console.WriteLine(token);
+        }
+
+        public static void ShellContextMenuTest()
         {
             ShellContextMenu scm = new ShellContextMenu();
             FileInfo[] files = new FileInfo[1];
@@ -175,21 +169,6 @@ namespace Net.Tools
             Console.WriteLine("MultiBlock {0:00}: {1}", size, BytesToStr(sha.Hash));
         }
 
-        public string EncryptPassword(string PasswordString, string PasswordFormat)
-        {
-            string encryptPassword = null;
-            if (PasswordFormat == "SHA1")
-            {
-                encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "SHA1");
-            }
-            else if (PasswordFormat == "MD5")
-
-            {
-                encryptPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordString, "MD5");
-            }
-            return encryptPassword;
-        }
-
         public static void ClipboardDemo()
         {
             Clipboard.SetDataObject("https://msdn.microsoft.com/zh-cn/library/system.windows.forms.clipboard.getdataobject(v=vs.110).aspx");
@@ -244,8 +223,6 @@ namespace Net.Tools
             Console.WriteLine("\n\nMain method complete. Press Enter.");
             Console.ReadLine();
         }
-
-     
     }
 
     public class EncryptionDecryption
@@ -276,7 +253,7 @@ namespace Net.Tools
 
         private const string IV_64 = "VavicApp";
 
-        public string Encode1(string data)
+        public static string Encode1(string data)
         {
             byte[] byKey = Encoding.ASCII.GetBytes(KEY_64);
             byte[] byIV = Encoding.ASCII.GetBytes(IV_64);
@@ -294,7 +271,7 @@ namespace Net.Tools
             return Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length);
         }
 
-        public string Decode1(string data)
+        public static string Decode1(string data)
         {
             byte[] byKey = Encoding.ASCII.GetBytes(KEY_64);
             byte[] byIV = Encoding.ASCII.GetBytes(IV_64);
@@ -316,27 +293,38 @@ namespace Net.Tools
             return sr.ReadToEnd();
         }
 
-        public string GetMD5(string s, string _input_charset)
+        public static string GetMD5Str(string str, string charset)
         {
             //MD5不可逆加密    (32位加密)
             MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] t = md5.ComputeHash(Encoding.GetEncoding(_input_charset).GetBytes(s));
+            byte[] t = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(str));
             StringBuilder sb = new StringBuilder(32);
             for (int i = 0; i < t.Length; i++)
             {
-                sb.Append(t[i].ToString("x").PadLeft(2, '0'));
+                sb.Append(t[i].ToString("x").ToUpper().PadLeft(2, '0'));
             }
             return sb.ToString();
         }
 
-        public static string GetMd5Str(string ConvertString)
+        public static string GetMd5Str(string str)
         {
             //(16位加密)
 
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            string t2 = BitConverter.ToString(md5.ComputeHash(UTF8Encoding.Default.GetBytes(ConvertString)), 4, 8);
+            string t2 = BitConverter.ToString(md5.ComputeHash(Encoding.Default.GetBytes(str)), 4, 8);
             t2 = t2.Replace("-", "");
             return t2;
+        }
+
+        public static string GetSHA1Str(string str, Encoding encode)
+        {
+            byte[] dataArray = encode.GetBytes(str);
+            HashAlgorithm sha = new SHA1CryptoServiceProvider();
+            byte[] cresult = sha.ComputeHash(dataArray);
+            sha.Dispose();
+            string result = BitConverter.ToString(cresult);
+            result = result.Replace("-", "");
+            return result;
         }
 
         //加密文件
@@ -464,7 +452,7 @@ namespace Net.Tools
         }
     }
 
-    public class Personb
+    public class PersonSecret
     {
         public string Name { get; set; }
 
@@ -480,7 +468,7 @@ namespace Net.Tools
 
         public int Sallary { get; set; }
 
-        public Personb(string name, int age, char sex, int sallary)
+        public PersonSecret(string name, int age, char sex, int sallary)
         {
             this.Name = name;
             this.Age = age;

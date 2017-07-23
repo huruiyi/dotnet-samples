@@ -617,9 +617,9 @@
     <Content Include="Scripts\json\Collapsed.gif" />
     <Content Include="Scripts\json\demo.JPG" />
     <Content Include="Scripts\json\Expanded.gif" />
-    <Content Include="Scripts\json\index.htm" />
     <Content Include="Scripts\json\m.js" />
     <Content Include="Scripts\json\s.css" />
+    <Content Include="Scripts\json\urchin.js" />
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
