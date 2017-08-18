@@ -23,6 +23,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,7 +49,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
@@ -236,6 +237,7 @@
     <Content Include="Scripts\i18n\angular-locale_de-be.js" />
     <Content Include="Scripts\i18n\angular-locale_de-ch.js" />
     <Content Include="Scripts\i18n\angular-locale_de-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-it.js" />
     <Content Include="Scripts\i18n\angular-locale_de-li.js" />
     <Content Include="Scripts\i18n\angular-locale_de-lu.js" />
     <Content Include="Scripts\i18n\angular-locale_de.js" />
@@ -353,6 +355,7 @@
     <Content Include="Scripts\i18n\angular-locale_en-tz.js" />
     <Content Include="Scripts\i18n\angular-locale_en-ug.js" />
     <Content Include="Scripts\i18n\angular-locale_en-um.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-us-posix.js" />
     <Content Include="Scripts\i18n\angular-locale_en-us.js" />
     <Content Include="Scripts\i18n\angular-locale_en-vc.js" />
     <Content Include="Scripts\i18n\angular-locale_en-vg.js" />
@@ -370,6 +373,7 @@
     <Content Include="Scripts\i18n\angular-locale_es-ar.js" />
     <Content Include="Scripts\i18n\angular-locale_es-bo.js" />
     <Content Include="Scripts\i18n\angular-locale_es-br.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-bz.js" />
     <Content Include="Scripts\i18n\angular-locale_es-cl.js" />
     <Content Include="Scripts\i18n\angular-locale_es-co.js" />
     <Content Include="Scripts\i18n\angular-locale_es-cr.js" />
@@ -513,6 +517,7 @@
     <Content Include="Scripts\i18n\angular-locale_it-ch.js" />
     <Content Include="Scripts\i18n\angular-locale_it-it.js" />
     <Content Include="Scripts\i18n\angular-locale_it-sm.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-va.js" />
     <Content Include="Scripts\i18n\angular-locale_it.js" />
     <Content Include="Scripts\i18n\angular-locale_iw.js" />
     <Content Include="Scripts\i18n\angular-locale_ja-jp.js" />
@@ -611,6 +616,7 @@
     <Content Include="Scripts\i18n\angular-locale_ml.js" />
     <Content Include="Scripts\i18n\angular-locale_mn-mn.js" />
     <Content Include="Scripts\i18n\angular-locale_mn.js" />
+    <Content Include="Scripts\i18n\angular-locale_mo.js" />
     <Content Include="Scripts\i18n\angular-locale_mr-in.js" />
     <Content Include="Scripts\i18n\angular-locale_mr.js" />
     <Content Include="Scripts\i18n\angular-locale_ms-bn.js" />
@@ -632,6 +638,9 @@
     <Content Include="Scripts\i18n\angular-locale_nb.js" />
     <Content Include="Scripts\i18n\angular-locale_nd-zw.js" />
     <Content Include="Scripts\i18n\angular-locale_nd.js" />
+    <Content Include="Scripts\i18n\angular-locale_nds-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_nds-nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_nds.js" />
     <Content Include="Scripts\i18n\angular-locale_ne-in.js" />
     <Content Include="Scripts\i18n\angular-locale_ne-np.js" />
     <Content Include="Scripts\i18n\angular-locale_ne.js" />
@@ -727,6 +736,7 @@
     <Content Include="Scripts\i18n\angular-locale_ses.js" />
     <Content Include="Scripts\i18n\angular-locale_sg-cf.js" />
     <Content Include="Scripts\i18n\angular-locale_sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_sh.js" />
     <Content Include="Scripts\i18n\angular-locale_shi-latn-ma.js" />
     <Content Include="Scripts\i18n\angular-locale_shi-latn.js" />
     <Content Include="Scripts\i18n\angular-locale_shi-tfng-ma.js" />

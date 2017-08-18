@@ -43,25 +43,8 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            //Mutex
             //Marshal.
-
-            Console.WriteLine(true ^ false);
-            Console.WriteLine(true ^ true);
-            Console.WriteLine(false ^ false);
-            Console.WriteLine(false ^ true);
-            Console.WriteLine(Environment.NewLine);
-
-            Console.WriteLine(true & false);
-            Console.WriteLine(true & true);
-            Console.WriteLine(false & false);
-            Console.WriteLine(false & true);
-            Console.WriteLine(Environment.NewLine);
-
-            Console.WriteLine(true | false);
-            Console.WriteLine(true | true);
-            Console.WriteLine(false | false);
-            Console.WriteLine(false | true);
-            Console.WriteLine(Environment.NewLine);
 
             int i = 0;
             if (true & i++ == 1)
@@ -2763,29 +2746,33 @@ namespace ConApp
             }
         }
 
+        public static void DataTableDemo0()
+        {
+            DataTable table = new DataTable();
+            table.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("Resource_Id"),
+                new DataColumn("TA"),
+                new DataColumn("TB"),
+                new DataColumn("TC"),
+                new DataColumn("TD")
+            });
+            table.Rows.Add(1, 1, 2, 0, 0);
+            table.Rows.Add(1, 3, 0, 3, 4);
+            table.Rows.Add(2, 5, 6, 0, 0);
+            table.Rows.Add(2, 7, 0, 7, 8);
+
+            var aa = from t in table.AsEnumerable()
+                     group t by new { t1 = t.Field<string>("Resource_Id") } into m
+                     select new
+                     {
+                         name = m.Key.t1,
+                         score = m.Sum(n => n.Field<decimal>("TA"))
+                     };
+        }
+
         public static void DataTableDemo1()
         {
-            //DataTable table = new DataTable();
-            //table.Columns.AddRange(new DataColumn[]
-            //{
-            //    new DataColumn("Resource_Id"),
-            //    new DataColumn("TA"),
-            //    new DataColumn("TB"),
-            //    new DataColumn("TC"),
-            //    new DataColumn("TD")
-            //});
-            //table.Rows.Add(1, 1, 2, 0, 0);
-            //table.Rows.Add(1, 3, 0, 3, 4);
-            //table.Rows.Add(2, 5, 6, 0, 0);
-            //table.Rows.Add(2, 7, 0, 7, 8);
-
-            //var aa = from t in table.AsEnumerable()
-            //         group t by new { t1 = t.Field<string>("Resource_Id") } into m
-            //         select new
-            //         {
-            //             name = m.Key.t1,
-            //             score = m.Sum(n => n.Field<decimal>("TA"))
-            //         };
             DataTable dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[]
             {
@@ -2793,9 +2780,9 @@ namespace ConApp
                 new DataColumn("sex", typeof(string)),
                 new DataColumn("score", typeof(int))
             });
-            dt.Rows.Add(new object[] { "张三", "男", 1 });
-            dt.Rows.Add(new object[] { "张三", "男", 4 });
-            dt.Rows.Add(new object[] { "李四", "男", 100 });
+            dt.Rows.Add(new object[] { "张三", "男", 26 });
+            dt.Rows.Add(new object[] { "张三", "男", 40 });
+            dt.Rows.Add(new object[] { "李四", "男", 10 });
             dt.Rows.Add(new object[] { "李四", "女", 90 });
             dt.Rows.Add(new object[] { "王五", "女", 77 });
             DataTable dtResult = dt.Clone();
@@ -3113,7 +3100,7 @@ namespace ConApp
 
         #endregion 开机启动
 
-        public static void 四则运算位运算1()
+        public static void SimpleArithmetic1()
         {
             char c1 = 'A';
             char c2 = '\u0038';
@@ -3151,7 +3138,7 @@ namespace ConApp
             Console.WriteLine("{0}>>{1}={2}", z, x, (z >> x));
         }
 
-        public static void 四则运算位运算2()
+        public static void SimpleArithmetic2()
         {
             char c1 = 'D', c2;
             sbyte sb1 = 1, sb2 = 2, sb3;
@@ -3171,6 +3158,27 @@ namespace ConApp
             Console.WriteLine("ushort  us3={0}", us3);
         }
 
+        public static void BoolOperation()
+        {
+            Console.WriteLine(true ^ false);
+            Console.WriteLine(true ^ true);
+            Console.WriteLine(false ^ false);
+            Console.WriteLine(false ^ true);
+            Console.WriteLine(Environment.NewLine);
+
+            Console.WriteLine(true & false);
+            Console.WriteLine(true & true);
+            Console.WriteLine(false & false);
+            Console.WriteLine(false & true);
+            Console.WriteLine(Environment.NewLine);
+
+            Console.WriteLine(true | false);
+            Console.WriteLine(true | true);
+            Console.WriteLine(false | false);
+            Console.WriteLine(false | true);
+            Console.WriteLine(Environment.NewLine);
+        }
+
         public static void StackTraceDemo()
         {
             StackTrace stackTrace = new StackTrace();
@@ -3188,8 +3196,6 @@ namespace ConApp
                 Console.WriteLine(item.GetNativeOffset());
             }
         }
-
-
     }
 
     public class Descartes
