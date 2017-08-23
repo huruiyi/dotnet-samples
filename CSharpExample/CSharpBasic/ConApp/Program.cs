@@ -62,6 +62,16 @@ namespace ConApp
             Console.ReadKey();
         }
 
+        public static void Other()
+        {
+            Hash hash = Hash.CreateMD5(System.Text.Encoding.UTF8.GetBytes("ABCDEFG"));
+            //Hash.CreateSHA1()
+            //Hash.CreateSHA1()
+            //Hash.CreateSHA256()
+            Byte[] bytes = hash.MD5;
+            string str = System.Text.Encoding.UTF8.GetString(bytes);
+        }
+
         #region 01-foreach原理
 
         public static void Cus_foreach()
