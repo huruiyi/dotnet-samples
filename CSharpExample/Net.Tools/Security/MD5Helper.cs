@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,15 +13,14 @@ namespace Net.Tools.Security
     public class MD5Helper
     {
         /// <summary>
-        /// GetMD5("huruiyi", "utf-8")
+        /// GetMd5Hash("DataString", "utf-8")
         /// </summary>
         /// <param name="input"></param>
         /// <param name="charset"></param>
         /// <returns></returns>
-        public static string GetMD5(string input, string charset)
+        public static string GetMd5Hash(string input, string charset)
         {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] data = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(input));
+            byte[] data = new MD5CryptoServiceProvider().ComputeHash(Encoding.GetEncoding(charset).GetBytes(input));
             StringBuilder builder = new StringBuilder(32);
             for (int i = 0; i < data.Length; i++)
             {
@@ -29,39 +29,10 @@ namespace Net.Tools.Security
             return builder.ToString();
         }
 
-        private static string GetMd5Hash(MD5 md5Hash, string input)
-        {
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            StringBuilder sBuilder = new StringBuilder();
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            return sBuilder.ToString();
-        }
-
         private static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
         {
-            string hashOfInput = GetMd5Hash(md5Hash, input);
-
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return StringComparer.OrdinalIgnoreCase.Compare(GetMd5Hash(input, "utf-8"), hash) == 0;
         }
-
-        public string Ban { get; set; }
-
-        public string Token { get; set; }
 
         /// <summary>
         /// 直接根据当前请求实体和秘钥生成Token令牌
@@ -82,7 +53,7 @@ namespace Net.Tools.Security
         {
             if (string.IsNullOrEmpty(requestJson))
             {
-                requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(this);
+                requestJson = JsonConvert.SerializeObject(this);
             }
             Type type = base.GetType();
             PropertyInfo[] properties = type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public);

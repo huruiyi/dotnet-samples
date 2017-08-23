@@ -22,6 +22,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,6 +68,8 @@
     <Content Include="Handler\HttpRequestDemo.ashx" />
     <Content Include="Handler\进制间转换.ashx" />
     <Content Include="Handler\Graphics4.ashx" />
+    <Content Include="Handler\VCode1.ashx" />
+    <Content Include="Handler\VCode2.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,6 +134,12 @@
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\OrederHandler.cs" />
     <Compile Include="Handler\RegisterHandler.cs" />
+    <Compile Include="Handler\VCode1.ashx.cs">
+      <DependentUpon>VCode1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\VCode2.ashx.cs">
+      <DependentUpon>VCode2.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\进制间转换.ashx.cs">
       <DependentUpon>进制间转换.ashx</DependentUpon>
     </Compile>
