@@ -10,10 +10,19 @@ namespace ConApp
 
         public int Age { get; set; }
 
+        public string Hobby { get; set; }
+
         public RPerson(string name, int age)
         {
             this.Name = name;
             this.Age = age;
+        }
+
+        public RPerson(string name, int age, string hobby)
+        {
+            this.Name = name;
+            this.Age = age;
+            this.Hobby = hobby;
         }
 
         public override string ToString()
@@ -27,15 +36,41 @@ namespace ConApp
         }
     }
 
-    internal class RedisDemo
+    public class RedisDemo
     {
-        public const string IP = "127.0.0.1";
-        public const int Port = 6379;
         public static RedisClient client { get; set; }
 
         static RedisDemo()
         {
             client = new RedisClient("127.0.0.1", 6379);
+        }
+
+        public static void Queen1()
+        {
+            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("AAA"));
+            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("BBBB"));
+            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("CCCCC"));
+            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("DDDDDD"));
+
+            while (client.LLen("list") > 0)
+            {
+                byte[] value = client.RPop("list");
+                Console.WriteLine(System.Text.Encoding.UTF8.GetString(value));
+            }
+        }
+
+        public static void Queen2()
+        {
+            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("AAA"));
+            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("BBBB"));
+            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("CCCCC"));
+            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("DDDDDD"));
+
+            while (client.LLen("list") > 0)
+            {
+                byte[] value = client.LPop("list");
+                Console.WriteLine(System.Text.Encoding.UTF8.GetString(value));
+            }
         }
 
         public static void SetDemo()
@@ -50,6 +85,72 @@ namespace ConApp
             client.AddItemToSet("setid", "5");
             HashSet<string> hashSet = client.GetAllItemsFromSet("setid");
             Console.WriteLine(client.GetSetCount("setid"));
+        }
+
+        public static void AllKeysDemo()
+        {
+            byte[][] bytes = client.Keys("*");
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                Console.WriteLine(System.Text.Encoding.UTF8.GetString(bytes[i]));
+            }
+        }
+
+        public static void ZAddDemo()
+        {
+            //成绩排名:
+            client.ZAdd("score", 1, System.Text.Encoding.UTF8.GetBytes("小明"));
+            client.ZAdd("score", 8, System.Text.Encoding.UTF8.GetBytes("小红"));
+            client.ZAdd("score", 5, System.Text.Encoding.UTF8.GetBytes("小黑"));
+            client.ZAdd("score", 6, System.Text.Encoding.UTF8.GetBytes("小白"));
+
+            byte[][] bytes = client.ZRange("score", 0, -1);
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                Console.WriteLine(System.Text.Encoding.UTF8.GetString(bytes[i]));
+            }
+        }
+
+        public static void HSetGetDemo()
+        {
+            RPerson p1 = new RPerson("小明", 25, "足球");
+            RPerson p2 = new RPerson("小南", 35, "保龄球");
+            RPerson p3 = new RPerson("小明", 30, "棒球");
+
+            client.HSet("p1", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p1.Name));
+            client.HSet("p1", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p1.Age.ToString()));
+            client.HSet("p1", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p1.Hobby));
+
+            client.HSet("p2", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p2.Name));
+            client.HSet("p2", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p2.Age.ToString()));
+            client.HSet("p2", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p2.Hobby));
+
+            client.HSet("p3", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p3.Name));
+            client.HSet("p3", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p3.Age.ToString()));
+            client.HSet("p3", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p3.Hobby));
+
+            client.HSet("p4", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p3.Name));
+            client.HSet("p4", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p3.Age.ToString()));
+            client.HSet("p4", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p3.Hobby));
+
+            long length1 = client.HLen("p1");
+            long length2 = client.HKeys("p1").Length;
+
+            List<string> pList = client.GetHashKeys("p1");
+            for (int i = 0; i < pList.Count; i++)
+            {
+                Console.Write(pList[i]);
+            }
+            Console.WriteLine();
+
+            byte[] name = client.HGet("p2", System.Text.Encoding.UTF8.GetBytes("姓名"));
+            Console.Write(System.Text.Encoding.UTF8.GetString(name));
+
+            byte[] age = client.HGet("p2", System.Text.Encoding.UTF8.GetBytes("年龄"));
+            Console.Write(System.Text.Encoding.UTF8.GetString(age));
+
+            byte[] hobby = client.HGet("p2", System.Text.Encoding.UTF8.GetBytes("爱好"));
+            Console.WriteLine(System.Text.Encoding.UTF8.GetString(hobby));
         }
 
         public static void ListDequeueDemo()

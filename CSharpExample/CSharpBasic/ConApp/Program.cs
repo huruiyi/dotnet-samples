@@ -24,7 +24,6 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Security.AccessControl;
-using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Security.Principal;
 using System.Text;
@@ -43,23 +42,10 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
+            RedisDemo.HSetGetDemo();
             //Mutex
             //Marshal.
 
-            Console.ReadKey();
-            int i = 0;
-            if (true & i++ == 1)
-            {
-                Console.WriteLine("Test.///////////////////////");
-            }
-            int a = 1 ^ 1;
-            int b = 1 & 1;
-            int c = 1 | 1;
-            Console.WriteLine(a);
-            Console.WriteLine(b);
-            Console.WriteLine(c);
-            string name = Assembly.GetExecutingAssembly().GetName().Name;
-            Console.WriteLine(name);
             Console.ReadKey();
         }
 
@@ -71,6 +57,30 @@ namespace ConApp
             //Hash.CreateSHA256()
             Byte[] bytes = hash.MD5;
             string str = System.Text.Encoding.UTF8.GetString(bytes);
+        }
+
+        public static void Yuhuofei()
+        {
+            int a10 = 1 ^ 0;
+            int a01 = 0 ^ 1;
+            int a11 = 1 ^ 1;
+            Console.WriteLine(a10);
+            Console.WriteLine(a01);
+            Console.WriteLine(a11);
+
+            int b10 = 1 & 0;
+            int b01 = 0 & 1;
+            int b11 = 1 & 1;
+            Console.WriteLine(b10);
+            Console.WriteLine(b01);
+            Console.WriteLine(b11);
+
+            int c10 = 1 | 0;
+            int c01 = 0 | 1;
+            int c11 = 1 | 1;
+            Console.WriteLine(c10);
+            Console.WriteLine(c01);
+            Console.WriteLine(c11);
         }
 
         #region 01-foreach原理
@@ -181,6 +191,7 @@ namespace ConApp
 
         public static void ExampleMethod(int a, int b, int c)
         {
+            Console.WriteLine("ExampleMethod(int a, int b, int c)");
         }
 
         public static void ExampleMethod(string p1 = null, object p2 = null)
@@ -270,13 +281,13 @@ namespace ConApp
 
         #region 04-PerformanceCounter
 
-        public static void Demo04()
+        public static void PerformanceCounterDemo()
         {
-            var counters = new List<PerformanceCounter>();
+            List<PerformanceCounter> counters = new List<PerformanceCounter>();
             Process[] processes = Process.GetProcesses();
             foreach (Process process in processes)
             {
-                var counter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
+                PerformanceCounter counter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
                 counter.NextValue();
                 counters.Add(counter);
             }
@@ -285,7 +296,7 @@ namespace ConApp
 
             Thread.Sleep(1000);
 
-            foreach (var counter in counters)
+            foreach (PerformanceCounter counter in counters)
             {
                 Console.WriteLine(processes[i].ProcessName + " | CPU% " + (Math.Round(counter.NextValue(), 1)));
                 ++i;
@@ -1455,271 +1466,6 @@ namespace ConApp
 
         #endregion 30-反射获取方法名
 
-        #region 31-HttpListenerDemo
-
-        public static void HttpListenerDemo1()
-        {
-            HttpListener listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:1231/");
-            listener.Start();
-            Console.WriteLine("Listening...");
-            HttpListenerContext context = listener.GetContext();
-            HttpListenerRequest request = context.Request;
-            HttpListenerResponse response = context.Response;
-            string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
-            byte[] buffer = Encoding.UTF8.GetBytes(responseString);
-            response.ContentLength64 = buffer.Length;
-            Stream output = response.OutputStream;
-            output.Write(buffer, 0, buffer.Length);
-            output.Close();
-            listener.Stop();
-        }
-
-        public static void HttpListenerDemo2()
-        {
-            if (HttpListener.IsSupported)
-            {
-                HttpListener listener = new HttpListener();
-                listener.Prefixes.Add("http://+:8080/");
-                listener.Start();
-                while (true)
-                {
-                    Console.Write(DateTime.Now.ToString());
-                    HttpListenerContext context = listener.GetContext();
-                    string page = context.Request.Url.LocalPath.Replace("/", "");
-                    String query = context.Request.Url.Query.Replace("?", "");
-                    StreamReader sr = new StreamReader(context.Request.InputStream);
-                    Console.WriteLine(sr.ReadToEnd());
-                    Console.WriteLine("接收到请求{0}{1}", page, query);
-                    StreamWriter sw = new StreamWriter(context.Response.OutputStream);
-                    sw.Write("Hello World!");
-                    sw.Flush();
-                    context.Response.Close();
-                }
-            }
-        }
-
-        public static void HttpListenerDemo3()
-        {
-            // 检查系统是否支持
-            if (!HttpListener.IsSupported)
-            {
-                throw new System.InvalidOperationException("使用 HttpListener 必须为 Windows XP SP2 或 Server 2003 以上系统！");
-            }
-            // 注意前缀必须以 / 正斜杠结尾
-            string[] prefixes = new string[] { "http://localhost:49152/" };
-            // 创建监听器.
-            HttpListener listener = new HttpListener();
-            // 增加监听的前缀.
-            foreach (string s in prefixes)
-            {
-                listener.Prefixes.Add(s);
-            }
-            // 开始监听
-            listener.Start();
-            Console.WriteLine("监听中...");
-            while (true)
-            {
-                // 注意: GetContext 方法将阻塞线程，直到请求到达
-                HttpListenerContext context = listener.GetContext();
-                // 取得请求对象
-                HttpListenerRequest request = context.Request;
-                Console.WriteLine("{0} {1} HTTP/1.1", request.HttpMethod, request.RawUrl);
-                Console.WriteLine("Accept: {0}", string.Join(",", request.AcceptTypes));
-                Console.WriteLine("Accept-Language: {0}", string.Join(",", request.UserLanguages));
-                Console.WriteLine("User-Agent: {0}", request.UserAgent);
-                Console.WriteLine("Accept-Encoding: {0}", request.Headers["Accept-Encoding"]);
-                Console.WriteLine("Connection: {0}", request.KeepAlive ? "Keep-Alive" : "close");
-                Console.WriteLine("Host: {0}", request.UserHostName);
-                Console.WriteLine("Pragma: {0}", request.Headers["Pragma"]);
-                // 取得回应对象
-                HttpListenerResponse response = context.Response;
-                // 构造回应内容
-                string responseString =
-                                @"<html>
-                                    <head>
-                                        <title>From HttpListener Server</title>
-                                    </head>
-                                    <body>
-                                        <h1>Hello, world.</h1>
-                                    </body>
-                                   </html>";
-                // 设置回应头部内容，长度，编码
-                response.ContentLength64 = System.Text.Encoding.UTF8.GetByteCount(responseString);
-                response.ContentType = "text/html; charset=UTF-8";
-                // 输出回应内容
-                System.IO.Stream output = response.OutputStream;
-                System.IO.StreamWriter writer = new System.IO.StreamWriter(output);
-                writer.Write(responseString);
-                // 必须关闭输出流
-                writer.Close();
-
-                if (Console.KeyAvailable)
-                    break;
-            }
-            // 关闭服务器
-            listener.Stop();
-        }
-
-        private static HttpListener listener;
-        private static Thread listenThread1;
-
-        public static void HttpListenerDemo4()
-        {
-            listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:8000/");
-            listener.Prefixes.Add("http://127.0.0.1:8000/");
-            listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-
-            listener.Start();
-            listenThread1 = new Thread(new ParameterizedThreadStart(startlistener));
-            listenThread1.Start();
-        }
-
-        public static void startlistener(object s)
-        {
-            while (true)
-            {
-                var result = listener.BeginGetContext(ListenerCallback, listener);
-                result.AsyncWaitHandle.WaitOne();
-            }
-        }
-
-        public static void ListenerCallback(IAsyncResult result)
-        {
-            var context = listener.EndGetContext(result);
-            Thread.Sleep(1000);
-            var data_text = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding).ReadToEnd();
-
-            //functions used to decode json encoded data.
-            //JavaScriptSerializer js = new JavaScriptSerializer();
-            //var data1 = Uri.UnescapeDataString(data_text);
-            //string da = Regex.Unescape(data_text);
-            //var unserialized = js.Deserialize(data_text, typeof(String));
-
-            var cleaned_data = System.Web.HttpUtility.UrlDecode(data_text);
-
-            context.Response.StatusCode = 200;
-            context.Response.StatusDescription = "OK";
-
-            var headerText = context.Request.Headers["mycustomHeader"];
-
-            context.Response.Headers["mycustomResponseHeader"] = "mycustomResponse";
-
-            MessageBox.Show(cleaned_data);
-            context.Response.Close();
-        }
-
-        public static void HttpListenerDemo5()
-        {
-            IPAddress address = IPAddress.Loopback;
-            IPEndPoint point = new IPEndPoint(address, 12345);
-
-            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Bind(point);
-            socket.Listen(10);
-            Console.WriteLine("Socket开始监听本机的{0}端口", point.Port);
-
-            while (true)
-            {
-                Socket client = socket.Accept();
-                Console.WriteLine("接收到客户端的IP地址为：{0}", client.RemoteEndPoint);
-                byte[] buffer = new byte[4096];
-                client.Receive(buffer, 4096, SocketFlags.None);
-                string requestString = Encoding.UTF8.GetString(buffer);
-                Console.WriteLine(requestString);
-                string statusLine = "HTTP/1.1 200 OK\r\n";
-                byte[] statusLineBytes = Encoding.UTF8.GetBytes(statusLine);
-
-                string responseSpace = "\r\n";
-                byte[] responseSpaceBytes = Encoding.UTF8.GetBytes(responseSpace);
-                string responseString = "<html><body><a href='http://www.baidu.com'>百度</a></body></html>";
-                byte[] repsonseBytes = Encoding.UTF8.GetBytes(responseString);
-
-                string responseHeader = string.Format("Content-Type: text/html;charset=utf-8\r\nContent-Length:{0}\r\n", repsonseBytes.Length);
-                byte[] responseHeaderBytes = Encoding.UTF8.GetBytes(responseHeader);
-
-                client.Send(statusLineBytes);
-                client.Send(responseHeaderBytes);
-                client.Send(responseSpaceBytes);
-                client.Send(repsonseBytes);
-                client.Close();
-
-                if (Console.KeyAvailable)
-                {
-                    break;
-                }
-            }
-            socket.Close();
-        }
-
-        public static void HttpListenerDemo6()
-        {
-            IPAddress address = IPAddress.Loopback;
-            IPEndPoint point = new IPEndPoint(address, 12345);
-
-            TcpListener server = new TcpListener(point);
-            server.Start(10);
-            Console.WriteLine("开始监听本机的{0}端口", 12345);
-
-            while (true)
-            {
-                // 阻塞的方法
-                TcpClient client = server.AcceptTcpClient();
-                Console.WriteLine("接收到客户端请求，客户端地址为：{0}", client.Client.RemoteEndPoint);
-                // 获取一个网络流
-                NetworkStream stream = client.GetStream();
-
-                // 获取客户端数据
-                byte[] buffer = new byte[4096];
-                stream.Read(buffer, 0, 4096);
-                Console.Write(Encoding.UTF8.GetString(buffer, 0, 4096));
-
-                // 向客户端写入数据
-                //状态信息
-                string statusLine = "HTTP/1.1 200 OK\r\n";
-                byte[] statusLineBytes = Encoding.UTF8.GetBytes(statusLine);
-
-                //响应空行信息
-                string responseSpace = "\r\n";
-                byte[] responseSpaceBytes = Encoding.UTF8.GetBytes(responseSpace);
-                //响应的内容
-                string responseString = "<html><body><a href='http://www.sina.com'>新浪</a></body></html>";
-                byte[] repsonseBytes = Encoding.UTF8.GetBytes(responseString);
-
-                //响应头部信息
-                string responseHeader = string.Format("Content-Type: text/html;charset=utf-8\r\nContent-Length:{0}\r\n", repsonseBytes.Length);
-                byte[] responseHeaderBytes = Encoding.UTF8.GetBytes(responseHeader);
-
-                try
-                {
-                    stream.Write(statusLineBytes, 0, statusLineBytes.Length);
-                    stream.Write(responseHeaderBytes, 0, responseHeaderBytes.Length);
-                    stream.Write(responseSpaceBytes, 0, responseSpaceBytes.Length);
-                    stream.Write(repsonseBytes, 0, repsonseBytes.Length);
-                }
-                catch (Exception exc)
-                {
-                    Debug.Write(exc.Message);
-                }
-                finally
-                {
-                    stream.Close();
-                    client.Close();
-                    client.Dispose();
-                }
-
-                if (Console.KeyAvailable)
-                {
-                    break;
-                }
-            }
-
-            server.Stop();
-        }
-
-        #endregion 31-HttpListenerDemo
-
         #region 获取注册表的建
 
         public static void RegistryDemo()
@@ -1770,167 +1516,6 @@ namespace ConApp
         }
 
         #endregion 下载相关
-
-        #region 反射系列
-
-        public static void ReflectionClass1Demo()
-        {
-            #region Demo1 GetConstructors()
-
-            ConstructorInfo[] p = typeof(ReflectionClass1).GetConstructors();
-            Console.WriteLine(p.Length);
-
-            foreach (ConstructorInfo t in p)
-            {
-                Console.WriteLine(t.IsStatic + "_" + t.DeclaringType);
-                MethodBody mb = t.GetMethodBody();
-            }
-
-            #endregion Demo1 GetConstructors()
-
-            ConstructorInfo[] p1 = typeof(ReflectionClass1).GetConstructors(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
-            Console.WriteLine(p1.Length);
-
-            foreach (ConstructorInfo t in p1)
-            {
-                Console.WriteLine(t.IsStatic);
-            }
-        }
-
-        /// <summary>
-        /// 使用反射获得类中所支持的方法，还有方法的信息。
-        /// </summary>
-        public static void ReflectionClass2Demo()
-        {
-            Type t = typeof(ReflectionClass2);   //获取描述MyClassA类型的Type对象
-            Console.WriteLine("Analyzing methods in " + t.Name);  //t.Name="ReflectionClass2"
-
-            MethodInfo[] mi = t.GetMethods();  //MethodInfo对象在System.Reflection命名空间下。
-            foreach (MethodInfo m in mi) //遍历mi对象数组
-            {
-                Console.Write(m.ReturnType.Name); //返回方法的返回类型
-                Console.Write(" " + m.Name + "("); //返回方法的名称
-
-                ParameterInfo[] pi = m.GetParameters();  //获取方法参数列表并保存在ParameterInfo对象数组中
-                for (int i = 0; i < pi.Length; i++)
-                {
-                    Console.Write(pi[i].ParameterType.Name); //方法的参数类型名称
-                    Console.Write(" " + pi[i].Name);  // 方法的参数名
-                    if (i + 1 < pi.Length)
-                    {
-                        Console.Write(", ");
-                    }
-                }
-                Console.Write(")");
-                Console.WriteLine(); //换行
-            }
-        }
-
-        /// <summary>
-        /// GetMethods(BindingFlags bindingAttr)这个方法，参数可以使用or把两个或更多标记连接在一起，
-        /// 实际上至少要有Instance（或Static）与Public（或NonPublic）标记。否则将不会获取任何方法。
-        /// </summary>
-        public static void ReflectionClass3Demo()
-        {
-            /*
-            DeclareOnly:仅获取指定类定义的方法，而不获取所继承的方法；
-            Instance：获取实例方法
-            NonPublic: 获取非公有方法
-            Public： 获取共有方法
-            Static：获取静态方法
-            */
-            Type t = typeof(ReflectionClass3);   //获取描述ConApp3类型的Type对象
-            Console.WriteLine("Analyzing methods in " + t.Name);  //t.Name="ReflectionClass3"
-
-            MethodInfo[] mi = t.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public);  //不获取继承方法，为实例方法，为公开的
-            foreach (MethodInfo m in mi) //遍历mi对象数组
-            {
-                Console.Write(m.ReturnType.Name); //返回方法的返回类型
-                Console.Write(" " + m.Name + "("); //返回方法的名称
-
-                ParameterInfo[] pi = m.GetParameters();  //获取方法参数列表并保存在ParameterInfo对象数组中
-                for (int i = 0; i < pi.Length; i++)
-                {
-                    Console.Write(pi[i].ParameterType.Name); //方法的参数类型名称
-                    Console.Write(" " + pi[i].Name);  // 方法的参数名
-                    if (i + 1 < pi.Length)
-                    {
-                        Console.Write(",");
-                    }
-                }
-                Console.Write(")");
-                Console.WriteLine(); //换行
-            }
-        }
-
-        public static void ReflectionClass4Demo()
-        {
-            Type t = typeof(ReflectionClass4);
-            ReflectionClass4 reflectOb = new ReflectionClass4(10, 20);
-            reflectOb.Show();  //输出为： x:10, y:20
-            MethodInfo[] mi = t.GetMethods();
-            foreach (MethodInfo m in mi)
-            {
-                ParameterInfo[] pi = m.GetParameters();
-
-                if (m.Name.Equals("Set", StringComparison.Ordinal) && pi[0].ParameterType == typeof(int))
-                {
-                    object[] args = new object[2];
-                    args[0] = 9;
-                    args[1] = 10;
-                    //参数reflectOb,为一个对象引用，将调用他所指向的对象上的方法，如果为静态方法这个参数必须设置为null
-                    //参数args，为调用方法的参数数组，如果不需要参数为null
-                    m.Invoke(reflectOb, args);   //调用MyClass类中的参数类型为int的Set方法，输出为Inside set(int,int).x:9, y:10
-                }
-            }
-        }
-
-        /// <summary>
-        /// 反射获取构造函数并实例化
-        /// </summary>
-        public static void ReflectionClass5Demo()
-        {
-            /*
-            在这之前的阐述中，由于Class类型的对象是都是显式创建的，
-            因此使用反射技术调用Class类中的方法是没有任何优势的，
-            还不如以普通方式调用方便简单呢。
-            但是，如果对象是在运行时动态创建的，反射功能的优势就会显示出来。
-            在这种情况下，要先获取一个构造函数列表，然后调用列表中的某个构造函数，创建一个该类型的实例。
-            通过这种机制，可以在运行时实例化任意类型的对象，而不必在声明语句中指定类型。
-            */
-            Type t = typeof(ReflectionClass5);
-            ConstructorInfo[] ci = t.GetConstructors(); //使用这个方法获取构造函数列表
-
-            int x;
-            for (x = 0; x < ci.Length; x++)
-            {
-                ParameterInfo[] pi = ci[x].GetParameters(); //获取当前构造函数的参数列表
-                if (pi.Length == 2) break; //如果当前构造函数有2个参数，则跳出循环
-            }
-
-            if (x == ci.Length)
-            {
-                return;
-            }
-
-            object[] consargs = new object[2];
-            consargs[0] = 10;
-            consargs[1] = 20;
-            object reflectOb = ci[x].Invoke(consargs); //实例化一个这个构造函数有两个参数的类型对象,如果参数为空，则为null
-            ReflectionClass5 ac5 = reflectOb as ReflectionClass5;
-            //实例化后，调用ConApp5中的方法
-            MethodInfo[] mi = t.GetMethods(BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance);
-            foreach (MethodInfo m in mi)
-            {
-                if (m.Name.Equals("sum", StringComparison.Ordinal))
-                {
-                    int val = (int)m.Invoke(reflectOb, null);
-                    Console.WriteLine(@" sum is " + val); //输出 sum is 30
-                }
-            }
-        }
-
-        #endregion 反射系列
 
         #region 发送邮件
 
@@ -2007,96 +1592,6 @@ namespace ConApp
         }
 
         #endregion TupleDemo
-
-        #region Md5Token
-
-        #region GetMd5
-
-        public static string GetMd5(string input, string charset)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] data = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(input));
-            StringBuilder builder = new StringBuilder(32);
-            foreach (byte t in data)
-            {
-                builder.Append(t.ToString("x2"));
-            }
-            return builder.ToString();
-        }
-
-        #endregion GetMd5
-
-        #region GetTokenDemo
-
-        public static void Md5TokenDemo()
-        {
-            string timestamp = DateTime.Now.ToString();
-
-            DateTime stamp;
-            DateTime.TryParse(timestamp, out stamp);
-            StringBuilder securityKey = new StringBuilder();
-
-            securityKey.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("MM"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("dd"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
-
-            string key = GetMd5(securityKey.ToString(), "UTF-8");
-
-            Console.WriteLine(timestamp + "\t" + key);
-
-            bool falg = CheckTokenDemo(timestamp, key);
-
-            Console.WriteLine(falg ? "Success" : "Fail");
-        }
-
-        #endregion GetTokenDemo
-
-        #region CheckTokenDemo
-
-        public static bool CheckTokenDemo(string timestamp, string key)
-        {
-            if (string.IsNullOrEmpty(timestamp) || string.IsNullOrEmpty(key))
-            {
-                return false;
-            }
-
-            DateTime stamp;
-            try
-            {
-                stamp = DateTime.Parse(timestamp);
-            }
-            catch
-            {
-                return false;
-            }
-
-            TimeSpan timeSpan = new TimeSpan(0, 0, 8);
-            if ((DateTime.Now - stamp) <= timeSpan)
-            {
-                StringBuilder s = new StringBuilder();
-
-                s.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
-                s.Append(GetMd5(stamp.ToString("MM"), "UTF-8"));
-                s.Append(GetMd5(stamp.ToString("dd"), "UTF-8"));
-                s.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
-                s.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
-                s.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
-
-                if (key == GetMd5(s.ToString(), "UTF-8"))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        #endregion CheckTokenDemo
-
-        #endregion Md5Token
 
         #region ParallelTask
 
@@ -2629,12 +2124,6 @@ namespace ConApp
 
         #region ManualResetEventSlimDemo
 
-        public static void ManualResetEventSlimDemo()
-        {
-            MRES_SetWaitReset();
-            MRES_SpinCountWaitHandle();
-        }
-
         // Demonstrates:
         //      ManualResetEventSlim construction
         //      ManualResetEventSlim.Wait()
@@ -2757,92 +2246,6 @@ namespace ConApp
             }
         }
 
-        public static void DataTableDemo0()
-        {
-            DataTable table = new DataTable();
-            table.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("Resource_Id"),
-                new DataColumn("TA"),
-                new DataColumn("TB"),
-                new DataColumn("TC"),
-                new DataColumn("TD")
-            });
-            table.Rows.Add(1, 1, 2, 0, 0);
-            table.Rows.Add(1, 3, 0, 3, 4);
-            table.Rows.Add(2, 5, 6, 0, 0);
-            table.Rows.Add(2, 7, 0, 7, 8);
-
-            var aa = from t in table.AsEnumerable()
-                     group t by new { t1 = t.Field<string>("Resource_Id") } into m
-                     select new
-                     {
-                         name = m.Key.t1,
-                         score = m.Sum(n => n.Field<decimal>("TA"))
-                     };
-        }
-
-        public static void DataTableDemo1()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("name", typeof(string)),
-                new DataColumn("sex", typeof(string)),
-                new DataColumn("score", typeof(int))
-            });
-            dt.Rows.Add(new object[] { "张三", "男", 26 });
-            dt.Rows.Add(new object[] { "张三", "男", 40 });
-            dt.Rows.Add(new object[] { "李四", "男", 10 });
-            dt.Rows.Add(new object[] { "李四", "女", 90 });
-            dt.Rows.Add(new object[] { "王五", "女", 77 });
-            DataTable dtResult = dt.Clone();
-            DataTable dtName = dt.DefaultView.ToTable(true, "name", "sex");
-            for (int i = 0; i < dtName.Rows.Count; i++)
-            {
-                DataRow[] rows = dt.Select("name='" + dtName.Rows[i]["name"] + "' and sex='" + dtName.Rows[i]["sex"] + "'");
-                //temp用来存储筛选出来的数据
-                DataTable temp = dtResult.Clone();
-                foreach (DataRow row in rows)
-                {
-                    temp.Rows.Add(row.ItemArray);
-                }
-
-                DataRow dr = dtResult.NewRow();
-                dr[0] = dtName.Rows[i][0].ToString();
-                dr[1] = temp.Compute("sum(score)", "");
-                dtResult.Rows.Add(dr);
-            }
-        }
-
-        public static void DataTableDemo2()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] { new DataColumn("name", typeof(string)),
-                                         new DataColumn("sex", typeof(string)),
-                                         new DataColumn("score", typeof(decimal)) });
-            dt.Rows.Add(new object[] { "张三", "男", 1 });
-            dt.Rows.Add(new object[] { "张三", "男", 4 });
-            dt.Rows.Add(new object[] { "李四", "男", 100 });
-            dt.Rows.Add(new object[] { "李四", "女", 90 });
-            dt.Rows.Add(new object[] { "王五", "女", 77 });
-            var query = from t in dt.AsEnumerable()
-                        group t by new { t1 = t.Field<string>("name"), t2 = t.Field<string>("sex") } into m
-                        select new
-                        {
-                            name = m.Key.t1,
-                            sex = m.Key.t2,
-                            score = m.Sum(n => n.Field<decimal>("score"))
-                        };
-            if (query.ToList().Count > 0)
-            {
-                query.ToList().ForEach(q =>
-                {
-                    Console.WriteLine(q.name + "," + q.sex + "," + q.score);
-                });
-            }
-        }
-
         public static void PathDemo()
         {
             AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
@@ -2860,6 +2263,8 @@ namespace ConApp
             Assembly executingAssembly = Assembly.GetExecutingAssembly();
             string codeBase = executingAssembly.CodeBase;
             string location = executingAssembly.Location;
+
+            string executingName = Assembly.GetExecutingAssembly().GetName().Name;//运行程序的名称
         }
 
         public static void MathDemo()
@@ -3093,9 +2498,7 @@ namespace ConApp
             }
         }
 
-        #region 开机启动
-
-        public static void Run()
+        public static void StartRun()
         {
             string fileName = "";
             string ShortFileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
@@ -3108,8 +2511,6 @@ namespace ConApp
                     refKey.SetValue(ShortFileName, fileName);
             }
         }
-
-        #endregion 开机启动
 
         public static void SimpleArithmetic1()
         {
