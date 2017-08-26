@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConApp.Samples
+namespace ConApp
 {
     public partial class Program
     {
@@ -10,11 +10,11 @@ namespace ConApp.Samples
         {
             LinkNode node = new LinkNode();
             node.Value = 1;
-
             node.Next = new LinkNode();
-            node.Next.Value = 2;
 
+            node.Next.Value = 2;
             node.Next.Next = new LinkNode();
+
             node.Next.Next.Value = 3;
             node.Next.Next.Next = null;
 
@@ -51,6 +51,8 @@ namespace ConApp.Samples
 
         public class LinkNode
         {
+            public Guid Guid { get; set; }
+
             public int Value { get; set; }
 
             public LinkNode Next { get; set; }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutofacDemo", "AutofacDemo", "{38506985-E9E6-457C-ADF2-1078A02DDDA1}"
 EndProject
@@ -149,11 +149,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFAppAdo.Net", "CSharpExamp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo", "CSharpExample\MVCDemo\WebApiDemo\WebApiDemo.csproj", "{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PS", "PS", "{871C9685-ED4F-41FA-956A-81D1A2150847}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", "{871C9685-ED4F-41FA-956A-81D1A2150847}"
 	ProjectSection(SolutionItems) = preProject
-		CSharpExample\PS\x.ps1 = CSharpExample\PS\x.ps1
-		CSharpExample\PS\y.ps1 = CSharpExample\PS\y.ps1
-		CSharpExample\PS\z.ps1 = CSharpExample\PS\z.ps1
+		CSharpExample\PowerShell\For.ps1 = CSharpExample\PowerShell\For.ps1
+		CSharpExample\PowerShell\IISINfo.ps1 = CSharpExample\PowerShell\IISINfo.ps1
+		CSharpExample\PowerShell\Win32_UserAccount.ps1 = CSharpExample\PowerShell\Win32_UserAccount.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicSample", "CSharpExample\CSharpBasic\BasicSample\BasicSample.csproj", "{14556FAE-A481-4850-B70D-B02E5D14470B}"
@@ -1440,5 +1440,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
+		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 	EndGlobalSection
 EndGlobal

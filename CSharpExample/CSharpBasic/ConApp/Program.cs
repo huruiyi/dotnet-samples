@@ -46,6 +46,7 @@ namespace ConApp
             //Mutex
             //Marshal.
 
+            Console.ReadKey();
             int i = 0;
             if (true & i++ == 1)
             {
