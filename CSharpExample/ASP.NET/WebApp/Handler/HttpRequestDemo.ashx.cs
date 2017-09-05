@@ -13,7 +13,31 @@ namespace WebApp.Handler
     {
         public void ProcessRequest(HttpContext context)
         {
-            Demo1();
+            Demo0();
+        }
+
+        public static void Demo0()
+        {
+            WebRequest request = WebRequest.Create("http://192.168.163.128/reg");
+            request.Method = "POST";
+
+            const string postData = "{\"email\": \"hgfhfjhjfhj\",\"firstPwd\": \"90fb52002250ad0ed98f1a962b8afa67\",\"nickName\": \"gfdg\",\"phone\": \"123456\",\"userName\": \"fsdghjgk\"}";
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            request.ContentType = "application/json";
+            request.ContentLength = byteArray.Length;
+            Stream dataStreamW = request.GetRequestStream();
+            dataStreamW.Write(byteArray, 0, byteArray.Length);
+
+            WebResponse response = request.GetResponse();
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            Stream dataStreamR = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStreamR);
+            string responseFromServer = reader.ReadToEnd();
+            HttpContext.Current.Response.Write(responseFromServer);
+            dataStreamW.Close();
+            dataStreamR.Close();
+            reader.Close();
+            response.Close();
         }
 
         public static void Demo1()
