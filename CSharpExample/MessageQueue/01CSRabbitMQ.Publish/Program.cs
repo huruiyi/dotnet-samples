@@ -1,18 +1,21 @@
 ﻿using RabbitMQ.Client;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-//http://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html
-
-namespace CSRabbitMQ.Publish
+namespace _01CSRabbitMQ.Publish
 {
-    internal class Program
+    class Program
     {
         private static void Main(string[] args)
         {
-            RabbitMQ.Client.ConnectionFactory connectionFactory = new RabbitMQ.Client.ConnectionFactory();
-            connectionFactory.UserName = "admin";
+            ConnectionFactory connectionFactory = new ConnectionFactory();
+            connectionFactory.HostName = "192.168.163.128";
+            connectionFactory.VirtualHost = "vhost1";
+            connectionFactory.UserName = "vhost1";
             connectionFactory.Password = "admin";
 
             using (IConnection connection = connectionFactory.CreateConnection())

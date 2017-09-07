@@ -3,9 +3,7 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Text;
 
-//http://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html
-
-namespace CSRabbitMQ.Consume
+namespace _01CSRabbitMQ.Consume
 {
     internal class Program
     {
@@ -14,7 +12,12 @@ namespace CSRabbitMQ.Consume
             //RabbitMQ.Client.ConnectionFactory connectionFactory = new RabbitMQ.Client.ConnectionFactory();
             //connectionFactory.UserName = "admin";
             //connectionFactory.Password = "admin";
-            ConnectionFactory connectionFactory = new ConnectionFactory() { HostName = "localhost" };
+
+            ConnectionFactory connectionFactory = new ConnectionFactory();
+            connectionFactory.HostName = "192.168.163.128";
+            connectionFactory.VirtualHost = "vhost1";
+            connectionFactory.UserName = "vhost1";
+            connectionFactory.Password = "admin";
 
             using (IConnection connection = connectionFactory.CreateConnection())
             {

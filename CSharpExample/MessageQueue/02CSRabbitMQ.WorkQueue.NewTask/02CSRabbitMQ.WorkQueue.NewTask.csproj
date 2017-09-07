@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8DC9A39-CC0A-4940-A533-0DD4D468E835}</ProjectGuid>
+    <ProjectGuid>{8B81D194-B2E3-4C9D-800A-89D9C4B7C90B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CSRabbitMQ.WorkQueue.Worker</RootNamespace>
-    <AssemblyName>CSRabbitMQ.WorkQueue.Worker</AssemblyName>
+    <RootNamespace>_02CSRabbitMQ.WorkQueue.NewTask</RootNamespace>
+    <AssemblyName>02CSRabbitMQ.WorkQueue.NewTask</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

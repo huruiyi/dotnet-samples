@@ -45,6 +45,45 @@ namespace Net.Tools.Security
             return privateStr;
         }
 
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <param name="p_strKeyPrivate">私钥</param>
+        /// <param name="m_strHashbyteSignature">需签名的数据</param>
+        /// <returns>签名后的值</returns>
+        public string SignatureFormatter(string p_strKeyPrivate, string m_strHashbyteSignature)
+        {
+            byte[] rgbHash = Convert.FromBase64String(m_strHashbyteSignature);
+            RSACryptoServiceProvider key = new RSACryptoServiceProvider();
+            key.FromXmlString(p_strKeyPrivate);
+            RSAPKCS1SignatureFormatter formatter = new RSAPKCS1SignatureFormatter(key);
+            formatter.SetHashAlgorithm("MD5");
+            byte[] inArray = formatter.CreateSignature(rgbHash);
+            return Convert.ToBase64String(inArray);
+        }
+
+        /// <summary>
+        /// 签名验证
+        /// </summary>
+        /// <param name="p_strKeyPublic">公钥</param>
+        /// <param name="p_strHashbyteDeformatter">待验证的用户名</param>
+        /// <param name="p_strDeformatterData">注册码</param>
+        /// <returns>签名是否符合</returns>
+        public bool SignatureDeformatter(string p_strKeyPublic, string p_strHashbyteDeformatter, string p_strDeformatterData)
+        {
+            byte[] rgbHash = Convert.FromBase64String(p_strHashbyteDeformatter);
+            RSACryptoServiceProvider key = new RSACryptoServiceProvider();
+            key.FromXmlString(p_strKeyPublic);
+            RSAPKCS1SignatureDeformatter deformatter = new RSAPKCS1SignatureDeformatter(key);
+            deformatter.SetHashAlgorithm("MD5");
+            byte[] rgbSignature = Convert.FromBase64String(p_strDeformatterData);
+            if (deformatter.VerifySignature(rgbHash, rgbSignature))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static void CreateKey()
         {
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();

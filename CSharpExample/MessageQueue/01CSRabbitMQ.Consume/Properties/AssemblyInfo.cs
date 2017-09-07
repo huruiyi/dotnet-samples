@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("CSRabbitMQ.Consume")]
+[assembly: AssemblyTitle("01CSRabbitMQ.Consume")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CSRabbitMQ.Consume")]
+[assembly: AssemblyProduct("01CSRabbitMQ.Consume")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("1345104e-6c07-43d8-a915-df09a49ee6ac")]
+[assembly: Guid("8d01ae58-ae99-4ae0-9f67-a343c336e495")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

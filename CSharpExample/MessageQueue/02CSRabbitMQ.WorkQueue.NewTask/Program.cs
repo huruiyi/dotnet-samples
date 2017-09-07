@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 
-namespace CSRabbitMQ.WorkQueue.NewTask
+namespace _02CSRabbitMQ.WorkQueue.NewTask
 {
     internal class Program
     {

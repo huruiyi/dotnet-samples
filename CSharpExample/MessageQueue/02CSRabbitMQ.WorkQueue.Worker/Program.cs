@@ -4,7 +4,7 @@ using System;
 using System.Text;
 using System.Threading;
 
-namespace CSRabbitMQ.WorkQueue.Worker
+namespace _02CSRabbitMQ.WorkQueue.Worker
 {
     internal class Program
     {

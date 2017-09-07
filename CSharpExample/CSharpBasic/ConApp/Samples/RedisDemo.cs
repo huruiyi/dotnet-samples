@@ -158,10 +158,15 @@ namespace ConApp
             //队列，先进先出
             //client.DequeueItemFromList()
             //client.EnqueueItemOnList();
-            client.EnqueueItemOnList("q1", "北京3");
-            client.EnqueueItemOnList("q1", "北京4");
-            client.EnqueueItemOnList("q1", "北京1");
-            client.EnqueueItemOnList("q1", "北京2");
+
+            for (int i = 0; i < 1000; i++)
+            {
+                client.EnqueueItemOnList("q1", string.Format("北京{0}", i));
+            }
+            while (client.GetListCount("q1")>0)
+            {
+              //  Console.WriteLine(client.DequeueItemFromList("q1"));
+            }
             for (int i = 0; i < client.GetListCount("q1"); i++)
             {
                 Console.WriteLine(client.DequeueItemFromList("q1"));
