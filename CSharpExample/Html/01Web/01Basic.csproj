@@ -22,6 +22,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -132,6 +133,8 @@
     <Content Include="Html\JS\15原型.htm" />
     <Content Include="Html\Layout1.html" />
     <Content Include="Html\Layout2.html" />
+    <Content Include="Html\Layout3.html" />
+    <Content Include="Html\Layout4.html" />
     <Content Include="Html\Other\01insertCell.html" />
     <Content Include="Html\Other\02map.html" />
     <Content Include="Html\Other\03appendChild.html" />
@@ -149,6 +152,8 @@
     <Content Include="Html\Other\关键字过滤.html" />
     <Content Include="Html\Other\显示与隐藏 -siblings.html" />
     <Content Include="Html\表单元素2.html" />
+    <Content Include="Images\bg1.jpg" />
+    <Content Include="Images\bg2.jpg" />
     <Content Include="Images\bird.gif" />
     <Content Include="Html\Dom\window下的属性或事件.htm" />
     <Content Include="Html\Dom\css介绍.htm" />
