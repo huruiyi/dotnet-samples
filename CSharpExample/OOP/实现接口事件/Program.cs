@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace 实现接口事件
+﻿namespace 实现接口事件
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Shape shape = new Shape();
             Subscriber1 sub = new Subscriber1(shape);
@@ -18,7 +12,6 @@ namespace 实现接口事件
             // Keep the console window open in debug mode.
             System.Console.WriteLine("Press any key to exit.");
             System.Console.ReadKey();
-
         }
     }
 }

@@ -42,12 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demo5.cs" />
+    <Compile Include="Demo6_重写.cs" />
+    <Compile Include="Demo7_隐藏.cs" />
+    <Compile Include="Demo8_重写_隐藏.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Demo1.cs" />
     <Compile Include="Demo2.cs" />
-    <Compile Include="Demo3.cs" />
-    <Compile Include="Demo4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

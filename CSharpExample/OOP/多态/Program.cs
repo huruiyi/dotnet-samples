@@ -3,7 +3,7 @@ using 多态.Person;
 using 多态.Pet;
 using 多态.Storage;
 
-namespace 多态
+namespace NDemo1
 {
     public class Program
     {
@@ -69,7 +69,7 @@ namespace 多态
     }
 }
 
-namespace NDemo3
+namespace NDemo2
 {
     #region Introduceable
 
