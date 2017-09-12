@@ -473,5 +473,12 @@ namespace MVC.Sample.Controllers
             byte[] bytes = CreateValidateGraphic(code);
             return File(bytes, @"image/jpeg");
         }
+
+
+                        
+        public ActionResult Detais()
+        {
+            return View();
+        }
     }
 }

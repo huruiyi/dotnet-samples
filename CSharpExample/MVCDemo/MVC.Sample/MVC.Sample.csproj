@@ -706,6 +706,7 @@
     <Content Include="Views\Home\JsonWebTokenDemo.cshtml" />
     <Content Include="Views\Tools\Index.cshtml" />
     <Content Include="Views\Tools\Json.cshtml" />
+    <Content Include="Views\Home\Detais.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
