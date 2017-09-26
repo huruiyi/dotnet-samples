@@ -1,4 +1,4 @@
-﻿using ServiceStack.Redis;
+﻿using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 
@@ -38,77 +38,72 @@ namespace ConApp
 
     public class RedisDemo
     {
-        public static RedisClient client { get; set; }
+        public static ConnectionMultiplexer connection { get; set; }
+
+        public static IDatabase client { get; protected set; }
 
         static RedisDemo()
         {
-            client = new RedisClient("127.0.0.1", 6379);
+            connection = ConnectionMultiplexer.Connect("localhost");
+            client = connection.GetDatabase();
         }
 
         public static void Queen1()
         {
-            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("AAA"));
-            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("BBBB"));
-            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("CCCCC"));
-            client.LPush("list", System.Text.Encoding.UTF8.GetBytes("DDDDDD"));
+            client.ListLeftPush("list", System.Text.Encoding.UTF8.GetBytes("AAA"));
+            client.ListLeftPush("list", System.Text.Encoding.UTF8.GetBytes("BBBB"));
+            client.ListLeftPush("list", System.Text.Encoding.UTF8.GetBytes("CCCCC"));
+            client.ListLeftPush("list", System.Text.Encoding.UTF8.GetBytes("DDDDDD"));
 
-            while (client.LLen("list") > 0)
+            while (client.ListLength("list") > 0)
             {
-                byte[] value = client.RPop("list");
+                byte[] value = client.ListRightPop("list");
                 Console.WriteLine(System.Text.Encoding.UTF8.GetString(value));
             }
         }
 
         public static void Queen2()
         {
-            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("AAA"));
-            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("BBBB"));
-            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("CCCCC"));
-            client.RPush("list", System.Text.Encoding.UTF8.GetBytes("DDDDDD"));
+            client.ListRightPush("list", System.Text.Encoding.UTF8.GetBytes("AAA"));
+            client.ListRightPush("list", System.Text.Encoding.UTF8.GetBytes("BBBB"));
+            client.ListRightPush("list", System.Text.Encoding.UTF8.GetBytes("CCCCC"));
+            client.ListRightPush("list", System.Text.Encoding.UTF8.GetBytes("DDDDDD"));
 
-            while (client.LLen("list") > 0)
+            while (client.ListLength("list") > 0)
             {
-                byte[] value = client.LPop("list");
+                byte[] value = client.ListLeftPop("list");
                 Console.WriteLine(System.Text.Encoding.UTF8.GetString(value));
             }
         }
 
         public static void SetDemo()
         {
-            client.AddItemToSet("setid", "4");
-            client.AddItemToSet("setid", "5");
-            client.AddItemToSet("setid", "1");
-            client.AddItemToSet("setid", "2");
-            client.AddItemToSet("setid", "4");
-            client.AddItemToSet("setid", "3");
-            client.AddItemToSet("setid", "4");
-            client.AddItemToSet("setid", "5");
-            HashSet<string> hashSet = client.GetAllItemsFromSet("setid");
-            Console.WriteLine(client.GetSetCount("setid"));
-        }
-
-        public static void AllKeysDemo()
-        {
-            byte[][] bytes = client.Keys("*");
-            for (int i = 0; i < bytes.Length; i++)
+            client.SetAdd("setid", "4");
+            client.SetAdd("setid", "5");
+            client.SetAdd("setid", "1");
+            client.SetAdd("setid", "2");
+            client.SetAdd("setid", "4");
+            client.SetAdd("setid", "3");
+            client.SetAdd("setid", "4");
+            client.SetAdd("setid", "5");
+            RedisValue[] redisValue = client.SetMembers("setid");
+            for (int i = 0; i < redisValue.Length; i++)
             {
-                Console.WriteLine(System.Text.Encoding.UTF8.GetString(bytes[i]));
+                Console.WriteLine(redisValue.GetValue(i).ToString());
             }
         }
 
         public static void ZAddDemo()
         {
-            //成绩排名:
-            client.ZAdd("score", 1, System.Text.Encoding.UTF8.GetBytes("小明"));
-            client.ZAdd("score", 8, System.Text.Encoding.UTF8.GetBytes("小红"));
-            client.ZAdd("score", 5, System.Text.Encoding.UTF8.GetBytes("小黑"));
-            client.ZAdd("score", 6, System.Text.Encoding.UTF8.GetBytes("小白"));
-
-            byte[][] bytes = client.ZRange("score", 0, -1);
-            for (int i = 0; i < bytes.Length; i++)
+            SortedSetEntry[] sortedSet = new SortedSetEntry[]
             {
-                Console.WriteLine(System.Text.Encoding.UTF8.GetString(bytes[i]));
-            }
+                new SortedSetEntry("小红", 20),
+                new SortedSetEntry("小黑", 20),
+                new SortedSetEntry("小白", 20),
+                new SortedSetEntry("小青", 20)
+            };
+            //成绩排名:
+            client.SortedSetAdd("score", sortedSet);
         }
 
         public static void HSetGetDemo()
@@ -117,147 +112,57 @@ namespace ConApp
             RPerson p2 = new RPerson("小南", 35, "保龄球");
             RPerson p3 = new RPerson("小明", 30, "棒球");
 
-            client.HSet("p1", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p1.Name));
-            client.HSet("p1", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p1.Age.ToString()));
-            client.HSet("p1", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p1.Hobby));
+            client.HashSet("p1", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p1.Name));
+            client.HashSet("p1", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p1.Age.ToString()));
+            client.HashSet("p1", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p1.Hobby));
 
-            client.HSet("p2", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p2.Name));
-            client.HSet("p2", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p2.Age.ToString()));
-            client.HSet("p2", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p2.Hobby));
+            client.HashSet("p2", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p2.Name));
+            client.HashSet("p2", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p2.Age.ToString()));
+            client.HashSet("p2", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p2.Hobby));
 
-            client.HSet("p3", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p3.Name));
-            client.HSet("p3", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p3.Age.ToString()));
-            client.HSet("p3", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p3.Hobby));
+            client.HashSet("p3", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p3.Name));
+            client.HashSet("p3", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p3.Age.ToString()));
+            client.HashSet("p3", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p3.Hobby));
 
-            client.HSet("p4", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p3.Name));
-            client.HSet("p4", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p3.Age.ToString()));
-            client.HSet("p4", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p3.Hobby));
+            client.HashSet("p4", System.Text.Encoding.UTF8.GetBytes("姓名"), System.Text.Encoding.UTF8.GetBytes(p3.Name));
+            client.HashSet("p4", System.Text.Encoding.UTF8.GetBytes("年龄"), System.Text.Encoding.UTF8.GetBytes(p3.Age.ToString()));
+            client.HashSet("p4", System.Text.Encoding.UTF8.GetBytes("爱好"), System.Text.Encoding.UTF8.GetBytes(p3.Hobby));
 
-            long length1 = client.HLen("p1");
-            long length2 = client.HKeys("p1").Length;
+            long length1 = client.HashLength("p1");
 
-            List<string> pList = client.GetHashKeys("p1");
-            for (int i = 0; i < pList.Count; i++)
-            {
-                Console.Write(pList[i]);
-            }
+            RedisValue[] pList = client.HashKeys("p1");
+
             Console.WriteLine();
 
-            byte[] name = client.HGet("p2", System.Text.Encoding.UTF8.GetBytes("姓名"));
+            byte[] name = client.HashGet("p2", System.Text.Encoding.UTF8.GetBytes("姓名"));
             Console.Write(System.Text.Encoding.UTF8.GetString(name));
 
-            byte[] age = client.HGet("p2", System.Text.Encoding.UTF8.GetBytes("年龄"));
+            byte[] age = client.HashGet("p2", System.Text.Encoding.UTF8.GetBytes("年龄"));
             Console.Write(System.Text.Encoding.UTF8.GetString(age));
 
-            byte[] hobby = client.HGet("p2", System.Text.Encoding.UTF8.GetBytes("爱好"));
+            byte[] hobby = client.HashGet("p2", System.Text.Encoding.UTF8.GetBytes("爱好"));
             Console.WriteLine(System.Text.Encoding.UTF8.GetString(hobby));
         }
 
-        public static void ListDequeueDemo()
-        {
-            //队列，先进先出
-            //client.DequeueItemFromList()
-            //client.EnqueueItemOnList();
+       
 
-            for (int i = 0; i < 1000; i++)
-            {
-                client.EnqueueItemOnList("q1", string.Format("北京{0}", i));
-            }
-            while (client.GetListCount("q1")>0)
-            {
-              //  Console.WriteLine(client.DequeueItemFromList("q1"));
-            }
-            for (int i = 0; i < client.GetListCount("q1"); i++)
-            {
-                Console.WriteLine(client.DequeueItemFromList("q1"));
-            }
-        }
-
-        public static void ListPopDemo()
-        {
-            //   栈，先进后出
-            //client.PopItemFromList();
-            //client.PushItemToList();
-            client.PushItemToList("z1", "北1");
-            client.PushItemToList("z1", "北2");
-            client.PushItemToList("z1", "北3");
-            client.PushItemToList("z1", "北4");
-            client.PushItemToList("z1", "北5");
-            client.PushItemToList("z1", "北6");
-
-            for (int i = 0; i < client.GetListCount("z1"); i++)
-            {
-                Console.WriteLine(client.PopItemFromList("z1"));
-            }
-        }
-
-        public static void ListDeomo()
-        {
-            client.AddItemToList("shopId", "123");
-            client.AddItemToList("shopId", "456");
-            client.AddItemToList("shopId", "789");
-            client.AddItemToList("shopId", "147");
-            client.AddItemToList("shopId", "258");
-            client.AddItemToList("shopId", "369");
-
-            Console.WriteLine(client.GetListCount("shopId"));
-            client.AddRangeToList("rangeID", new List<string> { "6", "7", "8", "9", "10" });
-            client.AddRangeToList("rangeID", new List<string> { "1", "2", "3", "4", "5" });
-            List<string> listRangeList = client.GetRangeFromList("rangeID", 1, 6);
-            List<string> allItems = client.GetAllItemsFromList("rangeID");
-            Console.WriteLine(client.GetListCount("rangeID"));
-        }
+     
 
         public static void SortedSetDemo()
         {
-            //最后一个参数为我们排序的依据
-            client.AddItemToSortedSet("12", "百度", 400);
-            client.AddItemToSortedSet("12", "谷歌", 300);
-            client.AddItemToSortedSet("12", "阿里", 200);
-            client.AddItemToSortedSet("12", "新浪", 100);
-            client.AddItemToSortedSet("12", "人人", 500);
+            client.SortedSetAdd("12", "百度", 400);
+            client.SortedSetAdd("12", "谷歌", 300);
+            client.SortedSetAdd("12", "阿里", 200);
+            client.SortedSetAdd("12", "新浪", 100);
+            client.SortedSetAdd("12", "人人", 500);
 
-            //升序获取最一个值:"新浪"
-            var list = client.GetRangeFromSortedSet("12", 0, 4);
-            foreach (var item in list)
+            long length = client.SortedSetLength("12");
+            for (int i = 0; i < length; i++)
             {
-                Console.WriteLine(item);
             }
 
-            //降序获取最一个值:"人人"
-            list = client.GetRangeFromSortedSetDesc("12", 0, 4);
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-            }
+       
         }
 
-        public static void GetSetDemo()
-        {
-            client.Set("a", "123");
-            client.Set("b", "456");
-            client.Set("c", "789", DateTime.Now.AddSeconds(10));//设置超时时间
-
-            Console.WriteLine(client.Get<string>("a"));
-            Console.WriteLine(client.Get<string>("b"));
-            Console.WriteLine(client.Get<string>("c"));
-
-            RPerson p1 = new RPerson("P1", 25);
-            RPerson p2 = new RPerson("P2", 25);
-            RPerson p3 = new RPerson("P3", 25);
-
-            client.Set<RPerson>("p1", p1);
-            client.Set<RPerson>("p2", p2);
-            client.Set<RPerson>("p3", p3);
-
-            RPerson gp1 = client.Get<RPerson>("p1");
-            gp1.ShowInfo();
-
-            RPerson gp2 = client.Get<RPerson>("p2");
-            gp2.ShowInfo();
-
-            RPerson gp3 = client.Get<RPerson>("p3");
-            gp3.ShowInfo();
-        }
     }
 }

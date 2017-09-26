@@ -44,7 +44,8 @@ namespace ConApp
 
         public static unsafe void Main(string[] args)
         {
-            RedisDemo.ListDequeueDemo();
+            //MongodDemo.Init();
+            RedisDemo.SortedSetDemo();
             //Mutex
             //Marshal.
 
