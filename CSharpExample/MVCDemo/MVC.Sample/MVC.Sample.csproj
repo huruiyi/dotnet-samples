@@ -543,6 +543,8 @@
     <None Include="Properties\PublishProfiles\redis - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\redis - Web Deploy.pubxml" />
     <Content Include="Images\a.jpg" />
+    <Content Include="Images\b.png" />
+    <Content Include="Images\c.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\i18n\ar.js" />
