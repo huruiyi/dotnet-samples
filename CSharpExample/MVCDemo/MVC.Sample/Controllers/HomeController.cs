@@ -116,7 +116,7 @@ namespace MVC.Sample.Controllers
         {
             ViewBag.Message = "欢迎使用 ASP.NET MVC!";
             ViewBag.Msg = "<a href='http://www.baidu.com'>百度</a>";
-            Person p = new Person { Name = "XYZ", Age = 30 };
+            Person p = new Person { Name = "Qingqing", Age = 21 };
             return View(p);
         }
 
