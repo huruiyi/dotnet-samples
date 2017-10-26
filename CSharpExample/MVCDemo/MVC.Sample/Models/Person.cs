@@ -27,5 +27,8 @@ namespace MVC.Sample.Models
 
         [DisplayName("备注")]
         public string Comment { get; set; }
+
+        [DisplayName("习惯")]
+        public string Hobby { get; set; }
     }
 }

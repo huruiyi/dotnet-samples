@@ -1,0 +1,70 @@
+﻿@using MVC.Sample.Models;
+
+@{
+    ViewBag.Title = "分部视图";
+}
+
+<h2>分部视图</h2>
+<div class="panel panel-info" style="box-shadow:2px 2px 3px #aaaaaa">
+    <div class="panel-heading">
+        <label class="title">
+            @@Html.Action("UserInfo")执行结果
+        </label>
+    </div>
+    <div class="panel-body">
+        <div>
+            <span>
+                @Html.Action("UserInfo")
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-warning" style="box-shadow:2px 2px 3px #aaaaaa">
+    <div class="panel-heading">
+        <label class="title">
+            @@Html.RenderAction("UserInfo")执行结果
+        </label>
+    </div>
+    <div class="panel-body">
+        <div>
+            <span>
+                @{
+                    Html.RenderAction("UserInfo");
+                }
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-success" style="box-shadow:2px 2px 3px #aaaaaa">
+    <div class="panel-heading">
+        <label class="title">
+            @@Html.Partial("UserCenter", new Person { Name = "小米", Age = 26, Hobby = "Prograer" })
+        </label>
+    </div>
+    <div class="panel-body">
+        <div>
+            <span>
+                @Html.Partial("UserCenter", new Person { Name = "小米", Age = 26, Hobby = "Prograer" })
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-danger" style="box-shadow:2px 2px 3px #aaaaaa">
+    <div class="panel-heading">
+        <label class="title">
+            @@Html.RenderPartial("~/Views/Home/UserCenter.cshtml", new Person { Name = "小米", Age = 26, Hobby = "Prograer" });
+        </label>
+    </div>
+    <div class="panel-body">
+        <div>
+            <span>
+                @{
+                    Html.RenderPartial("~/Views/CPartial/UserCenter.cshtml", new Person { Name = "小米", Age = 26, Hobby = "Prograer" });
+                }
+            </span>
+        </div>
+    </div>
+</div>

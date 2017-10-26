@@ -643,6 +643,7 @@
     <Compile Include="Areas\Admin\Controllers\SystemController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\CPartialController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -650,6 +651,7 @@
     <Compile Include="Controllers\ToolsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
+    <Compile Include="Filters\MVCAPPActionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -709,6 +711,11 @@
     <Content Include="Views\Tools\Index.cshtml" />
     <Content Include="Views\Tools\Json.cshtml" />
     <Content Include="Views\Home\Detais.cshtml" />
+    <Content Include="Views\CPartial\Index.cshtml" />
+    <Content Include="Views\CPartial\About.cshtml" />
+    <Content Include="Views\CPartial\UserCenter.cshtml" />
+    <Content Include="Views\CPartial\UserInfo.cshtml" />
+    <Content Include="Views\Tools\ToolsTab.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,21 @@
+﻿@using MVC.Sample.Models;
+@{
+    Person person = Model as Person;
+    Layout = null;
+}
+
+<h2>UserInfo</h2>
+<table class="table table-bordered ">
+    <tr>
+        <td>姓名:</td>
+        <td>@person.Name</td>
+    </tr>
+    <tr>
+        <td>年龄:</td>
+        <td>@person.Age</td>
+    </tr>
+    <tr>
+        <td>习惯:</td>
+        <td>@person.Hobby</td>
+    </tr>
+</table>

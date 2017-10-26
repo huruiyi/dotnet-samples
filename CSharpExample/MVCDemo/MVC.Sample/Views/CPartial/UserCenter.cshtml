@@ -1,0 +1,31 @@
+﻿@model MVC.Sample.Models.Person
+@{
+    ViewBag.Title = "UserCenter";
+}
+<h2>UserCenter</h2>
+<table class="table table-bordered">
+    <tr>
+        <td>
+            姓名
+        </td>
+        <td>
+            @Html.DisplayTextFor(m => m.Name)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            年龄
+        </td>
+        <td>
+            @Html.DisplayTextFor(m => m.Age)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            习惯
+        </td>
+        <td>
+            @Html.DisplayTextFor(m => m.Hobby)
+        </td>
+    </tr>
+</table>

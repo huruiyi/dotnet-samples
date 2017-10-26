@@ -5,9 +5,15 @@ namespace MVC.Sample.Controllers
     public class ToolsController : Controller
     {
         // GET: Tools
-        public ActionResult Tab()
+
+        public ActionResult Index()
         {
-            return View("Index");
+            return View();
+        }
+
+        public ActionResult ToolsTab()
+        {
+            return View();
         }
 
         public ActionResult Json()
