@@ -62,39 +62,51 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>
 
+<div class="row panel panel-default ">
+    <div class="col-md-offset-4 col-md-4 panel-body ">
         @using (Html.BeginForm())
         {
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Email)
+            <div class="form-group">
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                </div>
+                <div class="editor-label">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
             </div>
-            <div class="editor-label">
-                @Html.TextBoxFor(m => m.Email)
-                @Html.ValidationMessageFor(m => m.Email)
+            <div class="form-group">
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                </div>
+                <div class="editor-label">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(s => s.Password)
+                </div>
             </div>
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Password)
+            <div class="form-group">
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.RePassword, new { @class = "control-label" })
+                </div>
+                <div class="editor-label">
+                    @Html.PasswordFor(m => m.RePassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RePassword)
+                </div>
             </div>
-            <div class="editor-label">
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(s => s.Password)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(m => m.RePassword)
-            </div>
-            <div class="editor-label">
-                @Html.PasswordFor(m => m.RePassword)
-                @Html.ValidationMessageFor(m => m.RePassword)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Phone)
-            </div>
-            <div class="editor-label">
-                @Html.TextBoxFor(m => m.Phone)
-                @Html.ValidationMessageFor(m => m.Phone)
+            <div class="form-group">
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Phone, new { @class = "control-label" })
+                </div>
+                <div class="editor-label">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </div>
             </div>
             <p>
-                <input type="submit" value="提交" />
+                <input class="btn btn-block btn-success" type="submit" value="提交" />
             </p>
         }
     </div>
