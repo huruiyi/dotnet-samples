@@ -1,9 +1,9 @@
-﻿using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Mvc;
-using MVC.Sample.Models;
+﻿using MVC.Sample.Models;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Unity;
+using Unity.Mvc;
 
 namespace MVC.Sample
 {
