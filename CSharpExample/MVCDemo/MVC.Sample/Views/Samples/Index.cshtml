@@ -55,14 +55,14 @@
 <div class="panel panel-danger" style="box-shadow:2px 2px 3px #aaaaaa">
     <div class="panel-heading">
         <label class="title">
-            @@Html.RenderPartial("~/Views/Home/UserCenter.cshtml", new Person { Name = "小米", Age = 26, Hobby = "Prograer" });
+            @@Html.RenderPartial("~/Views/Samples/UserCenter.cshtml", new Person { Name = "小米", Age = 26, Hobby = "Prograer" });
         </label>
     </div>
     <div class="panel-body">
         <div>
             <span>
                 @{
-                    Html.RenderPartial("~/Views/CPartial/UserCenter.cshtml", new Person { Name = "小米", Age = 26, Hobby = "Prograer" });
+                    Html.RenderPartial("~/Views/Samples/UserCenter.cshtml", new Person { Name = "小米", Age = 26, Hobby = "Prograer" });
                 }
             </span>
         </div>

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MVC.Sample.Models;
 using System.Web.Mvc;
-using MVC.Sample.Models;
 
 namespace MVC.Sample.Controllers
 {

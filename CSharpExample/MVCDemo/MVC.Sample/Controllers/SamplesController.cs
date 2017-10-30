@@ -4,9 +4,9 @@ using System.Web.Mvc;
 
 namespace MVC.Sample.Controllers
 {
-    public class CPartialController : Controller
+    public class SamplesController : Controller
     {
-        // GET: CPartial
+        // GET: Samples
         public ActionResult Index()
         {
             return View();
