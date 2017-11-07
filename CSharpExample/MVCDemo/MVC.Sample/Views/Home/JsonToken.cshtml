@@ -11,9 +11,9 @@
 
     if (IsPost)
     {
-        string userstring = @Request.Form["username"];
-        string passwordstring = @Request.Form["password"];
-        this.LoginButtonClick(userstring, passwordstring);
+        string userstring = Request.Form["username"];
+        string passwordstring = Request.Form["password"];
+        LoginButtonClick(userstring, passwordstring);
     }
 }
 
@@ -28,12 +28,12 @@
         {
         public void LoginButtonClick(string usernameparam, string passwordparam)
         {
-            if (this.AuthenticateUser(usernameparam, passwordparam))
+            if (AuthenticateUser(usernameparam, passwordparam))
             {
-                string token = this.CreateAuthenticationToken(usernameparam);
-                string returnUrl = @Request.QueryString["returnUrl"];
+                string token = CreateAuthenticationToken(usernameparam);
+                string returnUrl = Request.QueryString["returnUrl"];
                 string redirectUrl = string.Format("{0}?jwt={1}", returnUrl, token);
-                this.Response.Redirect(redirectUrl);
+                Response.Redirect(redirectUrl);
             }
         }
 
@@ -52,7 +52,7 @@
                     {"iat", timestamp},
                     {"jti", Guid.NewGuid().ToString()},
                     {"name", usernameparam},
-                    {"sharedkey", this.SharedKey}
+                    {"sharedkey", SharedKey}
                 };
             string token = JsonWebToken.Encode(payload, SharedKey, JwtHashAlgorithm.HS256);
             return token;

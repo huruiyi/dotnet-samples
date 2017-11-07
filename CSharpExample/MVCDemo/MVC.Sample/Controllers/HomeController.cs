@@ -323,7 +323,7 @@ namespace MVC.Sample.Controllers
             return View();
         }
 
-        public ActionResult JsonWebTokenDemo()
+        public ActionResult JsonToken()
         {
             return View();
         }
@@ -354,8 +354,10 @@ namespace MVC.Sample.Controllers
                 using (ExcelRange rng = ws.Cells["A1:C1"])
                 {
                     rng.Style.Font.Bold = true;
-                    rng.Style.Fill.PatternType = ExcelFillStyle.Solid;                      //Set Pattern for the background to Solid
-                    rng.Style.Fill.BackgroundColor.SetColor(Color.FromArgb(79, 129, 189));  //Set color to dark blue
+                    //Set Pattern for the background to Solid
+                    rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //Set color to dark blue
+                    rng.Style.Fill.BackgroundColor.SetColor(Color.FromArgb(79, 129, 189));
                     rng.Style.Font.Color.SetColor(Color.White);
                 }
 
@@ -379,10 +381,10 @@ namespace MVC.Sample.Controllers
         {
             List<Student> lstStudent = new List<Student>()
             {
-                new Student(){ID=1,Name="曹操",Sex="男",Email="caocao@163.com",Age=24},
-                new Student(){ID=2,Name="李易峰",Sex="女",Email="lilingjie@sina.com.cn",Age=24},
-                new Student(){ID=3,Name="张三丰",Sex="男",Email="zhangsanfeng@qq.com",Age=224},
-                new Student(){ID=4,Name="孙权",Sex="男",Email="sunquan@163.com",Age=1224},
+                new Student {ID=1,Name="曹操",Sex="男",Email="caocao@163.com",Age=24},
+                new Student {ID=2,Name="李易峰",Sex="女",Email="lilingjie@sina.com.cn",Age=24},
+                new Student {ID=3,Name="张三丰",Sex="男",Email="zhangsanfeng@qq.com",Age=224},
+                new Student {ID=4,Name="孙权",Sex="男",Email="sunquan@163.com",Age=1224},
             };
             string[] columns = { "ID", "Name", "Age", "Sex", "Email" };
             byte[] filecontent = ExcelExportHelper.ExportExcel(lstStudent, "", false, columns);

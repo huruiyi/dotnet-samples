@@ -646,6 +646,7 @@
     <Compile Include="Areas\Admin\Controllers\SystemController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Models\DropDownSampleModel.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -710,7 +711,7 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Movies\Edit.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
-    <Content Include="Views\Home\JsonWebTokenDemo.cshtml" />
+    <Content Include="Views\Home\JsonToken.cshtml" />
     <Content Include="Views\Tools\Index.cshtml" />
     <Content Include="Views\Tools\Json.cshtml" />
     <Content Include="Views\Home\Detais.cshtml" />
@@ -719,6 +720,7 @@
     <Content Include="Views\Samples\About.cshtml" />
     <Content Include="Views\Samples\UserCenter.cshtml" />
     <Content Include="Views\Samples\UserInfo.cshtml" />
+    <Content Include="Views\Samples\DropDownListSample.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
