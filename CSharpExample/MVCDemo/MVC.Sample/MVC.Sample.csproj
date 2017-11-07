@@ -524,8 +524,12 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="App_Data\APPConfig\AppSettingsConfig.config" />
-    <Content Include="App_Data\APPConfig\ConnectionStrings.config" />
+    <Content Include="App_Data\APPConfig\AppSettingsConfig.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\APPConfig\ConnectionStrings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
