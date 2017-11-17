@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -202,6 +203,20 @@ namespace WebApp.Handler
             Console.WriteLine(readStream.ReadToEnd());
             response.Close();
             readStream.Close();
+        }
+
+        public static void Demo6()
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.baidu.com/img/bdlogo.gif");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream imgStream = response.GetResponseStream();
+            if (imgStream != null)
+            {
+                Image image = new Bitmap(imgStream);
+                string fileName = DateTime.Now.ToString("yyyyMMddss") + ".gif";
+                string serverPath = HttpContext.Current.Server.MapPath("~/Images/") + fileName;
+                image.Save(serverPath);
+            }
         }
 
         public bool IsReusable

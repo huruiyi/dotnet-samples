@@ -1,17 +1,14 @@
 ﻿using System.Data.SqlClient;
 using System.Web;
-using System.Web.SessionState;
 using WebApp.Infrastructure;
 
 namespace WebApp.Handler
 {
-    public class LoginHandler : IHttpHandler, IRequiresSessionState
+    /// <summary>
+    /// Product_LoginHandler 的摘要说明
+    /// </summary>
+    public class Product_LoginHandler : IHttpHandler
     {
-        public bool IsReusable
-        {
-            get { return true; }
-        }
-
         public void ProcessRequest(HttpContext context)
         {
             string admin = context.Request.Form["username"];
@@ -28,9 +25,15 @@ namespace WebApp.Handler
             }
             else
             {
-                //string html = context.Response.WriteFile(context.Server.MapPath("~/Index.htm"));
-
                 context.Response.Write("登录失败");
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
             }
         }
     }

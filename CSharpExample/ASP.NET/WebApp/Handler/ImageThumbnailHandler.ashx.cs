@@ -5,20 +5,14 @@ using System.Web;
 namespace WebApp.Handler
 {
     /// <summary>
-    /// Graphics4 的摘要说明
+    /// ImageThumbnailHandler 的摘要说明
     /// </summary>
-    public class Graphics4 : IHttpHandler
+    public class ImageThumbnailHandler : IHttpHandler
     {
-        public void ProcessRequest(HttpContext context)
-        {
-            context.Response.ContentType = "text/plain";
-            context.Response.Write("Hello World");
-        }
-
         /// <summary>
         /// 为图片生成缩略图 by 何问起
         /// </summary>
-        /// <param name="phyPath">原图片的路径</param>
+        /// <param name="image"></param>
         /// <param name="width">缩略图宽</param>
         /// <param name="height">缩略图高</param>
         /// <returns></returns>
@@ -31,19 +25,19 @@ namespace WebApp.Handler
             graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
             Rectangle rectDestination = new Rectangle(0, 0, width, height);
 
-            int m_width, m_height;
+            int mWidth, mHeight;
             if (image.Width * height > image.Height * width)
             {
-                m_height = image.Height;
-                m_width = (image.Height * width) / height;
+                mHeight = image.Height;
+                mWidth = image.Height * width / height;
             }
             else
             {
-                m_width = image.Width;
-                m_height = (image.Width * height) / width;
+                mWidth = image.Width;
+                mHeight = image.Width * height / width;
             }
 
-            graphic.DrawImage(image, rectDestination, 0, 0, m_width, m_height, GraphicsUnit.Pixel);
+            graphic.DrawImage(image, rectDestination, 0, 0, mWidth, mHeight, GraphicsUnit.Pixel);
 
             return bitmap;
         }
@@ -96,9 +90,6 @@ namespace WebApp.Handler
                         y = (originalImage.Height - oh) / 2;
                     }
                     break;
-
-                default:
-                    break;
             }
 
             Image bitmap = new Bitmap(towidth, toheight);
@@ -125,6 +116,12 @@ namespace WebApp.Handler
             }
 
             return thumbnailPath;
+        }
+
+        public void ProcessRequest(HttpContext context)
+        {
+            context.Response.ContentType = "text/plain";
+            context.Response.Write("Hello World");
         }
 
         public bool IsReusable

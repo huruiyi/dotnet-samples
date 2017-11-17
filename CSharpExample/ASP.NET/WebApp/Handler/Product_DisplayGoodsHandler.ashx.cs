@@ -9,12 +9,11 @@ using WebApp.Models;
 
 namespace WebApp.Handler
 {
-    public class DisplayGoodsHandler : IHttpHandler
+    /// <summary>
+    /// Product_DisplayGoodsHandler 的摘要说明
+    /// </summary>
+    public class Product_DisplayGoodsHandler : IHttpHandler
     {
-        public bool IsReusable
-        {
-            get { return true; }
-        }
 
         public void ProcessRequest(HttpContext context)
         {
@@ -23,18 +22,20 @@ namespace WebApp.Handler
             #region 从数据库获取全部商品信息并加入到商品集合中
 
             List<Product> pros = new List<Product>();
-            Product pro = null;
+            Product pro;
             string sql = "select * from Product";
             SqlDataReader sdr = SQLHelper.ExecuteReader(sql);
             while (sdr.Read())
             {
-                pro = new Product();
-                pro.AutoKey = sdr["AutoKey"].ToString();
-                pro.ProductID = sdr["ProductID"].ToString();
-                pro.ProductName = sdr["ProductName"].ToString();
-                pro.Producttype = sdr["Producttype"].ToString();
-                pro.UnitPrice = Convert.ToDecimal(sdr["UnitPrice"]);
-                pro.ImagePath = "../Images/" + sdr["ImagePath"].ToString();
+                pro = new Product
+                {
+                    AutoKey = sdr["AutoKey"].ToString(),
+                    ProductID = sdr["ProductID"].ToString(),
+                    ProductName = sdr["ProductName"].ToString(),
+                    Producttype = sdr["Producttype"].ToString(),
+                    UnitPrice = Convert.ToDecimal(sdr["UnitPrice"]),
+                    ImagePath = "../Images/" + sdr["ImagePath"]
+                };
                 pros.Add(pro);
             }
 
@@ -72,8 +73,8 @@ namespace WebApp.Handler
                 {
                     if (gt == pros[i].Producttype)
                     {
-                        sb.AppendFormat("<td align='center'>{2}&nbsp;&nbsp;<a href='BuyProduct?pid={1}'>{0}</a></td>", 
-                            pros[i].ProductName, pros[i].ProductID, pros[i].UnitPrice.ToString("F2"));
+                        sb.AppendFormat("<td align='center'>{2:F2}&nbsp;&nbsp;<a href='BuyProduct?pid={1}'>{0}</a></td>",
+                            pros[i].ProductName, pros[i].ProductID, pros[i].UnitPrice);
                     }
                 }
                 sb.Append("</tr>");
@@ -81,6 +82,14 @@ namespace WebApp.Handler
             }
             html = html.Replace("{商品列表}", sb.ToString());
             context.Response.Write(html);
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
         }
     }
 }

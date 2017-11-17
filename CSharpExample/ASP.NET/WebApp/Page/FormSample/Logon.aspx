@@ -10,7 +10,7 @@
 <script runat="server">
     void Logon_Click(object sender, EventArgs e)
     {
-        if ((txtUserName.Text == "admin") && (UserPass.Text == "123456"))
+        if (txtUserName.Text == "admin" && UserPass.Text == "123456")
         {
             FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, Persist.Checked);
         }

@@ -9,14 +9,12 @@ using WebApp.Models;
 
 namespace WebApp.Handler
 {
-    public class DetailGoodsHandler : IHttpHandler, IRequiresSessionState
+    /// <summary>
+    /// Product_DetailGoodsHandler 的摘要说明
+    /// </summary>
+    public class Product_DetailGoodsHandler : IHttpHandler, IRequiresSessionState
     {
-        public bool IsReusable
-        {
-            get { return true; }
-        }
-
-        public static List<Shopping> mss;
+        public static List<Shopping> _mss;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -27,13 +25,13 @@ namespace WebApp.Handler
                 #region 判断此商品是否已经添加到购物车
 
                 string alreadybuycount = "";
-                if (mss != null)
+                if (_mss != null)
                 {
-                    for (int i = 0; i < mss.Count; i++)
+                    for (int i = 0; i < _mss.Count; i++)
                     {
-                        if (mss[i].proid == pid)
+                        if (_mss[i].proid == pid)
                         {
-                            alreadybuycount = mss[i].buyCount;
+                            alreadybuycount = _mss[i].buyCount;
                             break;
                         }
                     }
@@ -56,7 +54,7 @@ namespace WebApp.Handler
                 }
 
                 string html = File.ReadAllText(context.Server.MapPath("~/htmls/DetailGoods.html"));
-                html = html.Replace("{产品图片}", string.Format("<img src='{0}' width='300px' height='300px'>", pro.ImagePath));
+                html = html.Replace("{产品图片}", $"<img src='{pro.ImagePath}' width='300px' height='300px'>");
                 html = html.Replace("{产品ID}", pro.ProductID);
                 html = html.Replace("{产品名称}", pro.ProductName);
                 html = html.Replace("{产品单价}", pro.UnitPrice.ToString());
@@ -90,9 +88,9 @@ namespace WebApp.Handler
                     string useraddress = context.Request.Form["useraddress"];
                     string buyCount = context.Request.Form["buyCount"];
 
-                    if (mss == null)
+                    if (_mss == null)
                     {
-                        mss = new List<Shopping>();
+                        _mss = new List<Shopping>();
 
                         #region 添加首个商品
 
@@ -104,13 +102,13 @@ namespace WebApp.Handler
                         ms.userphone = userphone;
                         ms.useraddress = useraddress;
                         ms.buyCount = buyCount;
-                        mss.Add(ms);
+                        _mss.Add(ms);
 
                         #endregion 添加首个商品
                     }
-                    else if (mss != null)
+                    else if (_mss != null)
                     {
-                        foreach (Shopping ims in mss)
+                        foreach (Shopping ims in _mss)
                         {
                             if (ims.proid != proid)//如果此商品ID不存在
                             {
@@ -122,7 +120,7 @@ namespace WebApp.Handler
                                 ms.userphone = userphone;
                                 ms.useraddress = useraddress;
                                 ms.buyCount = buyCount;
-                                mss.Add(ms);
+                                _mss.Add(ms);
                                 break;
                             }
                             else//如果商品已购买过,则增加数量,(修改),(添加)新的联系电话,和送货地址
@@ -143,6 +141,14 @@ namespace WebApp.Handler
                 {
                     context.Response.Redirect("/Htmls/Index.html");
                 }
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
             }
         }
     }

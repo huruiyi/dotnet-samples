@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Web;
-using System.Web.SessionState;
 using WebApp.Infrastructure;
 
 namespace WebApp.Handler
 {
-    public class RegisterHandler : IHttpHandler, IRequiresSessionState
+    /// <summary>
+    /// Product_RegisterHandler 的摘要说明
+    /// </summary>
+    public class Product_RegisterHandler : IHttpHandler
     {
-        public bool IsReusable
-        {
-            get { return true; }
-        }
-
         public void ProcessRequest(HttpContext context)
         {
             string admin = context.Request.Form["username"];
@@ -28,7 +25,7 @@ namespace WebApp.Handler
             {
                 userid = sdr["userId"].ToString();
             }
-            if (userid == null || userid == "")
+            if (userid == "")
             {
                 userid = "U001";
             }
@@ -43,7 +40,7 @@ namespace WebApp.Handler
             string sql = @"insert into Admin (userId,userName,userPwd,userPhoneNum,userAddress) values
                         (@userId,@userName,@userPwd,@userPhoneNum,@userAddress)";
 
-            SqlParameter[] parameter = new SqlParameter[]
+            SqlParameter[] parameter =
             {
                 new SqlParameter("@userId", userid),
                 new SqlParameter("@userName", admin),
@@ -62,6 +59,14 @@ namespace WebApp.Handler
             {
                 context.Response.Write("注册失败");
                 context.Response.Redirect("Register");
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
             }
         }
     }

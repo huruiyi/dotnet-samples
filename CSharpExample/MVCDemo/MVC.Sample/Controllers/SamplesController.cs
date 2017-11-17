@@ -2,7 +2,6 @@
 using MVC.Sample.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using System;
 
 namespace MVC.Sample.Controllers
 {
@@ -28,10 +27,12 @@ namespace MVC.Sample.Controllers
         [MVCAPPActionFilter]
         public ActionResult UserInfo()
         {
-            Person person = new Person();
-            person.Age = 5000;
-            person.Hobby = "卧着";
-            person.Name = "黄山";
+            Person person = new Person
+            {
+                Age = 5000,
+                Hobby = "卧着",
+                Name = "黄山"
+            };
             return View(person);
         }
 
@@ -54,7 +55,6 @@ namespace MVC.Sample.Controllers
         private IDictionary<string, string> GetSampleMakes()
         {
             IDictionary<string, string> makes = new Dictionary<string, string>();
-
             makes.Add("1", "跟团游");
             makes.Add("2", "团队");
             makes.Add("3", "其他");

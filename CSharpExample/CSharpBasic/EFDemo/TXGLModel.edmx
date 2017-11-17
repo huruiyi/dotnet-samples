@@ -24,7 +24,7 @@
     <Key>
       <PropertyRef Name="lbdm" />
     </Key>
-    <Property Name="lbdm" Type="int" Nullable="false" />
+    <Property Name="lbdm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="lbmc" Type="varchar" Nullable="true" MaxLength="50" />
   </EntityType>
 </Schema></edmx:StorageModels>
@@ -71,7 +71,7 @@
           <Key>
             <PropertyRef Name="lbdm" />
           </Key>
-          <Property Name="lbdm" Type="Int32" Nullable="false" />
+          <Property Name="lbdm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="lbmc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="TXGLEntities" annotation:LazyLoadingEnabled="true">

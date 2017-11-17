@@ -10,7 +10,7 @@ namespace EFDemo
         {
             Add();
             //Query();
-            //  Edit();
+            Edit();
             //Delete();
 
             #region 多条件查询
@@ -60,6 +60,8 @@ namespace EFDemo
 
             myQuery.ForEach(Printinfo);
         }
+
+
 
         private static void Printinfo(Lxrenb m)
         {

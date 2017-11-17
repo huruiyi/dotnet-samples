@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
 using System.Web;
-using System.Web.SessionState;
 using WebApp.Models;
 
 namespace WebApp.Handler
 {
-    public class OrederHandler : IHttpHandler, IRequiresSessionState
+    /// <summary>
+    /// Product_OrderHandler 的摘要说明
+    /// </summary>
+    public class Product_OrderHandler : IHttpHandler
     {
-        public bool IsReusable
-        {
-            // 如果无法为其他请求重用托管处理程序，则返回 false。
-            // 如果按请求保留某些状态信息，则通常这将为 false。
-            get { return true; }
-        }
-
         public void ProcessRequest(HttpContext context)
         {
             string html = File.ReadAllText(context.Server.MapPath("~/htmls/MyOrders.html"));
             StringBuilder sb = new StringBuilder();
-            if (DetailGoodsHandler.mss != null)
+            if (Product_DetailGoodsHandler._mss != null)
             {
-                foreach (Shopping m in DetailGoodsHandler.mss)
+                foreach (Shopping m in Product_DetailGoodsHandler._mss)
                 {
-                    string ss = context.Session["sadmin"].ToString();
                     if (m.sadmin == context.Session["sadmin"].ToString())
                     {
                         sb.Append("<tr>");
@@ -43,6 +34,14 @@ namespace WebApp.Handler
             }
             html = html.Replace("{详细订单}", sb.ToString());
             context.Response.Write(html);
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
         }
     }
 }

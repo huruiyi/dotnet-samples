@@ -36,12 +36,16 @@ namespace WebApp.Page.CookieSample
                 string isRemember = context.Request.Form["rememberstatus"];
                 if (isRemember == "on")
                 {
-                    HttpCookie hcuid = new HttpCookie("userid", uid);
-                    hcuid.Expires = DateTime.Now.AddHours(1);
+                    HttpCookie hcuid = new HttpCookie("userid", uid)
+                    {
+                        Expires = DateTime.Now.AddHours(1)
+                    };
                     context.Response.Cookies.Add(hcuid);
 
-                    HttpCookie hcpwd = new HttpCookie("userpwd", pwd);
-                    hcpwd.Expires = DateTime.Now.AddHours(1);
+                    HttpCookie hcpwd = new HttpCookie("userpwd", pwd)
+                    {
+                        Expires = DateTime.Now.AddHours(1)
+                    };
                     context.Response.Cookies.Add(hcpwd);
                 }
                 context.Response.Write("你的用户名是:" + uid + "你的密码是:" + pwd);

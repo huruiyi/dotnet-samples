@@ -61,15 +61,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Handler\Graphics1.ashx" />
-    <Content Include="Handler\Graphics2.ashx" />
-    <Content Include="Handler\Graphics3.ashx" />
-    <Content Include="Handler\HttpWebRequestImage.ashx" />
     <Content Include="Handler\HttpRequestDemo.ashx" />
-    <Content Include="Handler\进制间转换.ashx" />
-    <Content Include="Handler\Graphics4.ashx" />
-    <Content Include="Handler\VCode1.ashx" />
-    <Content Include="Handler\VCode2.ashx" />
+    <Content Include="Handler\OtherHandler.ashx" />
+    <Content Include="Handler\Product_RegisterHandler.ashx" />
+    <Content Include="Handler\Product_OrderHandler.ashx" />
+    <Content Include="Handler\Product_LoginHandler.ashx" />
+    <Content Include="Handler\Product_DetailGoodsHandler.ashx" />
+    <Content Include="Handler\Product_DisplayGoodsHandler.ashx" />
+    <Content Include="Handler\ImageThumbnailHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,37 +110,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handler\DetailGoodsHandler.cs" />
-    <Compile Include="Handler\DisplayGoodsHandler.cs" />
-    <Compile Include="Handler\Graphics1.ashx.cs">
-      <DependentUpon>Graphics1.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Handler\Graphics2.ashx.cs">
-      <DependentUpon>Graphics2.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Handler\Graphics3.ashx.cs">
-      <DependentUpon>Graphics3.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Handler\Graphics4.ashx.cs">
-      <DependentUpon>Graphics4.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Handler\HttpRequestDemo.ashx.cs">
       <DependentUpon>HttpRequestDemo.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Handler\HttpWebRequestImage.ashx.cs">
-      <DependentUpon>HttpWebRequestImage.ashx</DependentUpon>
+    <Compile Include="Handler\ImageThumbnailHandler.ashx.cs">
+      <DependentUpon>ImageThumbnailHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Handler\LoginHandler.cs" />
-    <Compile Include="Handler\OrederHandler.cs" />
-    <Compile Include="Handler\RegisterHandler.cs" />
-    <Compile Include="Handler\VCode1.ashx.cs">
-      <DependentUpon>VCode1.ashx</DependentUpon>
+    <Compile Include="Handler\OtherHandler.ashx.cs">
+      <DependentUpon>OtherHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Handler\VCode2.ashx.cs">
-      <DependentUpon>VCode2.ashx</DependentUpon>
+    <Compile Include="Handler\Product_DetailGoodsHandler.ashx.cs">
+      <DependentUpon>Product_DetailGoodsHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Handler\进制间转换.ashx.cs">
-      <DependentUpon>进制间转换.ashx</DependentUpon>
+    <Compile Include="Handler\Product_DisplayGoodsHandler.ashx.cs">
+      <DependentUpon>Product_DisplayGoodsHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Product_LoginHandler.ashx.cs">
+      <DependentUpon>Product_LoginHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Product_OrderHandler.ashx.cs">
+      <DependentUpon>Product_OrderHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\Product_RegisterHandler.ashx.cs">
+      <DependentUpon>Product_RegisterHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="HttpModule\ModuleTest.cs" />
     <Compile Include="Infrastructure\SQLHelper.cs" />
