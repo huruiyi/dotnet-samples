@@ -3,7 +3,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Unity;
-using Unity.Mvc;
+using Unity.AspNet.Mvc;
 
 namespace MVC.Sample
 {

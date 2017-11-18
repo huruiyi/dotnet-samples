@@ -4,22 +4,22 @@ namespace ConApp
 {
     public class CPoint
     {
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
     }
 
     public struct SPoint
     {
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
     }
 
-    public struct XYZ
+    public struct Xyz
     {
-        public int a;
-        public int b;
-        public int c;
-        public bool b1;
+        public int A;
+        public int B;
+        public int C;
+        public bool B1;
     };
 
     public partial class Program
@@ -71,20 +71,20 @@ namespace ConApp
         {
             int i = 10, j = 20;
             SwapSafe(ref i, ref j);
-            Console.WriteLine("Values after safe swap: i = {0}, j = {1}", i, j);
+            Console.WriteLine(@"Values after safe swap: i = {0}, j = {1}", i, j);
 
             unsafe
             {
                 SwapUnSafe(&i, &j);
             }
-            Console.WriteLine("Values after safe swap: i = {0}, j = {1}", i, j);
+            Console.WriteLine(@"Values after safe swap: i = {0}, j = {1}", i, j);
         }
 
         #endregion 变量的交换
 
         public static unsafe void UnsafeAddDemo1()
         {
-            int[] a = new int[5] { 1, 2, 3, 4, 5 };
+            int[] a = new int[] { 1, 2, 3, 4, 5 };
             int b = 3;
             int res = UnsafeAdd1(a, b);
             Console.WriteLine(res);
@@ -124,15 +124,15 @@ namespace ConApp
         {
             SPoint point;
             SPoint* p = &point;
-            p->x = 100;
-            p->y = 200;
-            Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + p->ToString());
+            p->X = 100;
+            p->Y = 200;
+            Console.WriteLine(@"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + p->ToString());
 
             SPoint point2;
             SPoint* p2 = &point2;
-            (*p2).x = 100;
-            (*p2).y = 200;
-            Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + (*p2).ToString());
+            (*p2).X = 100;
+            (*p2).Y = 200;
+            Console.WriteLine(@"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:::" + (*p2).ToString());
         }
 
         public static unsafe void PrintValueAndAddress()
@@ -141,32 +141,34 @@ namespace ConApp
             int* pi = &i;
             *pi = 123;
 
-            Console.WriteLine("Vsalue of myInt {0}", i);
-            Console.WriteLine("Address of myInt {0:X}", (int)&pi);
+            Console.WriteLine(@"Vsalue of myInt {0}", i);
+            Console.WriteLine(@"Address of myInt {0:X}", (int)&pi);
         }
 
         public static unsafe void UseAndPinPoint()
         {
-            CPoint pt = new CPoint();
-            pt.x = 5;
-            pt.y = 6;
+            CPoint pt = new CPoint
+            {
+                X = 5,
+                Y = 6
+            };
 
             // pin pt in place so it will not be moved or GC-ed.
-            fixed (int* p = &pt.x)
+            fixed (int* p = &pt.X)
             {
                 // Use int* variable here!
             }
 
             // pt is now unpinned, and ready to be GC-ed once the method completes.
-            Console.WriteLine("Point is: {0}", pt);
+            Console.WriteLine(@"Point is: {0}", pt);
         }
 
         public static unsafe void UseSizeOfOperator()
         {
-            Console.WriteLine("The size of short is {0}.", sizeof(short));
-            Console.WriteLine("The size of int is {0}.", sizeof(int));
-            Console.WriteLine("The size of long is {0}.", sizeof(long));
-            Console.WriteLine("The size of Point is {0}.", sizeof(Point));
+            Console.WriteLine(@"The size of short is {0}.", sizeof(short));
+            Console.WriteLine(@"The size of int is {0}.", sizeof(int));
+            Console.WriteLine(@"The size of long is {0}.", sizeof(long));
+            Console.WriteLine(@"The size of Point is {0}.", sizeof(Point));
         }
 
         public unsafe static void PointDemo()
@@ -175,12 +177,12 @@ namespace ConApp
             arry = new int[10];
             fixed (int* pi = arry)
             {
-                Console.WriteLine("array = 0x{0:x}", (int)pi);
+                Console.WriteLine(@"array = 0x{0:x}", (int)pi);
             }
             int[] intArr = { 12, 13, 14, 15, 16 };
             for (int i = 0; i < intArr.Length; i++)
             {
-                Console.WriteLine("array = 0x{0:x}", intArr[i]);
+                Console.WriteLine(@"array = 0x{0:x}", intArr[i]);
             }
             fixed (int* p = intArr)
             {
@@ -188,21 +190,21 @@ namespace ConApp
             }
 
             CPoint pt = new CPoint();
-            pt.x = 5;
-            pt.y = 6;
+            pt.X = 5;
+            pt.Y = 6;
             // Pin pt in place:
-            fixed (int* p = &pt.x)
+            fixed (int* p = &pt.X)
             {
                 SquareIntPointer(p);
             }
 
-            fixed (int* p = &pt.x)
+            fixed (int* p = &pt.X)
             {
                 *p = 1;
             }
 
             double[] arr = { 0, 1.5, 2.3, 3.4, 4.0, 5.9 };
-            fixed (int* p1 = &pt.x)
+            fixed (int* p1 = &pt.X)
             {
                 fixed (double* p2 = &arr[5])
                 {
@@ -210,7 +212,7 @@ namespace ConApp
                 }
             }
 
-            fixed (int* p1 = &pt.x)
+            fixed (int* p1 = &pt.X)
             {
                 fixed (double* p2 = &arr[5])
                 {
@@ -226,7 +228,7 @@ namespace ConApp
                 int x = 10;
                 int* p = &x;
                 int tenAddress = (int)p;
-                Console.WriteLine("address:{0}", tenAddress);
+                Console.WriteLine(@"address:{0}", tenAddress);
                 Console.WriteLine(Convert.ToString(tenAddress, 2));
                 Console.ReadKey();
             }
@@ -280,7 +282,7 @@ namespace ConApp
                     for (int i = 0; i < array.Length; i++)
                     {
                         //Console.WriteLine("array = 0x{0:x}", (int)(ptr+i));
-                        Console.WriteLine("{0}--{1}--{2}--0x{3:x}", i, *(ptr + i), array[i], (int)(ptr + i));
+                        Console.WriteLine(@"{0}--{1}--{2}--0x{3:x}", i, *(ptr + i), array[i], (int)(ptr + i));
                         //Console.WriteLine("Content of the {0}th element of the array: Using pointer: {1}, Using array index: {2}", i, *(ptr + i), array[i]);
                     }
                 }
@@ -298,7 +300,7 @@ namespace ConApp
                     for (int i = 0; i < s.Length; i++)
                         c[i] = 'a';                                    // change data in memory allocated for original "Hello"
             }
-            Console.WriteLine("Hello");                  // .NET looks on address in memory where it expect
+            Console.WriteLine(@"Hello");                  // .NET looks on address in memory where it expect
                                                          // data for string "Hello" but it was just changed
                                                          // Displays: "aaaaa"
         }
@@ -331,10 +333,10 @@ namespace ConApp
         }
 
         //静态变量存储在堆上，查看指针时需用fixed固定
-        public static int m_sZ = 100;
+        public static int M_SZ = 100;
 
         //普通数据成员，也是放在堆上了，查看指针时需用fixed固定
-        public int m_nData = 100;
+        public int MNData = 100;
 
         //等价于C/C++的 #define 语句，不分配内存
         public const int PI = 31415;
@@ -343,16 +345,15 @@ namespace ConApp
         public static unsafe void Demo5()
         {
             //简单的结构变量放在栈上，无需fixed
-            XYZ stData = new XYZ();
-            stData.a = 100;
-            Console.WriteLine("结构变量= 0x{0:x}", (int)&stData);
+            Xyz stData = new Xyz {A = 100};
+            Console.WriteLine(@"结构变量= 0x{0:x}", (int)&stData);
 
             //数组变量的声明放在了栈上，数据放在了堆上，需用fixed固定
             int[] arry = null;
             arry = new int[10];
             fixed (int* p = arry)
             {
-                Console.WriteLine("array = 0x{0:x}", (int)p);
+                Console.WriteLine(@"array = 0x{0:x}", (int)p);
             }
 
             //这些放在栈上的变量，可以直接使用指针指向
@@ -360,8 +361,8 @@ namespace ConApp
             int y = 10;
             int z = 100;
             double f = 0.90;
-            Console.WriteLine("本地变量y = 0x{0:X}, z = 0x{1:X}", (int)&y, (int)&z);
-            Console.WriteLine("本地变量f = 0x{0:X}", (int)&f);
+            Console.WriteLine(@"本地变量y = 0x{0:X}, z = 0x{1:X}", (int)&y, (int)&z);
+            Console.WriteLine(@"本地变量f = 0x{0:X}", (int)&f);
 
             //下面失败
             //fixed (int* p = &P.PI)
@@ -372,34 +373,34 @@ namespace ConApp
             string ss = "Helo";
             fixed (char* p = ss)
             {
-                Console.WriteLine("字符串地址= 0x{0:x}", (int)p);
+                Console.WriteLine(@"字符串地址= 0x{0:x}", (int)p);
             }
 
             Program s = new Program();
             //这个是类对象，放在堆里面
-            fixed (int* p = &s.m_nData)
+            fixed (int* p = &s.MNData)
             {
-                Console.WriteLine("普通类成员变量 = 0x{0:X}", (int)p);
+                Console.WriteLine(@"普通类成员变量 = 0x{0:X}", (int)p);
             }
 
             //静态成员变量在堆上
-            fixed (int* p = &m_sZ)
+            fixed (int* p = &M_SZ)
             {
-                Console.WriteLine("静态成员变量 = 0x{0:X}", (int)p);
+                Console.WriteLine(@"静态成员变量 = 0x{0:X}", (int)p);
             }
 
             //下面是每种类型的占用字节个数
-            Console.Write("\n\n下面是每种类型的占用字节个数\n");
-            Console.WriteLine("sizeof(void *) = {0}", sizeof(void*));
-            Console.WriteLine("sizeof(int) = {0}, * = {1}", sizeof(int), sizeof(int*));//4
-            Console.WriteLine("sizeof(long) = {0}, * = {1}", sizeof(long), sizeof(long*));//8
-            Console.WriteLine("sizeof(byte) = {0}, * = {1}", sizeof(byte), sizeof(byte*));//1
-            Console.WriteLine("sizeof(bool) = {0}, * = {1}", sizeof(bool), sizeof(bool*));//1
-            Console.WriteLine("sizeof(float) = {0}, * = {1}", sizeof(float), sizeof(float*));//4
-            Console.WriteLine("sizeof(double) = {0}, * = {1}", sizeof(double), sizeof(double*));//8
-            Console.WriteLine("sizeof(decimal) = {0}, * = {1}", sizeof(decimal), sizeof(decimal*));//16
-            Console.WriteLine("sizeof(char) = {0}, * = {1}", sizeof(char), sizeof(char*));//
-            Console.WriteLine("sizeof(XYZ) = {0}, * = {1}", sizeof(XYZ), sizeof(XYZ*));//
+            Console.WriteLine(@"下面是每种类型的占用字节个数");
+            Console.WriteLine(@"sizeof(void *) = {0}", sizeof(void*));
+            Console.WriteLine(@"sizeof(int) = {0}, * = {1}", sizeof(int), sizeof(int*));//4
+            Console.WriteLine(@"sizeof(long) = {0}, * = {1}", sizeof(long), sizeof(long*));//8
+            Console.WriteLine(@"sizeof(byte) = {0}, * = {1}", sizeof(byte), sizeof(byte*));//1
+            Console.WriteLine(@"sizeof(bool) = {0}, * = {1}", sizeof(bool), sizeof(bool*));//1
+            Console.WriteLine(@"sizeof(float) = {0}, * = {1}", sizeof(float), sizeof(float*));//4
+            Console.WriteLine(@"sizeof(double) = {0}, * = {1}", sizeof(double), sizeof(double*));//8
+            Console.WriteLine(@"sizeof(decimal) = {0}, * = {1}", sizeof(decimal), sizeof(decimal*));//16
+            Console.WriteLine(@"sizeof(char) = {0}, * = {1}", sizeof(char), sizeof(char*));//
+            Console.WriteLine(@"sizeof(XYZ) = {0}, * = {1}", sizeof(Xyz), sizeof(Xyz*));//
             //Console.WriteLine("sizeof(object) = {0}, * = {1}", sizeof(object), sizeof(object*));//16
             //Console.WriteLine("sizeof(C) = {0}, * = {1}", sizeof(C), sizeof(C*));//16
         }

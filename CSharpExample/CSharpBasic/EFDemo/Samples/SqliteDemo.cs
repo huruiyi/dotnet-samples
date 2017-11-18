@@ -1,13 +1,13 @@
 ﻿using System.Data;
 using System.Data.SQLite;
 
-namespace ConApp
+namespace EFDemo.Samples
 {
-    public partial class Program
+    public class SqliteDemo
     {
-        public const string SqliteFilePath = "sqlitedb.db";
+        private const string SqliteFilePath = "sqlitedb.db";
 
-        public static void SQLiteCreate()
+        public static void SqLiteCreate()
         {
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + SqliteFilePath))
             {
@@ -27,7 +27,7 @@ namespace ConApp
             }
         }
 
-        public static void SQLiteSelect()
+        public static void SqLiteSelect()
         {
             DataSet ds = new DataSet();
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + SqliteFilePath))
@@ -48,7 +48,7 @@ namespace ConApp
             }
         }
 
-        public static void SQLiteInsert()
+        public static void SqLiteInsert()
         {
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + SqliteFilePath))
             {
@@ -81,8 +81,7 @@ namespace ConApp
 
         public static SQLiteParameter CreateSqliteParameter(string name, DbType type, int size, object value)
         {
-            SQLiteParameter parm = new SQLiteParameter(name, type, size);
-            parm.Value = value;
+            SQLiteParameter parm = new SQLiteParameter(name, type, size) { Value = value };
             return parm;
         }
     }

@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
+using System.Threading;
 using System.Web;
 using System.Web.Script.Serialization;
+using WebApp.Models;
 
 namespace WebApp.Handler
 {
@@ -39,7 +42,31 @@ namespace WebApp.Handler
                 case "Vcode1":
                     Vcode1(context);
                     break;
+
+                case "GetOrderInfo":
+                    GetOrderInfo(context);
+                    break;
             }
+        }
+
+        private void GetOrderInfo(HttpContext context)
+        {
+            List<OrderInfo> orderList = new List<OrderInfo>();
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(500);
+                orderList.Add(new OrderInfo
+                {
+                    OrderId = $"010{i.ToString().PadLeft(4, '0')}",
+                    SerialNumber = $"sy010{i.ToString().PadLeft(4, '0')}",
+                    ShortNumber = $"{i.ToString().PadLeft(4, '0')}",
+                    BookingDate = DateTime.Now.AddDays(-i).ToString("yyyy-MM-dd HH:mm:ss"),
+                    ProductId = i.ToString().PadLeft(4, '0'),
+                    SalePrice = 1000 + i
+                });
+            }
+            string ordersJson = JsonConvert.SerializeObject(orderList);
+            context.Response.Write(ordersJson);
         }
 
         private void Vcode1(HttpContext context)

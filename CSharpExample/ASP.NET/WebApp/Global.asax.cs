@@ -32,6 +32,9 @@ namespace WebApp
             {
                 Context.RewritePath(originalPath.Replace("/page2", "/RewritePath.aspx"), "pathinfo", "page=page2");
             }
+
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST");
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
