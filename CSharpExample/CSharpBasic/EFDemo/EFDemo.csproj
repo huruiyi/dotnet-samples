@@ -116,6 +116,7 @@
       <DependentUpon>ExampleDbModel.edmx</DependentUpon>
       <LastGenOutput>ExampleDbModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="ExampleDbModel.edmx.sql" />
     <Content Include="ExampleDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ExampleDbModel.edmx</DependentUpon>
