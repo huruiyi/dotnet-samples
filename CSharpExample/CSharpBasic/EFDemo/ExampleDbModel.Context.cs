@@ -13,10 +13,10 @@ namespace EFDemo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TXGLEntities : DbContext
+    public partial class ExampleDbEntities : DbContext
     {
-        public TXGLEntities()
-            : base("name=TXGLEntities")
+        public ExampleDbEntities()
+            : base("name=ExampleDbEntities")
         {
         }
     
@@ -27,5 +27,7 @@ namespace EFDemo
     
         public virtual DbSet<Lxrenb> Lxrenb { get; set; }
         public virtual DbSet<Lxrenlbb> Lxrenlbb { get; set; }
+        public virtual DbSet<MovieInfo> MovieInfo { get; set; }
+        public virtual DbSet<MovieType> MovieType { get; set; }
     }
 }

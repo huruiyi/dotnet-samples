@@ -7,12 +7,12 @@ namespace MVC.Sample.Models
 {
     public class SimpleUser : IUser
     {
-        public List<UserInfo> GetUsers()
+        public List<Student> GetUsers()
         {
-            var list = new List<UserInfo>();
+            var list = new List<Student>();
             for (int i = 0; i < 10; i++)
             {
-                list.Add(new UserInfo() { ID = i, UserName = "Uer" + i, Age = i });
+                list.Add(new Student() { ID = i, Name = "Uer" + i, Age = i });
             }
 
             return list;

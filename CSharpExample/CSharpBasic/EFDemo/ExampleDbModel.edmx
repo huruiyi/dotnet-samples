@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ExampleDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Lxrenb">
+          <Key>
+            <PropertyRef Name="lxrenbh" />
+          </Key>
+          <Property Name="lxrenbh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="xm" Type="varchar" MaxLength="50" />
+          <Property Name="lbdm" Type="tinyint" />
+          <Property Name="sjhm" Type="varchar" MaxLength="50" />
+          <Property Name="qq" Type="varchar" MaxLength="50" />
+          <Property Name="xmsx" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lxrenlbb">
+          <Key>
+            <PropertyRef Name="lbdm" />
+          </Key>
+          <Property Name="lbdm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lbmc" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MovieInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="MovieTypeId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovieType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderNum" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MovieInfo_MovieType">
+          <End Role="MovieType" Type="Self.MovieType" Multiplicity="1" />
+          <End Role="MovieInfo" Type="Self.MovieInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MovieType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieInfo">
+              <PropertyRef Name="MovieTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExampleDbModelStoreContainer">
+          <EntitySet Name="Lxrenb" EntityType="Self.Lxrenb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lxrenlbb" EntityType="Self.Lxrenlbb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovieInfo" EntityType="Self.MovieInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovieType" EntityType="Self.MovieType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MovieInfo_MovieType" Association="Self.FK_MovieInfo_MovieType">
+            <End Role="MovieType" EntitySet="MovieType" />
+            <End Role="MovieInfo" EntitySet="MovieInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExampleDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lxrenb">
+          <Key>
+            <PropertyRef Name="lxrenbh" />
+          </Key>
+          <Property Name="lxrenbh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="xm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lbdm" Type="Byte" />
+          <Property Name="sjhm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="xmsx" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Lxrenlbb">
+          <Key>
+            <PropertyRef Name="lbdm" />
+          </Key>
+          <Property Name="lbdm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lbmc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MovieInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="MovieTypeId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="MovieType" Relationship="Self.FK_MovieInfo_MovieType" FromRole="MovieInfo" ToRole="MovieType" />
+        </EntityType>
+        <EntityType Name="MovieType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MovieInfo" Relationship="Self.FK_MovieInfo_MovieType" FromRole="MovieType" ToRole="MovieInfo" />
+        </EntityType>
+        <Association Name="FK_MovieInfo_MovieType">
+          <End Role="MovieType" Type="Self.MovieType" Multiplicity="1" />
+          <End Role="MovieInfo" Type="Self.MovieInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MovieType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieInfo">
+              <PropertyRef Name="MovieTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExampleDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lxrenb" EntityType="Self.Lxrenb" />
+          <EntitySet Name="Lxrenlbb" EntityType="Self.Lxrenlbb" />
+          <EntitySet Name="MovieInfo" EntityType="Self.MovieInfo" />
+          <EntitySet Name="MovieType" EntityType="Self.MovieType" />
+          <AssociationSet Name="FK_MovieInfo_MovieType" Association="Self.FK_MovieInfo_MovieType">
+            <End Role="MovieType" EntitySet="MovieType" />
+            <End Role="MovieInfo" EntitySet="MovieInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExampleDbModelStoreContainer" CdmEntityContainer="ExampleDbEntities">
+          <EntitySetMapping Name="Lxrenb">
+            <EntityTypeMapping TypeName="ExampleDbModel.Lxrenb">
+              <MappingFragment StoreEntitySet="Lxrenb">
+                <ScalarProperty Name="lxrenbh" ColumnName="lxrenbh" />
+                <ScalarProperty Name="xm" ColumnName="xm" />
+                <ScalarProperty Name="lbdm" ColumnName="lbdm" />
+                <ScalarProperty Name="sjhm" ColumnName="sjhm" />
+                <ScalarProperty Name="qq" ColumnName="qq" />
+                <ScalarProperty Name="xmsx" ColumnName="xmsx" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lxrenlbb">
+            <EntityTypeMapping TypeName="ExampleDbModel.Lxrenlbb">
+              <MappingFragment StoreEntitySet="Lxrenlbb">
+                <ScalarProperty Name="lbdm" ColumnName="lbdm" />
+                <ScalarProperty Name="lbmc" ColumnName="lbmc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieInfo">
+            <EntityTypeMapping TypeName="ExampleDbModel.MovieInfo">
+              <MappingFragment StoreEntitySet="MovieInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MovieTypeId" ColumnName="MovieTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieType">
+            <EntityTypeMapping TypeName="ExampleDbModel.MovieType">
+              <MappingFragment StoreEntitySet="MovieType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -12,13 +12,15 @@ namespace MVC.Sample.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserInfo
+    public partial class Permission
     {
         public long Id { get; set; }
-        public string UserName { get; set; }
-        public string JobNumber { get; set; }
-        public string UserEmial { get; set; }
+        public string Text { get; set; }
+        public long PermissionTypeId { get; set; }
+        public int OrderNumer { get; set; }
         public byte IfDel { get; set; }
         public byte IfValid { get; set; }
+    
+        public virtual PermissionType PermissionType { get; set; }
     }
 }

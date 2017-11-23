@@ -7,6 +7,6 @@ namespace MVC.Sample.Models
 {
     public interface IUser
     {
-        List<UserInfo> GetUsers();
+        List<Student> GetUsers();
     }
 }

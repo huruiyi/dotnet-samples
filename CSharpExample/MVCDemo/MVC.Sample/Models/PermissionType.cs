@@ -12,13 +12,21 @@ namespace MVC.Sample.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserInfo
+    public partial class PermissionType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PermissionType()
+        {
+            this.Permission = new HashSet<Permission>();
+        }
+    
         public long Id { get; set; }
-        public string UserName { get; set; }
-        public string JobNumber { get; set; }
-        public string UserEmial { get; set; }
+        public string Name { get; set; }
+        public string Remark { get; set; }
         public byte IfDel { get; set; }
         public byte IfValid { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Permission> Permission { get; set; }
     }
 }

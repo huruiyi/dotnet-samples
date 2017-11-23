@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MVC.Sample.Models
+namespace EFDemo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class UserInfo
+    public partial class MovieInfo
     {
         public long Id { get; set; }
-        public string UserName { get; set; }
-        public string JobNumber { get; set; }
-        public string UserEmial { get; set; }
-        public byte IfDel { get; set; }
-        public byte IfValid { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public long MovieTypeId { get; set; }
+    
+        public virtual MovieType MovieType { get; set; }
     }
 }

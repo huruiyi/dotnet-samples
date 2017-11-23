@@ -64,58 +64,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExampleDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleDbModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Lxrenb.cs">
-      <DependentUpon>TXGLModel.tt</DependentUpon>
+      <DependentUpon>ExampleDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Lxrenlbb.cs">
-      <DependentUpon>TXGLModel.tt</DependentUpon>
+      <DependentUpon>ExampleDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MovieInfo.cs" />
+    <Compile Include="MovieInfo.cs">
+      <DependentUpon>ExampleDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovieType.cs">
+      <DependentUpon>ExampleDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Samples\SqliteDemo.cs" />
-    <Compile Include="TXGLModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TXGLModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TXGLModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TXGLModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TXGLModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TXGLModel.edmx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="TXGLModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TXGLModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="TXGLModel.edmx.diagram">
-      <DependentUpon>TXGLModel.edmx</DependentUpon>
+    <EntityDeploy Include="ExampleDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExampleDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ExampleDbModel.edmx.diagram">
+      <DependentUpon>ExampleDbModel.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TXGLModel.Context.tt">
+    <Content Include="ExampleDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TXGLModel.Context.cs</LastGenOutput>
-      <DependentUpon>TXGLModel.edmx</DependentUpon>
+      <DependentUpon>ExampleDbModel.edmx</DependentUpon>
+      <LastGenOutput>ExampleDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="TXGLModel.edmx.sql" />
-    <Content Include="TXGLModel.tt">
+    <Content Include="ExampleDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TXGLModel.edmx</DependentUpon>
-      <LastGenOutput>TXGLModel.cs</LastGenOutput>
+      <DependentUpon>ExampleDbModel.edmx</DependentUpon>
+      <LastGenOutput>ExampleDbModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
