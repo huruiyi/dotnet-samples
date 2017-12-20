@@ -97,6 +97,7 @@
     <Compile Include="Key事件.Designer.cs">
       <DependentUpon>Key事件.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Department.cs" />
     <Compile Include="SymmetricAlgorithmsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +121,18 @@
     </Compile>
     <Compile Include="SyncAsyncAPMForm\Sync实例.Designer.cs">
       <DependentUpon>Sync实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeViewDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeViewDemo.Designer.cs">
+      <DependentUpon>TreeViewDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="无边框移动.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="无边框移动.Designer.cs">
+      <DependentUpon>无边框移动.cs</DependentUpon>
     </Compile>
     <Compile Include="无边框移动3.cs">
       <SubType>Form</SubType>
@@ -217,6 +230,12 @@
     <Compile Include="自定义窗体.Designer.cs">
       <DependentUpon>自定义窗体.cs</DependentUpon>
     </Compile>
+    <Compile Include="自定义窗体外观.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="自定义窗体外观.Designer.cs">
+      <DependentUpon>自定义窗体外观.cs</DependentUpon>
+    </Compile>
     <Compile Include="调用摄像头实例.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +277,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SyncAsyncAPMForm\Sync实例.resx">
       <DependentUpon>Sync实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeViewDemo.resx">
+      <DependentUpon>TreeViewDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="无边框移动.resx">
+      <DependentUpon>无边框移动.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="无边框移动3.resx">
       <DependentUpon>无边框移动3.cs</DependentUpon>
@@ -314,6 +339,9 @@
     <EmbeddedResource Include="自定义窗体.resx">
       <DependentUpon>自定义窗体.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="自定义窗体外观.resx">
+      <DependentUpon>自定义窗体外观.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="调用摄像头实例.resx">
       <DependentUpon>调用摄像头实例.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,6 +365,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ico\close.ico" />
+    <Content Include="Ico\max.ico" />
+    <Content Include="Ico\min.ico" />
     <Content Include="lib\AForge.Controls.dll" />
     <Content Include="lib\AForge.dll" />
     <Content Include="lib\AForge.Imaging.dll" />
