@@ -4,6 +4,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style type="text/css">
+        div.divNav {
+            width: 100%;
+            background: yellow;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+            div.divNav a {
+                background: red;
+                color: #fff;
+                text-decoration: none;
+                display: inline-block;
+                width: 100px;
+                height: 30px;
+                line-height: 30px;
+            }
+
         .s1 {
             background-color: pink;
         }
@@ -12,11 +30,15 @@
             background-color: green;
         }
 
+        div.divBlock {
+            background-color: antiquewhite
+        }
+
         .p1 {
             background-color: green;
         }
 
-        .p2 { /* display:inline-block;*/
+        .p2 { /* */
             display: inline;
             background-color: pink;
         }
@@ -36,13 +58,19 @@
     </style>
 </head>
 <body>
+    <div class="divNav">
+        <a href="">我是a1</a>
+        <a href="">我是a2</a>
+        <a href="">我是a3</a>
+        <a href="">我是a4</a>
+    </div>
     <div>
         <span class="s1">span</span><br />
         <span class="s1">span</span><br />
         <span class="s1">span</span><br />
-        <div class="div1">div</div>
-        <div class="div1">div</div>
-        <div class="div1">div</div>
+        <div class="divBlock">div</div>
+        <div class="divBlock">div</div>
+        <div class="divBlock">div</div>
         <p class="p1">p111111111111111</p>
         <p class="p2">p222222222222222</p>
         <p class="p3">p333333333333333</p>
