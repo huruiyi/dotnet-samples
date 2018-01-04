@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutofacDemo", "AutofacDemo", "{38506985-E9E6-457C-ADF2-1078A02DDDA1}"
 EndProject
@@ -143,8 +143,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConApp", "CSharpExample\CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFAppAdo.Net", "CSharpExample\ADO.NET\WFAppAdo.Net\WFAppAdo.Net.csproj", "{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo", "CSharpExample\MVCDemo\WebApiDemo\WebApiDemo.csproj", "{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", "{871C9685-ED4F-41FA-956A-81D1A2150847}"
 	ProjectSection(SolutionItems) = preProject
 		CSharpExample\PowerShell\For.ps1 = CSharpExample\PowerShell\For.ps1
@@ -204,7 +202,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01CSRabbitMQ.Publish", "CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventDemo", "CSharpExample\CSharpBasic\EventDemo\EventDemo.csproj", "{91EDFC82-78AE-4F00-BEE7-4CA5E7A9B67A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Sample", "CSharpExample\MVCDemo\NetCore.Sample\NetCore.Sample.csproj", "{EA646AEB-35BF-4D20-A897-88A318C27373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Sample", "CSharpExample\MVCDemo\NetCore.Sample\NetCore.Sample.csproj", "{EA646AEB-35BF-4D20-A897-88A318C27373}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1039,22 +1037,6 @@ Global
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}.Release|x64.Build.0 = Release|Any CPU
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}.Release|x86.ActiveCfg = Release|Any CPU
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}.Release|x86.Build.0 = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|x64.Build.0 = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Debug|x86.Build.0 = Debug|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|x64.ActiveCfg = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|x64.Build.0 = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|x86.ActiveCfg = Release|Any CPU
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19}.Release|x86.Build.0 = Release|Any CPU
 		{14556FAE-A481-4850-B70D-B02E5D14470B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14556FAE-A481-4850-B70D-B02E5D14470B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14556FAE-A481-4850-B70D-B02E5D14470B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -1526,7 +1508,6 @@ Global
 		{5B25DDCB-0DDC-46A2-B439-C38F75F86B54} = {EFD30AC6-D59D-4621-BF39-743ECD652C06}
 		{999D9AFB-E920-4519-8519-EBF2A07888F5} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 		{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B} = {21CBCAA7-BDA7-43FF-98DC-0229101C4E5D}
-		{57CB1F5C-8BCF-44DD-9DD7-E79497527B19} = {4D6A042A-B4B7-4B08-9A13-307F415C1678}
 		{14556FAE-A481-4850-B70D-B02E5D14470B} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 		{5EFAB0EB-3C5F-44C9-BA32-2962E4B3703D} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 		{DE0629DA-3712-41EF-B1C6-0FBDB8B0C23D} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
@@ -1555,7 +1536,7 @@ Global
 		{EA646AEB-35BF-4D20-A897-88A318C27373} = {4D6A042A-B4B7-4B08-9A13-307F415C1678}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
 		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal

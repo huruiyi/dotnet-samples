@@ -785,6 +785,7 @@
     <Content Include="Views\Samples\UserInfo.cshtml" />
     <Content Include="Views\Samples\DropDownListSample.cshtml" />
     <Content Include="Views\AuthInfo\Index.cshtml" />
+    <Content Include="Views\Ajax\Jsonp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
