@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Demo5_Authorization";
+}
+
+<h2>Demo5_Authorization</h2>
+<script src="~/Scripts/demo5/get-formsauth.js"></script>
+<nav>
+    <div class="demo-navigation">
+        <a href="demo4-validation.htm">&lt;&lt;&lt; Back</a>
+        | Demo 5 Authorization |
+    </div>
+</nav>
+<div id="content">
+    <div id="demo-actions">
+        <div>
+            <legend>Authorization</legend>
+            <button id="getCommentsFormsAuth">Forms Authentication</button>
+        </div>
+    </div>
+
+    <div id="article">
+        <p>
+            <strong>Forms Authentication</strong> demonstrates calling a service method that
+            requires authentication using Forms Authentication. To require authentication for the
+            Web API uncomment the <code>[Authorize]</code> attribute on the
+            <code>CommentsController</code>.
+        </p>
+    </div>
+
+    <ul data-bind="template: {name: 'commentTemplate', foreach: comments}"></ul>
+
+    <script id="commentTemplate" type="text/html">
+        <li class="comment">
+            <header>
+                <div class="info">
+                    <img data-bind="attr: {src: GravatarUrl}" />
+                    <strong><span data-bind="text: Author"></span></strong>
+                </div>
+            </header>
+            <div class="body">
+                <p data-bind="text: Text"></p>
+            </div>
+        </li>
+    </script>
+
+    <script type="text/javascript">
+        viewModel = {
+            comments: ko.observableArray([])
+        };
+
+        ko.applyBindings(viewModel);
+    </script>
+</div>
