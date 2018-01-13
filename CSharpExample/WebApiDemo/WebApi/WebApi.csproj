@@ -157,6 +157,7 @@
     <Content Include="Scripts\demo4\get.js" />
     <Content Include="Scripts\demo4\post.js" />
     <Content Include="Scripts\demo5\get-formsauth.js" />
+    <Content Include="Scripts\func.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -176,6 +177,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -202,6 +204,7 @@
     <Content Include="Views\Home\Demo4_Validation.cshtml" />
     <Content Include="Views\Home\Demo5_Authorization.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
+    <Content Include="Views\Ajax\Jsonp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
