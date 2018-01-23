@@ -107,6 +107,7 @@
     <Compile Include="EventSample\CarDealer.cs" />
     <Compile Include="EventSample\CarInfoEventArgs.cs" />
     <Compile Include="EventSample\Consumer.cs" />
+    <Compile Include="OtherDemo\_AThreadPool.cs" />
     <Compile Include="Samples\AlgorithmDemo.cs" />
     <Compile Include="Samples\DataTableDemo.cs" />
     <Compile Include="Samples\DllImportDemo.cs" />
@@ -135,7 +136,6 @@
     <Compile Include="Model\SocialTypeEnum.cs" />
     <Compile Include="Model\ClassDemo.cs" />
     <Compile Include="Model\ValidateAgeAttribute.cs" />
-    <Compile Include="OtherDemo\_9DynamicDirectoryExample.cs" />
     <Compile Include="OtherDemo\_3AsyncDelegateDemo.cs" />
     <Compile Include="OtherDemo\_4AsyncCallback.cs" />
     <Compile Include="Program.cs" />

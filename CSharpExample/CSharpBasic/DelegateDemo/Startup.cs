@@ -42,7 +42,6 @@ namespace DelegateDemo
             Assembly asm = Assembly.GetExecutingAssembly();
             Type[] types = asm.GetTypes();
 
-            List<Type> typeList = new List<Type>();
             IDictionary<int, Type> typeMap = new Dictionary<int, Type>();
             int counter = 1;
 
@@ -50,7 +49,6 @@ namespace DelegateDemo
             {
                 if (new List<Type>(t.GetInterfaces()).Contains(typeof(IDelegateDemo)))
                 {
-                    typeList.Add(t);
                     typeMap.Add(counter++, t);
                 }
             }

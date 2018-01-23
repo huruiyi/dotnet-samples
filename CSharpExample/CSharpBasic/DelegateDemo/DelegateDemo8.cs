@@ -45,7 +45,7 @@ namespace DelegateDemo
             Console.WriteLine(del2(13, 11));
 
             DelMath del3 =
-                delegate (int i1, int i2)
+                delegate(int i1, int i2)
                 {
                     return i1 / i2;
                 };
@@ -53,6 +53,11 @@ namespace DelegateDemo
             DelMath del4 = (a, b) => a + b;
             Console.WriteLine(del4(123, 456));
 
+            Func<int, int> delFunc1 = delegate (int a)
+            {
+                return ++a;
+            };
+            Func<int, int> delFunc2 = a => ++a;
 
             DelMath delLambda0 = delegate (int i, int i1) { return i + i1; };
             delLambda0(3, 2);

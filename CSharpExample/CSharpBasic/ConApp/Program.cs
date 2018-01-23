@@ -2624,7 +2624,6 @@ namespace ConApp
             for (int i = 0; i < jar.Count; i++)
             {
                 var info = jar[i];
-
             }
             //非数组使用
             JObject j = JObject.Parse(jar[0].ToString());
@@ -2640,7 +2639,6 @@ namespace ConApp
                 var itemProperties = item.Children<JProperty>();
                 //根据key取值
                 var myElement = itemProperties.FirstOrDefault(x => x.Name == "kf_account").Value;
-
             }
         }
     }
