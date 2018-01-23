@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace DelegateDemo
@@ -35,6 +32,7 @@ namespace DelegateDemo
 
             return a + b;
         }
+
         public void Invoke()
         {
             DelMath del1 = new DelMath(Add);
@@ -45,7 +43,7 @@ namespace DelegateDemo
             Console.WriteLine(del2(13, 11));
 
             DelMath del3 =
-                delegate(int i1, int i2)
+                delegate (int i1, int i2)
                 {
                     return i1 / i2;
                 };
