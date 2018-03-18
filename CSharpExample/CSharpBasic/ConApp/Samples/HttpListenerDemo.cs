@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ConApp
 {
-    internal class HttpListenerDemo
+    public partial class Program
     {
         public static void HttpListenerDemo1()
         {

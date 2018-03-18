@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConApp
 {
-    public class Md5Demo
+    public partial class Program
     {
         public static string GetMd5(string input, string charset)
         {

@@ -2,7 +2,7 @@
 
 namespace ConApp
 {
-    public class MongodDemo
+    public partial class Program
     {
         public static void Init()
         {
