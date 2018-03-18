@@ -48,7 +48,7 @@ namespace ConApp
             RedisDemo.SortedSetDemo();
             //Mutex
             //Marshal.
-
+            ArrayListDemo3();
             Console.ReadKey();
         }
 

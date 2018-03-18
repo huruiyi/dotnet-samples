@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConApp
 {
-    class RegexDemo
+    public partial class Program
     {
         public static void Demo0()
         {

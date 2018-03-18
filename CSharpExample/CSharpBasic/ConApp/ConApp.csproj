@@ -109,6 +109,7 @@
     <Compile Include="EventSample\Consumer.cs" />
     <Compile Include="OtherDemo\_AThreadPool.cs" />
     <Compile Include="Samples\AlgorithmDemo.cs" />
+    <Compile Include="Samples\ConcurrentDemo.cs" />
     <Compile Include="Samples\DataTableDemo.cs" />
     <Compile Include="Samples\DllImportDemo.cs" />
     <Compile Include="Samples\GraphicsDemo.cs" />
@@ -152,6 +153,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Samples\HttpListenerDemo.cs" />
+    <Compile Include="Samples\IODemo.cs" />
     <Compile Include="Samples\Md5Demo.cs" />
     <Compile Include="Samples\MongodDemo.cs" />
     <Compile Include="Samples\RedisDemo.cs" />
