@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConApp.Samples
+﻿namespace ConApp
 {
-  public partial  class Program
+    public partial class Program
     {
     }
 }

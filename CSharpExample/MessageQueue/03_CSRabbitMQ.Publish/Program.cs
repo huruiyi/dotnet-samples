@@ -13,20 +13,13 @@ namespace _03_CSRabbitMQ.Publish
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "hello",
-                                     durable: false,
-                                     exclusive: false,
-                                     autoDelete: false,
-                                     arguments: null);
+                channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
                 for (int i = 0; i < 1000; i++)
                 {
                     string message = string.Format("Hello World! I am Num {0}", i);
                     var body = Encoding.UTF8.GetBytes(message);
                     Thread.Sleep(1000);
-                    channel.BasicPublish(exchange: "",
-                                         routingKey: "hello",
-                                         basicProperties: null,
-                                         body: body);
+                    channel.BasicPublish(exchange: "", routingKey: "hello", basicProperties: null, body: body);
 
                     Console.WriteLine(" [x] Sent {0}", message);
                 }

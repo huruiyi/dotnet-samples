@@ -11,11 +11,25 @@ namespace WinFormDemo
             InitializeComponent();
         }
 
+        public static void GetScreen()
+        {
+            Screen s = Screen.PrimaryScreen;
+            Bitmap result = new Bitmap(s.Bounds.Width, s.Bounds.Height);
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                //g.CopyFromScreen(s.Bounds.Location, System.Drawing.Point.Empty, s.Bounds.Size);
+                g.CopyFromScreen(new System.Drawing.Point(0, 0), System.Drawing.Point.Empty, s.Bounds.Size);
+            }
+            result.Save("1.jpg");
+        }
+
+
         private void 截屏1_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             System.Threading.Thread.Sleep(200);
-            Bitmap bit = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Screen screen = Screen.PrimaryScreen;
+            Bitmap bit = new Bitmap(screen.Bounds.Width, screen.Bounds.Height);
             Graphics g = Graphics.FromImage(bit);
             g.CopyFromScreen(new Point(0, 0), new Point(0, 0), bit.Size);
             SaveFileDialog saveFileDialog = new SaveFileDialog();

@@ -1,7 +1,4 @@
-﻿using ConApp.EventSample;
-using ConApp.Model;
-using Microsoft.Web.Administration;
-using Microsoft.Win32;
+﻿using ConApp.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -16,77 +13,37 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
-using System.Net;
-using System.Net.Mail;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
+
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Security.AccessControl;
 using System.Security.Policy;
-using System.Security.Principal;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web;
-using System.Windows.Forms;
 
 namespace ConApp
 {
     public partial class Program
     {
-        public delegate void ConPort(int port);
-
-        public delegate void AsycRun();
-
         public static unsafe void Main(string[] args)
         {
-            //MongodDemo.Init();
-            RedisDemo.SortedSetDemo();
+            EventDemo1();
             //Mutex
             //Marshal.
-            ArrayListDemo3();
             Console.ReadKey();
         }
 
         public static void Other()
         {
-            Hash hash = Hash.CreateMD5(System.Text.Encoding.UTF8.GetBytes("ABCDEFG"));
+            Hash hash = Hash.CreateMD5(Encoding.UTF8.GetBytes("ABCDEFG"));
             //Hash.CreateSHA1()
             //Hash.CreateSHA1()
             //Hash.CreateSHA256()
             Byte[] bytes = hash.MD5;
-            string str = System.Text.Encoding.UTF8.GetString(bytes);
+            string str = Encoding.UTF8.GetString(bytes);
         }
 
-        public static void Yuhuofei()
-        {
-            int a10 = 1 ^ 0;
-            int a01 = 0 ^ 1;
-            int a11 = 1 ^ 1;
-            Console.WriteLine(a10);
-            Console.WriteLine(a01);
-            Console.WriteLine(a11);
-
-            int b10 = 1 & 0;
-            int b01 = 0 & 1;
-            int b11 = 1 & 1;
-            Console.WriteLine(b10);
-            Console.WriteLine(b01);
-            Console.WriteLine(b11);
-
-            int c10 = 1 | 0;
-            int c01 = 0 | 1;
-            int c11 = 1 | 1;
-            Console.WriteLine(c10);
-            Console.WriteLine(c01);
-            Console.WriteLine(c11);
-        }
-
-        #region 01-foreach原理
+        #region foreach原理
 
         public static void Cus_foreach()
         {
@@ -95,6 +52,7 @@ namespace ConApp
             {
                 Console.WriteLine(a);
             }
+
             MyCollection2 myCol2 = new MyCollection2();
             foreach (var m in myCol2)
             {
@@ -102,89 +60,9 @@ namespace ConApp
             }
         }
 
-        #endregion 01-foreach原理
+        #endregion foreach原理
 
-        #region 02-EnumDemo
-
-        /*
-         “X”或“x” 以十六进制格式表示 value（不带前导“0x”）。
-         “D”或“d” 以十进制形式表示 value。
-         “F”或“f” 对于“G”或“g”执行的行为是相同的，只是在 Enum 声明中不需要 FlagsAttribute。
-
-         “G”或“g”
-         如果 value 等于某个已命名的枚举常数，则返回该常数的名称；否则返回 value 的等效十进制数。
-         例如，假定唯一的枚举常数命名为 Red，其值为 1。如果将 value 指定为 1，则此格式返回“Red”。然而，如果将 value 指定为 2，则此格式返回“2”。
-         - 或 -
-         如果将 FlagsAttribute 自定义特性应用于枚举，则 value 将被视为位域，该位域包含一个或多个由一位或多位组成的标志。
-         如果 value i等于命名枚举常数的组合，则将返回这些常量名的分隔符分隔列表。将在 value 中搜索标志，从具有最大值的标志到具有最小值的标志进行搜索。
-         对于与 value 中的位域相对应的每个标志，常数的名称连接到用分隔符分隔的列表。则将不再考虑该标记的值，而继续搜索下一个标志。
-         如果 value 不等于已命名的枚举常数的组合，则返回 value 的等效十进制数。
-     */
-
-        public static void EnumDemo01()
-        {
-            Console.WriteLine($"SocialTypeEnum.Facebook={SocialTypeEnum.Facebook}");
-            Console.WriteLine($"(int)SocialTypeEnum.Facebook={(int)SocialTypeEnum.Facebook}");
-
-            const int b = (int)SocialTypeEnum.Facebook;
-            Console.WriteLine(b);
-            Console.WriteLine((SocialTypeEnum)b);
-
-            const SocialTypeEnum s = (SocialTypeEnum)10;
-            const int e = (int)s;
-            Console.WriteLine(s);
-            Console.WriteLine(e);
-        }
-
-        public static void EnumDemo02_Parse()
-        {
-            const string a = "Twitter";
-            try
-            {
-                SocialTypeEnum social = (SocialTypeEnum)(Enum.Parse(typeof(SocialTypeEnum), a));
-                Console.WriteLine(@"SocialTypeEnum=" + social);
-            }
-            catch
-            {
-                Console.WriteLine(@"无此枚举");
-            }
-        }
-
-        public static void EnumDemo3_Format()
-        {
-            SocialTypeEnum s = SocialTypeEnum.GooglePlus;
-            Console.WriteLine($@"
-                    d={Enum.Format(typeof(SocialTypeEnum), s, "d")}
-                    x={Enum.Format(typeof(SocialTypeEnum), s, "x")}
-                    g={Enum.Format(typeof(SocialTypeEnum), s, "g")}
-                    f={Enum.Format(typeof(SocialTypeEnum), s, "f")}");
-            const SocialTypeEnum se = SocialTypeEnum.Facebook | SocialTypeEnum.GooglePlus | SocialTypeEnum.Twitter;
-            Console.WriteLine(se);
-
-            Console.WriteLine(Enum.GetName(typeof(SocialTypeEnum), 10));
-        }
-
-        public static void EnumDemo04_GetNames()
-        {
-            Type type = typeof(SocialTypeEnum);
-            foreach (string s in Enum.GetNames(type))
-            {
-                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(type, Enum.Parse(type, s), "d"));
-            }
-        }
-
-        public static void EnumDemo05_GetValues()
-        {
-            Type type = typeof(SocialTypeEnum);
-            foreach (int i in Enum.GetValues(type))
-            {
-                Console.WriteLine(i);
-            }
-        }
-
-        #endregion 02-EnumDemo
-
-        #region 03-EventDemo
+        #region EventDemo
 
         public static int WriteLetter(string letter)
         {
@@ -215,11 +93,11 @@ namespace ConApp
         public static void EventDemo1()
         {
             ExampleMethod(p2: "");
-            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             ExampleMethod(WriteLetter("A"), b: WriteLetter("B"), c: WriteLetter("C"));
             ExampleMethod(WriteLetter("A"), c: WriteLetter("C"), b: WriteLetter("B"));
-            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             var methods = new List<Action>();
             foreach (var word in new string[] { "hello", "world" })
@@ -229,7 +107,7 @@ namespace ConApp
 
             methods[0]();
             methods[1]();
-            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             var lines = new List<IEnumerable<string>>();
             int[] numbers = { 1, 2, 3 };
@@ -246,43 +124,21 @@ namespace ConApp
             foreach (var line in lines)
             {
                 foreach (var entry in line)
+                {
                     Console.Write(entry + " ");
+                }
                 Console.WriteLine();
             }
-            Console.WriteLine(@"\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             Model.Publisher publisher = new Model.Publisher();
 
             publisher.SampleEvent += publisher_SampleEvent;
         }
 
-        public static void EventDemo2()
-        {
-            var dealer = new CarDealer();
+        #endregion EventDemo
 
-            var c1 = new Consumer("Consumer1");
-
-            dealer.NewCarInfo += c1.NewCarIsHere;
-            dealer.NewCar("Mercedes");
-
-            Console.WriteLine("\r\n");
-
-            var c2 = new Consumer("Consumer2");
-
-            dealer.NewCarInfo += c2.NewCarIsHere;
-            dealer.NewCar("Ferrari");
-
-            Console.WriteLine("\r\n");
-
-            dealer.NewCarInfo -= c2.NewCarIsHere;
-            dealer.NewCar("Red Bull Racing");
-
-            System.Console.ReadKey();
-        }
-
-        #endregion 03-EventDemo
-
-        #region 04-PerformanceCounter
+        #region PerformanceCounter
 
         public static void PerformanceCounterDemo()
         {
@@ -297,7 +153,10 @@ namespace ConApp
 
             int i = 0;
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+
+            //格式化输出
+            //Console.WriteLine("{0,-7}{1,-24}{2,-6}", "Method", "X-HTTP-Method-Override", "Action");
 
             foreach (PerformanceCounter counter in counters)
             {
@@ -306,58 +165,9 @@ namespace ConApp
             }
         }
 
-        #endregion 04-PerformanceCounter
+        #endregion PerformanceCounter
 
-        #region 05-GetHostEntryDemo
-
-        public static void GetHostEntryDemo()
-        {
-            string[] args = { };
-            if (args.Length == 0 || args[0].Length == 0)
-            {
-                Console.WriteLine(@"You must specify the name of a host computer.");
-                return;
-            }
-            IAsyncResult result = Dns.BeginGetHostEntry(args[0], null, null);
-            Console.WriteLine(@"Processing request for information...");
-
-            while (result.IsCompleted != true)
-            {
-                Extension.UpdateUserInterface();
-            }
-
-            Console.WriteLine();
-            try
-            {
-                IPHostEntry host = Dns.EndGetHostEntry(result);
-                string[] aliases = host.Aliases;
-                IPAddress[] addresses = host.AddressList;
-                if (aliases.Length > 0)
-                {
-                    Console.WriteLine(@"Aliases");
-                    foreach (string t in aliases)
-                    {
-                        Console.WriteLine(t);
-                    }
-                }
-                if (addresses.Length > 0)
-                {
-                    Console.WriteLine(@"Addresses");
-                    foreach (IPAddress t in addresses)
-                    {
-                        Console.WriteLine(t);
-                    }
-                }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine(@"An exception occurred while processing the request: {0}", e.Message);
-            }
-        }
-
-        #endregion 05-GetHostEntryDemo
-
-        #region 06-ProcessDemo
+        #region ProcessDemo
 
         public static void ProcessDemo()
         {
@@ -383,105 +193,9 @@ namespace ConApp
             }
         }
 
-        #endregion 06-ProcessDemo
+        #endregion ProcessDemo
 
-        #region 07-AsyncWaitHandle
-
-        public static void AsyncWaitHandleDemo()
-        {
-            string[] args = { };
-            if (args.Length == 0 || args[0].Length == 0)
-            {
-                Console.WriteLine("You must specify the name of a host computer.");
-                return;
-            }
-            IAsyncResult result = Dns.BeginGetHostEntry(args[0], null, null);
-            Console.WriteLine("Processing request for information...");
-            result.AsyncWaitHandle.WaitOne();
-            try
-            {
-                IPHostEntry host = Dns.EndGetHostEntry(result);
-                string[] aliases = host.Aliases;
-                IPAddress[] addresses = host.AddressList;
-                if (aliases.Length > 0)
-                {
-                    Console.WriteLine("Aliases");
-                    foreach (string t in aliases)
-                    {
-                        Console.WriteLine("{0}", t);
-                    }
-                }
-                if (addresses.Length > 0)
-                {
-                    Console.WriteLine("Addresses");
-                    foreach (IPAddress t in addresses)
-                    {
-                        Console.WriteLine("{0}", t.ToString());
-                    }
-                }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("Exception occurred while processing the request: {0}", e.Message);
-            }
-        }
-
-        #endregion 07-AsyncWaitHandle
-
-        #region 08-AsyncOperationDemo
-
-        public static void AsyncOperationDemo()
-        {
-            string[] args = { };
-
-            if (args.Length == 0 || args[0].Length == 0)
-            {
-                Console.WriteLine(@"You must specify the name of a host computer.");
-                return;
-            }
-            IAsyncResult result = Dns.BeginGetHostEntry(args[0], null, null);
-            Console.WriteLine(@"Processing your request for information...");
-            try
-            {
-                IPHostEntry host = Dns.EndGetHostEntry(result);
-                string[] aliases = host.Aliases;
-                IPAddress[] addresses = host.AddressList;
-                if (aliases.Length > 0)
-                {
-                    Console.WriteLine(@"Aliases");
-                    foreach (string t in aliases)
-                    {
-                        Console.WriteLine(@"{0}", t);
-                    }
-                }
-                if (addresses.Length > 0)
-                {
-                    Console.WriteLine(@"Addresses");
-                    foreach (IPAddress t in addresses)
-                    {
-                        Console.WriteLine(@"{0}", t);
-                    }
-                }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine(@"An exception occurred while processing the request: {0}", e.Message);
-            }
-        }
-
-        #endregion 08-AsyncOperationDemo
-
-        #region 09-AsyncResultDemo
-
-        public static void AsyncResultDemo()
-        {
-            Func<bool> asncRun = Extension.AutoUpdate;
-            asncRun.BeginInvoke(Extension.AutoUpdateSupplierMcScoreAsyncCallback, asncRun);
-        }
-
-        #endregion 09-AsyncResultDemo
-
-        #region 10-自定义扩展方法
+        #region 自定义扩展方法
 
         public static void CusMethod()
         {
@@ -520,9 +234,9 @@ namespace ConApp
             #endregion 扩展方法
         }
 
-        #endregion 10-自定义扩展方法
+        #endregion 自定义扩展方法
 
-        #region 11-ExcuteXCopyCmd
+        #region ExcuteXCopyCmd
 
         public static void ExcuteXCopyCmdDemo()
         {
@@ -551,9 +265,9 @@ namespace ConApp
             compiler.WaitForExit();
         }
 
-        #endregion 11-ExcuteXCopyCmd
+        #endregion ExcuteXCopyCmd
 
-        #region 12-属性相关
+        #region 属性相关
 
         public static void PropertyInfoDemo()
         {
@@ -603,35 +317,9 @@ namespace ConApp
             }
         }
 
-        #endregion 12-属性相关
+        #endregion 属性相关
 
-        #region 13-EnumDemo
-
-        public static void EnumDemo()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                var enumName = Enum.GetName(typeof(SocialTypeEnum), i);
-                Console.WriteLine("{0}:{1}", i, enumName);
-            }
-            SocialTypeEnum result;
-            bool result1 = Enum.TryParse("1", out result);
-            bool result2 = Enum.TryParse<SocialTypeEnum>("2", out result);
-            //string result3 = Enum.Format(typeof(SocialTypeEnum), "3", "X");
-
-            string result4 = Enum.GetName(typeof(SocialTypeEnum), 2);
-            string[] result5 = Enum.GetNames(typeof(SocialTypeEnum));
-            Type result6 = Enum.GetUnderlyingType(typeof(SocialTypeEnum));
-            Array array = Enum.GetValues(typeof(SocialTypeEnum));
-            Console.WriteLine("数字{0}对应的枚举Name值:{1}", 3, Enum.GetName(typeof(SocialTypeEnum), 3));
-
-            Type ste = typeof(SocialTypeEnum);
-            object[] result7 = ste.GetField(SocialTypeEnum.Facebook.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
-        }
-
-        #endregion 13-EnumDemo
-
-        #region 14-HashtableDemo
+        #region HashtableDemo
 
         public static void HashtableDemo()
         {
@@ -701,54 +389,9 @@ namespace ConApp
             list.Add(hashtableItem2);
         }
 
-        #endregion 14-HashtableDemo
+        #endregion HashtableDemo
 
-        #region 15-基本数据类型
-
-        public static void BasicType()
-        {
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("short.MinValue:" + short.MinValue);
-            Console.WriteLine("short.MaxValue:" + short.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("int.MinValue:" + int.MinValue);
-            Console.WriteLine("int.MaxValue:" + int.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Int16.MinValue:" + Int16.MinValue);
-            Console.WriteLine("Int16.MaxValue:" + Int16.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Int32.MinValue:" + Int32.MinValue);
-            Console.WriteLine("Int32.MaxValue:" + Int32.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Int64.MinValue:" + Int64.MinValue);
-            Console.WriteLine("Int64.MaxValue:" + Int64.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("UInt16.MinValue:" + UInt16.MinValue);
-            Console.WriteLine("UInt16.MaxValue:" + UInt16.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("UInt32.MinValue:" + UInt32.MinValue);
-            Console.WriteLine("UInt32.MaxValue:" + UInt32.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("UInt64.MinValue:" + UInt64.MinValue);
-            Console.WriteLine("UInt64.MaxValue:" + UInt64.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("byte.MinValue:" + byte.MinValue);
-            Console.WriteLine("byte.MaxValue:" + byte.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Byte.MinValue:" + Byte.MinValue);
-            Console.WriteLine("Byte.MaxValue:" + Byte.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("sbyte.MinValue:" + sbyte.MinValue);
-            Console.WriteLine("sbyte.MaxValue:" + sbyte.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("SByte.MinValue:" + SByte.MinValue);
-            Console.WriteLine("SByte.MaxValue" + SByte.MaxValue);
-            Console.WriteLine("**************************************************");
-        }
-
-        #endregion 15-基本数据类型
-
-        #region 16-YieldDemo
+        #region YieldDemo
 
         /*
         foreach (int i in YieldPower(2, 8))
@@ -768,9 +411,9 @@ namespace ConApp
             }
         }
 
-        #endregion 16-YieldDemo
+        #endregion YieldDemo
 
-        #region 17-GetEnumeratorDemo
+        #region GetEnumeratorDemo
 
         public static void GetEnumeratorDemo()
         {
@@ -782,63 +425,9 @@ namespace ConApp
             }
         }
 
-        #endregion 17-GetEnumeratorDemo
+        #endregion GetEnumeratorDemo
 
-        #region 18-DateTimeDemo
-
-        public static void DateTimeDemo()
-        {
-            DateTime startTime = DateTime.Now;
-            DateTime endTime = DateTime.Now.AddDays(12);
-            TimeSpan timeSpan = endTime.Subtract(startTime);
-            Console.WriteLine(timeSpan.Days);
-        }
-
-        #endregion 18-DateTimeDemo
-
-        #region 19-查看端口是否被占用
-
-        public static bool PortInUse(int port)
-        {
-            bool inUse = false;
-
-            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-            IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
-
-            foreach (IPEndPoint endPoint in ipEndPoints)
-            {
-                if (endPoint.Port == port)
-                {
-                    inUse = true;
-                    break;
-                }
-            }
-            return inUse;
-        }
-
-        public static void PortCon(object port)
-        {
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
-            IPEndPoint point = new IPEndPoint(ip, (int)port);
-            try
-            {
-                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sock.Connect(point);
-                Console.WriteLine("{0}成功!", point);
-            }
-            catch (SocketException e)
-            {
-                if (e.ErrorCode != 10061)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                Console.WriteLine("{0}失败", port);
-            }
-        }
-
-        #endregion 19-查看端口是否被占用
-
-        #region 20-WeakReferenceDemo
+        #region WeakReferenceDemo
 
         public static void WeakRefenceDemo()
         {
@@ -868,9 +457,9 @@ namespace ConApp
             }
         }
 
-        #endregion 20-WeakReferenceDemo
+        #endregion WeakReferenceDemo
 
-        #region 21-Environment信息获取
+        #region Environment信息获取
 
         public static void EnvironmentDemo()
         {
@@ -898,363 +487,9 @@ namespace ConApp
             string computerName = Environment.GetEnvironmentVariable("ComputerName");
         }
 
-        #endregion 21-Environment信息获取
+        #endregion Environment信息获取
 
-        #region 22-TaskDemo
-
-        public static void TaskCancellationTokenDemo1()
-        {
-            CancellationTokenSource source = new CancellationTokenSource();
-            CancellationToken token = source.Token;
-            token.Register(delegate { Console.WriteLine("cancel........."); });
-            Random rnd = new Random();
-            Object lockObj = new Object();
-
-            List<Task<int[]>> tasks = new List<Task<int[]>>();
-            TaskFactory factory = new TaskFactory(token);
-            for (int taskCtr = 0; taskCtr <= 10; taskCtr++)
-            {
-                int iteration = taskCtr + 1;
-                tasks.Add(factory.StartNew(() =>
-                {
-                    int value;
-                    int[] values = new int[10];
-                    for (int ctr = 1; ctr <= 10; ctr++)
-                    {
-                        lock (lockObj)
-                        {
-                            value = rnd.Next(0, 101);
-                        }
-                        if (value == 0)
-                        {
-                            source.Cancel();
-                            Console.WriteLine("Cancelling at task {0}", iteration);
-                            break;
-                        }
-                        values[ctr - 1] = value;
-                    }
-                    return values;
-                }, token));
-            }
-            try
-            {
-                Task<double> fTask = factory.ContinueWhenAll(tasks.ToArray(),
-                                                             (results) =>
-                                                             {
-                                                                 Console.WriteLine("Calculating overall mean...");
-                                                                 long sum = 0;
-                                                                 int n = 0;
-                                                                 foreach (var t in results)
-                                                                 {
-                                                                     foreach (var r in t.Result)
-                                                                     {
-                                                                         sum += r;
-                                                                         n++;
-                                                                     }
-                                                                 }
-                                                                 return sum / (double)n;
-                                                             }, token);
-                Console.WriteLine("The mean is {0}.", fTask.Result);
-            }
-            catch (AggregateException ae)
-            {
-                foreach (Exception e in ae.InnerExceptions)
-                {
-                    if (e is TaskCanceledException)
-                    {
-                        Console.WriteLine("Unable to compute mean: {0}", ((TaskCanceledException)e).Message);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Exception: " + e.GetType().Name);
-                    }
-                }
-            }
-            finally
-            {
-                source.Dispose();
-            }
-        }
-
-        public static void TaskCancellationTokenDemo2()
-        {
-            CancellationTokenSource source = new CancellationTokenSource();
-            CancellationToken token = source.Token;
-
-            Random rnd = new Random();
-            object lockObj = new object();
-
-            List<Task<int[]>> tasks = new List<Task<int[]>>();
-            TaskFactory factory = new TaskFactory(token);
-            for (int taskCtr = 0; taskCtr <= 10; taskCtr++)
-            {
-                int iteration = taskCtr + 1;
-                tasks.Add(factory.StartNew(() =>
-                {
-                    int value;
-                    int[] values = new int[10];
-                    for (int ctr = 1; ctr <= 10; ctr++)
-                    {
-                        lock (lockObj)
-                        {
-                            value = rnd.Next(0, 101);
-                        }
-                        if (value == 0)
-                        {
-                            source.Cancel();
-                            Console.WriteLine("Cancelling at task {0}", iteration);
-                            break;
-                        }
-                        values[ctr - 1] = value;
-                    }
-                    return values;
-                }, token));
-            }
-            try
-            {
-                Task<double> fTask =
-                factory.ContinueWhenAll(tasks.ToArray(), (results) =>
-                {
-                    Console.WriteLine("Calculating overall mean...");
-                    long sum = 0;
-                    int n = 0;
-                    foreach (var t in results)
-                    {
-                        foreach (var r in t.Result)
-                        {
-                            sum += r;
-                            n++;
-                        }
-                    }
-                    return sum / (double)n;
-                }, token);
-                Console.WriteLine("The mean is {0}.", fTask.Result);
-            }
-            catch (AggregateException ae)
-            {
-                foreach (Exception e in ae.InnerExceptions)
-                {
-                    if (e is TaskCanceledException)
-                    {
-                        Console.WriteLine("Unable to compute mean: {0}", e.Message);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Exception: " + e.GetType().Name);
-                    }
-                }
-            }
-            finally
-            {
-                source.Dispose();
-            }
-        }
-
-        public static void TasKdemo2()
-        {
-            List<Person> pers1 = new List<Person>();
-            List<Person> pers2 = new List<Person>();
-            List<Person> pers3 = new List<Person>();
-            List<Person> pers4 = new List<Person>();
-            List<Person> pers5 = new List<Person>();
-            Task tack = Task.Factory.StartNew(delegate ()
-            {
-                GetPseronList1(pers1);
-                GetPseronList2(pers2);
-                GetPseronList3(pers3);
-                GetPseronList4(pers4);
-                GetPseronList5(pers5);
-            });
-            tack.ContinueWith(delegate (Task task)
-            {
-                Console.WriteLine("执行完成");
-            });
-        }
-
-        public static void TasKWhenAll3()
-        {
-            List<Person> pers1 = new List<Person>();
-            List<Person> pers2 = new List<Person>();
-            List<Person> pers3 = new List<Person>();
-            List<Person> pers4 = new List<Person>();
-            List<Person> pers5 = new List<Person>();
-            Task t1 = Task.Run(() => { GetPseronList1(pers1); });
-            Task t2 = Task.Run(() => { GetPseronList2(pers2); });
-            Task t3 = Task.Run(() => { GetPseronList3(pers3); });
-            Task t4 = Task.Run(() => { GetPseronList4(pers4); });
-            Task t5 = Task.Run(() => { GetPseronList5(pers5); });
-
-            Task tb = Task.WhenAll(t1, t2, t3, t4, t5);
-            tb.ContinueWith((Task tt) => { Console.WriteLine("执行完成"); });
-        }
-
-        public static void TaskContinueWithDemo()
-        {
-            List<Person> pers1 = new List<Person>();
-            List<Person> pers2 = new List<Person>();
-            List<Person> pers3 = new List<Person>();
-            List<Person> pers4 = new List<Person>();
-            List<Person> pers5 = new List<Person>();
-            Task task = Task.Factory.StartNew(() =>
-            {
-                Parallel.Invoke(
-                    delegate () { GetPseronList1(pers1); },
-                    delegate () { GetPseronList2(pers2); },
-                    delegate () { GetPseronList3(pers3); },
-                    delegate () { GetPseronList4(pers4); },
-                    delegate () { GetPseronList5(pers5); });
-            });
-            Task.WaitAll();
-            task.ContinueWith(delegate (Task tt)
-                {
-                    Console.WriteLine("执行完成");
-                }
-            );
-        }
-
-        public static void GetPseronList1(List<Person> pers)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                pers.Add(new Person { Name = "pl1Name" + i, Age = i });
-                Thread.Sleep(100 * i);
-                Console.WriteLine("p1Listp{0}创建成功", i);
-            }
-        }
-
-        public static void GetPseronList2(List<Person> pers)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                pers.Add(new Person { Name = "pl1Name" + i, Age = i });
-                Thread.Sleep(100 * i);
-                Console.WriteLine("p2Listp{0}创建成功", i);
-            }
-        }
-
-        public static void GetPseronList3(List<Person> pers)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                pers.Add(new Person { Name = "pl2Name" + i, Age = i });
-                Thread.Sleep(100 * i);
-                Console.WriteLine("p3Listp{0}创建成功", i);
-            }
-        }
-
-        public static void GetPseronList4(List<Person> pers)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                pers.Add(new Person { Name = "pl3Name" + i, Age = i });
-                Thread.Sleep(100 * i);
-                Console.WriteLine("p4Listp{0}创建成功", i);
-            }
-        }
-
-        public static void GetPseronList5(List<Person> pers)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                pers.Add(new Person { Name = "pl4Name" + i, Age = i });
-                Thread.Sleep(100 * i);
-                Console.WriteLine("p5Listp{0}创建成功", i);
-            }
-        }
-
-        #endregion 22-TaskDemo
-
-        #region 23-SpinWaitDemo
-
-        public static void SpinWaitDemo()
-        {
-            // Demonstrates:
-            //      SpinWait construction
-            //      SpinWait.SpinOnce()
-            //      SpinWait.NextSpinWillYield
-            //      SpinWait.Count
-            bool someBoolean = false;
-            int numYields = 0;
-
-            // First task: SpinWait until someBoolean is set to true
-            Task t1 = Task.Factory.StartNew(() =>
-            {
-                SpinWait sw = new SpinWait();
-                while (!someBoolean)
-                {
-                    // The NextSpinWillYield property returns true if
-                    // calling sw.SpinOnce() will result in yielding the
-                    // processor instead of simply spinning.
-                    if (sw.NextSpinWillYield) numYields++;
-                    sw.SpinOnce();
-                }
-
-                // As of .NET Framework 4: After some initial spinning, SpinWait.SpinOnce() will yield every time.
-                Console.WriteLine("SpinWait called {0} times, yielded {1} times", sw.Count, numYields);
-            });
-
-            // Second task: Wait 100ms, then set someBoolean to true
-            Task t2 = Task.Factory.StartNew(() =>
-            {
-                Thread.Sleep(100);
-                someBoolean = true;
-            });
-
-            // Wait for tasks to complete
-            Task.WaitAll(t1, t2);
-        }
-
-        #endregion 23-SpinWaitDemo
-
-        #region 24进制转换_Bin_Oct_Dec_Hex
-
-        public static void Bin_Oct_Dec_Hex()
-        {
-            Console.WriteLine(UriPartial.Authority);
-            Console.WriteLine(UriPartial.Path);
-            Console.WriteLine(UriPartial.Query);
-            Console.WriteLine(UriPartial.Scheme);
-            Console.WriteLine(sizeof(char));
-            Console.WriteLine(sizeof(byte));
-            Console.WriteLine(sizeof(Byte));
-
-            Console.WriteLine(sizeof(sbyte));
-            Console.WriteLine(sizeof(SByte));
-
-            Console.WriteLine(sizeof(short));
-            Console.WriteLine(sizeof(ushort));
-
-            Console.WriteLine(sizeof(int));
-            Console.WriteLine(sizeof(uint));
-
-            Console.WriteLine(sizeof(Int16));
-            Console.WriteLine(sizeof(UInt16));
-
-            Console.WriteLine(sizeof(Int32));
-            Console.WriteLine(sizeof(UInt32));
-
-            Console.WriteLine(sizeof(Int64));
-            Console.WriteLine(sizeof(UInt64));
-
-            Console.WriteLine(sizeof(decimal));
-            Console.WriteLine(sizeof(Decimal));
-            Console.WriteLine(sizeof(float));
-
-            Console.WriteLine(sizeof(long));
-            Console.WriteLine(sizeof(ulong));
-            Console.WriteLine(sizeof(Single));
-
-            Console.WriteLine(sizeof(UriPartial));
-
-            for (int i = 0; i < 30; i++)
-            {
-                Console.WriteLine($"{i.ToString()} {i.ToString("x")} {i.ToString("x2")} {Convert.ToString(i, 2)} {Convert.ToString(i, 8)} {Convert.ToString(i, 16)}");
-            }
-        }
-
-        #endregion 24进制转换_Bin_Oct_Dec_Hex
-
-        #region 25-硬盘信息查询
+        #region 硬盘信息查询
 
         public static void GetDriverInfo()
         {
@@ -1275,73 +510,9 @@ namespace ConApp
             }
         }
 
-        #endregion 25-硬盘信息查询
+        #endregion 硬盘信息查询
 
-        #region 26-WebRequestDemo
-
-        public static void WebRequestDemo()
-        {
-            WebRequest request = WebRequest.Create("http://www.baidu.com");
-            WebResponse response = request.GetResponse();
-            Stream stream = response.GetResponseStream();
-
-            Console.WriteLine("响应信息，内容长度：{0}，类型:{1},Uri:{2}", response.ContentLength, response.ContentType, response.ResponseUri);
-            using (StreamReader sr = new StreamReader(stream))
-            {
-                Console.Write(sr.ReadToEnd());
-            }
-        }
-
-        #endregion 26-WebRequestDemo
-
-        #region 27-DirectorySecurity
-
-        public static void DirectorySecurityDemo0()
-        {
-            IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
-
-            //IPHostEntry ent0 = Dns.GetHostByAddress("10.101.42.77");
-            IPHostEntry ent1 = Dns.GetHostEntry(hostEntry.HostName);
-            IPHostEntry name = Dns.GetHostEntry("hry6464");
-            string hostName = Dns.GetHostName();
-            Console.Write("Provide full directory path: ");
-            string mentionedDir = @"D:\";
-            try
-            {
-                DirectoryInfo myDir = new DirectoryInfo(mentionedDir);
-
-                if (myDir.Exists)
-                {
-                    DirectorySecurity myDirSec = myDir.GetAccessControl();
-
-                    foreach (FileSystemAccessRule fileRule in myDirSec.GetAccessRules(true, true, typeof(NTAccount)))
-                    {
-                        Console.WriteLine("{0} {1} {2} access for {3}", mentionedDir, fileRule.AccessControlType == AccessControlType.Allow ? "provides" : "denies", fileRule.FileSystemRights, fileRule.IdentityReference);
-                    }
-                }
-            }
-            catch
-            {
-                Console.WriteLine("Incorrect directory provided!");
-            }
-        }
-
-        public static void DirectorySecurityDemo1()
-        {
-            DirectorySecurity security = new DirectorySecurity();
-            const string path = @"D:\temp";
-            //设置权限的应用为文件夹本身、子文件夹及文件,所以需要InheritanceFlags.ContainerInherit 或 InheritanceFlags.ObjectInherit
-            security.AddAccessRule(new FileSystemAccessRule("NETWORK SERVICE",
-                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
-                PropagationFlags.None, AccessControlType.Allow));
-            security.AddAccessRule(new FileSystemAccessRule("Everyone",
-                FileSystemRights.FullControl, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-            Directory.SetAccessControl(path, security);
-        }
-
-        #endregion 27-DirectorySecurity
-
-        #region 28-字符串按指定长度分割
+        #region 字符串按指定长度分割
 
         public static void Demo31()
         {
@@ -1374,9 +545,28 @@ namespace ConApp
             }
         }
 
-        #endregion 28-字符串按指定长度分割
+        #endregion 字符串按指定长度分割
 
-        #region 29-AppDomain_AttachDb
+        #region 反转字符串
+
+        public static string ReverseDemo(string str)
+        {
+            //反转字符串
+            char[] arr = str.ToCharArray();
+
+            for (int i = 0; i < arr.Length / 2; i++)
+            {
+                char tmp = arr[i];
+                arr[i] = arr[arr.Length - i - 1];
+                arr[arr.Length - i - 1] = tmp;
+            }
+            //string s = new string(arr);
+            return string.Join("", arr);
+        }
+
+        #endregion 反转字符串
+
+        #region AppDomain_AttachDb
 
         public static void Demo32()
         {
@@ -1422,9 +612,9 @@ namespace ConApp
             }
         }
 
-        #endregion 29-AppDomain_AttachDb
+        #endregion AppDomain_AttachDb
 
-        #region 30-反射获取方法名
+        #region 反射获取方法名
 
         public static void GetMethodsDemo()
         {
@@ -1467,82 +657,7 @@ namespace ConApp
             string methodName2 = MethodBase.GetCurrentMethod().Name;
         }
 
-        #endregion 30-反射获取方法名
-
-        #region 获取注册表的建
-
-        public static void RegistryDemo()
-        {
-            Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE");
-            if (rk != null)
-            {
-                String[] names = rk.GetSubKeyNames();
-                foreach (string item in names)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-        }
-
-        #endregion 获取注册表的建
-
-        #region 截屏
-
-        public static void GetScreen()
-        {
-            Screen s = Screen.PrimaryScreen;
-            Bitmap result = new Bitmap(s.Bounds.Width, s.Bounds.Height);
-            using (Graphics g = Graphics.FromImage(result))
-            {
-                //g.CopyFromScreen(s.Bounds.Location, System.Drawing.Point.Empty, s.Bounds.Size);
-                g.CopyFromScreen(new System.Drawing.Point(0, 0), System.Drawing.Point.Empty, s.Bounds.Size);
-            }
-            result.Save("1.jpg");
-        }
-
-        #endregion 截屏
-
-        #region 下载相关
-
-        public static void DownLoadDemo1()
-        {
-            WebClient webClient = new WebClient();
-            byte[] bytes = webClient.DownloadData("http://img1.40017.cn/cn/s/yry/img/shouceV1.1.pdf");
-            HttpContext.Current.Response.BinaryWrite(bytes);
-            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode("示例图片abc12.pdf"));
-        }
-
-        public static void DownLoadDemo2()
-        {
-            HttpContext.Current.Response.WriteFile(@"H:\Workplace\WebApp\Image\示例图片abc12.jpg", true);
-            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode("示例图片abc12.jpg"));
-        }
-
-        #endregion 下载相关
-
-        #region 发送邮件
-
-        public static void SendEmail()
-        {
-            SmtpClient client = new SmtpClient("smtp.163.com", 25)
-            {
-                Credentials = new NetworkCredential("13372171750@163.com", "mail163")
-            };
-            using (MailMessage msg = new MailMessage())
-            {
-                msg.From = new MailAddress("13372171750@163.com");
-                msg.Subject = "Subject..........Greetings from Visual C# Recipes";
-                msg.Body = "Body.................This is a message from Recipe 10-07 of";
-                msg.Attachments.Add(new Attachment(@"ConsoleOutput.txt", "text/plain"));
-                msg.Attachments.Add(new Attachment(@"ConApp.exe", "application/octet-stream"));
-                msg.To.Add(new MailAddress("807776962@qq.com"));
-
-                client.Send(msg);
-            }
-            Console.WriteLine("发送成功");
-        }
-
-        #endregion 发送邮件
+        #endregion 反射获取方法名
 
         #region 控制台文本输出
 
@@ -1595,52 +710,6 @@ namespace ConApp
         }
 
         #endregion TupleDemo
-
-        #region ParallelTask
-
-        public static void ParallelTask()
-        {
-            Console.WriteLine("Start......");
-            Task.Factory.StartNew(delegate
-            {
-                M1();
-                M2();
-                M3();
-            });
-            Parallel.Invoke(new[] { new Action(M1), new Action(M2), new Action(M3) });
-            Console.WriteLine("End......");
-        }
-
-        public static void M1()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                Thread.Sleep(1000);
-
-                Console.WriteLine("M1............");
-            }
-        }
-
-        public static void M2()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                Thread.Sleep(1000);
-
-                Console.WriteLine("M2............");
-            }
-        }
-
-        public static void M3()
-        {
-            Thread.Sleep(1000);
-            for (int i = 0; i < 4; i++)
-            {
-                Console.WriteLine("M3............");
-            }
-        }
-
-        #endregion ParallelTask
 
         #region 差集交集并集
 
@@ -1757,183 +826,9 @@ namespace ConApp
 
         #endregion 文件生成
 
-        #region 实现IIS应用池的远程回收
-
-        public static void RemoteRecycle()
-        {
-            ServerManager manager = ServerManager.OpenRemote("184.12.15.157");
-            ApplicationPoolCollection appPools = manager.ApplicationPools;
-            foreach (var ap in appPools)
-            {
-                ap.Recycle();
-            }
-            /*
-             * 回收注意事项：
-                1.需要添加引用 C:\Windows\System32\inetsrv\Microsoft.Web.Administration.dll ,然后using Microsoft.Web.Administration;
-                2.远程账号需要有管理员权限；
-                3.远程主机的账号密码添加在服务器的凭据管理器中 (控制面板->凭据管理器) ，能成功使用mstsc 登录即可；
-                4.远程主机需要关闭UAC！！ 因为这个问题卡了好几个礼拜才无意发现。
-             */
-        }
-
-        #endregion 实现IIS应用池的远程回收
-
-        #region IIS配置相关
-
-        public static void AddIsapiCgi()
-        {
-            //appcmd.exe set config -section:system.webServer/security/isapiCgiRestriction /+"[path='C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll',allowed='True',groupId='ContosoGroup',description='Contoso Extension']" /commit:apphost
-            using (ServerManager serverManager = new ServerManager())
-            {
-                Configuration config = serverManager.GetApplicationHostConfiguration();
-                ConfigurationSection isapiCgiRestrictionSection = config.GetSection("system.webServer/security/isapiCgiRestriction");
-                ConfigurationElementCollection isapiCgiRestrictionCollection = isapiCgiRestrictionSection.GetCollection();
-
-                ConfigurationElement addElement = isapiCgiRestrictionCollection.CreateElement("add");
-                addElement["path"] = @"C:\Inetpub\www.contoso.com\wwwroot\isapi\custom.dll";
-                addElement["allowed"] = true;
-                addElement["groupId"] = @"ContosoGroup";
-                addElement["description"] = @"Contoso Extension";
-                isapiCgiRestrictionCollection.Add(addElement);
-                serverManager.CommitChanges();
-            }
-        }
-
-        public static void ConfigurationSectionDemo0()
-        {
-            const string siteName = "fairy.vip";
-
-            using (ServerManager manager = new ServerManager())
-            {
-                //获得 IIS 站点信息。
-                var site = manager.Sites[siteName];
-
-                //获得站点根目录下的“Web.Config”文件配置信息。
-                Configuration config = site.GetWebConfiguration();
-
-                ConfigurationSection httpRedirectSection = config.GetSection("system.webServer/httpRedirect");
-                /*
-                 * 设置节点参数。
-                 * enabled：是否启用。
-                 * destination：目标 URL 或者文件。
-                 * exactDestination：
-                 * httpResponseStatus：
-                 */
-                httpRedirectSection["enabled"] = false;
-                httpRedirectSection["destination"] = @"http://www.rapid.com/error/500$S$Q";
-                httpRedirectSection["exactDestination"] = true;
-                httpRedirectSection["httpResponseStatus"] = @"Temporary";
-
-                //回收应用程序池。
-                manager.ApplicationPools[siteName].Recycle();
-
-                //提交。
-                manager.CommitChanges();
-            }
-        }
-
-        public static void ConfigurationSectionDemo1()
-        {
-            const string isAPI_partialPath = @"v4.0.30319\aspnet_isapi.dll";
-            using (ServerManager manager = new ServerManager())
-            {
-                Configuration config = manager.GetApplicationHostConfiguration();
-
-                ConfigurationSection section = config.GetSection("system.webServer/security/isapiCgiRestriction");
-
-                foreach (ConfigurationElement item in section.GetCollection())
-                {
-                    if (item.Attributes.Count > 0 && item.Attributes["path"].Value != null && item.Attributes["path"].Value.ToString().EndsWith(isAPI_partialPath))
-                    {
-                        item.Attributes["allowed"].Value = true;
-                    }
-                }
-                manager.CommitChanges();
-            }
-        }
-
-        public static void AppSetingSet()
-        {
-            using (ServerManager serverManager = new ServerManager())
-            {
-                Configuration config = serverManager.GetWebConfiguration("Default Web Site");
-                ConfigurationSection appSettingsSection = config.GetSection("appSettings");
-                ConfigurationElementCollection appSettingsCollection = appSettingsSection.GetCollection();
-                ConfigurationElement addElement = appSettingsCollection.CreateElement("add");
-                addElement["key"] = @"key1";
-                addElement["value"] = @"value1";
-                appSettingsCollection.Add(addElement);
-                serverManager.CommitChanges();
-            }
-        }
-
-        public static void GetIISRequest()
-        {
-            using (ServerManager manager = new ServerManager())
-            {
-                foreach (WorkerProcess w3wp in manager.WorkerProcesses)
-                {
-                    Console.WriteLine("W3WP()", w3wp.ProcessId);
-
-                    foreach (Request request in w3wp.GetRequests(0))
-                    {
-                        Console.WriteLine(" - ,,", request.Url, request.ClientIPAddr, request.TimeElapsed, request.TimeInState);
-                    }
-                }
-            }
-        }
-
-        #endregion IIS配置相关
-
-        #region 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
-
-        public static void GetIPDemo()
-        {
-            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
-            TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
-            foreach (TcpConnectionInformation t in connections)
-            {
-                Console.Write(@"Local endpoint: {0} ", t.LocalEndPoint);
-                Console.Write(@"Remote endpoint: {0} ", t.RemoteEndPoint);
-                Console.WriteLine(@"{0}", t.State);
-            }
-        }
-
-        #endregion 返回有关本地计算机上的 Internet 协议版本 4 (IPv4) 和 IPv6 传输控制协议 (TCP) 连接的信息。
-
-        #region TCP检查端口是否打开
-
-        public static void PortISOpen0()
-        {
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
-            IPEndPoint point = new IPEndPoint(ip, 80);
-            try
-            {
-                TcpClient tcp = new TcpClient();
-                tcp.Connect(point);
-                Console.WriteLine("打开的端口");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("已开启的端口:" + ex.Message);
-            }
-        }
-
-        #endregion TCP检查端口是否打开
-
-        #region Http检查端口是否打开
-
-        public static void PortISOpen1()
-        {
-            HttpListener httpListner = new HttpListener();
-            httpListner.Prefixes.Add("http://*:8080/");
-            httpListner.Start();
-            Console.WriteLine("Port: 8080 status: " + (PortInUse(8080) ? "in use" : "not in use"));
-        }
-
-        #endregion Http检查端口是否打开
-
         #region 异步委托
+
+        public delegate void AsycRun();
 
         public static void AsyncCallbackDemo()
         {
@@ -1954,27 +849,6 @@ namespace ConApp
         }
 
         #endregion 异步委托
-
-        #region 多线程查询端口情况
-
-        public static void Demo()
-        {
-            for (int i = 1; i <= 8; i++)
-            {
-                ParameterizedThreadStart pts = x =>
-                {
-                    for (int j = 1000 * ((int)x - 1) + 1; j <= 1000 * (int)x; j++)
-                    {
-                        PortCon(j);
-                    }
-                };
-
-                Thread t = new Thread(pts);
-                t.Start(i);
-            }
-        }
-
-        #endregion 多线程查询端口情况
 
         #region 应用程序域
 
@@ -2105,99 +979,6 @@ namespace ConApp
         }
 
         #endregion 简单泛型
-
-        #region 反转字符串
-
-        public static string ReverseDemo(string str)
-        {
-            //反转字符串
-            char[] arr = str.ToCharArray();
-
-            for (int i = 0; i < arr.Length / 2; i++)
-            {
-                char tmp = arr[i];
-                arr[i] = arr[arr.Length - i - 1];
-                arr[arr.Length - i - 1] = tmp;
-            }
-            //string s = new string(arr);
-            return string.Join("", arr);
-        }
-
-        #endregion 反转字符串
-
-        #region ManualResetEventSlimDemo
-
-        // Demonstrates:
-        //      ManualResetEventSlim construction
-        //      ManualResetEventSlim.Wait()
-        //      ManualResetEventSlim.Set()
-        //      ManualResetEventSlim.Reset()
-        //      ManualResetEventSlim.IsSet
-        public static void MRES_SetWaitReset()
-        {
-            ManualResetEventSlim mres1 = new ManualResetEventSlim(false); // initialize as unsignaled
-            ManualResetEventSlim mres2 = new ManualResetEventSlim(false); // initialize as unsignaled
-            ManualResetEventSlim mres3 = new ManualResetEventSlim(true);  // initialize as signaled
-
-            // Start an asynchronous Task that manipulates mres3 and mres2
-            var observer = Task.Factory.StartNew(() =>
-            {
-                mres1.Wait();
-                Console.WriteLine("observer sees signaled mres1!");
-                Console.WriteLine("observer resetting mres3...");
-                mres3.Reset(); // should switch to unsignaled
-                Console.WriteLine("observer signalling mres2");
-                mres2.Set();
-            });
-
-            Console.WriteLine("main thread: mres3.IsSet = {0} (should be true)", mres3.IsSet);
-            Console.WriteLine("main thread signalling mres1");
-            mres1.Set(); // This will "kick off" the observer Task
-            mres2.Wait(); // This won't return until observer Task has finished resetting mres3
-            Console.WriteLine("main thread sees signaled mres2!");
-            Console.WriteLine("main thread: mres3.IsSet = {0} (should be false)", mres3.IsSet);
-
-            // It's good form to Dispose() a ManualResetEventSlim when you're done with it
-            observer.Wait(); // make sure that this has fully completed
-            mres1.Dispose();
-            mres2.Dispose();
-            mres3.Dispose();
-        }
-
-        // Demonstrates:
-        //      ManualResetEventSlim construction w/ SpinCount
-        //      ManualResetEventSlim.WaitHandle
-        public static void MRES_SpinCountWaitHandle()
-        {
-            // Construct a ManualResetEventSlim with a SpinCount of 1000
-            // Higher spincount => longer time the MRES will spin-wait before taking lock
-            ManualResetEventSlim mres1 = new ManualResetEventSlim(false, 1000);
-            ManualResetEventSlim mres2 = new ManualResetEventSlim(false, 1000);
-
-            Task bgTask = Task.Factory.StartNew(() =>
-            {
-                // Just wait a little
-                Thread.Sleep(100);
-
-                // Now signal both MRESes
-                Console.WriteLine("Task signalling both MRESes");
-                mres1.Set();
-                mres2.Set();
-            });
-
-            // A common use of MRES.WaitHandle is to use MRES as a participant in
-            // WaitHandle.WaitAll/WaitAny.  Note that accessing MRES.WaitHandle will
-            // result in the unconditional inflation of the underlying ManualResetEvent.
-            WaitHandle.WaitAll(new WaitHandle[] { mres1.WaitHandle, mres2.WaitHandle });
-            Console.WriteLine("WaitHandle.WaitAll(mres1.WaitHandle, mres2.WaitHandle) completed.");
-
-            // Clean up
-            bgTask.Wait();
-            mres1.Dispose();
-            mres2.Dispose();
-        }
-
-        #endregion ManualResetEventSlimDemo
 
         #region PowerShell命令
 
@@ -2396,48 +1177,6 @@ namespace ConApp
             mdi.Invoke(ob, new object[] { "Hello Lind", "OK" });
         }
 
-        public static void ExpressionDemo()
-        {
-            string idField = ((MemberExpression)((Expression<Func<Person, int>>)(c => c.Age)).Body).Member.Name;
-            string textField = ((MemberExpression)((Expression<Func<Person, string>>)(c => c.Name)).Body).Member.Name;
-        }
-
-        public static void TaskActionDemo()
-        {
-            Action<object> action = (object obj) =>
-            {
-                Console.WriteLine("Task={0}, obj={1}, Thread={2}", Task.CurrentId, obj, Thread.CurrentThread.ManagedThreadId);
-            };
-
-            // Construct an unstarted task
-            Task t1 = new Task(action, "alpha");
-
-            // Construct a started task
-            Task t2 = Task.Factory.StartNew(action, "beta");
-
-            // Block the main thread to demonstate that t2 is executing
-            t2.Wait();
-
-            t1.Start();
-
-            Console.WriteLine("t1 has been launched. (Main Thread={0})", Thread.CurrentThread.ManagedThreadId);
-
-            // Wait for the task to finish.
-            // You may optionally provide a timeout interval or a cancellation token
-            // to mitigate situations when the task takes too long to finish.
-            t1.Wait();
-
-            // Construct an unstarted task
-            Task t3 = new Task(action, "gamma");
-
-            // Run it synchronously
-            t3.RunSynchronously();
-
-            // Although the task was run synchronously, it is a good practice
-            // to wait for it in the event exceptions were thrown by the task.
-            t3.Wait();
-        }
-
         public static void ReflectDemo()
         {
             Person p1 = new Person
@@ -2499,99 +1238,6 @@ namespace ConApp
             {
                 Console.WriteLine(port);
             }
-        }
-
-        public static void StartRun()
-        {
-            string fileName = "";
-            string ShortFileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
-            //打开子键节点
-            using (RegistryKey refKey =
-                Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true) ??
-                Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"))
-            {
-                if (refKey != null)
-                    refKey.SetValue(ShortFileName, fileName);
-            }
-        }
-
-        public static void SimpleArithmetic1()
-        {
-            char c1 = 'A';
-            char c2 = '\u0038';
-            Console.WriteLine("字符型变量c1={1},c2={0}", c1, c2);
-            sbyte b1 = -12;
-            byte b2 = 12;
-            Console.WriteLine("字节型变量b1={0},无符号字节型变量b2={1}", b1, b2);
-            short s1 = -012;         //十进制
-            ushort s2 = 16;
-            Console.WriteLine("短整型变量s1={0},无符号短整型变量s2={1}", s1, s2);
-            int i1 = -0x48bF;      //十六进制
-            uint i2 = 12;
-            Console.WriteLine("整型变量i1={0},无符号整型变量i2={1}", i1, i2);
-            long l1 = 0X2Dcfa6;
-            ulong l2 = 0x2dcfa6L;    //整型常量加后缀L或l,说明为long型
-            Console.WriteLine("长整型变量l1={0},无符号长整型变量l2={1}", l1, l2);
-            float f1 = 1;
-            float f2 = 22f;          //加后缀f，将浮点型常量说明为float型
-            float f3 = .26f;
-            Console.WriteLine("单精度浮点型变量f1={0},f2={1},f3={2}", f1, f2, f3);
-            double d1 = 22D;          //加后缀D，将浮点型常量说明为double型
-            double d2 = 2e2;          //double型常量
-            double d3 = -2.1e12d;     //double型常量可以加后缀D或d
-            decimal d4 = 22;
-            decimal d5 = -2.1e12m;     //加后缀m，将浮点数型常量说明为decimal型
-            Console.WriteLine("双精度浮点型变量d1={0},d2={1},d3={2}", d1, d2, d3);
-            Console.WriteLine("十进制小数型变量d4={0},d5={1}", d4, d5);
-
-            int x = 5, y = 10, z = -128;
-            Console.WriteLine("{0}&{1}={2}", x, y, (x & y));
-            Console.WriteLine("{0}|{1}={2}", x, y, (x | y));
-            Console.WriteLine("{0}^{1}={2}", x, y, (x ^ y));
-            Console.WriteLine("~{0}={1}", x, (~x));
-            Console.WriteLine("{0}<<{1}={2}", z, x, (z << x));
-            Console.WriteLine("{0}>>{1}={2}", z, x, (z >> x));
-        }
-
-        public static void SimpleArithmetic2()
-        {
-            char c1 = 'D', c2;
-            sbyte sb1 = 1, sb2 = 2, sb3;
-            byte b1 = 1, b2 = 2, b3;
-            short s1 = 3, s2 = 4, s3;
-            ushort us1 = 3, us2 = 4, us3;
-
-            c2 = (char)(c1 + 'A');
-            Console.WriteLine("char c2={0}", c2);
-            sb3 = (sbyte)(sb1 - sb2);
-            Console.WriteLine("sbyte  sb3={0}", sb3);
-            b3 = (byte)(b1 * b2);
-            Console.WriteLine("byte  b3={0}", b3);
-            s3 = (short)(s1 / s2);
-            Console.WriteLine("short  s3={0}", s3);
-            us3 = (ushort)(us1 & us2);
-            Console.WriteLine("ushort  us3={0}", us3);
-        }
-
-        public static void BoolOperation()
-        {
-            Console.WriteLine(true ^ false);
-            Console.WriteLine(true ^ true);
-            Console.WriteLine(false ^ false);
-            Console.WriteLine(false ^ true);
-            Console.WriteLine(Environment.NewLine);
-
-            Console.WriteLine(true & false);
-            Console.WriteLine(true & true);
-            Console.WriteLine(false & false);
-            Console.WriteLine(false & true);
-            Console.WriteLine(Environment.NewLine);
-
-            Console.WriteLine(true | false);
-            Console.WriteLine(true | true);
-            Console.WriteLine(false | false);
-            Console.WriteLine(false | true);
-            Console.WriteLine(Environment.NewLine);
         }
 
         public static void StackTraceDemo()

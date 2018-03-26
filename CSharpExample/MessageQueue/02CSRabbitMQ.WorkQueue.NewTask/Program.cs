@@ -1,6 +1,7 @@
 ﻿using RabbitMQ.Client;
 using System;
 using System.Text;
+using System.Threading;
 
 namespace _02CSRabbitMQ.WorkQueue.NewTask
 {
@@ -13,21 +14,17 @@ namespace _02CSRabbitMQ.WorkQueue.NewTask
             using (IModel channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "task_queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
-
                 for (int i = 0; i < 1000; i++)
                 {
                     string message = string.Format("Hello Num {0}", i);
-
                     byte[] body = Encoding.UTF8.GetBytes(message);
-
                     IBasicProperties properties = channel.CreateBasicProperties();
                     properties.Persistent = false;
-
+                    Thread.Sleep(600);
                     channel.BasicPublish(exchange: "", routingKey: "task_queue", basicProperties: properties, body: body);
                     Console.WriteLine(" [x] Sent {0}", message);
                 }
             }
-
             Console.WriteLine(" Press [enter] to exit.");
             Console.ReadLine();
         }

@@ -15,21 +15,16 @@ namespace _02CSRabbitMQ.WorkQueue.Worker
             using (IModel channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "task_queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
-
                 channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
-
                 Console.WriteLine(" [*] Waiting for messages.");
-
                 EventingBasicConsumer consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
                     var body = ea.Body;
                     var message = Encoding.UTF8.GetString(body);
                     Console.WriteLine(" [x] Received {0}", message);
-
                     int dots = message.Split('.').Length - 1;
                     Thread.Sleep(dots * 1000);
-
                     channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 };
                 channel.BasicConsume(queue: "task_queue", autoAck: false, consumer: consumer);

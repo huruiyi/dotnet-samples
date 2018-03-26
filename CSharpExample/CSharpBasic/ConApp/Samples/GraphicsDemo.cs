@@ -144,7 +144,7 @@ namespace ConApp
             {
                 Bitmap sourceImage = new Bitmap(sourceFile);
                 ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/jpeg");
-                System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                Encoder myEncoder = Encoder.Quality;
                 EncoderParameters myEncoderParameters = new EncoderParameters(1);
                 EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, quality);
                 myEncoderParameters.Param[0] = myEncoderParameter;

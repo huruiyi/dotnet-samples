@@ -53,6 +53,8 @@
     <Compile Include="DelegateDemo7_匿名函数.cs" />
     <Compile Include="DelegateDemo8.cs" />
     <Compile Include="DelegateDemo9.cs" />
+    <Compile Include="DelegateDemoA_排序.cs" />
+    <Compile Include="DelegateDemoB_查找.cs" />
     <Compile Include="IDelegateDemo.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -21,9 +21,9 @@ namespace WFAppAdo.Net
             txtPassword.DataBindings.Add("Text", dgGridViewAdmin.DataSource, "Password");
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void btnQuery_Click(object sender, EventArgs e)
         {
-            this.adminTableAdapter.FillById(this.exampleDbDataSet.Admin, Convert.ToInt32(toolStripTextBox_Id.Text));
+            this.adminTableAdapter.FillById(this.exampleDbDataSet.Admin, Convert.ToInt32(txtSid.Text));
         }
     }
 }

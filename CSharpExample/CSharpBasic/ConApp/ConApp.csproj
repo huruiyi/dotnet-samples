@@ -104,14 +104,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventSample\CarDealer.cs" />
-    <Compile Include="EventSample\CarInfoEventArgs.cs" />
-    <Compile Include="EventSample\Consumer.cs" />
+    <Compile Include="EventSample\EventDemoFive\Cat.cs" />
+    <Compile Include="EventSample\EventDemoFive\Dog.cs" />
+    <Compile Include="EventSample\EventDemoFive\Human.cs" />
+    <Compile Include="EventSample\EventDemoFive\Test.cs" />
+    <Compile Include="EventSample\EventDemoFour\Cat.cs" />
+    <Compile Include="EventSample\EventDemoFour\Master.cs" />
+    <Compile Include="EventSample\EventDemoFour\Mouse.cs" />
+    <Compile Include="EventSample\EventDemoFour\Room.cs" />
+    <Compile Include="EventSample\EventDemoFour\Test.cs" />
+    <Compile Include="EventSample\EventDemoOne\CarDealer.cs" />
+    <Compile Include="EventSample\EventDemoOne\CarInfoEventArgs.cs" />
+    <Compile Include="EventSample\EventDemoOne\Consumer.cs" />
+    <Compile Include="EventSample\EventDemoOne\Test.cs" />
+    <Compile Include="EventSample\EventModelsThree\NewspaperEventArgs.cs" />
+    <Compile Include="EventSample\EventModelsThree\NewspaperOffice.cs" />
+    <Compile Include="EventSample\EventModelsThree\NewspaperReader.cs" />
+    <Compile Include="EventSample\EventModelsThree\Test.cs" />
+    <Compile Include="EventSample\EventModelsTwo\NewspaperOffice.cs" />
+    <Compile Include="EventSample\EventModelsTwo\NewspaperReader.cs" />
+    <Compile Include="EventSample\EventModelsTwo\Test.cs" />
     <Compile Include="OtherDemo\_AThreadPool.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Samples\AlgorithmDemo.cs" />
+    <Compile Include="Samples\BasicDemo.cs" />
     <Compile Include="Samples\ConcurrentDemo.cs" />
     <Compile Include="Samples\DataTableDemo.cs" />
+    <Compile Include="Samples\DateTimeDemo.cs" />
     <Compile Include="Samples\DllImportDemo.cs" />
+    <Compile Include="Samples\EnumDemo.cs" />
+    <Compile Include="Samples\ExpressionsDemo.cs" />
     <Compile Include="Samples\GraphicsDemo.cs" />
     <Compile Include="Model\Calculator.cs" />
     <Compile Include="Model\Cat.cs" />
@@ -147,20 +173,19 @@
     <Compile Include="OtherDemo\_5IOOperate.cs" />
     <Compile Include="OtherDemo\_7Export_Import.cs" />
     <Compile Include="OtherDemo\_8DirectorySecurity.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Samples\HttpListenerDemo.cs" />
+    <Compile Include="Samples\IISDemo.cs" />
     <Compile Include="Samples\IODemo.cs" />
     <Compile Include="Samples\Md5Demo.cs" />
     <Compile Include="Samples\MongodDemo.cs" />
+    <Compile Include="Samples\NetDemo.cs" />
     <Compile Include="Samples\RedisDemo.cs" />
     <Compile Include="Samples\ReflectionDemo.cs" />
     <Compile Include="Samples\RegexDemo.cs" />
+    <Compile Include="Samples\RegistryDemo.cs" />
     <Compile Include="Samples\SecurityDemo.cs" />
     <Compile Include="Samples\SortsDemo.cs" />
+    <Compile Include="Samples\TaskDemo.cs" />
     <Compile Include="Samples\UnsafeDemo.cs" />
     <Compile Include="Samples\XMLDemo.cs" />
   </ItemGroup>
@@ -190,8 +215,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource\XML.xml" />
   </ItemGroup>
@@ -200,6 +225,8 @@
     <Content Include="Data\ProductManageSQL.sql" />
     <Content Include="Model\Calculator.py" />
     <Content Include="Data\TestDbSQL.sql" />
+    <Content Include="Resource\Person.xml" />
+    <Content Include="Resource\UserInfo..xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Net.Tools\Net.Tools.csproj">

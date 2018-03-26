@@ -61,6 +61,48 @@ namespace ConApp.Properties {
         }
         
         /// <summary>
+        ///   查找类似 &lt;!DOCTYPE root [
+        ///  &lt;!ELEMENT root ANY&gt;
+        ///  &lt;!ELEMENT Person ANY&gt;
+        ///  &lt;!ELEMENT Customer EMPTY&gt;
+        ///  &lt;!ELEMENT Team EMPTY&gt;
+        ///  &lt;!ATTLIST Person SSN ID #REQUIRED&gt;
+        ///  &lt;!ATTLIST Customer id IDREF #REQUIRED&gt;
+        ///  &lt;!ATTLIST Team members IDREFS #REQUIRED&gt;
+        ///]&gt;
+        ///&lt;root&gt;
+        ///  &lt;Person SSN=&apos;A111&apos; Name=&apos;Fred&apos; /&gt;
+        ///  &lt;Person SSN=&apos;A111&apos; /&gt;
+        ///  &lt;Person SSN=&apos;A222&apos; Name=&apos;Tom&apos; /&gt;
+        ///  &lt;Customer id=&apos;A111&apos; /&gt;
+        ///  &lt;Customer id=&apos;A222334444&apos; /&gt;
+        ///  &lt;Team members=&apos;A222334444 A333445555&apos; /&gt;
+        ///&lt;/root&gt; 的本地化字符串。
+        /// </summary>
+        internal static string Person {
+            get {
+                return ResourceManager.GetString("Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Order&gt;
+        ///  &lt;CustomerName&gt;洪磊&lt;/CustomerName&gt;
+        ///  &lt;CustomerNumber&gt;HLK20130728&lt;/CustomerNumber&gt;
+        ///  &lt;Items&gt;
+        ///    &lt;OrderItem Name=&quot;电脑&quot; Count=&quot;20&quot; /&gt;
+        ///    &lt;OrderItem Name=&quot;电话&quot; Count=&quot;10&quot; Brand=&quot;SONY&quot; /&gt;
+        ///  &lt;/Items&gt;
+        ///&lt;/Order&gt; 的本地化字符串。
+        /// </summary>
+        internal static string UserInfo {
+            get {
+                return ResourceManager.GetString("UserInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 
         ///&lt;info&gt;
         ///  &lt;collage&gt;
