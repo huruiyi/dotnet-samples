@@ -1,29 +1,37 @@
 ﻿using MVC.Sample.Models;
 using System.Data.Entity;
-using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace MVC.Sample.Controllers
 {
+    /*
+     Code First
+         1:先确保安装EntityFramework
+         2:新建数据上下文MovieDBContext
+         3:添加连接字符串: <add name="MovieDBContext" connectionString="Data Source=.;Initial Catalog=MovieDB;Persist Security Info=True;User ID=sa;Password=sa" providerName="System.Data.SqlClient" />
+         4:新建控制器, 使用MVC EntityFramework 的
+     */
+
     public class MoviesController : Controller
     {
-        //是一个前面描述过的影片数据库上下文对象，你可以使用这个对象查询、编辑和删除影片。
         private MovieDBContext db = new MovieDBContext();
 
-        //
-        // GET: /Movies/
-
-        public ActionResult Index()
+        // GET: Movies
+        public async Task<ActionResult> Index()
         {
-            return View(db.Movies.ToList());
+            return View(await db.Movies.ToListAsync());
         }
 
-        //
-        // GET: /Movies/Details/5
-
-        public ActionResult Details(int id = 0)
+        // GET: Movies/Details/5
+        public async Task<ActionResult> Details(int? id)
         {
-            Movie movie = db.Movies.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = await db.Movies.FindAsync(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -31,37 +39,37 @@ namespace MVC.Sample.Controllers
             return View(movie);
         }
 
-        //
-        // GET: /Movies/Create
-
+        // GET: Movies/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Movies/Create
-
+        // POST: Movies/Create
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关
+        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Movie movie)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Genra,Price,Date")] Movie movie)
         {
             if (ModelState.IsValid)
             {
                 db.Movies.Add(movie);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(movie);
         }
 
-        //
-        // GET: /Movies/Edit/5
-
-        public ActionResult Edit(int id = 0)
+        // GET: Movies/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
-            Movie movie = db.Movies.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = await db.Movies.FindAsync(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -69,28 +77,30 @@ namespace MVC.Sample.Controllers
             return View(movie);
         }
 
-        //
-        // POST: /Movies/Edit/5
-
+        // POST: Movies/Edit/5
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关
+        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Movie movie)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Genra,Price,Date")] Movie movie)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(movie);
         }
 
-        //
-        // GET: /Movies/Delete/5
-
-        public ActionResult Delete(int id = 0)
+        // GET: Movies/Delete/5
+        public async Task<ActionResult> Delete(int? id)
         {
-            Movie movie = db.Movies.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = await db.Movies.FindAsync(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -98,22 +108,23 @@ namespace MVC.Sample.Controllers
             return View(movie);
         }
 
-        //
-        // POST: /Movies/Delete/5
-
+        // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = await db.Movies.FindAsync(id);
             db.Movies.Remove(movie);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            if (disposing)
+            {
+                db.Dispose();
+            }
             base.Dispose(disposing);
         }
     }

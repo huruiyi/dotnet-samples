@@ -1,5 +1,6 @@
 ﻿using MVC.Sample.Models;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MVC.Sample.Controllers
 {
@@ -43,9 +44,9 @@ namespace MVC.Sample.Controllers
             return View(model);
         }
 
-        public ActionResult LogOn(string ReturnUrl)
+        public ActionResult LogOn(string returnUrl)
         {
-            ViewBag.ReturnUrl = ReturnUrl;
+            ViewBag.ReturnUrl = returnUrl;
             ViewBag.xxx = "";
             ViewBag.yyy = "";
             return View();
@@ -61,6 +62,14 @@ namespace MVC.Sample.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            HttpContext.Session.Abandon();
+            FormsAuthentication.RedirectToLoginPage();
+            return View("Index");
         }
     }
 }

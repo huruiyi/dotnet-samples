@@ -1,43 +1,50 @@
 ﻿@model MVC.Sample.Models.Movie
 
 @{
-    ViewBag.Title = "详细";
+    ViewBag.Title = "Details";
 }
 
-<h2>详细</h2>
+<h2>Details</h2>
 
-<fieldset>
-    <legend>Movie</legend>
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Genra)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Genra)
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Genra)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Price)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Price)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Genra)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Date)
-    </div>
-</fieldset>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

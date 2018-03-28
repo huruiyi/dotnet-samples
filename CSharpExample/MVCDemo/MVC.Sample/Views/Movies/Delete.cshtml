@@ -1,47 +1,56 @@
 ﻿@model MVC.Sample.Models.Movie
 
 @{
-    ViewBag.Title = "删除";
+    ViewBag.Title = "Delete";
 }
 
-<h2>删除</h2>
+<h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Movie</legend>
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Genra)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Genra)
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Genra)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Price)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Price)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Genra)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Date)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

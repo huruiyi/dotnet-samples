@@ -112,6 +112,7 @@ namespace MVC.Sample.Controllers
         }
 
         // GET: Home
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.Message = "欢迎使用 ASP.NET MVC!";

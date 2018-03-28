@@ -1,0 +1,31 @@
+﻿@using MVC.Sample.Models
+@{
+    MemberInfo m = Model as MemberInfo;
+}
+
+<table class="table">
+    <tr>
+        <td>MemberId</td>
+        <td>@m.MemberId</td>
+    </tr>
+    <tr>
+        <td>MemberName</td>
+        <td>@m.MemberName</td>
+    </tr>
+    <tr>
+        <td>MemberTrueName</td>
+        <td>@m.MemberTrueName</td>
+    </tr>
+    <tr>
+        <td>MemberMobile</td>
+        <td>@m.MemberMobile</td>
+    </tr>
+    <tr>
+        <td>MemberEmail</td>
+        <td>@m.MemberEmail</td>
+    </tr>
+    <tr>
+        <td>Role</td>
+        <td>@m.Role</td>
+    </tr>
+</table>
