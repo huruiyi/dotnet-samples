@@ -48,9 +48,6 @@
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CommonServiceLocator.2.0.3\lib\net47\CommonServiceLocator.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -104,30 +101,6 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.5.8.0\lib\net47\Unity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.5.8.0\lib\net47\Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Container">
-      <HintPath>..\..\..\packages\Unity.Container.5.7.0\lib\net47\Unity.Container.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.5.8.0\lib\net47\Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.5.8.0\lib\net47\Unity.Interception.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mvc, Version=5.0.13.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.Mvc.5.0.13\lib\net47\Unity.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.5.8.0\lib\net47\Unity.RegistrationByConvention.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.5.8.0\lib\net47\Unity.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -693,8 +666,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\SystemController.cs" />
     <Compile Include="Common\ConvertHelper.cs" />
@@ -725,14 +696,12 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\SamplesController.cs" />
     <Compile Include="Controllers\ToolsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
     <Compile Include="Filters\MVCAPPActionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ExcelExportHelper.cs" />
-    <Compile Include="Models\IUser.cs" />
     <Compile Include="Models\JsonFilter.cs" />
     <Compile Include="Models\LogOnViewModel.cs" />
     <Compile Include="Models\MachineMessage.cs" />
@@ -746,7 +715,6 @@
     </Compile>
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
-    <Compile Include="Models\SimpleUser.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>AuthorizationModel.tt</DependentUpon>
@@ -779,7 +747,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_RightBar.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\AuthorizeError.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />

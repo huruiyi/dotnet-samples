@@ -1,9 +1,6 @@
-﻿using MVC.Sample.Models;
-using System;
+﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Unity;
-using Unity.AspNet.Mvc;
 
 namespace MVC.Sample
 {
@@ -13,10 +10,6 @@ namespace MVC.Sample
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            var container = new UnityContainer();
-            container.RegisterType<IUser, SimpleUser>();
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
 
         protected void Application_Error(object sender, EventArgs e)
