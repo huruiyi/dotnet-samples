@@ -110,6 +110,12 @@
     <Compile Include="SyncAsyncAPMForm\APM实例.Designer.cs">
       <DependentUpon>APM实例.cs</DependentUpon>
     </Compile>
+    <Compile Include="SyncAsyncAPMForm\ASyncSyncForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\ASyncSyncForm.Designer.cs">
+      <DependentUpon>ASyncSyncForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SyncAsyncAPMForm\Async实例.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SyncAsyncAPMForm\APM实例.resx">
       <DependentUpon>APM实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SyncAsyncAPMForm\ASyncSyncForm.resx">
+      <DependentUpon>ASyncSyncForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SyncAsyncAPMForm\Async实例.resx">
       <DependentUpon>Async实例.cs</DependentUpon>

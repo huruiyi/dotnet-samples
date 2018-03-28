@@ -38,7 +38,7 @@
             // 
             // txbAsynMethodID
             // 
-            this.txbAsynMethodID.Location = new System.Drawing.Point(527, 434);
+            this.txbAsynMethodID.Location = new System.Drawing.Point(430, 416);
             this.txbAsynMethodID.Name = "txbAsynMethodID";
             this.txbAsynMethodID.Size = new System.Drawing.Size(100, 21);
             this.txbAsynMethodID.TabIndex = 18;
@@ -46,7 +46,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(390, 437);
+            this.label2.Location = new System.Drawing.Point(293, 419);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 12);
             this.label2.TabIndex = 17;
@@ -54,7 +54,7 @@
             // 
             // txbMainThreadID
             // 
-            this.txbMainThreadID.Location = new System.Drawing.Point(284, 434);
+            this.txbMainThreadID.Location = new System.Drawing.Point(187, 416);
             this.txbMainThreadID.Name = "txbMainThreadID";
             this.txbMainThreadID.Size = new System.Drawing.Size(100, 21);
             this.txbMainThreadID.TabIndex = 16;
@@ -62,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(210, 437);
+            this.label1.Location = new System.Drawing.Point(113, 419);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 15;
@@ -70,7 +70,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(211, 197);
+            this.richTextBox1.Location = new System.Drawing.Point(114, 179);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(416, 208);
             this.richTextBox1.TabIndex = 14;
@@ -78,7 +78,7 @@
             // 
             // btnClick
             // 
-            this.btnClick.Location = new System.Drawing.Point(377, 168);
+            this.btnClick.Location = new System.Drawing.Point(280, 150);
             this.btnClick.Name = "btnClick";
             this.btnClick.Size = new System.Drawing.Size(75, 23);
             this.btnClick.TabIndex = 13;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 622);
+            this.ClientSize = new System.Drawing.Size(634, 611);
             this.Controls.Add(this.txbAsynMethodID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txbMainThreadID);

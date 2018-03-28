@@ -1,6 +1,6 @@
 ﻿namespace WinFormDemo.SyncAsyncAPMForm
 {
-    partial class APM实例
+    partial class ASyncSyncForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.btnClick = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // button2
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(115, 219);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(409, 208);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
+            this.button2.Location = new System.Drawing.Point(336, 294);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "异步";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnClick
+            // button1
             // 
-            this.btnClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClick.Location = new System.Drawing.Point(260, 190);
-            this.btnClick.Name = "btnClick";
-            this.btnClick.Size = new System.Drawing.Size(138, 23);
-            this.btnClick.TabIndex = 5;
-            this.btnClick.Text = "点击我";
-            this.btnClick.UseVisualStyleBackColor = true;
-            this.btnClick.Click += new System.EventHandler(this.btnClick_Click);
+            this.button1.Location = new System.Drawing.Point(224, 294);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "同步";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // APM实例
+            // ASyncSyncForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 611);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.btnClick);
-            this.Name = "APM实例";
-            this.Text = "APM传统异步编程解决界面卡死";
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Name = "ASyncSyncForm";
+            this.Text = "ASyncSyncForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button btnClick;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
