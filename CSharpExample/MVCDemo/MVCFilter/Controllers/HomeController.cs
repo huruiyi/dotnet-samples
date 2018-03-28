@@ -94,7 +94,6 @@ namespace MVCFilter.Controllers
          [ValidateAntiForgeryToken]
              */
         // 过滤器：
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Demo6()

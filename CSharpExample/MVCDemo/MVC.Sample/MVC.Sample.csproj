@@ -673,6 +673,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AuthInfoController.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Models\AuthorizationModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -796,6 +797,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Images\upload\" />
+    <Folder Include="Views\Filter\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
