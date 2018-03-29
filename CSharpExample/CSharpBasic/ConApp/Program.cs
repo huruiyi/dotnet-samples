@@ -15,7 +15,6 @@ using System.IO.Ports;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
-
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Security.Policy;
@@ -27,7 +26,7 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
-            EventDemo1();
+            ThreadDemo.DeadDemo2();
             //Mutex
             //Marshal.
             Console.ReadKey();

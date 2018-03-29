@@ -187,6 +187,7 @@
     <Compile Include="Samples\SecurityDemo.cs" />
     <Compile Include="Samples\SortsDemo.cs" />
     <Compile Include="Samples\TaskDemo.cs" />
+    <Compile Include="Samples\ThreadDemo.cs" />
     <Compile Include="Samples\UnsafeDemo.cs" />
     <Compile Include="Samples\XMLDemo.cs" />
   </ItemGroup>
