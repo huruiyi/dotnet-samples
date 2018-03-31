@@ -1,4 +1,5 @@
 ﻿using MVC.Sample.Controllers;
+using MVC.Sample.Infrastructure;
 using MVC.Sample.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ namespace MVC.Sample
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //注册自定义的 ControllerFactory
+            //ControllerBuilder.Current.SetControllerFactory(new CusBControllerFactory());
+
+            //注册自定义的 CusIocControllerFactory 实现依赖注入
+            //ControllerBuilder.Current.SetControllerFactory(new CusIocControllerFactory());
         }
 
         public MemberPrincipal CurrentUser

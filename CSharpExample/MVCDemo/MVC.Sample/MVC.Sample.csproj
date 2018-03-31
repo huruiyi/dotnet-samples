@@ -653,6 +653,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AuthInfoController.cs" />
+    <Compile Include="Controllers\CusIocController.cs" />
+    <Compile Include="Controllers\DemoAController.cs" />
+    <Compile Include="Controllers\DemoBController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\IIdentityDemo1Controller.cs" />
     <Compile Include="Controllers\IIdentityDemo2Controller.cs" />
@@ -671,6 +674,10 @@
     <Compile Include="Filters\_2Action\Cus_FilterAttribute_IActionFilter_ IResultFilter.cs" />
     <Compile Include="Filters\_3Result\CusFilterAttributeIResultFilter.cs" />
     <Compile Include="Filters\_4Other\Cus_IAuthentication_API.cs" />
+    <Compile Include="Infrastructure\CusAControllerFactory.cs" />
+    <Compile Include="Infrastructure\CusBControllerFactory.cs" />
+    <Compile Include="Infrastructure\CusIocControllerFactory.cs" />
+    <Compile Include="Infrastructure\ServiceAttribute.cs" />
     <Compile Include="Models\AuthorizationModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -698,9 +705,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ExcelExportHelper.cs" />
+    <Compile Include="Models\IMathService.cs" />
     <Compile Include="Models\JsonFilter.cs" />
     <Compile Include="Models\LogOnViewModel.cs" />
     <Compile Include="Models\MachineMessage.cs" />
+    <Compile Include="Models\MathService.cs" />
     <Compile Include="Models\MemberInfo.cs" />
     <Compile Include="Models\MemberPrincipal.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -792,6 +801,11 @@
     <Content Include="Views\IIdentityDemo3\Index.cshtml" />
     <Content Include="Views\IIdentityDemo3\Login.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\DemoA\About.cshtml" />
+    <Content Include="Views\DemoA\Index.cshtml" />
+    <Content Include="Views\DemoB\About.cshtml" />
+    <Content Include="Views\DemoB\Index.cshtml" />
+    <Content Include="Views\CusIOC\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
