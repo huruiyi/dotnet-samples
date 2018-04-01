@@ -194,5 +194,52 @@ namespace ConApp
         }
 
         #endregion Mutex
+
+        #region 多线程
+
+        public class CusThread
+        {
+            public ParameterizedThreadStart CallBackFunc { get; set; }
+
+            public CusThread(ParameterizedThreadStart start)
+            {
+                CallBackFunc = start;
+            }
+
+            public void Start(object obj)
+            {
+                CallBackFunc(obj);
+            }
+        }
+
+        public static void CusThread_Demo()
+        {
+            CusThread thread1 = new CusThread(o =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.WriteLine(i);
+                }
+            });
+
+            CusThread thread2 = new CusThread(delegate (object o)
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.WriteLine(i);
+                }
+            });
+
+            CusThread thread3 = new CusThread(Function);
+
+            CusThread thread4 = new CusThread(new ParameterizedThreadStart(Function));
+        }
+
+        private static void Function(object o1)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion 多线程
     }
 }

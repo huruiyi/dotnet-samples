@@ -22,8 +22,7 @@ namespace ConApp
         {
             string timestamp = DateTime.Now.ToString();
 
-            DateTime stamp;
-            DateTime.TryParse(timestamp, out stamp);
+            DateTime.TryParse(timestamp, out var stamp);
             StringBuilder securityKey = new StringBuilder();
 
             securityKey.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
@@ -78,6 +77,42 @@ namespace ConApp
             }
 
             return false;
+        }
+
+        public static void Md5Demo()
+        {
+            string source = "Hello World!";
+
+            using (MD5 md5Hash = MD5.Create())
+            {
+                string hashPwd = GetMd5Hash(md5Hash, source);
+                Console.WriteLine("The MD5 hash of " + source + " is: " + hashPwd + ".");
+                Console.WriteLine("Verifying the hash...");
+                Console.WriteLine(VerifyMd5Hash(md5Hash, source, hashPwd)
+                    ? "The hashes are the same."
+                    : "The hashes are not same.");
+            }
+        }
+
+        private static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+            StringBuilder sBuilder = new StringBuilder();
+
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            foreach (var t in data)
+            {
+                sBuilder.Append(t.ToString("x2"));
+            }
+            return sBuilder.ToString();
+        }
+
+        private static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+        {
+            string hashOfInput = GetMd5Hash(md5Hash, input);
+
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            return 0 == comparer.Compare(hashOfInput, hash);
         }
     }
 }

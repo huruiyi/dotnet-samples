@@ -10,8 +10,31 @@ using System.Xml.Serialization;
 
 namespace ConApp
 {
-    public partial class Program
+    public class XMLDemo
     {
+        [XmlRoot("Cat")]
+        public class Cat
+        {
+            //定义Color属性的序列化为cat节点的属性
+            [XmlAttribute("Color")]
+            public string Color { get; set; }
+
+            //要求不序列化Speed属性    [XmlIgnore]
+            [XmlElement("Speed")]
+            public int Speed { get; set; }
+
+            //设置Saying属性序列化为Xml子元素
+            [XmlElement("Saying")]
+            public string Saying { get; set; }
+        }
+
+        [XmlRoot("RootItem")]
+        public class CatCollection
+        {
+            [XmlArray("ICats"), XmlArrayItem("ICat")]
+            public Cat[] Cats { get; set; }
+        }
+
         public static string ObjectToXMl(object p)
         {
             string result = "";
@@ -104,13 +127,13 @@ namespace ConApp
         public static void XMLDemo3()
         {
             string xmlString = @"﻿<?xml version='1.0' encoding='utf-8'?>
-                                            <GetCitiesListResponse xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
-                                            <Result Code='000000'>成功</Result>
-                                            <CitiesList>
-                                            <City PinYin='beijing' HasOutService='Y'>北京</City>
-                                            <City PinYin='shanghai' HasOutService='Y'>上海</City>
-                                            </CitiesList>
-                                            </GetCitiesListResponse>";
+                                <GetCitiesListResponse xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+                                    <Result Code='000000'>成功</Result>
+                                    <CitiesList>
+                                        <City PinYin='beijing' HasOutService='Y'>北京</City>
+                                        <City PinYin='shanghai' HasOutService='Y'>上海</City>
+                                    </CitiesList>
+                                </GetCitiesListResponse>";
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(CitiesListResponse));
 

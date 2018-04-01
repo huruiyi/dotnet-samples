@@ -1,0 +1,315 @@
+﻿using ConApp.Model;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConApp
+{
+    public class Int16Collection : CollectionBase
+    {
+        public Int16 this[int index]
+        {
+            get
+            {
+                return ((Int16)List[index]);
+            }
+            set
+            {
+                List[index] = value;
+            }
+        }
+
+        public int Add(Int16 value)
+        {
+            return (List.Add(value));
+        }
+
+        public int IndexOf(Int16 value)
+        {
+            return (List.IndexOf(value));
+        }
+
+        public void Insert(int index, Int16 value)
+        {
+            List.Insert(index, value);
+        }
+
+        public void Remove(Int16 value)
+        {
+            List.Remove(value);
+        }
+
+        public bool Contains(Int16 value)
+        {
+            // If value is not of type Int16, this will return false.
+            return (List.Contains(value));
+        }
+
+        protected override void OnInsert(int index, Object value)
+        {
+            // Insert additional code to be run only when inserting values.
+        }
+
+        protected override void OnRemove(int index, Object value)
+        {
+            // Insert additional code to be run only when removing values.
+        }
+
+        protected override void OnSet(int index, Object oldValue, Object newValue)
+        {
+            // Insert additional code to be run only when setting values.
+        }
+
+        protected override void OnValidate(Object value)
+        {
+            if (value.GetType() != typeof(Int16))
+                throw new ArgumentException("value must be of type Int16.", "value");
+        }
+    }
+
+    public class MyCollection1 : IEnumerable
+    {
+        public int[] Items = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        public IEnumerator GetEnumerator()
+        {
+            foreach (int item in Items)
+            {
+                yield return item;
+            }
+        }
+    }
+
+    public class MyCollection2 : IEnumerable
+    {
+        public int[] Arr1 = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+
+        public IEnumerator GetEnumerator()
+        {
+            return new CusEnumerator(Arr1);
+        }
+    }
+
+    public class CusEnumerator : IEnumerator
+    {
+        public int[] Arr;
+        public int index = -1;
+
+        public CusEnumerator(int[] arr)
+        {
+            Arr = arr;
+        }
+
+        public object Current => Arr[index];
+
+        public bool MoveNext()
+        {
+            index++;
+            if (Arr.Length > index)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            index = -1;
+        }
+    }
+
+    public class CollectionsDemo
+    {
+        public static void PrintValues1(Int16Collection myCol)
+        {
+            foreach (Int16 i16 in myCol)
+            {
+                Console.WriteLine("   {0}", i16);
+            }
+            Console.WriteLine();
+        }
+
+        public static void PrintValues2(Int16Collection myCol)
+        {
+            IEnumerator myEnumerator = myCol.GetEnumerator();
+            while (myEnumerator.MoveNext())
+            {
+                Console.WriteLine("   {0}", myEnumerator.Current);
+            }
+            Console.WriteLine();
+        }
+
+        public static void PrintIndexAndValues(Int16Collection myCol)
+        {
+            for (int i = 0; i < myCol.Count; i++)
+            {
+                Console.WriteLine("   [{0}]:   {1}", i, myCol[i]);
+            }
+            Console.WriteLine();
+        }
+
+        public static void CollectionDemo()
+        {
+            Int16Collection myI16 = new Int16Collection { 1, 2, 3, 5, 7 };
+
+            Console.WriteLine("Contents of the collection (using foreach):");
+            PrintValues1(myI16);
+
+            Console.WriteLine("Contents of the collection (using enumerator):");
+            PrintValues2(myI16);
+
+            Console.WriteLine("Initial contents of the collection (using Count and Item):");
+            PrintIndexAndValues(myI16);
+
+            Console.WriteLine("Contains 3: {0}", myI16.Contains(3));
+            Console.WriteLine("2 is at index {0}.", myI16.IndexOf(2));
+            Console.WriteLine();
+
+            myI16.Insert(3, 13);
+            Console.WriteLine("Contents of the collection after inserting at index 3:");
+            PrintIndexAndValues(myI16);
+
+            myI16[4] = 123;
+            Console.WriteLine("Contents of the collection after setting the element at index 4 to 123:");
+            PrintIndexAndValues(myI16);
+
+            myI16.Remove(2);
+
+            Console.WriteLine("Contents of the collection after removing the element 2:");
+            PrintIndexAndValues(myI16);
+        }
+
+        public static void PrintIntList(IEnumerable<int> list)
+        {
+            foreach (int item in list)
+            {
+                Console.Write(item.ToString().PadLeft(2, '0') + "\t");
+            }
+            Console.WriteLine();
+        }
+
+        public static void PrintIntList(List<int> list1, List<int> list2)
+        {
+            Console.Write("list1:");
+            PrintIntList(list1);
+
+            Console.WriteLine();
+            PrintIntList(list1);
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 交集并集差集
+        /// </summary>
+        public static void ExceptIntersectUnion()
+        {
+            List<int> list1 = new List<int>
+            {
+                10, 1, 4, 5, 8
+            };
+            list1.Sort();
+
+            List<int> list2 = new List<int>
+            {
+                1, 28, 4, 8, 18
+            };
+            list2.Sort();
+
+            PrintIntList(list1, list2);
+            Console.WriteLine("+++++++++++++++++++差集+++++++++++++++++++");
+            IEnumerable<int> nList1 = list1.Except(list2);
+            Console.WriteLine();
+            Console.WriteLine("list1.Except(list2)");
+            PrintIntList(nList1);
+
+            IEnumerable<int> nList2 = list2.Except(list1);
+            Console.WriteLine();
+            Console.WriteLine("list2.Except(list1)");
+            PrintIntList(nList2);
+
+            Console.WriteLine("+++++++++++++++++++交集+++++++++++++++++++");
+            IEnumerable<int> nList3 = list1.Intersect(list2);
+            Console.WriteLine();
+            Console.WriteLine("list1.Intersect(list2)");
+            PrintIntList(nList3);
+
+            IEnumerable<int> nList4 = list2.Intersect(list1);
+            Console.WriteLine();
+            Console.WriteLine("list2.Intersect(list1)");
+            PrintIntList(nList4);
+
+            Console.WriteLine("+++++++++++++++++++并集+++++++++++++++++++");
+            IEnumerable<int> nList5 = list2.Union(list1);
+            Console.WriteLine();
+            Console.WriteLine("list2.Union(list1)");
+            PrintIntList(nList5);
+
+            IEnumerable<int> nList6 = list1.Union(list2);
+            Console.WriteLine();
+            Console.WriteLine("list1.Union(list2)");
+            PrintIntList(nList6);
+        }
+
+        public static void Cus_foreach()
+        {
+            MyCollection1 myCol = new MyCollection1();
+            foreach (var a in myCol)
+            {
+                Console.WriteLine(a);
+            }
+
+            MyCollection2 myCol2 = new MyCollection2();
+            foreach (var m in myCol2)
+            {
+                Console.WriteLine(m);
+            }
+        }
+
+        /*
+             foreach (int i in YieldPower(2, 8))
+             {
+                 Console.Write("{0} ", i);
+             }
+         */
+
+        public static IEnumerable YieldPower(int number, int exponent)
+        {
+            int counter = 0;
+            int result = 1;
+            while (counter++ < exponent)
+            {
+                result = result * number;
+                yield return result;
+            }
+        }
+
+        public static object CreateGeneric(Type generic, Type innerType, params object[] args)
+        {
+            Type specificType = generic.MakeGenericType(innerType);
+            return Activator.CreateInstance(specificType, args);
+        }
+
+        public static void CreateGenericDemo()
+        {
+            object genericList = CreateGeneric(typeof(List<>), typeof(Person));
+            var orderList = genericList as List<Person>;
+        }
+
+        public static void StackDemo()
+        {
+            Stack stack = new Stack();
+            stack.Push("a");
+            stack.Push("b");
+            stack.Push("c");
+            stack.Push("d");
+            stack.Push("e");
+            stack.Push("f");
+            stack.Push("g");
+            stack.Push("h");
+            Console.WriteLine(stack.Peek());
+            Console.WriteLine(stack.Count);
+        }
+    }
+}

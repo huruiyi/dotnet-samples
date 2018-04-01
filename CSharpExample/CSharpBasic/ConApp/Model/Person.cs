@@ -14,9 +14,9 @@ namespace ConApp.Model
 
         public string[] Hobbys { get; set; }
 
-      //  public Dictionary<int, string> Attributes { get; set; }
 
-        [ValidateAge(50, "")]
+
+        //[ValidateAge(50, "")]
         public int Age { get; set; }
 
         public int Sallary { get; set; }

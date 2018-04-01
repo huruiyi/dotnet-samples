@@ -1,11 +1,52 @@
-﻿using ConApp.Model;
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace ConApp.Samples
 {
     public class EnumDemo
     {
+        public enum Days
+        {
+            Saturday,
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday
+        };
+
+        [Flags]
+        public enum Colors
+        {
+            Red = 1,
+            Green = 2,
+            Blue = 4,
+            Yellow = 8
+        };
+
+        public enum BoilingPoints
+        {
+            Celcius = 100,
+            Fahrenheit = 212
+        };
+
+        [Flags]
+        public enum SocialTypeEnum : int
+        {
+            [Description("脸书")]
+            Facebook = 10,
+
+            [Description("推特")]
+            Twitter,
+
+            [Description("谷歌+")]
+            GooglePlus = 16,
+
+            [Description("其他")]
+            Other = 4
+        }
+
         /*
             “X”或“x” 以十六进制格式表示 value（不带前导“0x”）。
             “D”或“d” 以十进制形式表示 value。
@@ -101,6 +142,22 @@ namespace ConApp.Samples
 
             Type ste = typeof(SocialTypeEnum);
             object[] result7 = ste.GetField(SocialTypeEnum.Facebook.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
+        }
+
+        public static void Enum7()
+        {
+            Type weekdays = typeof(Days);
+            Type boiling = typeof(BoilingPoints);
+            foreach (string s in Enum.GetNames(weekdays))
+            {
+                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(weekdays, Enum.Parse(weekdays, s), "d"));
+            }
+            foreach (string s in Enum.GetNames(boiling))
+            {
+                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(boiling, Enum.Parse(boiling, s), "d"));
+            }
+            Colors myColors = Colors.Red | Colors.Blue | Colors.Yellow;
+            Console.WriteLine("myColors holds a combination of colors. Namely: {0}", myColors);
         }
     }
 }

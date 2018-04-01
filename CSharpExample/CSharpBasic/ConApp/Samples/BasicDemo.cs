@@ -1,9 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ConApp
 {
     public class BasicDemo
     {
+        public class DataType
+        {
+            public string TypeName { get; set; }
+
+            public int ByteCount { get; set; }
+
+            public object Min { get; set; }
+
+            public object Max { get; set; }
+
+            public Type Type { get; set; }
+
+            public string TypeFullName { get; set; }
+        }
         public static void SimpleArithmetic1()
         {
             char c1 = 'A';
@@ -151,45 +167,58 @@ namespace ConApp
             }
         }
 
-        public static void BasicType()
+     
+
+        public static void DataTypeDemo1()
         {
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("short.MinValue:" + short.MinValue);
-            Console.WriteLine("short.MaxValue:" + short.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("int.MinValue:" + int.MinValue);
-            Console.WriteLine("int.MaxValue:" + int.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Int16.MinValue:" + Int16.MinValue);
-            Console.WriteLine("Int16.MaxValue:" + Int16.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Int32.MinValue:" + Int32.MinValue);
-            Console.WriteLine("Int32.MaxValue:" + Int32.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Int64.MinValue:" + Int64.MinValue);
-            Console.WriteLine("Int64.MaxValue:" + Int64.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("UInt16.MinValue:" + UInt16.MinValue);
-            Console.WriteLine("UInt16.MaxValue:" + UInt16.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("UInt32.MinValue:" + UInt32.MinValue);
-            Console.WriteLine("UInt32.MaxValue:" + UInt32.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("UInt64.MinValue:" + UInt64.MinValue);
-            Console.WriteLine("UInt64.MaxValue:" + UInt64.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("byte.MinValue:" + byte.MinValue);
-            Console.WriteLine("byte.MaxValue:" + byte.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("Byte.MinValue:" + Byte.MinValue);
-            Console.WriteLine("Byte.MaxValue:" + Byte.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("sbyte.MinValue:" + sbyte.MinValue);
-            Console.WriteLine("sbyte.MaxValue:" + sbyte.MaxValue);
-            Console.WriteLine("**************************************************");
-            Console.WriteLine("SByte.MinValue:" + SByte.MinValue);
-            Console.WriteLine("SByte.MaxValue" + SByte.MaxValue);
-            Console.WriteLine("**************************************************");
+            List<DataType> dataTypeList = new List<DataType>();
+            dataTypeList.Add(new DataType { TypeName = "sbyte", ByteCount = sizeof(sbyte), Min = sbyte.MinValue, Max = sbyte.MaxValue, Type = typeof(sbyte) });
+            dataTypeList.Add(new DataType { TypeName = "SByte", ByteCount = sizeof(SByte), Min = SByte.MinValue, Max = SByte.MaxValue, Type = typeof(SByte) });
+
+            dataTypeList.Add(new DataType { TypeName = "byte", ByteCount = sizeof(byte), Min = byte.MinValue, Max = byte.MaxValue, Type = typeof(byte) });
+            dataTypeList.Add(new DataType { TypeName = "Byte", ByteCount = sizeof(Byte), Min = Byte.MinValue, Max = Byte.MaxValue, Type = typeof(Byte) });
+
+            dataTypeList.Add(new DataType { TypeName = "char", ByteCount = sizeof(char), Min = char.MinValue, Max = char.MaxValue, Type = typeof(char) });
+            dataTypeList.Add(new DataType { TypeName = "Char", ByteCount = sizeof(Char), Min = char.MinValue, Max = Char.MaxValue, Type = typeof(Char) });
+
+            dataTypeList.Add(new DataType { TypeName = "short", ByteCount = sizeof(short), Min = short.MinValue, Max = short.MaxValue, Type = typeof(short) });
+            dataTypeList.Add(new DataType { TypeName = "ushort", ByteCount = sizeof(ushort), Min = ushort.MinValue, Max = ushort.MaxValue, Type = typeof(ushort) });
+            dataTypeList.Add(new DataType { TypeName = "Int16", ByteCount = sizeof(Int16), Min = Int16.MinValue, Max = Int16.MaxValue, Type = typeof(Int16) });
+            dataTypeList.Add(new DataType { TypeName = "UInt16", ByteCount = sizeof(UInt16), Min = UInt16.MinValue, Max = UInt16.MaxValue, Type = typeof(UInt16) });
+
+            dataTypeList.Add(new DataType { TypeName = "int", ByteCount = sizeof(int), Min = int.MinValue, Max = int.MaxValue, Type = typeof(int) });
+            dataTypeList.Add(new DataType { TypeName = "uint", ByteCount = sizeof(uint), Min = uint.MinValue, Max = uint.MaxValue, Type = typeof(uint) });
+            dataTypeList.Add(new DataType { TypeName = "Int32", ByteCount = sizeof(Int32), Min = Int32.MinValue, Max = Int32.MaxValue, Type = typeof(Int32) });
+            dataTypeList.Add(new DataType { TypeName = "UInt32", ByteCount = sizeof(UInt32), Min = UInt32.MinValue, Max = UInt32.MaxValue, Type = typeof(UInt32) });
+
+            dataTypeList.Add(new DataType { TypeName = "long", ByteCount = sizeof(long), Min = long.MinValue, Max = long.MaxValue, Type = typeof(long) });
+            dataTypeList.Add(new DataType { TypeName = "ulong", ByteCount = sizeof(ulong), Min = ulong.MinValue, Max = ulong.MaxValue, Type = typeof(ulong) });
+            dataTypeList.Add(new DataType { TypeName = "Int64", ByteCount = sizeof(Int64), Min = Int64.MinValue, Max = Int64.MaxValue, Type = typeof(Int64) });
+            dataTypeList.Add(new DataType { TypeName = "UInt64", ByteCount = sizeof(UInt64), Min = UInt64.MinValue, Max = UInt64.MaxValue, Type = typeof(UInt64) });
+
+            dataTypeList.Add(new DataType { TypeName = "float", ByteCount = sizeof(float), Min = float.MinValue, Max = float.MaxValue, Type = typeof(float) });
+            dataTypeList.Add(new DataType { TypeName = "double", ByteCount = sizeof(double), Min = double.MinValue, Max = double.MaxValue, Type = typeof(double) });
+            dataTypeList.Add(new DataType { TypeName = "decimal", ByteCount = sizeof(decimal), Min = double.MinValue, Max = double.MaxValue, Type = typeof(decimal) });
+
+            foreach (DataType item in dataTypeList)
+            {
+                item.TypeFullName = item.Type.FullName;
+            }
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.Append("<table>");
+            foreach (DataType item in dataTypeList)
+            {
+                strBuilder.Append("<tr>");
+                strBuilder.Append($"<td>{item.TypeName}</td>");
+                strBuilder.Append($"<td>{item.TypeFullName}</td>");
+                strBuilder.Append($"<td>{item.ByteCount}</td>");
+                strBuilder.Append($"<td>{item.Min}</td>");
+                strBuilder.Append($"<td>{item.Max}</td>");
+                strBuilder.Append("</tr>");
+            }
+            strBuilder.Append("</table>");
         }
+
     }
 }
