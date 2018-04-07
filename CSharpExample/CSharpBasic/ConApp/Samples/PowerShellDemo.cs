@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
@@ -22,6 +23,33 @@ namespace ConApp
             public int X { get; set; }
             public int Y { get; set; }
             public int Z { get; set; }
+        }
+
+        /// <summary>
+        /// 计算操作的对象
+        /// Author:chenkai Date：2010年11月9日13:54:49
+        /// </summary>
+        public class ConvertPatameter
+        {
+            public int FirstNum { get; set; }
+            public int SecondNum { get; set; }
+            public int Sum { get; set; }
+        }
+
+        public class OperatorPatameter
+        {
+            public string Operatorkey { get; set; }
+            public object OperatorValue { get; set; }
+        }
+
+        /// <summary>
+        /// 定义一个封装Shell脚本命令参数实体类
+        /// Author：chenkai Date:2010年11月9日10:27:55
+        /// </summary>
+        public class ShellParameter
+        {
+            public string ShellKey { get; set; }
+            public string ShellValue { get; set; }
         }
 
         private static void Demo1()
@@ -78,10 +106,12 @@ namespace ConApp
 
         public static void Demo3(string cmd)
         {
-            List<string> ps = new List<string>();
-            ps.Add("Set-ExecutionPolicy RemoteSigned");
-            ps.Add("Set-ExecutionPolicy -ExecutionPolicy Unrestricted");
-            ps.Add("& " + cmd);
+            List<string> ps = new List<string>
+            {
+                "Set-ExecutionPolicy RemoteSigned",
+                "Set-ExecutionPolicy -ExecutionPolicy Unrestricted",
+                "& " + cmd
+            };
             Runspace runspace = RunspaceFactory.CreateRunspace();
             runspace.Open();
             Pipeline pipeline = runspace.CreatePipeline();
@@ -200,6 +230,139 @@ namespace ConApp
                 Process process = psObject.BaseObject as Process;
                 Console.WriteLine("Process Name: {0}", process.ProcessName);
             }
+        }
+
+        /// <summary>
+        /// 执行PowserShell 脚本核心方法
+        /// </summary>
+        /// <param name="getshellstrlist">Shell脚本集合</param>
+        /// <param name="getshellparalist">脚本中涉及对应参数</param>
+        /// <returns>执行结果返回值</returns>
+        public static string ExecuteShellScript(List<string> getshellstrlist, List<ShellParameter> getshellparalist)
+        {
+            string getresutl = null;
+            //Create Runspace
+            Runspace newspace = RunspaceFactory.CreateRunspace();
+            Pipeline newline = newspace.CreatePipeline();
+
+            //open runspace
+            newspace.Open();
+
+            if (getshellstrlist.Count > 0)
+            {
+                foreach (string getshellstr in getshellstrlist)
+                {
+                    //Add Command ShellString
+                    newline.Commands.AddScript(getshellstr);
+                }
+            }
+
+            //Check Parameter
+            if (getshellparalist != null && getshellparalist.Count > 0)
+            {
+                int count = 0;
+                foreach (ShellParameter getshellpar in getshellparalist)
+                {
+                    //Set parameter
+                    //注入脚本一个.NEt对象 这样在powershell脚本中就可以直接通过$key访问和操作这个对象
+                    //newspace.SessionStateProxy.SetVariable(getshellpar.ShellKey,getshellpar.ShellValue);
+                    CommandParameter cmdpara = new CommandParameter(getshellpar.ShellKey, getshellpar.ShellValue);
+                    newline.Commands[count].Parameters.Add(cmdpara);
+                }
+            }
+
+            //Exec Restult
+            var getresult = newline.Invoke();
+            if (getresult != null)
+            {
+                StringBuilder getbuilder = new StringBuilder();
+                foreach (var getresstr in getresult)
+                {
+                    getbuilder.AppendLine(getresstr.ToString());
+                }
+                getresutl = getbuilder.ToString();
+            }
+
+            //close
+            newspace.Close();
+            return getresutl;
+        }
+
+        /// <summary>
+        /// 测试C#于Shell对象操作的可操作性
+        /// </summary>
+        /// <returns>返回计算结果</returns>
+        public static void OperatorObjectShell_Demo()
+        {
+            string getres = string.Empty;
+            //zaiShell 执行方法参数
+            List<string> getlist = new List<string>
+            {
+                "Set-ExecutionPolicy RemoteSigned"
+            };
+            //先执行启动安全策略，，使系统可以执行powershell脚本文件
+
+            string pspath = Path.Combine(new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName, "Resource", "PSDoc1.ps1");
+            getlist.Add(pspath);
+
+            //定义一个操作的实体对象
+            ConvertPatameter newconvert = new ConvertPatameter
+            {
+                FirstNum = 200,
+                SecondNum = 80,
+                Sum = 0
+            };
+
+            RunspaceConfiguration runspaceConfiguration = RunspaceConfiguration.Create();
+            Runspace newspace = RunspaceFactory.CreateRunspace(runspaceConfiguration);
+
+            newspace.Open();
+            Pipeline newline = newspace.CreatePipeline();
+            RunspaceInvoke scriptInvoker = new RunspaceInvoke(newspace);
+
+            Command getcmd = new Command(pspath);
+            CommandParameter newcmdpara = new CommandParameter("Result", newconvert);
+            getcmd.Parameters.Add(newcmdpara);
+            newline.Commands.Add(getcmd);
+
+            //注入脚本一个.NEt对象 这样在powershell脚本中就可以直接通过$key访问和操作这个对象
+            //newspace.SessionStateProxy.SetVariable(getshellpar.ShellKey,getshellpar.ShellValue);
+            newspace.SessionStateProxy.SetVariable("Result", newconvert);
+
+            //执行
+            var gettakeres = newline.Invoke();
+
+            foreach (var getstr in gettakeres)
+            {
+                Console.WriteLine(getstr.ToString());
+            }
+
+            Console.WriteLine("计算结果:" + newconvert.FirstNum + "加上" + newconvert.SecondNum + "等于" + newconvert.Sum);
+            Console.WriteLine("对象的值已经修改:" + newconvert.Sum);
+        }
+
+        public static void Demo8()
+        {
+            Console.WriteLine("请输入你要执行的PowserShell命名:");
+            string gettakeresult = Console.ReadLine();
+
+            //Main Method Get All Process
+            List<string> getshellcmdlist = new List<string>();
+            List<ShellParameter> getpatalist = new List<ShellParameter>
+            {
+                new ShellParameter{ ShellKey="Name",ShellValue="QQ*"}
+            };
+
+            if (!string.IsNullOrEmpty(gettakeresult))
+            {
+                getshellcmdlist.Add(gettakeresult);
+            }
+            //Execu Cmd
+            string getresult = ExecuteShellScript(getshellcmdlist, getpatalist);
+
+            //Output ExecuteResult
+            Console.WriteLine("执行结果:");
+            Console.WriteLine(getresult);
         }
     }
 }

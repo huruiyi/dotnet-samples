@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace ConApp
 {
-    public partial class Program
+    public class SecurityDemo
     {
         public static void DSADemo()
         {

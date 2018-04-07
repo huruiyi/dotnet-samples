@@ -44,6 +44,4 @@ namespace ConApp.Model
         [XmlElement("memberId")]
         public string MmemberId { get; set; }
     }
-
-   
 }

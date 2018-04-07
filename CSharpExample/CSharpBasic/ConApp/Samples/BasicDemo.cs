@@ -20,6 +20,7 @@ namespace ConApp
 
             public string TypeFullName { get; set; }
         }
+
         public static void SimpleArithmetic1()
         {
             char c1 = 'A';
@@ -167,8 +168,6 @@ namespace ConApp
             }
         }
 
-     
-
         public static void DataTypeDemo1()
         {
             List<DataType> dataTypeList = new List<DataType>();
@@ -220,5 +219,49 @@ namespace ConApp
             strBuilder.Append("</table>");
         }
 
+        public static void PrintFormat()
+        {
+            Console.WriteLine("Here is the result:");
+            Console.WriteLine("Processing......");
+            Console.WriteLine("OK!");
+            for (int i = 0; i <= 255; i++)
+            {
+                if (i % 4 == 0)
+                {
+                    Console.WriteLine();
+                }
+                Console.Write("{0} {1} \t", i.ToString().PadLeft(3, '0'), Convert.ToString(i, 2).PadLeft(8, '0'));
+            }
+        }
+
+        public static void Forloop()
+        {
+            //我国古代数学家张丘建在《算经》一书中曾提出过著名的“百钱买百鸡”问题，
+            //该问题叙述如下：鸡翁一，值钱五；鸡母一，值钱三；鸡雏三，值钱一；百钱
+            //买百鸡，则翁、母、雏各几何？ 翻译过来，意思是公鸡一个五块钱，母鸡一个三块
+            //钱，小鸡三个一块钱，现在要用一百块钱买一百只鸡，问公鸡、母鸡、小鸡各多
+            //少只？题目分析如果用数学的方法解决百钱买百鸡问题，可将该问题抽象成方程式组。
+            //公鸡x只，母鸡y只，小鸡z只，得到以下方程式组：
+            //A：5x+3y+1/3z = 100
+            //B：x+y+z = 100
+            //C：0 <= x <= 100
+            //D：0 <= y <= 100
+            //E：0 <= z <= 100
+            int i, j, k;
+            Console.WriteLine("百元买百鸡的问题所有可能的解如下：");
+            for (i = 0; i <= 100; i++)
+            {
+                for (j = 0; j <= 100; j++)
+                {
+                    for (k = 0; k <= 100; k++)
+                    {
+                        if (5 * i + 3 * j + k / 3 == 100 && k % 3 == 0 && i + j + k == 100)
+                        {
+                            Console.Write("公鸡{0}只，母鸡{1}只，小鸡 {2}只\n", i, j, k);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

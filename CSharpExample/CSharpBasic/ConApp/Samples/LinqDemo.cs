@@ -31,41 +31,13 @@ namespace ConApp.Samples
 {
     public class LinqDemo
     {
-        public class Extension
+        public static bool MyCalc(string str)
         {
-            public static bool MyCalc(string str)
-            {
-                if (int.Parse(str) >= 2)
-                {
-                    return true;
-                }
-                return false;
-            }
-
-            public static void UpdateUserInterface()
-            {
-                Console.Write("运行中。。。。。");
-
-                Console.ReadKey();
-            }
-
-            public static bool AutoUpdate()
+            if (int.Parse(str) >= 2)
             {
                 return true;
             }
-
-            public static void AutoUpdateSupplierMcScoreAsyncCallback(IAsyncResult ar)
-            {
-                Func<bool> pc = (Func<bool>)ar.AsyncState;
-                var endInvoke = pc.EndInvoke(ar);
-                if (endInvoke)
-                {
-                }
-                else
-                {
-                    //执行异常
-                }
-            }
+            return false;
         }
 
         public static void CusMethod()
@@ -81,14 +53,14 @@ namespace ConApp.Samples
                 "4"
             };
             //自己内部模拟的写法
-            var temp1 = list.MyFindStrs(Extension.MyCalc);
+            var temp1 = list.MyFindStrs(MyCalc);
             foreach (var item in temp1)
             {
                 Console.WriteLine(item);
             }
 
             //普通写法
-            var temp2 = list.FindAll(Extension.MyCalc);
+            var temp2 = list.FindAll(MyCalc);
 
             foreach (var item in temp2)
             {
@@ -99,7 +71,7 @@ namespace ConApp.Samples
 
             foreach (var item in temp3)
             {
-                //Console.WriteLine(item);
+                Console.WriteLine(item);
             }
 
             #endregion 扩展方法

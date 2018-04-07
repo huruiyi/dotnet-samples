@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,6 @@ namespace WinFormDemo.SyncAsyncAPMForm
         {
             long length = await AccessWebAsync();
 
-            // 这里可以做一些不依赖回复的操作
             OtherWork();
 
             this.richTextBox1.Text += String.Format("\n 回复的字节长度为:  {0}.\r\n", length);
@@ -36,11 +36,9 @@ namespace WinFormDemo.SyncAsyncAPMForm
         {
             MemoryStream content = new MemoryStream();
 
-            // 对MSDN发起一个Web请求
             HttpWebRequest webRequest = WebRequest.Create("http://msdn.microsoft.com/zh-cn/") as HttpWebRequest;
             if (webRequest != null)
             {
-                // 返回回复结果
                 using (WebResponse response = await webRequest.GetResponseAsync())
                 {
                     using (Stream responseStream = response.GetResponseStream())
@@ -56,7 +54,30 @@ namespace WinFormDemo.SyncAsyncAPMForm
 
         private void OtherWork()
         {
-            richTextBox1.Text += @"\r\n等待服务器回复中.................\n";
+            richTextBox1.Text += "\r\n等待服务器回复中.................\n";
+        }
+
+        private async void btnAsync_Click(object sender, EventArgs e)
+        {
+            Task<int> getLengthTask = AccessTheWebAsync();
+            int contentLength2 = await getLengthTask;
+
+            int contentLength = await AccessTheWebAsync();
+
+            richTextBox1.Text += $"\r\nLength of the downloaded string: {contentLength}.\r\n";
+        }
+
+        private async Task<int> AccessTheWebAsync()
+        {
+            HttpClient client = new HttpClient();
+
+            Task<string> getStringTask = client.GetStringAsync("http://msdn.microsoft.com");
+
+            OtherWork();
+
+            string urlContents = await getStringTask;
+
+            return urlContents.Length;
         }
     }
 }

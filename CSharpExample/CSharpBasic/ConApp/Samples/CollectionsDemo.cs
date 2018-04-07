@@ -120,6 +120,25 @@ namespace ConApp
         }
     }
 
+    public class PersonClass
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Sex { get; set; }
+        public string Address { get; set; }
+    }
+
+    public class IndexClass
+    {
+        public List<PersonClass> ListPerson { get; set; }
+
+        public PersonClass this[int id]
+        {
+            get { return ListPerson.First(m => m.Id == id); }
+        }
+    }
+
     public class CollectionsDemo
     {
         public static void PrintValues1(Int16Collection myCol)
@@ -310,6 +329,36 @@ namespace ConApp
             stack.Push("h");
             Console.WriteLine(stack.Peek());
             Console.WriteLine(stack.Count);
+        }
+
+        private static void Index()
+        {
+            IndexClass ic = new IndexClass
+            {
+                ListPerson = new List<PersonClass>
+                {
+                    new PersonClass {Id = 1, Name = "User1"},
+                    new PersonClass {Id = 2, Name = "User2"},
+                    new PersonClass {Id = 3, Name = "User3"}
+                }
+            };
+            Console.WriteLine(ic[2].Name);
+        }
+
+        public static void SortedListDemo()
+        {
+            SortedList sortedList = new SortedList
+            {
+                {3, 1},
+                {15, 5},
+                {5, 55},
+                {9, 55}
+            };
+            ParallelQuery pq = sortedList.AsParallel();
+            foreach (DictionaryEntry entry in sortedList)
+            {
+                Console.WriteLine(entry.Key + " " + entry.Value);
+            }
         }
     }
 }

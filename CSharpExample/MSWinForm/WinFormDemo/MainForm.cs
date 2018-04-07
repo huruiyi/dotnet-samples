@@ -67,6 +67,16 @@ namespace WinFormDemo
             new 简单委托().ShowDialog();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new 闪屏().ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new 线程抽奖().ShowDialog();
+        }
+
         private void button6_Click(object sender, EventArgs e)
         {
             new 简易资源管理器().ShowDialog();
@@ -85,6 +95,12 @@ namespace WinFormDemo
         private void button9_Click(object sender, EventArgs e)
         {
             new 数据绑定().ShowDialog();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new 无边框移动().ShowDialog();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -156,31 +172,19 @@ namespace WinFormDemo
             new AsymmetricAlgorithmForm().ShowDialog();
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void button21_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new 无边框移动().ShowDialog();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            new 闪屏().ShowDialog();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            new 线程抽奖().ShowDialog();
+            new TreeViewDemo().ShowDialog();
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new 自定义窗体外观().Show();
+            new 自定义窗体外观().ShowDialog();
         }
 
-        private void button21_Click(object sender, EventArgs e)
+        private void button23_Click(object sender, EventArgs e)
         {
-            new TreeViewDemo().Show();
+            new 验证码().ShowDialog();
         }
     }
 }

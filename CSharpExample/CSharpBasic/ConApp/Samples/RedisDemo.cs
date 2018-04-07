@@ -1,6 +1,5 @@
 ﻿using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
 
 namespace ConApp
 {
@@ -144,10 +143,6 @@ namespace ConApp
             Console.WriteLine(System.Text.Encoding.UTF8.GetString(hobby));
         }
 
-       
-
-     
-
         public static void SortedSetDemo()
         {
             client.SortedSetAdd("12", "百度", 400);
@@ -160,9 +155,6 @@ namespace ConApp
             for (int i = 0; i < length; i++)
             {
             }
-
-       
         }
-
     }
 }

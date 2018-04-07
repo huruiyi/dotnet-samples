@@ -353,5 +353,25 @@ namespace ConApp
             MethodInfo mdi = tp.GetMethod("HelloWorldReturn");
             mdi.Invoke(ob, new object[] { "Hello Lind", "OK" });
         }
+
+        public static void Reflection_Client_Sample()
+        {
+            string assemblyPath = @"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\System.Data.dll";
+            Assembly assembly = Assembly.LoadFrom(assemblyPath);
+
+            Console.WriteLine("Assembly Full Name : {0}", assembly.FullName);
+
+            Type[] assemblyTypes = assembly.GetTypes();
+
+            foreach (Type t in assemblyTypes)
+            {
+                Console.WriteLine(t.FullName);
+
+                //Search for the members based on the criteria specifed in the BindingsFlags
+                MemberInfo[] membersinfo = t.GetMembers(BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance);
+                foreach (MemberInfo m in membersinfo)
+                    Console.WriteLine("Member type: {0}, member name: {1}.", m.MemberType, m.Name);
+            }
+        }
     }
 }

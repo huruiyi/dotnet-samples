@@ -34,7 +34,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(115, 219);
+            this.richTextBox1.Location = new System.Drawing.Point(32, 57);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(409, 208);
             this.richTextBox1.TabIndex = 6;
@@ -43,7 +43,7 @@
             // btnClick
             // 
             this.btnClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClick.Location = new System.Drawing.Point(260, 190);
+            this.btnClick.Location = new System.Drawing.Point(177, 28);
             this.btnClick.Name = "btnClick";
             this.btnClick.Size = new System.Drawing.Size(138, 23);
             this.btnClick.TabIndex = 5;
@@ -55,7 +55,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 611);
+            this.ClientSize = new System.Drawing.Size(498, 307);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnClick);
             this.Name = "APM实例";

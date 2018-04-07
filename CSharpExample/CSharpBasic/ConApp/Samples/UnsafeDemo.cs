@@ -301,8 +301,8 @@ namespace ConApp
                         c[i] = 'a';                                    // change data in memory allocated for original "Hello"
             }
             Console.WriteLine(@"Hello");                  // .NET looks on address in memory where it expect
-                                                         // data for string "Hello" but it was just changed
-                                                         // Displays: "aaaaa"
+                                                          // data for string "Hello" but it was just changed
+                                                          // Displays: "aaaaa"
         }
 
         public static void Demo3()
@@ -345,7 +345,7 @@ namespace ConApp
         public static unsafe void Demo5()
         {
             //简单的结构变量放在栈上，无需fixed
-            Xyz stData = new Xyz {A = 100};
+            Xyz stData = new Xyz { A = 100 };
             Console.WriteLine(@"结构变量= 0x{0:x}", (int)&stData);
 
             //数组变量的声明放在了栈上，数据放在了堆上，需用fixed固定

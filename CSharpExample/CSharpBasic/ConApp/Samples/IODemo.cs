@@ -1,12 +1,170 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ConApp
 {
     public class IODemo
     {
+        public static class DocTreeHelper
+        {
+            /// <summary>
+            /// 输出目录结构树
+            /// </summary>
+            /// <param name="dirpath">被检查目录</param>
+            public static void PrintTree(string dirpath)
+            {
+                if (!Directory.Exists(dirpath))
+                {
+                    Directory.CreateDirectory(dirpath);
+                }
+                if (!Directory.Exists(dirpath))
+                {
+                    throw new Exception("文件夹不存在");
+                }
+
+                PrintDirectory(dirpath, 0, "");
+            }
+
+            /// <summary>
+            /// 将目录结构树输出到指定文件
+            /// </summary>
+            /// <param name="dirpath">被检查目录</param>
+            /// <param name="outputpath">输出到的文件</param>
+            public static void PrintTree(string dirpath, string outputpath)
+            {
+                if (!Directory.Exists(dirpath))
+                {
+                    throw new Exception("文件夹不存在");
+                }
+
+                //将输出流定向到文件 outputpath
+                StringWriter swOutput = new StringWriter();
+                Console.SetOut(swOutput);
+
+                PrintDirectory(dirpath, 0, "");
+
+                //将输出流输出到文件 outputpath
+                File.WriteAllText(outputpath, swOutput.ToString());
+
+                //将输出流重新定位回文件 outputpath
+                StreamWriter swConsole =
+                    new StreamWriter(Console.OpenStandardOutput(), Console.OutputEncoding) { AutoFlush = true };
+                Console.SetOut(swConsole);
+            }
+
+            /// <summary>
+            /// 打印目录结构
+            /// </summary>
+            /// <param name="dirpath">目录</param>
+            /// <param name="depth">深度</param>
+            /// <param name="prefix">前缀</param>
+            private static void PrintDirectory(string dirpath, int depth, string prefix)
+            {
+                DirectoryInfo dif = new DirectoryInfo(dirpath);
+
+                //打印当前目录
+                if (depth == 0)
+                {
+                    Console.WriteLine(prefix + dif.Name);
+                }
+                else
+                {
+                    Console.WriteLine(prefix.Substring(0, prefix.Length - 2) + "| ");
+                    Console.WriteLine(prefix.Substring(0, prefix.Length - 2) + "|-" + dif.Name);
+                }
+
+                //打印目录下的目录信息
+                for (int counter = 0; counter < dif.GetDirectories().Length; counter++)
+                {
+                    DirectoryInfo di = dif.GetDirectories()[counter];
+                    if (counter != dif.GetDirectories().Length - 1 ||
+                        dif.GetFiles().Length != 0)
+                    {
+                        PrintDirectory(di.FullName, depth + 1, prefix + "| ");
+                    }
+                    else
+                    {
+                        PrintDirectory(di.FullName, depth + 1, prefix + "  ");
+                    }
+                }
+
+                //打印目录下的文件信息
+                for (int counter = 0; counter < dif.GetFiles().Length; counter++)
+                {
+                    FileInfo f = dif.GetFiles()[counter];
+                    if (counter == 0)
+                    {
+                        Console.WriteLine(prefix + "|");
+                    }
+                    Console.WriteLine(prefix + "|-" + f.Name);
+                }
+            }
+
+            public static void DocTreeHelperTest()
+            {
+                string dirpath = @"D:\Software";
+                string outputpath = @"output.txt";
+
+                PrintTree(dirpath);
+                PrintTree(dirpath, outputpath);
+
+                Console.WriteLine("Output Finished");
+                Console.WriteLine("输出完毕");
+            }
+        }
+
+        public static class DeleteFile
+        {
+            /// <summary>
+            /// 找全部文件
+            /// </summary>
+            public static void RecursionShow()
+            {
+                Console.WriteLine("请输入要删除的目录:");
+                string s = Console.ReadLine();
+                string rootPath = $@"{s}";
+                DirectoryInfo dirRoot = new DirectoryInfo(rootPath);
+                List<FileInfo> fileInfoList = new List<FileInfo>();
+                fileInfoList = GetFileByDir(dirRoot, fileInfoList);
+                Directory.Delete(rootPath, true);
+            }
+
+            /// </summary>
+            /// <param name="dirParent">父目录</param>
+            /// <param name="fileInfoList">文件集</param>
+            /// <returns></returns>
+            private static List<FileInfo> GetFileByDir(DirectoryInfo dirParent, List<FileInfo> fileInfoList)
+            {
+                FileInfo[] fileArray = dirParent.GetFiles();//找出子文件
+
+                if (fileArray != null && fileArray.Length > 0)
+                {
+                    fileInfoList.AddRange(fileArray.ToList());//放入集合
+                    foreach (FileInfo fi in fileArray)
+                    {
+                        File.Delete(fi.FullName);
+                    }
+                }
+                DirectoryInfo[] dirArray = dirParent.GetDirectories();//找子文件夹
+                if (dirArray != null && dirArray.Length > 0)
+                {
+                    foreach (DirectoryInfo dir in dirArray)//遍历子文件夹
+                    {
+                        GetFileByDir(dir, fileInfoList);//每个文件夹  再去找子文件和子文件夹
+                    }
+                }
+
+                return fileInfoList;
+            }
+        }
+
         public static void PathDemo()
         {
             AppDomainSetup app1 = AppDomain.CurrentDomain.SetupInformation;
@@ -55,6 +213,58 @@ namespace ConApp
                 long totalSize = drive.TotalSize / (1024 * 1024 * 1024);
                 Console.WriteLine($"{drive.Name} {totalSize}G {drive.DriveFormat} {drive.DriveType} {drive.IsReady} {drive.RootDirectory} {drive.VolumeLabel}");
             }
+        }
+
+        private static void DeleteRecentDemo()
+        {
+            string recentPath = Environment.GetFolderPath(Environment.SpecialFolder.Recent);
+
+            string[] files = Directory.GetFiles(recentPath);
+
+            if (files.Length > 0)
+            {
+                foreach (var file in files)
+                {
+                    File.Delete(file);
+                }
+
+                Console.WriteLine("清理完成................");
+            }
+            else
+            {
+                Console.WriteLine("干干净净的,无需清理");
+            }
+        }
+
+        private static void DeleteDirectoryDemo()
+        {
+            //Microsoft.VisualBasic.FileIO
+            Console.WriteLine("删除文件夹到回收站");
+            string dirpath = "leaver";
+            FileSystem.DeleteDirectory(dirpath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+            Console.WriteLine("删除文件夹完成");
+        }
+
+        private static void DeletFileeDemo()
+        {
+            Console.WriteLine("删除文件到回收站");
+            string filepath = @"D:\xxx.rar";
+            FileSystem.DeleteFile(filepath, UIOption.OnlyErrorDialogs, RecycleOption.DeletePermanently);
+            Console.WriteLine("删除文件完成");
+        }
+
+        private static void ConsoleToFile()
+        {
+            StreamWriter sw = new StreamWriter(@"ConsoleOutput.txt");
+            Console.SetOut(sw);
+
+            string str = File.ReadAllText("D:\\aaa.txt", Encoding.Default);
+            str = Regex.Replace(str, "\r|\n", "");
+            Console.WriteLine(str);
+            Console.WriteLine(DateTime.Today);
+
+            sw.Flush();
+            sw.Close();
         }
     }
 }

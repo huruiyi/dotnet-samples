@@ -14,8 +14,6 @@ namespace ConApp.Model
 
         public string[] Hobbys { get; set; }
 
-
-
         //[ValidateAge(50, "")]
         public int Age { get; set; }
 

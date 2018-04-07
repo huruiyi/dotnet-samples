@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ConApp
 {
@@ -20,6 +16,7 @@ namespace ConApp
             string regex = rstrValAttr.Regex;
             Console.WriteLine("Regular expression: {0}", regex);
         }
+
         public static void 匹配整形()
         {
             //Regex r = new Regex("\\d{1,}", RegexOptions.Multiline);

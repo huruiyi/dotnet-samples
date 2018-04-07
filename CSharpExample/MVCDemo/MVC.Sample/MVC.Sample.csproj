@@ -806,6 +806,8 @@
     <Content Include="Views\DemoB\About.cshtml" />
     <Content Include="Views\DemoB\Index.cshtml" />
     <Content Include="Views\CusIOC\Index.cshtml" />
+    <Content Include="Views\Task\AsyncAction.cshtml" />
+    <Content Include="Views\Task\SyncAction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
