@@ -194,7 +194,7 @@
             // pbClose
             // 
             this.pbClose.Image = ((System.Drawing.Image)(resources.GetObject("pbClose.Image")));
-            this.pbClose.Location = new System.Drawing.Point(485, 0);
+            this.pbClose.Location = new System.Drawing.Point(489, 0);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(27, 27);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -205,7 +205,7 @@
             // pbMin
             // 
             this.pbMin.Image = ((System.Drawing.Image)(resources.GetObject("pbMin.Image")));
-            this.pbMin.Location = new System.Drawing.Point(456, 0);
+            this.pbMin.Location = new System.Drawing.Point(463, 0);
             this.pbMin.Name = "pbMin";
             this.pbMin.Size = new System.Drawing.Size(27, 27);
             this.pbMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

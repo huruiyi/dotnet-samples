@@ -458,6 +458,7 @@
     <Content Include="Content\jquery.mobile.theme-1.4.5.css" />
     <Content Include="Content\jquery.mobile.theme-1.4.5.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\text\text.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -521,6 +522,10 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AuthorizationModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\text\date.png" />
+    <Content Include="Images\text\rmb.png" />
+    <Content Include="Images\text\string.png" />
+    <Content Include="Images\text\uint.png" />
     <Content Include="Models\AuthorizationModel.edmx.diagram">
       <DependentUpon>AuthorizationModel.edmx</DependentUpon>
     </Content>
@@ -641,6 +646,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\text\text.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery.icheck.min.js.map" />
   </ItemGroup>
@@ -678,6 +684,7 @@
     <Compile Include="Infrastructure\CusBControllerFactory.cs" />
     <Compile Include="Infrastructure\CusIocControllerFactory.cs" />
     <Compile Include="Infrastructure\ServiceAttribute.cs" />
+    <Compile Include="Infrastructure\TextBoxForExtension.cs" />
     <Compile Include="Models\AuthorizationModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -696,7 +703,6 @@
     <Compile Include="Models\DropDownSampleModel.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\SamplesController.cs" />
     <Compile Include="Controllers\ToolsController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
@@ -721,6 +727,7 @@
       <DependentUpon>AuthorizationModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\sysdiagrams.cs">
@@ -764,8 +771,6 @@
     <Content Include="Views\Ajax\AjaxTarget.cshtml" />
     <Content Include="Views\Ajax\JQueryHelper.cshtml" />
     <Content Include="Views\Home\SelectCategory.cshtml" />
-    <Content Include="Views\Person\Create.cshtml" />
-    <Content Include="Views\Person\ValidationUrl.cshtml" />
     <Content Include="Views\Movies\Create.cshtml" />
     <Content Include="Views\Movies\Delete.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
@@ -808,6 +813,9 @@
     <Content Include="Views\CusIOC\Index.cshtml" />
     <Content Include="Views\Task\AsyncAction.cshtml" />
     <Content Include="Views\Task\SyncAction.cshtml" />
+    <Content Include="Views\Samples\PetTextBoxFor.cshtml" />
+    <Content Include="Views\Samples\PersonCreate.cshtml" />
+    <Content Include="Views\Samples\ValidationUrl.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

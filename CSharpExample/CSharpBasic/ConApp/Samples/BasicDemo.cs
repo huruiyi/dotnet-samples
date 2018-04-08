@@ -263,5 +263,43 @@ namespace ConApp
                 }
             }
         }
+
+        
+        public static void CharacterJudge()
+        {
+            //3、	输入一个字符，判定它是什么类型的字符（大写字母，小写字母，数字或者其它字符）；
+            Console.WriteLine(" 请输入一个字符：");
+            char char_a = char.Parse(Console.ReadLine());
+            if (char_a >= 'A' && char_a <= 'Z')
+            {
+                Console.WriteLine("大写字母!");
+            }
+            else if (char_a >= 'a' && char_a <= 'z')
+            {
+                Console.WriteLine("小写字母!");
+            }
+            else if (char_a >= '0' && char_a <= '9')
+            {
+                Console.WriteLine("数字！");
+            }
+            else
+            {
+                Console.WriteLine("其它字符！");
+            }
+        }
+
+        public static void IfElse()
+        {
+            Console.WriteLine("请输入一个整数：");
+            int int_a = int.Parse(Console.ReadLine());
+            if (int_a > 0)
+            {
+                Console.WriteLine(int_a + 100);
+            }
+            else
+            {
+                Console.WriteLine(int_a + 500);
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace AsynchronousClient
     public class StateObject
     {
         // Client socket.
-        public Socket workSocket = null;
+        public Socket workSocket;
 
         // Size of receive buffer.
         public const int BufferSize = 256;
@@ -45,7 +45,7 @@ namespace AsynchronousClient
 
             Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            client.BeginConnect(remoteEp, new AsyncCallback(ConnectCallback), client);
+            client.BeginConnect(remoteEp, ConnectCallback, client);
             connectDone.WaitOne();
 
             Send(client, "This is a test<EOF>");
@@ -66,17 +66,19 @@ namespace AsynchronousClient
 
             client.EndConnect(ar);
 
-            Console.WriteLine("Socket connected to {0}", client.RemoteEndPoint.ToString());
+            Console.WriteLine("Socket connected to {0}", client.RemoteEndPoint);
 
             connectDone.Set();   // Signal that the connection has been made.
         }
 
         private static void Receive(Socket client)
         {
-            StateObject state = new StateObject();
-            state.workSocket = client;
+            StateObject state = new StateObject
+            {
+                workSocket = client
+            };
 
-            client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
+            client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, ReceiveCallback, state);
         }
 
         private static void ReceiveCallback(IAsyncResult ar)
@@ -94,7 +96,7 @@ namespace AsynchronousClient
                 state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
 
                 // Get the rest of the data.
-                client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
+                client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, ReceiveCallback, state);
             }
             else
             {
@@ -111,7 +113,7 @@ namespace AsynchronousClient
         {
             byte[] byteData = Encoding.ASCII.GetBytes(data);
 
-            client.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), client);
+            client.BeginSend(byteData, 0, byteData.Length, 0, SendCallback, client);
         }
 
         private static void SendCallback(IAsyncResult ar)
@@ -126,7 +128,7 @@ namespace AsynchronousClient
             sendDone.Set();
         }
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             StartClient();
             Console.ReadKey();

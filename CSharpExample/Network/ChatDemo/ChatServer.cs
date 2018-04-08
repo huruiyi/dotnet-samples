@@ -71,7 +71,7 @@ namespace ChatDemo
             ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             ServerSocket.Bind(ServerPoint);
             ServerSocket.Listen(10);
-            richMsg.AppendText("打开服务器成功\r\n");
+            richMsg.AppendText("打开服务器成功" + Environment.NewLine);
             btnConServices.Enabled = false;
 
             #region ThreadAcceptSocket
@@ -82,7 +82,7 @@ namespace ChatDemo
 
             #endregion ThreadAcceptSocket
 
-            ThreadPool.QueueUserWorkItem(new WaitCallback(this.ThreadPoolAcceptSocket), ServerSocket);
+            ThreadPool.QueueUserWorkItem(this.ThreadPoolAcceptSocket, ServerSocket);
         }
 
         private void AddItem(Socket item)
@@ -99,11 +99,9 @@ namespace ChatDemo
         {
             while (true)
             {
-                //监听的客户端套接字(ClientSocket)
-                //Accept：阻塞
                 Socket client = ServerSocket.Accept();
                 AddItem(client);
-                client.Send(Encoding.ASCII.GetBytes("已和服务端建立连接！！\r\n"));
+                client.Send(Encoding.UTF8.GetBytes("已和服务端建立连接！！" + Environment.NewLine));
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(client);
             }
@@ -114,20 +112,19 @@ namespace ChatDemo
             Socket socket = (Socket)obj;
             while (true)
             {
-                //接受客户端的一个连接
                 Socket client = socket.Accept();
+                AddItem(client);
+                client.Send(Encoding.UTF8.GetBytes("已和服务端建立连接！！" + Environment.NewLine));
 
-                client.Send(Encoding.ASCII.GetBytes("已和服务端建立连接！！\r\n"));
-
-                ThreadPool.QueueUserWorkItem(new WaitCallback(ReceiveMessage), client);
+                ThreadPool.QueueUserWorkItem(ReceiveMessage, client);
             }
         }
 
         private void ReceiveMessage(object objClient)
         {
             Socket client = (Socket)objClient;
-            richMsg.AppendText(string.Format("{0}有客户端连接\r\n", client.RemoteEndPoint.ToString()));
-            while (true && client.Connected)
+            richMsg.AppendText($"客户端:{client.RemoteEndPoint}连接成功！！" + Environment.NewLine);
+            while (client.Connected)
             {
                 try
                 {
@@ -135,14 +132,14 @@ namespace ChatDemo
                     //Receive：阻塞
                     int resulTLength = client.Receive(receiveMsg);
                     string receiveStringMsg = Encoding.UTF8.GetString(receiveMsg, 0, resulTLength);
-                    richMsg.AppendText(receiveStringMsg + "\r\n");
+                    richMsg.AppendText(client.LocalEndPoint + ":" + Environment.NewLine + "\t" + receiveStringMsg + "" + Environment.NewLine);
                 }
                 catch (Exception exc)
                 {
                     SocketException ex = exc as SocketException;
                     if (ex.SocketErrorCode == SocketError.ConnectionReset)
                     {
-                        richMsg.AppendText(string.Format("{0}关闭了连接\r\n", client.RemoteEndPoint.ToString()));
+                        richMsg.AppendText(string.Format("{0}关闭了连接" + Environment.NewLine, client.RemoteEndPoint));
                     }
                 }
             }

@@ -1,0 +1,23 @@
+﻿.uint, .date, .rmb, .string {
+    padding-top: 3px;
+    height: 32px;
+    padding-left: 22px;
+    background-repeat: no-repeat;
+    background-position: 2px center;
+}
+
+.uint {
+    background-image: url(/images/text/uint.png);
+}
+
+.date {
+    background-image: url(/images/text/date.png);
+}
+
+.rmb {
+    background-image: url(/images/text/rmb.png);
+}
+
+.string {
+    background-image: url(/images/text/string.png);
+}

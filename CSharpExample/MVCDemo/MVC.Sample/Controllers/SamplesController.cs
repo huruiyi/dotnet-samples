@@ -61,5 +61,20 @@ namespace MVC.Sample.Controllers
 
             return makes;
         }
+
+        public ActionResult PetTextBoxFor()
+        {
+            return View();
+        }
+
+        public ActionResult PersonCreate()
+        {
+            return View();
+        }
+
+        public ActionResult ValidationUrl()
+        {
+            return View();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace ChatDemo
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private Socket ClientSocket = null;
+        private Socket ClientSocket;
 
         private void btnopenServices_Click(object sender, EventArgs e)
         {
@@ -26,6 +26,7 @@ namespace ChatDemo
             IPAddress ip = IPAddress.Parse(txtIp.Text);
             IPEndPoint ServerPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
             ClientSocket.Connect(ServerPoint);
+            //ClientSocket.Connect(this.txtIP.Text, int.Parse(this.txtPort.Text));
 
             #region Poll
 
@@ -49,13 +50,10 @@ namespace ChatDemo
 
             #endregion Poll
 
-            //ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            //ClientSocket.Connect(this.txtIP.Text, int.Parse(this.txtPort.Text));
+            richMsg.AppendText("连接服务器成功."+Environment.NewLine);
+            this.Text = "客户端" + ClientSocket.LocalEndPoint;
 
-            richMsg.AppendText("连接服务器成功.\r\n");
-            this.Text = "客户端" + ClientSocket.LocalEndPoint.ToString();
-
-            #region ThreadReceiveMsg
+            #region Thread ReceiveMsg
 
             //Thread ReceiveThread = new Thread(ThreadReceiveMsg)
             //{
@@ -63,13 +61,9 @@ namespace ChatDemo
             //};
             //ReceiveThread.Start();
 
-            #endregion ThreadReceiveMsg
+            #endregion Thread ReceiveMsg
 
-            #region ThreadPoolReceiveMsg
-
-            ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadPoolReceiveMsg), ClientSocket);
-
-            #endregion ThreadPoolReceiveMsg
+            ThreadPool.QueueUserWorkItem(ThreadPoolReceiveMsg, ClientSocket);
 
             btnopenServices.Enabled = false;
             btnSendMsg.Enabled = true;
@@ -78,7 +72,7 @@ namespace ChatDemo
         public void ThreadReceiveMsg()
         {
             string endpoint = ClientSocket.LocalEndPoint.ToString();
-            while (true && ClientSocket.Connected)
+            while (ClientSocket.Connected)
             {
                 try
                 {
@@ -86,7 +80,7 @@ namespace ChatDemo
                     int resultLength = ClientSocket.Receive(bytes);
                     string resultString = Encoding.UTF8.GetString(bytes, 0, resultLength);
 
-                    richMsg.AppendText(resultString + "\r\n");
+                    richMsg.AppendText(ClientSocket.LocalEndPoint + ":" + Environment.NewLine + "\t" + resultString + Environment.NewLine);
                 }
                 catch (Exception exc)
                 {
@@ -107,7 +101,7 @@ namespace ChatDemo
         {
             Socket socket = (Socket)obj;
 
-            while (true && socket.Connected)
+            while (socket.Connected)
             {
                 try
                 {
@@ -115,7 +109,7 @@ namespace ChatDemo
                     int resultLength = socket.Receive(bytes);
                     string resultString = Encoding.UTF8.GetString(bytes, 0, resultLength);
 
-                    richMsg.AppendText(resultString + "\r\n");
+                    richMsg.AppendText(ClientSocket.LocalEndPoint + ":" + Environment.NewLine +"\t"+ resultString + Environment.NewLine);
                 }
                 catch (Exception exc)
                 {
@@ -156,14 +150,14 @@ namespace ChatDemo
             this.Close();
         }
 
-        private bool IsMouseDown = false;
+        private bool IsMouseDown;
         private Point mouseOffset;
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (IsMouseDown == true)
+            if (IsMouseDown)
             {
-                Point mousePos = Control.MousePosition;
+                Point mousePos = MousePosition;
                 mousePos.Offset(mouseOffset.X, mouseOffset.Y);
                 this.Location = mousePos;
             }

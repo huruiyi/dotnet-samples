@@ -1,0 +1,66 @@
+﻿@model MVC.Sample.Models.Pet
+@using MVC.Sample.Infrastructure;
+
+@{
+    ViewBag.Title = "PetTextBoxFor";
+}
+<script src="~/Scripts/text/text.js"></script>
+<link href="~/Content/text/text.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="row panel panel-default ">
+        <div class="col-md-offset-4 col-md-4 panel-body ">
+            <form>
+                <div class="form-group has-success">
+                    <div class="row">
+                        <div class="col-md-9 col-xs-8">
+                            @Html.LabelFor(model => model.Name)
+                        </div>
+                    </div>
+                    @Html.TextBoxFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+
+                <div class="form-group has-success">
+                    <div class="row">
+                        <div class="col-md-9 col-xs-8">
+                            @Html.LabelFor(model => model.Brithday)
+                        </div>
+                    </div>
+                    @Html.TextBoxFor(model => model.Brithday)
+                    @Html.ValidationMessageFor(model => model.Brithday)
+                </div>
+
+                <div class="form-group has-success">
+                    <div class="row">
+                        <div class="col-md-9 col-xs-8">
+                            @Html.LabelFor(model => model.Price)
+                        </div>
+                    </div>
+                    @Html.TextBoxFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+
+                <div class="form-group has-success">
+                    <div class="row">
+                        <div class="col-md-9 col-xs-8">
+                            @Html.LabelFor(model => model.LegCount)
+                        </div>
+                    </div>
+                    @Html.TextBoxFor(model => model.LegCount)
+                    @Html.ValidationMessageFor(model => model.LegCount)
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-success col-xs-5 col-lg-5">登录</button>
+                        <div class="col-lg-2 col-xs-2"></div>
+                        <button type="submit" class="btn btn-success col-xs-5 col-lg-5">注册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+}

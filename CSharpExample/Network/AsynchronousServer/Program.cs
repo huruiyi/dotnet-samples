@@ -7,7 +7,7 @@ using System.Threading;
 public class StateObject
 {
     // Client socket.
-    public Socket workSocket = null;
+    public Socket workSocket;
 
     // Size of receive buffer.
     public const int BufferSize = 1024;
@@ -23,10 +23,6 @@ public class AsynchronousServer
 {
     // Thread signal.
     public static ManualResetEvent allDone = new ManualResetEvent(false);
-
-    public AsynchronousServer()
-    {
-    }
 
     public static void StartListening()
     {
@@ -52,7 +48,7 @@ public class AsynchronousServer
 
             // Start an asynchronous socket to listen for connections.
             Console.WriteLine("Waiting for a connection...");
-            listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
+            listener.BeginAccept(AcceptCallback, listener);
 
             // Wait until a connection is made before continuing.
             allDone.WaitOne();
@@ -67,14 +63,16 @@ public class AsynchronousServer
         Socket listener = (Socket)ar.AsyncState;
         Socket handler = listener.EndAccept(ar);
 
-        StateObject state = new StateObject();
-        state.workSocket = handler;
-        handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
+        StateObject state = new StateObject
+        {
+            workSocket = handler
+        };
+        handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, ReadCallback, state);
     }
 
     public static void ReadCallback(IAsyncResult ar)
     {
-        String content = String.Empty;
+        String content;
 
         // Retrieve the state object and the handler socket from the asynchronous state object.
         StateObject state = (StateObject)ar.AsyncState;
@@ -99,8 +97,7 @@ public class AsynchronousServer
             else
             {
                 // Not all data received. Get more.
-                handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                new AsyncCallback(ReadCallback), state);
+                handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, ReadCallback, state);
             }
         }
     }
@@ -108,7 +105,7 @@ public class AsynchronousServer
     private static void Send(Socket handler, String data)
     {
         byte[] byteData = Encoding.ASCII.GetBytes(data);
-        handler.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), handler);
+        handler.BeginSend(byteData, 0, byteData.Length, 0, SendCallback, handler);
     }
 
     private static void SendCallback(IAsyncResult ar)
