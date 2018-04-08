@@ -658,8 +658,6 @@
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
-    <Compile Include="Controllers\AuthInfoController.cs" />
-    <Compile Include="Controllers\CusIocController.cs" />
     <Compile Include="Controllers\DemoAController.cs" />
     <Compile Include="Controllers\DemoBController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
@@ -786,9 +784,7 @@
     <Content Include="Views\Samples\UserCenter.cshtml" />
     <Content Include="Views\Samples\UserInfo.cshtml" />
     <Content Include="Views\Samples\DropDownListSample.cshtml" />
-    <Content Include="Views\AuthInfo\Index.cshtml" />
     <Content Include="Views\Ajax\Jsonp.cshtml" />
-    <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Error\ErrorInfo.cshtml" />
     <Content Include="Views\Error\General.cshtml" />
     <Content Include="Views\Error\HttpError404.cshtml" />
@@ -810,12 +806,14 @@
     <Content Include="Views\DemoA\Index.cshtml" />
     <Content Include="Views\DemoB\About.cshtml" />
     <Content Include="Views\DemoB\Index.cshtml" />
-    <Content Include="Views\CusIOC\Index.cshtml" />
     <Content Include="Views\Task\AsyncAction.cshtml" />
     <Content Include="Views\Task\SyncAction.cshtml" />
     <Content Include="Views\Samples\PetTextBoxFor.cshtml" />
     <Content Include="Views\Samples\PersonCreate.cshtml" />
     <Content Include="Views\Samples\ValidationUrl.cshtml" />
+    <Content Include="Views\Samples\EFIndex.cshtml" />
+    <Content Include="Views\Samples\AsyncAction.cshtml" />
+    <Content Include="Views\Samples\SyncAction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

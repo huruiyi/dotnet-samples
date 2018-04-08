@@ -20,8 +20,7 @@ namespace MVC.Sample.Controllers
         /// <summary>
         /// 创建验证码的图片
         /// </summary>
-        /// <param name="containsPage">要输出到的page对象</param>
-        /// <param name="validateNum">验证码</param>
+        /// <param name="validateCode">验证码字符串</param>
         public byte[] CreateValidateGraphic(string validateCode)
         {
             Bitmap image = new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22);
@@ -80,7 +79,7 @@ namespace MVC.Sample.Controllers
             //生成起始序列值
             int seekSeek = unchecked((int)DateTime.Now.Ticks);
             Random seekRand = new Random(seekSeek);
-            int beginSeek = (int)seekRand.Next(0, Int32.MaxValue - length * 10000);
+            int beginSeek = seekRand.Next(0, Int32.MaxValue - length * 10000);
             int[] seeks = new int[length];
             for (int i = 0; i < length; i++)
             {
@@ -170,7 +169,7 @@ namespace MVC.Sample.Controllers
             stringBuilder.AppendFormat("<td>ProcessorCount</td>");
             stringBuilder.AppendFormat("<td>{0}</td>", Environment.ProcessorCount);
             stringBuilder.Append("</tr>");
-            string arg = ((double)Environment.TickCount / 3600000.0).ToString("N2");
+            string arg = (Environment.TickCount / 3600000.0).ToString("N2");
             stringBuilder.Append("<tr>");
             stringBuilder.AppendFormat("<td>TickCount</td>");
             stringBuilder.AppendFormat("<td>{0}-{1}:小时</td>", Environment.TickCount, arg);

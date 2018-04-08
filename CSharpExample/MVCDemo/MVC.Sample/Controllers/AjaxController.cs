@@ -31,32 +31,28 @@ namespace MVC.Sample.Controllers
             string age = Request["Age"];
             string telephone = Request["Telephone"];
             string comment = Request["Comment"];
-            int intAge;
             Person p = new Person();
             if (name != string.Empty && age != string.Empty && telephone != string.Empty && comment != string.Empty)
             {
+                int intAge = 0;
                 if (!int.TryParse(age, out intAge))
                 {
                     return Content("<li>Age must be a integer number</li>");
                 }
-                else
-                {
-                    p.Name = name;
-                    p.Age = Convert.ToInt32(age);
-                    p.Comment = comment;
-                    p.Telephone = telephone;
-                    StringBuilder strbComment = new StringBuilder();
-                    strbComment.Append(String.Format("<li>Name:{0}</li>", Request["Name"]));
-                    strbComment.Append(String.Format("<li>Age:{0}</li>", Request["Age"]));
-                    strbComment.Append(String.Format("<li>Telephone:{0}</li>", Request["Telephone"]));
-                    strbComment.Append(String.Format("<li>Comment:{0}</li>", Request["Comment"]));
-                    return Content(string.Join("\n", strbComment.ToString()));
-                }
+
+                p.Name = name;
+                p.Age = Convert.ToInt32(age);
+                p.Comment = comment;
+                p.Telephone = telephone;
+                StringBuilder strbComment = new StringBuilder();
+                strbComment.Append($"<li>Name:{Request["Name"]}</li>");
+                strbComment.Append($"<li>Age:{Request["Age"]}</li>");
+                strbComment.Append($"<li>Telephone:{Request["Telephone"]}</li>");
+                strbComment.Append($"<li>Comment:{Request["Comment"]}</li>");
+                return Content(string.Join("\n", strbComment.ToString()));
             }
-            else
-            {
-                return Content("<li>Information incomplete</li>");
-            }
+
+            return Content("<li>Information incomplete</li>");
         }
 
         public ActionResult JQueryHelper()
@@ -76,8 +72,8 @@ namespace MVC.Sample.Controllers
             {
                 objList.Add(new
                 {
-                    Name = string.Format("Name{0}", i),
-                    Description = string.Format("Description{0}", i)
+                    Name = $"Name{i}",
+                    Description = $"Description{i}"
                 });
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
