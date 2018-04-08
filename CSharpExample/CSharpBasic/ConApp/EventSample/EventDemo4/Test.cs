@@ -1,4 +1,4 @@
-﻿namespace ConApp.EventSample.EventDemoFour
+﻿namespace ConApp.EventSample.EventDemo4
 {
     public class Test
     {

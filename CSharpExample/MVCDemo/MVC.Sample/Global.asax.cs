@@ -13,10 +13,17 @@ namespace MVC.Sample
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            //filters.Add(new HandleErrorAttribute());
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            RegisterGlobalFilters(GlobalFilters.Filters);
 
             //注册自定义的 ControllerFactory
             //ControllerBuilder.Current.SetControllerFactory(new CusBControllerFactory());

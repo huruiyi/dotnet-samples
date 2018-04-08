@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConApp.EventSample.EventDemoOne
+namespace ConApp.EventSample.EventDemo1
 {
     public class Test
     {

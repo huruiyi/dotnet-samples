@@ -13,7 +13,7 @@ namespace MVC.Sample.Controllers
             HttpContext.User = new MyPrincal4(myIndetity);
             var a = HttpContext.User.IsInRole("admin");
             var b = HttpContext.User.Identity.IsAuthenticated;
-            return View();
+            return Content("");
         }
 
         public class MyIndetity4 : IIdentity

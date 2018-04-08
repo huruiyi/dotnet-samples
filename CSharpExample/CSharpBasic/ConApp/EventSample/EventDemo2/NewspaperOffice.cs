@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConApp.EventSample.EventModelsTwo
+namespace ConApp.EventSample.EventDemo2
 {
     public class NewspaperOffice
     {

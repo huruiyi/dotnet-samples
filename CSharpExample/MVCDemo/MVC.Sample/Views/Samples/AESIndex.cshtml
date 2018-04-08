@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "AESIndex";
+}
+
+<h2>Encryption And Decryption</h2>
+
+<div style="color:red;" id="EncryptedText">Encrypted Message: @ViewData["Encrypted"]</div>
+<br />
+<div style="color:red;" id="DecryptedText">Decrypted Message: @ViewData["Decrypted"]</div>
+<br />
+
+@using (Html.BeginForm("Encryption", "Samples", FormMethod.Post))
+{
+    <label id="lbk1">Key:</label><input name="Key" id="Key" type="text" />
+    <br />
+    <br />
+    <label id="lbk2">Message:</label><input name="Text" id="Text" type="text" />
+    <br />
+    <br />
+    <input id="btnEncryption" type="submit" value="Encryption" />
+    <br />
+    <br />
+    <br />
+}
+
+@using (Html.BeginForm("Decryption", "Samples", FormMethod.Post))
+{
+    <label id="lbk4">Enter Same Key:</label><input name="Key2" id="Key2" type="text" />
+    <br />
+    <br />
+    <label id="lbk5">Enter Encrypted Message:</label><input name="Text2" id="Text2" type="text" />
+    <br />
+    <br />
+    <input id="btnDecryption" type="submit" value="Decryption" />
+
+}

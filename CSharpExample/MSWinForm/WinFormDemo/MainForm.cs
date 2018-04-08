@@ -191,5 +191,10 @@ namespace WinFormDemo
         {
             new ShellDemo().ShowDialog();
         }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            new 翻译案例().ShowDialog();
+        }
     }
 }

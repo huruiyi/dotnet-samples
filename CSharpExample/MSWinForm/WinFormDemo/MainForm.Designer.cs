@@ -52,12 +52,13 @@
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(73, 46);
+            this.button1.Location = new System.Drawing.Point(75, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 0;
@@ -101,7 +102,7 @@
             // button5
             // 
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(73, 90);
+            this.button5.Location = new System.Drawing.Point(75, 90);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 23);
             this.button5.TabIndex = 3;
@@ -145,7 +146,7 @@
             // button9
             // 
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(73, 134);
+            this.button9.Location = new System.Drawing.Point(75, 134);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(138, 23);
             this.button9.TabIndex = 7;
@@ -189,7 +190,7 @@
             // button13
             // 
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(73, 178);
+            this.button13.Location = new System.Drawing.Point(75, 178);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(138, 23);
             this.button13.TabIndex = 3;
@@ -233,7 +234,7 @@
             // button17
             // 
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(73, 222);
+            this.button17.Location = new System.Drawing.Point(75, 222);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(138, 23);
             this.button17.TabIndex = 3;
@@ -277,7 +278,7 @@
             // button21
             // 
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Location = new System.Drawing.Point(73, 271);
+            this.button21.Location = new System.Drawing.Point(75, 271);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(138, 23);
             this.button21.TabIndex = 3;
@@ -318,12 +319,23 @@
             this.button24.UseVisualStyleBackColor = true;
             this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
+            // button25
+            // 
+            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button25.Location = new System.Drawing.Point(75, 319);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(138, 23);
+            this.button25.TabIndex = 3;
+            this.button25.Text = "25-翻译";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(842, 348);
+            this.ClientSize = new System.Drawing.Size(842, 374);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -333,6 +345,7 @@
             this.Controls.Add(this.button24);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.button22);
+            this.Controls.Add(this.button25);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button10);
@@ -382,5 +395,6 @@
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button25;
     }
 }

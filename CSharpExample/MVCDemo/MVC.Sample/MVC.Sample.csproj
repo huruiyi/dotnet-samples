@@ -554,6 +554,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\func.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -812,6 +813,7 @@
     <Content Include="Views\Samples\EFIndex.cshtml" />
     <Content Include="Views\Samples\AsyncAction.cshtml" />
     <Content Include="Views\Samples\SyncAction.cshtml" />
+    <Content Include="Views\Samples\AESIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -822,7 +824,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Images\upload\" />
-    <Folder Include="Views\IIdentityDemo4\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

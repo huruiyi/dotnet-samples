@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConApp.EventSample.EventModelsThree
+namespace ConApp.EventSample.EventDemo3
 {
     public class NewspaperEventArgs : EventArgs
     {

@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace ConApp.EventSample.EventDemoFive
+namespace ConApp.EventSample.EventDemo5
 {
-    public class Dog
+    public class Cat
     {
         public Human Master { get; set; }
 
         public string Name { get; set; }
 
-        public Dog(Human master, string name)
+        public Cat(Human master, string name)
         {
             Name = name;
             Master = master;
@@ -19,7 +19,7 @@ namespace ConApp.EventSample.EventDemoFive
         {
             if (content == "Bye Bye")
             {
-                Console.WriteLine("{0}狗叫了声：汪汪", Name);
+                Console.WriteLine("{0}猫叫了声：喵喵", Name);
             }
         }
     }

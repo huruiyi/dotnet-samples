@@ -1,4 +1,4 @@
-﻿namespace ConApp.EventSample.EventModelsThree
+﻿namespace ConApp.EventSample.EventDemo2
 {
     internal class Test
     {

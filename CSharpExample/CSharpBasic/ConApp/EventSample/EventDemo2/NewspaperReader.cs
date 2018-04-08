@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConApp.EventSample.EventModelsThree
+namespace ConApp.EventSample.EventDemo2
 {
     public class NewspaperReader
     {
@@ -16,11 +16,9 @@ namespace ConApp.EventSample.EventModelsThree
             Console.WriteLine("{0},退订了{1}报纸", Name, office.Name);
         }
 
-        public void Read(object sender, NewspaperEventArgs e)
+        public void Read(string content)
         {
-            var office = sender as NewspaperOffice;
-            if (office != null)
-                Console.WriteLine("{0}正在读{1},报纸内容为：{2}", Name, office.Name, e.Content);
+            Console.WriteLine("{0}正在读报纸,内容为：{1}", Name, content);
         }
 
         public string Name { get; set; }

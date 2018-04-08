@@ -67,6 +67,9 @@
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.WindowsAPICodePack.Core.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.3.2, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft-WindowsAPICodePack-ExtendedLinguisticServices.1.1.3.2\lib\net462\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.WindowsAPICodePack.Shell.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
       <Private>True</Private>
@@ -259,6 +262,12 @@
     <Compile Include="线程抽奖.Designer.cs">
       <DependentUpon>线程抽奖.cs</DependentUpon>
     </Compile>
+    <Compile Include="翻译案例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="翻译案例.Designer.cs">
+      <DependentUpon>翻译案例.cs</DependentUpon>
+    </Compile>
     <Compile Include="自定义窗体.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="线程抽奖.resx">
       <DependentUpon>线程抽奖.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="翻译案例.resx">
+      <DependentUpon>翻译案例.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="自定义窗体.resx">
       <DependentUpon>自定义窗体.cs</DependentUpon>
