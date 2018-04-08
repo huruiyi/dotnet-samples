@@ -5,15 +5,11 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
-/// <summary>
-///  注意添加WindowsBase.dll
-/// </summary>
 namespace WinFormDemo
 {
     public partial class 调用摄像头实例 : Form
     {
         private FilterInfoCollection videoDevices;
-        //private VideoCaptureDevice videoSource;
 
         public 调用摄像头实例()
         {

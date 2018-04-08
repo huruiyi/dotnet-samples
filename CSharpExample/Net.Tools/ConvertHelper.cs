@@ -6,6 +6,24 @@ using System.Reflection;
 
 namespace Net.Tools
 {
+    public static class Extensions
+    {
+        public static int ToInt(this string number)
+        {
+            return Int32.Parse(number);
+        }
+
+        public static string DoubleToDollars(this double number)
+        {
+            return $"{number:c}";
+        }
+
+        public static string IntToDollars(this int number)
+        {
+            return $"{number:c}";
+        }
+    }
+
     public static class ConvertHelper
     {
         public static T ToObject<T>(this DataRow row) where T : class, new()

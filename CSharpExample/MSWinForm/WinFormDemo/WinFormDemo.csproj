@@ -33,26 +33,43 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>max.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AForge.dll</HintPath>
+      <HintPath>..\..\..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="AForge.Controls, Version=2.2.5.0, Culture=neutral, PublicKeyToken=a8ac264d1dc6b9d9, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AForge.Controls.dll</HintPath>
+      <HintPath>..\..\..\packages\AForge.Controls.2.2.5\lib\AForge.Controls.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AForge.Imaging.dll</HintPath>
+      <HintPath>..\..\..\packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AForge.Video.dll</HintPath>
+      <HintPath>..\..\..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AForge.Video.DirectShow.dll</HintPath>
+      <HintPath>..\..\..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.IWshRuntimeLibrary">
+      <HintPath>..\..\Net.Tools\obj\Debug\Interop.IWshRuntimeLibrary.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAPICodePack.Core.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAPICodePack.Shell.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -98,6 +115,12 @@
       <DependentUpon>Key事件.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Department.cs" />
+    <Compile Include="ShellDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShellDemo.Designer.cs">
+      <DependentUpon>ShellDemo.cs</DependentUpon>
+    </Compile>
     <Compile Include="SymmetricAlgorithmsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +313,9 @@
     <EmbeddedResource Include="Key事件.resx">
       <DependentUpon>Key事件.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ShellDemo.resx">
+      <DependentUpon>ShellDemo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SymmetricAlgorithmsForm.resx">
       <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +413,7 @@
     <EmbeddedResource Include="验证码.resx">
       <DependentUpon>验证码.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -401,14 +428,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ico\close.ico" />
-    <Content Include="Ico\max.ico" />
-    <Content Include="Ico\min.ico" />
-    <Content Include="lib\AForge.Controls.dll" />
-    <Content Include="lib\AForge.dll" />
-    <Content Include="lib\AForge.Imaging.dll" />
-    <Content Include="lib\AForge.Video.DirectShow.dll" />
-    <Content Include="lib\AForge.Video.dll" />
+    <Content Include="max.ico" />
+    <Content Include="Resources\close.ico" />
+    <Content Include="Resources\max.ico" />
+    <Content Include="Resources\min.ico" />
     <None Include="Resources\notepad.ico" />
   </ItemGroup>
   <ItemGroup />

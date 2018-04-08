@@ -186,5 +186,10 @@ namespace WinFormDemo
         {
             new 验证码().ShowDialog();
         }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            new ShellDemo().ShowDialog();
+        }
     }
 }
