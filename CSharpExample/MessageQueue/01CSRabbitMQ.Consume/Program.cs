@@ -13,11 +13,13 @@ namespace _01CSRabbitMQ.Consume
             //connectionFactory.UserName = "admin";
             //connectionFactory.Password = "admin";
 
-            ConnectionFactory connectionFactory = new ConnectionFactory();
-            connectionFactory.HostName = "127.0.0.1";
-            connectionFactory.VirtualHost = "/";
-            connectionFactory.UserName = "admin";
-            connectionFactory.Password = "admin";
+            ConnectionFactory connectionFactory = new ConnectionFactory
+            {
+                HostName = "127.0.0.1",
+                VirtualHost = "/",
+                UserName = "admin",
+                Password = "admin"
+            };
 
             using (IConnection connection = connectionFactory.CreateConnection())
             {
