@@ -123,13 +123,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConApp", "CSharpExample\CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFAppAdo.Net", "CSharpExample\ADO.NET\WFAppAdo.Net\WFAppAdo.Net.csproj", "{12A0C3EA-CCBD-4ED3-B302-6E8CCE86D89B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", "{871C9685-ED4F-41FA-956A-81D1A2150847}"
-	ProjectSection(SolutionItems) = preProject
-		CSharpExample\PowerShell\For.ps1 = CSharpExample\PowerShell\For.ps1
-		CSharpExample\PowerShell\IISINfo.ps1 = CSharpExample\PowerShell\IISINfo.ps1
-		CSharpExample\PowerShell\Win32_UserAccount.ps1 = CSharpExample\PowerShell\Win32_UserAccount.ps1
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicSample", "CSharpExample\CSharpBasic\BasicSample\BasicSample.csproj", "{14556FAE-A481-4850-B70D-B02E5D14470B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsIdentity", "CSharpExample\ASP.NET\WebFormsIdentity\WebFormsIdentity.csproj", "{CEA4D822-E14B-4F8F-A144-8220D97F989F}"
@@ -1275,7 +1268,7 @@ Global
 		{E949791B-B05E-4E26-B53A-8C94DBCA1D4B} = {EFD30AC6-D59D-4621-BF39-743ECD652C06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
+		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 	EndGlobalSection
 EndGlobal

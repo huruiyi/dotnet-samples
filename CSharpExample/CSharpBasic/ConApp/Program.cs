@@ -20,7 +20,7 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
-            NetDemo.TaskHttp();
+            ThreadDemo.RunCMDDemo();
             //Mutex
             //Marshal.
             Console.ReadKey();

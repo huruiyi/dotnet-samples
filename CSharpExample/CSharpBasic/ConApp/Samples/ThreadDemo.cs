@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
 
 namespace ConApp
@@ -241,5 +243,75 @@ namespace ConApp
         }
 
         #endregion 多线程
+
+        #region MyRegion
+
+        protected static bool IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+            return false;
+        }
+
+        private static void WriteContentToFile(string cmdfilename, string[] lines)
+        {
+            if (!File.Exists(cmdfilename))
+            {
+                File.Create(cmdfilename);
+            }
+            retray:
+            if (!IsFileLocked(new FileInfo(cmdfilename)))
+            {
+                string content = "";
+                foreach (string str in lines)
+                {
+                    content += str + "\n";
+                }
+                File.WriteAllText(cmdfilename, content);
+            }
+            else
+            {
+                goto retray;
+            }
+        }
+
+        private static void RunCMDScript(object scriptPath)
+        {
+            ProcessStartInfo procStartInfo = new ProcessStartInfo(scriptPath.ToString());
+            // Now we create a process, assign its ProcessStartInfo and start it
+            Process proc = new Process { StartInfo = procStartInfo };
+            proc.Start();
+        }
+
+        public static void RunCMDDemo()
+        {
+            char c = '"';
+            string[] cmdarr = { "cd /", "C:", "dir", string.Format("cd {0}Program Files{0}", c), "dir", "pause" };
+
+            string filename = Path.Combine(new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName, "Resource", "testcmd.cmd");
+
+            string basePath = AppDomain.CurrentDomain.BaseDirectory + "";
+            WriteContentToFile(filename, cmdarr);
+            Thread objThread = new Thread(RunCMDScript)
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.AboveNormal
+            };
+            objThread.Start(filename);
+        }
+
+        #endregion MyRegion
     }
 }

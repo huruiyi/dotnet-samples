@@ -196,7 +196,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Resource\For.ps1" />
+    <None Include="Resource\IISInfo.ps1" />
     <None Include="Resource\PSDoc1.ps1" />
+    <None Include="Resource\testcmd.cmd" />
+    <None Include="Resource\Win32_UserAccount.ps1" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
