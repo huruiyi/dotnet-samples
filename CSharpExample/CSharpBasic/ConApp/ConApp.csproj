@@ -127,7 +127,6 @@
     <Compile Include="EventSample\EventDemo2\Test.cs" />
     <Compile Include="EventSample\EventDemo6\Heater.cs" />
     <Compile Include="EventSample\EventDemo6\Test.cs" />
-    <Compile Include="OtherDemo\_AThreadPool.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,6 +177,7 @@
     <Compile Include="Samples\Md5Demo.cs" />
     <Compile Include="Samples\MongodDemo.cs" />
     <Compile Include="Samples\NetDemo.cs" />
+    <Compile Include="Samples\ParallelDemo.cs" />
     <Compile Include="Samples\PowerShellDemo.cs" />
     <Compile Include="Samples\RedisDemo.cs" />
     <Compile Include="Samples\ReflectionDemo.cs" />

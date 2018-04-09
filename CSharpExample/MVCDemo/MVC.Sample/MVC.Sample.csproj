@@ -682,6 +682,7 @@
     <Compile Include="Infrastructure\CusAControllerFactory.cs" />
     <Compile Include="Infrastructure\CusBControllerFactory.cs" />
     <Compile Include="Infrastructure\CusIocControllerFactory.cs" />
+    <Compile Include="Infrastructure\RouteConstraint.cs" />
     <Compile Include="Infrastructure\ServiceAttribute.cs" />
     <Compile Include="Infrastructure\TextBoxForExtension.cs" />
     <Compile Include="Models\AuthorizationModel.Context.cs">

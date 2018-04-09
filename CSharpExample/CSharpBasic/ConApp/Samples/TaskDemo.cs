@@ -207,17 +207,14 @@ namespace ConApp
             Task task = Task.Factory.StartNew(() =>
             {
                 Parallel.Invoke(
-                    delegate () { GetPseronList1(pers1); },
-                    delegate () { GetPseronList2(pers2); },
-                    delegate () { GetPseronList3(pers3); },
-                    delegate () { GetPseronList4(pers4); },
-                    delegate () { GetPseronList5(pers5); });
+                    delegate { GetPseronList1(pers1); },
+                    delegate { GetPseronList2(pers2); },
+                    delegate { GetPseronList3(pers3); },
+                    delegate { GetPseronList4(pers4); },
+                    delegate { GetPseronList5(pers5); });
             });
             Task.WaitAll();
-            task.ContinueWith(delegate (Task tt)
-            {
-                Console.WriteLine("执行完成");
-            }
+            task.ContinueWith(delegate (Task tt) { Console.WriteLine("执行完成,{0}", tt.Status); }
             );
         }
 
@@ -424,7 +421,7 @@ namespace ConApp
                 M2();
                 M3();
             });
-            Parallel.Invoke(new[] { new Action(M1), new Action(M2), new Action(M3) });
+            Parallel.Invoke(M1, M2, M3);
             Console.WriteLine("End......");
         }
 

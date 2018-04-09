@@ -2,9 +2,7 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ConApp
 {
@@ -249,33 +247,6 @@ namespace ConApp
             foreach (string item in keys)
             {
                 Console.WriteLine(item);
-            }
-        }
-
-        private static void Demo3()
-        {
-            List<int> intList = new List<int>();
-            var result = Parallel.ForEach(Enumerable.Range(1, 10000), (val) =>
-            {
-                intList.Add(val);
-            });
-            if (result.IsCompleted)
-            {
-                Console.WriteLine("intList.Count():" + intList.Count);
-            }
-        }
-
-        private static void Demo4()
-        {
-            ConcurrentBag<int> intList = new ConcurrentBag<int>();
-            //ConcurrentList<int> intList = new ConcurrentList<int>();
-            var result = Parallel.ForEach(Enumerable.Range(1, 10000), (val) =>
-            {
-                intList.Add(val);
-            });
-            if (result.IsCompleted)
-            {
-                Console.WriteLine("intList.Count():" + intList.Count);
             }
         }
     }

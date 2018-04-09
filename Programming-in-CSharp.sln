@@ -167,6 +167,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCEF.Sample", "CSharpExamp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsDemo", "CSharpExample\MSWinForm\GraphicsDemo\GraphicsDemo.csproj", "{E949791B-B05E-4E26-B53A-8C94DBCA1D4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostAPI", "CSharpExample\WebApiDemo\SelfHostAPI\SelfHostAPI.csproj", "{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostAPI.Client", "CSharpExample\WebApiDemo\SelfHostAPI.Client\SelfHostAPI.Client.csproj", "{3A45DE83-51CB-4A44-8D46-B735D242AE18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1191,6 +1195,38 @@ Global
 		{E949791B-B05E-4E26-B53A-8C94DBCA1D4B}.Release|x64.Build.0 = Release|Any CPU
 		{E949791B-B05E-4E26-B53A-8C94DBCA1D4B}.Release|x86.ActiveCfg = Release|Any CPU
 		{E949791B-B05E-4E26-B53A-8C94DBCA1D4B}.Release|x86.Build.0 = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|x64.Build.0 = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Debug|x86.Build.0 = Debug|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|x64.ActiveCfg = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|x64.Build.0 = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|x86.ActiveCfg = Release|Any CPU
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94}.Release|x86.Build.0 = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|x64.Build.0 = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|x64.Build.0 = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1266,6 +1302,8 @@ Global
 		{FED26040-7DEE-4704-B5C9-51A65C5BCDF3} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
 		{A251E13B-63D7-4611-939A-00AB68DE6B1A} = {4D6A042A-B4B7-4B08-9A13-307F415C1678}
 		{E949791B-B05E-4E26-B53A-8C94DBCA1D4B} = {EFD30AC6-D59D-4621-BF39-743ECD652C06}
+		{C4A4A1FD-337A-4CD4-A084-89CE61F29B94} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
+		{3A45DE83-51CB-4A44-8D46-B735D242AE18} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
