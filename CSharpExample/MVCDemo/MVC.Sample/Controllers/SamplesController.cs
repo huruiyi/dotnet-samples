@@ -168,7 +168,7 @@ namespace MVC.Sample.Controllers
             return View();
         }
 
-        #endregion
+        #endregion Task
 
         #region AES
 
@@ -293,6 +293,6 @@ namespace MVC.Sample.Controllers
             return decryptedBytes;
         }
 
-        #endregion
+        #endregion AES
     }
 }

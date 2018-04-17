@@ -9,11 +9,13 @@ namespace _01CSRabbitMQ.Publish
     {
         private static void Main(string[] args)
         {
-            ConnectionFactory connectionFactory = new ConnectionFactory();
-            connectionFactory.HostName = "127.0.0.1";
-            connectionFactory.VirtualHost = "/";
-            connectionFactory.UserName = "admin";
-            connectionFactory.Password = "admin";
+            ConnectionFactory connectionFactory = new ConnectionFactory
+            {
+                HostName = "127.0.0.1",
+                VirtualHost = "/",
+                UserName = "admin",
+                Password = "admin"
+            };
 
             using (IConnection connection = connectionFactory.CreateConnection())
             {
@@ -28,7 +30,7 @@ namespace _01CSRabbitMQ.Publish
 
                     for (int i = 0; i < 1000; i++)
                     {
-                        string message = string.Format("Hello World!I am Num {0}", i);
+                        string message = $"Hello World!I am Num {i}";
                         var body = Encoding.UTF8.GetBytes(message);
                         Thread.Sleep(1000);
                         channel.BasicPublish(exchange: "", routingKey: "hello", basicProperties: null, body: body);
