@@ -11,12 +11,12 @@ namespace MVC.Sample.Controllers
             return View();
         }
 
-        public ActionResult ToolsTab()
+        public ActionResult Json()
         {
             return View();
         }
 
-        public ActionResult Json()
+        public ActionResult Sql()
         {
             return View();
         }

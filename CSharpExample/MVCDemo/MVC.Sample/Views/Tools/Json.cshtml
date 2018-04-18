@@ -3,37 +3,30 @@
 }
 <div class="HeadersRow">
     <div id="HeaderTitle"> JSON格式化及高亮 &nbsp;&copy;&nbsp;2012&nbsp; &nbsp;<span style='color:#aaa;font-weight:bold;font-style:italic'>Random_Coder</span> </div>
-    <h3 id="HeaderSubTitle">JSON格式化及高亮:</h3>
-    <textarea id="RawJson" class="form-control" style="height:300px;"></textarea>
 </div>
 <div id="ControlsRow">
     <table class="table table-bordered text-center">
         <tr>
             <td>
-                <input class="btn btn-default" type="Button" value="格式化" onclick="Process()" />
+                <textarea id="RawJson" class="form-control" style="height:300px;"></textarea>
             </td>
+        </tr>
+        <tr>
             <td>
-                <select id="TabSize" onchange="TabSizeChanged()" class="form-control">
-                    <option value="0">缩进量</option>
+                <input class="btn btn-default" type="Button" value="格式化" onclick="Process()" />
+                <select id="TabSize" onchange="TabSizeChanged()">
                     <option value="1">1</option>
-                    <option value="2" selected="selected">2</option>
+                    <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
-                </select>
-            </td>
-            <td>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="QuoteKeys" onclick="QuoteKeysClicked()" checked="checked">引号
-                    </label>
-                </div>
-            </td>
-            <td>
+                </select>&nbsp;&nbsp;
+                <label>
+                    <input type="checkbox" id="QuoteKeys" onclick="QuoteKeysClicked()" checked="checked">&nbsp;引号
+                </label>
                 <button class="btn btn-default" onclick="SelectAllClicked()">复制结果</button>
-            </td>
-            <td>
+
                 <label for="CollapsibleView">
                     <input type="checkbox" id="CollapsibleView" onclick="CollapsibleViewClicked()" checked="checked" />
                     显示控制
@@ -59,4 +52,11 @@
 <script type="text/javascript">
     window.ImgCollapsed = "@Url.Content("~/Scripts/json/Collapsed.gif")";
     window.ImgExpanded = "@Url.Content("~/Scripts/json/Expanded.gif")";
+
+    $(document).ready(function() {
+        $("#TabSize").select2({
+            width: 120,
+            placeholder: "---缩进量---"
+    });
+    });
 </script>

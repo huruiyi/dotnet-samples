@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ToolsTab";
 }
 
 <ul class="nav nav-tabs" role="tablist">
@@ -7,7 +7,7 @@
         <a href="#jsontab" role="tab" data-toggle="tab" id="">Json</a>
     </li>
     <li role="presentation">
-        <a href="#profile" role="tab" data-toggle="tab">Profile</a>
+        <a href="#profile" role="tab" data-toggle="tab">SQL</a>
     </li>
     <li role="presentation">
         <a href="#messages" role="tab" data-toggle="tab">Messages</a>
@@ -24,7 +24,11 @@
             Html.RenderPartial("Json");
         }
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">b...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+        @{
+            Html.RenderPartial("Sql");
+        }
+    </div>
     <div role="tabpanel" class="tab-pane" id="messages">c...</div>
     <div role="tabpanel" class="tab-pane" id="settings">d...</div>
 </div>
