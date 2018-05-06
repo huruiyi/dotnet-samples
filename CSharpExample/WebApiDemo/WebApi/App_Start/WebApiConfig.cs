@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Ninject;
 using System.Web.Http;
-using Ninject;
+using System.Web.Http.Cors;
 using WebApi.Models;
 using WebApiContrib.IoC.Ninject;
 
@@ -17,6 +15,12 @@ namespace WebApi
             config.DependencyResolver = new NinjectResolver(kernel);
 
             // Web API 配置和服务
+            config.EnableCors();
+
+            //var cors = new EnableCorsAttribute("http://localhost:815/", "*", "*");
+            //cors.Origins.Add("http://localhost:816/");
+            //cors.Origins.Add("http://localhost:817/");
+            //config.EnableCors(cors);
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
