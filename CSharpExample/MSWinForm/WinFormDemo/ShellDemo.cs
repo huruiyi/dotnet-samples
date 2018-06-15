@@ -1,4 +1,5 @@
-﻿using IWshRuntimeLibrary;
+﻿/* Windows Script Host Object Model */
+using IWshRuntimeLibrary;
 using System;
 using System.IO;
 using System.Reflection;
