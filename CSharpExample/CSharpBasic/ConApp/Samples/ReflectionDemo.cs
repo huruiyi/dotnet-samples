@@ -1,5 +1,6 @@
 ﻿using ConApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -371,6 +372,79 @@ namespace ConApp
                 MemberInfo[] membersinfo = t.GetMembers(BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance);
                 foreach (MemberInfo m in membersinfo)
                     Console.WriteLine("Member type: {0}, member name: {1}.", m.MemberType, m.Name);
+            }
+        }
+
+        public static void ReflectDemo()
+        {
+            Person p1 = new Person
+            {
+                Name = "p1",
+
+                Equips = new List<Equip>
+                {
+                 new Equip {AttackValue=1,Name="0N1"  },
+                 new Equip {AttackValue=2,Name="0N2"  },
+                 new Equip {AttackValue=3,Name="0N3"  }
+                }
+            };
+
+            Type t1 = p1.GetType();
+            PropertyInfo[] pi1 = t1.GetProperties();
+
+            var type = pi1[2].PropertyType.IsGenericType;
+
+            var p2type = pi1[2].PropertyType;
+
+            var tyep = typeof(List<Person>);
+        }
+
+        public static void PropertyInfoDemo()
+        {
+            Dictionary<int, string> attrs = new Dictionary<int, string> { { 1, "1" } };
+            var person = new Person
+            {
+                Name = "huruiyi",
+                Salary = 12345,
+                Sex = 'N',
+                Equips = new List<Equip>
+                {
+                    new Equip {Name = "N1", AttackValue = 123},
+                    new Equip {Name = "N2", AttackValue = 123},
+                    new Equip {Name = "N3", AttackValue = 123},
+                },
+                Hobbys = new[] { "h1", "h2", "h3", "h4" }
+            };
+            Console.WriteLine(typeof(List<>).Name);
+            PropertyInfo[] propertyInfos = typeof(Person).GetProperties();
+            foreach (PropertyInfo p in propertyInfos)
+            {
+                string pName = p.Name;
+                string name = p.PropertyType.Name;
+                Type t = p.PropertyType.GetType();
+                bool pg = p.PropertyType.IsGenericType;
+                var a = p.GetValue(person, null);
+                if (p.PropertyType.Name == "String")
+                {
+                    p.SetValue(person, "Name", null);
+                }
+                if (p.PropertyType.Name == "Double")
+                {
+                    p.SetValue(person, 123.1345, null);
+                }
+                if (p.PropertyType.Name == "Char")
+                {
+                    p.SetValue(person, '男', null);
+                }
+                if (p.PropertyType.IsGenericType)
+                {
+                    p.SetValue(person, new List<Equip>
+                    {
+                        new Equip {Name = "N1111", AttackValue = 123},
+                        new Equip {Name = "N2222", AttackValue = 123},
+                        new Equip {Name = "N3333", AttackValue = 123},
+                    });
+                }
             }
         }
     }

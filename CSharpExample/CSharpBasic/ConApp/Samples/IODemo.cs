@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -253,6 +254,8 @@ namespace ConApp
             Console.WriteLine("删除文件完成");
         }
 
+        #region 控制台文本输出
+
         private static void ConsoleToFile()
         {
             StreamWriter sw = new StreamWriter(@"ConsoleOutput.txt");
@@ -266,5 +269,117 @@ namespace ConApp
             sw.Flush();
             sw.Close();
         }
+
+        public static void StreamWriterSetOut()
+        {
+            StreamWriter sw = new StreamWriter(@"ConsoleOutput.txt");
+            Console.SetOut(sw);
+
+            Console.WriteLine("Here is the result:");
+            Console.WriteLine("Processing......");
+            Console.WriteLine("OK!");
+
+            sw.Flush();
+            sw.Close();
+
+            //控制台输出重定向: > F:\ConsoleOutput.txt
+        }
+
+        #endregion 控制台文本输出
+
+        #region 文件生成
+
+        public static void FontImage()
+        {
+            //设置画布字体
+            Font drawFont = new Font("宋体", 12);
+            //实例一个画布起始位置为1.1
+            Bitmap image = new Bitmap(1, 1);
+            Graphics g = Graphics.FromImage(image);
+            //string text = File.ReadAllText("D:\\xx.html", Encoding.GetEncoding("GB2312"));
+            string text = "互联网出版许可证编号新出网证(京)";
+            SizeF sf = g.MeasureString(text, drawFont, 1024); //设置一个显示的宽度
+            image = new Bitmap(image, new Size(Convert.ToInt32(sf.Width), Convert.ToInt32(sf.Height)));
+            g = Graphics.FromImage(image);
+            g.Clear(Color.White);
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            g.DrawString(text, drawFont, Brushes.Black, new RectangleF(new PointF(0, 0), sf));
+            image.Save("D:\\1.jpg", System.Drawing.Imaging.ImageFormat.Png);
+            g.Dispose();
+            image.Dispose();
+        }
+
+        #endregion 文件生成
+
+        #region Environment信息获取
+
+        public static void EnvironmentDemo()
+        {
+            string commandLine = Environment.CommandLine;
+            string currentDirectory = Environment.CurrentDirectory;
+            int currentManagedThreadId = Environment.CurrentManagedThreadId;
+            //int ecode = Environment.ExitCode;
+            //Environment.Exit(ecode);
+            string[] cas = Environment.GetCommandLineArgs();
+            string ev = Environment.GetEnvironmentVariable("Path");
+            Environment.GetLogicalDrives();
+            bool is64 = Environment.Is64BitOperatingSystem;
+            bool is64p = Environment.Is64BitProcess;
+            string machineName = Environment.MachineName;
+            string nl = Environment.NewLine;
+            OperatingSystem osVersion = Environment.OSVersion;
+            int processorCount = Environment.ProcessorCount;
+            string systemDirectory = Environment.SystemDirectory;
+            int systemPageSize = Environment.SystemPageSize;
+            int tickCount = Environment.TickCount;
+            string userDomainName = Environment.UserDomainName;
+            string userName = Environment.UserName;
+            Version v = Environment.Version;
+            long workingSet = Environment.WorkingSet;
+            string computerName = Environment.GetEnvironmentVariable("ComputerName");
+        }
+
+        #endregion Environment信息获取
+
+        #region ExcuteXCopyCmd
+
+        public static void ExcuteXCopyCmdDemo()
+        {
+            string sCmd = @"copy D:\a.txt D:\b.txt";
+            Process proIP = new Process
+            {
+                StartInfo =
+                {
+                    FileName = "cmd.exe",
+                    UseShellExecute = false,
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                }
+            };
+            proIP.Start();
+            proIP.StandardInput.WriteLine(sCmd);
+            proIP.StandardInput.WriteLine("exit");
+            string strResult = proIP.StandardOutput.ReadToEnd();
+            proIP.Close();
+            Console.WriteLine(strResult);
+
+            Process compiler = new Process
+            {
+                StartInfo =
+                {
+                    FileName = "csc.exe",
+                    Arguments = "/r:System.dll /out:sample.exe stdstr.cs",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
+            compiler.Start();
+            Console.WriteLine(compiler.StandardOutput.ReadToEnd());
+            compiler.WaitForExit();
+        }
+
+        #endregion ExcuteXCopyCmd
     }
 }

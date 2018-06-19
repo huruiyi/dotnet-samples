@@ -360,5 +360,101 @@ namespace ConApp
                 Console.WriteLine(entry.Key + " " + entry.Value);
             }
         }
+
+        #region HashtableDemo
+
+        public static void HashtableDemo()
+        {
+            Hashtable hashtable1 = new Hashtable();
+            hashtable1.Add("zd", "600719");
+            hashtable1.Add("name", "denylau");
+            hashtable1.Add("sex", "男");
+            Console.WriteLine("Count：\t" + hashtable1.Count);
+
+            ArrayList haskKeys = new ArrayList(hashtable1.Keys);
+            ArrayList haskVals = new ArrayList(hashtable1.Values);
+
+            foreach (string key in haskKeys)
+            {
+                Console.WriteLine("{0}:\t{1}", key, hashtable1[key]);
+            }
+
+            foreach (DictionaryEntry item in hashtable1)
+            {
+                Console.WriteLine("{0}:\t{1}", item.Key, item.Value);
+            }
+
+            IDictionaryEnumerator en = hashtable1.GetEnumerator();
+            while (en.MoveNext())
+            {
+                Console.WriteLine("{0}:\t{1}", en.Key, en.Value);
+            }
+
+            foreach (var item in hashtable1.Keys)
+            {
+                Console.WriteLine(item);
+            }
+
+            foreach (var item in hashtable1.Values)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("**********************************************************");
+            Hashtable hashtableItem = new Hashtable();
+            hashtableItem.Add("Name", "小红");
+            hashtableItem.Add("Sex", "女");
+            hashtableItem.Add("Age", 20);
+
+            Hashtable hashtableItem1 = new Hashtable();
+            hashtableItem1.Add("Name", "小王");
+            hashtableItem1.Add("Sex", "男");
+            hashtableItem1.Add("Age", 21);
+
+            Hashtable hashtableItem2 = new Hashtable();
+            hashtableItem2.Add("Name", "小李");
+            hashtableItem2.Add("Sex", "男");
+            hashtableItem2.Add("Age", 22);
+
+            ArrayList list = new ArrayList(hashtableItem.Keys);
+            list.Add(hashtableItem);
+            list.Add(hashtableItem1);
+            list.Add(hashtableItem2);
+        }
+
+        #endregion HashtableDemo
+
+        #region TupleDemo
+
+        public static List<Tuple<int, List<string>>> CreateTule()
+        {
+            List<Tuple<int, List<string>>> tuplerList = new List<Tuple<int, List<string>>>();
+            Tuple<int, List<string>> tuples1 = Tuple.Create(1, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples2 = Tuple.Create(2, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples3 = Tuple.Create(3, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples4 = Tuple.Create(4, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples5 = Tuple.Create(5, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples6 = Tuple.Create(6, new List<string> { "xxxxxxx", "ccccccccc" });
+            Tuple<int, List<string>> tuples7 = Tuple.Create(7, new List<string> { "xxxxxxx", "ccccccccc" });
+            tuplerList.AddRange(new[] { tuples1, tuples2, tuples3, tuples4, tuples5, tuples6, tuples7 });
+            return tuplerList;
+        }
+
+        public static void TupleDemo()
+        {
+            List<Tuple<int, List<string>>> vs = CreateTule();
+            foreach (Tuple<int, List<string>> tuple in vs)
+            {
+                if (tuple.Item1 == 5)
+                {
+                    foreach (string s in tuple.Item2)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+            }
+        }
+
+        #endregion TupleDemo
     }
 }

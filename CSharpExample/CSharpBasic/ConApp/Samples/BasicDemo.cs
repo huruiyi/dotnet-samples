@@ -264,7 +264,6 @@ namespace ConApp
             }
         }
 
-        
         public static void CharacterJudge()
         {
             //3、	输入一个字符，判定它是什么类型的字符（大写字母，小写字母，数字或者其它字符）；

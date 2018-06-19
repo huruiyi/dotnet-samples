@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace DataSetDemo
 {
@@ -523,6 +524,42 @@ namespace DataSetDemo
             }
 
             dv.Dispose();
+        }
+
+        public static void AttachDbDemo()
+        {
+            string dataDir = AppDomain.CurrentDomain.BaseDirectory;
+            if (dataDir.EndsWith(@"\bin\Debug\") || dataDir.EndsWith(@"\bin\Release\"))
+            {
+                dataDir = Directory.GetParent(dataDir).Parent.Parent.FullName;
+                AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
+            }
+            Console.WriteLine("请输入用户名：");
+            string username = Console.ReadLine();
+            Console.WriteLine("请输入密码：");
+            string password = Console.ReadLine();
+            //  string ConStr = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\T_Test.mdf;Integrated Security=True;User Instance=True";
+            string ConStr = @"Data Source=.;AttachDbFilename=|DataDirectory|\T_Test.mdf;uid=sa;pwd=sa";
+            using (SqlConnection conn = new SqlConnection(ConStr))
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"select * from T_Test Where UserName='{username}'";
+                    using (SqlDataReader read = cmd.ExecuteReader())
+                    {
+                        if (read.Read())
+                        {
+                            string dbpassword = read.GetString(read.GetOrdinal("Password"));
+                            Console.WriteLine(password == dbpassword ? "登陆成功" : "密码错误，登录失败");
+                        }
+                        else
+                        {
+                            Console.WriteLine("无此用户名！");
+                        }
+                    }
+                }
+            }
         }
     }
 }

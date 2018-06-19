@@ -114,5 +114,26 @@ namespace ConApp.Samples
             string name2 = names.Single(s => s.StartsWith("P"));
             string name3 = names.Single(pOnly);
         }
+
+        public static void MathDemo()
+        {
+            List<int> ids = new List<int>();
+            ids.AddRange(new List<int> { 1, 2, 3, 4 });
+            ids.AddRange(new List<int> { 5, 6, 7, 8 });
+            ids.AddRange(new List<int> { 9, 10, 11, 12 });
+
+            int idg = Convert.ToInt32(Math.Ceiling(ids.Count / 5.0));
+
+            List<int> sInts;
+            for (int i = 1; i <= idg; i++)
+            {
+                sInts = new List<int>();
+                sInts.AddRange(ids.Skip((i - 1) * 5).Take(5));
+
+                string jboNumbers = sInts.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
+
+                Console.WriteLine(jboNumbers);
+            }
+        }
     }
 }
