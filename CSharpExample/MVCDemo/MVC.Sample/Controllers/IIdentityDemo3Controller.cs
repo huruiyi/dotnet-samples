@@ -32,7 +32,7 @@ namespace MVC.Sample.Controllers
             return Content("你是管理员");
         }
 
-        [Authorize(Roles = "User")]
+        [Sys_Authorize_FilterAttribute_IAuthorizationFilter(Roles = "User")]
         public ContentResult OrdinaryUser()
         {
             return Content("你是普通用户");

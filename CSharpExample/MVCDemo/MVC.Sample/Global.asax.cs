@@ -1,8 +1,8 @@
 ﻿using MVC.Sample.Controllers;
-using MVC.Sample.Infrastructure;
 using MVC.Sample.Models;
 using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -93,12 +93,11 @@ namespace MVC.Sample
                     AllRoles = new List<string> { "Admin", "User" },
                     Role = model.Role
                 };
-
                 HttpContext.Current.User = memberUser;
 
-                //FormsIdentity identity = new FormsIdentity(authTicket);
-                //string[] roles = { memberUser.Role };
-                //HttpContext.Current.User = new GenericPrincipal(identity, roles);
+                FormsIdentity identity = new FormsIdentity(authTicket);
+                string[] roles = { memberUser.Role };
+                HttpContext.Current.User = new GenericPrincipal(identity, roles);
 
                 bool isrole = HttpContext.Current.User.IsInRole(memberUser.Role);
             }
