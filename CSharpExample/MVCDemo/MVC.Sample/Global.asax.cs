@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
+using MVC.Sample.Infrastructure;
 
 namespace MVC.Sample
 {
@@ -29,7 +30,7 @@ namespace MVC.Sample
             //ControllerBuilder.Current.SetControllerFactory(new CusBControllerFactory());
 
             //注册自定义的 CusIocControllerFactory 实现依赖注入
-            //ControllerBuilder.Current.SetControllerFactory(new CusIocControllerFactory());
+            ControllerBuilder.Current.SetControllerFactory(new CusIocControllerFactory());
         }
 
         public MemberPrincipal CurrentUser

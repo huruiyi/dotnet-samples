@@ -4,11 +4,11 @@
     ViewBag.Title = "DropDownListSample";
 
     List<SelectListItem> projectProjects = new List<SelectListItem>
-            {
-                new SelectListItem{Text="跟团游",Value="1"},
-                new SelectListItem{Text="团队",Value="2"},
-                new SelectListItem{Text="其他",Value="3"},
-            };
+    {
+        new SelectListItem{Text="跟团游",Value="1"},
+        new SelectListItem{Text="团队",Value="2"},
+        new SelectListItem{Text="其他",Value="3"},
+    };
     IDictionary<string, object> dic = new Dictionary<string, object>();
     dic.Add("property1", "val1");
     dic.Add("property2", "val2");
@@ -82,6 +82,7 @@
         </td>
         <td>
             @@Html.DropDownList("dlProjectTypeName5", projectProjects, "--请选择--", new { id = "dlProjectType5", @@class = "form-control" })
+        
         </td>
     </tr>
     <tr>
@@ -102,6 +103,3 @@
     </tr>
 </table>
 
-@{ 
-    Html.DropDownListFor
-}
