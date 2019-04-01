@@ -22,7 +22,6 @@ namespace WinFormDemo
         public void CreateCodeImage()
         {
             string[] str = new string[4];
-            string serverCode = "";
             //生成随机生成器
             Random random = new Random();
             _code = "";

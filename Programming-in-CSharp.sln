@@ -1306,7 +1306,7 @@ Global
 		{3A45DE83-51CB-4A44-8D46-B735D242AE18} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
 		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
