@@ -10,10 +10,11 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
+using ConApp.Samples.NoSql;
 
 namespace ConApp
 {
-    internal class Test
+    internal class TestClass
     {
     }
 
@@ -21,10 +22,13 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
+            //https://www.cnblogs.com/lanxiaoke/p/6657935.html
+            //https://www.cnblogs.com/niunan/
+            CosmosDb.Demo1();
             Console.ReadKey();
 
-            Test t1 = new Test();
-            Test t2 = new Test();
+            TestClass t1 = new TestClass();
+            TestClass t2 = new TestClass();
             Console.WriteLine(t1.Equals(t2));
             Console.WriteLine(object.ReferenceEquals(t1, t2));
             t2 = t1;

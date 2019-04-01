@@ -47,7 +47,7 @@ namespace ConApp.Properties {
         }
         
         /// <summary>
-        ///   使用此强类型资源类，为所有资源查找
+        ///   重写当前线程的 CurrentUICulture 属性
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -103,8 +103,7 @@ namespace ConApp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 
-        ///&lt;info&gt;
+        ///   查找类似 &lt;info&gt;
         ///  &lt;collage&gt;
         ///    &lt;name&gt;SIGMA INSTITUTE&lt;/name&gt;
         ///    &lt;students&gt;650&lt;/students&gt;
@@ -113,8 +112,7 @@ namespace ConApp.Properties {
         ///    &lt;name&gt;ORCHID INSTITUTE&lt;/name&gt;
         ///    &lt;students&gt;1200&lt;/students&gt;
         ///  &lt;/collage&gt;
-        ///&lt;/info&gt;
-        /// 的本地化字符串。
+        ///&lt;/info&gt; 的本地化字符串。
         /// </summary>
         internal static string XML {
             get {

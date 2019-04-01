@@ -1,7 +1,8 @@
 ﻿using StackExchange.Redis;
 using System;
+using System.Threading;
 
-namespace ConApp
+namespace ConApp.Samples.NoSql
 {
     public class RPerson
     {
@@ -46,6 +47,136 @@ namespace ConApp
             connection = ConnectionMultiplexer.Connect("localhost");
             client = connection.GetDatabase();
         }
+
+
+
+
+        #region String
+
+        public static void StringDemo1_Get_Set_Append()
+        {
+            string value = "abcdefg";
+            client.StringSet("a", value);
+            Console.WriteLine(client.StringGet("a"));
+
+            client.StringAppend("a", "hijklmn");
+            Console.WriteLine(client.StringGet("a"));
+
+            client.StringAppendAsync("a", "opqrst");
+            Console.WriteLine(client.StringGet("a"));
+
+            client.StringAppendAsync("a", "uvwxyz");
+
+            Console.WriteLine(client.StringBitCount("a"));
+        }
+
+        public static void String_Inccre_Decre()
+        {
+            RedisValue oldValue = client.StringGetSet("a", "1234567890");
+            Console.WriteLine(oldValue);
+            Console.WriteLine(client.StringGet("a"));
+        }
+
+        public static void String_Incre_Decre()
+        {
+            client.StringSet("number", 1);
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(1000);
+                client.StringDecrement("number");
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                Thread.Sleep(1000);
+                client.StringIncrement("number");
+            }
+        }
+
+        #endregion String
+
+        #region List
+
+        public static int ListCount = 20;
+
+        //队列
+        public static void ListDemo_LPush_RPop()
+        {
+            Console.WriteLine("ListDemo_LPush_RPop");
+            for (int i = 0; i < ListCount; i++)
+            {
+                client.ListLeftPush("list", i);
+            }
+            for (int i = 0; i < ListCount; i++)
+            {
+                RedisValue val = client.ListRightPop("list");
+                Console.Write(val + " ");
+            }
+            Console.WriteLine();
+        }
+
+        //队列
+        public static void ListDemo_RPush_LPop()
+        {
+            Console.WriteLine("ListDemo_RPush_LPop");
+            for (int i = 0; i < ListCount; i++)
+            {
+                client.ListRightPush("rlist", i);
+            }
+            for (int i = 0; i < ListCount; i++)
+            {
+                RedisValue val = client.ListLeftPop("rlist");
+                Console.Write(val + " ");
+            }
+            Console.WriteLine();
+        }
+
+        //栈
+        public static void ListDemo_LPush_LPop()
+        {
+            Console.WriteLine("ListDemo_LPush_LPop");
+            for (int i = 0; i < ListCount; i++)
+            {
+                client.ListLeftPush("list", i);
+            }
+            for (int i = 0; i < ListCount; i++)
+            {
+                RedisValue val = client.ListLeftPop("list");
+                Console.Write(val + " ");
+            }
+            Console.WriteLine();
+        }
+
+        //栈
+        public static void ListDemo_RPush_RPop()
+        {
+            Console.WriteLine("ListDemo_RPush_RPop");
+            for (int i = 0; i < ListCount; i++)
+            {
+                client.ListRightPush("rlist", i);
+            }
+            for (int i = 0; i < ListCount; i++)
+            {
+                RedisValue val = client.ListRightPop("rlist");
+                Console.Write(val + " ");
+            }
+            Console.WriteLine();
+        }
+
+        public static void ListDemo_()
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                client.ListLeftPush("list", i);
+                //rDb.ListRightPush("list", i);
+                client.ListLeftPushAsync("list", i);
+            }
+            Console.WriteLine(client.ListGetByIndex("list", 6));
+        }
+
+        #endregion List
+
+
+
 
         public static void Queen1()
         {

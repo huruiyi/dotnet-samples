@@ -15,7 +15,7 @@ namespace T4Demo.继承模式_基方法中的片段
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\git\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+    #line 1 "D:\Work\Github\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class SharedFragments : SharedFragmentsBase
     {
@@ -28,7 +28,7 @@ namespace T4Demo.继承模式_基方法中的片段
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 2 "D:\git\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+        #line 2 "D:\Work\Github\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
 
 protected void SharedText(int n)
 {
@@ -37,28 +37,28 @@ protected void SharedText(int n)
         #line default
         #line hidden
         
-        #line 5 "D:\git\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+        #line 5 "D:\Work\Github\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
 this.Write("   Shared Text ");
 
         
         #line default
         #line hidden
         
-        #line 6 "D:\git\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+        #line 6 "D:\Work\Github\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(n));
 
         
         #line default
         #line hidden
         
-        #line 6 "D:\git\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+        #line 6 "D:\Work\Github\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 7 "D:\git\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
+        #line 7 "D:\Work\Github\Programming-in-CSharp\CSharpExample\CSharpBasic\T4Demo\继承模式：基方法中的片段\SharedFragments.tt"
 
 }
 // Insert more methods here if required.

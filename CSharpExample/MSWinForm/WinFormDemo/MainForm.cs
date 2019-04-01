@@ -42,6 +42,40 @@ namespace WinFormDemo
 
         #endregion 无边框窗体移动
 
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, Keys keyData)
+
+        {
+
+            int WM_KEYDOWN = 256;
+
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+
+            {
+
+                switch (keyData)
+
+                {
+
+                    case Keys.Escape:
+
+                        this.Close();//esc关闭窗体
+
+                        break;
+
+                }
+
+
+
+            }
+
+            return false;
+
+
+        }
+        
         public MainForm()
         {
             InitializeComponent();
@@ -195,6 +229,24 @@ namespace WinFormDemo
         private void button25_Click(object sender, EventArgs e)
         {
             new 翻译案例().ShowDialog();
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            new GitOp().ShowDialog();
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
