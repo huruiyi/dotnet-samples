@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AOPTest
+namespace ConApp.AopDemo1
 {
-    public class MyAOPAttribute : ContextAttribute, IContributeObjectSink
+    public class MyAopAttribute : ContextAttribute, IContributeObjectSink
     {
-        public MyAOPAttribute()
+        public MyAopAttribute()
             : base("MyAOP")
         {
         }

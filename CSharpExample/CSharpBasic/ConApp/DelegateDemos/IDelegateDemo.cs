@@ -1,4 +1,4 @@
-﻿namespace DelegateDemo
+﻿namespace ConApp.DelegateDemos
 {
     internal interface IDelegateDemo
     {

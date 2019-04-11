@@ -34,6 +34,7 @@
             this.folderBrowserDialogGit = new System.Windows.Forms.FolderBrowserDialog();
             this.btnPull = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.TextBox();
+            this.lblTaskCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -84,11 +85,21 @@
             this.txtMessage.Size = new System.Drawing.Size(748, 231);
             this.txtMessage.TabIndex = 4;
             // 
+            // lblTaskCount
+            // 
+            this.lblTaskCount.AutoSize = true;
+            this.lblTaskCount.Location = new System.Drawing.Point(689, 65);
+            this.lblTaskCount.Name = "lblTaskCount";
+            this.lblTaskCount.Size = new System.Drawing.Size(53, 12);
+            this.lblTaskCount.TabIndex = 5;
+            this.lblTaskCount.Text = "线程数：";
+            // 
             // GitOp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 450);
+            this.Controls.Add(this.lblTaskCount);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.btnPull);
             this.Controls.Add(this.btnBrowser);
@@ -109,5 +120,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGit;
         private System.Windows.Forms.Button btnPull;
         private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.Label lblTaskCount;
     }
 }

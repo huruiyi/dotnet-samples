@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     internal class DelegateDemo2 : IDelegateDemo
     {

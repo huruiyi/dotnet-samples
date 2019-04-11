@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     internal class Common
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     internal class DelegateDemo7_匿名函数 : IDelegateDemo
     {

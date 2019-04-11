@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AOPTest
+namespace ConApp.AopDemo1
 {
     public class MyMessageSink : IMessageSink
     {
-        private IMessageSink nextSink = null;
+        private readonly IMessageSink _nextSink;
 
         public MyMessageSink(IMessageSink messageSink)
         {
-            nextSink = messageSink;
+            _nextSink = messageSink;
         }
 
         public IMessageCtrl AsyncProcessMessage(IMessage msg, IMessageSink replySink)
@@ -22,20 +19,16 @@ namespace AOPTest
             return null;
         }
 
-        public IMessageSink NextSink
-        {
-            get { return nextSink; }
-        }
+        public IMessageSink NextSink => _nextSink;
 
         public IMessage SyncProcessMessage(IMessage msg)
         {
             Console.WriteLine("AOP Call Begin");
-            IMessage returnMsg = null;
 
             Stopwatch sw = new Stopwatch();
             Console.WriteLine("开始计时");
             sw.Start();
-            returnMsg = nextSink.SyncProcessMessage(msg);
+            var returnMsg = _nextSink.SyncProcessMessage(msg);
             Console.WriteLine("结束计时");
 
             sw.Stop();
@@ -58,8 +51,8 @@ namespace AOPTest
             Exception message = returnMessage.Exception;
 
             var para = returnMessage.Args;
-            Console.WriteLine(string.Format("方法返回值类型:{0}", returnType));
-            Console.WriteLine(string.Format("方法名称:{0}", methodInfo.Name));
+            Console.WriteLine($"方法返回值类型:{returnType}");
+            Console.WriteLine($"方法名称:{methodInfo.Name}");
             Console.WriteLine("AOP Call End");
             return returnMsg;
         }

@@ -1,4 +1,6 @@
-﻿using ConApp.Model;
+﻿using ConApp.AopDemo1;
+using ConApp.AopDemo2;
+using ConApp.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,10 +9,12 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Security.Permissions;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
-using ConApp.Samples.NoSql;
+using ConApp.DelegateDemos;
+using Person = ConApp.Model.Person;
 
 namespace ConApp
 {
@@ -24,7 +28,9 @@ namespace ConApp
         {
             //https://www.cnblogs.com/lanxiaoke/p/6657935.html
             //https://www.cnblogs.com/niunan/
-            CosmosDb.Demo1();
+
+            Console.WriteLine(15 / 4);
+            Startup.Run();
             Console.ReadKey();
 
             TestClass t1 = new TestClass();
@@ -48,6 +54,33 @@ namespace ConApp
             Byte[] bytes = hash.MD5;
             string str = Encoding.UTF8.GetString(bytes);
         }
+
+        #region AOP
+
+        private static void ApoDemo1(string[] args)
+        {
+            AopClassTest test1 = new AopClassTest();
+            test1.MethodName("arg1", "arg2");
+
+            Console.ReadKey();
+        }
+
+        [SecurityPermission(SecurityAction.LinkDemand)]
+        public static void AopDemo2()
+        {
+            Console.WriteLine("Generate a new MyProxy.");
+            MyProxyClass myProxy = new MyProxyClass(typeof(MyMarshalByRefClass));
+
+            Console.WriteLine("Obtain the transparent proxy from myProxy.");
+            MyMarshalByRefClass myMarshalByRefClassObj = (MyMarshalByRefClass)myProxy.GetTransparentProxy();
+
+            Console.WriteLine("Calling the Proxy.");
+            object myReturnValue = myMarshalByRefClassObj.MyMethod("Microsoft", 1.2, 6);
+
+            Console.WriteLine("Sample Done.");
+        }
+
+        #endregion AOP
 
         #region EventDemo
 
@@ -87,7 +120,8 @@ namespace ConApp
             Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             var methods = new List<Action>();
-            foreach (var word in new string[] { "hello", "world" })
+            string[] words = new[] { "hello", "world" };
+            foreach (var word in words)
             {
                 methods.Add(() => Console.Write(word + " "));
             }

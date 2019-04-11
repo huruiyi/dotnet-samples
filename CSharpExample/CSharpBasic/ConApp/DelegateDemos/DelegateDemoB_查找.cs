@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     public class DelegateDemoB_查找 : IDelegateDemo
     {

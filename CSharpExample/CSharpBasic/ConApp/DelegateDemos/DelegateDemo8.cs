@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     internal class DelegateDemo8 : IDelegateDemo
     {

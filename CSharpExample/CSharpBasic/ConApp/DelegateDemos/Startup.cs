@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     public static class Startup
     {
@@ -37,7 +37,7 @@ namespace DelegateDemo
             return result;
         }
 
-        private static void Main(string[] args)
+        public static void Run()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
             Type[] types = asm.GetTypes();

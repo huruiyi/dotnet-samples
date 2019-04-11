@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     internal class DelegateDemo5_排序 : IDelegateDemo
     {

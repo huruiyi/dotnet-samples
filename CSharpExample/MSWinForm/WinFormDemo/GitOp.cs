@@ -87,7 +87,9 @@ namespace WinFormDemo
                 return;
             }
             string[] directories = Directory.GetDirectories(txtGitDir.Text);
-            TaskFetch(txtGitDir.Text, directories.Length / 5);
+            int taskCount = (directories.Length / 5) + 1;
+            lblTaskCount.Text = lblTaskCount.Text + taskCount;
+            TaskFetch(txtGitDir.Text, taskCount);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DelegateDemo
+namespace ConApp.DelegateDemos
 {
     internal class DelegateDemoA_排序 : IDelegateDemo
     {
@@ -32,8 +32,6 @@ namespace DelegateDemo
                 return 1;
             }
         }
-
- 
 
         public void Invoke()
         {

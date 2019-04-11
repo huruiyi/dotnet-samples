@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AOPTest
+namespace ConApp.AopDemo1
 {
-    [MyAOP]
-    public class AOPClassTest : ContextBoundObject
+    [MyAop]
+    public class AopClassTest : ContextBoundObject
     {
         public object MethodName(string str1, string str2)
         {
