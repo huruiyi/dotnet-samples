@@ -70,15 +70,15 @@ namespace BasicSample
             //Thread.CurrentThread;
 
             //把接口类型转换成实例类型
-            AsyncResult aReuslt = (AsyncResult)result;
+            AsyncResult asyncResult = (AsyncResult)result;
 
             //转换成我们自己的委托类型
-            AddDel del = (AddDel)aReuslt.AsyncDelegate;
+            AddDel del = (AddDel)asyncResult.AsyncDelegate;
 
             //执行完成获取  执行的结果
             int addResult = del.EndInvoke(result);
 
-            int state = (int)aReuslt.AsyncState;
+            int state = (int)asyncResult.AsyncState;
 
             Console.WriteLine("异步完成的回调方法执行的结果是：{0} @{1}", addResult, Thread.CurrentThread.ManagedThreadId);
         }

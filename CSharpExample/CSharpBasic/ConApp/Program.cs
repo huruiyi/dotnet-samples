@@ -9,11 +9,11 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
-using ConApp.DelegateDemos;
 using Person = ConApp.Model.Person;
 
 namespace ConApp
@@ -29,8 +29,15 @@ namespace ConApp
             //https://www.cnblogs.com/lanxiaoke/p/6657935.html
             //https://www.cnblogs.com/niunan/
 
-            Console.WriteLine(15 / 4);
-            Startup.Run();
+            TestClass c1 = new TestClass();
+            unsafe
+            {
+                GCHandle h = GCHandle.Alloc(c1, GCHandleType.WeakTrackResurrection);
+
+                IntPtr addr = GCHandle.ToIntPtr(h);
+                Console.WriteLine(addr.ToString("X"));
+            }
+
             Console.ReadKey();
 
             TestClass t1 = new TestClass();

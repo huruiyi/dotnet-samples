@@ -21,7 +21,7 @@ namespace BasicSample
         public static void MyAsyncCallback(IAsyncResult ar)
         {
             Func<bool> pc = (Func<bool>)ar.AsyncState;
-            var endInvoke = pc.EndInvoke(ar);
+            Boolean endInvoke = pc.EndInvoke(ar);
             if (endInvoke)
             {
                 Console.WriteLine("处理完成。。" + endInvoke);

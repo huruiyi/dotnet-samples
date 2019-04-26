@@ -22,6 +22,9 @@ namespace ConApp
         public bool B1;
     };
 
+    /**
+     * https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/unsafe-code-pointers/index
+     */
     public partial class Program
     {
         public unsafe static void ArrPrintDemo()
@@ -230,7 +233,6 @@ namespace ConApp
                 int tenAddress = (int)p;
                 Console.WriteLine(@"address:{0}", tenAddress);
                 Console.WriteLine(Convert.ToString(tenAddress, 2));
-                Console.ReadKey();
             }
         }
 

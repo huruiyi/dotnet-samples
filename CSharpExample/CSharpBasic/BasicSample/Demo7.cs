@@ -23,7 +23,7 @@ namespace BasicSample
 
         public void PrintNum(int num)
         {
-            Console.WriteLine(System.Threading.Thread.CurrentThread.Name + ",哈哈哈~~~");
+            Console.WriteLine(Thread.CurrentThread.Name + ",哈哈哈~~~");
             Console.WriteLine(num);
         }
 

@@ -36,9 +36,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demo1.cs" />
     <Compile Include="Demo2.cs" />
     <Compile Include="Demo3.cs" />
     <Compile Include="Demo4.cs" />

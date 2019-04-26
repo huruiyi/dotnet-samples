@@ -1,13 +1,10 @@
 ﻿using BasicSample.Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace BasicSample
 {
-    class Demo4 : IExample
+    internal class Demo4 : IExample
     {
         public void Invoke()
         {

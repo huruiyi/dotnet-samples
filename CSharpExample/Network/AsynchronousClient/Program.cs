@@ -9,30 +9,30 @@ namespace AsynchronousClient
     public class StateObject
     {
         // Client socket.
-        public Socket workSocket;
+        public Socket WorkSocket;
 
         // Size of receive buffer.
         public const int BufferSize = 256;
 
         // Receive buffer.
-        public byte[] buffer = new byte[BufferSize];
+        public byte[] Buffer = new byte[BufferSize];
 
         // Received data string.
-        public StringBuilder sb = new StringBuilder();
+        public StringBuilder Sb = new StringBuilder();
     }
 
     internal class Program
     {
-        private const int port = 11000;
+        private const int Port = 11000;
 
         // ManualResetEvent instances signal completion.
-        private static ManualResetEvent connectDone = new ManualResetEvent(false);
+        private static readonly ManualResetEvent ConnectDone = new ManualResetEvent(false);
 
-        private static ManualResetEvent sendDone = new ManualResetEvent(false);
+        private static readonly ManualResetEvent SendDone = new ManualResetEvent(false);
 
-        private static ManualResetEvent receiveDone = new ManualResetEvent(false);
+        private static readonly ManualResetEvent ReceiveDone = new ManualResetEvent(false);
 
-        private static string response = string.Empty;
+        private static string _response = string.Empty;
 
         private static void StartClient()
         {
@@ -41,20 +41,20 @@ namespace AsynchronousClient
 
             //IPHostEntry ipHostInfo = Dns.Resolve("host.contoso.com");
             //IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint remoteEp = new IPEndPoint(hostEntry.AddressList[0], port);
+            IPEndPoint remoteEp = new IPEndPoint(hostEntry.AddressList[0], Port);
 
             Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             client.BeginConnect(remoteEp, ConnectCallback, client);
-            connectDone.WaitOne();
+            ConnectDone.WaitOne();
 
             Send(client, "This is a test<EOF>");
-            sendDone.WaitOne();
+            SendDone.WaitOne();
 
             Receive(client);
-            receiveDone.WaitOne();
+            ReceiveDone.WaitOne();
 
-            Console.WriteLine("Response received : {0}", response);
+            Console.WriteLine("Response received : {0}", _response);
 
             client.Shutdown(SocketShutdown.Both);
             client.Close();
@@ -68,17 +68,17 @@ namespace AsynchronousClient
 
             Console.WriteLine("Socket connected to {0}", client.RemoteEndPoint);
 
-            connectDone.Set();   // Signal that the connection has been made.
+            ConnectDone.Set();   // Signal that the connection has been made.
         }
 
         private static void Receive(Socket client)
         {
             StateObject state = new StateObject
             {
-                workSocket = client
+                WorkSocket = client
             };
 
-            client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, ReceiveCallback, state);
+            client.BeginReceive(state.Buffer, 0, StateObject.BufferSize, 0, ReceiveCallback, state);
         }
 
         private static void ReceiveCallback(IAsyncResult ar)
@@ -86,26 +86,26 @@ namespace AsynchronousClient
             // Retrieve the state object and the client socket
             // from the asynchronous state object.
             StateObject state = (StateObject)ar.AsyncState;
-            Socket client = state.workSocket;
+            Socket client = state.WorkSocket;
 
             int bytesRead = client.EndReceive(ar);
 
             if (bytesRead > 0)
             {
                 // There might be more data, so store the data received so far.
-                state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
+                state.Sb.Append(Encoding.ASCII.GetString(state.Buffer, 0, bytesRead));
 
                 // Get the rest of the data.
-                client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, ReceiveCallback, state);
+                client.BeginReceive(state.Buffer, 0, StateObject.BufferSize, 0, ReceiveCallback, state);
             }
             else
             {
-                if (state.sb.Length > 1)
+                if (state.Sb.Length > 1)
                 {
-                    response = state.sb.ToString();
+                    _response = state.Sb.ToString();
                 }
                 // Signal that all bytes have been received.
-                receiveDone.Set();
+                ReceiveDone.Set();
             }
         }
 
@@ -125,7 +125,7 @@ namespace AsynchronousClient
             Console.WriteLine("Sent {0} bytes to server.", bytesSent);
 
             // Signal that all bytes have been sent.
-            sendDone.Set();
+            SendDone.Set();
         }
 
         private static void Main()

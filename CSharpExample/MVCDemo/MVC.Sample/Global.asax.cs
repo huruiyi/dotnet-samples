@@ -1,4 +1,5 @@
 ﻿using MVC.Sample.Controllers;
+using MVC.Sample.Infrastructure;
 using MVC.Sample.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
-using MVC.Sample.Infrastructure;
 
 namespace MVC.Sample
 {

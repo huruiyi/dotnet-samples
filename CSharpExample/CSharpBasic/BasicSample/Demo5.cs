@@ -34,6 +34,7 @@ namespace BasicSample
             var t6 = new Thread(PrintMessage);
             t6.Start("打印信息如下......");
         }
+
         private static void Start()
         {
             Console.WriteLine("Start.......");
