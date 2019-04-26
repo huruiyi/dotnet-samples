@@ -9,10 +9,12 @@ namespace HuUtils.DataSynchronization
     public partial class DsForm1 : Form
     {
         private readonly SetTextDel _mySetCotrolTxt4OtherThreadDel;
+
         public void SetText4OtherThread(string strTxt)
         {
             this.txtMessage.Text = strTxt;
         }
+
         public DsForm1()
         {
             InitializeComponent();
@@ -21,14 +23,17 @@ namespace HuUtils.DataSynchronization
             //Control.CheckForIllegalCrossThreadCalls = false;
             CheckForIllegalCrossThreadCalls = false;
 
-            _mySetCotrolTxt4OtherThreadDel = new SetTextDel(this.SetText4OtherThread);
+            _mySetCotrolTxt4OtherThreadDel = this.SetText4OtherThread;
         }
 
         private void btnOpenDSForm2_Click(object sender, EventArgs e)
         {
             Thread thread = new Thread(() =>
             {
-                DsForm2 frm = new DsForm2 {SetTextDel = new SetTextDel(SetText)};
+                DsForm2 frm = new DsForm2
+                {
+                    SetTextDel = SetText
+                };
                 frm.ShowDialog();
             });
             thread.Start();

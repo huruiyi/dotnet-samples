@@ -1,4 +1,4 @@
-﻿namespace HuUtils
+﻿namespace HuUtils.NoBorder
 {
     partial class 无边框移动1
     {

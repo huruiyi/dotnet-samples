@@ -1,9 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-using HuUtils.AlgorithmForm;
+﻿using HuUtils.AlgorithmForm;
 using HuUtils.Chat;
 using HuUtils.DataSynchronization;
+using HuUtils.NoBorder;
 using HuUtils.SyncAsyncAPMForm;
+using System;
+using System.Windows.Forms;
 
 namespace HuUtils
 {
@@ -46,11 +47,9 @@ namespace HuUtils
 
         #endregion 无边框窗体移动
 
-
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, Keys keyData)
 
         {
-
             int WM_KEYDOWN = 256;
 
             int WM_SYSKEYDOWN = 260;
@@ -58,26 +57,18 @@ namespace HuUtils
             if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
 
             {
-
                 switch (keyData)
 
                 {
-
                     case Keys.Escape:
 
                         this.Close();//esc关闭窗体
 
                         break;
-
                 }
-
-
-
             }
 
             return false;
-
-
         }
 
         public MainForm()
@@ -176,6 +167,7 @@ namespace HuUtils
         private void button16_Click(object sender, EventArgs e)
         {
             new DsForm1().Show();
+            new DsForm34().Show();
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -261,6 +253,11 @@ namespace HuUtils
         private void Button29_Click(object sender, EventArgs e)
         {
             new DynamicButton().Show();
+        }
+
+        private void Button30_Click(object sender, EventArgs e)
+        {
+            new LicGenForm().Show();
         }
     }
 }

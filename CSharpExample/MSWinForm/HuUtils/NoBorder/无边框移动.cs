@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace HuUtils
+namespace HuUtils.NoBorder
 {
     public partial class 无边框移动 : Form
     {

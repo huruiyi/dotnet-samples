@@ -199,6 +199,26 @@
     <Compile Include="DataSynchronization\DSForm2.Designer.cs">
       <DependentUpon>DSForm2.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSynchronization\DSForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm3.designer.cs">
+      <DependentUpon>DSForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm34.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm34.Designer.cs">
+      <DependentUpon>DSForm34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm4.designer.cs">
+      <DependentUpon>DSForm4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\IAfterText.cs" />
+    <Compile Include="DataSynchronization\SendTextEventArgs.cs" />
     <Compile Include="DynamicButton.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +309,12 @@
     <Compile Include="Key事件.Designer.cs">
       <DependentUpon>Key事件.cs</DependentUpon>
     </Compile>
+    <Compile Include="LicGenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicGenForm.designer.cs">
+      <DependentUpon>LicGenForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Department.cs" />
     <Compile Include="ShellDemo.cs">
       <SubType>Form</SubType>
@@ -332,16 +358,16 @@
     <Compile Include="TreeViewDemo.Designer.cs">
       <DependentUpon>TreeViewDemo.cs</DependentUpon>
     </Compile>
-    <Compile Include="无边框移动.cs">
+    <Compile Include="NoBorder\无边框移动.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="无边框移动.Designer.cs">
+    <Compile Include="NoBorder\无边框移动.Designer.cs">
       <DependentUpon>无边框移动.cs</DependentUpon>
     </Compile>
-    <Compile Include="无边框移动3.cs">
+    <Compile Include="NoBorder\无边框移动3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="无边框移动3.Designer.cs">
+    <Compile Include="NoBorder\无边框移动3.Designer.cs">
       <DependentUpon>无边框移动3.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginControl.cs">
@@ -380,22 +406,22 @@
     <Compile Include="数据绑定.Designer.cs">
       <DependentUpon>数据绑定.cs</DependentUpon>
     </Compile>
-    <Compile Include="无边框移动1.cs">
+    <Compile Include="NoBorder\无边框移动1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="无边框移动1.Designer.cs">
+    <Compile Include="NoBorder\无边框移动1.Designer.cs">
       <DependentUpon>无边框移动1.cs</DependentUpon>
     </Compile>
-    <Compile Include="无边框移动2.cs">
+    <Compile Include="NoBorder\无边框移动2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="无边框移动2.Designer.cs">
+    <Compile Include="NoBorder\无边框移动2.Designer.cs">
       <DependentUpon>无边框移动2.cs</DependentUpon>
     </Compile>
-    <Compile Include="无边框移动4.cs">
+    <Compile Include="NoBorder\无边框移动4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="无边框移动4.Designer.cs">
+    <Compile Include="NoBorder\无边框移动4.Designer.cs">
       <DependentUpon>无边框移动4.cs</DependentUpon>
     </Compile>
     <Compile Include="添加Windows账户.cs">
@@ -521,6 +547,15 @@
     <EmbeddedResource Include="DataSynchronization\DSForm2.resx">
       <DependentUpon>DSForm2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm3.resx">
+      <DependentUpon>DSForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm34.resx">
+      <DependentUpon>DSForm34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm4.resx">
+      <DependentUpon>DSForm4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DynamicButton.resx">
       <DependentUpon>DynamicButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -566,6 +601,9 @@
     <EmbeddedResource Include="Key事件.resx">
       <DependentUpon>Key事件.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LicGenForm.resx">
+      <DependentUpon>LicGenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShellDemo.resx">
       <DependentUpon>ShellDemo.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,10 +625,10 @@
     <EmbeddedResource Include="TreeViewDemo.resx">
       <DependentUpon>TreeViewDemo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="无边框移动.resx">
+    <EmbeddedResource Include="NoBorder\无边框移动.resx">
       <DependentUpon>无边框移动.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="无边框移动3.resx">
+    <EmbeddedResource Include="NoBorder\无边框移动3.resx">
       <DependentUpon>无边框移动3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginControl.resx">
@@ -618,13 +656,13 @@
     <EmbeddedResource Include="数据绑定.resx">
       <DependentUpon>数据绑定.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="无边框移动1.resx">
+    <EmbeddedResource Include="NoBorder\无边框移动1.resx">
       <DependentUpon>无边框移动1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="无边框移动2.resx">
+    <EmbeddedResource Include="NoBorder\无边框移动2.resx">
       <DependentUpon>无边框移动2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="无边框移动4.resx">
+    <EmbeddedResource Include="NoBorder\无边框移动4.resx">
       <DependentUpon>无边框移动4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="添加Windows账户.resx">

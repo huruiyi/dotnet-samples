@@ -1,6 +1,6 @@
-﻿namespace HuUtils
+﻿namespace HuUtils.NoBorder
 {
-    partial class 无边框移动4
+    partial class 无边框移动2
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // 无边框移动4
+            // 无边框移动2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackColor = System.Drawing.Color.BlueViolet;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "无边框移动4";
-            this.Text = "无边框移动4";
+            this.Name = "无边框移动2";
+            this.Text = "无边框移动2";
             this.ResumeLayout(false);
 
         }

@@ -3,18 +3,18 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace HuUtils
+namespace HuUtils.NoBorder
 {
     public partial class 无边框移动3 : Form
     {
-        private int IniY;
-        private int IniX;
+        private int _iniY;
+        private int _iniX;
 
-        private int DownY;
-        private int DownX;
+        private int _downY;
+        private int _downX;
 
-        private int UpY;
-        private int UpX;
+        private int _upY;
+        private int _upX;
 
         public 无边框移动3()
         {
@@ -85,28 +85,28 @@ namespace HuUtils
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            IniY = this.Top;
-            IniX = this.Left;
+            _iniY = this.Top;
+            _iniX = this.Left;
             string tl = this.Top + "  " + this.Left;
-            this.DownX = e.X;
-            this.DownY = e.Y;
+            this._downX = e.X;
+            this._downY = e.Y;
             // textBox1.AppendText("Form1_MouseDown" + "  " + e.X + "  " + e.Y + "  " + tl + "\r\n");
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             string tl = this.Top + "  " + this.Left;
-            this.UpX = e.X;
-            this.UpY = e.Y;
+            this._upX = e.X;
+            this._upY = e.Y;
             //textBox1.AppendText("Form1_MouseUp" + "  " + e.X + "  " + e.Y + "  " + tl + "\r\n");
 
             //textBox1.AppendText(this.DownX + "  " + this.DownY + "  " + this.UpX + "  " + this.UpY);
 
-            int x = this.UpX - this.DownX;
-            int y = this.UpY - this.DownY;
+            int x = this._upX - this._downX;
+            int y = this._upY - this._downY;
 
-            this.Left = this.IniX + x;
-            this.Top = this.IniY + y;
+            this.Left = this._iniX + x;
+            this.Top = this._iniY + y;
         }
     }
 }
