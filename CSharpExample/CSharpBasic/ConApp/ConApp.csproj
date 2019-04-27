@@ -178,6 +178,13 @@
     <Compile Include="AopDemo1\MyMessageSink.cs" />
     <Compile Include="AopDemo2\MyMarshalByRefClass.cs" />
     <Compile Include="AopDemo2\MyProxyClass.cs" />
+    <Compile Include="DbOp\DbOpSamples.cs" />
+    <Compile Include="DbOp\ExampleDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DbOp\MyDataAdapter.cs" />
     <Compile Include="DelegateDemos\DelegateDemo1.cs" />
     <Compile Include="DelegateDemos\DelegateDemo2.cs" />
     <Compile Include="DelegateDemos\DelegateDemo3.cs" />
@@ -218,6 +225,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Samples\AlgorithmDemo.cs" />
     <Compile Include="Samples\AttributeDemo.cs" />
@@ -283,7 +295,22 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="DbOp\ExampleDb.xsc">
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </None>
+    <None Include="DbOp\ExampleDb.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExampleDb.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DbOp\ExampleDb.xss">
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resource\For.ps1" />
     <None Include="Resource\IISInfo.ps1" />
     <None Include="Resource\PSDoc1.ps1" />

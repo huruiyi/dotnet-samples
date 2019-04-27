@@ -22,5 +22,16 @@ namespace HuUtils.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ExampleDb;Persist Security Info=True;User ID=sa;Pas" +
+            "sword=sa")]
+        public string ExampleDbConnectionString {
+            get {
+                return ((string)(this["ExampleDbConnectionString"]));
+            }
+        }
     }
 }

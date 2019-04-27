@@ -106,6 +106,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -225,6 +226,11 @@
     </Compile>
     <Compile Include="DynamicButton.Designer.cs">
       <DependentUpon>DynamicButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
     </Compile>
     <Compile Include="GitOp.cs">
       <SubType>Form</SubType>
@@ -442,6 +448,12 @@
     </Compile>
     <Compile Include="NoBorder\无边框移动4.Designer.cs">
       <DependentUpon>无边框移动4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="数据集.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="数据集.Designer.cs">
+      <DependentUpon>数据集.cs</DependentUpon>
     </Compile>
     <Compile Include="添加Windows账户.cs">
       <SubType>Form</SubType>
@@ -699,6 +711,9 @@
     <EmbeddedResource Include="NoBorder\无边框移动4.resx">
       <DependentUpon>无边框移动4.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="数据集.resx">
+      <DependentUpon>数据集.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="添加Windows账户.resx">
       <DependentUpon>添加Windows账户.cs</DependentUpon>
     </EmbeddedResource>
@@ -744,6 +759,17 @@
     <EmbeddedResource Include="验证码.resx">
       <DependentUpon>验证码.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ExampleDb.xsc">
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </None>
+    <None Include="ExampleDb.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExampleDb.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExampleDb.xss">
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

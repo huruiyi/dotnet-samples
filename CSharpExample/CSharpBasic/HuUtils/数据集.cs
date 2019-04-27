@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace WFAppAdo.Net
+namespace HuUtils
 {
-    public partial class DataSetExample : Form
+    public partial class 数据集 : Form
     {
-        public DataSetExample()
+        public 数据集()
         {
             InitializeComponent();
         }
@@ -23,7 +23,8 @@ namespace WFAppAdo.Net
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            this.adminTableAdapter.FillById(this.exampleDbDataSet.Admin, Convert.ToInt32(txtSid.Text));
+            adminTableAdapter.FillBy(exampleDbDataSet.Admin, Convert.ToInt64(txtSid.Text));
+            //this.adminTableAdapter.FillById(Convert.ToInt64(txtSid.Text));
         }
     }
 }

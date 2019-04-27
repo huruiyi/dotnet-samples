@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
-namespace DataSetDemo
+namespace ConApp.DbOp
 {
-    internal class Program
+    internal class DbOpSamples
     {
-        private static string ConString = "Data Source=.;Initial Catalog=Northwind;uid=sa;pwd=sa";
-        private static string Constring_ExampleDb = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
+        private static string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
 
-        private static void Main(string[] args)
+        public static void Func1()
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -23,25 +25,10 @@ namespace DataSetDemo
                     Console.WriteLine(customers[0] + "   " + customers["CompanyName"]);
                 }
             }
+        }
 
-            using (SqlConnection con = new SqlConnection(ConString))
-            {
-                string sql = "select CustomerID,CompanyName from Customers order by CustomerID";
-                SqlDataAdapter sda = new SqlDataAdapter(sql, con);
-                DataSet ds = new DataSet();
-                sda.Fill(ds, "Customers");
-
-                DataTable dt = ds.Tables["Customers"]; DataRow dr = dt.NewRow(); dr["CustomerID"] =
-                "aaaaa1"; dr["CompanyName"] = "11111"; dt.Rows.Add(dr);
-
-                dr = dt.NewRow(); dr["CustomerID"] = "aaaaa2"; dr["CompanyName"] = "222222"; dt.Rows.Add(dr);
-
-                foreach (DataRow customers in ds.Tables["Customers"].Rows)
-                {
-                    Console.WriteLine(customers[0] + "   " + customers["CompanyName"]);
-                }
-            }
-
+        public static void Func2()
+        {
             using (SqlConnection con = new SqlConnection(ConString))
             {
                 string sql = "select CustomerID,CompanyName from Customers order by CustomerID";
@@ -51,12 +38,39 @@ namespace DataSetDemo
 
                 DataTable dt = ds.Tables["Customers"];
                 DataRow dr = dt.NewRow();
-                dr["CustomerID"] = "aa1";
+                dr["CustomerID"] = "123";
+                dr["CompanyName"] = "11111";
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
+                dr["CustomerID"] = "456";
+                dr["CompanyName"] = "222222";
+                dt.Rows.Add(dr);
+
+                foreach (DataRow customers in ds.Tables["Customers"].Rows)
+                {
+                    Console.WriteLine(customers[0] + "   " + customers["CompanyName"]);
+                }
+            }
+        }
+
+        public static void Func3()
+        {
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                string sql = "select CustomerID,CompanyName from Customers order by CustomerID";
+                SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "Customers");
+
+                DataTable dt = ds.Tables["Customers"];
+                DataRow dr = dt.NewRow();
+                //dr["CustomerID"] = "aa1";
                 dr["CompanyName"] = "11111";
                 dt.Rows.Add(dr);
 
                 DataRow dr2 = dt.NewRow();
-                dr2["CustomerID"] = "aa2";
+                //dr2["CustomerID"] = "aa2";
                 dr2["CompanyName"] = "222222";
                 dt.Rows.Add(dr2);
 
@@ -64,7 +78,7 @@ namespace DataSetDemo
                 using (SqlCommand cmd = new SqlCommand(ins, con))
                 {
                     sda.InsertCommand = cmd;
-                    sda.InsertCommand.Parameters.Add("@CustomerID", SqlDbType.NVarChar, 5, "CustomerID");
+                    sda.InsertCommand.Parameters.Add("@CustomerID", SqlDbType.BigInt, 5, "CustomerID");
                     sda.InsertCommand.Parameters.Add("@CompanyName", SqlDbType.NVarChar, 40, "CompanyName");
                     sda.Update(dt);
                 }
@@ -73,11 +87,9 @@ namespace DataSetDemo
                     Console.WriteLine(customers[0] + "   " + customers["CompanyName"]);
                 }
             }
-
-            Console.Read();
         }
 
-        public void DataViewDemo()
+        public static void DataViewDemo()
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -86,10 +98,12 @@ namespace DataSetDemo
                 DataSet ds = new DataSet();
                 sda.Fill(ds, "Customers");
                 DataTable tb = ds.Tables["Customers"];
-                DataView dv = new DataView();
-                dv.Table = tb;
-                dv.RowFilter = "Country='USA'";
-                dv.Sort = "City DESC";
+                DataView dv = new DataView
+                {
+                    Table = tb,
+                    RowFilter = "Country='USA'",
+                    Sort = "City DESC"
+                };
 
                 int index = dv.Find("Portland");
                 //Find要根据Sort，若Find值不唯一，则获取索引最最小的值
@@ -112,7 +126,7 @@ namespace DataSetDemo
             }
         }
 
-        public void DataRowSelect()
+        public static void DataRowSelect()
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -146,7 +160,7 @@ namespace DataSetDemo
             }
         }
 
-        public void DataSetCreate1()
+        public static void DataSetCreate1()
         {
             DataSet ds = new DataSet();
             DataTable tbl;
@@ -209,7 +223,7 @@ namespace DataSetDemo
             }
         }
 
-        public void DataSetCreate2()
+        public static void DataSetCreate2()
         {
             DataSet ds = new DataSet("MyDataBase");
 
@@ -270,7 +284,7 @@ namespace DataSetDemo
             }
         }
 
-        public void MyDataAdapterDemo()
+        public static void MyDataAdapterDemo()
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -285,7 +299,7 @@ namespace DataSetDemo
             }
         }
 
-        public void StoredProcedureDemo1()
+        public static void StoredProcedureDemo1()
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -302,7 +316,7 @@ namespace DataSetDemo
             }
         }
 
-        public void StoredProcedureDemo2()
+        public static void StoredProcedureDemo2()
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -330,7 +344,7 @@ namespace DataSetDemo
         public static DataSet CreateCmdsAndUpdate(string sql)
         {
             DataSet ds = new DataSet();
-            using (SqlConnection con = new SqlConnection(Constring_ExampleDb))
+            using (SqlConnection con = new SqlConnection(ConString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = new SqlCommand(sql, con);
@@ -356,7 +370,7 @@ namespace DataSetDemo
         public static void DataSetDemo2()
         {
             DataSet ds1 = new DataSet();
-            using (SqlConnection con = new SqlConnection(Constring_ExampleDb))
+            using (SqlConnection con = new SqlConnection(ConString))
             {
                 string sql = "select * from Admin";
                 using (SqlDataAdapter sdsa = new SqlDataAdapter(sql, con))
@@ -374,7 +388,7 @@ namespace DataSetDemo
         public static void DataSetDemo3()
         {
             DataSet ds2 = new DataSet();
-            using (SqlConnection con = new SqlConnection(Constring_ExampleDb))
+            using (SqlConnection con = new SqlConnection(ConString))
             {
                 //string sql = "select * from Admin\nUpdate Admin set aAdmin='张c三' where aID=1";
                 string sql = "Update Admin set aAdmin='张三1' where aID=1\nselect * from Admin";
@@ -394,7 +408,7 @@ namespace DataSetDemo
         public static void DataSetDemo4()
         {
             DataSet ds = new DataSet();
-            using (SqlConnection con = new SqlConnection(Constring_ExampleDb))
+            using (SqlConnection con = new SqlConnection(ConString))
             {
                 string sql = "select * from Admin";
 
@@ -444,7 +458,7 @@ namespace DataSetDemo
         public static void DataSetDemo5()
         {
             DataSet ds = new DataSet();
-            using (SqlConnection con1 = new SqlConnection(Constring_ExampleDb))
+            using (SqlConnection con1 = new SqlConnection(ConString))
             {
                 string sql = "Update Admin set aAdmin='ffkkf' where aId=7 \nselect * from Admin";
                 SqlDataAdapter sda = new SqlDataAdapter(sql, con1);
@@ -560,6 +574,191 @@ namespace DataSetDemo
                     }
                 }
             }
+        }
+
+        private static void Demo1()
+        {
+            ExampleDb.CustomersDataTable sss = new ExampleDb.CustomersDataTable();
+            ExampleDbTableAdapters.CustomersTableAdapter ss = new ExampleDbTableAdapters.CustomersTableAdapter();
+            ss.Fill(sss);
+            StringBuilder sbBuilder = new StringBuilder();
+            foreach (ExampleDb.CustomersRow ct in sss.Rows)
+            {
+                sbBuilder.Append(ct.CustomerID + "  " + ct.CompanyName + Environment.NewLine);
+            }
+            MessageBox.Show(sbBuilder.ToString());
+        }
+
+        private static void Demo2()
+        {
+            ExampleDb nds = new ExampleDb();
+
+            ExampleDbTableAdapters.CustomersTableAdapter ndsAdapter = new ExampleDbTableAdapters.CustomersTableAdapter();
+            ndsAdapter.Fill(nds.Customers);
+
+            StringBuilder sbBuilder = new StringBuilder();
+            foreach (ExampleDb.CustomersRow ct in nds.Customers.Rows)
+            {
+                sbBuilder.Append(ct.CustomerID + "  " + ct.CompanyName + Environment.NewLine);
+            }
+
+            DataRow row = nds.Customers.Rows.Find(1);
+            sbBuilder.Append(row["CompanyName"]);
+            MessageBox.Show(sbBuilder.ToString());
+        }
+
+        private static void Demo3()
+        {
+            ExampleDb nds = new ExampleDb();
+
+            ExampleDbTableAdapters.OrdersTableAdapter ordTblApt = new ExampleDbTableAdapters.OrdersTableAdapter();
+            ordTblApt.Fill(nds.Orders);
+
+            StringBuilder sbBuilder = new StringBuilder();
+
+            foreach (ExampleDb.OrdersRow ordRow in nds.Orders.Rows)
+            {
+                sbBuilder.Append(ordRow.OrderID + "  " + ordRow.CustomerID + "  " + ordRow.OrderDate + Environment.NewLine);
+            }
+            MessageBox.Show(sbBuilder.ToString());
+        }
+
+        public static void Demo4()
+        {
+            ExampleDb nds = new ExampleDb();
+
+            ExampleDbTableAdapters.CustomersTableAdapter ndsAdapter = new ExampleDbTableAdapters.CustomersTableAdapter();
+            ndsAdapter.Fill(nds.Customers);
+
+            ExampleDbTableAdapters.OrdersTableAdapter ordTblApt = new ExampleDbTableAdapters.OrdersTableAdapter();
+            ordTblApt.Fill(nds.Orders);
+
+            //通过Customers表中的CustomerID(主键)查找Orders表中对应的数据
+            ExampleDb.CustomersRow cusRow1 = (ExampleDb.CustomersRow)nds.Customers.Rows.Find(1);
+            ExampleDb.CustomersRow cusRow2 = nds.Customers.FindByCustomerID(1);
+            StringBuilder sbBuilder = new StringBuilder();
+
+            foreach (var rowResult in cusRow1.GetOrdersRows())
+            {
+                sbBuilder.Append(rowResult.OrderID + " " + rowResult.OrderDate + "  " + rowResult.CustomerID + Environment.NewLine);
+            }
+
+            foreach (var rowResult in cusRow2.GetOrdersRows())
+            {
+                sbBuilder.Append(rowResult.OrderID + " " + rowResult.OrderDate + "  " + rowResult.CustomerID + Environment.NewLine);
+            }
+
+            //通过Orders表中的CustomerID(外键)查找Customers表中的数据
+            ExampleDb.OrdersRow ordRowResult = (ExampleDb.OrdersRow)nds.Orders.Rows.Find(1);
+
+            sbBuilder.Append(ordRowResult.CustomerID + Environment.NewLine);
+            sbBuilder.Append(ordRowResult.OrderDate + Environment.NewLine);
+
+            //修改数据
+            ExampleDb.CustomersRow cr = ordRowResult.CustomersRow;
+            sbBuilder.Append(cr.CustomerID);
+            sbBuilder.Append(cr.CompanyName);
+            cr.CompanyName = "name19:44";
+            ndsAdapter.Update(cr);
+            Console.WriteLine(cr.CompanyName);
+
+            //修改数据
+            ExampleDb.CustomersRow cusRow = nds.Customers.FindByCustomerID(1);
+            cusRow.CompanyName = "MyCompanyName";
+            ndsAdapter.Update(cusRow);
+            Console.WriteLine(cusRow.CompanyName);
+
+            //添加一行数据
+            ExampleDb.CustomersRow newRow = nds.Customers.AddCustomersRow("aMyName");
+            ndsAdapter.Update(newRow);
+
+            //删除一行数据
+            ndsAdapter.Delete(4, "aMyName");
+
+            MessageBox.Show(sbBuilder.ToString());
+        }
+
+        public static void Demo5()
+        {
+            const string conStr = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
+            SqlConnection con = new SqlConnection(conStr);
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandText = "select Id from Admin";
+            SqlDataReader sdr = cmd.ExecuteReader();
+            while (sdr.Read())
+            {
+                Console.WriteLine(sdr[0]);
+            }
+            sdr.Close();
+            cmd.Clone();
+            con.Close();
+        }
+
+        public static void Demo6()
+        {
+            Console.WriteLine("第1种打开数据库的方法");
+            SqlConnection con = new SqlConnection(GetCoString4());
+            con.Open();
+            MessageBox.Show(con.State.ToString());
+        }
+
+        public static void Demo7()
+        {
+            Console.WriteLine("第2种打开数据库的方法");
+            SqlConnection con = new SqlConnection { ConnectionString = GetCoString4() };
+            con.Open();
+            MessageBox.Show(con.State.ToString());
+        }
+
+        public static void Demo8()
+        {
+            Console.WriteLine("第3种打开数据库的方法");
+            SqlConnection con = new SqlConnection { ConnectionString = GetCoString4() };
+            con.Open();
+            MessageBox.Show(con.State.ToString());
+        }
+
+        public static void Demo9()
+        {
+            SqlConnection con1 = new SqlConnection { ConnectionString = GetCoString4() };
+            con1.Open();
+            MessageBox.Show(con1.State.ToString());
+            con1.Close();
+            MessageBox.Show(con1.State.ToString());
+        }
+
+        public static string GetCoString1()
+        {
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder
+            {
+                DataSource = ".",
+                InitialCatalog = "ExampleDb",
+                IntegratedSecurity = true
+            };
+            return scsb.ConnectionString;
+        }
+
+        public static string GetCoString2()
+        {
+            return ConfigurationManager.AppSettings["ConString1"];
+        }
+
+        public static string GetCoString3()
+        {
+            return ConfigurationManager.ConnectionStrings["ConStringName1"].ToString();
+        }
+
+        public static string GetCoString4()
+        {
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder
+            {
+                DataSource = ".",
+                InitialCatalog = "ExampleDb",
+                UserID = "sa",
+                Password = "sa"
+            };
+            return scsb.ConnectionString;
         }
     }
 }

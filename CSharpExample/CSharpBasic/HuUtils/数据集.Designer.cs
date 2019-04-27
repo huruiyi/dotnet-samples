@@ -1,6 +1,6 @@
-﻿namespace WFAppAdo.Net
+﻿namespace HuUtils
 {
-    partial class DataSetExample
+    partial class 数据集
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,8 @@
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adminBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.exampleDbDataSet = new WFAppAdo.Net.ExampleDbDataSet();
-            this.adminTableAdapter = new WFAppAdo.Net.ExampleDbDataSetTableAdapters.AdminTableAdapter();
+            this.exampleDbDataSet = new ExampleDb();
+            this.adminTableAdapter = new ExampleDbTableAdapters.AdminTableAdapter();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -160,9 +160,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgGridViewAdmin;
-        private ExampleDbDataSet exampleDbDataSet;
+        private ExampleDb exampleDbDataSet;
         private System.Windows.Forms.BindingSource adminBindingSource;
-        private ExampleDbDataSetTableAdapters.AdminTableAdapter adminTableAdapter;
+        private ExampleDbTableAdapters.AdminTableAdapter adminTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
