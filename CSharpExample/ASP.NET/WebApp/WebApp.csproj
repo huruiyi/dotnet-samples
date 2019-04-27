@@ -44,9 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\Software\nuget\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Software\nuget\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
@@ -55,9 +56,12 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DefaultImage\DefaultImage.JPG" />
     <Content Include="Handler\HttpRequestDemo.ashx" />
     <Content Include="Handler\OtherHandler.ashx" />
     <Content Include="Handler\Product_RegisterHandler.ashx" />
@@ -66,6 +70,7 @@
     <Content Include="Handler\Product_DetailGoodsHandler.ashx" />
     <Content Include="Handler\Product_DisplayGoodsHandler.ashx" />
     <Content Include="Handler\ImageThumbnailHandler.ashx" />
+    <Content Include="Handler\ImageHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -99,6 +104,7 @@
     <Content Include="Page\FormSample\Logon.aspx" />
     <Content Include="Page\HttpError403.aspx" />
     <Content Include="Page\HttpError403.html" />
+    <Content Include="Page\ImageUpload.aspx" />
     <Content Include="Page\Page1.aspx" />
     <Content Include="Page\RewritePath.aspx" />
     <Content Include="Page\SessionSample\LoginTemp.html" />
@@ -107,6 +113,9 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\HttpRequestDemo.ashx.cs">
       <DependentUpon>HttpRequestDemo.ashx</DependentUpon>
@@ -179,6 +188,13 @@
     </Compile>
     <Compile Include="Page\HttpError403.aspx.designer.cs">
       <DependentUpon>HttpError403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ImageUpload.aspx.cs">
+      <DependentUpon>ImageUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\ImageUpload.aspx.designer.cs">
+      <DependentUpon>ImageUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\Page1.aspx.cs">
       <DependentUpon>Page1.aspx</DependentUpon>
