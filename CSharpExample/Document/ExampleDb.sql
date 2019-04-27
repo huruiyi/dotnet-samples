@@ -1,4 +1,4 @@
-﻿USE [ProductManage]
+﻿USE [ExampleDb]
 GO
 /****** Object:  Table [dbo].[PersonInfo]    Script Date: 2019/4/27 20:22:28 ******/
 SET ANSI_NULLS ON

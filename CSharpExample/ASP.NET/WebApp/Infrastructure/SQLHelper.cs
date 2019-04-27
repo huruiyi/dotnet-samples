@@ -5,7 +5,7 @@ namespace WebApp.Infrastructure
 {
     public class SQLHelper
     {
-        private static string ConString = "Data Source=.;Initial Catalog=ProductManage;uid=sa;pwd=sa";
+        private static string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
 
         public static SqlDataReader ExecuteReader(string sql, params SqlParameter[] sps)
         {

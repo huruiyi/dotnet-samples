@@ -33,11 +33,11 @@ namespace ForBeginer
                 pro.ProductType = type;
                 pro.ImagePath = pid + ".jpg";
 
-                string ConString = "Data Source=.;Initial Catalog=ProductManage;uid=sa;pwd=sa";
+                string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
                 using (SqlConnection con = new SqlConnection(ConString))
                 {
                     con.Open();
-                    string sql = @"INSERT INTO [ProductManage].[dbo].[Product]
+                    string sql = @"INSERT INTO [Product]
                                        ([ProductID]
                                        ,[ProductName]
                                        ,[UnitPrice]

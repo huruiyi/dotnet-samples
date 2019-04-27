@@ -16,7 +16,7 @@ namespace ForBeginer
 
         public void ProcessRequest(HttpContext context)
         {
-            string ConString = "Data Source=.;Initial Catalog=ProductManage;uid=sa;pwd=sa";
+            string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
 
             if (context.Request.RequestType == "GET")
             {

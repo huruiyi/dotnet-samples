@@ -57,8 +57,8 @@
     <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\Software\nuget\DnsClient.1.2.0\lib\net471\DnsClient.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Documents.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.2.3\lib\net461\Microsoft.Azure.Documents.Client.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Documents.Client, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.3.0\lib\net461\Microsoft.Azure.Documents.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -120,8 +120,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.WinHttpHandler, Version=4.0.3.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\Software\nuget\System.Net.Http.WinHttpHandler.4.5.2\lib\net461\System.Net.Http.WinHttpHandler.dll</HintPath>
+    <Reference Include="System.Net.Http.WinHttpHandler, Version=4.0.3.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Software\nuget\System.Net.Http.WinHttpHandler.4.5.3\lib\net461\System.Net.Http.WinHttpHandler.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\Software\nuget\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -185,6 +185,7 @@
       <DependentUpon>ExampleDb.xsd</DependentUpon>
     </Compile>
     <Compile Include="DbOp\MyDataAdapter.cs" />
+    <Compile Include="DbOp\SqlHelper.cs" />
     <Compile Include="DelegateDemos\DelegateDemo1.cs" />
     <Compile Include="DelegateDemos\DelegateDemo2.cs" />
     <Compile Include="DelegateDemos\DelegateDemo3.cs" />
@@ -344,7 +345,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\ExampleDbSQL.sql" />
-    <Content Include="Data\ProductManageSQL.sql" />
     <Content Include="Model\Calculator.py" />
     <Content Include="Data\TestDbSQL.sql" />
     <Content Include="Resource\Person.xml" />
@@ -357,12 +357,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.2.3\build\Microsoft.Azure.DocumentDB.targets" Condition="Exists('..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.2.3\build\Microsoft.Azure.DocumentDB.targets')" />
+  <Import Project="..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.3.0\build\Microsoft.Azure.DocumentDB.targets" Condition="Exists('..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.3.0\build\Microsoft.Azure.DocumentDB.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.2.3\build\Microsoft.Azure.DocumentDB.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.2.3\build\Microsoft.Azure.DocumentDB.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.3.0\build\Microsoft.Azure.DocumentDB.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\..\Software\nuget\Microsoft.Azure.DocumentDB.2.3.0\build\Microsoft.Azure.DocumentDB.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

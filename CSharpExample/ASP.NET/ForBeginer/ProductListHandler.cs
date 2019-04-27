@@ -23,7 +23,7 @@ namespace ForBeginer
             string htnlString = File.ReadAllText(htmlPath);
             List<ProductModel> pros = new List<ProductModel>();
 
-            string ConString = "Data Source=.;Initial Catalog=ProductManage;uid=sa;pwd=sa";
+            string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
             using (SqlConnection con = new SqlConnection(ConString))
             {
                 con.Open();

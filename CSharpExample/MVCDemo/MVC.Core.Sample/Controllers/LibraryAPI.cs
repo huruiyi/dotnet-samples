@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NetCore.Sample.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using NetCore.Sample.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace NetCore.Sample.Controllers
+namespace MVC.Core.Sample.Controllers
 {
     [Route("api/[controller]")]
-    public class LibraryAPI : Controller
+    public class LibraryApi : Controller
     {
         private LibraryDetails[] LibraryDetails = new LibraryDetails[]
         {

@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using NetCore.Sample.Models;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
-namespace NetCore.Sample.Controllers
+namespace MVC.Core.Sample.Controllers
 {
     [Route("api/[controller]")]
     public class UserController : Controller

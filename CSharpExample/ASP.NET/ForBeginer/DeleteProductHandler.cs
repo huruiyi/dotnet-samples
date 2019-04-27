@@ -16,7 +16,7 @@ namespace ForBeginer
             string id = context.Request.QueryString["pd"];
             string imagePath = context.Server.MapPath($"~/Images/{id}.jpg");
             File.Delete(imagePath);
-            string ConString = "Data Source=.;Initial Catalog=ProductManage;uid=sa;pwd=sa";
+            string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
             using (SqlConnection con = new SqlConnection(ConString))
             {
                 con.Open();
