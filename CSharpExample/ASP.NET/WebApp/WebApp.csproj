@@ -51,6 +51,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -61,6 +64,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Api\Restapi.svc" />
     <Content Include="DefaultImage\DefaultImage.JPG" />
     <Content Include="Handler\HttpRequestDemo.ashx" />
     <Content Include="Handler\OtherHandler.ashx" />
@@ -93,6 +97,7 @@
     <Content Include="Images\B0004.jpg" />
     <Content Include="Images\B0005.jpg" />
     <Content Include="Images\B0006.jpg" />
+    <Content Include="Page\ApiDemo.aspx" />
     <Content Include="Page\CookieSample\index.htm" />
     <Content Include="Page\CookieSample\LoginTemp.html" />
     <Content Include="Page\Execute.Transfer\a.aspx" />
@@ -108,9 +113,14 @@
     <Content Include="Page\Page1.aspx" />
     <Content Include="Page\RewritePath.aspx" />
     <Content Include="Page\SessionSample\LoginTemp.html" />
+    <Content Include="Resource\PostData.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Restapi.svc.cs">
+      <DependentUpon>Restapi.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Contract\IRestapi.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -146,6 +156,14 @@
     <Compile Include="Models\OrderInfo.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Shopping.cs" />
+    <Compile Include="Model\UserData.cs" />
+    <Compile Include="Page\ApiDemo.aspx.cs">
+      <DependentUpon>ApiDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\ApiDemo.aspx.designer.cs">
+      <DependentUpon>ApiDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Page\CookieSample\LoginHandler.cs" />
     <Compile Include="Page\Execute.Transfer\a.aspx.cs">
       <DependentUpon>a.aspx</DependentUpon>
@@ -226,11 +244,13 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>40143</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:40143/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:40143/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -93,6 +93,7 @@
     <Reference Include="LibGit2Sharp, Version=0.26.0.0, Culture=neutral, PublicKeyToken=7cbde695407f0333, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\Software\nuget\LibGit2Sharp.0.26.0\lib\net46\LibGit2Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\Software\nuget\Microsoft.WindowsAPICodePack.Core.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -386,6 +387,18 @@
     <Compile Include="Service\PhotoHelp.cs" />
     <Compile Include="Service\SortableBindingList.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="不规则控件.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="不规则控件.designer.cs">
+      <DependentUpon>不规则控件.cs</DependentUpon>
+    </Compile>
+    <Compile Include="串口编程实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="串口编程实例.designer.cs">
+      <DependentUpon>串口编程实例.cs</DependentUpon>
+    </Compile>
     <Compile Include="图片操作_数据库.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +514,12 @@
     </Compile>
     <Compile Include="Notepad1.designer.cs">
       <DependentUpon>Notepad1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运动人.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="运动人.designer.cs">
+      <DependentUpon>运动人.cs</DependentUpon>
     </Compile>
     <Compile Include="闪屏.cs">
       <SubType>Form</SubType>
@@ -643,6 +662,12 @@
     <EmbeddedResource Include="LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="不规则控件.resx">
+      <DependentUpon>不规则控件.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="串口编程实例.resx">
+      <DependentUpon>串口编程实例.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="图片操作_数据库.resx">
       <DependentUpon>图片操作_数据库.cs</DependentUpon>
     </EmbeddedResource>
@@ -710,6 +735,9 @@
     <EmbeddedResource Include="Notepad1.resx">
       <DependentUpon>Notepad1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="运动人.resx">
+      <DependentUpon>运动人.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="闪屏.resx">
       <DependentUpon>闪屏.cs</DependentUpon>
     </EmbeddedResource>
@@ -735,9 +763,34 @@
     <Content Include="Resources\Abort.ico" />
     <Content Include="Resources\Bold.ico" />
     <Content Include="Resources\Color.ico" />
+    <Content Include="Resources\Component.jpg" />
     <Content Include="Resources\Font.ico" />
     <Content Include="Resources\Italic.ico" />
     <Content Include="Resources\Open.ico" />
+    <Content Include="Resources\people\P_01.png" />
+    <Content Include="Resources\people\P_02.png" />
+    <Content Include="Resources\people\P_03.png" />
+    <Content Include="Resources\people\P_04.png" />
+    <Content Include="Resources\people\P_05.png" />
+    <Content Include="Resources\people\P_06.png" />
+    <Content Include="Resources\people\P_07.png" />
+    <Content Include="Resources\people\P_08.png" />
+    <Content Include="Resources\people\P_09.png" />
+    <Content Include="Resources\people\P_10.png" />
+    <Content Include="Resources\people\P_11.png" />
+    <Content Include="Resources\people\P_12.png" />
+    <Content Include="Resources\people\P_13.png" />
+    <Content Include="Resources\people\P_14.png" />
+    <Content Include="Resources\people\P_15.png" />
+    <Content Include="Resources\people\P_16.png" />
+    <Content Include="Resources\people\P_17.png" />
+    <Content Include="Resources\people\P_18.png" />
+    <Content Include="Resources\people\P_19.png" />
+    <Content Include="Resources\people\P_20.png" />
+    <Content Include="Resources\people\P_21.png" />
+    <Content Include="Resources\people\P_22.png" />
+    <Content Include="Resources\people\P_23.png" />
+    <Content Include="Resources\people\P_24.png" />
     <Content Include="Resources\Save.ico" />
     <Content Include="Resources\Underline.ico" />
     <None Include="Resources\Autumn.jpg" />

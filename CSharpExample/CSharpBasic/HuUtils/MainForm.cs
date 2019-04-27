@@ -261,5 +261,15 @@ namespace HuUtils
             new LicGenForm1().Show();
             new LicGenForm2().Show();
         }
+
+        private void Button31_Click(object sender, EventArgs e)
+        {
+            new 运动人().Show();
+        }
+
+        private void Button32_Click(object sender, EventArgs e)
+        {
+            new 不规则控件().Show();
+        }
     }
 }
