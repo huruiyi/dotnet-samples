@@ -309,13 +309,19 @@
     <Compile Include="Key事件.Designer.cs">
       <DependentUpon>Key事件.cs</DependentUpon>
     </Compile>
-    <Compile Include="LicGenForm.cs">
+    <Compile Include="LicGenForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LicGenForm.designer.cs">
-      <DependentUpon>LicGenForm.cs</DependentUpon>
+    <Compile Include="LicGenForm1.designer.cs">
+      <DependentUpon>LicGenForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Department.cs" />
+    <Compile Include="Notepad2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notepad2.designer.cs">
+      <DependentUpon>Notepad2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShellDemo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -478,11 +484,11 @@
     <Compile Include="自定义窗体外观.Designer.cs">
       <DependentUpon>自定义窗体外观.cs</DependentUpon>
     </Compile>
-    <Compile Include="证书工具.cs">
+    <Compile Include="LicGenForm2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="证书工具.designer.cs">
-      <DependentUpon>证书工具.cs</DependentUpon>
+    <Compile Include="LicGenForm2.designer.cs">
+      <DependentUpon>LicGenForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="调用摄像头实例.cs">
       <SubType>Form</SubType>
@@ -490,11 +496,11 @@
     <Compile Include="调用摄像头实例.Designer.cs">
       <DependentUpon>调用摄像头实例.cs</DependentUpon>
     </Compile>
-    <Compile Include="Notepad.cs">
+    <Compile Include="Notepad1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Notepad.designer.cs">
-      <DependentUpon>Notepad.cs</DependentUpon>
+    <Compile Include="Notepad1.designer.cs">
+      <DependentUpon>Notepad1.cs</DependentUpon>
     </Compile>
     <Compile Include="闪屏.cs">
       <SubType>Form</SubType>
@@ -601,8 +607,11 @@
     <EmbeddedResource Include="Key事件.resx">
       <DependentUpon>Key事件.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LicGenForm.resx">
-      <DependentUpon>LicGenForm.cs</DependentUpon>
+    <EmbeddedResource Include="LicGenForm1.resx">
+      <DependentUpon>LicGenForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notepad2.resx">
+      <DependentUpon>Notepad2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShellDemo.resx">
       <DependentUpon>ShellDemo.cs</DependentUpon>
@@ -692,14 +701,14 @@
     <EmbeddedResource Include="自定义窗体外观.resx">
       <DependentUpon>自定义窗体外观.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="证书工具.resx">
-      <DependentUpon>证书工具.cs</DependentUpon>
+    <EmbeddedResource Include="LicGenForm2.resx">
+      <DependentUpon>LicGenForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="调用摄像头实例.resx">
       <DependentUpon>调用摄像头实例.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notepad.resx">
-      <DependentUpon>Notepad.cs</DependentUpon>
+    <EmbeddedResource Include="Notepad1.resx">
+      <DependentUpon>Notepad1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="闪屏.resx">
       <DependentUpon>闪屏.cs</DependentUpon>
@@ -723,11 +732,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="max.ico" />
+    <Content Include="Resources\Abort.ico" />
+    <Content Include="Resources\Bold.ico" />
+    <Content Include="Resources\Color.ico" />
+    <Content Include="Resources\Font.ico" />
+    <Content Include="Resources\Italic.ico" />
+    <Content Include="Resources\Open.ico" />
+    <Content Include="Resources\Save.ico" />
+    <Content Include="Resources\Underline.ico" />
     <None Include="Resources\Autumn.jpg" />
     <None Include="Resources\bullet.gif" />
-    <None Include="Resources\Autumn1.jpg" />
     <None Include="Resources\bullet1.gif" />
-    <None Include="Resources\Autumn2.jpg" />
     <None Include="Resources\bullet2.gif" />
     <Content Include="Resources\close.ico" />
     <None Include="Resources\exclam.gif" />

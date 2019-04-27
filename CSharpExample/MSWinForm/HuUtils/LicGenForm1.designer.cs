@@ -1,6 +1,6 @@
 ﻿namespace HuUtils
 {
-  partial class LicGenForm
+  partial class LicGenForm1
   {
     /// <summary>
     /// Required designer variable.

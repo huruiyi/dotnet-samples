@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace HuUtils
 {
-    public partial class LicGenForm : Form
+    public partial class LicGenForm1 : Form
     {
-        public LicGenForm()
+        public LicGenForm1()
         {
             InitializeComponent();
         }

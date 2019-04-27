@@ -48,24 +48,25 @@
             this.groupBox1.Controls.Add(this.buttonCustomShape);
             this.groupBox1.Controls.Add(this.buttonCenter);
             this.groupBox1.Controls.Add(this.buttonCustomPosition);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(97, 92);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(508, 139);
+            this.groupBox1.Size = new System.Drawing.Size(459, 163);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "自定义窗体";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(59, 73);
+            this.textBox2.Location = new System.Drawing.Point(46, 86);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 13;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(59, 46);
+            this.textBox1.Location = new System.Drawing.Point(46, 59);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 12;
@@ -73,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 77);
+            this.label2.Location = new System.Drawing.Point(23, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 12);
             this.label2.TabIndex = 11;
@@ -82,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 51);
+            this.label1.Location = new System.Drawing.Point(23, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 10;
@@ -91,7 +92,7 @@
             // buttonCustomShape
             // 
             this.buttonCustomShape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomShape.Location = new System.Drawing.Point(241, 59);
+            this.buttonCustomShape.Location = new System.Drawing.Point(228, 72);
             this.buttonCustomShape.Name = "buttonCustomShape";
             this.buttonCustomShape.Size = new System.Drawing.Size(202, 23);
             this.buttonCustomShape.TabIndex = 9;
@@ -102,7 +103,7 @@
             // buttonCenter
             // 
             this.buttonCenter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCenter.Location = new System.Drawing.Point(241, 101);
+            this.buttonCenter.Location = new System.Drawing.Point(228, 114);
             this.buttonCenter.Name = "buttonCenter";
             this.buttonCenter.Size = new System.Drawing.Size(202, 23);
             this.buttonCenter.TabIndex = 8;
@@ -113,7 +114,7 @@
             // buttonCustomPosition
             // 
             this.buttonCustomPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomPosition.Location = new System.Drawing.Point(241, 13);
+            this.buttonCustomPosition.Location = new System.Drawing.Point(228, 26);
             this.buttonCustomPosition.Name = "buttonCustomPosition";
             this.buttonCustomPosition.Size = new System.Drawing.Size(202, 23);
             this.buttonCustomPosition.TabIndex = 7;
@@ -125,10 +126,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 356);
+            this.ClientSize = new System.Drawing.Size(459, 163);
             this.Controls.Add(this.groupBox1);
             this.Name = "自定义窗体外观";
-            this.Text = "自定义窗体外观";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.自定义窗体外观_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

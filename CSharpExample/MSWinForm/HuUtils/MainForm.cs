@@ -189,7 +189,8 @@ namespace HuUtils
 
         private void button18_Click(object sender, EventArgs e)
         {
-            new Notepad().Show();
+            new Notepad1().Show();
+            new Notepad2().Show();
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -257,7 +258,8 @@ namespace HuUtils
 
         private void Button30_Click(object sender, EventArgs e)
         {
-            new LicGenForm().Show();
+            new LicGenForm1().Show();
+            new LicGenForm2().Show();
         }
     }
 }

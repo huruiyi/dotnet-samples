@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace HuUtils
 {
-    public partial class Notepad : Form
+    public partial class Notepad1 : Form
     {
-        public Notepad()
+        public Notepad1()
         {
             InitializeComponent();
         }

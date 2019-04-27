@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace HuUtils
 {
-    public partial class 证书工具 : Form
+    public partial class LicGenForm2 : Form
     {
-        public 证书工具()
+        public LicGenForm2()
         {
             InitializeComponent();
         }

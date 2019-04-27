@@ -1,6 +1,6 @@
 ﻿namespace HuUtils
 {
-    partial class 证书工具
+    partial class LicGenForm2
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -55,23 +55,22 @@
             this.buttonGetKeyPair = new System.Windows.Forms.Button();
             this.buttonSelectPfx = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBoxEncrypt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1Decrypt = new System.Windows.Forms.Label();
+            this.textBoxOrigin = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBoxPrivate = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.labelMd5 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxPublic = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.buttonDecrypt = new System.Windows.Forms.Button();
             this.buttonEncrypt = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBoxPrivate = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBoxOrigin = new System.Windows.Forms.TextBox();
-            this.label1Decrypt = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxEncrypt = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -362,6 +361,94 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "公钥私钥加解密";
             // 
+            // textBoxEncrypt
+            // 
+            this.textBoxEncrypt.Location = new System.Drawing.Point(91, 378);
+            this.textBoxEncrypt.Multiline = true;
+            this.textBoxEncrypt.Name = "textBoxEncrypt";
+            this.textBoxEncrypt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBoxEncrypt.Size = new System.Drawing.Size(372, 46);
+            this.textBoxEncrypt.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 381);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "加密后文本：";
+            // 
+            // label1Decrypt
+            // 
+            this.label1Decrypt.AutoSize = true;
+            this.label1Decrypt.Location = new System.Drawing.Point(98, 437);
+            this.label1Decrypt.Name = "label1Decrypt";
+            this.label1Decrypt.Size = new System.Drawing.Size(29, 12);
+            this.label1Decrypt.TabIndex = 12;
+            this.label1Decrypt.Text = "……";
+            // 
+            // textBoxOrigin
+            // 
+            this.textBoxOrigin.Location = new System.Drawing.Point(91, 203);
+            this.textBoxOrigin.Name = "textBoxOrigin";
+            this.textBoxOrigin.Size = new System.Drawing.Size(372, 21);
+            this.textBoxOrigin.TabIndex = 6;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(20, 437);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(77, 12);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "解密后文本：";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(16, 206);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 12);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "待加密文本：";
+            // 
+            // textBoxPrivate
+            // 
+            this.textBoxPrivate.Location = new System.Drawing.Point(91, 263);
+            this.textBoxPrivate.Multiline = true;
+            this.textBoxPrivate.Name = "textBoxPrivate";
+            this.textBoxPrivate.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBoxPrivate.Size = new System.Drawing.Size(372, 99);
+            this.textBoxPrivate.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(44, 263);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 12);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "私钥：";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(98, 55);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(29, 12);
+            this.labelName.TabIndex = 7;
+            this.labelName.Text = "……";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(20, 55);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 12);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "证书名称：";
+            // 
             // labelMd5
             // 
             this.labelMd5.AutoSize = true;
@@ -418,115 +505,17 @@
             this.buttonEncrypt.UseVisualStyleBackColor = true;
             this.buttonEncrypt.Click += new System.EventHandler(this.buttonEncrypt_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(20, 55);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 12);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "证书名称：";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(98, 55);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(29, 12);
-            this.labelName.TabIndex = 7;
-            this.labelName.Text = "……";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(44, 263);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 12);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "私钥：";
-            // 
-            // textBoxPrivate
-            // 
-            this.textBoxPrivate.Location = new System.Drawing.Point(91, 263);
-            this.textBoxPrivate.Multiline = true;
-            this.textBoxPrivate.Name = "textBoxPrivate";
-            this.textBoxPrivate.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBoxPrivate.Size = new System.Drawing.Size(372, 99);
-            this.textBoxPrivate.TabIndex = 9;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 206);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(77, 12);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "待加密文本：";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(20, 437);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(77, 12);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "解密后文本：";
-            // 
-            // textBoxOrigin
-            // 
-            this.textBoxOrigin.Location = new System.Drawing.Point(91, 203);
-            this.textBoxOrigin.Name = "textBoxOrigin";
-            this.textBoxOrigin.Size = new System.Drawing.Size(372, 21);
-            this.textBoxOrigin.TabIndex = 6;
-            // 
-            // label1Decrypt
-            // 
-            this.label1Decrypt.AutoSize = true;
-            this.label1Decrypt.Location = new System.Drawing.Point(98, 437);
-            this.label1Decrypt.Name = "label1Decrypt";
-            this.label1Decrypt.Size = new System.Drawing.Size(29, 12);
-            this.label1Decrypt.TabIndex = 12;
-            this.label1Decrypt.Text = "……";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 381);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 12);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "加密后文本：";
-            // 
-            // textBoxEncrypt
-            // 
-            this.textBoxEncrypt.Location = new System.Drawing.Point(91, 378);
-            this.textBoxEncrypt.Multiline = true;
-            this.textBoxEncrypt.Name = "textBoxEncrypt";
-            this.textBoxEncrypt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBoxEncrypt.Size = new System.Drawing.Size(372, 46);
-            this.textBoxEncrypt.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(689, 525);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(269, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "出处：www.luminji.com; blog.csdn.net/luminji";
-            // 
-            // Form1
+            // 证书工具
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 546);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "证书工具";
             this.Text = "证书工具类";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -539,7 +528,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -588,7 +576,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxEncrypt;
-        private System.Windows.Forms.Label label6;
     }
 }
 
