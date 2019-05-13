@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>max.ico</ApplicationIcon>
+    <ApplicationIcon>app manage.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>360B4766552D7402618489F809999185FBC6FD6C</ManifestCertificateThumbprint>
@@ -112,6 +112,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -365,6 +366,24 @@
     <Compile Include="SyncAsyncAPMForm\Sync实例.Designer.cs">
       <DependentUpon>Sync实例.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemManager\USBMinitor01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor01.designer.cs">
+      <DependentUpon>USBMinitor01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor02.designer.cs">
+      <DependentUpon>USBMinitor02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManager\WMIInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\WMIInfo.Designer.cs">
+      <DependentUpon>WMIInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="TreeViewDemo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -461,10 +480,10 @@
     <Compile Include="添加Windows账户.Designer.cs">
       <DependentUpon>添加Windows账户.cs</DependentUpon>
     </Compile>
-    <Compile Include="电源管理.cs">
+    <Compile Include="SystemManager\电源管理.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="电源管理.Designer.cs">
+    <Compile Include="SystemManager\电源管理.Designer.cs">
       <DependentUpon>电源管理.cs</DependentUpon>
     </Compile>
     <Compile Include="登录窗体.cs">
@@ -662,6 +681,15 @@
     <EmbeddedResource Include="SyncAsyncAPMForm\Sync实例.resx">
       <DependentUpon>Sync实例.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\USBMinitor01.resx">
+      <DependentUpon>USBMinitor01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\USBMinitor02.resx">
+      <DependentUpon>USBMinitor02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\WMIInfo.resx">
+      <DependentUpon>WMIInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TreeViewDemo.resx">
       <DependentUpon>TreeViewDemo.cs</DependentUpon>
     </EmbeddedResource>
@@ -717,7 +745,7 @@
     <EmbeddedResource Include="添加Windows账户.resx">
       <DependentUpon>添加Windows账户.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="电源管理.resx">
+    <EmbeddedResource Include="SystemManager\电源管理.resx">
       <DependentUpon>电源管理.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="登录窗体.resx">
@@ -785,7 +813,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="max.ico" />
+    <Content Include="app manage.ico" />
     <Content Include="Resources\Abort.ico" />
     <Content Include="Resources\Bold.ico" />
     <Content Include="Resources\Color.ico" />

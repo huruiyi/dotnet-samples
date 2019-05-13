@@ -26,6 +26,24 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Thread.Sleep(3610);
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds  );
+
+
+            stopwatch.Restart();
+            Thread.Sleep(3617);
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+
+
             //https://www.cnblogs.com/lanxiaoke/p/6657935.html
             //https://www.cnblogs.com/niunan/
 

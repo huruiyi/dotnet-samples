@@ -3,6 +3,7 @@ using HuUtils.Chat;
 using HuUtils.DataSynchronization;
 using HuUtils.NoBorder;
 using HuUtils.SyncAsyncAPMForm;
+using HuUtils.SystemManager;
 using System;
 using System.Windows.Forms;
 
@@ -275,6 +276,12 @@ namespace HuUtils
         private void Button33_Click(object sender, EventArgs e)
         {
             new 数据集().Show();
+        }
+
+        private void Button34_Click(object sender, EventArgs e)
+        {
+            new USBMinitor01().Show();
+            new USBMinitor02().Show();
         }
     }
 }

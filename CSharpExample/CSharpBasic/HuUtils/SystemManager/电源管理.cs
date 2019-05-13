@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace HuUtils
+namespace HuUtils.SystemManager
 {
     public partial class 电源管理 : Form
     {

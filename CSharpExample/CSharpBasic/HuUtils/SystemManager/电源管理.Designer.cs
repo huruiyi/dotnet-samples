@@ -1,4 +1,4 @@
-﻿namespace HuUtils
+﻿namespace HuUtils.SystemManager
 {
     partial class 电源管理
     {
