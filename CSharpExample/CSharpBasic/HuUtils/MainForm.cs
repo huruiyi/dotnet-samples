@@ -283,5 +283,10 @@ namespace HuUtils
             new USBMinitor01().Show();
             new USBMinitor02().Show();
         }
+
+        private void Button35_Click(object sender, EventArgs e)
+        {
+            new 任务取消().Show();
+        }
     }
 }

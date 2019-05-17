@@ -61,8 +61,10 @@ namespace HuUtils
 
         public void Add()
         {
-            OpenFileDialog openfiledialog = new OpenFileDialog();
-            openfiledialog.Filter = "图片（*.jpg）|*.jpg";
+            OpenFileDialog openfiledialog = new OpenFileDialog
+            {
+                Filter = "图片（*.jpg）|*.jpg"
+            };
             if (openfiledialog.ShowDialog() == DialogResult.OK)
             {
                 FileStream ms = new FileStream(openfiledialog.FileName, FileMode.Open, FileAccess.Read);

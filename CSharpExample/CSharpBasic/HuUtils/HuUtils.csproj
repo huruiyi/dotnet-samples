@@ -424,6 +424,12 @@
     <Compile Include="串口编程实例.designer.cs">
       <DependentUpon>串口编程实例.cs</DependentUpon>
     </Compile>
+    <Compile Include="任务取消.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="任务取消.Designer.cs">
+      <DependentUpon>任务取消.cs</DependentUpon>
+    </Compile>
     <Compile Include="图片操作_数据库.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -707,6 +713,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="串口编程实例.resx">
       <DependentUpon>串口编程实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="任务取消.resx">
+      <DependentUpon>任务取消.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="图片操作_数据库.resx">
       <DependentUpon>图片操作_数据库.cs</DependentUpon>

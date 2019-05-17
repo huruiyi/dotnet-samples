@@ -1,0 +1,15 @@
+﻿<Window x:Class="HuUtils.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="252.442" Width="461.658"  >
+    <Grid  >
+        <TextBox x:Name="TxtFrom" HorizontalAlignment="Left" Height="19" Margin="24,19,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="115" />
+        <TextBox x:Name="TxtTo" HorizontalAlignment="Left" Height="19" Margin="24,69,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="115" />
+        <Button x:Name="BtnGetPrimes" Content="Start" HorizontalAlignment="Left" Margin="24,134,0,0" VerticalAlignment="Top" Width="115" Click="btnGetPrimes_Click" Height="19" />
+        <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="24,189,0,0" VerticalAlignment="Top" Width="115" Click="btnCancel_Click" />
+        <ListBox ItemsSource="{Binding PrimeNumbers}" HorizontalAlignment="Left" Height="189" Margin="154,19,0,0" VerticalAlignment="Top" Width="285" />
+    </Grid>
+</Window>
