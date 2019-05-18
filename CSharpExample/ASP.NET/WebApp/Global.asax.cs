@@ -10,10 +10,10 @@ namespace WebApp
         {
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", new ScriptResourceDefinition
             {
-                Path = "~/scripts/jquery-1.7.2.min.js",
-                DebugPath = "~/scripts/jquery-1.7.2.js",
-                CdnPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js",
-                CdnDebugPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.js"
+                Path = "~/scripts/jquery-3.4.1.min.js",
+                DebugPath = "~/scripts/jquery-3.4.1.js",
+                CdnPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-3.4.1.min.js",
+                CdnDebugPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-3.4.1.js"
             });
         }
 
