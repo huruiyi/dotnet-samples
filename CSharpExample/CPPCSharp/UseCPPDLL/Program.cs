@@ -22,7 +22,7 @@ namespace UseCPPDLL
         {
             //MessageBox(0, "How to use attribute in .NET", "Anytao_net", 0);
 
-            LockWorkStation();
+            //LockWorkStation();
 
             Console.ReadKey();
             int result = CPPDLL.Add(10, 20);
