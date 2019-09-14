@@ -24,17 +24,34 @@ namespace ConApp
 
     public partial class Program
     {
+        
         public static unsafe void Main(string[] args)
         {
 
+            TaskDemo.TaskWhenAll3();
+
+            Console.WriteLine();
+        }
+
+        public static void Other3()
+        {
+            TestClass t1 = new TestClass();
+            TestClass t2 = new TestClass();
+            Console.WriteLine(t1.Equals(t2));
+            Console.WriteLine(object.ReferenceEquals(t1, t2));
+            t2 = t1;
+            Console.WriteLine(t1.Equals(t2));
+            Console.WriteLine(object.ReferenceEquals(t1, t2));
+        }
+        public static void Other2()
+        {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             Thread.Sleep(3610);
 
             stopwatch.Stop();
 
-            Console.WriteLine(stopwatch.Elapsed.TotalSeconds  );
-
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
 
             stopwatch.Restart();
             Thread.Sleep(3617);
@@ -42,8 +59,10 @@ namespace ConApp
             stopwatch.Stop();
 
             Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+        }
 
-
+        public static void Other1()
+        {
             //https://www.cnblogs.com/lanxiaoke/p/6657935.html
             //https://www.cnblogs.com/niunan/
 
@@ -58,19 +77,12 @@ namespace ConApp
 
             Console.ReadKey();
 
-            TestClass t1 = new TestClass();
-            TestClass t2 = new TestClass();
-            Console.WriteLine(t1.Equals(t2));
-            Console.WriteLine(object.ReferenceEquals(t1, t2));
-            t2 = t1;
-            Console.WriteLine(t1.Equals(t2));
-            Console.WriteLine(object.ReferenceEquals(t1, t2));
             //Mutex
             //Marshal.
             Console.ReadKey();
         }
 
-        public static void Other()
+        public static void Other0()
         {
             Hash hash = Hash.CreateMD5(Encoding.UTF8.GetBytes("ABCDEFG"));
             //Hash.CreateSHA1()

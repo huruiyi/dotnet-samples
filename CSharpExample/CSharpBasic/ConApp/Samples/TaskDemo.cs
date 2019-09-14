@@ -159,7 +159,7 @@ namespace ConApp
             }
         }
 
-        public static void TasKdemo2()
+        public static void TaskDemo2()
         {
             List<Person> pers1 = new List<Person>();
             List<Person> pers2 = new List<Person>();
@@ -180,7 +180,7 @@ namespace ConApp
             });
         }
 
-        public static void TasKWhenAll3()
+        public static void TaskWhenAll3()
         {
             List<Person> pers1 = new List<Person>();
             List<Person> pers2 = new List<Person>();

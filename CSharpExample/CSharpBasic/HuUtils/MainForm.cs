@@ -67,7 +67,7 @@ namespace HuUtils
         {
             GraphicsPath             FormPath = new GraphicsPath();
             Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
-            FormPath = GetRoundedRectPath(rect, 150);
+            FormPath = GetRoundedRectPath(rect, 50);
             this.Region = new Region(FormPath);
         }
 
