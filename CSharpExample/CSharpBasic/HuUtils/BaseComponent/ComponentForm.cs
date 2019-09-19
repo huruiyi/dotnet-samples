@@ -15,7 +15,7 @@ namespace HuUtils.BaseComponent
         {
             if (textBox1.Text == "admin" && textBox2.Text == "666666")
             {
-                MainForm.Flag = true;
+                AppMain.Flag = true;
                 this.Close();
                 new Form1().Show();
             }

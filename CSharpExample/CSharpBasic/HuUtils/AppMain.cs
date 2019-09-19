@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HuUtils
 {
-    public partial class MainForm : Form
+    public partial class AppMain : Form
     {
         #region 无边框窗体移动
 
@@ -50,7 +50,6 @@ namespace HuUtils
 
         #endregion 无边框窗体移动
 
-
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -65,14 +64,14 @@ namespace HuUtils
 
         public void SetWindowRegion()
         {
-            GraphicsPath             FormPath = new GraphicsPath();
+            GraphicsPath FormPath = new GraphicsPath();
             Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
             FormPath = GetRoundedRectPath(rect, 50);
             this.Region = new Region(FormPath);
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="rect">窗体大小</param>
         /// <param name="radius">圆角大小</param>
@@ -96,9 +95,6 @@ namespace HuUtils
             path.CloseFigure();
             return path;
         }
-
- 
-
 
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, Keys keyData)
 
@@ -124,7 +120,7 @@ namespace HuUtils
             return false;
         }
 
-        public MainForm()
+        public AppMain()
         {
             InitializeComponent();
         }
@@ -140,7 +136,7 @@ namespace HuUtils
                     button.ForeColor = Color.White;
                 }
             }
-         }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -347,6 +343,11 @@ namespace HuUtils
         private void Button35_Click(object sender, EventArgs e)
         {
             new 任务取消().Show();
+        }
+
+        private void Button36_Click(object sender, EventArgs e)
+        {
+            new 系统字体().Show();
         }
     }
 }

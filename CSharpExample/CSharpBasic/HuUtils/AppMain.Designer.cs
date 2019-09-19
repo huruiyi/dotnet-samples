@@ -1,6 +1,6 @@
 ﻿namespace HuUtils
 {
-    partial class MainForm
+    partial class AppMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppMain));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -451,7 +452,18 @@
             this.button35.UseVisualStyleBackColor = true;
             this.button35.Click += new System.EventHandler(this.Button35_Click);
             // 
-            // MainForm
+            // button36
+            // 
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.Location = new System.Drawing.Point(640, 423);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(138, 23);
+            this.button36.TabIndex = 3;
+            this.button36.Text = "36-系统字体";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.Button36_Click);
+            // 
+            // AppMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -469,6 +481,7 @@
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
             this.Controls.Add(this.button30);
+            this.Controls.Add(this.button36);
             this.Controls.Add(this.button35);
             this.Controls.Add(this.button34);
             this.Controls.Add(this.button33);
@@ -494,7 +507,7 @@
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MainForm";
+            this.Name = "AppMain";
             this.Text = "HuUtils";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
@@ -540,5 +553,6 @@
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button button36;
     }
 }

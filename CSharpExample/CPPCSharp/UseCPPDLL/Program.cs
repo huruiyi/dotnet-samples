@@ -10,21 +10,26 @@ namespace UseCPPDLL
         public static extern int MessageBox(IntPtr hWnd, String text, String caption, uint type);
 
         [DllImport("User32.dll")]
-        public static extern int MessageBox(int h, string m, string c, int type);
+        public static extern int MessageBox(int hParent, string msg, string caption, int type);
 
-        //[DllImport("User32.dll")]
-        //public static extern int MessageBox(int hParent, string msg, string caption, int type);
-
+        /// <summary>
+        /// WIndows锁屏
+        /// </summary>
         [DllImport("User32.DLL")]
         public static extern void LockWorkStation();
 
         private static void Main()
         {
-            //MessageBox(0, "How to use attribute in .NET", "Anytao_net", 0);
+            Demo();
+        }
 
-            //LockWorkStation();
-
-            Console.ReadKey();
+        public void MessageBox()
+        {
+            MessageBox(0, "Hello World!", "标题", 0);
+            MessageBox(new IntPtr(0), "Hello World!", "标题", 0);
+        }
+        public static void Demo()
+        {
             int result = CPPDLL.Add(10, 20);
             Console.WriteLine("10 + 20 = {0}", result);
 
@@ -40,10 +45,6 @@ namespace UseCPPDLL
             IntPtr ptr = CPPDLL.Create("李平", 27);
             CPPDLL.User user = (CPPDLL.User)Marshal.PtrToStructure(ptr, typeof(CPPDLL.User));
             Console.WriteLine("Name: {0}, Age: {1}", user.Name, user.Age);
-
-            MessageBox(new IntPtr(0), "Hello World!", "标题", 0);
-
-            MessageBox(0, "Content", "My Message Box", 0);
         }
     }
 

@@ -34,7 +34,7 @@ namespace HuUtils
 
         private void 自定义窗体外观_FormClosed(object sender, FormClosedEventArgs e)
         {
-            new MainForm().Show();
+            new AppMain().Show();
         }
     }
 }

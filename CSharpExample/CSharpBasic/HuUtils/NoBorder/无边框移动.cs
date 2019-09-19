@@ -11,7 +11,7 @@ namespace HuUtils.NoBorder
 
         private void 无边框移动_FormClosed(object sender, FormClosedEventArgs e)
         {
-            new MainForm().Show();
+            new AppMain().Show();
         }
 
         private void button1_Click(object sender, System.EventArgs e)

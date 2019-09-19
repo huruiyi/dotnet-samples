@@ -442,11 +442,11 @@
     <Compile Include="截屏实例.Designer.cs">
       <DependentUpon>截屏实例.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="AppMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="AppMain.Designer.cs">
+      <DependentUpon>AppMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -509,6 +509,12 @@
     </Compile>
     <Compile Include="简易资源管理器.Designer.cs">
       <DependentUpon>简易资源管理器.cs</DependentUpon>
+    </Compile>
+    <Compile Include="系统字体.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统字体.Designer.cs">
+      <DependentUpon>系统字体.cs</DependentUpon>
     </Compile>
     <Compile Include="线程抽奖.cs">
       <SubType>Form</SubType>
@@ -723,8 +729,8 @@
     <EmbeddedResource Include="截屏实例.resx">
       <DependentUpon>截屏实例.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="AppMain.resx">
+      <DependentUpon>AppMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -765,6 +771,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="简易资源管理器.resx">
       <DependentUpon>简易资源管理器.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统字体.resx">
+      <DependentUpon>系统字体.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="线程抽奖.resx">
       <DependentUpon>线程抽奖.cs</DependentUpon>
