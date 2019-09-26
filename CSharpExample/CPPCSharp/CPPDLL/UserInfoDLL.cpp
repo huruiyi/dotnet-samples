@@ -31,10 +31,10 @@ UserInfo* userInfo;
 extern "C" __declspec(dllexport) User* Create(char* name, int age)
 {
 	User* user = (User*)malloc(sizeof(User));
-
-	userInfo = new UserInfo(name, age);
-	strcpy_s(user->name, userInfo->GetName());
-	user->age = userInfo->GetAge();
-
+	if (user) {
+		userInfo = new UserInfo(name, age);
+		strcpy_s(user->name, userInfo->GetName());
+		user->age = userInfo->GetAge();
+	}
 	return user;
 }
