@@ -45,16 +45,19 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnBrowser = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgGitView = new System.Windows.Forms.DataGridView();
             this.btnGetUrl = new System.Windows.Forms.Button();
-            this.txtUrls = new System.Windows.Forms.TextBox();
             this.txtGitPath = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.openFileDialogGit = new System.Windows.Forms.OpenFileDialog();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGitView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,8 +216,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dgGitView);
             this.tabPage1.Controls.Add(this.btnGetUrl);
-            this.tabPage1.Controls.Add(this.txtUrls);
             this.tabPage1.Controls.Add(this.txtGitPath);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label2);
@@ -226,6 +229,20 @@
             this.tabPage1.Text = "获取Url";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dgGitView
+            // 
+            this.dgGitView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgGitView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dgGitView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgGitView.Location = new System.Drawing.Point(3, 81);
+            this.dgGitView.Name = "dgGitView";
+            this.dgGitView.RowTemplate.Height = 23;
+            this.dgGitView.Size = new System.Drawing.Size(972, 467);
+            this.dgGitView.TabIndex = 7;
+            this.dgGitView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGitView_CellClick);
+            // 
             // btnGetUrl
             // 
             this.btnGetUrl.Location = new System.Drawing.Point(869, 20);
@@ -235,15 +252,6 @@
             this.btnGetUrl.Text = "获取PushUrl";
             this.btnGetUrl.UseVisualStyleBackColor = true;
             this.btnGetUrl.Click += new System.EventHandler(this.BtnGetUrl_Click);
-            // 
-            // txtUrls
-            // 
-            this.txtUrls.Location = new System.Drawing.Point(8, 63);
-            this.txtUrls.Multiline = true;
-            this.txtUrls.Name = "txtUrls";
-            this.txtUrls.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtUrls.Size = new System.Drawing.Size(962, 462);
-            this.txtUrls.TabIndex = 5;
             // 
             // txtGitPath
             // 
@@ -286,6 +294,20 @@
             // 
             this.openFileDialogGit.FileName = "openFileDialog1";
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "DirName";
+            this.Column1.HeaderText = "文件夹名称";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 300;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "GitPath";
+            this.Column2.HeaderText = "Git路径";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 500;
+            // 
             // GitOp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -300,6 +322,7 @@
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGitView)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -317,7 +340,6 @@
         private System.Windows.Forms.Button btnBrowser;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnGetUrl;
-        private System.Windows.Forms.TextBox txtUrls;
         private System.Windows.Forms.TextBox txtGitPath;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
@@ -330,5 +352,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog openFileDialogGit;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgGitView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

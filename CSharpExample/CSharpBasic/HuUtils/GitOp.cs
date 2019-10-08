@@ -1,4 +1,5 @@
-﻿using LibGit2Sharp;
+﻿using HuUtils.Service;
+using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,7 +27,6 @@ namespace HuUtils
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
             if (DialogResult.OK == folderBrowserDialogGit.ShowDialog())
             {
                 txtGitPath.Text = folderBrowserDialogGit.SelectedPath;
@@ -55,6 +55,7 @@ namespace HuUtils
         {
             lblTaskCount.Text = "";
         }
+
         public static String GetDestPath(String path)
         {
             string[] strs = path.Split('/');
@@ -169,25 +170,31 @@ namespace HuUtils
                 });
                 tasks[i] = task;
             }
-           
+
             Task.WaitAll(tasks);
         }
 
         //Get Push Urls
         private void BtnGetUrl_Click(object sender, EventArgs e)
         {
+            SortedBindingList<GitInfoPath> gitPaths = new SortedBindingList<GitInfoPath>();
+            GitInfoPath gitInfoPath;
             if (!String.IsNullOrWhiteSpace(txtGitPath.Text))
             {
                 var directories = Directory.GetDirectories(txtGitPath.Text);
                 foreach (string directory in directories)
                 {
+                    gitInfoPath = new GitInfoPath();
                     using (var repo = new Repository(directory))
                     {
                         var remote = repo.Network.Remotes["origin"];
-                        txtUrls.AppendText(remote.PushUrl + Environment.NewLine);
+                        gitInfoPath.DirName = directory.Substring(directory.LastIndexOf('\\') + 1);
+                        gitInfoPath.GitPath = remote.PushUrl;
+                        gitPaths.Add(gitInfoPath);
                     }
                 }
             }
+            dgGitView.DataSource = gitPaths;
         }
 
         //Update
@@ -219,5 +226,16 @@ namespace HuUtils
             lblTaskCount.Text = lblTaskCount.Text + taskCount;
             TaskClone(txtUrlsPath.Text, txtDestBasePath.Text, taskCount, true);
         }
+
+        private void dgGitView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+    }
+
+    public class GitInfoPath
+    {
+        public string DirName { get; set; }
+
+        public string GitPath { get; set; }
     }
 }

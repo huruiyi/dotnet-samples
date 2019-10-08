@@ -1,7 +1,6 @@
 ﻿using HuUtils.Model;
 using HuUtils.Service;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace HuUtils
@@ -32,13 +31,14 @@ namespace HuUtils
             //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dataGridView1.DataSource = students;
+            dataGridView1.Columns["Address"].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow collection = dataGridView1.Rows[e.RowIndex];
-            String name = collection.Cells["Column1"].Value.ToString();
+            string name = collection.Cells["Column1"].Value.ToString();
             lblName.Text = "姓名:" + name;
         }
 
@@ -53,7 +53,7 @@ namespace HuUtils
                     student = item;
                 }
             }
-            SortedBindingList<Student> searchList= new SortedBindingList<Student>();
+            SortedBindingList<Student> searchList = new SortedBindingList<Student>();
             searchList.Add(student);
             dataGridView1.DataSource = searchList;
         }
