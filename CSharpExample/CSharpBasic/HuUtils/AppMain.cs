@@ -349,5 +349,10 @@ namespace HuUtils
         {
             new 系统字体().Show();
         }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            new IP地址().Show();
+        }
     }
 }

@@ -311,6 +311,12 @@
     <Compile Include="Graphicses\Demo12.Designer.cs">
       <DependentUpon>Demo12.cs</DependentUpon>
     </Compile>
+    <Compile Include="IP地址.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IP地址.designer.cs">
+      <DependentUpon>IP地址.cs</DependentUpon>
+    </Compile>
     <Compile Include="Key事件.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -665,6 +671,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphicses\Demo12.resx">
       <DependentUpon>Demo12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IP地址.resx">
+      <DependentUpon>IP地址.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Key事件.resx">
       <DependentUpon>Key事件.cs</DependentUpon>

@@ -24,13 +24,12 @@ namespace ConApp
 
     public partial class Program
     {
-        
         public static unsafe void Main(string[] args)
         {
-
-            TaskDemo.TaskWhenAll3();
-
-            Console.WriteLine();
+            //TaskDemo.SumPageSizes();
+            TaskDemo.SumPageSizesAsync();
+            Console.WriteLine("pok");
+            Thread.Sleep(10000000);
         }
 
         public static void Other3()
@@ -43,6 +42,7 @@ namespace ConApp
             Console.WriteLine(t1.Equals(t2));
             Console.WriteLine(object.ReferenceEquals(t1, t2));
         }
+
         public static void Other2()
         {
             Stopwatch stopwatch = new Stopwatch();

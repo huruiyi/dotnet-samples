@@ -1,6 +1,7 @@
 ﻿using ConApp.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -193,8 +194,8 @@ namespace ConApp
             Task t4 = Task.Run(() => { GetPseronList4(pers4); });
             Task t5 = Task.Run(() => { GetPseronList5(pers5); });
 
-            Task tb = Task.WhenAll(t1, t2, t3, t4, t5);
-            tb.ContinueWith((Task tt) => { Console.WriteLine("执行完成"); });
+            //Task tb = Task.WhenAll(t1, t2, t3, t4, t5);
+            //tb.ContinueWith((Task tt) => { Console.WriteLine("执行完成"); });
         }
 
         public static void TaskContinueWithDemo()
@@ -536,5 +537,138 @@ namespace ConApp
         }
 
         #endregion 查看端口是否被占用
+
+        public static void SumPageSizes()
+        {
+            // Make a list of web addresses.
+            List<string> urlList = SetUpURLList();
+
+            var total = 0;
+            foreach (var url in urlList)
+            {
+                // GetURLContents returns the contents of url as a byte array.
+                byte[] urlContents = GetURLContents(url);
+
+                DisplayResults(url, urlContents);
+
+                // Update the total.
+                total += urlContents.Length;
+            }
+
+            // Display the total count for all of the web addresses.
+            Console.WriteLine($"\r\n\r\nTotal bytes returned:  {total}\r\n");
+        }
+
+        public static async void SumPageSizesAsync()
+        {
+            // Make a list of web addresses.
+            List<string> urlList = SetUpURLList();
+
+            var total = 0;
+            foreach (var url in urlList)
+            {
+                // GetURLContents returns the contents of url as a byte array.
+                byte[] urlContents = await GetURLContentsAsync(url);
+
+                DisplayResults(url, urlContents);
+
+                // Update the total.
+                total += urlContents.Length;
+            }
+
+            // Display the total count for all of the web addresses.
+            Console.WriteLine($"\r\n\r\nTotal bytes returned:  {total}\r\n");
+        }
+
+        private static void DisplayResults(string url, byte[] content)
+        {
+            // Display the length of each website. The string format
+            // is designed to be used with a monospaced font, such as
+            // Lucida Console or Global Monospace.
+            var bytes = content.Length;
+            // Strip off the "https://".
+            var displayURL = url.Replace("https://", "");
+            Console.WriteLine($"\n{displayURL,-58} {bytes,8}");
+        }
+
+        private static List<string> SetUpURLList()
+        {
+            var urls = new List<string>
+            {
+                "https://msdn.microsoft.com/library/windows/apps/br211380.aspx",
+                "https://msdn.microsoft.com",
+                "https://msdn.microsoft.com/library/hh290136.aspx",
+                "https://msdn.microsoft.com/library/ee256749.aspx",
+                "https://msdn.microsoft.com/library/hh290138.aspx",
+                "https://msdn.microsoft.com/library/hh290140.aspx",
+                "https://msdn.microsoft.com/library/dd470362.aspx",
+                "https://msdn.microsoft.com/library/aa578028.aspx",
+                "https://msdn.microsoft.com/library/ms404677.aspx",
+                "https://msdn.microsoft.com/library/ff730837.aspx"
+            };
+            return urls;
+        }
+
+        private static byte[] GetURLContents(string url)
+        {
+            // The downloaded resource ends up in the variable named content.
+            var content = new MemoryStream();
+
+            // Initialize an HttpWebRequest for the current URL.
+            var webReq = (HttpWebRequest)WebRequest.Create(url);
+
+            // Send the request to the Internet resource and wait for
+            // the response.
+            // Note: you can't use HttpWebRequest.GetResponse in a Windows Store app.
+            using (WebResponse response = webReq.GetResponse())
+            {
+                // Get the data stream that is associated with the specified URL.
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    // Read the bytes in responseStream and copy them to content.
+                    responseStream.CopyTo(content);
+                }
+            }
+
+            // Return the result as a byte array.
+            return content.ToArray();
+        }
+
+        private static async Task<byte[]> GetURLContentsAsync(string url)
+        {
+            // The downloaded resource ends up in the variable named content.
+            var content = new MemoryStream();
+
+            // Initialize an HttpWebRequest for the current URL.
+            var webReq = (HttpWebRequest)WebRequest.Create(url);
+
+            // Send the request to the Internet resource and wait for
+            // the response.
+            using (WebResponse response = await webReq.GetResponseAsync())
+
+            // The previous statement abbreviates the following two statements.
+
+            //Task<WebResponse> responseTask = webReq.GetResponseAsync();
+            //using (WebResponse response = await responseTask)
+            {
+                // Get the data stream that is associated with the specified url.
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    // Read the bytes in responseStream and copy them to content.
+                    await responseStream.CopyToAsync(content);
+
+                    // The previous statement abbreviates the following two statements.
+
+                    // CopyToAsync returns a Task, not a Task<T>.
+                    //Task copyTask = responseStream.CopyToAsync(content);
+
+                    // When copyTask is completed, content contains a copy of
+                    // responseStream.
+                    //await copyTask;
+                }
+            }
+            // Return the result as a byte array.
+            return content.ToArray();
+        }
     }
 }

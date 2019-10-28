@@ -65,6 +65,7 @@
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -463,12 +464,23 @@
             this.button36.UseVisualStyleBackColor = true;
             this.button36.Click += new System.EventHandler(this.Button36_Click);
             // 
+            // button37
+            // 
+            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button37.Location = new System.Drawing.Point(75, 475);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(138, 23);
+            this.button37.TabIndex = 3;
+            this.button37.Text = "37-IP地址解析";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
             // AppMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(851, 495);
+            this.ClientSize = new System.Drawing.Size(858, 589);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -481,6 +493,7 @@
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
             this.Controls.Add(this.button30);
+            this.Controls.Add(this.button37);
             this.Controls.Add(this.button36);
             this.Controls.Add(this.button35);
             this.Controls.Add(this.button34);
@@ -554,5 +567,6 @@
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
     }
 }
