@@ -6,11 +6,12 @@ namespace HuUtils
 {
     public partial class IP地址 : Form
     {
-        public frmIP()
+        public IP地址()
         {
             InitializeComponent();
         }
 
+        [Obsolete]
         private void btnConvert_Click(object sender, EventArgs e)
         {
             //记得先using System.Net;  再IPHostEntry

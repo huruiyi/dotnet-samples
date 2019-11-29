@@ -51,19 +51,19 @@ namespace UseCPPDLL
     public class CPPDLL
     {
         //CPPDLL.dll 的输出目录需要设置为： ..\UseCPPDLL\bin\Debug
-        [DllImport("CPPDLL.dll", EntryPoint = "Add", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("UserInfo.dll", EntryPoint = "Add", CallingConvention = CallingConvention.Cdecl)]
         public static extern int Add(int x, int y);
 
-        [DllImport("CPPDLL.dll", EntryPoint = "Sub", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("UserInfo.dll", EntryPoint = "Sub", CallingConvention = CallingConvention.Cdecl)]
         public static extern int Sub(int x, int y);
 
-        [DllImport("CPPDLL.dll", EntryPoint = "Multiply", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("UserInfo.dll", EntryPoint = "Multiply", CallingConvention = CallingConvention.Cdecl)]
         public static extern int Multiply(int x, int y);
 
-        [DllImport("CPPDLL.dll", EntryPoint = "Divide", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("UserInfo.dll", EntryPoint = "Divide", CallingConvention = CallingConvention.Cdecl)]
         public static extern int Divide(int x, int y);
 
-        [DllImport("CPPDLL.dll", EntryPoint = "Create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("UserInfo.dll", EntryPoint = "Create", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Create(string name, int age);
 
         [StructLayout(LayoutKind.Sequential)]

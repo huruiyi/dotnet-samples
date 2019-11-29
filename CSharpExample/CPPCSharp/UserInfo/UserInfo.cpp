@@ -1,8 +1,8 @@
+#include"pch.h"
 #include <string.h>
 #include <stdio.h>
 #include "malloc.h"
 #include "UserInfo.h"
-#define _CRT_SECURE_NO_WARNINGS
 
 extern "C" __declspec(dllexport) int Add(int x, int y)
 {
@@ -28,7 +28,7 @@ typedef struct {
 
 UserInfo* userInfo;
 
-extern "C" __declspec(dllexport) User* Create(char* name, int age)
+extern "C" __declspec(dllexport) User * Create(char* name, int age)
 {
 	User* user = (User*)malloc(sizeof(User));
 	if (user) {
