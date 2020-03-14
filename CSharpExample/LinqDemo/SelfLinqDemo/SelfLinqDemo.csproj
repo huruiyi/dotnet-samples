@@ -38,19 +38,27 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Dynamic" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fruit.cs" />
-    <Compile Include="OrderInfo.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="Model\Fruit.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserBasicInfo.cs" />
+    <Compile Include="Model\OrderInfo.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="Model\Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Data\101个LINQ_Demo.docx" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\LINQ实例代码.txt" />

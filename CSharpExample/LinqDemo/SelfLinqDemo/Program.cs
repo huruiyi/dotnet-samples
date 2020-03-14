@@ -1,13 +1,16 @@
-﻿using System;
+﻿using SelfLinqDemo.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Dynamic;
 
 namespace SelfLinqDemo
 {
     internal class Program
     {
         protected static IEnumerable<Fruit> Fruits { get; set; }
+        protected static List<User> users { get; set; }
 
         static Program()
         {
@@ -21,11 +24,16 @@ namespace SelfLinqDemo
                 new Fruit(10,"香蕉", "黄色" ),
                 new Fruit(07,"樱桃", "红色" )
             };
+
+            users = new List<User>();
+            users.Add(new User { BasicInfo = new UserBasicInfo { Name = "张三", Age = 20, Money = 500, Sex = "男" } });
+            users.Add(new User { BasicInfo = new UserBasicInfo { Name = "李四", Age = 10, Money = 1000, Sex = "男" } });
+            users.Add(new User { BasicInfo = new UserBasicInfo { Name = "王五", Age = 30, Money = 2000, Sex = "女" } });
+            users.Add(new User { BasicInfo = new UserBasicInfo { Name = "马六", Age = 20, Money = 2000, Sex = "女" } });
         }
 
         private static void Main(string[] args)
         {
-            DataTableEnumerable();
             Console.ReadKey();
         }
 
@@ -381,10 +389,10 @@ namespace SelfLinqDemo
             table.Rows.Add(new object[] { 008, "f18", "f28" });
             table.Rows.Add(new object[] { 009, "f19", "f29" });
 
-            EnumerableRowCollection<DataRow> rows = table.AsEnumerable().Where(a => a.Field<string>("Field1").ToString()== "f11");
+            EnumerableRowCollection<DataRow> rows = table.AsEnumerable().Where(a => a.Field<string>("Field1").ToString() == "f11");
             foreach (DataRow item in rows)
             {
-                Console.WriteLine(item["Field0"]+"  "+item["Field1"]+"  "+ item["Field2"]);
+                Console.WriteLine(item["Field0"] + "  " + item["Field1"] + "  " + item["Field2"]);
             }
             IEnumerable<string> dtEnum = from e in table.AsEnumerable()
                                          select e.Field<string>("Field1");
@@ -436,6 +444,111 @@ namespace SelfLinqDemo
             List<int> orderIdList = new List<int> { 1, 2, 3, 5, 8, 98, 9, 65, 5, 5615, 1 };
             var ids = orderIdList.Aggregate(string.Empty, (current, item) => current + (item + ",")).TrimEnd(',');
             Console.WriteLine(ids);
+        }
+
+        public static void DynamicLinq1()
+        {
+            WriteTitle("OrderyBy");
+            IEnumerable<User> orderedUsers = users.OrderBy("BasicInfo.Money desc,BasicInfo.Age asc");
+            WriteUserCollection(orderedUsers);
+        }
+
+        public static void DynamicLinq2()
+        {
+            WriteTitle("Where");
+            IEnumerable<User> whereUsers = users.Where("BasicInfo.Age>15");
+            WriteUserCollection(whereUsers);
+        }
+
+        public static void DynamicLinq3()
+        {
+            WriteTitle("Select");
+            dynamic selectUsers = users.Select("it");
+            WriteUserCollection(selectUsers as IEnumerable<User>);
+        }
+
+        public static void DynamicLinq4()
+        {
+            dynamic selectUsers = users.Select("BasicInfo.Age");
+            foreach (var data in selectUsers)
+            {
+                Console.WriteLine("Age={0}", data);
+            }
+        }
+
+        public static void DynamicLinq5()
+        {
+            dynamic selectUsers = users.Select("new(BasicInfo.Age,BasicInfo.Money)");
+            foreach (var data in selectUsers)
+            {
+                Console.WriteLine("Age={0};Money={1}", data.Age, data.Money);
+            }
+        }
+
+        public static void DynamicLinq6()
+        {
+            dynamic selectUsers = users.OrderBy("BasicInfo.Money desc,BasicInfo.Age asc").Select("new(BasicInfo.Age,BasicInfo.Money)");
+            foreach (var data in selectUsers)
+            {
+                Console.WriteLine("Age={0};Money={1}", data.Age, data.Money);
+            }
+        }
+
+        public static void DynamicLinq7()
+        {
+            WriteTitle("GroupBy");
+            dynamic groupByUser = users.GroupBy("BasicInfo.Sex", "it").Select("new (Key as Sex,  Sum(BasicInfo.Money) as Money)");
+            foreach (var data in groupByUser)
+            {
+                Console.WriteLine("Sex={0};Money={1}", data.Sex, data.Money);
+            }
+        }
+
+        public static void DynamicLinq8()
+        {
+            WriteTitle("CustomQuery");
+            string WhereConditions = "BasicInfo.Age>20 || BasicInfo.Money>500";
+            string[] OrderByConditions = new string[] { "BasicInfo.Money desc", "BasicInfo.Age asc" };
+            string[] SelectConditions = new string[] { "BasicInfo.Name", "BasicInfo.Age" };
+            int startIndex = 1;
+            int endIndex = 20;
+
+            string ordering = string.Empty;
+            foreach (string order in OrderByConditions)
+            {
+                ordering += order + ",";
+            }
+            ordering = ordering.Remove(ordering.Length - 1);
+
+            string selecting = string.Empty;
+            foreach (string select in SelectConditions)
+            {
+                selecting += select + ",";
+            }
+            selecting = selecting.Remove(selecting.Length - 1);
+            selecting = string.Format("new({0})", selecting);
+
+            dynamic queryCollection = users.Where(WhereConditions).OrderBy(ordering).Select(selecting).Skip(startIndex).Take(endIndex - startIndex);
+            foreach (var data in queryCollection)
+            {
+                Console.WriteLine("Name={0};Age={1}", data.Name, data.Age);
+            }
+        }
+
+        private static void WriteTitle(string msg)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(msg);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private static void WriteUserCollection(IEnumerable<User> users)
+        {
+            foreach (var user in users)
+            {
+                Console.WriteLine("Name={0};Age={1};Money={2};Sex={3}", user.BasicInfo.Name, user.BasicInfo.Age, user.BasicInfo.Money, user.BasicInfo.Sex);
+            }
+            Console.WriteLine();
         }
     }
 }

@@ -114,6 +114,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
@@ -347,6 +348,24 @@
     </Compile>
     <Compile Include="AlgorithmForm\SymmetricAlgorithmsForm.designer.cs">
       <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleForm\SingleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleForm\SingleDialog.designer.cs">
+      <DependentUpon>SingleDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleForm\SingleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleForm\SingleForm.designer.cs">
+      <DependentUpon>SingleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeechForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeechForm.designer.cs">
+      <DependentUpon>SpeechForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SyncAsyncAPMForm\APM实例.cs">
       <SubType>Form</SubType>
@@ -689,6 +708,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlgorithmForm\SymmetricAlgorithmsForm.resx">
       <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleForm\SingleDialog.resx">
+      <DependentUpon>SingleDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleForm\SingleForm.resx">
+      <DependentUpon>SingleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeechForm.resx">
+      <DependentUpon>SpeechForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SyncAsyncAPMForm\APM实例.resx">
       <DependentUpon>APM实例.cs</DependentUpon>

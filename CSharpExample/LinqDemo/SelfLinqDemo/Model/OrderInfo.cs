@@ -1,4 +1,4 @@
-﻿namespace SelfLinqDemo
+﻿namespace SelfLinqDemo.Model
 {
     public class OrderInfo
     {

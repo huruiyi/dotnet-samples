@@ -354,5 +354,20 @@ namespace HuUtils
         {
             new IP地址().Show();
         }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            new ChatServer().Show();
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            new SingleForm.SingleForm().Show();
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            new SpeechForm().Show();
+        }
     }
 }

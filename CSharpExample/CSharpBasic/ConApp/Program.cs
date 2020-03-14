@@ -14,7 +14,6 @@ using System.Security.Permissions;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
-using Person = ConApp.Model.Person;
 
 namespace ConApp
 {
@@ -261,6 +260,23 @@ namespace ConApp
                 else if (e.NativeErrorCode == 5)//ErrorAccessDenied
                 {
                     Console.WriteLine(e.Message + ". You do not have permission to print this file.");
+                }
+            }
+        }
+
+        private void MainWindowTitleProcess()
+        {
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process item in processes)
+            {
+                if (item.MainWindowTitle.Length > 0)
+                {
+                    Console.WriteLine("标题：" + item.MainWindowTitle);
+                    Console.WriteLine("编号：" + item.Id.ToString());
+                    Console.WriteLine("进程：" + item.ProcessName);
+                    Console.WriteLine("开始时间" + item.StartTime.ToString());
+                    Console.WriteLine();
                 }
             }
         }
