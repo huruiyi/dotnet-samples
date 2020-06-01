@@ -1,6 +1,5 @@
 #include"pch.h"
-#include <string.h>
-#include <stdio.h>
+#include <cstring>
 #include "malloc.h"
 #include "UserInfo.h"
 

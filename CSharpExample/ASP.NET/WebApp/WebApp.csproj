@@ -159,6 +159,7 @@
       <DependentUpon>Product_RegisterHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="HttpModule\ModuleTest.cs" />
+    <Compile Include="Infrastructure\HttpFile.cs" />
     <Compile Include="Infrastructure\SQLHelper.cs" />
     <Compile Include="Models\OrderInfo.cs" />
     <Compile Include="Models\Product.cs" />

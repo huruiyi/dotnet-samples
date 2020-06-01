@@ -369,5 +369,10 @@ namespace HuUtils
         {
             new SpeechForm().Show();
         }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            new FileReceive().Show();
+        }
     }
 }

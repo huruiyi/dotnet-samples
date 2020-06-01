@@ -27,6 +27,7 @@ namespace MVC.Sample.Controllers
         public JsonResult GetList()
         {
             List<object> objList = new List<object>();
+            objList.Sort();
             for (int i = 0; i < 5; i++)
             {
                 objList.Add(new { Id = i, Name = "User" + i, Age = 20 + i });

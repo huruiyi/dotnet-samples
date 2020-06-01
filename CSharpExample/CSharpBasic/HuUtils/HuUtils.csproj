@@ -94,6 +94,17 @@
       <HintPath>..\..\..\..\..\..\Soft\nuget\LibGit2Sharp.0.26.0\lib\net46\LibGit2Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Web.Administration, Version=10.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\Microsoft.Web.Administration.11.1.0\lib\netstandard1.5\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\Microsoft.Win32.Registry.4.0.0\lib\net46\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\Soft\nuget\Microsoft.WindowsAPICodePack.Core.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -105,18 +116,159 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.AppContext.4.1.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Diagnostics.TraceSource.4.0.0\lib\net46\System.Diagnostics.TraceSource.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Diagnostics.Tracing.4.1.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.IO.4.1.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Management" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Reflection.TypeExtensions.4.4.0\lib\net461\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Claims, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Security.Claims.4.0.1\lib\net46\System.Security.Claims.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Security.Cryptography.Algorithms.4.2.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Security.Principal.Windows.4.0.0\lib\net46\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.ServiceProcess.ServiceController, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.ServiceProcess.ServiceController.4.1.0\lib\net461\System.ServiceProcess.ServiceController.dll</HintPath>
+    </Reference>
     <Reference Include="System.Speech" />
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Soft\nuget\System.Text.RegularExpressions.4.1.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +277,12 @@
     </Compile>
     <Compile Include="AlgorithmForm\AsymmetricAlgorithmForm.designer.cs">
       <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppInfo.Designer.cs">
+      <DependentUpon>AppInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseComponent\ComponentForm.cs">
       <SubType>Form</SubType>
@@ -234,6 +392,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExampleDb.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FileReceive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileReceive.Designer.cs">
+      <DependentUpon>FileReceive.cs</DependentUpon>
+    </Compile>
     <Compile Include="GitOp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +476,7 @@
     <Compile Include="Graphicses\Demo12.Designer.cs">
       <DependentUpon>Demo12.cs</DependentUpon>
     </Compile>
+    <Compile Include="HttpFile.cs" />
     <Compile Include="IP地址.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -604,6 +769,9 @@
     <EmbeddedResource Include="AlgorithmForm\AsymmetricAlgorithmForm.resx">
       <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppInfo.resx">
+      <DependentUpon>AppInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseComponent\ComponentForm.resx">
       <DependentUpon>ComponentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -651,6 +819,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DynamicButton.resx">
       <DependentUpon>DynamicButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileReceive.resx">
+      <DependentUpon>FileReceive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GitOp.resx">
       <DependentUpon>GitOp.cs</DependentUpon>

@@ -331,6 +331,8 @@
     <Compile Include="EventSample\EventDemo2\Test.cs" />
     <Compile Include="EventSample\EventDemo6\Heater.cs" />
     <Compile Include="EventSample\EventDemo6\Test.cs" />
+    <Compile Include="Model\EnitityMappingAttribute.cs" />
+    <Compile Include="Model\Member.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

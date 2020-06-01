@@ -142,6 +142,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuUtils.Wpf", "CSharpExampl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UserInfo", "CSharpExample\CPPCSharp\UserInfo\UserInfo.vcxproj", "{9CDC1181-CDB7-464E-9F06-1366BBC75056}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.V0", "CSharpExample\CSharpBasic\IOC.V0\IOC.V0.csproj", "{F84D5FF1-6192-43E3-854A-7140FFD98BF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1048,6 +1050,22 @@ Global
 		{9CDC1181-CDB7-464E-9F06-1366BBC75056}.Release|x64.Build.0 = Release|x64
 		{9CDC1181-CDB7-464E-9F06-1366BBC75056}.Release|x86.ActiveCfg = Release|Win32
 		{9CDC1181-CDB7-464E-9F06-1366BBC75056}.Release|x86.Build.0 = Release|Win32
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|x64.Build.0 = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Debug|x86.Build.0 = Debug|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|x64.ActiveCfg = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|x64.Build.0 = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1111,9 +1129,10 @@ Global
 		{17027051-5603-4BB4-9B12-2933EC0895F9} = {4D6A042A-B4B7-4B08-9A13-307F415C1678}
 		{B698743C-4ABE-44DA-96A6-5B6C52A30E40} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 		{9CDC1181-CDB7-464E-9F06-1366BBC75056} = {C4555BA2-DD75-4C05-87C1-CD26B19CA43F}
+		{F84D5FF1-6192-43E3-854A-7140FFD98BF3} = {BF34209D-7FA1-49B5-B697-F640E6B9E50D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
+		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 	EndGlobalSection
 EndGlobal

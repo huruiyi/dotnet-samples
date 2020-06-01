@@ -25,10 +25,7 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
-            //TaskDemo.SumPageSizes();
-            TaskDemo.SumPageSizesAsync();
-            Console.WriteLine("pok");
-            Thread.Sleep(10000000);
+            Console.WriteLine();
         }
 
         public static void Other3()
