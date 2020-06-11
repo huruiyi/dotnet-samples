@@ -38,7 +38,6 @@
             this.btnShake = new System.Windows.Forms.Button();
             this.btnSendMsg = new System.Windows.Forms.Button();
             this.txtSendMsg = new System.Windows.Forms.TextBox();
-            this.rbMessage = new System.Windows.Forms.GroupBox();
             this.richMsg = new System.Windows.Forms.RichTextBox();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtIp = new System.Windows.Forms.TextBox();
@@ -49,7 +48,6 @@
             this.pbMin = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.gboxClient.SuspendLayout();
-            this.rbMessage.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMin)).BeginInit();
@@ -57,6 +55,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackgroundImage = global::HuUtils.Properties.Resources.bg;
+            this.groupBox1.Controls.Add(this.richMsg);
             this.groupBox1.Controls.Add(this.gboxClient);
             this.groupBox1.Controls.Add(this.btnOpenClient);
             this.groupBox1.Controls.Add(this.btnConServices);
@@ -64,7 +64,6 @@
             this.groupBox1.Controls.Add(this.btnShake);
             this.groupBox1.Controls.Add(this.btnSendMsg);
             this.groupBox1.Controls.Add(this.txtSendMsg);
-            this.groupBox1.Controls.Add(this.rbMessage);
             this.groupBox1.Controls.Add(this.txtPort);
             this.groupBox1.Controls.Add(this.txtIp);
             this.groupBox1.Controls.Add(this.label2);
@@ -79,6 +78,7 @@
             // 
             // gboxClient
             // 
+            this.gboxClient.BackColor = System.Drawing.Color.Transparent;
             this.gboxClient.Controls.Add(this.lvClient);
             this.gboxClient.Location = new System.Drawing.Point(505, 14);
             this.gboxClient.Name = "gboxClient";
@@ -90,7 +90,10 @@
             // lvClient
             // 
             this.lvClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.lvClient.BackgroundImage = global::HuUtils.Properties.Resources.bg;
+            this.lvClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvClient.HideSelection = false;
             this.lvClient.Location = new System.Drawing.Point(3, 17);
             this.lvClient.Name = "lvClient";
             this.lvClient.Size = new System.Drawing.Size(157, 343);
@@ -101,7 +104,7 @@
             // 
             // btnOpenClient
             // 
-            this.btnOpenClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnOpenClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnOpenClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenClient.ForeColor = System.Drawing.Color.White;
             this.btnOpenClient.Location = new System.Drawing.Point(404, 17);
@@ -114,10 +117,10 @@
             // 
             // btnConServices
             // 
-            this.btnConServices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnConServices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnConServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConServices.ForeColor = System.Drawing.Color.White;
-            this.btnConServices.Location = new System.Drawing.Point(328, 17);
+            this.btnConServices.Location = new System.Drawing.Point(324, 17);
             this.btnConServices.Name = "btnConServices";
             this.btnConServices.Size = new System.Drawing.Size(75, 23);
             this.btnConServices.TabIndex = 35;
@@ -127,7 +130,7 @@
             // 
             // btnSendFile
             // 
-            this.btnSendFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSendFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSendFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendFile.ForeColor = System.Drawing.Color.White;
             this.btnSendFile.Location = new System.Drawing.Point(328, 345);
@@ -140,7 +143,7 @@
             // 
             // btnShake
             // 
-            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnShake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShake.ForeColor = System.Drawing.Color.White;
             this.btnShake.Location = new System.Drawing.Point(419, 345);
@@ -153,7 +156,7 @@
             // 
             // btnSendMsg
             // 
-            this.btnSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSendMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMsg.ForeColor = System.Drawing.Color.White;
             this.btnSendMsg.Location = new System.Drawing.Point(419, 304);
@@ -166,35 +169,26 @@
             // 
             // txtSendMsg
             // 
-            this.txtSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.txtSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtSendMsg.Location = new System.Drawing.Point(20, 306);
             this.txtSendMsg.Multiline = true;
             this.txtSendMsg.Name = "txtSendMsg";
             this.txtSendMsg.Size = new System.Drawing.Size(383, 30);
             this.txtSendMsg.TabIndex = 32;
             // 
-            // rbMessage
-            // 
-            this.rbMessage.Controls.Add(this.richMsg);
-            this.rbMessage.Location = new System.Drawing.Point(17, 46);
-            this.rbMessage.Name = "rbMessage";
-            this.rbMessage.Size = new System.Drawing.Size(477, 253);
-            this.rbMessage.TabIndex = 31;
-            this.rbMessage.TabStop = false;
-            // 
             // richMsg
             // 
-            this.richMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.richMsg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richMsg.Location = new System.Drawing.Point(3, 17);
+            this.richMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.richMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richMsg.Location = new System.Drawing.Point(20, 48);
             this.richMsg.Name = "richMsg";
-            this.richMsg.Size = new System.Drawing.Size(471, 233);
+            this.richMsg.Size = new System.Drawing.Size(474, 240);
             this.richMsg.TabIndex = 4;
             this.richMsg.Text = "";
             // 
             // txtPort
             // 
-            this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.txtPort.Location = new System.Drawing.Point(222, 21);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(83, 21);
@@ -203,7 +197,7 @@
             // 
             // txtIp
             // 
-            this.txtIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.txtIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.txtIp.Location = new System.Drawing.Point(82, 21);
             this.txtIp.Name = "txtIp";
             this.txtIp.Size = new System.Drawing.Size(80, 21);
@@ -213,6 +207,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(181, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
@@ -222,6 +217,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(29, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
@@ -230,7 +226,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel1.BackColor = System.Drawing.Color.HotPink;
             this.panel1.Controls.Add(this.pbClose);
             this.panel1.Controls.Add(this.pbMin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -277,7 +273,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gboxClient.ResumeLayout(false);
-            this.rbMessage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMin)).EndInit();
@@ -294,7 +289,6 @@
         private System.Windows.Forms.Button btnConServices;
         private System.Windows.Forms.Button btnSendMsg;
         private System.Windows.Forms.TextBox txtSendMsg;
-        private System.Windows.Forms.GroupBox rbMessage;
         private System.Windows.Forms.RichTextBox richMsg;
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.TextBox txtIp;

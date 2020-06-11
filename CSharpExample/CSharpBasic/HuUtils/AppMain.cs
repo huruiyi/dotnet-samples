@@ -55,7 +55,25 @@ namespace HuUtils
             if (this.WindowState == FormWindowState.Normal)
             {
                 SetWindowRegion();
-            }
+
+                Control.ControlCollection controls = this.Controls;
+                foreach (Control control in controls)
+                {
+                    Type type = control.GetType();
+                    if (type.Name.Equals("Button"))
+                    {
+                        Button button = control as Button;
+                        if (button!=null)
+                        {
+                            Rectangle rect = new Rectangle(0, 0, button.Width, button.Height);
+                            var formPath = GetRoundedRectPath(rect, 10);
+                            button.Region = new Region(formPath);
+                        }
+
+            
+                    }
+                 }
+             }
             else
             {
                 this.Region = null;
@@ -64,10 +82,9 @@ namespace HuUtils
 
         public void SetWindowRegion()
         {
-            GraphicsPath FormPath = new GraphicsPath();
             Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
-            FormPath = GetRoundedRectPath(rect, 50);
-            this.Region = new Region(FormPath);
+            var formPath = GetRoundedRectPath(rect, 50);
+            this.Region = new Region(formPath);
         }
 
         /// <summary>

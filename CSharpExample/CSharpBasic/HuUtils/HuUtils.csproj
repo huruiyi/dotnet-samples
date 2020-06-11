@@ -1041,6 +1041,7 @@
   <ItemGroup>
     <Content Include="app manage.ico" />
     <Content Include="Resources\Abort.ico" />
+    <None Include="Resources\bg1.jpg" />
     <Content Include="Resources\Bold.ico" />
     <Content Include="Resources\Color.ico" />
     <Content Include="Resources\Component.jpg" />

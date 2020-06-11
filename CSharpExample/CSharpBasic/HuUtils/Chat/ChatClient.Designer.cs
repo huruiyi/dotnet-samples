@@ -51,7 +51,7 @@
             // 
             // btnopenServices
             // 
-            this.btnopenServices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnopenServices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnopenServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnopenServices.ForeColor = System.Drawing.Color.White;
             this.btnopenServices.Location = new System.Drawing.Point(325, 15);
@@ -64,7 +64,7 @@
             // 
             // btnSendMsg
             // 
-            this.btnSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnSendMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMsg.ForeColor = System.Drawing.Color.White;
             this.btnSendMsg.Location = new System.Drawing.Point(430, 306);
@@ -77,7 +77,8 @@
             // 
             // txtSendMsg
             // 
-            this.txtSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.txtSendMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtSendMsg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSendMsg.Location = new System.Drawing.Point(15, 308);
             this.txtSendMsg.Multiline = true;
             this.txtSendMsg.Name = "txtSendMsg";
@@ -86,16 +87,17 @@
             // 
             // richMsg
             // 
-            this.richMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.richMsg.Location = new System.Drawing.Point(12, 44);
+            this.richMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.richMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richMsg.Location = new System.Drawing.Point(15, 56);
             this.richMsg.Name = "richMsg";
-            this.richMsg.Size = new System.Drawing.Size(492, 238);
+            this.richMsg.Size = new System.Drawing.Size(489, 226);
             this.richMsg.TabIndex = 4;
             this.richMsg.Text = "";
             // 
             // txtPort
             // 
-            this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.txtPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.txtPort.Location = new System.Drawing.Point(231, 17);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(80, 21);
@@ -104,7 +106,7 @@
             // 
             // txtIp
             // 
-            this.txtIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.txtIp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.txtIp.Location = new System.Drawing.Point(88, 17);
             this.txtIp.Name = "txtIp";
             this.txtIp.Size = new System.Drawing.Size(80, 21);
@@ -114,6 +116,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(175, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
@@ -123,6 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(35, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
@@ -131,7 +135,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(406, 15);
@@ -145,6 +149,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.groupBox1.BackgroundImage = global::HuUtils.Properties.Resources.bg;
             this.groupBox1.Controls.Add(this.richMsg);
             this.groupBox1.Controls.Add(this.btnShake);
             this.groupBox1.Controls.Add(this.btnSendMsg);
@@ -166,7 +171,7 @@
             // 
             // btnShake
             // 
-            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnShake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnShake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShake.ForeColor = System.Drawing.Color.White;
             this.btnShake.Location = new System.Drawing.Point(430, 348);
@@ -179,7 +184,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel1.BackColor = System.Drawing.Color.HotPink;
             this.panel1.Controls.Add(this.pbClose);
             this.panel1.Controls.Add(this.pbMin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -217,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(516, 430);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);

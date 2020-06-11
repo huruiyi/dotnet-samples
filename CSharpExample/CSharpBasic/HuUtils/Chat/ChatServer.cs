@@ -58,19 +58,19 @@ namespace HuUtils.Chat
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private Socket ServerSocket = null;
+        private Socket _serverSocket = null;
 
         private string currentSelectedIp;
 
-        private Dictionary<string, Socket> DicClient = new Dictionary<string, Socket>();
+        private readonly Dictionary<string, Socket> _dicClient = new Dictionary<string, Socket>();
 
         private void btnConServices_Click(object sender, EventArgs e)
         {
             IPAddress ip = IPAddress.Parse(txtIp.Text);
-            IPEndPoint ServerPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
-            ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            ServerSocket.Bind(ServerPoint);
-            ServerSocket.Listen(10);
+            IPEndPoint serverPoint = new IPEndPoint(ip, Convert.ToInt32(txtPort.Text));
+            _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _serverSocket.Bind(serverPoint);
+            _serverSocket.Listen(10);
             richMsg.AppendText("打开服务器成功" + Environment.NewLine);
             btnConServices.Enabled = false;
 
@@ -82,14 +82,14 @@ namespace HuUtils.Chat
 
             #endregion ThreadAcceptSocket
 
-            ThreadPool.QueueUserWorkItem(this.ThreadPoolAcceptSocket, ServerSocket);
+            ThreadPool.QueueUserWorkItem(this.ThreadPoolAcceptSocket, _serverSocket);
         }
 
         private void AddItem(Socket item)
         {
-            if (!DicClient.ContainsKey(item.RemoteEndPoint.ToString()))
+            if (!_dicClient.ContainsKey(item.RemoteEndPoint.ToString()))
             {
-                DicClient.Add(item.RemoteEndPoint.ToString(), item);
+                _dicClient.Add(item.RemoteEndPoint.ToString(), item);
 
                 lvClient.Items.Add(item.RemoteEndPoint.ToString());
             }
@@ -99,7 +99,7 @@ namespace HuUtils.Chat
         {
             while (true)
             {
-                Socket client = ServerSocket.Accept();
+                Socket client = _serverSocket.Accept();
                 AddItem(client);
                 client.Send(Encoding.UTF8.GetBytes("已和服务端建立连接！！" + Environment.NewLine));
                 Thread receiveThread = new Thread(ReceiveMessage);
@@ -147,10 +147,11 @@ namespace HuUtils.Chat
 
         private void btnSendMsg_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(currentSelectedIp) && DicClient[currentSelectedIp].Connected)
+            if (!string.IsNullOrWhiteSpace(currentSelectedIp) && _dicClient[currentSelectedIp].Connected)
             {
-                byte[] ServerSendMsg = Encoding.UTF8.GetBytes(txtSendMsg.Text);
-                DicClient[currentSelectedIp].Send(ServerSendMsg);
+                byte[] serverSendMsg = Encoding.UTF8.GetBytes(txtSendMsg.Text);
+                _dicClient[currentSelectedIp].Send(serverSendMsg);
+                txtSendMsg.Text = "";
             }
             else
             {
@@ -176,7 +177,7 @@ namespace HuUtils.Chat
 
         private void btnShake_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(currentSelectedIp) && DicClient[currentSelectedIp].Connected)
+            if (!string.IsNullOrWhiteSpace(currentSelectedIp) && _dicClient[currentSelectedIp].Connected)
             {
                 byte[] ServerSendMsg = Encoding.UTF8.GetBytes(txtSendMsg.Text);
                 //DicClient[currentSelectedIp];
