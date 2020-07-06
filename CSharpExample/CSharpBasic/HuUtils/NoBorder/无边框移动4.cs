@@ -11,7 +11,7 @@ namespace HuUtils.NoBorder
             if (e.Button == MouseButtons.Left)
             {
                 this.Capture = false;
-                SendMessage(Handle, a, b, 0);
+                SendMessage(Handle, A, B, 0);
             }
             else
             {
@@ -19,11 +19,11 @@ namespace HuUtils.NoBorder
             }
         }
 
-        private const int a = 0xA1;
-        private const int b = 0x2;
+        private const int A = 0xA1;
+        private const int B = 0x2;
 
         [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
 
         public 无边框移动4()
         {

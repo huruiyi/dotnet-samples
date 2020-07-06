@@ -17,7 +17,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Soft\</PublishUrl>
+    <PublishUrl>D:\Soft\Cache\Chat\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -62,7 +62,7 @@
     <ManifestKeyFile>WinFormDemo_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -496,6 +496,18 @@
       <DependentUpon>LicGenForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Department.cs" />
+    <Compile Include="NoBorder\无边框移动1_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动1_1.Designer.cs">
+      <DependentUpon>无边框移动1_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动5.Designer.cs">
+      <DependentUpon>无边框移动5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notepad2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -870,6 +882,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LicGenForm1.resx">
       <DependentUpon>LicGenForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动1_1.resx">
+      <DependentUpon>无边框移动1_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动5.resx">
+      <DependentUpon>无边框移动5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notepad2.resx">
       <DependentUpon>Notepad2.cs</DependentUpon>

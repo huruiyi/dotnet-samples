@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppMain));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -74,12 +73,12 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.ForeColor = System.Drawing.Color.Maroon;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button1.Location = new System.Drawing.Point(75, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 32);
@@ -90,12 +89,12 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.ForeColor = System.Drawing.Color.Maroon;
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button2.Location = new System.Drawing.Point(263, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 32);
@@ -106,12 +105,12 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.ForeColor = System.Drawing.Color.Maroon;
+            this.button3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button3.Location = new System.Drawing.Point(451, 46);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 32);
@@ -122,12 +121,12 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.ForeColor = System.Drawing.Color.Maroon;
+            this.button4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button4.Location = new System.Drawing.Point(639, 46);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(140, 32);
@@ -138,12 +137,12 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button5.ForeColor = System.Drawing.Color.Maroon;
+            this.button5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button5.Location = new System.Drawing.Point(75, 94);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(140, 32);
@@ -154,12 +153,12 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button6.ForeColor = System.Drawing.Color.Maroon;
+            this.button6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button6.Location = new System.Drawing.Point(263, 94);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(140, 32);
@@ -170,12 +169,12 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button7.ForeColor = System.Drawing.Color.Maroon;
+            this.button7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button7.Location = new System.Drawing.Point(451, 94);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(140, 32);
@@ -186,12 +185,12 @@
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.ForeColor = System.Drawing.Color.Maroon;
+            this.button8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button8.Location = new System.Drawing.Point(639, 94);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(140, 32);
@@ -202,12 +201,12 @@
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button9.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button9.ForeColor = System.Drawing.Color.Maroon;
+            this.button9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button9.Location = new System.Drawing.Point(75, 142);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(140, 32);
@@ -218,12 +217,12 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button10.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button10.ForeColor = System.Drawing.Color.Maroon;
+            this.button10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button10.Location = new System.Drawing.Point(263, 142);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(140, 32);
@@ -234,12 +233,12 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button11.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button11.ForeColor = System.Drawing.Color.Maroon;
+            this.button11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button11.Location = new System.Drawing.Point(451, 142);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(140, 32);
@@ -250,12 +249,12 @@
             // 
             // button12
             // 
-            this.button12.BackColor = System.Drawing.Color.White;
-            this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button12.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button12.ForeColor = System.Drawing.Color.Maroon;
+            this.button12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button12.Location = new System.Drawing.Point(639, 142);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(140, 32);
@@ -266,12 +265,12 @@
             // 
             // button13
             // 
-            this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
-            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button13.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button13.ForeColor = System.Drawing.Color.Maroon;
+            this.button13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button13.Location = new System.Drawing.Point(75, 190);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(140, 32);
@@ -282,12 +281,12 @@
             // 
             // button14
             // 
-            this.button14.BackColor = System.Drawing.Color.White;
-            this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
-            this.button14.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button14.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.ForeColor = System.Drawing.Color.Maroon;
+            this.button14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button14.Location = new System.Drawing.Point(263, 190);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(140, 32);
@@ -298,12 +297,12 @@
             // 
             // button15
             // 
-            this.button15.BackColor = System.Drawing.Color.White;
-            this.button15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button15.BackgroundImage")));
-            this.button15.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button15.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button15.ForeColor = System.Drawing.Color.Maroon;
+            this.button15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button15.Location = new System.Drawing.Point(451, 190);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(140, 32);
@@ -314,12 +313,12 @@
             // 
             // button16
             // 
-            this.button16.BackColor = System.Drawing.Color.White;
-            this.button16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button16.BackgroundImage")));
-            this.button16.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button16.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button16.ForeColor = System.Drawing.Color.Maroon;
+            this.button16.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button16.Location = new System.Drawing.Point(639, 190);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(140, 32);
@@ -330,12 +329,12 @@
             // 
             // button17
             // 
-            this.button17.BackColor = System.Drawing.Color.White;
-            this.button17.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button17.BackgroundImage")));
-            this.button17.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button17.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button17.ForeColor = System.Drawing.Color.Maroon;
+            this.button17.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button17.Location = new System.Drawing.Point(75, 238);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(140, 32);
@@ -346,12 +345,12 @@
             // 
             // button18
             // 
-            this.button18.BackColor = System.Drawing.Color.White;
-            this.button18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button18.BackgroundImage")));
-            this.button18.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button18.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button18.ForeColor = System.Drawing.Color.Maroon;
+            this.button18.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button18.Location = new System.Drawing.Point(263, 238);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(140, 32);
@@ -362,12 +361,12 @@
             // 
             // button19
             // 
-            this.button19.BackColor = System.Drawing.Color.White;
-            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
-            this.button19.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button19.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button19.ForeColor = System.Drawing.Color.Maroon;
+            this.button19.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button19.Location = new System.Drawing.Point(451, 238);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(140, 32);
@@ -378,12 +377,12 @@
             // 
             // button20
             // 
-            this.button20.BackColor = System.Drawing.Color.White;
-            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
-            this.button20.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button20.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button20.ForeColor = System.Drawing.Color.Maroon;
+            this.button20.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button20.Location = new System.Drawing.Point(639, 238);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(140, 32);
@@ -394,12 +393,12 @@
             // 
             // button21
             // 
-            this.button21.BackColor = System.Drawing.Color.White;
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button21.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button21.ForeColor = System.Drawing.Color.Maroon;
+            this.button21.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button21.Location = new System.Drawing.Point(75, 286);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(140, 32);
@@ -410,12 +409,12 @@
             // 
             // button22
             // 
-            this.button22.BackColor = System.Drawing.Color.White;
-            this.button22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button22.BackgroundImage")));
-            this.button22.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button22.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button22.ForeColor = System.Drawing.Color.Maroon;
+            this.button22.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button22.Location = new System.Drawing.Point(263, 286);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(140, 32);
@@ -426,12 +425,12 @@
             // 
             // button23
             // 
-            this.button23.BackColor = System.Drawing.Color.White;
-            this.button23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button23.BackgroundImage")));
-            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button23.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button23.ForeColor = System.Drawing.Color.Maroon;
+            this.button23.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button23.Location = new System.Drawing.Point(451, 286);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(140, 32);
@@ -442,12 +441,12 @@
             // 
             // button24
             // 
-            this.button24.BackColor = System.Drawing.Color.White;
-            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
-            this.button24.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button24.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button24.ForeColor = System.Drawing.Color.Maroon;
+            this.button24.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button24.Location = new System.Drawing.Point(639, 286);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(140, 32);
@@ -458,12 +457,12 @@
             // 
             // button25
             // 
-            this.button25.BackColor = System.Drawing.Color.White;
-            this.button25.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button25.BackgroundImage")));
-            this.button25.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button25.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button25.ForeColor = System.Drawing.Color.Maroon;
+            this.button25.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button25.Location = new System.Drawing.Point(75, 334);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(140, 32);
@@ -474,12 +473,12 @@
             // 
             // button26
             // 
-            this.button26.BackColor = System.Drawing.Color.White;
-            this.button26.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button26.BackgroundImage")));
-            this.button26.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button26.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button26.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button26.ForeColor = System.Drawing.Color.Maroon;
+            this.button26.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button26.Location = new System.Drawing.Point(263, 334);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(140, 32);
@@ -490,12 +489,12 @@
             // 
             // button27
             // 
-            this.button27.BackColor = System.Drawing.Color.White;
-            this.button27.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button27.BackgroundImage")));
-            this.button27.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button27.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button27.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button27.ForeColor = System.Drawing.Color.Maroon;
+            this.button27.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button27.Location = new System.Drawing.Point(451, 334);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(140, 32);
@@ -506,12 +505,12 @@
             // 
             // button28
             // 
-            this.button28.BackColor = System.Drawing.Color.White;
-            this.button28.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button28.BackgroundImage")));
-            this.button28.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button28.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button28.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button28.ForeColor = System.Drawing.Color.Maroon;
+            this.button28.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button28.Location = new System.Drawing.Point(639, 334);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(140, 32);
@@ -522,12 +521,12 @@
             // 
             // button29
             // 
-            this.button29.BackColor = System.Drawing.Color.White;
-            this.button29.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button29.BackgroundImage")));
-            this.button29.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button29.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button29.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button29.ForeColor = System.Drawing.Color.Maroon;
+            this.button29.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button29.Location = new System.Drawing.Point(75, 382);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(140, 32);
@@ -538,12 +537,12 @@
             // 
             // button30
             // 
-            this.button30.BackColor = System.Drawing.Color.White;
-            this.button30.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button30.BackgroundImage")));
-            this.button30.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button30.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button30.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button30.ForeColor = System.Drawing.Color.Maroon;
+            this.button30.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button30.Location = new System.Drawing.Point(263, 382);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(140, 32);
@@ -554,12 +553,12 @@
             // 
             // button31
             // 
-            this.button31.BackColor = System.Drawing.Color.White;
-            this.button31.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button31.BackgroundImage")));
-            this.button31.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button31.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button31.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button31.ForeColor = System.Drawing.Color.Maroon;
+            this.button31.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button31.Location = new System.Drawing.Point(451, 382);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(140, 32);
@@ -570,12 +569,12 @@
             // 
             // button32
             // 
-            this.button32.BackColor = System.Drawing.Color.White;
-            this.button32.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button32.BackgroundImage")));
-            this.button32.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button32.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button32.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button32.ForeColor = System.Drawing.Color.Maroon;
+            this.button32.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button32.Location = new System.Drawing.Point(639, 382);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(140, 32);
@@ -586,12 +585,12 @@
             // 
             // button33
             // 
-            this.button33.BackColor = System.Drawing.Color.White;
-            this.button33.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button33.BackgroundImage")));
-            this.button33.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button33.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button33.ForeColor = System.Drawing.Color.Maroon;
+            this.button33.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button33.Location = new System.Drawing.Point(75, 430);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(140, 32);
@@ -602,12 +601,12 @@
             // 
             // button34
             // 
-            this.button34.BackColor = System.Drawing.Color.White;
-            this.button34.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button34.BackgroundImage")));
-            this.button34.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button34.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button34.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button34.ForeColor = System.Drawing.Color.Maroon;
+            this.button34.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button34.Location = new System.Drawing.Point(263, 430);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(140, 32);
@@ -618,12 +617,12 @@
             // 
             // button35
             // 
-            this.button35.BackColor = System.Drawing.Color.White;
-            this.button35.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button35.BackgroundImage")));
-            this.button35.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button35.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button35.ForeColor = System.Drawing.Color.Maroon;
+            this.button35.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button35.Location = new System.Drawing.Point(451, 430);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(140, 32);
@@ -634,12 +633,12 @@
             // 
             // button36
             // 
-            this.button36.BackColor = System.Drawing.Color.White;
-            this.button36.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button36.BackgroundImage")));
-            this.button36.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button36.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button36.ForeColor = System.Drawing.Color.Maroon;
+            this.button36.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button36.Location = new System.Drawing.Point(639, 430);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(140, 32);
@@ -650,12 +649,12 @@
             // 
             // button37
             // 
-            this.button37.BackColor = System.Drawing.Color.White;
-            this.button37.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button37.BackgroundImage")));
-            this.button37.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button37.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button37.ForeColor = System.Drawing.Color.Maroon;
+            this.button37.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button37.Location = new System.Drawing.Point(75, 478);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(140, 32);
@@ -666,12 +665,12 @@
             // 
             // button38
             // 
-            this.button38.BackColor = System.Drawing.Color.White;
-            this.button38.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button38.BackgroundImage")));
-            this.button38.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button38.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button38.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button38.ForeColor = System.Drawing.Color.Maroon;
+            this.button38.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button38.Location = new System.Drawing.Point(263, 478);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(140, 32);
@@ -682,12 +681,12 @@
             // 
             // button39
             // 
-            this.button39.BackColor = System.Drawing.Color.White;
-            this.button39.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button39.BackgroundImage")));
-            this.button39.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button39.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button39.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button39.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button39.ForeColor = System.Drawing.Color.Maroon;
+            this.button39.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button39.Location = new System.Drawing.Point(451, 478);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(140, 32);
@@ -698,12 +697,12 @@
             // 
             // button40
             // 
-            this.button40.BackColor = System.Drawing.Color.White;
-            this.button40.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button40.BackgroundImage")));
-            this.button40.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button40.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button40.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button40.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button40.ForeColor = System.Drawing.Color.Maroon;
+            this.button40.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button40.Location = new System.Drawing.Point(639, 478);
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(140, 32);
@@ -714,12 +713,12 @@
             // 
             // button41
             // 
-            this.button41.BackColor = System.Drawing.Color.White;
-            this.button41.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button41.BackgroundImage")));
-            this.button41.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button41.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button41.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button41.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button41.ForeColor = System.Drawing.Color.Maroon;
+            this.button41.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button41.Location = new System.Drawing.Point(75, 526);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(140, 32);
@@ -732,8 +731,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::HuUtils.Properties.Resources.bg;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(858, 596);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button9);
