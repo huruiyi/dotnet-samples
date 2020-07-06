@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -186,6 +187,60 @@ namespace HuUtils.Chat
         private void pbMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void ChatClient_Resize(object sender, EventArgs e)
+        {
+            Control.ControlCollection controls = this.groupBox1.Controls;
+            foreach (Control control in controls)
+            {
+                Type type = control.GetType();
+                if (type.Name.Equals("Button"))
+                {
+                    if (control is Button button)
+                    {
+                        Rectangle rect = new Rectangle(0, 0, button.Width, button.Height);
+                        var formPath = GetRoundedRectPath(rect, 30);
+                        button.Region = new Region(formPath);
+                    }
+                }
+            }
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                SetWindowRegion();
+            }
+            else
+            {
+                this.Region = null;
+            }
+        }
+
+        public void SetWindowRegion()
+        {
+            Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+            var formPath = GetRoundedRectPath(rect, 30);
+            this.Region = new Region(formPath);
+        }
+
+        private GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)
+        {
+            int diameter = radius;
+            Rectangle arcRect = new Rectangle(rect.Location, new Size(diameter, diameter));
+            GraphicsPath path = new GraphicsPath();
+
+            path.AddArc(arcRect, 180, 90); //左上角
+
+            arcRect.X = rect.Right - diameter; //右上角
+            path.AddArc(arcRect, 270, 90);
+
+            arcRect.Y = rect.Bottom - diameter; // 右下角
+            path.AddArc(arcRect, 0, 90);
+
+            arcRect.X = rect.Left; // 左下角
+            path.AddArc(arcRect, 90, 90);
+            path.CloseFigure();
+            return path;
         }
     }
 }

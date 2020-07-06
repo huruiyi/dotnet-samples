@@ -36,16 +36,16 @@ namespace HuUtils
                     }
                     break;
 
-                case WmNchittest: //如果鼠标移动或单击
-                    base.WndProc(ref m);//调用基类的窗口过程——WndProc方法处理这个消息
-                    if (m.Result == (IntPtr)Htclient)//如果返回的是HTCLIENT
+                case WmNchittest:  
+                    base.WndProc(ref m); 
+                    if (m.Result == (IntPtr)Htclient) 
                     {
-                        m.Result = (IntPtr)Htcaption;//把它改为HTCAPTION
-                        return;//直接返回退出方法
+                        m.Result = (IntPtr)Htcaption; 
+                        return; 
                     }
                     break;
             }
-            base.WndProc(ref m);//如果不是鼠标移动或单击消息就调用基类的窗口过程进行处理
+            base.WndProc(ref m); 
         }
 
         #endregion 无边框窗体移动
@@ -62,18 +62,15 @@ namespace HuUtils
                     Type type = control.GetType();
                     if (type.Name.Equals("Button"))
                     {
-                        Button button = control as Button;
-                        if (button!=null)
+                        if (control is Button button)
                         {
                             Rectangle rect = new Rectangle(0, 0, button.Width, button.Height);
-                            var formPath = GetRoundedRectPath(rect, 10);
+                            var formPath = GetRoundedRectPath(rect, 5);
                             button.Region = new Region(formPath);
                         }
-
-            
                     }
-                 }
-             }
+                }
+            }
             else
             {
                 this.Region = null;
@@ -117,23 +114,16 @@ namespace HuUtils
 
         {
             int WM_KEYDOWN = 256;
-
             int WM_SYSKEYDOWN = 260;
-
             if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
-
             {
                 switch (keyData)
-
                 {
                     case Keys.Escape:
-
                         this.Close();//esc关闭窗体
-
                         break;
                 }
             }
-
             return false;
         }
 
@@ -145,13 +135,13 @@ namespace HuUtils
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = Color.Pink;
             foreach (Control item in this.Controls)
             {
-                break;
-                Button button = item as Button;
-                if (button != null)
+                if (item is Button button)
                 {
-                    button.ForeColor = Color.White;
+                    button.BackColor  =Color.LightPink;
+                    button.ForeColor = Color.HotPink;
                 }
             }
         }
