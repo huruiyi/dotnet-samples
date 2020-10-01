@@ -60,7 +60,7 @@ namespace HuUtils
         {
             string[] strs = path.Split('/');
             int len = strs.Length;
-            string newPath = strs[len - 1] + "【" + strs[len - 2] + "】";
+            string newPath = "【" + strs[len - 2] + "】-"+ strs[len - 1]  ;
             return newPath;
         }
 

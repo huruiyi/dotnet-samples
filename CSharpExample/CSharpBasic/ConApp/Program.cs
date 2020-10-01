@@ -25,7 +25,8 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
-            Console.WriteLine();
+            Other3();
+            Console.ReadKey();
         }
 
         public static void Other3()

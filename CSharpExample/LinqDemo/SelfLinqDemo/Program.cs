@@ -34,6 +34,7 @@ namespace SelfLinqDemo
 
         private static void Main(string[] args)
         {
+            DynamicLinq4();
             Console.ReadKey();
         }
 
