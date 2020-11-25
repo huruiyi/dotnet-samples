@@ -65,7 +65,7 @@ namespace HuUtils
                         if (control is Button button)
                         {
                             Rectangle rect = new Rectangle(0, 0, button.Width, button.Height);
-                            var formPath = GetRoundedRectPath(rect, 5);
+                            var formPath = GetRoundedRectPath(rect, 2);
                             button.Region = new Region(formPath);
                         }
                     }
@@ -80,7 +80,7 @@ namespace HuUtils
         public void SetWindowRegion()
         {
             Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
-            var formPath = GetRoundedRectPath(rect, 50);
+            var formPath = GetRoundedRectPath(rect, 20);
             this.Region = new Region(formPath);
         }
 
@@ -135,15 +135,15 @@ namespace HuUtils
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.Pink;
-            foreach (Control item in this.Controls)
-            {
-                if (item is Button button)
-                {
-                    button.BackColor  =Color.LightPink;
-                    button.ForeColor = Color.HotPink;
-                }
-            }
+            //this.BackColor = Color.Pink;
+            //foreach (Control item in this.Controls)
+            //{
+            //    if (item is Button button)
+            //    {
+            //        button.BackColor  =Color.LightPink;
+            //        button.ForeColor = Color.HotPink;
+            //    }
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)

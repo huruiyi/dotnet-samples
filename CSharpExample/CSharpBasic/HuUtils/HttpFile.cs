@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HuUtils
@@ -36,7 +32,7 @@ namespace HuUtils
             Ns = null;
             NumBytes = new byte[512];
             NumReadSize = 0;
-            FileReceiveForm.listBox1.Items.Add("线程" + ThreadNum.ToString() + "开始接收");
+            FileReceiveForm.listBox1.Items.Add("线程" + ThreadNum + "开始接收");
             Fs = new FileStream(Filename, FileMode.Create);
             try
             {
@@ -50,7 +46,7 @@ namespace HuUtils
                 {
                     Fs.Write(NumBytes, 0, NumReadSize);
                     NumReadSize = Ns.Read(NumBytes, 0, 512);
-                    FileReceiveForm.listBox1.Items.Add("线程" + ThreadNum.ToString() + "正在接收");
+                    FileReceiveForm.listBox1.Items.Add("线程" + ThreadNum + "正在接收");
                 }
                 Fs.Close();
                 Ns.Close();
