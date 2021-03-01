@@ -73,7 +73,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button1.BackColor = System.Drawing.Color.DeepPink;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -89,7 +89,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button2.BackColor = System.Drawing.Color.DeepPink;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -105,7 +105,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button3.BackColor = System.Drawing.Color.DeepPink;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -121,7 +121,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button4.BackColor = System.Drawing.Color.DeepPink;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -137,7 +137,7 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button5.BackColor = System.Drawing.Color.DeepPink;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -153,7 +153,7 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button6.BackColor = System.Drawing.Color.DeepPink;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button6.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -169,7 +169,7 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button7.BackColor = System.Drawing.Color.DeepPink;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button7.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -185,7 +185,7 @@
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button8.BackColor = System.Drawing.Color.DeepPink;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button8.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -201,7 +201,7 @@
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button9.BackColor = System.Drawing.Color.DeepPink;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button9.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -217,7 +217,7 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button10.BackColor = System.Drawing.Color.DeepPink;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button10.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -233,7 +233,7 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button11.BackColor = System.Drawing.Color.DeepPink;
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button11.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -249,7 +249,7 @@
             // 
             // button12
             // 
-            this.button12.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button12.BackColor = System.Drawing.Color.DeepPink;
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button12.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -265,7 +265,7 @@
             // 
             // button13
             // 
-            this.button13.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button13.BackColor = System.Drawing.Color.DeepPink;
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button13.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -281,7 +281,7 @@
             // 
             // button14
             // 
-            this.button14.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button14.BackColor = System.Drawing.Color.DeepPink;
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button14.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -297,7 +297,7 @@
             // 
             // button15
             // 
-            this.button15.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button15.BackColor = System.Drawing.Color.DeepPink;
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button15.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -313,7 +313,7 @@
             // 
             // button16
             // 
-            this.button16.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button16.BackColor = System.Drawing.Color.DeepPink;
             this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button16.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -329,7 +329,7 @@
             // 
             // button17
             // 
-            this.button17.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button17.BackColor = System.Drawing.Color.DeepPink;
             this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button17.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -345,7 +345,7 @@
             // 
             // button18
             // 
-            this.button18.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button18.BackColor = System.Drawing.Color.DeepPink;
             this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button18.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -361,7 +361,7 @@
             // 
             // button19
             // 
-            this.button19.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button19.BackColor = System.Drawing.Color.DeepPink;
             this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button19.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -377,7 +377,7 @@
             // 
             // button20
             // 
-            this.button20.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button20.BackColor = System.Drawing.Color.DeepPink;
             this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button20.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -393,7 +393,7 @@
             // 
             // button21
             // 
-            this.button21.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button21.BackColor = System.Drawing.Color.DeepPink;
             this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button21.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -409,7 +409,7 @@
             // 
             // button22
             // 
-            this.button22.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button22.BackColor = System.Drawing.Color.DeepPink;
             this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button22.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -425,7 +425,7 @@
             // 
             // button23
             // 
-            this.button23.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button23.BackColor = System.Drawing.Color.DeepPink;
             this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button23.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -441,7 +441,7 @@
             // 
             // button24
             // 
-            this.button24.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button24.BackColor = System.Drawing.Color.DeepPink;
             this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button24.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -457,7 +457,7 @@
             // 
             // button25
             // 
-            this.button25.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button25.BackColor = System.Drawing.Color.DeepPink;
             this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button25.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -473,7 +473,7 @@
             // 
             // button26
             // 
-            this.button26.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button26.BackColor = System.Drawing.Color.DeepPink;
             this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button26.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -489,7 +489,7 @@
             // 
             // button27
             // 
-            this.button27.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button27.BackColor = System.Drawing.Color.DeepPink;
             this.button27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button27.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -505,7 +505,7 @@
             // 
             // button28
             // 
-            this.button28.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button28.BackColor = System.Drawing.Color.DeepPink;
             this.button28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button28.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -521,7 +521,7 @@
             // 
             // button29
             // 
-            this.button29.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button29.BackColor = System.Drawing.Color.DeepPink;
             this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button29.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -537,7 +537,7 @@
             // 
             // button30
             // 
-            this.button30.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button30.BackColor = System.Drawing.Color.DeepPink;
             this.button30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button30.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -553,7 +553,7 @@
             // 
             // button31
             // 
-            this.button31.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button31.BackColor = System.Drawing.Color.DeepPink;
             this.button31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button31.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -569,7 +569,7 @@
             // 
             // button32
             // 
-            this.button32.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button32.BackColor = System.Drawing.Color.DeepPink;
             this.button32.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button32.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -585,7 +585,7 @@
             // 
             // button33
             // 
-            this.button33.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button33.BackColor = System.Drawing.Color.DeepPink;
             this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button33.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -601,7 +601,7 @@
             // 
             // button34
             // 
-            this.button34.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button34.BackColor = System.Drawing.Color.DeepPink;
             this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button34.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -617,7 +617,7 @@
             // 
             // button35
             // 
-            this.button35.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button35.BackColor = System.Drawing.Color.DeepPink;
             this.button35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button35.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -633,7 +633,7 @@
             // 
             // button36
             // 
-            this.button36.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button36.BackColor = System.Drawing.Color.DeepPink;
             this.button36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button36.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -649,7 +649,7 @@
             // 
             // button37
             // 
-            this.button37.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button37.BackColor = System.Drawing.Color.DeepPink;
             this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button37.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -665,7 +665,7 @@
             // 
             // button38
             // 
-            this.button38.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button38.BackColor = System.Drawing.Color.DeepPink;
             this.button38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button38.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -681,7 +681,7 @@
             // 
             // button39
             // 
-            this.button39.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button39.BackColor = System.Drawing.Color.DeepPink;
             this.button39.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button39.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -697,7 +697,7 @@
             // 
             // button40
             // 
-            this.button40.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button40.BackColor = System.Drawing.Color.DeepPink;
             this.button40.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button40.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -713,7 +713,7 @@
             // 
             // button41
             // 
-            this.button41.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button41.BackColor = System.Drawing.Color.DeepPink;
             this.button41.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button41.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -731,7 +731,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.BackColor = System.Drawing.Color.DeepPink;
             this.ClientSize = new System.Drawing.Size(759, 565);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button9);
