@@ -511,6 +511,12 @@
     <Compile Include="NoBorder\无边框移动5.Designer.cs">
       <DependentUpon>无边框移动5.cs</DependentUpon>
     </Compile>
+    <Compile Include="NoBorder\无边框移动6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动6.Designer.cs">
+      <DependentUpon>无边框移动6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notepad2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -640,6 +646,12 @@
     </Compile>
     <Compile Include="图片操作_数据库.Designer.cs">
       <DependentUpon>图片操作_数据库.cs</DependentUpon>
+    </Compile>
+    <Compile Include="图片鼠标.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="图片鼠标.Designer.cs">
+      <DependentUpon>图片鼠标.cs</DependentUpon>
     </Compile>
     <Compile Include="截屏实例.cs">
       <SubType>Form</SubType>
@@ -892,6 +904,9 @@
     <EmbeddedResource Include="NoBorder\无边框移动5.resx">
       <DependentUpon>无边框移动5.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动6.resx">
+      <DependentUpon>无边框移动6.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Notepad2.resx">
       <DependentUpon>Notepad2.cs</DependentUpon>
     </EmbeddedResource>
@@ -954,6 +969,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="图片操作_数据库.resx">
       <DependentUpon>图片操作_数据库.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="图片鼠标.resx">
+      <DependentUpon>图片鼠标.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="截屏实例.resx">
       <DependentUpon>截屏实例.cs</DependentUpon>

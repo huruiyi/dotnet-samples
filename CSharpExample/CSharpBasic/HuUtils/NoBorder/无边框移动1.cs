@@ -16,7 +16,8 @@ namespace HuUtils.NoBorder
 
         private void 无边框移动1_MouseUp(object sender, MouseEventArgs e)
         {
-            IsMouseDown = false;
+            //if (e.Button == MouseButtons.Left)
+                IsMouseDown = false;
         }
 
         private void 无边框移动1_MouseMove(object sender, MouseEventArgs e)
@@ -34,8 +35,8 @@ namespace HuUtils.NoBorder
             if (e.Button == MouseButtons.Left)
             {
                 IsMouseDown = true;
+                mouseOffset = new Point(-e.X, -e.Y);
             }
-            mouseOffset = new Point(-e.X, -e.Y);
         }
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)

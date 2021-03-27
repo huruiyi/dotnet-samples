@@ -69,6 +69,7 @@
             this.button39 = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
+            this.button42 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -727,6 +728,22 @@
             this.button41.UseVisualStyleBackColor = false;
             this.button41.Click += new System.EventHandler(this.button41_Click);
             // 
+            // button42
+            // 
+            this.button42.BackColor = System.Drawing.Color.DeepPink;
+            this.button42.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button42.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.button42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button42.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button42.Location = new System.Drawing.Point(213, 505);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(140, 32);
+            this.button42.TabIndex = 3;
+            this.button42.Text = "42-图片鼠标";
+            this.button42.UseVisualStyleBackColor = false;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
             // AppMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -745,6 +762,7 @@
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
             this.Controls.Add(this.button30);
+            this.Controls.Add(this.button42);
             this.Controls.Add(this.button41);
             this.Controls.Add(this.button40);
             this.Controls.Add(this.button39);
@@ -827,5 +845,6 @@
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button button42;
     }
 }

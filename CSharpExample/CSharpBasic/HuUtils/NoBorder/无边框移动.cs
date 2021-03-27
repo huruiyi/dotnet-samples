@@ -43,5 +43,10 @@ namespace HuUtils.NoBorder
         {
             new 无边框移动1_1().Show();
         }
+
+        private void button7_Click(object sender, System.EventArgs e)
+        {
+            new 无边框移动6().Show();
+        }
     }
 }

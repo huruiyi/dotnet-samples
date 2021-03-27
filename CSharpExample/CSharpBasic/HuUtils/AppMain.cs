@@ -382,5 +382,10 @@ namespace HuUtils
         {
             new FileReceive().Show();
         }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            new 图片鼠标().Show();
+        }
     }
 }
