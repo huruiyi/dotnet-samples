@@ -95,8 +95,10 @@ namespace MVC.Sample.Controllers
 
         #region EF
 
-        public ActionResult EFIndex()
+        public ActionResult EFIndex(string message = "", bool success = false)
         {
+            ViewBag.message = message;
+            ViewBag.success = success;
             return View();
         }
 
@@ -108,13 +110,15 @@ namespace MVC.Sample.Controllers
             {
                 Text = text,
                 OrderNumer = Convert.ToInt32(order),
-                PermissionTypeId = 0,
+                PermissionTypeId = 1,
                 IfDel = DelEnum.No.ToByte(),
                 IfValid = ValidEnum.Yes.ToByte()
             };
             dbAuthEntities.Permission.Add(pModel);
             int result = dbAuthEntities.SaveChanges();
-            return Content(result > 0 ? "添加成功" : "添加失败");
+            string msg = result > 0 ? "添加成功" : "添加失败";
+            //return Content(msg);
+            return RedirectToAction("EFIndex", new { success = result > 0, message = msg });
         }
 
         #endregion EF
