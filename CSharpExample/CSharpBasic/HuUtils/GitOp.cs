@@ -50,11 +50,7 @@ namespace HuUtils
                 txtUrlsPath.Text = openFileDialogGit.FileName;
             }
         }
-
-        public void ClearText()
-        {
-            lblTaskCount.Text = "";
-        }
+  
 
         public static String GetDestPath(String path)
         {
@@ -68,7 +64,6 @@ namespace HuUtils
         {
             try
             {
-                //  bool ProgressHandler(string serverProgressOutput);
                 string logMessage = "";
                 using (var repo = new Repository(path))
                 {
@@ -80,8 +75,6 @@ namespace HuUtils
                         OnTransferProgress = progress =>
                         {
                             string log = string.Format(CultureInfo.InvariantCulture, "{4}-{0}-{1}/{2}, {3} bytes", remote.Name, progress.ReceivedObjects, progress.TotalObjects, progress.ReceivedBytes, remote.PushUrl);
-
-                            txtMessage.AppendText(log + Environment.NewLine);
                             return true;
                         }
                     }, logMessage);
@@ -197,10 +190,8 @@ namespace HuUtils
             dgGitView.DataSource = gitPaths;
         }
 
-        //Update
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            ClearText();
             if (String.IsNullOrWhiteSpace(txtGitDir.Text))
             {
                 MessageBox.Show(@"请选择文件夹", @"Git 库 目录", MessageBoxButtons.AbortRetryIgnore);
@@ -208,22 +199,18 @@ namespace HuUtils
             }
             string[] directories = Directory.GetDirectories(txtGitDir.Text);
             int taskCount = (directories.Length / 5) + 1;
-            lblTaskCount.Text = lblTaskCount.Text + taskCount;
             TaskFetch(txtGitDir.Text, taskCount);
         }
 
-        //Pull
         private void BtnPull_Click(object sender, EventArgs e)
         {
-            ClearText();
-            if (String.IsNullOrWhiteSpace(txtUrlsPath.Text) || String.IsNullOrWhiteSpace(txtDestBasePath.Text))
+            if (string.IsNullOrWhiteSpace(txtUrlsPath.Text) || string.IsNullOrWhiteSpace(txtDestBasePath.Text))
             {
                 MessageBox.Show(@"请选择文件夹", @"Git 库 目录", MessageBoxButtons.AbortRetryIgnore);
                 return;
             }
 
             int taskCount = (File.ReadAllLines(txtUrlsPath.Text).Length / 5) + 1;
-            lblTaskCount.Text = lblTaskCount.Text + taskCount;
             TaskClone(txtUrlsPath.Text, txtDestBasePath.Text, taskCount, true);
         }
 

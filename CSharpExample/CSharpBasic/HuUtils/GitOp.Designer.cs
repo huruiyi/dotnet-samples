@@ -38,22 +38,20 @@
             this.btnPullSourceUrl = new System.Windows.Forms.Button();
             this.txtDestBasePath = new System.Windows.Forms.TextBox();
             this.btnPull = new System.Windows.Forms.Button();
-            this.txtMessage = new System.Windows.Forms.TextBox();
             this.txtGitDir = new System.Windows.Forms.TextBox();
-            this.lblTaskCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnBrowser = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgGitView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGetUrl = new System.Windows.Forms.Button();
             this.txtGitPath = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.openFileDialogGit = new System.Windows.Forms.OpenFileDialog();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -68,9 +66,7 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.txtMessage);
             this.tabPage3.Controls.Add(this.txtGitDir);
-            this.tabPage3.Controls.Add(this.lblTaskCount);
             this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.btnUpdate);
             this.tabPage3.Controls.Add(this.btnBrowser);
@@ -91,7 +87,7 @@
             this.groupBox1.Controls.Add(this.btnPullSourceUrl);
             this.groupBox1.Controls.Add(this.txtDestBasePath);
             this.groupBox1.Controls.Add(this.btnPull);
-            this.groupBox1.Location = new System.Drawing.Point(37, 78);
+            this.groupBox1.Location = new System.Drawing.Point(38, 220);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(910, 125);
             this.groupBox1.TabIndex = 6;
@@ -160,35 +156,17 @@
             this.btnPull.UseVisualStyleBackColor = true;
             this.btnPull.Click += new System.EventHandler(this.BtnPull_Click);
             // 
-            // txtMessage
-            // 
-            this.txtMessage.Location = new System.Drawing.Point(8, 237);
-            this.txtMessage.Multiline = true;
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMessage.Size = new System.Drawing.Size(962, 306);
-            this.txtMessage.TabIndex = 4;
-            // 
             // txtGitDir
             // 
-            this.txtGitDir.Location = new System.Drawing.Point(112, 23);
+            this.txtGitDir.Location = new System.Drawing.Point(113, 165);
             this.txtGitDir.Name = "txtGitDir";
             this.txtGitDir.Size = new System.Drawing.Size(673, 21);
             this.txtGitDir.TabIndex = 1;
             // 
-            // lblTaskCount
-            // 
-            this.lblTaskCount.AutoSize = true;
-            this.lblTaskCount.Location = new System.Drawing.Point(706, 55);
-            this.lblTaskCount.Name = "lblTaskCount";
-            this.lblTaskCount.Size = new System.Drawing.Size(53, 12);
-            this.lblTaskCount.TabIndex = 5;
-            this.lblTaskCount.Text = "线程数：";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 27);
+            this.label1.Location = new System.Drawing.Point(36, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
@@ -196,7 +174,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(872, 22);
+            this.btnUpdate.Location = new System.Drawing.Point(873, 164);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 3;
@@ -206,7 +184,7 @@
             // 
             // btnBrowser
             // 
-            this.btnBrowser.Location = new System.Drawing.Point(791, 21);
+            this.btnBrowser.Location = new System.Drawing.Point(792, 163);
             this.btnBrowser.Name = "btnBrowser";
             this.btnBrowser.Size = new System.Drawing.Size(75, 23);
             this.btnBrowser.TabIndex = 2;
@@ -242,6 +220,20 @@
             this.dgGitView.Size = new System.Drawing.Size(972, 467);
             this.dgGitView.TabIndex = 7;
             this.dgGitView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGitView_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "DirName";
+            this.Column1.HeaderText = "文件夹名称";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 300;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "GitPath";
+            this.Column2.HeaderText = "Git路径";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 500;
             // 
             // btnGetUrl
             // 
@@ -294,20 +286,6 @@
             // 
             this.openFileDialogGit.FileName = "openFileDialog1";
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "DirName";
-            this.Column1.HeaderText = "文件夹名称";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 300;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "GitPath";
-            this.Column2.HeaderText = "Git路径";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 500;
-            // 
             // GitOp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -331,9 +309,7 @@
         #endregion
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGit;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.TextBox txtGitDir;
-        private System.Windows.Forms.Label lblTaskCount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPull;
         private System.Windows.Forms.Button btnUpdate;
