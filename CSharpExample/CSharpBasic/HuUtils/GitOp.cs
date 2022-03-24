@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace HuUtils
 {
-    public partial class GitOp : Form
+    public partial class GitOp : BaseForm
     {
         public GitOp()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
 
         private void btnBrowser_Click(object sender, EventArgs e)
@@ -50,13 +51,13 @@ namespace HuUtils
                 txtUrlsPath.Text = openFileDialogGit.FileName;
             }
         }
-  
 
-        public static String GetDestPath(String path)
+        public static string GetDestPath(string path)
         {
             string[] strs = path.Split('/');
             int len = strs.Length;
-            string newPath = "【" + strs[len - 2] + "】-"+ strs[len - 1]  ;
+            string newPath = "【" + strs[len - 2] + "】-" + strs[len - 1];
+            newPath = strs[len - 1];
             return newPath;
         }
 
@@ -75,6 +76,7 @@ namespace HuUtils
                         OnTransferProgress = progress =>
                         {
                             string log = string.Format(CultureInfo.InvariantCulture, "{4}-{0}-{1}/{2}, {3} bytes", remote.Name, progress.ReceivedObjects, progress.TotalObjects, progress.ReceivedBytes, remote.PushUrl);
+                            txtLog.AppendText(log);
                             return true;
                         }
                     }, logMessage);
@@ -111,18 +113,21 @@ namespace HuUtils
             Task.WaitAll(tasks);
         }
 
-        private static void Clone(string url, string destPath, bool addName)
+        private delegate void CloneDele(string url, string destPath);
+
+        private void Clone(string url, string destPath)
         {
+            txtLog.AppendText(url + Environment.NewLine);
             string dstDir = GetDestPath(url);
             CloneOptions options = new CloneOptions
             {
                 OnCheckoutProgress = (path, completedSteps, totalSteps) =>
                 {
-                    Console.WriteLine(path + "  " + completedSteps + "  " + totalSteps);
+                    txtLog.AppendText(path + "  " + completedSteps + "  " + totalSteps + Environment.NewLine);
                 },
                 OnProgress = serverProgressOutput =>
                 {
-                    Console.WriteLine("Progress: " + serverProgressOutput);
+                    txtLog.AppendText("Progress: " + serverProgressOutput + Environment.NewLine);
                     return true;
                 },
             };
@@ -144,7 +149,7 @@ namespace HuUtils
             }
         }
 
-        public static void TaskClone(string urlLines, string destPath, int taskCount, Boolean addName)
+        public void TaskClone(string urlLines, string destPath, int taskCount)
         {
             Queue<string> list = new Queue<string>();
             String[] strs = File.ReadAllLines(urlLines);
@@ -157,10 +162,13 @@ namespace HuUtils
             for (int i = 0; i < taskCount; i++)
             {
                 var task = Task.Factory.StartNew(() =>
-                {
-                    while (list.Any())
-                        Clone(list.Dequeue(), destPath, addName);
-                });
+              {
+                  while (list.Any())
+                  {
+                      CloneDele cloneDele = Clone;
+                      cloneDele.BeginInvoke(list.Dequeue(), destPath, null, null);
+                  }
+              });
                 tasks[i] = task;
             }
 
@@ -202,6 +210,11 @@ namespace HuUtils
             TaskFetch(txtGitDir.Text, taskCount);
         }
 
+        /// <summary>
+        /// 拉取代码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnPull_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUrlsPath.Text) || string.IsNullOrWhiteSpace(txtDestBasePath.Text))
@@ -211,7 +224,7 @@ namespace HuUtils
             }
 
             int taskCount = (File.ReadAllLines(txtUrlsPath.Text).Length / 5) + 1;
-            TaskClone(txtUrlsPath.Text, txtDestBasePath.Text, taskCount, true);
+            TaskClone(txtUrlsPath.Text, txtDestBasePath.Text, taskCount);
         }
 
         private void dgGitView_CellClick(object sender, DataGridViewCellEventArgs e)

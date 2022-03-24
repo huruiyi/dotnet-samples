@@ -360,6 +360,9 @@
     <Compile Include="BaseComponent\Form7.Designer.cs">
       <DependentUpon>Form7.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Chat\ChatClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -847,6 +850,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseComponent\Form7.resx">
       <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\ChatClient.resx">
       <DependentUpon>ChatClient.cs</DependentUpon>

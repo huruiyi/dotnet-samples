@@ -31,6 +31,7 @@
             this.folderBrowserDialogGit = new System.Windows.Forms.FolderBrowserDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSelectUrlsFile = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtLog);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnSelectUrlsFile);
             this.groupBox1.Controls.Add(this.label3);
@@ -87,12 +89,20 @@
             this.groupBox1.Controls.Add(this.btnPullSourceUrl);
             this.groupBox1.Controls.Add(this.txtDestBasePath);
             this.groupBox1.Controls.Add(this.btnPull);
-            this.groupBox1.Location = new System.Drawing.Point(38, 220);
+            this.groupBox1.Location = new System.Drawing.Point(35, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(910, 125);
+            this.groupBox1.Size = new System.Drawing.Size(910, 454);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "拉取";
+            // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(71, 129);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(833, 309);
+            this.txtLog.TabIndex = 10;
             // 
             // label4
             // 
@@ -158,7 +168,7 @@
             // 
             // txtGitDir
             // 
-            this.txtGitDir.Location = new System.Drawing.Point(113, 165);
+            this.txtGitDir.Location = new System.Drawing.Point(110, 24);
             this.txtGitDir.Name = "txtGitDir";
             this.txtGitDir.Size = new System.Drawing.Size(673, 21);
             this.txtGitDir.TabIndex = 1;
@@ -166,7 +176,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 169);
+            this.label1.Location = new System.Drawing.Point(33, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
@@ -174,7 +184,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(873, 164);
+            this.btnUpdate.Location = new System.Drawing.Point(870, 23);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 3;
@@ -184,7 +194,7 @@
             // 
             // btnBrowser
             // 
-            this.btnBrowser.Location = new System.Drawing.Point(792, 163);
+            this.btnBrowser.Location = new System.Drawing.Point(789, 22);
             this.btnBrowser.Name = "btnBrowser";
             this.btnBrowser.Size = new System.Drawing.Size(75, 23);
             this.btnBrowser.TabIndex = 2;
@@ -292,6 +302,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 577);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GitOp";
             this.Text = "GitOp";
             this.tabPage3.ResumeLayout(false);
@@ -331,5 +342,6 @@
         private System.Windows.Forms.DataGridView dgGitView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.TextBox txtLog;
     }
 }
