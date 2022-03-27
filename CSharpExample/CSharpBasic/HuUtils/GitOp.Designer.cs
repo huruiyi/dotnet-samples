@@ -53,11 +53,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.openFileDialogGit = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGitView)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // folderBrowserDialogGit
@@ -66,11 +68,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.txtGitDir);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.btnUpdate);
-            this.tabPage3.Controls.Add(this.btnBrowser);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -81,33 +80,34 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtLog);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnSelectUrlsFile);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtUrlsPath);
+            this.groupBox1.Controls.Add(this.txtLog);
             this.groupBox1.Controls.Add(this.btnPullSourceUrl);
             this.groupBox1.Controls.Add(this.txtDestBasePath);
             this.groupBox1.Controls.Add(this.btnPull);
-            this.groupBox1.Location = new System.Drawing.Point(35, 79);
+            this.groupBox1.Location = new System.Drawing.Point(8, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(910, 454);
+            this.groupBox1.Size = new System.Drawing.Size(962, 464);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "拉取";
+            this.groupBox1.Text = "拉取代码";
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(71, 129);
+            this.txtLog.Location = new System.Drawing.Point(8, 81);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(833, 309);
+            this.txtLog.Size = new System.Drawing.Size(956, 377);
             this.txtLog.TabIndex = 10;
+            this.txtLog.Text = "拉取日志........";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 74);
+            this.label4.Location = new System.Drawing.Point(22, 55);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 9;
@@ -115,7 +115,7 @@
             // 
             // btnSelectUrlsFile
             // 
-            this.btnSelectUrlsFile.Location = new System.Drawing.Point(750, 22);
+            this.btnSelectUrlsFile.Location = new System.Drawing.Point(800, 21);
             this.btnSelectUrlsFile.Name = "btnSelectUrlsFile";
             this.btnSelectUrlsFile.Size = new System.Drawing.Size(75, 23);
             this.btnSelectUrlsFile.TabIndex = 8;
@@ -126,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 26);
+            this.label3.Location = new System.Drawing.Point(4, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 7;
@@ -134,14 +134,14 @@
             // 
             // txtUrlsPath
             // 
-            this.txtUrlsPath.Location = new System.Drawing.Point(71, 22);
+            this.txtUrlsPath.Location = new System.Drawing.Point(69, 19);
             this.txtUrlsPath.Name = "txtUrlsPath";
-            this.txtUrlsPath.Size = new System.Drawing.Size(673, 21);
+            this.txtUrlsPath.Size = new System.Drawing.Size(725, 21);
             this.txtUrlsPath.TabIndex = 6;
             // 
             // btnPullSourceUrl
             // 
-            this.btnPullSourceUrl.Location = new System.Drawing.Point(751, 69);
+            this.btnPullSourceUrl.Location = new System.Drawing.Point(800, 52);
             this.btnPullSourceUrl.Name = "btnPullSourceUrl";
             this.btnPullSourceUrl.Size = new System.Drawing.Size(75, 23);
             this.btnPullSourceUrl.TabIndex = 5;
@@ -151,14 +151,14 @@
             // 
             // txtDestBasePath
             // 
-            this.txtDestBasePath.Location = new System.Drawing.Point(70, 68);
+            this.txtDestBasePath.Location = new System.Drawing.Point(69, 52);
             this.txtDestBasePath.Name = "txtDestBasePath";
-            this.txtDestBasePath.Size = new System.Drawing.Size(673, 21);
+            this.txtDestBasePath.Size = new System.Drawing.Size(725, 21);
             this.txtDestBasePath.TabIndex = 4;
             // 
             // btnPull
             // 
-            this.btnPull.Location = new System.Drawing.Point(829, 68);
+            this.btnPull.Location = new System.Drawing.Point(881, 50);
             this.btnPull.Name = "btnPull";
             this.btnPull.Size = new System.Drawing.Size(75, 23);
             this.btnPull.TabIndex = 3;
@@ -168,15 +168,15 @@
             // 
             // txtGitDir
             // 
-            this.txtGitDir.Location = new System.Drawing.Point(110, 24);
+            this.txtGitDir.Location = new System.Drawing.Point(83, 29);
             this.txtGitDir.Name = "txtGitDir";
-            this.txtGitDir.Size = new System.Drawing.Size(673, 21);
+            this.txtGitDir.Size = new System.Drawing.Size(711, 21);
             this.txtGitDir.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 28);
+            this.label1.Location = new System.Drawing.Point(6, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
@@ -184,7 +184,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(870, 23);
+            this.btnUpdate.Location = new System.Drawing.Point(881, 27);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 3;
@@ -194,7 +194,7 @@
             // 
             // btnBrowser
             // 
-            this.btnBrowser.Location = new System.Drawing.Point(789, 22);
+            this.btnBrowser.Location = new System.Drawing.Point(800, 27);
             this.btnBrowser.Name = "btnBrowser";
             this.btnBrowser.Size = new System.Drawing.Size(75, 23);
             this.btnBrowser.TabIndex = 2;
@@ -224,12 +224,11 @@
             this.Column1,
             this.Column2});
             this.dgGitView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgGitView.Location = new System.Drawing.Point(3, 81);
+            this.dgGitView.Location = new System.Drawing.Point(3, 49);
             this.dgGitView.Name = "dgGitView";
             this.dgGitView.RowTemplate.Height = 23;
-            this.dgGitView.Size = new System.Drawing.Size(972, 467);
+            this.dgGitView.Size = new System.Drawing.Size(972, 499);
             this.dgGitView.TabIndex = 7;
-            this.dgGitView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGitView_CellClick);
             // 
             // Column1
             // 
@@ -247,7 +246,7 @@
             // 
             // btnGetUrl
             // 
-            this.btnGetUrl.Location = new System.Drawing.Point(869, 20);
+            this.btnGetUrl.Location = new System.Drawing.Point(869, 16);
             this.btnGetUrl.Name = "btnGetUrl";
             this.btnGetUrl.Size = new System.Drawing.Size(94, 23);
             this.btnGetUrl.TabIndex = 6;
@@ -257,14 +256,14 @@
             // 
             // txtGitPath
             // 
-            this.txtGitPath.Location = new System.Drawing.Point(113, 22);
+            this.txtGitPath.Location = new System.Drawing.Point(113, 18);
             this.txtGitPath.Name = "txtGitPath";
             this.txtGitPath.Size = new System.Drawing.Size(650, 21);
             this.txtGitPath.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(769, 20);
+            this.button1.Location = new System.Drawing.Point(769, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 23);
             this.button1.TabIndex = 3;
@@ -275,7 +274,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 26);
+            this.label2.Location = new System.Drawing.Point(35, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 12);
             this.label2.TabIndex = 0;
@@ -296,6 +295,19 @@
             // 
             this.openFileDialogGit.FileName = "openFileDialog1";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtGitDir);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.btnBrowser);
+            this.groupBox2.Controls.Add(this.btnUpdate);
+            this.groupBox2.Location = new System.Drawing.Point(8, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(962, 70);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "更新代码";
+            // 
             // GitOp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -306,13 +318,14 @@
             this.Name = "GitOp";
             this.Text = "GitOp";
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGitView)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -343,5 +356,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

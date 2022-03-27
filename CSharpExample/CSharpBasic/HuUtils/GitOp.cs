@@ -18,6 +18,8 @@ namespace HuUtils
             Control.CheckForIllegalCrossThreadCalls = false;
         }
 
+        private delegate void CloneDele(string url, string destPath);
+
         private void btnBrowser_Click(object sender, EventArgs e)
         {
             if (DialogResult.OK == folderBrowserDialogGit.ShowDialog())
@@ -61,7 +63,7 @@ namespace HuUtils
             return newPath;
         }
 
-        public void Fetch(String path)
+        public void Fetch(string path)
         {
             try
             {
@@ -76,11 +78,11 @@ namespace HuUtils
                         OnTransferProgress = progress =>
                         {
                             string log = string.Format(CultureInfo.InvariantCulture, "{4}-{0}-{1}/{2}, {3} bytes", remote.Name, progress.ReceivedObjects, progress.TotalObjects, progress.ReceivedBytes, remote.PushUrl);
-                            txtLog.AppendText(log);
+                            txtLog.AppendText(log + Environment.NewLine + Environment.NewLine);
                             return true;
                         }
                     }, logMessage);
-                    Console.WriteLine(remote.PushUrl ?? path);
+                    txtLog.AppendText((remote.PushUrl ?? path) + Environment.NewLine);
                 }
             }
             catch (Exception ex)
@@ -112,8 +114,6 @@ namespace HuUtils
             }
             Task.WaitAll(tasks);
         }
-
-        private delegate void CloneDele(string url, string destPath);
 
         private void Clone(string url, string destPath)
         {
@@ -152,30 +152,35 @@ namespace HuUtils
         public void TaskClone(string urlLines, string destPath, int taskCount)
         {
             Queue<string> list = new Queue<string>();
-            String[] strs = File.ReadAllLines(urlLines);
+            string[] strs = File.ReadAllLines(urlLines);
             foreach (string pathStr in strs)
             {
                 list.Enqueue(pathStr);
             }
-
+            AsyncCallback callback = (IAsyncResult result) =>
+            {
+                if (result.IsCompleted)
+                {
+                    txtLog.AppendText("Clone Success..." + Environment.NewLine);
+                }
+            };
             Task[] tasks = new Task[taskCount];
             for (int i = 0; i < taskCount; i++)
             {
                 var task = Task.Factory.StartNew(() =>
-              {
-                  while (list.Any())
-                  {
-                      CloneDele cloneDele = Clone;
-                      cloneDele.BeginInvoke(list.Dequeue(), destPath, null, null);
-                  }
-              });
+                {
+                    while (list.Any())
+                    {
+                        CloneDele cloneDele = Clone;
+                        cloneDele.BeginInvoke(list.Dequeue(), destPath, callback, null);
+                    }
+                });
                 tasks[i] = task;
             }
 
             Task.WaitAll(tasks);
         }
 
-        //Get Push Urls
         private void BtnGetUrl_Click(object sender, EventArgs e)
         {
             SortedBindingList<GitInfoPath> gitPaths = new SortedBindingList<GitInfoPath>();
@@ -200,7 +205,7 @@ namespace HuUtils
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txtGitDir.Text))
+            if (string.IsNullOrWhiteSpace(txtGitDir.Text))
             {
                 MessageBox.Show(@"请选择文件夹", @"Git 库 目录", MessageBoxButtons.AbortRetryIgnore);
                 return;
@@ -208,6 +213,7 @@ namespace HuUtils
             string[] directories = Directory.GetDirectories(txtGitDir.Text);
             int taskCount = (directories.Length / 5) + 1;
             TaskFetch(txtGitDir.Text, taskCount);
+            txtLog.AppendText("Clone Ok" + Environment.NewLine);
         }
 
         /// <summary>
@@ -225,10 +231,6 @@ namespace HuUtils
 
             int taskCount = (File.ReadAllLines(txtUrlsPath.Text).Length / 5) + 1;
             TaskClone(txtUrlsPath.Text, txtDestBasePath.Text, taskCount);
-        }
-
-        private void dgGitView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
     }
 
