@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HuUtils
@@ -18,7 +14,6 @@ namespace HuUtils
         private const int Htclient = 0x1;                         //表示鼠标在窗口客户区的系统消息
         private const int ScMaximize = 0xF030;             //最大化信息
         private const int ScMinimize = 0xF020;              //最小化信息
-
         public static bool Flag = false;
 
         protected override void WndProc(ref System.Windows.Forms.Message m)

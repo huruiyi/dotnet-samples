@@ -281,5 +281,10 @@ namespace HuUtils.Chat
             path.CloseFigure();
             return path;
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

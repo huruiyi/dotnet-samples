@@ -35,7 +35,7 @@
             // 截屏1
             // 
             this.截屏1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.截屏1.Location = new System.Drawing.Point(175, 49);
+            this.截屏1.Location = new System.Drawing.Point(180, 69);
             this.截屏1.Name = "截屏1";
             this.截屏1.Size = new System.Drawing.Size(138, 23);
             this.截屏1.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 截屏2
             // 
             this.截屏2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.截屏2.Location = new System.Drawing.Point(319, 49);
+            this.截屏2.Location = new System.Drawing.Point(324, 69);
             this.截屏2.Name = "截屏2";
             this.截屏2.Size = new System.Drawing.Size(138, 23);
             this.截屏2.TabIndex = 0;
@@ -58,9 +58,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 159);
+            this.ClientSize = new System.Drawing.Size(679, 159);
             this.Controls.Add(this.截屏2);
             this.Controls.Add(this.截屏1);
+            this.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "截屏实例";
             this.Text = "Form1";
             this.ResumeLayout(false);

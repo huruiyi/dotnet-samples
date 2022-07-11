@@ -1,21 +1,24 @@
 ﻿using HuUtils.Service;
+
 using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HuUtils
 {
-    public partial class GitOp : BaseForm
+    public partial class GitOp : Form
     {
         public GitOp()
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
+            txtLog.AppendText("拉取日志........" + Environment.NewLine);
         }
 
         private delegate void CloneDele(string url, string destPath);
@@ -60,6 +63,10 @@ namespace HuUtils
             int len = strs.Length;
             string newPath = "【" + strs[len - 2] + "】-" + strs[len - 1];
             newPath = strs[len - 1];
+            if (newPath.EndsWith(".git"))
+            {
+                newPath = newPath.Replace(".git", "");
+            }
             return newPath;
         }
 
@@ -117,17 +124,21 @@ namespace HuUtils
 
         private void Clone(string url, string destPath)
         {
-            txtLog.AppendText(url + Environment.NewLine);
+            if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(destPath))
+            {
+                return;
+            }
+            txtLog.AppendText("Clone Start:" + url + Environment.NewLine);
             string dstDir = GetDestPath(url);
             CloneOptions options = new CloneOptions
             {
                 OnCheckoutProgress = (path, completedSteps, totalSteps) =>
                 {
-                    txtLog.AppendText(path + "  " + completedSteps + "  " + totalSteps + Environment.NewLine);
+                    txtLog.AppendText(url+" "+path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
                 },
                 OnProgress = serverProgressOutput =>
                 {
-                    txtLog.AppendText("Progress: " + serverProgressOutput + Environment.NewLine);
+                    txtLog.AppendText($"{url} Progress: " + serverProgressOutput + Environment.NewLine);
                     return true;
                 },
             };
@@ -149,7 +160,7 @@ namespace HuUtils
             }
         }
 
-        public void TaskClone(string urlLines, string destPath, int taskCount)
+        public void TaskClone(string urlLines, string destPath)
         {
             Queue<string> list = new Queue<string>();
             string[] strs = File.ReadAllLines(urlLines);
@@ -161,24 +172,22 @@ namespace HuUtils
             {
                 if (result.IsCompleted)
                 {
-                    txtLog.AppendText("Clone Success..." + Environment.NewLine);
+                    txtLog.AppendText($"{result.AsyncState} Clone Success..." + Environment.NewLine);
                 }
             };
-            Task[] tasks = new Task[taskCount];
-            for (int i = 0; i < taskCount; i++)
+            Task[] tasks = new Task[strs.Length];
+            for (int i = 0; i < strs.Length; i++)
             {
-                var task = Task.Factory.StartNew(() =>
+                tasks[i] = Task.Factory.StartNew(() =>
                 {
-                    while (list.Any())
-                    {
-                        CloneDele cloneDele = Clone;
-                        cloneDele.BeginInvoke(list.Dequeue(), destPath, callback, null);
-                    }
+                    CloneDele cloneDele = Clone;
+                    string gitUrl = list.Dequeue();
+                    cloneDele.BeginInvoke(gitUrl.Trim(), destPath, callback, gitUrl);
                 });
-                tasks[i] = task;
             }
 
             Task.WaitAll(tasks);
+            txtLog.AppendText("Clone Ok" + Environment.NewLine);
         }
 
         private void BtnGetUrl_Click(object sender, EventArgs e)
@@ -229,8 +238,8 @@ namespace HuUtils
                 return;
             }
 
-            int taskCount = (File.ReadAllLines(txtUrlsPath.Text).Length / 5) + 1;
-            TaskClone(txtUrlsPath.Text, txtDestBasePath.Text, taskCount);
+            Thread.Sleep(2000);
+            TaskClone(txtUrlsPath.Text, txtDestBasePath.Text);
         }
     }
 

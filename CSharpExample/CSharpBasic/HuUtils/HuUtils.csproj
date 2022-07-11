@@ -289,7 +289,7 @@
     </Compile>
     <Compile Include="Chat\SocketCommon.cs" />
     <Compile Include="Chat\SocketDataTypeEnum.cs" />
-    <Compile Include="CustomButton.cs">
+    <Compile Include="Controls\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataSynchronization\DSForm1.cs">
@@ -553,10 +553,10 @@
     <Compile Include="NoBorder\无边框移动3.Designer.cs">
       <DependentUpon>无边框移动3.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginControl.cs">
+    <Compile Include="Controls\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LoginControl.Designer.cs">
+    <Compile Include="Controls\LoginControl.Designer.cs">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Person.cs" />
@@ -898,7 +898,7 @@
     <EmbeddedResource Include="NoBorder\无边框移动3.resx">
       <DependentUpon>无边框移动3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginControl.resx">
+    <EmbeddedResource Include="Controls\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="不规则控件.resx">
@@ -1081,6 +1081,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

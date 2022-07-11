@@ -14,7 +14,6 @@ namespace Net.Tools.Security
         /// <returns></returns>
         public static string RSAEncrypt(string data)
         {
-            //C#默认只能使用[公钥]进行加密(想使用[公钥解密]可使用第三方组件BouncyCastle来实现)
             string publicKeyPath = "PublicKey.xml";
             string publicKey = File.ReadAllText(publicKeyPath);
             //创建RSA对象并载入[公钥]
@@ -33,7 +32,6 @@ namespace Net.Tools.Security
         /// <returns></returns>
         public static string RSADecrypt(string data)
         {
-            //C#默认只能使用[私钥]进行解密(想使用[私钥加密]可使用第三方组件BouncyCastle来实现)
             string privateKeyPath = "PrivateKey.xml";
             string privateKey = File.ReadAllText(privateKeyPath);
             //创建RSA对象并载入[私钥]
@@ -98,18 +96,18 @@ namespace Net.Tools.Security
                 writer.WriteLine(rsa.ToXmlString(false));
             }
 
-            //string orginData = "abcdefghijklmopqrstuvwxyz";
-            //string encryData = RSAEncrypt(orginData);
-            //string decryData = RSADecrypt(encryData);
+            string orginData = "abcdefghijklmopqrstuvwxyz";
+            string encryData = RSAEncrypt(orginData);
+            string decryData = RSADecrypt(encryData);
 
-            //if (orginData == decryData)
-            //{
-            //    Console.WriteLine("解密成功");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("解密失败");
-            //}
+            if (orginData == decryData)
+            {
+                Console.WriteLine("解密成功");
+            }
+            else
+            {
+                Console.WriteLine("解密失败");
+            }
         }
     }
 }
