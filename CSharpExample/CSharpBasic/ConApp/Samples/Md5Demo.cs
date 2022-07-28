@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace ConApp
 {
-    public partial class Program
+    public partial class Md5Demo
     {
+        #region Demo1
+
         public static string GetMd5(string input, string charset)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -16,29 +19,6 @@ namespace ConApp
                 builder.Append(t.ToString("x2"));
             }
             return builder.ToString();
-        }
-
-        public static void Md5TokenDemo()
-        {
-            string timestamp = DateTime.Now.ToString();
-
-            DateTime.TryParse(timestamp, out var stamp);
-            StringBuilder securityKey = new StringBuilder();
-
-            securityKey.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("MM"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("dd"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
-            securityKey.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
-
-            string key = GetMd5(securityKey.ToString(), "UTF-8");
-
-            Console.WriteLine(timestamp + "\t" + key);
-
-            bool falg = CheckTokenDemo(timestamp, key);
-
-            Console.WriteLine(falg ? "Success" : "Fail");
         }
 
         public static bool CheckTokenDemo(string timestamp, string key)
@@ -79,20 +59,35 @@ namespace ConApp
             return false;
         }
 
-        public static void Md5Demo()
+        public static void Demo1()
         {
-            string source = "Hello World!";
+            string timestamp = DateTime.Now.ToString();
 
-            using (MD5 md5Hash = MD5.Create())
+            DateTime.TryParse(timestamp, out var stamp);
+            StringBuilder securityKey = new StringBuilder();
+
+            securityKey.Append(GetMd5(stamp.ToString("yyyy"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("MM"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("dd"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
+            securityKey.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
+
+            string key = GetMd5(securityKey.ToString(), "UTF-8");
+
+            Console.Write(timestamp + "\t" + key);
+
+            for (int i = 0; i < 100; i++)
             {
-                string hashPwd = GetMd5Hash(md5Hash, source);
-                Console.WriteLine("The MD5 hash of " + source + " is: " + hashPwd + ".");
-                Console.WriteLine("Verifying the hash...");
-                Console.WriteLine(VerifyMd5Hash(md5Hash, source, hashPwd)
-                    ? "The hashes are the same."
-                    : "The hashes are not same.");
+                bool falg = CheckTokenDemo(timestamp, key);
+                Console.WriteLine(DateTime.Now.ToString() + "\t" + (falg ? "Success" : "Fail"));
+                Thread.Sleep(700);
             }
         }
+
+        #endregion Demo1
+
+        #region Demo2
 
         private static string GetMd5Hash(MD5 md5Hash, string input)
         {
@@ -114,5 +109,22 @@ namespace ConApp
 
             return 0 == comparer.Compare(hashOfInput, hash);
         }
+
+        public static void Demo2()
+        {
+            string source = "Hello World!";
+
+            using (MD5 md5Hash = MD5.Create())
+            {
+                string hashPwd = GetMd5Hash(md5Hash, source);
+                Console.WriteLine("The MD5 hash of " + source + " is: " + hashPwd + ".");
+                Console.WriteLine("Verifying the hash...");
+                Console.WriteLine(VerifyMd5Hash(md5Hash, source, hashPwd)
+                    ? "The hashes are the same."
+                    : "The hashes are not same.");
+            }
+        }
+
+        #endregion Demo2
     }
 }

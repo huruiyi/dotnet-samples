@@ -1,6 +1,7 @@
 ﻿using ConApp.AopDemo1;
 using ConApp.AopDemo2;
 using ConApp.Model;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
-            Other3();
+            Md5Demo.Demo1();
+            String md5 = Md5Demo.GetMd5("hello,你大爷", "UTF-8");
+            Console.WriteLine(md5);
             Console.ReadKey();
         }
 
@@ -439,7 +442,7 @@ namespace ConApp
 
         #endregion 简单泛型
 
-        public async static void AsyncDemo()
+        public static async void AsyncDemo()
         {
             using (StreamWriter writer = File.CreateText("ConsoleOutput.txt"))
             {
