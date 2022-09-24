@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using MVC.Core.Sample.Models;
 using MVC.Core.Sample.Services;
+
+using System.Collections.Generic;
 
 namespace MVC.Core.Sample.Controllers
 {
@@ -48,6 +47,7 @@ namespace MVC.Core.Sample.Controllers
              }
          *
          */
+
         [HttpPost]
         public ActionResult<Book> Create(Book book)
         {
