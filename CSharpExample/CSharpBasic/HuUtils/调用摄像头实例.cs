@@ -53,8 +53,8 @@ namespace HuUtils
             //videoSource.DesiredFrameSize = new Size(600, 640);
             //videoSource.DesiredFrameRate = 1;
 
-            VideoCapabilities[] capa = videoSource.SnapshotCapabilities;
-            videoSource.VideoResolution = capa[0];
+            VideoCapabilities[] cap = videoSource.VideoCapabilities;
+            videoSource.VideoResolution = cap[0];
             videoSourcePlayer.VideoSource = videoSource;
             videoSourcePlayer.Start();
         }

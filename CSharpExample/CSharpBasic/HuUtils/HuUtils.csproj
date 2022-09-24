@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.306\build\net46\LibGit2Sharp.NativeBinaries.props" Condition="Exists('..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.306\build\net46\LibGit2Sharp.NativeBinaries.props')" />
   <Import Project="..\..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\net46\LibGit2Sharp.NativeBinaries.props" Condition="Exists('..\..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\net46\LibGit2Sharp.NativeBinaries.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -91,9 +90,6 @@
     </Reference>
     <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
-    </Reference>
-    <Reference Include="LibGit2Sharp, Version=0.26.0.0, Culture=neutral, PublicKeyToken=7cbde695407f0333, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LibGit2Sharp.0.26.2\lib\net46\LibGit2Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -327,12 +323,6 @@
     </Compile>
     <Compile Include="FileReceive.Designer.cs">
       <DependentUpon>FileReceive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GitOp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GitOp.Designer.cs">
-      <DependentUpon>GitOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphicses\Demo01.cs">
       <SubType>Form</SubType>
@@ -779,9 +769,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FileReceive.resx">
       <DependentUpon>FileReceive.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GitOp.resx">
-      <DependentUpon>GitOp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphicses\Demo01.resx">
       <DependentUpon>Demo01.cs</DependentUpon>
