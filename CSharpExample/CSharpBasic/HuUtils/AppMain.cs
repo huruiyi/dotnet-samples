@@ -259,7 +259,7 @@ namespace HuUtils
 
         private void button26_Click(object sender, EventArgs e)
         {
-            // new GitOp().Show();
+            new GitOp().Show();
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
