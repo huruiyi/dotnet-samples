@@ -182,7 +182,10 @@ namespace HuUtils
                 {
                     CloneDele cloneDele = Clone;
                     string gitUrl = list.Dequeue();
-                    cloneDele.BeginInvoke(gitUrl.Trim(), destPath, callback, gitUrl);
+                    if (!string.IsNullOrEmpty(gitUrl))
+                    {
+                        cloneDele.BeginInvoke(gitUrl.Trim(), destPath, callback, gitUrl.Trim());
+                    }
                 });
             }
 

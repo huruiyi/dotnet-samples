@@ -15,7 +15,7 @@ namespace SelfHost
 
     internal class Program
     {
-        private static readonly Uri _baseAddress = new Uri("http://localhost:50231/");
+        private static readonly Uri _baseAddress = new Uri("http://localhost:50520/");
         private static readonly Uri _address = new Uri(_baseAddress, "/api/hello");
 
         private static void Main(string[] args)

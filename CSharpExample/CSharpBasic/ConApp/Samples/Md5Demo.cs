@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -49,8 +50,12 @@ namespace ConApp
                 s.Append(GetMd5(stamp.ToString("HH"), "UTF-8"));
                 s.Append(GetMd5(stamp.ToString("mm"), "UTF-8"));
                 s.Append(GetMd5(stamp.ToString("ss"), "UTF-8"));
+                string sKey = GetMd5(s.ToString(), "UTF-8");
 
-                if (key == GetMd5(s.ToString(), "UTF-8"))
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(stamp + "\t" + sKey);
+
+                if (key == sKey)
                 {
                     return true;
                 }
@@ -75,12 +80,16 @@ namespace ConApp
 
             string key = GetMd5(securityKey.ToString(), "UTF-8");
 
-            Console.Write(timestamp + "\t" + key);
+            Console.ForegroundColor = ConsoleColor.Green;
 
             for (int i = 0; i < 100; i++)
             {
                 bool falg = CheckTokenDemo(timestamp, key);
-                Console.WriteLine(DateTime.Now.ToString() + "\t" + (falg ? "Success" : "Fail"));
+                Console.WriteLine(DateTime.Now.ToString(CultureInfo.InvariantCulture) + "\t" +  falg   + Environment.NewLine);
+                if (!falg)
+                {
+                    break;
+                }
                 Thread.Sleep(700);
             }
         }
