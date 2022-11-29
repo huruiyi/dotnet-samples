@@ -163,20 +163,22 @@ namespace HuUtils
         public void TaskClone(string urlLines, string destPath)
         {
             Queue<string> list = new Queue<string>();
-            string[] strs = File.ReadAllLines(urlLines);
-            foreach (string pathStr in strs)
+            string[] lines = File.ReadAllLines(urlLines);
+            foreach (string pathStr in lines)
             {
                 list.Enqueue(pathStr);
             }
-            AsyncCallback callback = (IAsyncResult result) =>
+
+            void Callback(IAsyncResult result)
             {
                 if (result.IsCompleted)
                 {
                     txtLog.AppendText($"{result.AsyncState} Clone Success..." + Environment.NewLine);
                 }
-            };
-            Task[] tasks = new Task[strs.Length];
-            for (int i = 0; i < strs.Length; i++)
+            }
+
+            Task[] tasks = new Task[lines.Length];
+            for (int i = 0; i < lines.Length; i++)
             {
                 tasks[i] = Task.Factory.StartNew(() =>
                 {
@@ -184,7 +186,7 @@ namespace HuUtils
                     string gitUrl = list.Dequeue();
                     if (!string.IsNullOrEmpty(gitUrl))
                     {
-                        cloneDele.BeginInvoke(gitUrl.Trim(), destPath, callback, gitUrl.Trim());
+                        cloneDele.BeginInvoke(gitUrl.Trim(), destPath, Callback, gitUrl.Trim());
                     }
                 });
             }

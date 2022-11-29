@@ -55,8 +55,8 @@
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DnsClient, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DnsClient.1.6.1\lib\net471\DnsClient.dll</HintPath>
+    <Reference Include="DnsClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DnsClient.1.7.0\lib\net471\DnsClient.dll</HintPath>
     </Reference>
     <Reference Include="IronSnappy, Version=1.3.0.0, Culture=neutral, PublicKeyToken=b1d4b1dc83bdcf31, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\IronSnappy.1.3.0\lib\netstandard2.0\IronSnappy.dll</HintPath>
