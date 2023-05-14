@@ -3,22 +3,79 @@
 using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.TabControl;
 
 namespace HuUtils
 {
     public partial class GitOp : Form
     {
+
+
+        private const int WmSyscommand = 0x0112;          //点击窗口左上角那个图标时的系统信息
+        private const int ScMove = 0xF010;                //移动信息
+        private const int Htcaption = 0x0002;             //表示鼠标在窗口标题栏时的系统信息
+        private const int WmNchittest = 0x84;             //鼠标在窗体客户区（除了标题栏和边框以外的部分）时发送的消息
+        private const int Htclient = 0x1;                 //表示鼠标在窗口客户区的系统消息
+        private const int ScMaximize = 0xF030;            //最大化信息
+        private const int ScMinimize = 0xF020;            //最小化信息
+
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            switch (m.Msg)
+            {
+                case WmSyscommand:
+                    if (m.WParam == (IntPtr)ScMaximize)
+                    {
+                        m.WParam = (IntPtr)ScMinimize;
+                    }
+                    break;
+
+                case WmNchittest: //如果鼠标移动或单击
+                    base.WndProc(ref m);//调用基类的窗口过程——WndProc方法处理这个消息
+                    if (m.Result == (IntPtr)Htclient)//如果返回的是HTCLIENT
+                    {
+                        m.Result = (IntPtr)Htcaption;//把它改为HTCAPTION
+                        return;//直接返回退出方法
+                    }
+                    break;
+            }
+            base.WndProc(ref m);//如果不是鼠标移动或单击消息就调用基类的窗口过程进行处理
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, Keys keyData)
+
+        {
+            int WM_KEYDOWN = 256;
+            int WM_SYSKEYDOWN = 260;
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        this.Close();//esc关闭窗体
+                        break;
+                }
+            }
+            return false;
+        }
+
+
         public GitOp()
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
-            txtLog.AppendText("拉取日志........" + Environment.NewLine);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private delegate void CloneDele(string url, string destPath);
@@ -134,7 +191,7 @@ namespace HuUtils
             {
                 OnCheckoutProgress = (path, completedSteps, totalSteps) =>
                 {
-                    txtLog.AppendText(url+" "+path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
+                    txtLog.AppendText(url + " " + path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
                 },
                 OnProgress = serverProgressOutput =>
                 {
@@ -144,7 +201,7 @@ namespace HuUtils
             };
             try
             {
-                string path = Path.Combine(destPath, dstDir);
+                string path = Path.Combine(destPath, dstDir.TrimEnd('.'));
                 if (!Directory.Exists(path))
                 {
                     string clonedRepoPath = Repository.Clone(url, path, options);
@@ -160,6 +217,15 @@ namespace HuUtils
             }
         }
 
+
+        void Callback(IAsyncResult result)
+        {
+            if (result.IsCompleted)
+            {
+                txtLog.AppendText($"{result.AsyncState} Clone Success..." + Environment.NewLine);
+            }
+        }
+
         public void TaskClone(string urlLines, string destPath)
         {
             Queue<string> list = new Queue<string>();
@@ -169,52 +235,53 @@ namespace HuUtils
                 list.Enqueue(pathStr);
             }
 
-            void Callback(IAsyncResult result)
-            {
-                if (result.IsCompleted)
-                {
-                    txtLog.AppendText($"{result.AsyncState} Clone Success..." + Environment.NewLine);
-                }
-            }
-
             Task[] tasks = new Task[lines.Length];
             for (int i = 0; i < lines.Length; i++)
             {
+                string gitUrl = list.Dequeue();
+                if (string.IsNullOrEmpty(gitUrl))
+                {
+                    continue;
+                }
+
                 tasks[i] = Task.Factory.StartNew(() =>
                 {
                     CloneDele cloneDele = Clone;
-                    string gitUrl = list.Dequeue();
-                    if (!string.IsNullOrEmpty(gitUrl))
-                    {
-                        cloneDele.BeginInvoke(gitUrl.Trim(), destPath, Callback, gitUrl.Trim());
-                    }
+                    cloneDele.BeginInvoke(gitUrl.Trim(), destPath, Callback, gitUrl.Trim());
                 });
             }
 
             Task.WaitAll(tasks);
-            txtLog.AppendText("Clone Ok" + Environment.NewLine);
         }
 
         private void BtnGetUrl_Click(object sender, EventArgs e)
         {
-            SortedBindingList<GitInfoPath> gitPaths = new SortedBindingList<GitInfoPath>();
-            GitInfoPath gitInfoPath;
-            if (!String.IsNullOrWhiteSpace(txtGitPath.Text))
+            try
             {
-                var directories = Directory.GetDirectories(txtGitPath.Text);
-                foreach (string directory in directories)
+                SortedBindingList<GitInfoPath> gitPaths = new SortedBindingList<GitInfoPath>();
+                GitInfoPath gitInfoPath;
+                if (!String.IsNullOrWhiteSpace(txtGitPath.Text))
                 {
-                    gitInfoPath = new GitInfoPath();
-                    using (var repo = new Repository(directory))
+                    var directories = Directory.GetDirectories(txtGitPath.Text);
+                    foreach (string directory in directories)
                     {
-                        var remote = repo.Network.Remotes["origin"];
-                        gitInfoPath.DirName = directory.Substring(directory.LastIndexOf('\\') + 1);
-                        gitInfoPath.GitPath = remote.PushUrl;
-                        gitPaths.Add(gitInfoPath);
+                        gitInfoPath = new GitInfoPath();
+                        using (var repo = new Repository(directory))
+                        {
+                            var remote = repo.Network.Remotes["origin"];
+                            gitInfoPath.DirName = directory.Substring(directory.LastIndexOf('\\') + 1);
+                            gitInfoPath.GitPath = remote.PushUrl;
+                            gitPaths.Add(gitInfoPath);
+                        }
                     }
                 }
+                dgGitView.DataSource = gitPaths;
             }
-            dgGitView.DataSource = gitPaths;
+            catch (Exception ex)
+            {
+
+            }
+         
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -227,7 +294,6 @@ namespace HuUtils
             string[] directories = Directory.GetDirectories(txtGitDir.Text);
             int taskCount = (directories.Length / 5) + 1;
             TaskFetch(txtGitDir.Text, taskCount);
-            txtLog.AppendText("Clone Ok" + Environment.NewLine);
         }
 
         /// <summary>
@@ -246,6 +312,7 @@ namespace HuUtils
             Thread.Sleep(2000);
             TaskClone(txtUrlsPath.Text, txtDestBasePath.Text);
         }
+ 
     }
 
     public class GitInfoPath
