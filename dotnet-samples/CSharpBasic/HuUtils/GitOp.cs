@@ -1,23 +1,20 @@
 ﻿using HuUtils.Service;
 
 using LibGit2Sharp;
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.TabControl;
 
 namespace HuUtils
 {
     public partial class GitOp : Form
     {
-
-
         private const int WmSyscommand = 0x0112;          //点击窗口左上角那个图标时的系统信息
         private const int ScMove = 0xF010;                //移动信息
         private const int Htcaption = 0x0002;             //表示鼠标在窗口标题栏时的系统信息
@@ -65,7 +62,6 @@ namespace HuUtils
             }
             return false;
         }
-
 
         public GitOp()
         {
@@ -118,8 +114,7 @@ namespace HuUtils
         {
             string[] strs = path.Split('/');
             int len = strs.Length;
-            string newPath = "【" + strs[len - 2] + "】-" + strs[len - 1];
-            newPath = strs[len - 1];
+            var newPath = strs[len - 1];
             if (newPath.EndsWith(".git"))
             {
                 newPath = newPath.Replace(".git", "");
@@ -179,36 +174,35 @@ namespace HuUtils
             Task.WaitAll(tasks);
         }
 
+        private void Callback(IAsyncResult result)
+        {
+            if (result.IsCompleted)
+            {
+                txtLog.AppendText($"{result.AsyncState} Clone Success..." + Environment.NewLine);
+            }
+        }
+
         private void Clone(string url, string destPath)
         {
-            if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(destPath))
-            {
-                return;
-            }
-            txtLog.AppendText("Clone Start:" + url + Environment.NewLine);
-            string dstDir = GetDestPath(url);
-            CloneOptions options = new CloneOptions
-            {
-                OnCheckoutProgress = (path, completedSteps, totalSteps) =>
-                {
-                    txtLog.AppendText(url + " " + path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
-                },
-                OnProgress = serverProgressOutput =>
-                {
-                    txtLog.AppendText($"{url} Progress: " + serverProgressOutput + Environment.NewLine);
-                    return true;
-                },
-            };
             try
             {
-                string path = Path.Combine(destPath, dstDir.TrimEnd('.'));
-                if (!Directory.Exists(path))
+                CloneOptions options = new CloneOptions
                 {
-                    string clonedRepoPath = Repository.Clone(url, path, options);
-                    using (Repository repo = new Repository(clonedRepoPath))
+                    OnCheckoutProgress = (path, completedSteps, totalSteps) =>
                     {
-                        Console.WriteLine(repo.Stashes);
-                    }
+                        txtLog.AppendText(url + " " + path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
+                    },
+                    OnProgress = serverProgressOutput =>
+                    {
+                        txtLog.AppendText($"{url} Progress: " + serverProgressOutput + Environment.NewLine);
+                        return true;
+                    },
+                };
+                txtLog.AppendText("Clone Start:" + url + Environment.NewLine);
+                string clonedRepoPath = Repository.Clone(url, destPath, options);
+                using (Repository repo = new Repository(clonedRepoPath))
+                {
+                    repo.Dispose();
                 }
             }
             catch (Exception e)
@@ -217,41 +211,38 @@ namespace HuUtils
             }
         }
 
-
-        void Callback(IAsyncResult result)
-        {
-            if (result.IsCompleted)
-            {
-                txtLog.AppendText($"{result.AsyncState} Clone Success..." + Environment.NewLine);
-            }
-        }
-
         public void TaskClone(string urlLines, string destPath)
         {
-            Queue<string> list = new Queue<string>();
+            List<string> list = new List<string>();
             string[] lines = File.ReadAllLines(urlLines);
             foreach (string pathStr in lines)
             {
-                list.Enqueue(pathStr);
+                list.Add(pathStr);
             }
+            List<Task> tasks = new List<Task>();
 
-            Task[] tasks = new Task[lines.Length];
-            for (int i = 0; i < lines.Length; i++)
+            foreach (string gitUrl in list)
             {
-                string gitUrl = list.Dequeue();
-                if (string.IsNullOrEmpty(gitUrl))
+                if (string.IsNullOrWhiteSpace(gitUrl) || string.IsNullOrWhiteSpace(destPath))
                 {
                     continue;
                 }
 
-                tasks[i] = Task.Factory.StartNew(() =>
+                string path = Path.Combine(destPath, GetDestPath(gitUrl).TrimEnd('.'));
+
+                if (Directory.Exists(path))
+                {
+                    continue;
+                }
+                //txtLog.AppendText($"{gitUrl} Progress: "   + Environment.NewLine);
+                Task task = Task.Factory.StartNew(() =>
                 {
                     CloneDele cloneDele = Clone;
-                    cloneDele.BeginInvoke(gitUrl.Trim(), destPath, Callback, gitUrl.Trim());
+                    cloneDele.BeginInvoke(gitUrl, path, Callback, gitUrl);
                 });
+                tasks.Add(task);
             }
-
-            Task.WaitAll(tasks);
+            Task.WaitAll(tasks.ToArray());
         }
 
         private void BtnGetUrl_Click(object sender, EventArgs e)
@@ -259,13 +250,12 @@ namespace HuUtils
             try
             {
                 SortedBindingList<GitInfoPath> gitPaths = new SortedBindingList<GitInfoPath>();
-                GitInfoPath gitInfoPath;
                 if (!String.IsNullOrWhiteSpace(txtGitPath.Text))
                 {
                     var directories = Directory.GetDirectories(txtGitPath.Text);
                     foreach (string directory in directories)
                     {
-                        gitInfoPath = new GitInfoPath();
+                        var gitInfoPath = new GitInfoPath();
                         using (var repo = new Repository(directory))
                         {
                             var remote = repo.Network.Remotes["origin"];
@@ -279,9 +269,8 @@ namespace HuUtils
             }
             catch (Exception ex)
             {
-
+                // ignored
             }
-         
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -312,7 +301,26 @@ namespace HuUtils
             Thread.Sleep(2000);
             TaskClone(txtUrlsPath.Text, txtDestBasePath.Text);
         }
- 
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDestBasePath.Text))
+            {
+                MessageBox.Show("Dest 不可为空");
+            }
+            string[] directories = Directory.GetDirectories(txtDestBasePath.Text);
+            foreach (string dir in directories)
+            {
+                string[] childDirs = Directory.GetDirectories(dir);
+                string[] files = Directory.GetFiles(dir);
+                if (childDirs.Length == 1 && files.Length == 0)
+                {
+                    FileSystem.DeleteDirectory(childDirs[0], UIOption.OnlyErrorDialogs, RecycleOption.DeletePermanently);
+                    FileSystem.DeleteDirectory(dir, UIOption.OnlyErrorDialogs, RecycleOption.DeletePermanently);
+                }
+            }
+            MessageBox.Show("Clean Ok!!");
+        }
     }
 
     public class GitInfoPath

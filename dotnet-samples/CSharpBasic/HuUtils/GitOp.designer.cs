@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.folderBrowserDialogGit = new System.Windows.Forms.FolderBrowserDialog();
             this.tabUpdate = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtGitDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +43,6 @@
             this.btnSelectUrlsFile = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUrlsPath = new System.Windows.Forms.TextBox();
-            this.txtLog = new System.Windows.Forms.TextBox();
             this.btnPullSourceUrl = new System.Windows.Forms.Button();
             this.txtDestBasePath = new System.Windows.Forms.TextBox();
             this.btnPull = new System.Windows.Forms.Button();
@@ -54,14 +56,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.openFileDialogGit = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnClean = new System.Windows.Forms.Button();
             this.tabUpdate.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabGetUrls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGitView)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // folderBrowserDialogGit
@@ -78,9 +80,32 @@
             this.tabUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.tabUpdate.Name = "tabUpdate";
             this.tabUpdate.Padding = new System.Windows.Forms.Padding(4);
-            this.tabUpdate.Size = new System.Drawing.Size(1846, 784);
+            this.tabUpdate.Size = new System.Drawing.Size(1347, 681);
             this.tabUpdate.TabIndex = 2;
             this.tabUpdate.Text = "更新";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtLog);
+            this.groupBox3.Location = new System.Drawing.Point(18, 288);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1326, 386);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "日志";
+            // 
+            // txtLog
+            // 
+            this.txtLog.BackColor = System.Drawing.Color.MistyRose;
+            this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtLog.Location = new System.Drawing.Point(3, 22);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(1320, 361);
+            this.txtLog.TabIndex = 10;
             // 
             // groupBox2
             // 
@@ -89,11 +114,11 @@
             this.groupBox2.Controls.Add(this.btnBrowser);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.groupBox2.Location = new System.Drawing.Point(31, 21);
+            this.groupBox2.Location = new System.Drawing.Point(9, 21);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(646, 131);
+            this.groupBox2.Size = new System.Drawing.Size(1329, 107);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "更新代码";
@@ -103,18 +128,18 @@
             this.txtGitDir.BackColor = System.Drawing.Color.MistyRose;
             this.txtGitDir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGitDir.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtGitDir.Location = new System.Drawing.Point(62, 45);
+            this.txtGitDir.Location = new System.Drawing.Point(80, 45);
             this.txtGitDir.Margin = new System.Windows.Forms.Padding(4);
             this.txtGitDir.Multiline = true;
             this.txtGitDir.Name = "txtGitDir";
-            this.txtGitDir.Size = new System.Drawing.Size(331, 33);
+            this.txtGitDir.Size = new System.Drawing.Size(845, 33);
             this.txtGitDir.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label1.Location = new System.Drawing.Point(17, 49);
+            this.label1.Location = new System.Drawing.Point(29, 49);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 20);
@@ -125,7 +150,7 @@
             // 
             this.btnBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBrowser.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.btnBrowser.Location = new System.Drawing.Point(421, 45);
+            this.btnBrowser.Location = new System.Drawing.Point(933, 45);
             this.btnBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowser.Name = "btnBrowser";
             this.btnBrowser.Size = new System.Drawing.Size(88, 33);
@@ -138,7 +163,7 @@
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.btnUpdate.Location = new System.Drawing.Point(514, 45);
+            this.btnUpdate.Location = new System.Drawing.Point(1026, 45);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(88, 33);
@@ -150,6 +175,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Controls.Add(this.btnSelectUrlsFile);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtUrlsPath);
@@ -158,11 +184,11 @@
             this.groupBox1.Controls.Add(this.btnPull);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.groupBox1.Location = new System.Drawing.Point(685, 21);
+            this.groupBox1.Location = new System.Drawing.Point(9, 136);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1136, 131);
+            this.groupBox1.Size = new System.Drawing.Size(1329, 131);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "拉取代码";
@@ -181,10 +207,10 @@
             // 
             this.btnSelectUrlsFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelectUrlsFile.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.btnSelectUrlsFile.Location = new System.Drawing.Point(933, 30);
+            this.btnSelectUrlsFile.Location = new System.Drawing.Point(933, 32);
             this.btnSelectUrlsFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelectUrlsFile.Name = "btnSelectUrlsFile";
-            this.btnSelectUrlsFile.Size = new System.Drawing.Size(88, 33);
+            this.btnSelectUrlsFile.Size = new System.Drawing.Size(88, 34);
             this.btnSelectUrlsFile.TabIndex = 8;
             this.btnSelectUrlsFile.Text = "浏览";
             this.btnSelectUrlsFile.UseVisualStyleBackColor = true;
@@ -211,19 +237,6 @@
             this.txtUrlsPath.Name = "txtUrlsPath";
             this.txtUrlsPath.Size = new System.Drawing.Size(845, 33);
             this.txtUrlsPath.TabIndex = 6;
-            // 
-            // txtLog
-            // 
-            this.txtLog.BackColor = System.Drawing.Color.MistyRose;
-            this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLog.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtLog.Location = new System.Drawing.Point(3, 22);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(1784, 575);
-            this.txtLog.TabIndex = 10;
             // 
             // btnPullSourceUrl
             // 
@@ -275,7 +288,7 @@
             this.tabGetUrls.Margin = new System.Windows.Forms.Padding(4);
             this.tabGetUrls.Name = "tabGetUrls";
             this.tabGetUrls.Padding = new System.Windows.Forms.Padding(4);
-            this.tabGetUrls.Size = new System.Drawing.Size(1846, 784);
+            this.tabGetUrls.Size = new System.Drawing.Size(1347, 681);
             this.tabGetUrls.TabIndex = 0;
             this.tabGetUrls.Text = "获取Url";
             // 
@@ -286,13 +299,21 @@
             this.dgGitView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgGitView.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgGitView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgGitView.GridColor = System.Drawing.Color.MistyRose;
-            this.dgGitView.Location = new System.Drawing.Point(4, 73);
+            this.dgGitView.Location = new System.Drawing.Point(4, 85);
             this.dgGitView.Margin = new System.Windows.Forms.Padding(4);
             this.dgGitView.Name = "dgGitView";
             this.dgGitView.RowTemplate.Height = 23;
-            this.dgGitView.Size = new System.Drawing.Size(1838, 707);
+            this.dgGitView.Size = new System.Drawing.Size(1339, 592);
             this.dgGitView.TabIndex = 7;
             // 
             // Column1
@@ -323,6 +344,7 @@
             // 
             // txtGitPath
             // 
+            this.txtGitPath.BackColor = System.Drawing.Color.MistyRose;
             this.txtGitPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGitPath.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.txtGitPath.Location = new System.Drawing.Point(111, 21);
@@ -367,28 +389,31 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(1854, 817);
+            this.tabControl.Size = new System.Drawing.Size(1355, 714);
             this.tabControl.TabIndex = 6;
             // 
             // openFileDialogGit
             // 
             this.openFileDialogGit.FileName = "openFileDialog1";
             // 
-            // groupBox3
+            // btnClean
             // 
-            this.groupBox3.Controls.Add(this.txtLog);
-            this.groupBox3.Location = new System.Drawing.Point(31, 176);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1790, 600);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "日志";
+            this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClean.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.btnClean.Location = new System.Drawing.Point(1026, 31);
+            this.btnClean.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(88, 34);
+            this.btnClean.TabIndex = 8;
+            this.btnClean.Text = "清理";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // GitOp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1854, 817);
+            this.ClientSize = new System.Drawing.Size(1355, 714);
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -396,6 +421,8 @@
             this.Name = "GitOp";
             this.Text = "GitOp";
             this.tabUpdate.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -404,8 +431,6 @@
             this.tabGetUrls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGitView)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -438,5 +463,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnClean;
     }
 }

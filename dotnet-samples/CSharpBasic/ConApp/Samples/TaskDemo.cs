@@ -49,21 +49,22 @@ namespace ConApp
             try
             {
                 Task<double> fTask = factory.ContinueWhenAll(tasks.ToArray(),
-                                                             (results) =>
-                                                             {
-                                                                 Console.WriteLine("Calculating overall mean...");
-                                                                 long sum = 0;
-                                                                 int n = 0;
-                                                                 foreach (var t in results)
-                                                                 {
-                                                                     foreach (var r in t.Result)
-                                                                     {
-                                                                         sum += r;
-                                                                         n++;
-                                                                     }
-                                                                 }
-                                                                 return sum / (double)n;
-                                                             }, token);
+                    (results) =>
+                    {
+                        Console.WriteLine("Calculating overall mean...");
+                        long sum = 0;
+                        int n = 0;
+                        foreach (var t in results)
+                        {
+                            foreach (var r in t.Result)
+                            {
+                                sum += r;
+                                n++;
+                            }
+                        }
+
+                        return sum / (double)n;
+                    }, token);
                 Console.WriteLine("The mean is {0}.", fTask.Result);
             }
             catch (AggregateException ae)
