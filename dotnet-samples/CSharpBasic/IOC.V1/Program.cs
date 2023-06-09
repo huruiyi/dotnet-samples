@@ -1,5 +1,9 @@
-﻿using Autofac;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Autofac;
 
 namespace IOC.V1
 {
@@ -96,7 +100,7 @@ namespace IOC.V1
 
             var builder = new ContainerBuilder();
             builder.RegisterType<DataBaseManager>();
-            builder.RegisterType<SqlDataBaseDal>().As<IDataBaseDal>();
+            builder.RegisterType<OracleDataBaseDal>().As<IDataBaseDal>();
 
             using (var container = builder.Build())
             {

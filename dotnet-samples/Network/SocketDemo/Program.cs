@@ -56,8 +56,8 @@ namespace SocketDemo
                     mac = mo["MacAddress"].ToString();
                 }
             }
-            Console.WriteLine(string.Format("IP:{0}", ip)); ;
-            Console.WriteLine(string.Format("MAC:{0}", mac)); ;
+            Console.WriteLine($"IP:{ip}"); ;
+            Console.WriteLine($"MAC:{mac}"); ;
         }
 
         #region SynchronousSocket

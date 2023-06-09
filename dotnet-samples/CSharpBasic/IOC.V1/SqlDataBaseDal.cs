@@ -4,10 +4,7 @@ namespace IOC.V1
 {
     public class SqlDataBaseDal : IDataBaseDal
     {
-        public string Name
-        {
-            get { return "SQL Database"; }
-        }
+        public string Name => "SQL Database";
 
         public void Select(string commandText)
         {
