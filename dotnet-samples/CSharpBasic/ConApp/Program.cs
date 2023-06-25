@@ -1,7 +1,7 @@
 ﻿using ConApp.AopDemo1;
 using ConApp.AopDemo2;
 using ConApp.Model;
-
+using ConApp.Samples;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,10 +26,11 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
+            Hashing.Run();
+
             Md5Demo.Demo1();
-            String md5 = Md5Demo.GetMd5("hello,你大爷", "UTF-8");
-            Console.WriteLine(md5);
-            Console.ReadKey();
+            Console.WriteLine(Md5Demo.GetMd5("hello,你大爷", "UTF-8"));
+            Console.ReadKey(true);
         }
 
         public static void Other3()

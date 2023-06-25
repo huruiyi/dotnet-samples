@@ -234,7 +234,7 @@ namespace HuUtils
                 {
                     continue;
                 }
-                //txtLog.AppendText($"{gitUrl} Progress: "   + Environment.NewLine);
+                txtLog.AppendText($"{gitUrl}"   + Environment.NewLine);
                 Task task = Task.Factory.StartNew(() =>
                 {
                     CloneDele cloneDele = Clone;

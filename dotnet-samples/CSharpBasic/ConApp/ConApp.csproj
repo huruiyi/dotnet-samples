@@ -207,16 +207,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Samples\AlgorithmDemo.cs" />
+    <Compile Include="Samples\ApiBatchingDemo.cs" />
     <Compile Include="Samples\AttributeDemo.cs" />
     <Compile Include="Samples\BasicDemo.cs" />
+    <Compile Include="Samples\BenchmarkingDemo.cs" />
     <Compile Include="Samples\CallBackDemo.cs" />
+    <Compile Include="Samples\SimdVector.cs" />
     <Compile Include="Samples\CollectionsDemo.cs" />
     <Compile Include="Samples\ConcurrentDemo.cs" />
+    <Compile Include="Samples\DataStructures.cs" />
     <Compile Include="Samples\DataTableDemo.cs" />
     <Compile Include="Samples\DateTimeDemo.cs" />
     <Compile Include="Samples\DescartesDemo.cs" />
     <Compile Include="Samples\DiagnosticsDemo.cs" />
     <Compile Include="Samples\DllImportDemo.cs" />
+    <Compile Include="Samples\DnsPingTool.cs" />
     <Compile Include="Samples\EnumDemo.cs" />
     <Compile Include="Samples\ExpressionsDemo.cs" />
     <Compile Include="Samples\GraphicsDemo.cs" />
@@ -243,6 +248,7 @@
     <Compile Include="OtherDemo\_5IOOperate.cs" />
     <Compile Include="OtherDemo\_7Export_Import.cs" />
     <Compile Include="OtherDemo\_8DirectorySecurity.cs" />
+    <Compile Include="Samples\Hashing.cs" />
     <Compile Include="Samples\HttpListenerDemo.cs" />
     <Compile Include="Samples\IISDemo.cs" />
     <Compile Include="Samples\IODemo.cs" />
@@ -250,6 +256,7 @@
     <Compile Include="Samples\LinqDemo.cs" />
     <Compile Include="Samples\Md5Demo.cs" />
     <Compile Include="Samples\NetDemo.cs" />
+    <Compile Include="Samples\ParallelBenchmarking.cs" />
     <Compile Include="Samples\ParallelDemo.cs" />
     <Compile Include="Samples\PowerShellDemo.cs" />
     <Compile Include="Samples\NoSql\RedisDemo.cs" />
