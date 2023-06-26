@@ -400,12 +400,12 @@ namespace SelfLinqDemo
                                          select e.Field<string>("Field1");
 
             EnumerableRowCollection dFruit = from e in table.AsEnumerable()
-                select new
-                {
-                    ShelfLife = e.Field<int>("Field0"),
-                    Name = e.Field<string>("Field1"),
-                    Color = e.Field<string>("Field2")
-                };
+                                             select new
+                                             {
+                                                 ShelfLife = e.Field<int>("Field0"),
+                                                 Name = e.Field<string>("Field1"),
+                                                 Color = e.Field<string>("Field2")
+                                             };
             foreach (string str in dtEnum)
             {
                 Console.WriteLine("Element {0}", str);
@@ -424,24 +424,24 @@ namespace SelfLinqDemo
                 new OrderInfo{BookingDate = "2016-2-1",Charges = 18,Number = "S2",Amount = 65}
             };
             var newlist0 = from orderInfo in list
-                group orderInfo by orderInfo.BookingDate
+                           group orderInfo by orderInfo.BookingDate
                 into g
-                select new
-                {
-                    BookingDate = g.Key,
-                    SerialNumber = g.Aggregate(string.Empty, (current, item) => current + (item.Number + ","))
-                        .TrimEnd(',')
-                };
+                           select new
+                           {
+                               BookingDate = g.Key,
+                               SerialNumber = g.Aggregate(string.Empty, (current, item) => current + (item.Number + ","))
+                                   .TrimEnd(',')
+                           };
 
             var newlist = from orderInfo in list
-                group orderInfo by orderInfo.BookingDate
+                          group orderInfo by orderInfo.BookingDate
                 into g
-                select new
-                {
-                    BookingDate = g.Key,
-                    ProductTotalCharges = g.Sum(x => x.Charges),
-                    TotalAmount = g.Sum(x => x.Amount)
-                };
+                          select new
+                          {
+                              BookingDate = g.Key,
+                              ProductTotalCharges = g.Sum(x => x.Charges),
+                              TotalAmount = g.Sum(x => x.Amount)
+                          };
 
             decimal sum = list.Sum(m => m.Amount);
             Console.WriteLine(sum);

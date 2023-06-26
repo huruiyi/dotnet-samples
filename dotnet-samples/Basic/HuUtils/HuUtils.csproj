@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.320\build\net46\LibGit2Sharp.NativeBinaries.props" Condition="Exists('..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.320\build\net46\LibGit2Sharp.NativeBinaries.props')" />
+  <Import Project="..\..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\net46\LibGit2Sharp.NativeBinaries.props" Condition="Exists('..\..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\net46\LibGit2Sharp.NativeBinaries.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B25DDCB-0DDC-46A2-B439-C38F75F86B54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HuUtils</RootNamespace>
+    <AssemblyName>HuUtils</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Soft\Tools\HuUtils\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>360B4766552D7402618489F809999185FBC6FD6C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WinFormDemo_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls, Version=2.2.5.0, Culture=neutral, PublicKeyToken=a8ac264d1dc6b9d9, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.Controls.2.2.5\lib\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="LibGit2Sharp, Version=0.27.0.0, Culture=neutral, PublicKeyToken=7cbde695407f0333, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\LibGit2Sharp.0.27.2\lib\net472\LibGit2Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAPICodePack-ExtendedLinguisticServices.1.1.1\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.CodeDom.7.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlgorithmForm\AsymmetricAlgorithmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlgorithmForm\AsymmetricAlgorithmForm.designer.cs">
+      <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppInfo.Designer.cs">
+      <DependentUpon>AppInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\ComponentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\ComponentForm.Designer.cs">
+      <DependentUpon>ComponentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseComponent\Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseComponent\Form7.Designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat\ChatClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat\ChatClient.Designer.cs">
+      <DependentUpon>ChatClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\ChatServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat\ChatServer.Designer.cs">
+      <DependentUpon>ChatServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\SocketCommon.cs" />
+    <Compile Include="Chat\SocketDataTypeEnum.cs" />
+    <Compile Include="Controls\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm1.Designer.cs">
+      <DependentUpon>DSForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm2.Designer.cs">
+      <DependentUpon>DSForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm3.designer.cs">
+      <DependentUpon>DSForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm34.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm34.Designer.cs">
+      <DependentUpon>DSForm34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSynchronization\DSForm4.designer.cs">
+      <DependentUpon>DSForm4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSynchronization\IAfterText.cs" />
+    <Compile Include="DataSynchronization\SendTextEventArgs.cs" />
+    <Compile Include="DynamicButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DynamicButton.Designer.cs">
+      <DependentUpon>DynamicButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FileReceive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileReceive.Designer.cs">
+      <DependentUpon>FileReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GitOp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GitOp.designer.cs">
+      <DependentUpon>GitOp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo01.Designer.cs">
+      <DependentUpon>Demo01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo02.Designer.cs">
+      <DependentUpon>Demo02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo03.Designer.cs">
+      <DependentUpon>Demo03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo04.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo04.Designer.cs">
+      <DependentUpon>Demo04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo05.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo05.Designer.cs">
+      <DependentUpon>Demo05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo06.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo06.Designer.cs">
+      <DependentUpon>Demo06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo07.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo07.Designer.cs">
+      <DependentUpon>Demo07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo08.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo08.Designer.cs">
+      <DependentUpon>Demo08.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo09.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo09.Designer.cs">
+      <DependentUpon>Demo09.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo10.Designer.cs">
+      <DependentUpon>Demo10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo11.Designer.cs">
+      <DependentUpon>Demo11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphicses\Demo12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphicses\Demo12.Designer.cs">
+      <DependentUpon>Demo12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HttpFile.cs" />
+    <Compile Include="IP地址.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IP地址.designer.cs">
+      <DependentUpon>IP地址.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Key事件.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Key事件.Designer.cs">
+      <DependentUpon>Key事件.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LicGenForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicGenForm1.designer.cs">
+      <DependentUpon>LicGenForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="NoBorder\无边框移动1_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动1_1.Designer.cs">
+      <DependentUpon>无边框移动1_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动5.Designer.cs">
+      <DependentUpon>无边框移动5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动6.Designer.cs">
+      <DependentUpon>无边框移动6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notepad2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notepad2.designer.cs">
+      <DependentUpon>Notepad2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShellDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShellDemo.Designer.cs">
+      <DependentUpon>ShellDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlgorithmForm\SymmetricAlgorithmsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlgorithmForm\SymmetricAlgorithmsForm.designer.cs">
+      <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleForm\SingleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleForm\SingleDialog.designer.cs">
+      <DependentUpon>SingleDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleForm\SingleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleForm\SingleForm.designer.cs">
+      <DependentUpon>SingleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeechForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeechForm.designer.cs">
+      <DependentUpon>SpeechForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\APM实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\APM实例.Designer.cs">
+      <DependentUpon>APM实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\ASyncSyncForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\ASyncSyncForm.Designer.cs">
+      <DependentUpon>ASyncSyncForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\Async实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\Async实例.Designer.cs">
+      <DependentUpon>Async实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\Sync实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SyncAsyncAPMForm\Sync实例.Designer.cs">
+      <DependentUpon>Sync实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor01.designer.cs">
+      <DependentUpon>USBMinitor01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\USBMinitor02.designer.cs">
+      <DependentUpon>USBMinitor02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManager\WMIInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\WMIInfo.Designer.cs">
+      <DependentUpon>WMIInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeViewDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeViewDemo.Designer.cs">
+      <DependentUpon>TreeViewDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动.Designer.cs">
+      <DependentUpon>无边框移动.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动3.Designer.cs">
+      <DependentUpon>无边框移动3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoginControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LoginControl.Designer.cs">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Service\PhotoHelp.cs" />
+    <Compile Include="Service\SortableBindingList.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="不规则控件.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="不规则控件.designer.cs">
+      <DependentUpon>不规则控件.cs</DependentUpon>
+    </Compile>
+    <Compile Include="串口编程实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="串口编程实例.designer.cs">
+      <DependentUpon>串口编程实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="任务取消.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="任务取消.Designer.cs">
+      <DependentUpon>任务取消.cs</DependentUpon>
+    </Compile>
+    <Compile Include="图片操作_数据库.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="图片操作_数据库.Designer.cs">
+      <DependentUpon>图片操作_数据库.cs</DependentUpon>
+    </Compile>
+    <Compile Include="图片鼠标.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="图片鼠标.Designer.cs">
+      <DependentUpon>图片鼠标.cs</DependentUpon>
+    </Compile>
+    <Compile Include="截屏实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="截屏实例.Designer.cs">
+      <DependentUpon>截屏实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppMain.Designer.cs">
+      <DependentUpon>AppMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="数据绑定.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="数据绑定.Designer.cs">
+      <DependentUpon>数据绑定.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动1.Designer.cs">
+      <DependentUpon>无边框移动1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动2.Designer.cs">
+      <DependentUpon>无边框移动2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoBorder\无边框移动4.Designer.cs">
+      <DependentUpon>无边框移动4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="数据集.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="数据集.Designer.cs">
+      <DependentUpon>数据集.cs</DependentUpon>
+    </Compile>
+    <Compile Include="添加Windows账户.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="添加Windows账户.Designer.cs">
+      <DependentUpon>添加Windows账户.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManager\电源管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemManager\电源管理.Designer.cs">
+      <DependentUpon>电源管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="登录窗体.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="登录窗体.Designer.cs">
+      <DependentUpon>登录窗体.cs</DependentUpon>
+    </Compile>
+    <Compile Include="简单委托.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="简单委托.Designer.cs">
+      <DependentUpon>简单委托.cs</DependentUpon>
+    </Compile>
+    <Compile Include="简易资源管理器.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="简易资源管理器.Designer.cs">
+      <DependentUpon>简易资源管理器.cs</DependentUpon>
+    </Compile>
+    <Compile Include="系统字体.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统字体.Designer.cs">
+      <DependentUpon>系统字体.cs</DependentUpon>
+    </Compile>
+    <Compile Include="线程抽奖.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="线程抽奖.Designer.cs">
+      <DependentUpon>线程抽奖.cs</DependentUpon>
+    </Compile>
+    <Compile Include="翻译案例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="翻译案例.Designer.cs">
+      <DependentUpon>翻译案例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="自定义窗体.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="自定义窗体.Designer.cs">
+      <DependentUpon>自定义窗体.cs</DependentUpon>
+    </Compile>
+    <Compile Include="自定义窗体外观.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="自定义窗体外观.Designer.cs">
+      <DependentUpon>自定义窗体外观.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LicGenForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicGenForm2.designer.cs">
+      <DependentUpon>LicGenForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="调用摄像头实例.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="调用摄像头实例.Designer.cs">
+      <DependentUpon>调用摄像头实例.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notepad1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notepad1.designer.cs">
+      <DependentUpon>Notepad1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运动人.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="运动人.designer.cs">
+      <DependentUpon>运动人.cs</DependentUpon>
+    </Compile>
+    <Compile Include="闪屏.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="闪屏.Designer.cs">
+      <DependentUpon>闪屏.cs</DependentUpon>
+    </Compile>
+    <Compile Include="验证码.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="验证码.Designer.cs">
+      <DependentUpon>验证码.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AlgorithmForm\AsymmetricAlgorithmForm.resx">
+      <DependentUpon>AsymmetricAlgorithmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppInfo.resx">
+      <DependentUpon>AppInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\ComponentForm.resx">
+      <DependentUpon>ComponentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseComponent\Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\ChatClient.resx">
+      <DependentUpon>ChatClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\ChatServer.resx">
+      <DependentUpon>ChatServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm1.resx">
+      <DependentUpon>DSForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm2.resx">
+      <DependentUpon>DSForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm3.resx">
+      <DependentUpon>DSForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm34.resx">
+      <DependentUpon>DSForm34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSynchronization\DSForm4.resx">
+      <DependentUpon>DSForm4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DynamicButton.resx">
+      <DependentUpon>DynamicButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileReceive.resx">
+      <DependentUpon>FileReceive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GitOp.resx">
+      <DependentUpon>GitOp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo01.resx">
+      <DependentUpon>Demo01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo02.resx">
+      <DependentUpon>Demo02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo03.resx">
+      <DependentUpon>Demo03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo04.resx">
+      <DependentUpon>Demo04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo05.resx">
+      <DependentUpon>Demo05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo06.resx">
+      <DependentUpon>Demo06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo07.resx">
+      <DependentUpon>Demo07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo08.resx">
+      <DependentUpon>Demo08.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo09.resx">
+      <DependentUpon>Demo09.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo10.resx">
+      <DependentUpon>Demo10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo11.resx">
+      <DependentUpon>Demo11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphicses\Demo12.resx">
+      <DependentUpon>Demo12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IP地址.resx">
+      <DependentUpon>IP地址.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Key事件.resx">
+      <DependentUpon>Key事件.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicGenForm1.resx">
+      <DependentUpon>LicGenForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动1_1.resx">
+      <DependentUpon>无边框移动1_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动5.resx">
+      <DependentUpon>无边框移动5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动6.resx">
+      <DependentUpon>无边框移动6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notepad2.resx">
+      <DependentUpon>Notepad2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShellDemo.resx">
+      <DependentUpon>ShellDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlgorithmForm\SymmetricAlgorithmsForm.resx">
+      <DependentUpon>SymmetricAlgorithmsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleForm\SingleDialog.resx">
+      <DependentUpon>SingleDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleForm\SingleForm.resx">
+      <DependentUpon>SingleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeechForm.resx">
+      <DependentUpon>SpeechForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SyncAsyncAPMForm\APM实例.resx">
+      <DependentUpon>APM实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SyncAsyncAPMForm\ASyncSyncForm.resx">
+      <DependentUpon>ASyncSyncForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SyncAsyncAPMForm\Async实例.resx">
+      <DependentUpon>Async实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SyncAsyncAPMForm\Sync实例.resx">
+      <DependentUpon>Sync实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\USBMinitor01.resx">
+      <DependentUpon>USBMinitor01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\USBMinitor02.resx">
+      <DependentUpon>USBMinitor02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\WMIInfo.resx">
+      <DependentUpon>WMIInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeViewDemo.resx">
+      <DependentUpon>TreeViewDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动.resx">
+      <DependentUpon>无边框移动.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动3.resx">
+      <DependentUpon>无边框移动3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LoginControl.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="不规则控件.resx">
+      <DependentUpon>不规则控件.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="串口编程实例.resx">
+      <DependentUpon>串口编程实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="任务取消.resx">
+      <DependentUpon>任务取消.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="图片操作_数据库.resx">
+      <DependentUpon>图片操作_数据库.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="图片鼠标.resx">
+      <DependentUpon>图片鼠标.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="截屏实例.resx">
+      <DependentUpon>截屏实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppMain.resx">
+      <DependentUpon>AppMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="数据绑定.resx">
+      <DependentUpon>数据绑定.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动1.resx">
+      <DependentUpon>无边框移动1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动2.resx">
+      <DependentUpon>无边框移动2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoBorder\无边框移动4.resx">
+      <DependentUpon>无边框移动4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="数据集.resx">
+      <DependentUpon>数据集.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="添加Windows账户.resx">
+      <DependentUpon>添加Windows账户.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManager\电源管理.resx">
+      <DependentUpon>电源管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="登录窗体.resx">
+      <DependentUpon>登录窗体.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="简单委托.resx">
+      <DependentUpon>简单委托.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="简易资源管理器.resx">
+      <DependentUpon>简易资源管理器.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统字体.resx">
+      <DependentUpon>系统字体.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="线程抽奖.resx">
+      <DependentUpon>线程抽奖.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="翻译案例.resx">
+      <DependentUpon>翻译案例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="自定义窗体.resx">
+      <DependentUpon>自定义窗体.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="自定义窗体外观.resx">
+      <DependentUpon>自定义窗体外观.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicGenForm2.resx">
+      <DependentUpon>LicGenForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="调用摄像头实例.resx">
+      <DependentUpon>调用摄像头实例.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notepad1.resx">
+      <DependentUpon>Notepad1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="运动人.resx">
+      <DependentUpon>运动人.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="闪屏.resx">
+      <DependentUpon>闪屏.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="验证码.resx">
+      <DependentUpon>验证码.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="ExampleDb.xsc">
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </None>
+    <None Include="ExampleDb.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExampleDb.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExampleDb.xss">
+      <DependentUpon>ExampleDb.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\app.ico" />
+    <Content Include="Resources\Abort.ico" />
+    <Content Include="Resources\bg.jpg" />
+    <Content Include="Resources\Bold.ico" />
+    <Content Include="Resources\Color.ico" />
+    <Content Include="Resources\Component.jpg" />
+    <Content Include="Resources\Font.ico" />
+    <Content Include="Resources\Italic.ico" />
+    <Content Include="Resources\Open.ico" />
+    <Content Include="Resources\people\P_01.png" />
+    <Content Include="Resources\people\P_02.png" />
+    <Content Include="Resources\people\P_03.png" />
+    <Content Include="Resources\people\P_04.png" />
+    <Content Include="Resources\people\P_05.png" />
+    <Content Include="Resources\people\P_06.png" />
+    <Content Include="Resources\people\P_07.png" />
+    <Content Include="Resources\people\P_08.png" />
+    <Content Include="Resources\people\P_09.png" />
+    <Content Include="Resources\people\P_10.png" />
+    <Content Include="Resources\people\P_11.png" />
+    <Content Include="Resources\people\P_12.png" />
+    <Content Include="Resources\people\P_13.png" />
+    <Content Include="Resources\people\P_14.png" />
+    <Content Include="Resources\people\P_15.png" />
+    <Content Include="Resources\people\P_16.png" />
+    <Content Include="Resources\people\P_17.png" />
+    <Content Include="Resources\people\P_18.png" />
+    <Content Include="Resources\people\P_19.png" />
+    <Content Include="Resources\people\P_20.png" />
+    <Content Include="Resources\people\P_21.png" />
+    <Content Include="Resources\people\P_22.png" />
+    <Content Include="Resources\people\P_23.png" />
+    <Content Include="Resources\people\P_24.png" />
+    <Content Include="Resources\Save.ico" />
+    <Content Include="Resources\Underline.ico" />
+    <None Include="Resources\Autumn.jpg" />
+    <None Include="Resources\bullet.gif" />
+    <None Include="Resources\bullet1.gif" />
+    <None Include="Resources\bullet2.gif" />
+    <Content Include="Resources\close.ico" />
+    <None Include="Resources\exclam.gif" />
+    <None Include="Resources\exclam1.gif" />
+    <None Include="Resources\exclam2.gif" />
+    <Content Include="Resources\max.ico" />
+    <Content Include="Resources\min.ico" />
+    <None Include="Resources\notepad.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.320\build\net46\LibGit2Sharp.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\LibGit2Sharp.NativeBinaries.2.0.320\build\net46\LibGit2Sharp.NativeBinaries.props'))" />
+  </Target>
+</Project>
