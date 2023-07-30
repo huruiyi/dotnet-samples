@@ -41,22 +41,21 @@ namespace SelfHost
 
                 // Call the web API and display the result
                 HttpClient client = new HttpClient();
-                client.GetStringAsync(_address).ContinueWith(
-                    getTask =>
+                client.GetStringAsync(_address).ContinueWith(getTask =>
+                {
+                    if (getTask.IsCanceled)
                     {
-                        if (getTask.IsCanceled)
-                        {
-                            Console.WriteLine("Request was canceled");
-                        }
-                        else if (getTask.IsFaulted)
-                        {
-                            Console.WriteLine("Request failed: {0}", getTask.Exception);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Client received: {0}", getTask.Result);
-                        }
-                    });
+                        Console.WriteLine("Request was canceled");
+                    }
+                    else if (getTask.IsFaulted)
+                    {
+                        Console.WriteLine("Request failed: {0}", getTask.Exception);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Client received: {0}", getTask.Result);
+                    }
+                });
                 Console.ReadLine();
             }
             catch (Exception e)

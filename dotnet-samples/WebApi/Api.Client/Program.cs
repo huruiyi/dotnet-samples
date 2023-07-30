@@ -1,4 +1,6 @@
-﻿using SelfHostAPI;
+﻿using Newtonsoft.Json.Linq;
+
+using SelfHostAPI;
 
 using System;
 using System.Collections.Generic;
@@ -101,6 +103,7 @@ namespace Api.Client
 
         private static async Task Main(string[] args)
         {
+            await WebApi_OAuth();
         }
 
         private static void SelfHostAPI_Test()
@@ -119,7 +122,7 @@ namespace Api.Client
             Console.ReadLine();
         }
 
-        private static async void WebApi_OAuth()
+        private static async Task WebApi_OAuth()
         {
             HttpClient _httpClient = new HttpClient
             {
