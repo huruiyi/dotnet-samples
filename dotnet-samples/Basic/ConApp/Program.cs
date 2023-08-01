@@ -27,6 +27,9 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
+
+
+
             Hashing.Run();
 
             Md5Demo.Demo1();

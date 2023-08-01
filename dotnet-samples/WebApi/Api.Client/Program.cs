@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using IdentityModel;
+
+using Newtonsoft.Json.Linq;
 
 using SelfHostAPI;
 
@@ -7,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Api.Client
@@ -103,6 +106,13 @@ namespace Api.Client
 
         private static async Task Main(string[] args)
         {
+            string text = "https://identitymodel.readthedocs.io/en/latest/misc/base64.html";
+            var encodeUrl = Base64Url.Encode(Encoding.UTF8.GetBytes(text));
+
+            byte[] decodeByte = Base64Url.Decode(encodeUrl);
+            string decodeStr = Encoding.UTF8.GetString(decodeByte);
+            Console.WriteLine(decodeStr);
+
             await WebApi_OAuth();
         }
 
