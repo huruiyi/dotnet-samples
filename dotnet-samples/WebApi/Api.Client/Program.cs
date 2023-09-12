@@ -134,24 +134,24 @@ namespace Api.Client
 
         private static async Task WebApi_OAuth()
         {
-            HttpClient _httpClient = new HttpClient
+            HttpClient httpClient = new HttpClient
             {
                 BaseAddress = new Uri("http://localhost:20000")
             };
             var parameters = new Dictionary<string, string>
             {
-                { "username", "807776962@qq.com" },
-                { "password", "807776962@qq.comA！" },
+                { "username", "38761770@qq.com" },
+                { "password", "Hu3876!@#$$" },
                 { "grant_type", "password" }
             };
-            string result = _httpClient.PostAsync("/Token", new FormUrlEncodedContent(parameters)).Result.Content.ReadAsStringAsync().Result;
+            string result = httpClient.PostAsync("/Token", new FormUrlEncodedContent(parameters)).Result.Content.ReadAsStringAsync().Result;
 
             string token = JObject.Parse(result)["access_token"].Value<string>();
 
             Console.WriteLine(token);
 
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            Console.WriteLine(await (await _httpClient.GetAsync("/api/values")).Content.ReadAsStringAsync());
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            Console.WriteLine(await (await httpClient.GetAsync("/api/values")).Content.ReadAsStringAsync());
             Console.ReadKey();
         }
     }
