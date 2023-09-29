@@ -10,7 +10,7 @@ namespace EFDemo
     {
         private static void Main()
         {
-            //Add();
+            Add();
             //Query();
             //Edit();
             //Delete();
@@ -34,7 +34,7 @@ namespace EFDemo
                  }).ToList();
 
             DbSet<MovieType> dbSet = DbEntities.MovieType;
-            List<MovieType> mt = dbSet.Where(m => m.Id == 3).ToList();
+            List<MovieType> mt = dbSet.Where(m => m.Id == 1).ToList();
 
             #region 多条件查询
 
@@ -70,6 +70,20 @@ namespace EFDemo
         {
             Lxrenb lxr = new Lxrenb { xm = "张杰", lbdm = 1, sjhm = "12345678912", qq = "123456789" };
             DbEntities.Lxrenb.Add(lxr);
+
+            List<MovieType> movieTypes = new List<MovieType>
+            {
+                new MovieType { Id = 1,Name="古装"}
+            };
+            DbEntities.MovieType.AddRange(movieTypes);
+
+            List<MovieInfo> moveList = new List<MovieInfo>
+            {
+                new MovieInfo{ Id = 1,Name="天下无贼",MovieTypeId=1},
+                new MovieInfo{ Id = 2,Name="如来神掌",MovieTypeId=1}
+            };
+            DbEntities.MovieInfo.AddRange(moveList);
+
             DbEntities.SaveChanges();
         }
 
