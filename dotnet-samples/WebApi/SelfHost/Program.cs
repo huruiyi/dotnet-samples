@@ -15,8 +15,8 @@ namespace SelfHost
 
     internal class Program
     {
-        private static readonly Uri _baseAddress = new Uri("http://localhost:50520/");
-        private static readonly Uri _address = new Uri(_baseAddress, "/api/hello");
+        private static readonly Uri BaseAddress = new Uri("http://localhost:40000/");
+        private static readonly Uri Address = new Uri(BaseAddress, "/api/hello");
 
         private static void Main(string[] args)
         {
@@ -24,7 +24,7 @@ namespace SelfHost
             try
             {
                 // Set up server configuration
-                HttpSelfHostConfiguration config = new HttpSelfHostConfiguration(_baseAddress);
+                HttpSelfHostConfiguration config = new HttpSelfHostConfiguration(BaseAddress);
 
                 config.Routes.MapHttpRoute(
                     name: "DefaultApi",
@@ -37,11 +37,11 @@ namespace SelfHost
 
                 // Start listening
                 server.OpenAsync().Wait();
-                Console.WriteLine("Listening on " + _baseAddress);
+                Console.WriteLine("Listening on " + BaseAddress);
 
                 // Call the web API and display the result
                 HttpClient client = new HttpClient();
-                client.GetStringAsync(_address).ContinueWith(getTask =>
+                client.GetStringAsync(Address).ContinueWith(getTask =>
                 {
                     if (getTask.IsCanceled)
                     {

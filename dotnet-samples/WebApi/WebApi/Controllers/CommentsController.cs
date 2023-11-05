@@ -12,11 +12,11 @@ namespace WebApi.Controllers
     //[Authorize]
     public class CommentsController : ApiController
     {
-        private ICommentRepository repository;
+        private readonly ICommentRepository _repository;
 
         public CommentsController(ICommentRepository repository)
         {
-            this.repository = repository;
+            this._repository = repository;
         }
 
         #region GET
@@ -24,13 +24,12 @@ namespace WebApi.Controllers
         [EnableQuery]
         public IQueryable<Comment> GetComments()
         {
-            return repository.Get().AsQueryable();
+            return _repository.Get().AsQueryable();
         }
 
         public Comment GetComment(int id)
         {
-            Comment comment;
-            if (!repository.TryGet(id, out comment))
+            if (!_repository.TryGet(id, out var comment))
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
             return comment;
         }
@@ -41,7 +40,7 @@ namespace WebApi.Controllers
 
         public HttpResponseMessage PostComment(Comment comment)
         {
-            comment = repository.Add(comment);
+            comment = _repository.Add(comment);
             var response = Request.CreateResponse<Comment>(HttpStatusCode.Created, comment);
             response.Headers.Location = new Uri(Request.RequestUri, "/api/comments/" + comment.ID);
             return response;
@@ -53,10 +52,9 @@ namespace WebApi.Controllers
 
         public Comment DeleteComment(int id)
         {
-            Comment comment;
-            if (!repository.TryGet(id, out comment))
+            if (!_repository.TryGet(id, out var comment))
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
-            repository.Delete(id);
+            _repository.Delete(id);
             return comment;
         }
 
@@ -66,7 +64,7 @@ namespace WebApi.Controllers
 
         public IEnumerable<Comment> GetComments(int pageIndex, int pageSize)
         {
-            return repository.Get().Skip(pageIndex * pageSize).Take(pageSize);
+            return _repository.Get().Skip(pageIndex * pageSize).Take(pageSize);
         }
 
         #endregion Paging GET

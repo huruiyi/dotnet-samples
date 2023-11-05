@@ -7,9 +7,10 @@
 <script src="~/Scripts/demo1/get.js"></script>
 <nav>
     <div class="">
-        <a href="default.htm">&lt;&lt;&lt; Back</a> 
+        <a href="@Url.Action("Index", "Home")">&lt;&lt;&lt; Back</a> 
         | Demo 1 Simple Get |
-        <a href="demo2-crud">On to Demo 2 - Simple CRUD &gt;&gt;&gt;</a>
+        <a href="@Url.Action("demo2_crud", "Home")">On to Demo 2 - Simple CRUD &gt;&gt;&gt;</a>
+        
     </div>
 </nav>
 <div id="content">

@@ -286,7 +286,6 @@ namespace HuUtils
                 return;
             }
 
-            Thread.Sleep(2000);
             TaskClone(txtUrlsPath.Text, txtDestBasePath.Text);
         }
 

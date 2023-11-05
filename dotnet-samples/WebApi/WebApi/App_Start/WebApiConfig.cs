@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using WebApi.Models;
 using WebApiContrib.IoC.Ninject;
 
