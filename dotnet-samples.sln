@@ -144,7 +144,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Client", "dotnet-sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.OAuth", "dotnet-samples\WebApi\WebApi.OAuth\WebApi.OAuth.csproj", "{3A02F8DE-0C0D-4AC2-AE5A-16624B8A8D31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.Core", "dotnet-samples\Mvc\Mvc.Core\Mvc.Core.csproj", "{B438FCD4-5469-4BA8-A563-EB0E70A573E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mvc.Core", "dotnet-samples\Mvc\Mvc.Core\Mvc.Core.csproj", "{B438FCD4-5469-4BA8-A563-EB0E70A573E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Jwt", "dotnet-samples\WebApi\WebApi.Jwt\WebApi.Jwt.csproj", "{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1084,6 +1086,22 @@ Global
 		{B438FCD4-5469-4BA8-A563-EB0E70A573E9}.Release|x64.Build.0 = Release|Any CPU
 		{B438FCD4-5469-4BA8-A563-EB0E70A573E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{B438FCD4-5469-4BA8-A563-EB0E70A573E9}.Release|x86.Build.0 = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|x64.Build.0 = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Debug|x86.Build.0 = Debug|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|x64.ActiveCfg = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|x64.Build.0 = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|x86.ActiveCfg = Release|Any CPU
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1149,9 +1167,10 @@ Global
 		{82FFD53D-9283-4D20-ACE7-CF18948E222E} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
 		{3A02F8DE-0C0D-4AC2-AE5A-16624B8A8D31} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
 		{B438FCD4-5469-4BA8-A563-EB0E70A573E9} = {4D6A042A-B4B7-4B08-9A13-307F415C1678}
+		{22706B46-CEDB-4BEB-8AC0-85CA749C47A2} = {4A0F886E-5ACE-4F24-85BD-0DC32FA2D231}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.5.0.505.0\lib\NET35
+		SolutionGuid = {9B70DC37-0007-47AA-9EC5-907978E9613C}
 	EndGlobalSection
 EndGlobal
