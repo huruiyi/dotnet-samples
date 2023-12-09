@@ -25,7 +25,7 @@ namespace HuUtils
         {
             FileReceiveForm.Dispose();
         }
-        public void receive()//接收线程
+        public void Receive()//接收线程
         {
             Filename = FileReceiveForm.Filenamew[ThreadNum];
             StrUrl = FileReceiveForm.Strurl;

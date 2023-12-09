@@ -81,7 +81,7 @@ namespace HuUtils
             for (int j = 0; j < ThreadSize; j++)
             {
                 httpfile[j] = new HttpFile(this, j);
-                threadk[j] = new Thread(new ThreadStart(httpfile[j].receive));
+                threadk[j] = new Thread(new ThreadStart(httpfile[j].Receive));
                 threadk[j].Start();
             }
             //启动合并各线程接收的文件线程
