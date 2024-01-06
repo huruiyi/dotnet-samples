@@ -8,7 +8,7 @@ namespace ConApp.EventSample.EventDemo5
 
         public void Speak(string content)
         {
-            Console.WriteLine("{0}说了句：{1}", Name, content);
+            Console.WriteLine(@"{0}说了句：{1}", Name, content);
             if (OnSpeak != null)
             {
                 OnSpeak(content);

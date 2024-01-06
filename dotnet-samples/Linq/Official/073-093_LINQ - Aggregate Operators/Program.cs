@@ -92,7 +92,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 int uniqueFactors = primeFactorsOf300.Distinct().Count();
 
-                Console.WriteLine("There are {0} unique prime factors of 300.", uniqueFactors);
+                Console.WriteLine(@"There are {0} unique prime factors of 300.", uniqueFactors);
             }
 
             [Category("Aggregate Operators")]
@@ -103,7 +103,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 int oddNumbers = numbers.Count(n => n % 2 == 1);
 
-                Console.WriteLine("There are {0} odd numbers in the list.", oddNumbers);
+                Console.WriteLine(@"There are {0} odd numbers in the list.", oddNumbers);
             }
 
             [Category("Aggregate Operators")]
@@ -141,7 +141,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 double numSum = numbers.Sum();
 
-                Console.WriteLine("The sum of the numbers is {0}.", numSum);
+                Console.WriteLine(@"The sum of the numbers is {0}.", numSum);
             }
 
             [Category("Aggregate Operators")]
@@ -152,7 +152,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 double totalChars = words.Sum(w => w.Length);
 
-                Console.WriteLine("There are a total of {0} characters in these words.", totalChars);
+                Console.WriteLine(@"There are a total of {0} characters in these words.", totalChars);
             }
 
             [Category("Aggregate Operators")]
@@ -177,7 +177,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 int minNum = numbers.Min();
 
-                Console.WriteLine("The minimum number is {0}.", minNum);
+                Console.WriteLine(@"The minimum number is {0}.", minNum);
             }
 
             [Category("Aggregate Operators")]
@@ -188,7 +188,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 int shortestWord = words.Min(w => w.Length);
 
-                Console.WriteLine("The shortest word is {0} characters long.", shortestWord);
+                Console.WriteLine(@"The shortest word is {0} characters long.", shortestWord);
             }
 
             [Category("Aggregate Operators")]
@@ -228,7 +228,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 int maxNum = numbers.Max();
 
-                Console.WriteLine("The maximum number is {0}.", maxNum);
+                Console.WriteLine(@"The maximum number is {0}.", maxNum);
             }
 
             [Category("Aggregate Operators")]
@@ -239,7 +239,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 int longestLength = words.Max(w => w.Length);
 
-                Console.WriteLine("The longest word is {0} characters long.", longestLength);
+                Console.WriteLine(@"The longest word is {0} characters long.", longestLength);
             }
 
             [Category("Aggregate Operators")]
@@ -279,7 +279,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 double averageNum = numbers.Average();
 
-                Console.WriteLine("The average number is {0}.", averageNum);
+                Console.WriteLine(@"The average number is {0}.", averageNum);
             }
 
             [Category("Aggregate Operators")]
@@ -290,7 +290,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 double averageLength = words.Average(w => w.Length);
 
-                Console.WriteLine("The average word length is {0} characters.", averageLength);
+                Console.WriteLine(@"The average word length is {0} characters.", averageLength);
             }
 
             [Category("Aggregate Operators")]
@@ -315,7 +315,7 @@ namespace _073_093_LINQ___Aggregate_Operators
 
                 double product = doubles.Aggregate((runningProduct, nextFactor) => runningProduct * nextFactor);
 
-                Console.WriteLine("Total product of all numbers: {0}", product);
+                Console.WriteLine(@"Total product of all numbers: {0}", product);
             }
 
             [Category("Aggregate Operators")]
@@ -331,7 +331,7 @@ namespace _073_093_LINQ___Aggregate_Operators
                         (balance, nextWithdrawal) =>
                             ((nextWithdrawal <= balance) ? (balance - nextWithdrawal) : balance));
 
-                Console.WriteLine("Ending balance: {0}", endBalance);
+                Console.WriteLine(@"Ending balance: {0}", endBalance);
             }
 
             public List<Product> GetProductList()

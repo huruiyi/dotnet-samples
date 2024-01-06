@@ -13,7 +13,7 @@ namespace BasicSample.Model
 
         public void DoMoreWork()
         {
-            Console.WriteLine("Instance thread procedure. Data={0}", Data);
+            Console.WriteLine(@"Instance thread procedure. Data={0}", Data);
         }
     }
 }

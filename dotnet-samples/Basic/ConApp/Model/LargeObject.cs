@@ -1,10 +1,13 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace DotNet
+namespace ConApp.Model
 {
-
-    class LargeObject
+    public class LargeObject
     {
         int initBy = 0;
         public int InitializedBy { get { return initBy; } }
@@ -12,7 +15,7 @@ namespace DotNet
         public LargeObject()
         {
             initBy = Thread.CurrentThread.ManagedThreadId;
-            Console.WriteLine("LargeObject was created on thread id {0}.", initBy);
+            Console.WriteLine(@"LargeObject was created on thread id {0}.", initBy);
         }
         public long[] Data = new long[100000000];
     }

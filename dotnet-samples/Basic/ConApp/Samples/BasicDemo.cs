@@ -25,19 +25,19 @@ namespace ConApp
         {
             char c1 = 'A';
             char c2 = '\u0038';
-            Console.WriteLine("字符型变量c1={1},c2={0}", c1, c2);
+            Console.WriteLine(@"字符型变量c1={1},c2={0}", c1, c2);
             sbyte b1 = -12;
             byte b2 = 12;
-            Console.WriteLine("字节型变量b1={0},无符号字节型变量b2={1}", b1, b2);
+            Console.WriteLine(@"字节型变量b1={0},无符号字节型变量b2={1}", b1, b2);
             short s1 = -012;         //十进制
             ushort s2 = 16;
-            Console.WriteLine("短整型变量s1={0},无符号短整型变量s2={1}", s1, s2);
+            Console.WriteLine(@"短整型变量s1={0},无符号短整型变量s2={1}", s1, s2);
             int i1 = -0x48bF;      //十六进制
             uint i2 = 12;
-            Console.WriteLine("整型变量i1={0},无符号整型变量i2={1}", i1, i2);
+            Console.WriteLine(@"整型变量i1={0},无符号整型变量i2={1}", i1, i2);
             long l1 = 0X2Dcfa6;
             ulong l2 = 0x2dcfa6L;    //整型常量加后缀L或l,说明为long型
-            Console.WriteLine("长整型变量l1={0},无符号长整型变量l2={1}", l1, l2);
+            Console.WriteLine(@"长整型变量l1={0},无符号长整型变量l2={1}", l1, l2);
             float f1 = 1;
             float f2 = 22f;          //加后缀f，将浮点型常量说明为float型
             float f3 = .26f;
@@ -48,13 +48,13 @@ namespace ConApp
             decimal d4 = 22;
             decimal d5 = -2.1e12m;     //加后缀m，将浮点数型常量说明为decimal型
             Console.WriteLine("双精度浮点型变量d1={0},d2={1},d3={2}", d1, d2, d3);
-            Console.WriteLine("十进制小数型变量d4={0},d5={1}", d4, d5);
+            Console.WriteLine(@"十进制小数型变量d4={0},d5={1}", d4, d5);
 
             int x = 5, y = 10, z = -128;
             Console.WriteLine("{0}&{1}={2}", x, y, (x & y));
             Console.WriteLine("{0}|{1}={2}", x, y, (x | y));
             Console.WriteLine("{0}^{1}={2}", x, y, (x ^ y));
-            Console.WriteLine("~{0}={1}", x, (~x));
+            Console.WriteLine(@"~{0}={1}", x, (~x));
             Console.WriteLine("{0}<<{1}={2}", z, x, (z << x));
             Console.WriteLine("{0}>>{1}={2}", z, x, (z >> x));
         }
@@ -68,15 +68,15 @@ namespace ConApp
             ushort us1 = 3, us2 = 4, us3;
 
             c2 = (char)(c1 + 'A');
-            Console.WriteLine("char c2={0}", c2);
+            Console.WriteLine(@"char c2={0}", c2);
             sb3 = (sbyte)(sb1 - sb2);
-            Console.WriteLine("sbyte  sb3={0}", sb3);
+            Console.WriteLine(@"sbyte  sb3={0}", sb3);
             b3 = (byte)(b1 * b2);
-            Console.WriteLine("byte  b3={0}", b3);
+            Console.WriteLine(@"byte  b3={0}", b3);
             s3 = (short)(s1 / s2);
-            Console.WriteLine("short  s3={0}", s3);
+            Console.WriteLine(@"short  s3={0}", s3);
             us3 = (ushort)(us1 & us2);
-            Console.WriteLine("ushort  us3={0}", us3);
+            Console.WriteLine(@"ushort  us3={0}", us3);
         }
 
         public static void BoolOperation()

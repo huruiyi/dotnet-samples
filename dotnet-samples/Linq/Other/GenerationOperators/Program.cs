@@ -40,7 +40,7 @@ namespace GenerationOperators
 
                 foreach (var n in numbers)
                 {
-                    Console.WriteLine("The number {0} is {1}.", n.Number, n.OddEven);
+                    Console.WriteLine(@"The number {0} is {1}.", n.Number, n.OddEven);
                 }
             }
 

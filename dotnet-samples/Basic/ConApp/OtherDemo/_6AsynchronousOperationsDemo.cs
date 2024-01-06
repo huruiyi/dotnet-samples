@@ -28,9 +28,9 @@ namespace ConApp.OtherDemo
             AsyncMethodCaller caller = new AsyncMethodCaller(TestMethod);
             IAsyncResult result = caller.BeginInvoke(3000, out threadId, null, null);
             Thread.Sleep(3000);
-            Console.WriteLine("Main thread {0} does some work.", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@"Main thread {0} does some work.", Thread.CurrentThread.ManagedThreadId);
             string returnValue = caller.EndInvoke(out threadId, result);
-            Console.WriteLine("The call executed on thread {0}, with return value \"{1}\".", threadId, returnValue);
+            Console.WriteLine(@"The call executed on thread {0}, with return value ""{1}"".", threadId, returnValue);
             Console.ReadKey();
         }
 
@@ -40,11 +40,11 @@ namespace ConApp.OtherDemo
             AsyncMethodCaller caller = new AsyncMethodCaller(TestMethod);
             IAsyncResult result = caller.BeginInvoke(3000, out threadId, null, null);
             Thread.Sleep(0);
-            Console.WriteLine("Main thread {0} does some work.", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@"Main thread {0} does some work.", Thread.CurrentThread.ManagedThreadId);
             result.AsyncWaitHandle.WaitOne();
             string returnValue = caller.EndInvoke(out threadId, result);
             result.AsyncWaitHandle.Close();
-            Console.WriteLine("The call executed on thread {0}, with return value \"{1}\".", threadId, returnValue);
+            Console.WriteLine(@"The call executed on thread {0}, with return value ""{1}"".", threadId, returnValue);
         }
 
         public static void Demo3()
@@ -59,7 +59,8 @@ namespace ConApp.OtherDemo
             }
 
             string returnValue = caller.EndInvoke(out threadId, result);
-            Console.WriteLine("\nThe call executed on thread {0}, with return value \"{1}\".", threadId, returnValue);
+            Console.WriteLine(@"
+The call executed on thread {0}, with return value ""{1}"".", threadId, returnValue);
         }
 
         public static void Demo4()
@@ -86,7 +87,7 @@ namespace ConApp.OtherDemo
                 new AsyncCallback(CallbackMethod),
                 "The call executed on thread {0}, with return value \"{1}\".");
 
-            Console.WriteLine("The main thread {0} continues to execute...",
+            Console.WriteLine(@"The main thread {0} continues to execute...",
                 Thread.CurrentThread.ManagedThreadId);
 
             // The callback is made on a ThreadPool thread. ThreadPool threads

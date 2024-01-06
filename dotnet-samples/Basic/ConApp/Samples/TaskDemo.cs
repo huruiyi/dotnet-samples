@@ -38,7 +38,7 @@ namespace ConApp
                         if (value == 0)
                         {
                             source.Cancel();
-                            Console.WriteLine("Cancelling at task {0}", iteration);
+                            Console.WriteLine(@"Cancelling at task {0}", iteration);
                             break;
                         }
                         values[ctr - 1] = value;
@@ -65,7 +65,7 @@ namespace ConApp
 
                         return sum / (double)n;
                     }, token);
-                Console.WriteLine("The mean is {0}.", fTask.Result);
+                Console.WriteLine(@"The mean is {0}.", fTask.Result);
             }
             catch (AggregateException ae)
             {
@@ -73,7 +73,7 @@ namespace ConApp
                 {
                     if (e is TaskCanceledException)
                     {
-                        Console.WriteLine("Unable to compute mean: {0}", ((TaskCanceledException)e).Message);
+                        Console.WriteLine(@"Unable to compute mean: {0}", ((TaskCanceledException)e).Message);
                     }
                     else
                     {
@@ -113,7 +113,7 @@ namespace ConApp
                         if (value == 0)
                         {
                             source.Cancel();
-                            Console.WriteLine("Cancelling at task {0}", iteration);
+                            Console.WriteLine(@"Cancelling at task {0}", iteration);
                             break;
                         }
                         values[ctr - 1] = value;
@@ -139,7 +139,7 @@ namespace ConApp
                     }
                     return sum / (double)n;
                 }, token);
-                Console.WriteLine("The mean is {0}.", fTask.Result);
+                Console.WriteLine(@"The mean is {0}.", fTask.Result);
             }
             catch (AggregateException ae)
             {
@@ -147,7 +147,7 @@ namespace ConApp
                 {
                     if (e is TaskCanceledException)
                     {
-                        Console.WriteLine("Unable to compute mean: {0}", e.Message);
+                        Console.WriteLine(@"Unable to compute mean: {0}", e.Message);
                     }
                     else
                     {
@@ -216,7 +216,7 @@ namespace ConApp
                     delegate { GetPseronList5(pers5); });
             });
             Task.WaitAll();
-            task.ContinueWith(delegate (Task tt) { Console.WriteLine("执行完成,{0}", tt.Status); }
+            task.ContinueWith(delegate (Task tt) { Console.WriteLine(@"执行完成,{0}", tt.Status); }
             );
         }
 
@@ -226,7 +226,7 @@ namespace ConApp
             {
                 pers.Add(new Person { Name = "pl1Name" + i, Age = i });
                 Thread.Sleep(100 * i);
-                Console.WriteLine("p1Listp{0}创建成功", i);
+                Console.WriteLine(@"p1Listp{0}创建成功", i);
             }
         }
 
@@ -236,7 +236,7 @@ namespace ConApp
             {
                 pers.Add(new Person { Name = "pl1Name" + i, Age = i });
                 Thread.Sleep(100 * i);
-                Console.WriteLine("p2Listp{0}创建成功", i);
+                Console.WriteLine(@"p2Listp{0}创建成功", i);
             }
         }
 
@@ -246,7 +246,7 @@ namespace ConApp
             {
                 pers.Add(new Person { Name = "pl2Name" + i, Age = i });
                 Thread.Sleep(100 * i);
-                Console.WriteLine("p3Listp{0}创建成功", i);
+                Console.WriteLine(@"p3Listp{0}创建成功", i);
             }
         }
 
@@ -256,7 +256,7 @@ namespace ConApp
             {
                 pers.Add(new Person { Name = "pl3Name" + i, Age = i });
                 Thread.Sleep(100 * i);
-                Console.WriteLine("p4Listp{0}创建成功", i);
+                Console.WriteLine(@"p4Listp{0}创建成功", i);
             }
         }
 
@@ -266,7 +266,7 @@ namespace ConApp
             {
                 pers.Add(new Person { Name = "pl4Name" + i, Age = i });
                 Thread.Sleep(100 * i);
-                Console.WriteLine("p5Listp{0}创建成功", i);
+                Console.WriteLine(@"p5Listp{0}创建成功", i);
             }
         }
 
@@ -294,7 +294,7 @@ namespace ConApp
                 }
 
                 // As of .NET Framework 4: After some initial spinning, SpinWait.SpinOnce() will yield every time.
-                Console.WriteLine("SpinWait called {0} times, yielded {1} times", sw.Count, numYields);
+                Console.WriteLine(@"SpinWait called {0} times, yielded {1} times", sw.Count, numYields);
             });
 
             // Second task: Wait 100ms, then set someBoolean to true
@@ -326,7 +326,7 @@ namespace ConApp
 
             t1.Start();
 
-            Console.WriteLine("t1 has been launched. (Main Thread={0})", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@"t1 has been launched. (Main Thread={0})", Thread.CurrentThread.ManagedThreadId);
 
             // Wait for the task to finish.
             // You may optionally provide a timeout interval or a cancellation token
@@ -367,12 +367,12 @@ namespace ConApp
                 mres2.Set();
             });
 
-            Console.WriteLine("main thread: mres3.IsSet = {0} (should be true)", mres3.IsSet);
+            Console.WriteLine(@"main thread: mres3.IsSet = {0} (should be true)", mres3.IsSet);
             Console.WriteLine("main thread signalling mres1");
             mres1.Set(); // This will "kick off" the observer Task
             mres2.Wait(); // This won't return until observer Task has finished resetting mres3
             Console.WriteLine("main thread sees signaled mres2!");
-            Console.WriteLine("main thread: mres3.IsSet = {0} (should be false)", mres3.IsSet);
+            Console.WriteLine(@"main thread: mres3.IsSet = {0} (should be false)", mres3.IsSet);
 
             // It's good form to Dispose() a ManualResetEventSlim when you're done with it
             observer.Wait(); // make sure that this has fully completed
@@ -525,7 +525,7 @@ namespace ConApp
             {
                 Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 sock.Connect(point);
-                Console.WriteLine("{0}成功!", point);
+                Console.WriteLine(@"{0}成功!", point);
             }
             catch (SocketException e)
             {
@@ -533,7 +533,7 @@ namespace ConApp
                 {
                     Console.WriteLine(e.Message);
                 }
-                Console.WriteLine("{0}失败", port);
+                Console.WriteLine(@"{0}失败", port);
             }
         }
 

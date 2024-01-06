@@ -55,7 +55,7 @@ namespace ConApp.DelegateDemos
 
             foreach (KeyValuePair<int, Type> keyValuePair in typeMap)
             {
-                Console.WriteLine("{0}:{1}", keyValuePair.Key.ToString().PadLeft(2, '0'), keyValuePair.Value.Name);
+                Console.WriteLine(@"{0}:{1}", keyValuePair.Key.ToString().PadLeft(2, '0'), keyValuePair.Value.Name);
             }
             Console.WriteLine("请输入编号执行");
             string strNum = Console.ReadLine();

@@ -113,7 +113,7 @@ namespace _094_097_LINQ___Miscellaneous_Operators
 
                 bool match = wordsA.SequenceEqual(wordsB);
 
-                Console.WriteLine("The sequences match: {0}", match);
+                Console.WriteLine(@"The sequences match: {0}", match);
             }
 
             [Category("Miscellaneous Operators")]
@@ -126,7 +126,7 @@ namespace _094_097_LINQ___Miscellaneous_Operators
 
                 bool match = wordsA.SequenceEqual(wordsB);
 
-                Console.WriteLine("The sequences match: {0}", match);
+                Console.WriteLine(@"The sequences match: {0}", match);
             }
 
             public List<Product> GetProductList()

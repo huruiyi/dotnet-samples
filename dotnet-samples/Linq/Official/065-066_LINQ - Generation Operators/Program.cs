@@ -31,7 +31,7 @@ namespace _065_066_LINQ___Generation_Operators
 
                 foreach (var n in numbers)
                 {
-                    Console.WriteLine("The number {0} is {1}.", n.Number, n.OddEven);
+                    Console.WriteLine(@"The number {0} is {1}.", n.Number, n.OddEven);
                 }
             }
 

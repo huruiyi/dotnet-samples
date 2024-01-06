@@ -41,27 +41,27 @@ namespace ConApp.OtherDemo
                 string message = data as string;
                 if (message != null)
                 {
-                    Console.WriteLine("Request for {0} returned message: {1}", HostNames[i], message);
+                    Console.WriteLine(@"Request for {0} returned message: {1}", HostNames[i], message);
                     continue;
                 }
                 IPHostEntry h = (IPHostEntry)data;
                 string[] aliases = h.Aliases;
                 if (aliases.Length > 0)
                 {
-                    Console.WriteLine("Aliases for {0}", HostNames[i]);
+                    Console.WriteLine(@"Aliases for {0}", HostNames[i]);
                     foreach (string t in aliases)
                     {
-                        Console.WriteLine("{0}", t);
+                        Console.WriteLine(@"{0}", t);
                     }
                 }
 
                 IPAddress[] addresses = h.AddressList;
                 if (addresses.Length > 0)
                 {
-                    Console.WriteLine("Addresses for {0}", HostNames[i]);
+                    Console.WriteLine(@"Addresses for {0}", HostNames[i]);
                     foreach (IPAddress t in addresses)
                     {
-                        Console.WriteLine("{0}", t);
+                        Console.WriteLine(@"{0}", t);
                     }
                 }
             }
@@ -69,7 +69,7 @@ namespace ConApp.OtherDemo
 
         private static void UpdateUserInterface()
         {
-            Console.WriteLine("{0} requests remaining.", _requestCounter);
+            Console.WriteLine(@"{0} requests remaining.", _requestCounter);
         }
 
         private static void ProcessDnsInformation(IAsyncResult result)

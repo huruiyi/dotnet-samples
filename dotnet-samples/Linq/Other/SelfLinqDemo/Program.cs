@@ -95,15 +95,15 @@ namespace SelfLinqDemo
             Console.WriteLine("Number: In-place?");
             foreach (var n in numsInPlace)
             {
-                Console.WriteLine("{0}: {1}", n.Num, n.InPlace);
+                Console.WriteLine(@"{0}: {1}", n.Num, n.InPlace);
             }
             foreach (var n in numInSuoyin)
             {
-                Console.WriteLine("{0}", n.InPlace);
+                Console.WriteLine(@"{0}", n.InPlace);
             }
             foreach (var n in nu)
             {
-                Console.WriteLine("{0}", n.InPlace);
+                Console.WriteLine(@"{0}", n.InPlace);
             }
         }
 
@@ -134,14 +134,14 @@ namespace SelfLinqDemo
                           select new { Upper = w.ToUpper(), Lower = w.ToLower() };
             foreach (var ul in upplow1)
             {
-                Console.WriteLine("大写: {0}, 小写: {1}", ul.Upper, ul.Lower);
+                Console.WriteLine(@"大写: {0}, 小写: {1}", ul.Upper, ul.Lower);
             }
             Console.WriteLine("");
             var upplow2 = from m in words
                           select new { 大写单词 = m.ToUpper(), 小写单词 = m.ToLower() };
             foreach (var ul in upplow2)
             {
-                Console.WriteLine("大写: {0}, 小写: {1}", ul.大写单词, ul.小写单词);
+                Console.WriteLine(@"大写: {0}, 小写: {1}", ul.大写单词, ul.小写单词);
             }
 
             int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -150,7 +150,7 @@ namespace SelfLinqDemo
                                 select new { num = strings[n], Even = (n % 2 == 0) };
             foreach (var d in digitOddEvens)
             {
-                Console.WriteLine("{1}   {0} ", d.num, d.Even ? "even" : "odd");
+                Console.WriteLine(@"{1}   {0} ", d.num, d.Even ? "even" : "odd");
             }
         }
 
@@ -218,7 +218,7 @@ namespace SelfLinqDemo
             var oushu = numbers.Where(m => m % 2 == 0);
             foreach (var n in oushu)
             {
-                Console.WriteLine("{0}是偶数", n);
+                Console.WriteLine(@"{0}是偶数", n);
             }
 
             var firstNumbersLessThan6 = numbers.TakeWhile(n => n < 6);
@@ -357,7 +357,7 @@ namespace SelfLinqDemo
             while (groups.MoveNext())
             {
                 IGrouping<string, Fruit> group = groups.Current;
-                Console.WriteLine("Group for {0}", group.Key);
+                Console.WriteLine(@"Group for {0}", group.Key);
                 foreach (Fruit fruit in group)
                 {
                     Console.WriteLine($"new Fruit({fruit.ShelfLife},{fruit.Name},{fruit.Color})");
@@ -408,7 +408,7 @@ namespace SelfLinqDemo
                                              };
             foreach (string str in dtEnum)
             {
-                Console.WriteLine("Element {0}", str);
+                Console.WriteLine(@"Element {0}", str);
             }
         }
 

@@ -110,7 +110,7 @@ namespace ConApp.Samples
             Type type = typeof(SocialTypeEnum);
             foreach (string s in Enum.GetNames(type))
             {
-                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(type, Enum.Parse(type, s), "d"));
+                Console.WriteLine(@"{0,-11}= {1}", s, Enum.Format(type, Enum.Parse(type, s), "d"));
             }
         }
 
@@ -128,7 +128,7 @@ namespace ConApp.Samples
             for (int i = 0; i < 5; i++)
             {
                 var enumName = Enum.GetName(typeof(SocialTypeEnum), i);
-                Console.WriteLine("{0}:{1}", i, enumName);
+                Console.WriteLine(@"{0}:{1}", i, enumName);
             }
             SocialTypeEnum result;
             bool result1 = Enum.TryParse("1", out result);
@@ -138,7 +138,7 @@ namespace ConApp.Samples
             string[] result5 = Enum.GetNames(typeof(SocialTypeEnum));
             Type result6 = Enum.GetUnderlyingType(typeof(SocialTypeEnum));
             Array array = Enum.GetValues(typeof(SocialTypeEnum));
-            Console.WriteLine("数字{0}对应的枚举Name值:{1}", 3, Enum.GetName(typeof(SocialTypeEnum), 3));
+            Console.WriteLine(@"数字{0}对应的枚举Name值:{1}", 3, Enum.GetName(typeof(SocialTypeEnum), 3));
 
             Type ste = typeof(SocialTypeEnum);
             object[] result7 = ste.GetField(SocialTypeEnum.Facebook.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
@@ -150,14 +150,14 @@ namespace ConApp.Samples
             Type boiling = typeof(BoilingPoints);
             foreach (string s in Enum.GetNames(weekdays))
             {
-                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(weekdays, Enum.Parse(weekdays, s), "d"));
+                Console.WriteLine(@"{0,-11}= {1}", s, Enum.Format(weekdays, Enum.Parse(weekdays, s), "d"));
             }
             foreach (string s in Enum.GetNames(boiling))
             {
-                Console.WriteLine("{0,-11}= {1}", s, Enum.Format(boiling, Enum.Parse(boiling, s), "d"));
+                Console.WriteLine(@"{0,-11}= {1}", s, Enum.Format(boiling, Enum.Parse(boiling, s), "d"));
             }
             Colors myColors = Colors.Red | Colors.Blue | Colors.Yellow;
-            Console.WriteLine("myColors holds a combination of colors. Namely: {0}", myColors);
+            Console.WriteLine(@"myColors holds a combination of colors. Namely: {0}", myColors);
         }
     }
 }

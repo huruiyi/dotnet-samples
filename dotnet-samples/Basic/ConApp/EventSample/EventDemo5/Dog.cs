@@ -19,7 +19,7 @@ namespace ConApp.EventSample.EventDemo5
         {
             if (content == "Bye Bye")
             {
-                Console.WriteLine("{0}狗叫了声：汪汪", Name);
+                Console.WriteLine(@"{0}狗叫了声：汪汪", Name);
             }
         }
     }

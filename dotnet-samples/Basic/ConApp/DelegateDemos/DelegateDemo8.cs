@@ -66,7 +66,7 @@ namespace ConApp.DelegateDemos
             DelMath delLambda2 = (i, i1) => i + i1;
             delLambda2(3, 2);
 
-            Console.WriteLine(" 主线程是：{0}", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@" 主线程是：{0}", Thread.CurrentThread.ManagedThreadId);
 
             DelMath myDel = new DelMath(AddStatic);
 
@@ -78,7 +78,7 @@ namespace ConApp.DelegateDemos
                 //主线程干其他事
             }
             int addResult = myDel.EndInvoke(delResult);
-            Console.WriteLine("主线程获得结果是：{0}", addResult);
+            Console.WriteLine(@"主线程获得结果是：{0}", addResult);
 
             myDelMath1 mdm = delegate (int a, int b, int c)
             {

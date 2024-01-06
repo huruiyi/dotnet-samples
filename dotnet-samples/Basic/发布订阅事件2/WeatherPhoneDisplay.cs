@@ -14,7 +14,7 @@ namespace 发布订阅事件2
 
         public void Display(WeatherInformation information)
         {
-            Console.WriteLine("{0}员工手机显示天气信息：{1}", EmplayeeName, information.ToString());
+            Console.WriteLine(@"{0}员工手机显示天气信息：{1}", EmplayeeName, information.ToString());
         }
     }
 }

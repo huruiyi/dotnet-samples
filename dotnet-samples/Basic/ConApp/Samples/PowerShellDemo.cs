@@ -228,7 +228,7 @@ namespace ConApp
             foreach (PSObject psObject in cNameProcesses)
             {
                 Process process = psObject.BaseObject as Process;
-                Console.WriteLine("Process Name: {0}", process.ProcessName);
+                Console.WriteLine(@"Process Name: {0}", process.ProcessName);
             }
         }
 

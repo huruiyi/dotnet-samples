@@ -27,7 +27,7 @@ namespace _040_045_LINQ____Grouping_Operators
 
             foreach (var g in numberGroups)
             {
-                Console.WriteLine("Numbers with a remainder of {0} when divided by 5:", g.Remainder);
+                Console.WriteLine(@"Numbers with a remainder of {0} when divided by 5:", g.Remainder);
                 foreach (var n in g.Numbers)
                 {
                     Console.WriteLine(n.Field<int>("number"));
@@ -48,7 +48,7 @@ namespace _040_045_LINQ____Grouping_Operators
 
             foreach (var g in wordGroups)
             {
-                Console.WriteLine("Words that start with the letter '{0}':", g.FirstLetter);
+                Console.WriteLine(@"Words that start with the letter '{0}':", g.FirstLetter);
                 foreach (var w in g.Words)
                 {
                     Console.WriteLine(w.Field<string>("word"));
@@ -69,7 +69,7 @@ namespace _040_045_LINQ____Grouping_Operators
 
             foreach (var g in productGroups)
             {
-                Console.WriteLine("Category: {0}", g.Category);
+                Console.WriteLine(@"Category: {0}", g.Category);
                 foreach (var w in g.Products)
                 {
                     Console.WriteLine("\t" + w.Field<string>("ProductName"));
@@ -105,17 +105,17 @@ namespace _040_045_LINQ____Grouping_Operators
 
             foreach (var cog in customerOrderGroups)
             {
-                Console.WriteLine("CompanyName= {0}", cog.CompanyName);
+                Console.WriteLine(@"CompanyName= {0}", cog.CompanyName);
                 foreach (var yg in cog.YearGroups)
                 {
-                    Console.WriteLine("\t Year= {0}", yg.Year);
+                    Console.WriteLine(@"	 Year= {0}", yg.Year);
                     foreach (var mg in yg.MonthGroups)
                     {
-                        Console.WriteLine("\t\t Month= {0}", mg.Month);
+                        Console.WriteLine(@"		 Month= {0}", mg.Month);
                         foreach (var order in mg.Orders)
                         {
-                            Console.WriteLine("\t\t\t OrderID= {0} ", order.Field<int>("OrderID"));
-                            Console.WriteLine("\t\t\t OrderDate= {0} ", order.Field<DateTime>("OrderDate"));
+                            Console.WriteLine(@"			 OrderID= {0} ", order.Field<int>("OrderID"));
+                            Console.WriteLine(@"			 OrderDate= {0} ", order.Field<DateTime>("OrderDate"));
                         }
                     }
                 }
@@ -132,7 +132,7 @@ namespace _040_045_LINQ____Grouping_Operators
 
             foreach (var g in orderGroups)
             {
-                Console.WriteLine("Key: {0}", g.Key);
+                Console.WriteLine(@"Key: {0}", g.Key);
                 foreach (var w in g)
                 {
                     Console.WriteLine("\t" + w.Field<string>("anagram"));
@@ -154,7 +154,7 @@ namespace _040_045_LINQ____Grouping_Operators
 
             foreach (var g in orderGroups)
             {
-                Console.WriteLine("Key: {0}", g.Key);
+                Console.WriteLine(@"Key: {0}", g.Key);
                 foreach (var w in g)
                 {
                     Console.WriteLine("\t" + w);

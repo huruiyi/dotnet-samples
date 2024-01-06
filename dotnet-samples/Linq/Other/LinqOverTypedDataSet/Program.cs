@@ -47,7 +47,7 @@ namespace LinqOverTypedDataSet
 
                 foreach (var emp in q)
                 {
-                    Console.WriteLine("Id = {0}, Name = {1}", emp.ID, emp.Name);
+                    Console.WriteLine(@"Id = {0}, Name = {1}", emp.ID, emp.Name);
                 }
             }
 
@@ -66,7 +66,7 @@ namespace LinqOverTypedDataSet
 
                 foreach (var o in q)
                 {
-                    Console.WriteLine("Id = {0}, Name = {1}", o.EmployeeID, o.EmployeeName);
+                    Console.WriteLine(@"Id = {0}, Name = {1}", o.EmployeeID, o.EmployeeName);
                 }
             }
 
@@ -94,7 +94,7 @@ namespace LinqOverTypedDataSet
 
             private void PrettyPrintDataTable(DataTable table)
             {
-                Console.WriteLine("Table: {0}", table.TableName);
+                Console.WriteLine(@"Table: {0}", table.TableName);
                 foreach (DataRow row in table.Rows)
                 {
                     StringBuilder sb = new StringBuilder();

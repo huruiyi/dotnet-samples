@@ -106,7 +106,7 @@ namespace ConApp.OtherDemo
                 new FileStream("Test#@@#.dat", FileMode.Create,
                 FileAccess.ReadWrite, FileShare.None, 4096, true);
 
-            Console.WriteLine("fStream was {0}opened asynchronously.",
+            Console.WriteLine(@"fStream was {0}opened asynchronously.",
                 fStream.IsAsync ? "" : "not ");
 
             // Asynchronously write to the file.     new  State(fStream, writeArray, manualEvent)

@@ -289,7 +289,7 @@ namespace ConApp
                     Console.WriteLine("Aliases");
                     foreach (string t in aliases)
                     {
-                        Console.WriteLine("{0}", t);
+                        Console.WriteLine(@"{0}", t);
                     }
                 }
                 if (addresses.Length > 0)
@@ -297,13 +297,13 @@ namespace ConApp
                     Console.WriteLine("Addresses");
                     foreach (IPAddress t in addresses)
                     {
-                        Console.WriteLine("{0}", t.ToString());
+                        Console.WriteLine(@"{0}", t.ToString());
                     }
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine("Exception occurred while processing the request: {0}", e.Message);
+                Console.WriteLine(@"Exception occurred while processing the request: {0}", e.Message);
             }
         }
 

@@ -41,7 +41,7 @@ namespace _001_005_LINQ___Restriction_Operators
             Console.WriteLine("Sold out products:");
             foreach (var product in soldOutProducts)
             {
-                Console.WriteLine("{0} is sold out!", product.ProductName);
+                Console.WriteLine(@"{0} is sold out!", product.ProductName);
             }
         }
 
@@ -58,7 +58,7 @@ namespace _001_005_LINQ___Restriction_Operators
             Console.WriteLine("In-stock products that cost more than 3.00:");
             foreach (var product in expensiveInStockProducts)
             {
-                Console.WriteLine("{0} is in stock and costs more than 3.00.", product.ProductName);
+                Console.WriteLine(@"{0} is in stock and costs more than 3.00.", product.ProductName);
             }
         }
 
@@ -75,10 +75,10 @@ namespace _001_005_LINQ___Restriction_Operators
             Console.WriteLine("Customers from Washington and their orders:");
             foreach (var customer in waCustomers)
             {
-                Console.WriteLine("Customer {0}: {1}", customer.CustomerID, customer.CompanyName);
+                Console.WriteLine(@"Customer {0}: {1}", customer.CustomerID, customer.CompanyName);
                 foreach (var order in customer.Orders)
                 {
-                    Console.WriteLine("  Order {0}: {1}", order.OrderID, order.OrderDate);
+                    Console.WriteLine(@"  Order {0}: {1}", order.OrderID, order.OrderDate);
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace _001_005_LINQ___Restriction_Operators
             Console.WriteLine("Short digits:");
             foreach (var d in shortDigits)
             {
-                Console.WriteLine("The word {0} is shorter than its value.", d);
+                Console.WriteLine(@"The word {0} is shorter than its value.", d);
             }
         }
 

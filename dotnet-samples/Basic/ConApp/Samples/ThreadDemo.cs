@@ -55,7 +55,7 @@ namespace ConApp
                 Thread.Sleep(0);  // 放弃当前线程的CPU时间片，Windows可能调度其他线程
                 if (preCount == _mCount)  // 数据没有变化，表明线程没有执行
                 {
-                    Console.WriteLine("dead lock! count: {0}---{1}", _mCount, DateTime.Now.Ticks);
+                    Console.WriteLine(@"dead lock! count: {0}---{1}", _mCount, DateTime.Now.Ticks);
                 }
             }
         }

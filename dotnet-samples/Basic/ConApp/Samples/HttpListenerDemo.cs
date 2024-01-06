@@ -44,7 +44,7 @@ namespace ConApp
                     String query = context.Request.Url.Query.Replace("?", "");
                     StreamReader sr = new StreamReader(context.Request.InputStream);
                     Console.WriteLine(sr.ReadToEnd());
-                    Console.WriteLine("接收到请求{0}{1}", page, query);
+                    Console.WriteLine(@"接收到请求{0}{1}", page, query);
                     StreamWriter sw = new StreamWriter(context.Response.OutputStream);
                     sw.Write("Hello World!");
                     sw.Flush();
@@ -78,14 +78,14 @@ namespace ConApp
                 HttpListenerContext context = listener.GetContext();
                 // 取得请求对象
                 HttpListenerRequest request = context.Request;
-                Console.WriteLine("{0} {1} HTTP/1.1", request.HttpMethod, request.RawUrl);
-                Console.WriteLine("Accept: {0}", string.Join(",", request.AcceptTypes));
-                Console.WriteLine("Accept-Language: {0}", string.Join(",", request.UserLanguages));
-                Console.WriteLine("User-Agent: {0}", request.UserAgent);
-                Console.WriteLine("Accept-Encoding: {0}", request.Headers["Accept-Encoding"]);
-                Console.WriteLine("Connection: {0}", request.KeepAlive ? "Keep-Alive" : "close");
-                Console.WriteLine("Host: {0}", request.UserHostName);
-                Console.WriteLine("Pragma: {0}", request.Headers["Pragma"]);
+                Console.WriteLine(@"{0} {1} HTTP/1.1", request.HttpMethod, request.RawUrl);
+                Console.WriteLine(@"Accept: {0}", string.Join(",", request.AcceptTypes));
+                Console.WriteLine(@"Accept-Language: {0}", string.Join(",", request.UserLanguages));
+                Console.WriteLine(@"User-Agent: {0}", request.UserAgent);
+                Console.WriteLine(@"Accept-Encoding: {0}", request.Headers["Accept-Encoding"]);
+                Console.WriteLine(@"Connection: {0}", request.KeepAlive ? "Keep-Alive" : "close");
+                Console.WriteLine(@"Host: {0}", request.UserHostName);
+                Console.WriteLine(@"Pragma: {0}", request.Headers["Pragma"]);
                 // 取得回应对象
                 HttpListenerResponse response = context.Response;
                 // 构造回应内容
@@ -172,12 +172,12 @@ namespace ConApp
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(point);
             socket.Listen(10);
-            Console.WriteLine("Socket开始监听本机的{0}端口", point.Port);
+            Console.WriteLine(@"Socket开始监听本机的{0}端口", point.Port);
 
             while (true)
             {
                 Socket client = socket.Accept();
-                Console.WriteLine("接收到客户端的IP地址为：{0}", client.RemoteEndPoint);
+                Console.WriteLine(@"接收到客户端的IP地址为：{0}", client.RemoteEndPoint);
                 byte[] buffer = new byte[4096];
                 client.Receive(buffer, 4096, SocketFlags.None);
                 string requestString = Encoding.UTF8.GetString(buffer);
@@ -214,13 +214,13 @@ namespace ConApp
 
             TcpListener server = new TcpListener(point);
             server.Start(10);
-            Console.WriteLine("开始监听本机的{0}端口", 12345);
+            Console.WriteLine(@"开始监听本机的{0}端口", 12345);
 
             while (true)
             {
                 // 阻塞的方法
                 TcpClient client = server.AcceptTcpClient();
-                Console.WriteLine("接收到客户端请求，客户端地址为：{0}", client.Client.RemoteEndPoint);
+                Console.WriteLine(@"接收到客户端请求，客户端地址为：{0}", client.Client.RemoteEndPoint);
                 // 获取一个网络流
                 NetworkStream stream = client.GetStream();
 

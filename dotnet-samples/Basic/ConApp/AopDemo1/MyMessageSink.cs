@@ -37,13 +37,13 @@ namespace ConApp.AopDemo1
             MethodInfo methodInfo = returnMessage.MethodBase as MethodInfo;
 
             int argCount = returnMessage.ArgCount;
-            Console.WriteLine("方法的输入参数个数:{0}", argCount);
+            Console.WriteLine(@"方法的输入参数个数:{0}", argCount);
             for (int i = 0; i < argCount; i++)
             {
                 var obj = returnMessage.Args[i];
                 Console.WriteLine("方法的第{0}参数:名:{1},值:{2}", i + 1, methodInfo.GetParameters()[i].Name, returnMessage.Args[i]);
             }
-            Console.WriteLine("方法的返回值:{0}", returnMessage.ReturnValue);
+            Console.WriteLine(@"方法的返回值:{0}", returnMessage.ReturnValue);
 
             string returnType = methodInfo.ReturnType.Name;
             ParameterInfo[] ps = methodInfo.GetParameters();

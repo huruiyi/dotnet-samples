@@ -89,7 +89,7 @@ namespace DataSetLoadingExamples
 
             private void PrettyPrintDataTable(DataTable table)
             {
-                Console.WriteLine("Table: {0}", table.TableName);
+                Console.WriteLine(@"Table: {0}", table.TableName);
                 foreach (DataRow row in table.Rows)
                 {
                     StringBuilder sb = new StringBuilder();

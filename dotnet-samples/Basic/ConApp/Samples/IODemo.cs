@@ -192,15 +192,15 @@ namespace ConApp
             DriveInfo[] alldrive = DriveInfo.GetDrives();
             foreach (DriveInfo item in alldrive)
             {
-                Console.WriteLine("驱动器:{0}", item.Name);
-                Console.WriteLine(" 类型:{0}", item.DriveType);
+                Console.WriteLine(@"驱动器:{0}", item.Name);
+                Console.WriteLine(@" 类型:{0}", item.DriveType);
                 if (item.IsReady)
                 {
-                    Console.WriteLine(" 卷标:{0}", item.VolumeLabel);
-                    Console.WriteLine(" 文件系统:{0}", item.DriveFormat);
-                    Console.WriteLine(" 当前用户可用空间:{0,15}字节", item.AvailableFreeSpace);
-                    Console.WriteLine(" 可用空间        :{0,15}字节", item.TotalFreeSpace);
-                    Console.WriteLine(" 磁盘总大小:     :{0,15}字节", item.TotalSize);
+                    Console.WriteLine(@" 卷标:{0}", item.VolumeLabel);
+                    Console.WriteLine(@" 文件系统:{0}", item.DriveFormat);
+                    Console.WriteLine(@" 当前用户可用空间:{0,15}字节", item.AvailableFreeSpace);
+                    Console.WriteLine(@" 可用空间        :{0,15}字节", item.TotalFreeSpace);
+                    Console.WriteLine(@" 磁盘总大小:     :{0,15}字节", item.TotalSize);
                 }
                 Console.ReadKey();
             }

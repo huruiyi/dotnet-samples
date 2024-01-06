@@ -38,7 +38,7 @@ namespace ConApp.OtherDemo
 
             private static void UpdateUserInterface()
             {
-                Console.WriteLine("{0} requests remaining.", requestCounter);
+                Console.WriteLine(@"{0} requests remaining.", requestCounter);
             }
 
             public static void Main1()
@@ -66,7 +66,7 @@ namespace ConApp.OtherDemo
                 {
                     if (r.ExceptionObject != null)
                     {
-                        Console.WriteLine("Request for host {0} returned the following error: {1}.", r.HostName, r.ExceptionObject.Message);
+                        Console.WriteLine(@"Request for host {0} returned the following error: {1}.", r.HostName, r.ExceptionObject.Message);
                     }
                     else
                     {
@@ -75,18 +75,18 @@ namespace ConApp.OtherDemo
                         IPAddress[] addresses = h.AddressList;
                         if (aliases.Length > 0)
                         {
-                            Console.WriteLine("Aliases for {0}", r.HostName);
+                            Console.WriteLine(@"Aliases for {0}", r.HostName);
                             foreach (string t in aliases)
                             {
-                                Console.WriteLine("{0}", t);
+                                Console.WriteLine(@"{0}", t);
                             }
                         }
                         if (addresses.Length > 0)
                         {
-                            Console.WriteLine("Addresses for {0}", r.HostName);
+                            Console.WriteLine(@"Addresses for {0}", r.HostName);
                             foreach (IPAddress t in addresses)
                             {
-                                Console.WriteLine("{0}", t.ToString());
+                                Console.WriteLine(@"{0}", t.ToString());
                             }
                         }
                     }

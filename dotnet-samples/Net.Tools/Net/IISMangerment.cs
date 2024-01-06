@@ -14,9 +14,10 @@ namespace Net.Tools.Net
             foreach (Site s in manager.Sites)
             {
                 ApplicationDefaults d = s.ApplicationDefaults;
-                Console.WriteLine("Site: {0}", s.Name);
-                Console.WriteLine("  |--Default Application Pool:  {0}", d.ApplicationPoolName);
-                Console.WriteLine("  +--Default Protocols Enabled: {0}\r\n", d.EnabledProtocols);
+                Console.WriteLine(@"Site: {0}", s.Name);
+                Console.WriteLine(@"  |--Default Application Pool:  {0}", d.ApplicationPoolName);
+                Console.WriteLine(@"  +--Default Protocols Enabled: {0}
+", d.EnabledProtocols);
             }
         }
 
@@ -40,11 +41,11 @@ namespace Net.Tools.Net
                     Console.WriteLine(itemMethod.Name);
                 }
 
-                Console.WriteLine("网站:{0},状态：{1} ", item.Name, item.State);
+                Console.WriteLine(@"网站:{0},状态：{1} ", item.Name, item.State);
                 foreach (Application app in item.Applications)
                 {
-                    Console.WriteLine("\t应用程序池:{0}", app.ApplicationPoolName);
-                    Console.WriteLine("\t      应用:{0}", app.Path);
+                    Console.WriteLine(@"	应用程序池:{0}", app.ApplicationPoolName);
+                    Console.WriteLine(@"	      应用:{0}", app.Path);
                     Console.WriteLine();
                 }
             }

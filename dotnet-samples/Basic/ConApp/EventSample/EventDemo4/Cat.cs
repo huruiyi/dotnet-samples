@@ -6,7 +6,7 @@ namespace ConApp.EventSample.EventDemo4
     {
         public void Sleep(string place)
         {
-            Console.WriteLine("猫在{0}地方睡觉", place);
+            Console.WriteLine(@"猫在{0}地方睡觉", place);
         }
 
         public void Shout()

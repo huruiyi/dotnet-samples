@@ -49,7 +49,7 @@ namespace _098_000_LINQ___Custom_Sequence_Operators
                 var numbersB = testDS.Tables["NumbersB"].AsEnumerable();
 
                 int dotProduct = numbersA.Combine(numbersB, (a, b) => a.Field<int>("number") * b.Field<int>("number")).Sum();
-                Console.WriteLine("Dot product: {0}", dotProduct);
+                Console.WriteLine(@"Dot product: {0}", dotProduct);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace 发布订阅事件2
     {
         public void Display(WeatherInformation information)
         {
-            Console.WriteLine("小黑板为您带来天气信息：{0}", information.ToString());
+            Console.WriteLine(@"小黑板为您带来天气信息：{0}", information.ToString());
         }
     }
 }

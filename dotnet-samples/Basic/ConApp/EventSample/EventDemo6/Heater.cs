@@ -30,7 +30,7 @@ namespace ConApp.EventSample.EventDemo6
             heatTime = 5;
             heatThread = new Thread(new ThreadStart(Heat));
             heatThread.Start();
-            Console.WriteLine("加热器已经开启", heatTime);
+            Console.WriteLine(@"加热器已经开启", heatTime);
 
         }
         private int heatTime;
@@ -38,7 +38,7 @@ namespace ConApp.EventSample.EventDemo6
         {
             while (true)
             {
-                Console.WriteLine("加热还需{0}秒", heatTime);
+                Console.WriteLine(@"加热还需{0}秒", heatTime);
 
                 if (heatTime == 0)
                 {

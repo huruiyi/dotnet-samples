@@ -105,7 +105,7 @@ namespace _006_019_LINQ___Projection_Operators
 
             foreach (var d in digitOddEvens)
             {
-                Console.WriteLine("The digit {0} is {1}.", d.Digit, d.Even ? "even" : "odd");
+                Console.WriteLine(@"The digit {0} is {1}.", d.Digit, d.Even ? "even" : "odd");
             }
         }
 
@@ -148,7 +148,7 @@ namespace _006_019_LINQ___Projection_Operators
             Console.WriteLine("Number: In-place?");
             foreach (var n in numsInPlace)
             {
-                Console.WriteLine("{0}: {1}", n.Num, n.InPlace);
+                Console.WriteLine(@"{0}: {1}", n.Num, n.InPlace);
             }
         }
 
@@ -190,7 +190,7 @@ namespace _006_019_LINQ___Projection_Operators
             Console.WriteLine("Pairs where a < b:");
             foreach (var pair in pairs)
             {
-                Console.WriteLine("{0} is less than {1}", pair.a, pair.b);
+                Console.WriteLine(@"{0} is less than {1}", pair.a, pair.b);
             }
         }
 

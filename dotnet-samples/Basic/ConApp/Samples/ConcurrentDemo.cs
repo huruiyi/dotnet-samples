@@ -74,7 +74,7 @@ namespace ConApp
             }
 
             Console.WriteLine(DateTime.Now);
-            Console.WriteLine("Task1 list2 count {0}", list2.Count);
+            Console.WriteLine(@"Task1 list2 count {0}", list2.Count);
         }
 
         public static void Task2(object obj)
@@ -84,7 +84,7 @@ namespace ConApp
                 list2.Add(i);
             }
 
-            Console.WriteLine("Task2 list2 count {0}", list2.Count);
+            Console.WriteLine(@"Task2 list2 count {0}", list2.Count);
         }
 
         #endregion ArrayListDemo1
@@ -110,7 +110,7 @@ namespace ConApp
             }
 
             Console.WriteLine(DateTime.Now);
-            Console.WriteLine("Task1 count {0}", list1.Count);
+            Console.WriteLine(@"Task1 count {0}", list1.Count);
         }
 
         public static void Task4(object obj)
@@ -122,7 +122,7 @@ namespace ConApp
                     list1.Add(i);
                 }
             }
-            Console.WriteLine("Task2 count {0}", list1.Count);
+            Console.WriteLine(@"Task2 count {0}", list1.Count);
         }
 
         #endregion ArrayListDemo2
@@ -145,7 +145,7 @@ namespace ConApp
             }
 
             Console.WriteLine(DateTime.Now);
-            Console.WriteLine("Task1 list2 count {0}", list2.Count);
+            Console.WriteLine(@"Task1 list2 count {0}", list2.Count);
         }
 
         public static void Task6(object obj)
@@ -155,7 +155,7 @@ namespace ConApp
                 list2.Add(i);
             }
 
-            Console.WriteLine("Task2 list2 count {0}", list2.Count);
+            Console.WriteLine(@"Task2 list2 count {0}", list2.Count);
         }
 
         #endregion ArrayListDemo3_ConcurrentBag
@@ -182,7 +182,7 @@ namespace ConApp
             for (int i = 0; i < NUMITEMS; i++)
                 cd[i] = i * i;
 
-            Console.WriteLine("The square of 23 is {0} (should be {1})", cd[23], 23 * 23);
+            Console.WriteLine(@"The square of 23 is {0} (should be {1})", cd[23], 23 * 23);
         }
 
         public class Person

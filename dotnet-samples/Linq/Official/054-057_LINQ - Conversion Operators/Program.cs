@@ -76,7 +76,7 @@ namespace _054_067_LINQ___Conversion_Operators
 
                 var scoreRecordsDict = scoreRecords.ToDictionary(sr => sr.Name);
 
-                Console.WriteLine("Bob's score: {0}", scoreRecordsDict["Bob"]);
+                Console.WriteLine(@"Bob's score: {0}", scoreRecordsDict["Bob"]);
             }
 
             [Category("Conversion Operators")]

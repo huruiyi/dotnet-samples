@@ -13,17 +13,17 @@ namespace ConApp.DelegateDemos
 
         private static void ChineseSayHello(object name)
         {
-            Console.WriteLine("{0}:中国", name);
+            Console.WriteLine(@"{0}:中国", name);
         }
 
         private static void EnglishSayHello(object name)
         {
-            Console.WriteLine("{0}:英国", name);
+            Console.WriteLine(@"{0}:英国", name);
         }
 
         private static void JapaneseSayHello(object name)
         {
-            Console.WriteLine("{0}:日本", name);
+            Console.WriteLine(@"{0}:日本", name);
         }
 
         private static void PrintHelloWord(Func<string, object> sayHello)

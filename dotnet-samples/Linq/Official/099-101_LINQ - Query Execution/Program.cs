@@ -73,11 +73,11 @@ namespace _099_101_LINQ___Query_Execution
 
                 // The local variable 'i' is not incremented until the query is executed in the
                 // foreach loop.
-                Console.WriteLine("The current value of i is {0}", i); //i is still zero
+                Console.WriteLine(@"The current value of i is {0}", i); //i is still zero
 
                 foreach (var item in simpleQuery)
                 {
-                    Console.WriteLine("v = {0}, i = {1}", item, i); // now i is incremented
+                    Console.WriteLine(@"v = {0}, i = {1}", item, i); // now i is incremented
                 }
             }
 
@@ -94,11 +94,11 @@ namespace _099_101_LINQ___Query_Execution
                     select ++i)
                     .ToList();
 
-                Console.WriteLine("The current value of i is {0}", i); //i has been incremented
+                Console.WriteLine(@"The current value of i is {0}", i); //i has been incremented
 
                 foreach (var item in immediateQuery)
                 {
-                    Console.WriteLine("v = {0}, i = {1}", item, i);
+                    Console.WriteLine(@"v = {0}, i = {1}", item, i);
                 }
             }
 

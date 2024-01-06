@@ -66,7 +66,7 @@ namespace _058_064_LINQ___Element_Operators
 
                 string startsWithO = strings.First(s => s[0] == 'o');
 
-                Console.WriteLine("A string starting with 'o': {0}", startsWithO);
+                Console.WriteLine(@"A string starting with 'o': {0}", startsWithO);
             }
 
             [Category("Element Operators")]
@@ -89,7 +89,7 @@ namespace _058_064_LINQ___Element_Operators
 
                 Product product789 = products.FirstOrDefault(p => p.ProductID == 789);
 
-                Console.WriteLine("Product 789 exists: {0}", product789 != null);
+                Console.WriteLine(@"Product 789 exists: {0}", product789 != null);
             }
 
             [Category("Element Operators")]
@@ -104,7 +104,7 @@ namespace _058_064_LINQ___Element_Operators
                     select num)
                     .ElementAt(1);  // second number is index 1 because sequences use 0-based indexing
 
-                Console.WriteLine("Second number > 5: {0}", fourthLowNum);
+                Console.WriteLine(@"Second number > 5: {0}", fourthLowNum);
             }
 
             public List<Product> GetProductList()

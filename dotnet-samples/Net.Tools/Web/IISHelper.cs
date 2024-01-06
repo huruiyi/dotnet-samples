@@ -59,10 +59,10 @@ namespace Net.Tools.Web
             ServerManager manager = new ServerManager();
             foreach (Site item in manager.Sites)
             {
-                Console.WriteLine("网站:{0}\t\t{1}", item.Name, item.LogFile.Directory);
+                Console.WriteLine(@"网站:{0}		{1}", item.Name, item.LogFile.Directory);
                 foreach (var app in item.Applications)
                 {
-                    Console.WriteLine("\t应用:{0}", app.Path);
+                    Console.WriteLine(@"	应用:{0}", app.Path);
                 }
 
                 foreach (var binding in item.Bindings)

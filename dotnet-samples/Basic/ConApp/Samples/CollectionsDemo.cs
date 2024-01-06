@@ -145,7 +145,7 @@ namespace ConApp
         {
             foreach (Int16 i16 in myCol)
             {
-                Console.WriteLine("   {0}", i16);
+                Console.WriteLine(@"   {0}", i16);
             }
             Console.WriteLine();
         }
@@ -155,7 +155,7 @@ namespace ConApp
             IEnumerator myEnumerator = myCol.GetEnumerator();
             while (myEnumerator.MoveNext())
             {
-                Console.WriteLine("   {0}", myEnumerator.Current);
+                Console.WriteLine(@"   {0}", myEnumerator.Current);
             }
             Console.WriteLine();
         }
@@ -164,7 +164,7 @@ namespace ConApp
         {
             for (int i = 0; i < myCol.Count; i++)
             {
-                Console.WriteLine("   [{0}]:   {1}", i, myCol[i]);
+                Console.WriteLine(@"   [{0}]:   {1}", i, myCol[i]);
             }
             Console.WriteLine();
         }
@@ -182,8 +182,8 @@ namespace ConApp
             Console.WriteLine("Initial contents of the collection (using Count and Item):");
             PrintIndexAndValues(myI16);
 
-            Console.WriteLine("Contains 3: {0}", myI16.Contains(3));
-            Console.WriteLine("2 is at index {0}.", myI16.IndexOf(2));
+            Console.WriteLine(@"Contains 3: {0}", myI16.Contains(3));
+            Console.WriteLine(@"2 is at index {0}.", myI16.IndexOf(2));
             Console.WriteLine();
 
             myI16.Insert(3, 13);
@@ -376,18 +376,18 @@ namespace ConApp
 
             foreach (string key in haskKeys)
             {
-                Console.WriteLine("{0}:\t{1}", key, hashtable1[key]);
+                Console.WriteLine(@"{0}:	{1}", key, hashtable1[key]);
             }
 
             foreach (DictionaryEntry item in hashtable1)
             {
-                Console.WriteLine("{0}:\t{1}", item.Key, item.Value);
+                Console.WriteLine(@"{0}:	{1}", item.Key, item.Value);
             }
 
             IDictionaryEnumerator en = hashtable1.GetEnumerator();
             while (en.MoveNext())
             {
-                Console.WriteLine("{0}:\t{1}", en.Key, en.Value);
+                Console.WriteLine(@"{0}:	{1}", en.Key, en.Value);
             }
 
             foreach (var item in hashtable1.Keys)

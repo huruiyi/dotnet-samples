@@ -48,7 +48,7 @@ namespace _067_072_LINQ___Quantifiers
                 bool iAfterE = words.Any(w => w.Contains("ei"));
 
                 //DONE fixed typo in writeline
-                Console.WriteLine("There is a word in the list that contains 'ei': {0}", iAfterE);
+                Console.WriteLine(@"There is a word in the list that contains 'ei': {0}", iAfterE);
             }
 
             [Category("Quantifiers")]
@@ -76,7 +76,7 @@ namespace _067_072_LINQ___Quantifiers
 
                 bool onlyOdd = numbers.All(n => n % 2 == 1);
 
-                Console.WriteLine("The list contains only odd numbers: {0}", onlyOdd);
+                Console.WriteLine(@"The list contains only odd numbers: {0}", onlyOdd);
             }
 
             [Category("Quantifiers")]

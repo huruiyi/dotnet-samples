@@ -14,7 +14,7 @@ namespace ConApp
 
             // Get the regular expression string.
             string regex = rstrValAttr.Regex;
-            Console.WriteLine("Regular expression: {0}", regex);
+            Console.WriteLine(@"Regular expression: {0}", regex);
         }
 
         public static void 匹配整形()

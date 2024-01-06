@@ -59,7 +59,8 @@ namespace Net.Tools
             rnd.GetBytes(input);
             rnd.Dispose();
 
-            Console.WriteLine("Input        : {0}\n", BytesToStr(input));
+            Console.WriteLine(@"Input        : {0}
+", BytesToStr(input));
             PrintHash(input);
             PrintHashOneBlock(input);
             PrintHashMultiBlock(input, 1);
@@ -147,14 +148,14 @@ namespace Net.Tools
         public static void PrintHash(byte[] input)
         {
             SHA256Managed sha = new SHA256Managed();
-            Console.WriteLine("ComputeHash  : {0}", BytesToStr(sha.ComputeHash(input)));
+            Console.WriteLine(@"ComputeHash  : {0}", BytesToStr(sha.ComputeHash(input)));
         }
 
         public static void PrintHashOneBlock(byte[] input)
         {
             SHA256Managed sha = new SHA256Managed();
             sha.TransformFinalBlock(input, 0, input.Length);
-            Console.WriteLine("FinalBlock   : {0}", BytesToStr(sha.Hash));
+            Console.WriteLine(@"FinalBlock   : {0}", BytesToStr(sha.Hash));
         }
 
         public static void PrintHashMultiBlock(byte[] input, int size)
@@ -166,7 +167,7 @@ namespace Net.Tools
                 offset += sha.TransformBlock(input, offset, size, input, offset);
 
             sha.TransformFinalBlock(input, offset, input.Length - offset);
-            Console.WriteLine("MultiBlock {0:00}: {1}", size, BytesToStr(sha.Hash));
+            Console.WriteLine(@"MultiBlock {0:00}: {1}", size, BytesToStr(sha.Hash));
         }
 
         public static void ClipboardDemo()

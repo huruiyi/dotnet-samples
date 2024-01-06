@@ -28,20 +28,38 @@ namespace ConApp
     {
         public static unsafe void Main(string[] args)
         {
+            Other6();
+
+            Md5Demo.Demo1();
+            Console.ReadKey(true);
+        }
+
+        public static void Other5_CultureInfo()
+        {
+            CultureInfo culture1 = CultureInfo.CurrentCulture;
+            CultureInfo culture2 = Thread.CurrentThread.CurrentCulture;
+            Console.WriteLine(@"The current culture is {0}", culture1.Name);
+            Console.WriteLine(@"The two CultureInfo objects are equal: {0}", culture1 == culture2);
+
             Console.WriteLine(DateTime.Now.ToShortDateString());
+
             DateTime dateValue = new DateTime(2008, 6, 15, 21, 15, 07);
             // Create an array of standard format strings.
             string[] standardFmts = { "d", "D", "f", "F", "g", "G", "m", "o", "R", "s", "t", "T", "u", "U", "y" };
             // Output date and time using each standard format string.
             foreach (string standardFmt in standardFmts)
-                Console.WriteLine("{0}: {1}", standardFmt, dateValue.ToString(standardFmt));
+            {
+                Console.WriteLine(@"{0}: {1}", standardFmt, dateValue.ToString(standardFmt));
+            }
             Console.WriteLine();
 
             // Create an array of some custom format strings.
             string[] customFmts = { "h:mm:ss.ff t", "d MMM yyyy", "HH:mm:ss.f", "dd MMM HH:mm:ss", @"\Mon\t\h\: M", "HH:mm:ss.ffffzzz" };
             // Output date and time using each custom format string.
             foreach (string customFmt in customFmts)
-                Console.WriteLine("'{0}': {1}", customFmt, dateValue.ToString(customFmt));
+            {
+                Console.WriteLine(@"'{0}': {1}", customFmt, dateValue.ToString(customFmt));
+            }
 
             //Console.WriteLine(FormsAuthentication.HashPasswordForStoringInConfigFile("admin-123456", "SHA256"));
             Console.WriteLine(DateTime.Now.ToString("D", CultureInfo.GetCultureInfo("zh-CN")));
@@ -49,11 +67,88 @@ namespace ConApp
             Console.WriteLine(123.45.ToString("N"));
             Console.WriteLine(DateTime.Now.ToString("d"));
             Console.WriteLine(DateTime.Now.ToString("D"));
-            Hashing.Run();
+        }
 
-            Md5Demo.Demo1();
-            Console.WriteLine(Md5Demo.GetMd5("hello,你大爷", "UTF-8"));
-            Console.ReadKey(true);
+        public static Lazy<LargeObject> LazyLargeObject;
+
+        public static void Other6()
+        {
+            Process process = new System.Diagnostics.Process();
+            process.StartInfo.FileName = "cmd.exe";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardInput = true;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+            process.StandardInput.WriteLine("ipconfig /all");
+            process.StandardInput.WriteLine("exit");
+            string strResult = process.StandardOutput.ReadToEnd();
+            Console.WriteLine(strResult);
+            process.Close();
+        }
+
+        public static void Other4()
+        {
+            // The lazy initializer is created here. LargeObject is not created until the
+            // ThreadProc method executes.
+            //<SnippetNewLazy>
+            LazyLargeObject = new Lazy<LargeObject>();
+
+            // The following lines show how to use other constructors to achieve exactly the
+            // same result as the previous line:
+            //lazyLargeObject = new Lazy<LargeObject>(true);
+            //lazyLargeObject = new Lazy<LargeObject>(LazyThreadSafetyMode.ExecutionAndPublication);
+            //</SnippetNewLazy>
+
+            Console.WriteLine(
+                "\r\nLargeObject is not created until you access the Value property of the lazy" +
+                "\r\ninitializer. Press Enter to create LargeObject.");
+            Console.ReadLine();
+
+            // Create and start 3 threads, passing the same blocking event to all of them.
+            ManualResetEvent startingGate = new ManualResetEvent(false);
+            Thread[] threads = { new Thread(ThreadProc), new Thread(ThreadProc), new Thread(ThreadProc) };
+            foreach (Thread t in threads)
+            {
+                t.Start(startingGate);
+            }
+
+            // Give all 3 threads time to start and wait, then release them all at once.
+            Thread.Sleep(100);
+            startingGate.Set();
+
+            // Wait for all 3 threads to finish. (The order doesn't matter.)
+            foreach (Thread t in threads)
+            {
+                t.Join();
+            }
+
+            Console.WriteLine("\r\nPress Enter to end the program");
+            Console.ReadLine();
+        }
+
+        public static void ThreadProc(object state)
+        {
+            // Wait for the signal.
+            ManualResetEvent waitForStart = (ManualResetEvent)state;
+            waitForStart.WaitOne();
+
+            //<SnippetValueProp>
+            LargeObject large = LazyLargeObject.Value;
+            //</SnippetValueProp>
+
+            // The following line introduces an artificial delay to exaggerate the race condition.
+            Thread.Sleep(5);
+
+            // IMPORTANT: Lazy initialization is thread-safe, but it doesn't protect the
+            //            object after creation. You must lock the object before accessing it,
+            //            unless the type is thread safe. (LargeObject is not thread safe.)
+            lock (large)
+            {
+                large.Data[0] = Thread.CurrentThread.ManagedThreadId;
+                Console.WriteLine(@"Initialized by thread {0}; last used by thread {1}.", large.InitializedBy, large.Data[0]);
+            }
         }
 
         public static void Other3()
@@ -257,7 +352,7 @@ namespace ConApp
             {
                 Thread.Sleep(1000);
                 Console.Beep();
-                Console.WriteLine("CPU Load: {0}%", perfCounter.NextValue());
+                Console.WriteLine(@"CPU Load: {0}%", perfCounter.NextValue());
             }
         }
 

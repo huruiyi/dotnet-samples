@@ -15,13 +15,13 @@ namespace 发布订阅事件1
         public void Register(Intermediary intermediary)
         {
             intermediary.OnNewJobReceive += intermediary_OnNewJobReceive;
-            Console.WriteLine("{0}到{1}中介去注册了", Name, intermediary.Name);
+            Console.WriteLine(@"{0}到{1}中介去注册了", Name, intermediary.Name);
         }
 
         public void UnRegister(Intermediary intermediary)
         {
             intermediary.OnNewJobReceive -= intermediary_OnNewJobReceive;
-            Console.WriteLine("{0}从{1}中介退订了", Name, intermediary.Name);
+            Console.WriteLine(@"{0}从{1}中介退订了", Name, intermediary.Name);
         }
 
         private void intermediary_OnNewJobReceive(object sender, NewJobMessageEventArgs e)

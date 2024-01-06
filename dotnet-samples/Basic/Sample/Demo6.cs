@@ -11,7 +11,7 @@ namespace BasicSample
 
         public void Invoke()
         {
-            Console.WriteLine("主线程{0} 正在执行中....", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@"主线程{0} 正在执行中....", Thread.CurrentThread.ManagedThreadId);
 
             #region 异步委托
 
@@ -28,7 +28,7 @@ namespace BasicSample
             //第二种： 使用 回调函数
             IAsyncResult ascResult2 = addDemo.BeginInvoke(1, 2, MyDelCallBakc, 3);
 
-            Console.WriteLine("执行的结果是：{0}", result);
+            Console.WriteLine(@"执行的结果是：{0}", result);
             Console.ReadKey();
 
             #endregion 异步委托
@@ -80,13 +80,13 @@ namespace BasicSample
 
             int state = (int)asyncResult.AsyncState;
 
-            Console.WriteLine("异步完成的回调方法执行的结果是：{0} @{1}", addResult, Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@"异步完成的回调方法执行的结果是：{0} @{1}", addResult, Thread.CurrentThread.ManagedThreadId);
         }
 
         //委托回调方法
         private static int AddFun(int a, int b)
         {
-            Console.WriteLine("只是工作线程跑着..{0}", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(@"只是工作线程跑着..{0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
             return a + b;
         }

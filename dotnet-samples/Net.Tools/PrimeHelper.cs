@@ -47,7 +47,7 @@ namespace Net.Tools
                 {
                     if (num % i != 0)
                     {
-                        Console.WriteLine("{0}是素数", num);
+                        Console.WriteLine(@"{0}是素数", num);
                     }
                 }
             }

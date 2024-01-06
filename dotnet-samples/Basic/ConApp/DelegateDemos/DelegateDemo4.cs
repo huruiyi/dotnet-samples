@@ -53,9 +53,9 @@ namespace ConApp.DelegateDemos
             int j = 0;
             Del1 = () => { j = 10; return j > input; };
             Del2 = x => x == j;
-            Console.WriteLine("j = {0}", j);
+            Console.WriteLine(@"j = {0}", j);
             bool boolResult = Del1();
-            Console.WriteLine("j = {0}. b = {1}", j, boolResult);
+            Console.WriteLine(@"j = {0}. b = {1}", j, boolResult);
         }
 
         public static string MulMethod(int i)
