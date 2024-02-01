@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>360B4766552D7402618489F809999185FBC6FD6C</ManifestCertificateThumbprint>
@@ -951,6 +951,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.ico" />
     <Content Include="Resources\app.ico" />
     <Content Include="Resources\Abort.ico" />
     <Content Include="Resources\bg.jpg" />
