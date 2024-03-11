@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnEqual").bind("click", function () {
+            var val1 = $("#txtNum1").val();
+            var val2 = $("#txtNum2").val();
+            var result = parseInt(val1) + parseInt(val2);
+
+            $.ajax({
+                url: "http://localhost:44239/AddService.svc/Add",
+                type: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                data: '{"Number1":' + val1 + ',"Number2":' + val2 + '}',
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $("#txtResult").val(data.AddResult);
+                }
+            });
+        });
+    });
+</script>
+<input type="text" id="txtNum1" value="1" />
+<input type="text" id="txtNum2" value="2" />
+<button id="btnEqual">=</button>
+<input type="text" id="txtResult" />

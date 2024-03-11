@@ -1,0 +1,36 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+
+namespace ApiConsul.Controllers
+{
+    [Route("api/[controller]")]
+    public class ValuesController : Controller
+    {
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { HttpContext.Request.Path, HttpContext.Request.Host.Value };
+        }
+
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        [HttpPost]
+        public void Post([FromBody]string value)
+        {
+        }
+
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+    }
+}

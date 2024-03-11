@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CalcService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:43562/CalcService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:43562/CalcService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICalcService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Sub_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sub" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Sub_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Mult_InputMessage">
+    <wsdl:part name="parameters" element="tns:Mult" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Mult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MultResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Div_InputMessage">
+    <wsdl:part name="parameters" element="tns:Div" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Div_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DivResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Add_decimal_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_decimal" />
+  </wsdl:message>
+  <wsdl:message name="ICalcService_Add_decimal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_decimalResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICalcService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalcService/DoWork" message="tns:ICalcService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalcService/DoWorkResponse" message="tns:ICalcService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalcService/Add" message="tns:ICalcService_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalcService/AddResponse" message="tns:ICalcService_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sub">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalcService/Sub" message="tns:ICalcService_Sub_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalcService/SubResponse" message="tns:ICalcService_Sub_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Mult">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalcService/Mult" message="tns:ICalcService_Mult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalcService/MultResponse" message="tns:ICalcService_Mult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Div">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalcService/Div" message="tns:ICalcService_Div_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalcService/DivResponse" message="tns:ICalcService_Div_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_decimal">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalcService/Add_decimal" message="tns:ICalcService_Add_decimal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalcService/Add_decimalResponse" message="tns:ICalcService_Add_decimal_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICalcService" type="tns:ICalcService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/ICalcService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/ICalcService/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sub">
+      <soap:operation soapAction="http://tempuri.org/ICalcService/Sub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mult">
+      <soap:operation soapAction="http://tempuri.org/ICalcService/Mult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Div">
+      <soap:operation soapAction="http://tempuri.org/ICalcService/Div" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_decimal">
+      <soap:operation soapAction="http://tempuri.org/ICalcService/Add_decimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalcService">
+    <wsdl:port name="BasicHttpBinding_ICalcService" binding="tns:BasicHttpBinding_ICalcService">
+      <soap:address location="http://localhost:43562/CalcService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
