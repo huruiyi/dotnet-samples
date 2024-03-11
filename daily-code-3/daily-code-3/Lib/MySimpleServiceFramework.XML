@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MySimpleServiceFramework</name>
+    </assembly>
+    <members>
+        <member name="T:MySimpleServiceFramework.ServiceExecutor">
+            <summary>
+            最终调用服务方法的工具类。
+            </summary>
+        </member>
+        <member name="M:MySimpleServiceFramework.ServiceExecutor.ProcessRequest(System.Web.HttpContext,MySimpleServiceFramework.NamesPair)">
+            <summary>
+            【外部接口】用于根据服务的类名和方法名执行某个请求
+            </summary>
+            <param name="context"></param>
+            <param name="pair"></param>
+        </member>
+        <member name="T:MySimpleServiceFramework.DuplexGzipModule">
+            <summary>
+            能支持双向GZIP压缩的Module，它会根据客户端是否启用GZIP来自动处理。
+            对于服务来说，不用关心GZIP处理，服务只要处理输入输出就可以了。
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.SerializerProviderFactory">
+            <summary>
+            序列化器提供者的创建工厂
+            </summary>
+        </member>
+        <member name="M:MySimpleServiceFramework.SerializerProviderFactory.RegisterSerializerProvider(System.String,System.Type)">
+            <summary>
+            注册序列化提供者
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:MySimpleServiceFramework.SerializerProviderFactory.GetSerializerProvider(System.String)">
+            <summary>
+            根据消息头的序列化标记，返回一个具体的序列化器。
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MySimpleServiceFramework.XHttpMethodModule">
+            <summary>
+            【演示用】实现了模拟更多 HttpMethod 的Module
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.ISerializerProvider">
+            <summary>
+            序列化器提供者接口
+            </summary>
+        </member>
+        <member name="M:MySimpleServiceFramework.ISerializerProvider.Deserialize(System.Type,System.Web.HttpRequest)">
+            <summary>
+            反序列化方法
+            </summary>
+            <param name="destType"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySimpleServiceFramework.ISerializerProvider.Serializer(System.Object,System.Web.HttpResponse)">
+            <summary>
+            序列化方法
+            </summary>
+            <param name="obj"></param>
+            <param name="response"></param>
+        </member>
+        <member name="T:MySimpleServiceFramework.FishGzipModule">
+            <summary>
+            【演示用】让Aspx页的请求支持gzip压缩输出
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.MyServiceUrlRoutingModule">
+            <summary>
+            实现了URL路由的Module
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.MyServiceUrlRewriteModule">
+            <summary>
+            实现了URL重写的Module
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.MyServiceAttribute">
+            <summary>
+            用于标注一个类是【服务类】的修饰属性
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.MyServiceAttribute.SessionMode">
+            <summary>
+            要支持的Session模式
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.SessionMode">
+            <summary>
+            服务所支持的Session模式
+            </summary>
+        </member>
+        <member name="F:MySimpleServiceFramework.SessionMode.NotSupport">
+            <summary>
+            不支持
+            </summary>
+        </member>
+        <member name="F:MySimpleServiceFramework.SessionMode.Support">
+            <summary>
+            全支持
+            </summary>
+        </member>
+        <member name="F:MySimpleServiceFramework.SessionMode.ReadOnly">
+            <summary>
+            仅支持读取
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.AuthorizeAttribute">
+            <summary>
+            用于验证用户身份的修饰属性
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.AuthorizeAttribute.Users">
+            <summary>
+            允许访问的用户列表，用逗号分隔。
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.AuthorizeAttribute.Roles">
+            <summary>
+            允许访问的角色列表，用逗号分隔。
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.MyServiceMethodAttribute">
+            <summary>
+            用于标注一个方法是【服务方法】的修饰属性
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.MyLogModule">
+            <summary>
+            【演示用】
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.DirectProcessRequestMoudle">
+            <summary>
+            此Module示范了直接使用Module也能处理客户端的请求。
+            建议：除非要很好的理由，否则不建议使用这种方法。
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.FrameworkRules">
+            <summary>
+            框架中的一些规则的定义
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.FrameworkRules.GetSerializerFormat">
+            <summary>
+            此委托用来判断客户端发起的请求中，数据是以什么方式序列化的。
+            返回的结果将会交给SerializerProviderFactory.GetSerializerProvider()来获取序列化提供者
+            默认的实现是检查请求头："Serializer-Format"
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.FrameworkRules.ParseNamesPair">
+            <summary>
+            此委托用来判断客户端发起的请求最后解析到哪个服务类和相应的服务方法
+            默认的实现的是由一个正则表达式来判断的：@"/service/(?&lt;name&gt;[^/]+)/(?&lt;method&gt;[^/]+)[/\?]?"
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.FormSerializerProvider">
+            <summary>
+            从表单和查询字符串中构造参数对象。
+            注意：这里的实现很简单，仅做为示例使用。
+            </summary>
+        </member>
+        <member name="T:MySimpleServiceFramework.NamesPair">
+            <summary>
+            包含要调用的服务类型名称和方法名称的一个值对。
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.NamesPair.ServiceName">
+            <summary>
+            要调用的服务类名
+            </summary>
+        </member>
+        <member name="P:MySimpleServiceFramework.NamesPair.MethodName">
+            <summary>
+            要调用的服务方法名
+            </summary>
+        </member>
+        <member name="M:MySimpleServiceFramework.ReflectionHelper.InitServiceTypes">
+            <summary>
+            加载所有的服务类型，判断方式就是检查类型是否有MyServiceAttribute
+            </summary>
+        </member>
+        <member name="M:MySimpleServiceFramework.ReflectionHelper.GetServiceType(System.String)">
+            <summary>
+            根据一个名称获取对应的服务类型（从缓存中获取类型）
+            </summary>
+            <param name="typeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySimpleServiceFramework.ReflectionHelper.GetServiceMethod(System.Type,System.String)">
+            <summary>
+            根据指定的类型以及方法名称，获取对应的方法信息
+            </summary>
+            <param name="type"></param>
+            <param name="methodName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySimpleServiceFramework.ReflectionHelper.GetInvokeInfo(MySimpleServiceFramework.NamesPair)">
+            <summary>
+            根据类型名称以及方法名称返回要调用的相关信息
+            </summary>
+            <param name="pair">包含类型名称以及方法名称的对象</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

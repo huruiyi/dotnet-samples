@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConApp.DesignPattern.Food" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.TomatoScrambledEggs" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.ShreddedPorkWithPotatoes" Collapsed="true">
+    <Position X="5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.Creator" Collapsed="true">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.TomatoScrambledEggsFactory" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.ShreddedPorkWithPotatoesFactory" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.MincedMeatEggplant" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.MincedMeatEggplantFactory" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.工厂设计模式" Collapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>DesignPattern\工厂设计模式.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
