@@ -1,8 +1,6 @@
 ﻿using ConApp.AopDemo1;
 using ConApp.AopDemo2;
 using ConApp.Model;
-using ConApp.Samples;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,8 +24,9 @@ namespace ConApp
 
     public partial class Program
     {
-        public static unsafe void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Other1();
             Other6();
 
             Md5Demo.Demo1();
@@ -156,10 +155,10 @@ namespace ConApp
             TestClass t1 = new TestClass();
             TestClass t2 = new TestClass();
             Console.WriteLine(t1.Equals(t2));
-            Console.WriteLine(object.ReferenceEquals(t1, t2));
+            Console.WriteLine(ReferenceEquals(t1, t2));
             t2 = t1;
             Console.WriteLine(t1.Equals(t2));
-            Console.WriteLine(object.ReferenceEquals(t1, t2));
+            Console.WriteLine(ReferenceEquals(t1, t2));
         }
 
         public static void Other2()
@@ -190,8 +189,8 @@ namespace ConApp
             {
                 GCHandle h = GCHandle.Alloc(c1, GCHandleType.WeakTrackResurrection);
 
-                IntPtr addr = GCHandle.ToIntPtr(h);
-                Console.WriteLine(addr.ToString("X"));
+                IntPtr intPtr = GCHandle.ToIntPtr(h);
+                Console.WriteLine(intPtr.ToString("X"));
             }
 
             Console.ReadKey();
@@ -203,7 +202,7 @@ namespace ConApp
 
         public static void Other0()
         {
-            Hash hash = Hash.CreateMD5(Encoding.UTF8.GetBytes("ABCDEFG"));
+            Hash hash = Hash.CreateMD5(Encoding.UTF8.GetBytes("Hello World"));
             //Hash.CreateSHA1()
             //Hash.CreateSHA1()
             //Hash.CreateSHA256()
@@ -213,7 +212,7 @@ namespace ConApp
 
         #region AOP
 
-        private static void ApoDemo1(string[] args)
+        private static void ApoDemo1()
         {
             AopClassTest test1 = new AopClassTest();
             test1.MethodName("arg1", "arg2");
@@ -393,9 +392,9 @@ namespace ConApp
                 if (item.MainWindowTitle.Length > 0)
                 {
                     Console.WriteLine("标题：" + item.MainWindowTitle);
-                    Console.WriteLine("编号：" + item.Id.ToString());
+                    Console.WriteLine("编号：" + item.Id);
                     Console.WriteLine("进程：" + item.ProcessName);
-                    Console.WriteLine("开始时间" + item.StartTime.ToString());
+                    Console.WriteLine("开始时间" + item.StartTime.ToString(CultureInfo.InvariantCulture));
                     Console.WriteLine();
                 }
             }
@@ -408,10 +407,10 @@ namespace ConApp
         public static void GetEnumeratorDemo()
         {
             ArrayList arr = new ArrayList() { 12, 13, 1, 4, 15, 16, 17 };
-            IEnumerator iEnumerator = arr.GetEnumerator();
-            while (iEnumerator.MoveNext())
+            IEnumerator enumerator = arr.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                Console.WriteLine(iEnumerator.Current);
+                Console.WriteLine(enumerator.Current);
             }
         }
 
@@ -451,24 +450,30 @@ namespace ConApp
 
         #region 异步委托
 
-        public delegate void AsycRun();
+        public delegate void AsyncRun();
 
         public static void AsyncCallbackDemo()
         {
-            AsyncCallback ac = delegate (IAsyncResult aar)
+            /*AsyncCallback callback = delegate (IAsyncResult aar)
             {
                 Console.WriteLine("跑完了");
                 Console.WriteLine(aar.AsyncState);
-            };
+            };*/
 
-            AsycRun ar = delegate
+            void Callback(IAsyncResult aar)
+            {
+                Console.WriteLine("跑完了");
+                Console.WriteLine(aar.AsyncState);
+            }
+
+            AsyncRun ar = delegate
             {
                 for (int i = 0; i < 100; i++)
                 {
                     Console.Write(i + "\t");
                 }
             };
-            ar.BeginInvoke(ac, "object");
+            ar.BeginInvoke(Callback, "object");
         }
 
         #endregion 异步委托

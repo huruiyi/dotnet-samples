@@ -10,7 +10,7 @@ namespace ConApp.DbOp
 {
     internal class DbOpSamples
     {
-        private static string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
+        private static readonly string ConString = "Data Source=.;Initial Catalog=ExampleDb;uid=sa;pwd=sa";
 
         public static void Func1()
         {
@@ -113,9 +113,9 @@ namespace ConApp.DbOp
 
                 //Find要根据Sort，若Find值不唯一，则获取所有满足的索引值
                 DataRowView[] drvPortland = dv.FindRows("Portland");
-                for (int i = 0; i < drvPortland.Length; i++)
+                foreach (var t in drvPortland)
                 {
-                    Console.WriteLine(drvPortland[i]["CustomerID"] + "  " + drvPortland[i]["CompanyName"] + "  " + drvPortland[i]["City"] + "  " + drvPortland[i]["Country"]);
+                    Console.WriteLine(t["CustomerID"] + "  " + t["CompanyName"] + "  " + t["City"] + "  " + t["Country"]);
                 }
                 Console.WriteLine("***************************************************************");
 
@@ -137,7 +137,7 @@ namespace ConApp.DbOp
                 // ds.Tables["Customers"].PrimaryKey = new DataColumn[] {
                 // ds.Tables["Customers"].Columns["CustomerID"] };//设置主键
                 DataTable tb = ds.Tables["Customers"];
-                tb.PrimaryKey = new DataColumn[] { tb.Columns["CustomerID"] };
+                tb.PrimaryKey = new[] { tb.Columns["CustomerID"] };
 
                 //根据主键值查询筛选
                 DataRow drResult = tb.Rows.Find("ALFKI");
@@ -163,21 +163,19 @@ namespace ConApp.DbOp
         public static void DataSetCreate1()
         {
             DataSet ds = new DataSet();
-            DataTable tbl;
-            DataColumn col;
 
-            tbl = ds.Tables.Add("Customers");
+            var tbl = ds.Tables.Add("Customers");
             tbl.Columns.Add("CustomerID", typeof(string)).MaxLength = 5;
             tbl.Columns.Add("CompanyName", typeof(string)).MaxLength = 40;
-            tbl.PrimaryKey = new DataColumn[] { tbl.Columns["CustomerID"] };
+            tbl.PrimaryKey = new[] { tbl.Columns["CustomerID"] };
 
             tbl = ds.Tables.Add("Orders");
-            col = tbl.Columns.Add("OrderID", typeof(int));
+            var col = tbl.Columns.Add("OrderID", typeof(int));
             col.AutoIncrement = true;
             col.AutoIncrementSeed = -1;
             col.AutoIncrementStep = -1;
             col.ReadOnly = true;
-            tbl.PrimaryKey = new DataColumn[] { tbl.Columns["OrderID"] };
+            tbl.PrimaryKey = new[] { tbl.Columns["OrderID"] };
 
             col = tbl.Columns.Add("CustomerID", typeof(string));
             col.MaxLength = 5;
@@ -192,7 +190,7 @@ namespace ConApp.DbOp
 
             DataTable customers = ds.Tables["Customers"];
             dr = customers.Rows[0];
-            dr["CustomerID"] = "dsada";
+            dr["CustomerID"] = "CID001";
             dr["CompanyName"] = DBNull.Value;
 
             //customers.Rows.Remove(dr);
@@ -308,7 +306,7 @@ namespace ConApp.DbOp
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "InsertStuInfo";//存储过程的名字
-                    cmd.Parameters.AddWithValue("@Name", "kangkang");
+                    cmd.Parameters.AddWithValue("@Name", "mike");
                     cmd.Parameters.AddWithValue("@Sex", "男");
                     int result = cmd.ExecuteNonQuery();
                     Console.WriteLine(result + "行受影响");
@@ -341,7 +339,7 @@ namespace ConApp.DbOp
             }
         }
 
-        public static DataSet CreateCmdsAndUpdate(string sql)
+        public static DataSet CreateCmdAndUpdate(string sql)
         {
             DataSet ds = new DataSet();
             using (SqlConnection con = new SqlConnection(ConString))
@@ -358,8 +356,7 @@ namespace ConApp.DbOp
 
         public static void DataSetDemo1()
         {
-            Program pg = new Program();
-            DataSet ds = CreateCmdsAndUpdate("select * from Admin");
+            DataSet ds = CreateCmdAndUpdate("select * from Admin");
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 Console.Write("账户：" + item["aAdmin"] + "\t");
@@ -422,18 +419,18 @@ namespace ConApp.DbOp
 
                     //添加新行操作！
                     DataRow dr = ds.Tables["Admin"].NewRow();
-                    dr["aAdmin"] = "aJarry1";
-                    dr["aPassword"] = "aJarry1";
+                    dr["aAdmin"] = "admin";
+                    dr["aPassword"] = "password";
                     ds.Tables["Admin"].Rows.Add(dr);
 
                     //删除行的操作
                     for (int i = 0; i < ds.Tables["Admin"].Rows.Count; i++)
                     {
-                        if (ds.Tables["Admin"].Rows[i]["aAdmin"].ToString() == "aJarry1")
+                        if (ds.Tables["Admin"].Rows[i]["aAdmin"].ToString() == "admin")
                         {
                             ds.Tables["Admin"].Rows[i].Delete();
                             // ds.Tables["Admin"].Rows.Remove(ds.Tables["Admin"].Rows[i]);
-                            Console.WriteLine("aJarry1被删除");
+                            Console.WriteLine("admin被删除");
                         }
                     }
 
