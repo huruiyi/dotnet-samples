@@ -1,0 +1,23 @@
+﻿@model Fairy.Mvc.Models.TestModel
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="保存" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-3.7.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/js/validator.js"></script>
