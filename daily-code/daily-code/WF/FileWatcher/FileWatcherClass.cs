@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -127,7 +128,7 @@ namespace FileWatcher
             ToPaly();
         }
 
-        private Thread Tpaly = null;
+        private Thread thread = null;
 
         private void ContentClick(object obj, EventArgs e)
         {
@@ -144,19 +145,19 @@ namespace FileWatcher
 
         private void Open(string content)
         {
-            //string title = "新消息";
-            //content = "文件：\n" + content + "\n被修改";
-            //TaskbarNotifier taskbarNotifier = new TaskbarNotifier();
+            string title = "新消息";
+            content = "文件：\n" + content + "\n被修改";
+            TaskbarNotifier taskbarNotifier = new TaskbarNotifier();
             //Image imgBack = Properties.Resources.skin;//从资源文件里得到背景图
             //taskbarNotifier.SetBackgroundBitmap(imgBack, Color.FromArgb(255, 0, 255));//设置背景图
             //Image imgClose = Properties.Resources.close;//从资源文件里得到关闭按钮图片
             //taskbarNotifier.SetCloseBitmap(imgClose, Color.FromArgb(255, 0, 255), new Point(127, 8));//设置关闭按钮
-            //taskbarNotifier.TitleRectangle = new Rectangle(40, 9, 70, 25);//标题位置
-            //taskbarNotifier.ContentRectangle = new Rectangle(8, 41, 133, 68);//文本位置
-            ////taskbarNotifier1.TitleClick+=new EventHandler(TitleClick);
-            //taskbarNotifier.ContentClick += ContentClick;
-            //taskbarNotifier.CloseClick += taskbarNotifier_CloseClick;
-            //taskbarNotifier.Show(title, content, 500, 3000, 500);//显示
+            taskbarNotifier.TitleRectangle = new Rectangle(40, 9, 70, 25);//标题位置
+            taskbarNotifier.ContentRectangle = new Rectangle(8, 41, 133, 68);//文本位置
+            //taskbarNotifier1.TitleClick+=new EventHandler(TitleClick);
+            taskbarNotifier.ContentClick += ContentClick;
+            taskbarNotifier.CloseClick += taskbarNotifier_CloseClick;
+            taskbarNotifier.Show(title, content, 500, 3000, 500);//显示
         }
 
         private void taskbarNotifier_CloseClick(object sender, EventArgs e)
