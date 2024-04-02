@@ -155,6 +155,14 @@
     <Compile Include="AppInfo.Designer.cs">
       <DependentUpon>AppInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="BarCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarCode.Designer.cs">
+      <DependentUpon>BarCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarCodeUtils\Code128Content.cs" />
+    <Compile Include="BarCodeUtils\Code128Rendering.cs" />
     <Compile Include="BaseComponent\ComponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -670,6 +678,9 @@
     <EmbeddedResource Include="AppInfo.resx">
       <DependentUpon>AppInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BarCode.resx">
+      <DependentUpon>BarCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseComponent\ComponentForm.resx">
       <DependentUpon>ComponentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -999,6 +1010,7 @@
     <Content Include="Resources\min.ico" />
     <None Include="Resources\notepad.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

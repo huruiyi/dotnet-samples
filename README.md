@@ -21,4 +21,5 @@ Windows Apps
 ASP.NET MVC
 ASP.NET Web API
 ASP.NET Core MVC
+Microsoft.Direct3D.D3D12
 ```

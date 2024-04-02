@@ -351,5 +351,10 @@ namespace HuUtils
         {
             new 图片鼠标().Show();
         }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+            new BarCode().Show();
+        }
     }
 }
