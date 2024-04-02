@@ -1,0 +1,61 @@
+﻿{
+  //"http": null, //localhost:806/sms/ReceiveMsg?msg=12345678910
+  //"http": null, //localhost:806/youjian/Send?msg=12345678910
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/sms/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      //"LoadBalancer": "RoundRobin", //老版本
+
+      //新版本配置
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UseServiceDiscovery": true,
+      "ServiceName": "duanxin2",
+      "UpstreamPathTemplate": "/duanxin/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10,
+        "TimeoutValue": 5000
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [], //不受限制的白名单
+        "EnableRateLimiting": true, //启用限流
+        "Period": "30s", //统计时间段：1s、1m、1h、1d
+        "PeriodTimespan": 10, //一旦碰到一次“超限”，多少秒后重新记数可以重新请求。
+        "Limit": 5 //指定时间段内最多请求次数
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/email/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/youjian/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10,
+        "TimeoutValue": 5000
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500
+    }
+  }
+}
