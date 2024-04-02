@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConApp.DesignPattern.CoffeeinBeverage">
+    <Position X="1.75" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAQAgAAAAAAAAGAAAAAAAABAA=</HashCode>
+      <FileName>DesignPattern\模版方法.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.Coffee">
+    <Position X="3.5" Y="9.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DesignPattern\模版方法.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.Tea">
+    <Position X="1.25" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignPattern\模版方法.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConApp.DesignPattern.模版方法">
+    <Position X="6" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>DesignPattern\模版方法.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

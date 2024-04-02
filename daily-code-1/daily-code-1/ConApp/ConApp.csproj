@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCCBA01C-E9CB-4416-8F8A-12CFE4715631}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConApp</RootNamespace>
+    <AssemblyName>ConApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DesignPattern\SingletonDemo.cs" />
+    <Compile Include="DesignPattern\依赖倒置1.cs" />
+    <Compile Include="DesignPattern\依赖倒置2.cs" />
+    <Compile Include="DesignPattern\工厂设计模式.cs" />
+    <Compile Include="DesignPattern\模版方法.cs" />
+    <Compile Include="EnumModel\DeviceEnum.cs" />
+    <Compile Include="Infrastructure\RsaLicense.cs" />
+    <Compile Include="Infrastructure\RsaLicenseCache.cs" />
+    <Compile Include="Infrastructure\RsaLicenseDataAttribute.cs" />
+    <Compile Include="Infrastructure\RsaLicenseProvider.cs" />
+    <Compile Include="Infrastructure\TxtFileEncoder.cs" />
+    <Compile Include="Model\Tweet.cs" />
+    <Compile Include="Model\VolatileDef.cs" />
+    <Compile Include="Model\Worker.cs" />
+    <Compile Include="OOP\OOP1.cs" />
+    <Compile Include="OOP\OOP2.cs" />
+    <Compile Include="Plan\PinYinConverter.cs" />
+    <Compile Include="Plan\PinYinConverterHelp.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\AdoNetDemo.cs" />
+    <Compile Include="Samples\AutoMapperDemo.cs" />
+    <Compile Include="Samples\BasicDemo.cs" />
+    <Compile Include="Samples\CertificateHelp.cs" />
+    <Compile Include="Samples\ChineseDemo.cs" />
+    <Compile Include="Samples\ChineseStringUtility.cs" />
+    <Compile Include="Samples\ContextBoundClass.cs" />
+    <Compile Include="Samples\EventDemo.cs" />
+    <Compile Include="Samples\IOCUnity.cs" />
+    <Compile Include="Samples\MysqlDemo.cs" />
+    <Compile Include="Samples\NewFeatures.cs" />
+    <Compile Include="Samples\NpgsqlDemo.cs" />
+    <Compile Include="Samples\PdfConvert.cs" />
+    <Compile Include="Samples\PdfDemo.cs" />
+    <Compile Include="Samples\Pkcs12ProtectedConfigurationProvider.cs" />
+    <Compile Include="Samples\RealProxyDemo.cs" />
+    <Compile Include="Samples\RegexDemo.cs" />
+    <Compile Include="Samples\SecurityHelper.cs" />
+    <Compile Include="Samples\SortDemo.cs" />
+    <Compile Include="Samples\TaskDemo.cs" />
+    <Compile Include="Samples\ThreadDemo.cs" />
+    <Compile Include="Samples\Thread\IneffectiveLockingConsoleApp.cs" />
+    <Compile Include="Samples\Thread\ProperCriticalSectionConsoleApp.cs" />
+    <Compile Include="Samples\Thread\RaceConditionConsoleApp.cs" />
+    <Compile Include="Samples\Thread\SampleParallelConsoleApp.cs" />
+    <Compile Include="Samples\VMIManagement.cs" />
+    <Compile Include="Samples\VolatileDemo.cs" />
+    <Compile Include="Samples\Win32Demo.cs" />
+    <Compile Include="Samples\WorkerDemo.cs" />
+    <Compile Include="SOLIDPrinciples\DependencyInversionPrincipleDemo.cs" />
+    <Compile Include="SOLIDPrinciples\InterfaceSegregationPrincipleDemo.cs" />
+    <Compile Include="SOLIDPrinciples\LiskovSubstitutionPrincipleDemo.cs" />
+    <Compile Include="SOLIDPrinciples\OpenClosePrincipleDemo.cs" />
+    <Compile Include="SOLIDPrinciples\SingleResponsibilityDemo.cs" />
+    <Compile Include="SOLIDPrinciples\SOLIDPrinciplesDemo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DesignPattern\工厂设计模式.cd" />
+    <None Include="DesignPattern\模版方法.cd" />
+    <None Include="Doc\WMI_Queries.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>8.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="CHSPinYinConv">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48">
+      <Version>1.0.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.29</Version>
+    </PackageReference>
+    <PackageReference Include="Npgsql">
+      <Version>6.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="System.Management">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Memory">
+      <Version>4.5.5</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.Xml">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Unity">
+      <Version>5.11.10</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

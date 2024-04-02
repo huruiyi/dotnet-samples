@@ -1,0 +1,25 @@
+﻿Temporary Internet Files  （Internet临时文件）
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
+
+Cookies
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2
+
+History (历史记录)
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1
+
+Form Data （表单数据）
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 16
+
+Passwords (密码）
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32
+
+Delete All  （全部删除）
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 255
+
+Delete All – “Also delete files and settings stored by add-ons”
+RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 4351
+
+
+  <connectionStrings>
+    <add name="ConStrScott" connectionString="Data Source = .;Initial Catalog = Scott;User Id = sa;Password = sa;" />
+  </connectionStrings>

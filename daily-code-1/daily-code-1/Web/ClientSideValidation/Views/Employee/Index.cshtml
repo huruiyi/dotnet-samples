@@ -1,0 +1,31 @@
+﻿@using WebApplication1.ViewModels
+@model EmployeeListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyView</title>
+</head>
+<body>
+  <a  href="/Employee/AddNew">Add New</a>
+    <div>
+       <table border="1">
+           <tr>
+               <th>Employee Name</th>
+               <th>Salary</th>
+           </tr>
+           @foreach (EmployeeViewModel item in Model.Employees)
+           {
+               <tr>
+                   <td>@item.EmployeeName</td>
+                   <td style="background-color:@item.SalaryColor">@item.Salary</td>
+               </tr>
+           }
+       </table>
+    </div>
+</body>
+</html>

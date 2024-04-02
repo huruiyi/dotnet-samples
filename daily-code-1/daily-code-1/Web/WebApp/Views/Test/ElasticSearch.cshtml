@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "ElasticSearch";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/knockout-3.5.1.js"></script>
+
+<style>
+    b {
+        color: red;
+    }
+</style>
+<script>
+    $(function () {
+        function ViewModel() {
+            self = this;
+            self.getData = ko.observableArray();
+            //定义加载数据方法
+            self.loadData = function () {
+                $.get("/api/estest//SearchFullFiledss", { key: "@Request.QueryString["key"]", from: "@Request.QueryString["from"]", size: "@Request.QueryString["size"]" }, function (data) {
+                    // alert(data.hits);
+                    // alert(data.list.length);
+                    $("#count").text("符合条件的数据供：" + data.hits + "  共花费了：" + data.took + "毫秒");
+
+                    $.each(data.list, function (i) {
+                        var date=data.list[i].birthday;
+
+                    });
+                    self.getData(data.list);
+                }, "jsonp");
+            };
+            //调用定义方法
+            self.loadData();
+        }
+        ko.applyBindings(new ViewModel());
+
+    });
+</script>
+<div id="count"></div>
+
+<div class="row">
+    <table class="table-bordered table-condensed table-hover table-striped">
+        <tbody data-bind="foreach: getData">
+            <tr>
+                <td data-bind="text: id" />
+                <td data-bind="html: name" />
+                <td data-bind="text: sex" />
+                <td data-bind="text: age" />
+                <td data-bind="text: birthday" />
+                <td data-bind="html: intro" />
+            </tr>
+        </tbody>
+    </table>
+</div>

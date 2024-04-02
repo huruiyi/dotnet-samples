@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <webIndex>https://www.baidu.com/</webIndex>
+  <!--主页地址-->
+  <snikID>5</snikID>
+  <!--皮肤id-->
+</Config>
