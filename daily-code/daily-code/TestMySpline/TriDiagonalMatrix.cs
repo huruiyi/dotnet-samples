@@ -84,18 +84,21 @@ namespace TestMySpline
 				{
 					return B[row];
 				}
-				else if (di == -1)
-				{
-					Debug.Assert(row < N - 1);
-					return C[row];
-				}
-				else if (di == 1)
-				{
-					Debug.Assert(row > 0);
-					return A[row];
-				}
-				else return 0;
-			}
+
+                if (di == -1)
+                {
+                    Debug.Assert(row < N - 1);
+                    return C[row];
+                }
+
+                if (di == 1)
+                {
+                    Debug.Assert(row > 0);
+                    return A[row];
+                }
+
+                return 0;
+            }
 			set
 			{
 				int di = row - col;
@@ -137,8 +140,8 @@ namespace TestMySpline
 		/// <param name="fmt">Optional. For String.Format. Must include the colon. Examples are ':0.000' and ',5:0.00' </param>
 		/// <param name="prefix">Optional. Per-line indentation prefix.</param>
 		public string ToDisplayString(string fmt = "", string prefix = "")
-		{
-			if (this.N > 0)
+        {
+            if (this.N > 0)
 			{
 				var s = new StringBuilder();
 				string formatString = "{0" + fmt + "}";
@@ -158,11 +161,9 @@ namespace TestMySpline
 
 				return s.ToString();
 			}
-			else
-			{
-				return prefix + "0x0 Matrix";
-			}
-		}
+
+            return prefix + "0x0 Matrix";
+        }
 
 		/// <summary>
 		/// Solve the system of equations this*x=d given the specified d.

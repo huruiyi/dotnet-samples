@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparer\EqualityComparer.cs" />
+    <Compile Include="Comparer\App.cs" />
+    <Compile Include="Comparer\User.cs" />
     <Compile Include="DesignPattern\SingletonDemo.cs" />
     <Compile Include="DesignPattern\依赖倒置1.cs" />
     <Compile Include="DesignPattern\依赖倒置2.cs" />
@@ -81,7 +84,9 @@
     <Compile Include="Samples\ContextBoundClass.cs" />
     <Compile Include="Samples\EventDemo.cs" />
     <Compile Include="Samples\IOCUnity.cs" />
+    <Compile Include="Samples\ListExt.cs" />
     <Compile Include="Samples\MailDemo.cs" />
+    <Compile Include="Samples\MarshalDemo.cs" />
     <Compile Include="Samples\MouseKeyHookDemo.cs" />
     <Compile Include="Samples\MysqlDemo.cs" />
     <Compile Include="Samples\NewFeatures.cs" />
@@ -153,5 +158,6 @@
       <Version>5.11.10</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,10 +1,13 @@
 ﻿using ConApp.Infrastructure;
 using ConApp.Model;
+using ConApp.Samples;
 
 using Microsoft.VisualBasic;
+using Microsoft.Win32;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -13,17 +16,20 @@ using System.Management;
 using System.Net;
 using System.Net.Security;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using ConApp.Samples;
-using Microsoft.Win32;
 
 namespace ConApp
 {
     public class Program
     {
+        public static int Number0;
+
+        public static int? Number1;
+
         public Program(int mNData)
         {
             MnData = mNData;
@@ -60,8 +66,72 @@ namespace ConApp
             //WeakReference
             //volatile
 
+            Test10_TimeZone();
+
             ToSimpleChinese(@"D:\Work\CS\00\hello.txt");
             Console.ReadKey();
+        }
+
+        [DllImport("msvcrt.dll", SetLastError = false, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        private static extern void system(string command);
+
+        public static void Demo_System_Date()
+        {
+            system("title 纪念日");
+            system(" Color 1f");
+            for (int year = 2020; year <= 9999; year++)
+            {
+                Console.WriteLine($"----------------------------------------------------{year}----------------------------------------------------");
+                for (int month = 1; month < 13; month++)
+                {
+                    if (month < DateTime.Now.Month && DateTime.Now.Year == year)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine($"*****************************************************{month}******************************************************");
+
+                    var daysInMonth = DateTime.DaysInMonth(year, month);
+                    for (int day = 1; day <= daysInMonth; day++)
+                    {
+                        DateTime dateTime = new DateTime(year, month, day);
+                        DayOfWeek dayOfWeek = dateTime.DayOfWeek;
+                        int week = 0;
+
+                        switch (dayOfWeek)
+                        {
+                            case DayOfWeek.Monday: week = 1; break;
+                            case DayOfWeek.Tuesday: week = 2; break;
+                            case DayOfWeek.Wednesday: week = 3; break;
+                            case DayOfWeek.Thursday: week = 4; break;
+                            case DayOfWeek.Friday: week = 5; break;
+                            case DayOfWeek.Saturday: week = 6; break;
+                            case DayOfWeek.Sunday: week = 7; break;
+                        }
+
+                        if (day == 1)
+                        {
+                            for (int i = 0; i < (week - day) * 16; i++)
+                            {
+                                Console.Write("-");
+                            }
+                        }
+
+                        Console.ForegroundColor = day == 26 ? ConsoleColor.Red : ConsoleColor.Yellow;
+                        Console.Write(week + "-" + year + "-" + month.ToString().PadLeft(2, '0') + "-" + day.ToString().PadLeft(2, '0') + "\t");
+                        if (dayOfWeek == DayOfWeek.Sunday)
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine($"*****************************************************{month}******************************************************");
+                    if (month == 12)
+                    {
+                        Console.WriteLine($"----------------------------------------------------{year}----------------------------------------------------");
+                    }
+                    Console.ReadKey();
+                }
+            }
         }
 
         public static void MemoryDemo()
@@ -79,11 +149,11 @@ namespace ConApp
 
         private static void ToSimpleChinese(String file)
         {
-                Encoding encoding = TxtFileEncoder.GetEncoding(file);
-                //Encoding.GetEncoding(encoding.BodyName);
-                string readAllText = File.ReadAllText(file);
-                string strConv = Strings.StrConv(readAllText, VbStrConv.SimplifiedChinese);
-                Console.WriteLine(strConv);
+            Encoding encoding = TxtFileEncoder.GetEncoding(file);
+            //Encoding.GetEncoding(encoding.BodyName);
+            string readAllText = File.ReadAllText(file);
+            string strConv = Strings.StrConv(readAllText, VbStrConv.SimplifiedChinese);
+            Console.WriteLine(strConv);
         }
 
         //静态变量存储在堆上，查看指针时需用fixed固定
@@ -332,29 +402,6 @@ namespace ConApp
             IEnumerable<Article> enumerable = list.Where(fbExpression.Compile());
         }
 
-        private static void Test07()
-        {
-            var date = DateTime.Today;
-            var order = new Order { Customer = "Tom", Amount = 1000 };
-
-            Expression<Func<Order, bool>> filter
-                = x => (x.Customer == order.Customer && x.Amount > order.Amount) || (x.TheDate == date && !x.Discount);
-            var visitor = new FilterConstructor();
-            var query = visitor.GetQuery(filter);
-
-            Console.WriteLine(query);
-        }
-
-        private static void Test06()
-        {
-            ProcessStartInfo info = new ProcessStartInfo
-            {
-                FileName = "notepad.exe",
-                Arguments = @"C:\Windows\System32\drivers\etc\hosts"
-            };
-            Process.Start(info);
-        }
-
         private void AddFileContextMenuItem(string itemName, string associatedProgramFullPath)
         {
             //创建项：shell
@@ -411,6 +458,78 @@ namespace ConApp
             associatedProgramKey.Close();
             registryKey.Close();
             shellKey.Close();
+        }
+
+        public static void Test10_TimeZone()
+        {
+            ReadOnlyCollection<TimeZoneInfo> tzCollections = TimeZoneInfo.GetSystemTimeZones();
+
+            foreach (TimeZoneInfo item in tzCollections)
+            {
+                Console.WriteLine(item.DisplayName + "  " + item.DaylightName);
+            }
+        }
+
+        public static void Test09()
+        {
+            int? ni = new int?(12);
+            ni = 123456;
+            Console.WriteLine(ni);
+            ni = null;
+            Console.WriteLine(ni);
+
+            Console.WriteLine(Number0);
+            Console.WriteLine(Number1 == null ? 123 : 456);
+        }
+
+        private static bool FindText(string str)
+        {
+            return string.CompareOrdinal(str, "7") >= 0;
+        }
+
+        public static void Test08()
+        {
+            List<string> list = new List<string>
+            {
+                "3","4","7","9","11"
+            };
+            var lists1 = list.MyFindAll<string>(FindText);
+            lists1.ForEach((item) =>
+            {
+                Console.WriteLine(item);
+            });
+
+            var lists2 = list.MyFindAll(str =>
+            {
+                return string.CompareOrdinal(str, "7") >= 0;
+            });
+            lists2.ForEach((item) =>
+            {
+                Console.WriteLine(item);
+            });
+        }
+
+        private static void Test07()
+        {
+            var date = DateTime.Today;
+            var order = new Order { Customer = "Tom", Amount = 1000 };
+
+            Expression<Func<Order, bool>> filter
+                = x => (x.Customer == order.Customer && x.Amount > order.Amount) || (x.TheDate == date && !x.Discount);
+            var visitor = new FilterConstructor();
+            var query = visitor.GetQuery(filter);
+
+            Console.WriteLine(query);
+        }
+
+        private static void Test06()
+        {
+            ProcessStartInfo info = new ProcessStartInfo
+            {
+                FileName = "notepad.exe",
+                Arguments = @"C:\Windows\System32\drivers\etc\hosts"
+            };
+            Process.Start(info);
         }
 
         private static void Test05()

@@ -71,7 +71,7 @@ namespace ShellDemo
 
         private static void Main()
         {
-            EncryptConnection.EncryptConnectionString(false);
+            EncryptConnection.EncryptConnectionString(true);
             Console.ReadKey();
         }
     }

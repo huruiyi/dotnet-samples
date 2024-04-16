@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConApp01
+namespace ConApp.Samples
 {
-    public static class ExtMethod
+    public static class ListExt
     {
         //扩展方法三要素：  静态类型，静态方法，this关键字。
         public delegate bool MyPreDel<T>(T text);
