@@ -11,14 +11,14 @@ namespace TestMySpline
 	{
 		static void Main(string[] args)
 		{
-			//TestTdm();
-			//TestSplineOnWikipediaExample();
-			//TestSpline();
-			//TestPerf();
-			TestFitParametric();
-		}
+			TestTdm();
+            //TestSplineOnWikipediaExample();
+            //TestSpline();
+            //TestPerf();
+            //TestFitParametric();
+        }
 
-		private static void TestFitParametric()
+        private static void TestFitParametric()
 		{
 			// Create the data to be fitted
 			float[] x = { 0.5f, 2.0f, 3.0f, 4.5f, 3.0f, 2.0f };
