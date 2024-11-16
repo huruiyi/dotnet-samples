@@ -68,8 +68,6 @@ namespace HuUtils
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private delegate void CloneDelegate(string url, string destPath);
-
         private void btnBrowser_Click(object sender, EventArgs e)
         {
             if (DialogResult.OK == folderBrowserDialogGit.ShowDialog())
@@ -83,24 +81,6 @@ namespace HuUtils
             if (DialogResult.OK == folderBrowserDialogGit.ShowDialog())
             {
                 txtGitPath.Text = folderBrowserDialogGit.SelectedPath;
-            }
-        }
-
-        //Clone 基目录
-        private void BtnPullSourceUrl_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.OK == folderBrowserDialogGit.ShowDialog())
-            {
-                txtDestBasePath.Text = folderBrowserDialogGit.SelectedPath;
-            }
-        }
-
-        //Git地址文件地址
-        private void BtnSelectUrlsFile_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.OK == openFileDialogGit.ShowDialog())
-            {
-                txtUrlsPath.Text = openFileDialogGit.FileName;
             }
         }
 
@@ -156,83 +136,6 @@ namespace HuUtils
             Task.WaitAll(tasks);
         }
 
-        private void Clone(string url, string destPath)
-        {
-            if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(destPath))
-            {
-                return;
-            }
-            txtLog.AppendText("Clone Start:" + url + Environment.NewLine);
-            CloneOptions options = new CloneOptions
-            {
-                OnCheckoutProgress = (path, completedSteps, totalSteps) =>
-                {
-                    txtLog.AppendText(url + " " + path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
-                },
-                OnProgress = serverProgressOutput =>
-                {
-                    txtLog.AppendText($"{url} Progress: " + serverProgressOutput + Environment.NewLine);
-                    return true;
-                },
-            };
-            try
-            {
-                string dstDir = GetDestPath(url);
-                string path = Path.Combine(destPath, dstDir.TrimEnd('.'));
-                if (Directory.Exists(path))
-                {
-                    return;
-                }
-
-                string clonedRepoPath = Repository.Clone(url, path, options);
-                using (Repository repo = new Repository(clonedRepoPath))
-                {
-                    Console.WriteLine(repo.Stashes);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-
-        private void Callback(IAsyncResult result)
-        {
-            if (result.IsCompleted)
-            {
-                string log = $"{result.AsyncState,30}";
-                txtLog.AppendText($"{log} Clone Success..." + Environment.NewLine);
-            }
-        }
-
-        public void TaskClone(string urlLines, string destPath)
-        {
-            Queue<string> list = new Queue<string>();
-            string[] lines = File.ReadAllLines(urlLines);
-            foreach (string pathStr in lines)
-            {
-                list.Enqueue(pathStr);
-            }
-
-            Task[] tasks = new Task[lines.Length];
-            for (int i = 0; i < lines.Length; i++)
-            {
-                string gitUrl = list.Dequeue();
-                if (string.IsNullOrEmpty(gitUrl))
-                {
-                    continue;
-                }
-
-                tasks[i] = Task.Factory.StartNew(() =>
-                {
-                    CloneDelegate cloneDelegate = Clone;
-                    cloneDelegate.BeginInvoke(gitUrl.Trim(), destPath, Callback, gitUrl.Trim());
-                });
-            }
-
-            Task.WaitAll(tasks);
-        }
-
         private void BtnGetUrl_Click(object sender, EventArgs e)
         {
             try
@@ -271,22 +174,6 @@ namespace HuUtils
             string[] directories = Directory.GetDirectories(txtGitDir.Text);
             int taskCount = (directories.Length / 5) + 1;
             TaskFetch(txtGitDir.Text, taskCount);
-        }
-
-        /// <summary>
-        /// 拉取代码
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnPull_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtUrlsPath.Text) || string.IsNullOrWhiteSpace(txtDestBasePath.Text))
-            {
-                MessageBox.Show(@"请选择文件夹", @"Git 库 目录", MessageBoxButtons.AbortRetryIgnore);
-                return;
-            }
-
-            TaskClone(txtUrlsPath.Text, txtDestBasePath.Text);
         }
 
         public static string GetDestPath(string path)

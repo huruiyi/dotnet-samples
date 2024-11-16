@@ -356,5 +356,10 @@ namespace HuUtils
         {
             new BarCode().Show();
         }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            new GitClone().Show();
+        }
     }
 }

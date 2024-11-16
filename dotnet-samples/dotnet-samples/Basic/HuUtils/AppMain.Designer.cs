@@ -72,6 +72,7 @@
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
+            this.button44 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -762,6 +763,22 @@
             this.button43.UseVisualStyleBackColor = false;
             this.button43.Click += new System.EventHandler(this.button43_Click);
             // 
+            // button44
+            // 
+            this.button44.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button44.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button44.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.button44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button44.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button44.Location = new System.Drawing.Point(589, 505);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(140, 32);
+            this.button44.TabIndex = 3;
+            this.button44.Text = "27-GitClone";
+            this.button44.UseVisualStyleBackColor = false;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
             // AppMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -794,6 +811,7 @@
             this.Controls.Add(this.button29);
             this.Controls.Add(this.button28);
             this.Controls.Add(this.button27);
+            this.Controls.Add(this.button44);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.button25);
             this.Controls.Add(this.button21);
@@ -867,5 +885,6 @@
         private System.Windows.Forms.Button button41;
         private System.Windows.Forms.Button button42;
         private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Button button44;
     }
 }
