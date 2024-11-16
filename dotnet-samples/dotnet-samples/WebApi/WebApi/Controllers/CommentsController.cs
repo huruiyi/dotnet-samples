@@ -9,6 +9,9 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+   /**
+    * http://localhost:13037/api/Comments
+    */
     //[Authorize]
     public class CommentsController : ApiController
     {
