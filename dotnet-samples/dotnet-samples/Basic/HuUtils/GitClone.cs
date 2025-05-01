@@ -73,23 +73,16 @@ namespace HuUtils
             }
         }
 
-        private void btnPullSourceUrl_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.OK == folderBrowserDialogGit.ShowDialog())
-            {
-                txtDestBasePath.Text = folderBrowserDialogGit.SelectedPath;
-            }
-        }
 
         private void btnPull_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUrlsPath.Text) || string.IsNullOrWhiteSpace(txtDestBasePath.Text))
+            if (string.IsNullOrWhiteSpace(txtUrlsPath.Text) )
             {
                 MessageBox.Show(@"请选择文件夹", @"Git 库 目录", MessageBoxButtons.AbortRetryIgnore);
                 return;
             }
 
-            TaskClone(txtUrlsPath.Text, txtDestBasePath.Text);
+            TaskClone(txtUrlsPath.Text, txtUrlsPath.Text.Replace(".txt",""));
         }
 
         public void TaskClone(string urlLines, string destPath)
@@ -126,28 +119,29 @@ namespace HuUtils
             {
                 return;
             }
+            string dstDir = GetDestPath(url);
+            string path = Path.Combine(destPath, dstDir.TrimEnd('.'));
+            if (Directory.Exists(path))
+            {
+                return;
+            }
+
             txtLog.AppendText("Clone Start:" + url + Environment.NewLine);
             CloneOptions options = new CloneOptions
             {
-                OnCheckoutProgress = (path, completedSteps, totalSteps) =>
+                OnCheckoutProgress = (cpPath, completedSteps, totalSteps) =>
                 {
-                    txtLog.AppendText(url + " " + path + " " + completedSteps + " " + totalSteps + Environment.NewLine);
+                    string processStep = "【" + completedSteps + "/" + totalSteps + "】";
+                    txtLog.AppendText(url + Environment.NewLine + processStep + cpPath + Environment.NewLine);
                 },
                 OnProgress = serverProgressOutput =>
                 {
-                    txtLog.AppendText($"{url} Progress: " + serverProgressOutput + Environment.NewLine);
+                    txtLog.AppendText(url + Environment.NewLine + serverProgressOutput + Environment.NewLine);
                     return true;
                 },
             };
             try
             {
-                string dstDir = GetDestPath(url);
-                string path = Path.Combine(destPath, dstDir.TrimEnd('.'));
-                if (Directory.Exists(path))
-                {
-                    return;
-                }
-
                 string clonedRepoPath = Repository.Clone(url, path, options);
                 using (Repository repo = new Repository(clonedRepoPath))
                 {
@@ -162,9 +156,9 @@ namespace HuUtils
 
         public static string GetDestPath(string path)
         {
-            string[] strs = path.Split('/');
-            int len = strs.Length;
-            string newPath = strs[len - 1];
+            string[] paths = path.Split('/');
+            int len = paths.Length;
+            string newPath = paths[len - 1];
             if (newPath.EndsWith(".git"))
             {
                 newPath = newPath.Replace(".git", "");
@@ -177,7 +171,6 @@ namespace HuUtils
             if (result.IsCompleted)
             {
                 string log = $"{result.AsyncState,30}";
-                txtLog.AppendText($"{log} Clone Success..." + Environment.NewLine);
             }
         }
     }
