@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script type="text/javascript"> 
+
+function param( a ){
+		var s = [ ];
+		function add( key, value ){
+			s[ s.length ] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
+		};
+		for( var j in a ){
+			add( j, a[j] );
+		};
+		return s.join("&").replace(/%20/g, "+");
+}
+window.onload = function(){
+	var option = { 
+		width:400, 
+		height:300
+	};
+	var str = param( option );
+	var div = document.getElementsByTagName("div")[0];
+	div.innerHTML = str;
+}
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div></div>
+
+
+
+</body>
+</html>

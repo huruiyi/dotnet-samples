@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/i18n/angular-locale_zh-cn.js"></script>
+    <style type="text/css">
+        body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+    </style>
+</head>
+<body ng-app="mainApp">
+    <fieldset>
+        <legend>ng-controller</legend>
+        <div ng-controller="StudentController">
+            {{fees | currency }}
+            <br />
+            <br /> {{admissiondate | date }}
+            <br />
+            <br /> {{rollno | number }}
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('StudentController', function ($scope) {
+            $scope.fees = 100;
+            $scope.admissiondate = new Date();
+            $scope.rollno = 123.45;
+        });
+    </script>
+</body>
+</html>

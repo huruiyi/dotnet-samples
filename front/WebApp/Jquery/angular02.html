@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+<body>
+<div ng-app="myApp1" ng-controller="myCtrl">
+    <h1>myApp1 姓氏为 {{lastname}} 家族成员:</h1>
+    <ul>
+
+
+        <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+    </ul>
+</div>
+<div id="myApp2" ng-app="myApp2" ng-controller="myCtrl">
+    <h1>myApp2 姓氏为 {{lastname}} 家族成员:</h1>
+    <ul>
+        <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+    </ul>
+</div>
+
+<div id="myApp3" ng-app="myApp3" ng-controller="myCtrl">
+    <h1>myApp3 姓氏为 {{lastname}} 家族成员:</h1>
+    <input type="button" value="rootScope共享" ng-click="say()"/>
+</div>
+<script>
+    var app1 = angular.module('myApp1', []);
+    app1.controller('myCtrl', function ($scope, $rootScope) {
+        $scope.names = ["app1_names1", "app1_names2", "app1_names3"];
+        $rootScope.lastname = "app1_lastname";
+    });
+
+
+    var app2 = angular.module('myApp2', []);
+    app2.controller('myCtrl', function ($scope, $rootScope) {
+        $scope.names = ["app2_names1", "app2_names2", "app2_names3"];
+        $rootScope.lastname = "app2_lastname";
+    });
+
+    var app3 = angular.module('myApp3', []);
+    app3.controller('myCtrl', function ($scope, $rootScope) {
+        $rootScope.lastname = "app3_lastname";
+        $rootScope.say = function () {
+            $rootScope.lastname = "app3_lastname_";
+        }
+    });
+
+    //手动加载myApp2 ng-app
+    angular.bootstrap(document.getElementById("myApp2"), ['myApp2']);
+    angular.bootstrap(document.getElementById("myApp3"), ['myApp3']);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts//angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="personCtrl">
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+    </div>
+
+    <script src="19_23_personController.js"></script>
+</body>
+</html>

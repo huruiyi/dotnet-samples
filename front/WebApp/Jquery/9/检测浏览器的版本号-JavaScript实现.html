@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script type="text/javascript"> 
+
+
+function getVersion(){
+	var userAgent = navigator.userAgent.toLowerCase();
+	return  (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1];
+}	
+
+window.onload = function(){
+	alert(getVersion());
+}
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div></div>
+
+
+
+</body>
+</html>

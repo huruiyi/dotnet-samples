@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".panel .hide").click(function () {
+                //$(selector).hide(speed,callback);
+                //$(selector).show(speed,callback);
+                // 可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+                $(this).parents(".panel").hide("slow", function () {
+                    alert("隐藏了")
+                });
+            });
+        });
+    </script>
+    <style type="text/css">
+        div.panel,
+        p.flip {
+            width: 400px;
+            margin: 0;
+            padding: 5px;
+            text-align: center;
+            background: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>中国办事处</h3>
+    <div class="panel">
+        <button class="hide" type="button">隐藏</button>
+        <p>
+            联系人：张先生
+            <br /> 北三环中路 100 号
+            <br /> 北京
+        </p>
+    </div>
+
+    <h3>美国办事处</h3>
+    <div class="panel">
+        <button class="hide" type="button">隐藏</button>
+        <p>
+            联系人：David
+            <br /> 第五大街 200 号
+            <br /> 纽约
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery+CSS3进度条动画特效 - 站长素材</title>
+</head>
+
+<body>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<div class="progressbar" data-perc="100">
+	<div class="bar"><span></span></div>
+	<div class="label"><span></span></div>
+</div>
+
+<div class="progressbar" data-perc="75">
+	<div class="bar color2"><span></span></div>
+	<div class="label"><span></span></div>
+</div>
+
+<div class="progressbar" data-perc="50">
+	<div class="bar color3"><span></span></div>
+	<div class="label"><span></span></div>
+</div>
+
+<div class="progressbar" data-perc="25">
+	<div class="bar color4"><span></span></div>
+	<div class="label"><span></span></div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+		
+	$('.progressbar').each(function(){
+		var t = $(this),
+		dataperc = t.attr('data-perc'),
+		barperc = Math.round(dataperc*5.56);
+		t.find('.bar').animate({width:barperc}, dataperc*25);
+		t.find('.label').append('<div class="perc"></div>');
+		
+		function perc(){
+			var length = t.find('.bar').css('width'),
+			perc = Math.round(parseInt(length)/5.56),
+			labelpos = (parseInt(length)-2);
+			t.find('.label').css('left', labelpos);
+			t.find('.perc').text(perc+'%');
+		}
+		perc();
+		setInterval(perc, 0); 
+	});
+	
+});
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+
+<script language="javascript" type="text/javascript">
+var $ =jQuery = function(){
+    return jQuery.fn.init();
+}
+jQuery.fn = jQuery.prototype = {
+    init : function(){
+        this.length = 0;
+        this.test = function(){
+            return this.length;
+        }
+        return this;
+    },
+    jquery: "1.3.2",
+    length: 1,
+    size: function() {
+        return this.length;
+    }
+}
+alert( $().jquery );    //·µ»Ø"1.3.2"
+alert( $().test() );     //·µ»Ø0
+alert( $().size() );     //·µ»Ø0
+</script>
+
+
+
+</body>
+
+</html>

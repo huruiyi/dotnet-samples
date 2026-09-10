@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        div {
+            width: 300px;
+            height: 200px;
+            background-color: Green;
+            cursor: pointer;
+        }
+
+        p {
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+
+        //事件冒泡:元素里面还有元素,为每个元素注册了相同的事件,一旦触发里面元素的事件,外面元素的事件也被触发了
+        onload = function () {
+
+            document.getElementById('dv').onclick = function () {
+                //alert(this.id);//当前
+                alert(window.event.srcElement.id); //事件源的id
+            };
+            document.getElementById('p1').onclick = function () {
+                alert(this.id);
+            };
+            document.getElementById('st').onclick = function () {
+                alert(this.id);
+                //取消事件冒泡
+                window.event.cancelBubble = true;//ie
+                //火狐里怎么写---晚上回去查
+                // window.event.returnValue = false;
+                // return false;
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="dv">
+        <p id="p1">
+            <strong id="st">粗体</strong>
+        </p>
+    </div>
+</body>
+</html>

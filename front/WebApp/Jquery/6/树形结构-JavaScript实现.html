@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+
+    <script type="text/javascript">
+
+window.onload = function(){
+    var li = document.getElementsByTagName("li");
+    var t =[]; 
+    for(var i = 0; i < li.length; i ++ ){
+        var child = li[i].childNodes;
+        var b = false;
+        for(var j=0; j<child.length;j++){
+            if(child[j].nodeType == 1 && child[j].nodeName.toLowerCase() == "ul")
+                b = true;
+        }
+        if(b){
+            li[i].style.cursor = 'pointer';
+            li[i].style.listStyleImage = 'url(images/+.gif)';
+            var ul =  li[i].getElementsByTagName("ul")[0];
+            ul.style.display = "none";
+            t[i] = true;
+            li[i].onclick = (function(o,li,i){
+                return function(e){
+                    if(li == e.target || li == window.event.srcElement ){
+                        if( t[i]){
+                            o.style.display = "";
+                            li.style.listStyleImage =  'url(images/-.gif)';
+                            t[i] = false;
+                        }
+                        else{
+                            o.style.display = "none";
+                            li.style.listStyleImage =  'url(images/+.gif)';
+                            t[i] = true;
+                        }
+                    }
+                    if ( e && e.stopPropagation )
+                        e.stopPropagation();
+                    else
+                        window.event.cancelBubble = true;
+                    return false;    
+                }
+
+            })(ul,li[i],i);
+        }
+        else{
+            li[i].style.cursor = 'default';
+            li[i].style.listStyleImage = 'none';
+        }
+    }
+}
+
+
+    </script>
+
+</head>
+<body>
+    <ul class="tree">
+        <li>菜单1</li>
+        <li>菜单2
+             <ul>
+                <li>菜单2.1</li>
+                <li>菜单2.2</li>
+            </ul>
+        </li>
+        <li>菜单3
+            <ul>
+                <li>菜单3.1</li>
+                <li>菜单3.2
+                    <ul>
+                        <li>菜单3.2.1</li>
+                        <li>菜单3.2.2</li>
+                        <li>菜单3.2.3</li>
+                    </ul>
+                </li>
+                <li>菜单3.3</li>
+            </ul>
+        </li>
+        <li>菜单4</li>
+    </ul>
+</body>
+</html>

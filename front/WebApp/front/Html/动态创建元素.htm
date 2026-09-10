@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        onload = function () {
+            //创建层的代码
+            document.getElementById('btn').onclick = function () {
+
+                //创建元素
+                //创建一个层
+                var dvObj = document.createElement('div');
+                dvObj.id = 'dv'; //为层添加一个id
+                //设置样式
+                dvObj.style.width = '300px';
+                //  dvObj.style.height = '200px';
+                //在css中多个单词用-连接,但是到了js中-干掉,后面单词首字母大写
+                dvObj.style.backgroundColor = 'yellow';
+                //把元素添加到body中(追加到层中)
+                document.body.appendChild(dvObj);
+            };
+            //创建按钮的代码
+            var i = 0;
+            document.getElementById('btnAddBtn').onclick = function () {
+                i++;
+                //不是button
+                var inputObj = document.createElement('input');
+                //设置是按钮
+                inputObj.type = 'button';
+                inputObj.value = '我是按钮' + i;
+                //加到层里面去
+                document.getElementById('dv').appendChild(inputObj);
+            };
+
+            //把按钮不是追加,而是添加到每个按钮的前面
+            document.getElementById('btnInsert').onclick = function () {
+                i++;
+                //不是button
+                var inputObj = document.createElement('input');
+                //设置是按钮
+                inputObj.type = 'button';
+                inputObj.value = '按钮' + i;
+                var dvObj1 = document.getElementById('dv'); //获取该层
+                //插入
+                dvObj1.insertBefore(inputObj, dvObj1.firstChild);
+            };
+            //删除所有的按钮
+
+            document.getElementById('btnDelete').onclick = function () {
+
+                var dvObj2 = document.getElementById('dv');
+                while (dvObj2.firstChild) {//判断层中有没有第一个元素
+                    dvObj2.removeChild(dvObj2.firstChild);//删除第一个
+                }
+            };
+
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="创建一个层" id="btn" />
+    <input type="button" name="name" value="创建一个按钮" id="btnAddBtn" />
+    <input type="button" name="name" value="插入一个按钮" id="btnInsert" />
+    <input type="button" name="name" value="删除层中所有的按钮" id="btnDelete" />
+</body>
+</html>

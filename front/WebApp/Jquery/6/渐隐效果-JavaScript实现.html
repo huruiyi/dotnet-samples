@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css"></style>
+<script type="text/javascript">
+var DOMextend = function(name, fn){
+	if( ! document.all)
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+DOMextend("getStyle",function(n){
+	var _this = this
+	if(_this.style[n]){ 
+		return _this.style[n];
+	}
+	else if(_this.currentStyle){ 
+		return _this.currentStyle[n];
+	}
+	else if(document.defaultView && document.defaultView.
+getComputedStyle){
+		n = n.replace(/([A-Z])/g,"-$1");
+		n = n.toLowerCase();
+		var s = document.defaultView.getComputedStyle(_this,null); 
+		if(s)
+			return s.getPropertyValue(n);
+	}
+	else
+		return null;
+})
+
+DOMextend("setOpacity",function(n){
+	var _this = this
+	var n = parseFloat(n);
+    if(n && (n>100) || !n)
+		n=100;
+    if(n && (n<0))
+		n =0;
+    if (_this.filters){
+		_this.style.filter = "alpha(opacity=" + n + ")";
+    }
+    else{
+        _this.style.opacity = n / 100;
+    }
+})
+
+DOMextend("fadeOut",function(time, fn){
+	var _this = this;
+	var isShow = _this.getStyle("display");
+	if(isShow == "none")
+		return;
+    var t = 5;
+	var step = t*100/time;
+	var i = 100;
+	
+    var interval = setInterval(function(){
+        _this.setOpacity(i);
+        i -= step ;
+        if(i <= 0 ){
+			clearTimeout(interval);
+			_this.style.display = "none";
+			if(fn){}
+				fn();
+		}
+    }, t);
+})
+
+
+
+window.onload = function(){
+    var input = document.getElementsByTagName("input")[0];
+    var div = document.getElementsByTagName("div")[0];
+    input.onclick = function(){
+		div.fadeOut(500,function(){
+			alert("ok");
+		});
+    };
+}
+    </script>
+</head>
+<body>
+
+<input type="button" value="显隐元素" />
+<div><img src="/mysite/images/bg5.jpg" height="200" /></div>
+
+</body>
+</html>

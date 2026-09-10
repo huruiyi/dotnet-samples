@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+#wrap{
+	margin:20px;
+	position:relative;
+	float:left;
+	border:solid 6px #D4DEE9;
+	border-width:6px 18px;
+}
+#wrap span {
+	background:#D4DEE9;
+	height:100%;
+	width:18px;
+	position:absolute;
+	top:0;
+	cursor:pointer;
+}
+#wrap #left {
+	left:-18px;
+	background:url(images/left.gif) center center no-repeat;
+	text-indent:-1000px;
+}
+#wrap #right {
+	right:-18px;
+	background:url(images/right.gif) center center no-repeat;
+	text-indent:-1000px;	
+}
+#wrap #box {
+	width:400px;
+	overflow:hidden;
+}
+#wrap #box a {
+	float:left;
+}
+#wrap #box img {
+	border:none;
+}
+#wrap .allwidth {
+	width:1500px;
+}
+
+</style>
+<script type="text/javascript">
+
+var $ = function (id) {
+    return "string" == typeof id ? document.getElementById(id) : id;
+};
+
+var  addEventHandler =  function (oTarget, sEventType, fnHandler) {
+    if (oTarget.addEventListener) {
+        oTarget.addEventListener(sEventType, fnHandler, false);
+    } else if (oTarget.attachEvent) {
+        oTarget.attachEvent("on" + sEventType, fnHandler);
+    } else {
+        oTarget["on" + sEventType] = fnHandler;
+    }
+};
+
+var Scroller = function(){
+	this.init.apply(this, arguments);
+}
+Scroller.prototype = {
+	init: function(box, scroller, left, right, options) {
+		var _this = this, box = $(box), scroller = $(scroller);
+		
+		this.boxWidth = box.offsetWidth;
+		this.scroWidth = scroller.offsetWidth;
+		
+		if(this.scroWidth <= this.boxWidth)
+			return;
+		
+		box.style.overflow = "hidden";
+		scroller.appendChild(scroller.cloneNode(true));
+		
+		this.box = box;
+		this.scroll = true;
+		
+		this.setOptions(options);
+		
+		this.side = 1;//1是左 -1是右
+		switch (this.options.Side) {
+			case "right" :
+				this.side = -1;
+				break;
+			case "left" :
+			default :
+				this.side = 1;
+		}
+		
+		addEventHandler(scroller , "mouseover", function() { _this.scroll = false; });
+		addEventHandler(scroller , "mouseout", function() { _this.scroll = true; });
+		
+		if(left) { addEventHandler($(left), "click", function() { _this.side = 1; }); }
+		if(right) { addEventHandler($(right), "click", function() { _this.side = -1; }); }
+		
+		this.scrolling();
+  },
+  //设置默认属性
+  setOptions: function(options) {
+    this.options = {//默认值
+      Step:            1,//每次变化的px量
+      Time:            10,//速度
+      Side:            "left"//默认滚动方向
+    };
+	var options = options || {};
+    for (var property in options) {
+        this.options[property] = options[property];
+    }
+  },
+  //滚动
+  scrolling: function() {
+    if (this.scroll) {
+        var iscroll = this.box.scrollLeft, thisWidth = this.scroWidth;
+        if(this.side > 0){
+            if(iscroll >= (thisWidth * 2 - this.boxWidth)){ iscroll -= thisWidth; }
+        } else {
+            if(iscroll <= 0){ iscroll += thisWidth; }
+        }
+        this.box.scrollLeft = iscroll + this.options.Step * this.side;//注意scrollLeft超过1400会自动变回1400 注意长度
+    }
+    var _this = this; window.setTimeout(function(){ _this.scrolling(); }, this.options.Time);
+  }
+};
+
+window.onload = function(){
+    new Scroller("box","scroll", "left", "right");
+}
+
+
+    </script>
+</head>
+<body>
+
+<div id="wrap">
+	<span id="left">向左滚动</span>
+    <div id="box">
+        <div class="allwidth">
+            <div id="scroll">
+                <a style="float:left" href="?#1"> <img src="images/bg3.jpg" width="150px" height="150px;"/> </a>
+                <a style="float:left" href="?#2"> <img src="images/bg4.jpg" width="150px" height="150px;"/> </a>
+                <a style="float:left" href="?#3"> <img src="images/bg5.jpg" width="150px" height="150px;"/> </a>
+                <a style="float:left" href="?#4"> <img src="images/bg6.jpg" width="150px" height="150px;"/> </a>
+                <a style="float:left" href="?#5"> <img src="images/bg7.jpg" width="150px" height="150px;"/> </a>
+            </div>
+        </div>
+    </div>
+    <span id="right">向右滚动</span>
+</div>
+
+</body>
+</html>

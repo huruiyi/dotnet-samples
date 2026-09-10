@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="personCtrl">
+        <button ng-click="toggle()">隐藏/显示</button>
+        <p ng-show="myVar">
+            名: <input type=text ng-model="person.firstName"><br>
+            姓: <input type=text ng-model="person.lastName"><br><br>
+            姓名: {{person.firstName + " " + person.lastName}}
+        </p>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('personCtrl', function ($scope) {
+            $scope.person = {
+                firstName: "John",
+                lastName: "Doe"
+            };
+            $scope.myVar = true;
+            $scope.toggle = function () {
+                $scope.myVar = !$scope.myVar;
+            };
+        });
+    </script>
+</body>
+</html>

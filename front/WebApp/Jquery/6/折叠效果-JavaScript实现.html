@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+
+.collapse {
+	width:340px;
+	border:solid 1px  #ccc;
+	margin:2px;
+	float:left;
+}
+.collapse  dt {
+	padding:8px 8px;
+	background:#7FECAD url(images/green.gif) repeat-x;
+	font-size:13px;
+	font-weight:bold;
+	color:#71790C;
+	border-bottom:solid 1px #efefef;	
+	cursor:pointer;
+}
+
+.collapse dd {
+	margin:0;
+	padding:6px;
+}
+	
+    
+        </style>
+
+    <script type="text/javascript">
+    
+var DOMextend = function(name, fn){
+	if( ! document.all)
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+DOMextend("show",function(){
+	var _this = this;
+	_this.style.display = "";
+	return _this;
+})
+
+DOMextend("hide",function(){
+	var _this = this;
+	_this.style.display = "none";
+	return _this;
+})
+
+
+
+document.getElementsByClassName = function(className) { 
+    var el = [],
+        _el = document.getElementsByTagName('*');
+    for (var i=0; i<_el.length; i++ ) {
+       if (_el[i].className == className ) {
+           el[el.length] = _el[i];
+        }
+   }
+   return el;
+}
+    
+    
+    
+window.onload = function(){
+    var t = [];
+    var dl = document.getElementsByClassName("collapse");
+    for(var i=0; i<dl.length;i++){
+        var dt = dl[i].getElementsByTagName("dt")[0];
+        var dd = dl[i].getElementsByTagName("dd")[0];
+        t[i] = false;
+        dt.onclick = (function(i,dd){
+            return function(){
+                if( t[i]  ){
+                    dd.show();
+                    t[i]  = false;
+                }
+                else{
+                    dd.hide();
+                    t[i]  = true;
+                }
+            }
+        })(i,dd); 
+        
+    }
+}
+    </script>
+
+</head>
+<body>
+
+
+<dl class="collapse">
+    <dt>标题栏</dt>
+    <dd>内容框<br /><img src="images/bg2.jpg" height="200" /></dd>
+</dl>
+<dl class="collapse">
+    <dt>标题栏</dt>
+    <dd>内容框<br /><img src="images/bg3.jpg" height="200" /></dd>
+</dl>
+<dl class="collapse">
+    <dt>标题栏</dt>
+    <dd>内容框<br /><img src="images/bg4.jpg" height="200" /></dd>
+</dl>
+
+
+
+</body>
+</html>

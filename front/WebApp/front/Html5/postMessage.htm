@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("message", function (ev) {
+            debugger;
+            $("#result").append("<p> from:" + ev.origin + "----message:" + ev.data + "</p>");
+            ev.source.postMessage("Hello,这里是：" + ev.source.location + "  --to: " + ev.origin, ev.origin);
+        });
+    </script>
+</head>
+<body>
+    <iframe src="f1.html" id="f1" width="300" height="300"></iframe>
+    <iframe src="f2.html" id="f2" width="300" height="300"></iframe>
+    <div id="result">
+    </div>
+</body>
+</html>

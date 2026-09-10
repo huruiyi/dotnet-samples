@@ -1,0 +1,105 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+
+
+<div></div>
+<div></div>
+<div></div>
+<script language="javascript" type="text/javascript">
+
+
+var $ = jQuery = function(selector, context )
+{
+    return new jQuery.fn.init(selector, context );
+}
+jQuery.fn = jQuery.prototype =
+{
+    init : function(selector, context)
+    {
+        selector = selector || document;
+        context = context || document;
+        if ( selector.nodeType )
+        {
+            this[0] = selector;
+            this.length = 1;
+            this.context = selector;
+            return this;
+        }
+        if ( typeof selector === "string" )
+        {
+            var e = context.getElementsByTagName(selector);
+            for(var i = 0; i < e.length; i ++ )
+            {
+                this[i] = e[i];
+            }
+            this.length = e.length;
+            this.context = context;
+            return this;
+        }
+        else
+        {
+            this.length = 0;
+            this.context = context;
+            return this;
+        }
+    }
+    ,
+    html : function(val)
+    {
+        jQuery.each(this, function(val)
+        {
+            this.innerHTML = val;
+        }
+        , val);
+
+    }
+    ,
+    setOptions : function(options)
+    {
+        this.options =
+        {
+            StartColor :    "#000",
+            EndColor :        "#DDC",
+            Background :    false,
+            Step :            20,
+            Speed :        10
+        }
+        ;
+        jQuery.extend(this.options, options ||
+        {
+        }
+        );
+    }
+
+
+}
+jQuery.fn.init.prototype = jQuery.fn;
+
+
+jQuery.extend = jQuery.fn.extend = function(destination, source)
+{
+    for (var property in source)
+    {
+        destination[property] = source[property];
+    }
+    return destination;
+}
+
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

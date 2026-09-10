@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #caidan {
+            width: 800px;
+            margin: 50px auto;
+        }
+
+        #caidan ul {
+            list-style: none;
+        }
+
+        #caidan ul li.mu {
+            float: left;
+            width: 90px;
+            margin-right: 2px;
+            background: darkgrey;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: relative;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .caidan {
+            width: 180px;
+
+            position: absolute;
+            display: none;
+            padding-top: 10px;
+        }
+
+        .inner {
+            background: palevioletred;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .inner li a, .mu .title {
+            color: white;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function xianshi1() {
+            document.getElementById("cd1").style.display = "block";
+        }
+
+        function yincang1() {
+            document.getElementById("cd1").style.display = "none";
+        }
+
+        function xianshi2() {
+            document.getElementById("cd2").style.display = "block";
+        }
+
+        function yincang2() {
+            document.getElementById("cd2").style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+<div id="caidan">
+    <ul>
+        <li class="mu" onmouseover="xianshi1()" onmouseout="yincang1()">
+            <a href="#" class="title">网站栏目</a>
+            <div id="cd1" class="caidan">
+                <div class="inner">
+                    <ul>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="mu" onmouseover="xianshi2()" onmouseout="yincang2()">
+            <a href="#" class="title">网站栏目</a>
+            <div id="cd2" class="caidan">
+                <div class="inner">
+                    <ul>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                        <li><a href="#">子项目</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

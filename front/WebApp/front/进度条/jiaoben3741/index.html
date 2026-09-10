@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery圆形进度条倒计时插件 - 站长素材</title>
+
+<link href="http://fonts.useso.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/demo.css">
+
+<!--[if IE]>
+<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+<div class="countdown countdown-container container">
+	<div class="clock row">
+		<div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+			<div class="wrap">
+				<div class="inner">
+					<div id="canvas-days" class="clock-canvas"></div>
+
+					<div class="text">
+						<p class="val">0</p>
+						<p class="type-days type-time">天</p>
+					</div><!-- /.text -->
+				</div><!-- /.inner -->
+			</div><!-- /.wrap -->
+		</div><!-- /.clock-item -->
+
+		<div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+			<div class="wrap">
+				<div class="inner">
+					<div id="canvas-hours" class="clock-canvas"></div>
+
+					<div class="text">
+						<p class="val">0</p>
+						<p class="type-hours type-time">时</p>
+					</div><!-- /.text -->
+				</div><!-- /.inner -->
+			</div><!-- /.wrap -->
+		</div><!-- /.clock-item -->
+
+		<div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+			<div class="wrap">
+				<div class="inner">
+					<div id="canvas-minutes" class="clock-canvas"></div>
+
+					<div class="text">
+						<p class="val">0</p>
+						<p class="type-minutes type-time">分</p>
+					</div><!-- /.text -->
+				</div><!-- /.inner -->
+			</div><!-- /.wrap -->
+		</div><!-- /.clock-item -->
+
+		<div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+			<div class="wrap">
+				<div class="inner">
+					<div id="canvas-seconds" class="clock-canvas"></div>
+
+					<div class="text">
+						<p class="val">0</p>
+						<p class="type-seconds type-time">秒</p>
+					</div><!-- /.text -->
+				</div><!-- /.inner -->
+			</div><!-- /.wrap -->
+		</div><!-- /.clock-item -->
+	</div><!-- /.clock -->
+</div><!-- /.countdown-wrapper -->
+
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/kinetic.js"></script>
+<script type="text/javascript" src="js/jquery.final-countdown.js"></script>
+<script type="text/javascript">  
+$('document').ready(function() {
+	'use strict';
+	
+	$('.countdown').final_countdown({
+		'start': 20151019,
+		'end': 30151019,
+		'now': 20151019        
+	});
+});
+</script>
+
+<div style="text-align:center;margin:-150px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

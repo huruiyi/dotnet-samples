@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+</style>
+<script type="text/javascript" >
+
+var DOMextend = function(name, fn){
+	// 添加名称为name的方法fn
+	if( ! document.all)
+	// 除了ie而外的浏览器都能够访问到HTMLElement这个类
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		// IE中不能访问HTMLElement这个类
+		// 为了达到同样的目的，必须重写下面几个函数
+		// document.createElement
+		// document.getElementById
+		// document.getElementsByTagName
+		// 这几个函数都是获得HTML元素的方法
+		// 修改这些方法，使得通过这些方法获得的每个元素拥有名称为name的方法fn
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");	// _elem[name] = fn; 也可以达到同样的目的
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+
+
+</script>
+</head>
+<body>
+
+<div>
+    <p>段落文本</p>
+</div>
+
+</body>
+</html>

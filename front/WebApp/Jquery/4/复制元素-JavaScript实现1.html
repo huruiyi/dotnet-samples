@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+</style>
+<script type="text/javascript" >
+
+window.onload = function(){
+    var div = document.getElementsByTagName("div")[0];
+	if(window.event){
+	div.attachEvent("onclick", function(){
+		var div1 = div.cloneNode(true);
+		div.parentNode.insertBefore(div1,div.nextSibling);
+		alert(div.length);
+	})
+	}
+	else
+	{
+	div.addEventListener("click",  function(){
+		var div1 = div.cloneNode(true);
+		div.parentNode.insertBefore(div1,div.nextSibling);
+		alert(div.length);
+	}, true);
+	}
+}
+
+</script>
+</head>
+<body>
+
+<div class="red" title="no" ondblclick="alert('ok')">
+    <p>段落文本</p>
+</div>
+
+</body>
+</html>

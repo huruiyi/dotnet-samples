@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"> </style>
+    <script type="text/javascript">
+
+if (window.XMLHttpRequest){		// 兼容Mozilla、Safari等非IE浏览器
+    var xmlhttprequest = new XMLHttpRequest();
+}
+else if (window.ActiveXObject){	//  兼容IE浏览器
+    try{
+        var xmlhttprequest = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch (e){
+        try{
+            xmlhttprequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e)
+        { }
+    }
+}
+
+window.onload = function(){
+	var input = document.getElementsByTagName("input")[0];
+	input.onclick = function(){
+		xmlhttprequest.open("POST","test2.asp", false);
+		xmlhttprequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xmlhttprequest.send("name=css8");
+		alert(xmlhttprequest.responseText);
+	}
+}
+    </script>
+
+</head>
+<body>
+
+
+<input type="button" value="向服务器发出异步请求" />
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+
+
+<script language="javascript" type="text/javascript">
+var $ =jQuery = function(){
+    return jQuery.fn.init();    //调用原型方法init()
+}
+jQuery.fn = jQuery.prototype = {
+    init : function(){    //在初始化原型方法中返回实例的引用
+        return this;
+    },
+    jquery: "1.3.2",
+    size: function() {
+        return this.length;
+    }
+}
+alert( $().jquery );   //调用属性，返回"1.3.2"
+alert( $().size() );    //调用方法，返回undefined
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>根作用域</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <h1>{{lastname}} 家族成员:</h1>
+        <ul>
+            <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $rootScope) {
+            $scope.names = ["Emil", "Tobias", "Linus"];
+            $rootScope.lastname = "Refsnes";
+        });
+    </script>
+</body>
+</html>

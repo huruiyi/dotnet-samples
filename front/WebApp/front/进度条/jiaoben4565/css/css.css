@@ -1,0 +1,11 @@
+@charset "utf-8";
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+
+#play{
+	position: absolute;left:540px ;top:20px;
+}
+.barline{float:left;width:200px;background:#FFF;border:2px solid #4BBEED;height:20px;border-radius:15px;position:absolute;left:580px;top:25px;}
+.barline #percent{position:absolute;left:0px;display:inline-block;color:#fff;font-size:16px;}
+.barline #line{float:left;height:20px;overflow:hidden;background:#4BBEED;border-radius:8px;}
+.barline #msg{position:absolute;left:80px;top:30px;display:inline-block;color:#3498DB;font-size:14px;}

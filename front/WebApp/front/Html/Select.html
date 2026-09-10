@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>EQ测试</title>
+    <script type="text/javascript">
+
+        function answer() {
+            var handIndex = document.getElementById("hand");
+            var handValue = handIndex.options[handIndex.selectedIndex].value;
+            var question = document.getElementById("answers");
+            switch (handValue) {
+                case "0":
+                    question.value = "把双手放在胸口前往往给人一种害羞、紧张、自我保护的感觉。选择这个姿势的男性就是喜欢这种含羞答答、在紧张时不自觉会手足无措，稍具气质及矜持的女性。";
+                    break;
+                case "1":
+                    question.value = "两手垂下给人一种自然、顺从的感觉。选择这个姿势的男性会喜欢不造作、不刻意掩饰自己及带点天真的女性。";
+                    break;
+                case "2":
+                    question.value = "两手张开给人一种接纳、包容的感觉。选择这个姿势的男性会倾向喜欢较年长、或是能给予他像母亲的爱般温暖的女性。";
+                    break;
+                default:
+                    question.value = "你没有选择";
+                    break;
+
+            }
+        }
+
+        function hand() {
+            var handList = new Array();
+            handList[0] = "放在胸口前";
+            handList[1] = "两手垂下";
+            handList[2] = "两手张开成V字形";
+            var selHand = document.getElementById("hand");
+            for(var i in handList) {
+                selHand.add(new Option(handList[i], i), null);
+            }
+        }
+        window.onload = hand;
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td style="font-size:13px; height:40px;">◇◆◇◆◇<span style="font-size:20px; font-weight:bold;">哪一类型女仔最吸引你</span>◇◆◇◆◇</td>
+        </tr>
+        <tr>
+            <td>假如圣母玛莉亚赤裸站在你面前，你认为她的双手会放在那儿?</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="hand" onchange="answer()">
+                    <option>--请选择--</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>请看选择后的结论！</td>
+        </tr>
+        <tr>
+            <td><textarea cols=47 id="answers" rows=5 style="color:#F00; line-height:20px;"></textarea></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnGetOrderInfo").unbind("click").bind("click", GetOrderInfo);
+        });
+
+        function GetOrderInfo() {
+            $.ajax({
+                url: "http://localhost:801/Handler/OtherHandler.ashx?action=GetOrderInfo",
+                type: "post",
+                dataType: "json",
+                success: function (orders) {
+                    console.log(orders);
+                    if (orders != null && orders != "" && orders.length > 0) {
+                        $("#tbOrders").find("tr").eq(0).siblings().remove();
+                        var tbOrders = $("#tbOrders");
+                        var rowHtml = "";
+                        for (var i = 0; i < orders.length; i++) {
+                            rowHtml = "";
+                            rowHtml += "<tr>";
+                            rowHtml += "<td>" + orders[i].OrderId + "</td>";
+                            rowHtml += "<td>" + orders[i].SerialNumber + "</td>";
+                            rowHtml += "<td>" + orders[i].ShortNumber + "</td>";
+                            rowHtml += "<td>" + orders[i].ProductId + "</td>";
+                            rowHtml += "<td>" + orders[i].SalePrice + "</td>";
+                            rowHtml += "<td>" + orders[i].BookingDate + "</td>";
+                            rowHtml += "</tr>";
+                            tbOrders.append(rowHtml);
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <button class="btn btn-default" id="btnGetOrderInfo">查看订单信息</button>
+        <table class="table table-bordered" id="tbOrders">
+            <tr>
+                <td>订单Id</td>
+                <td>订单流水号</td>
+                <td>订单短号</td>
+                <td>产品Id</td>
+                <td>价格</td>
+                <td>预定时间</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+</body>
+</html>

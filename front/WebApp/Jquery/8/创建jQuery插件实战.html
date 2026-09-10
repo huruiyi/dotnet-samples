@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script src="images/jquery-1.3.2.js" type="text/javascript" ></script>
+    <script type="text/javascript"> 
+
+(function($){
+ 
+ $.fn.Drags=function(opts){
+  
+  var defaults={
+   zIndex: 20,
+   opacity:1,
+   handle:null
+  };
+  
+  var offx=6,offy=6;
+  var moveable=false;
+  var opts=$.extend(defaults,opts);
+  
+  //开始拖动
+  var startDrag=function(e,$obj){
+   //锁定标题栏;
+   $obj.setCapture();
+   e = e ? e : window.event;
+   //定义对象
+   var win=$obj.parentNode;
+   var sha=win.nextSibling;
+   
+   //记录鼠标的位置
+   x0=e.clientX;
+   y0=e.clientY;
+   x1=parseInt(win.style.left);
+   y1=parseInt(win.style.top);
+   
+   //改变风格
+   sha.style.filters.alpha.opacity=opts.opacity;
+   sha.style.left=x1+offx;
+   sha.style.top=y1+offy;
+   moveable=true;
+  }
+  
+  //拖动
+  var Drag=function(e,$obj){
+   if(moveable)
+   {
+    e = e ? e : window.event;
+    var win=$obj.parentNode;
+    var sha=win.nextSibling;
+    win.style.left = x1 + e.clientX - x0;
+    win.style.top = y1 + e.clientY - y0;
+    sha.style.left = parseInt(win.style.left) + offx;
+    sha.style.top = parseInt(win.style.top) + offy;
+   }
+  }
+  
+  //停止拖动
+  function stopDrag($obj)
+  {
+   if(moveable)
+   {
+    var win=$obj.parentNode;
+    var win = $obj.parentNode;
+    var sha = win.nextSibling;
+    var msg = $obj.nextSibling;
+    sha.style.left = $obj.parentNode.style.left;
+    sha.style.top = $obj.parentNode.style.top;
+    $obj.releaseCapture();
+    moveable = false;
+   }
+  }
+  
+  //获取焦点
+  function getFocus($obj)
+  {
+   if($obj.style.zIndex!=zIndex)
+   {
+    zIndex=zIndex+2;
+    var idx=zIndex;
+    $obj.style.zIndex=idx;
+    $obj.nextSibling.style.zIndex=idx-1;
+   }
+  }
+  
+  $(obj).bind('mousedown',function(e){
+   
+   $obj=$(e.target).parent();
+   getFocus($obj);
+   e = e ? e : window.event;
+   $(opts.handle).bind('mousedown',function(e,$obj){
+    startDrag(e,$obj);
+   })
+   $(opts.handle).bind('mouseup',function($obj){
+    stopDrag($obj);
+   })
+   $(opts.handle).bind('onmousemove',function(e,$obj){
+    Drag(e,$obj);
+   })
+  })
+  
+ }
+ 
+})(jQuery); 
+
+
+
+$(function(){
+$("div").Drags({ // move window
+   zIndex:  20,
+   opacity:  0.7,
+   handle: '#ul_top'
+ });
+
+})
+    </script>
+
+</head>
+<body>
+
+
+
+<div>盒子</div>
+ 
+
+</body>
+</html>

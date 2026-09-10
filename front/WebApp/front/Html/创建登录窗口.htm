@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        onload = function () {
+
+            document.getElementById('btnLogin').onclick = function () {
+
+                //判断层是否存在
+                if (!document.getElementById('dv')) {
+                    var dvObj = document.createElement('div');
+                    dvObj.id = "dv";
+                    dvObj.style.width = "307px";
+                    dvObj.style.height = '150px';
+                    dvObj.style.border = '1px solid red';
+                    dvObj.style.position = 'absolute'; //脱离文档流
+                    dvObj.style.left = '250px';
+                    dvObj.style.top = '200px';
+                    //创建个span标签
+                    var spObj = document.createElement('span');
+                    spObj.innerText = '关闭';
+                    //样式
+                    spObj.style.cursor = 'pointer';
+                    spObj.onclick = function () {
+                        document.body.removeChild(dvObj); //删除层
+                    };
+                    spObj.style.styleFloat = 'right';
+                    dvObj.appendChild(spObj);
+                    //创建2个p标签
+                    var pObj1 = document.createElement('p');
+                    pObj1.innerText = '帐号:';
+                    var txtName = document.createElement('input'); //文本框
+                    txtName.type = 'text';
+                    pObj1.appendChild(txtName);
+                    pObj1.style.marginLeft = '10px';
+                    //p标签添加到div中
+                    dvObj.appendChild(pObj1);
+                    //======================================
+                    //创建2个p标签
+                    var pObj2 = document.createElement('p');
+                    pObj2.innerText = '密码:';
+                    var txtPwd = document.createElement('input'); //文本框
+                    txtPwd.type = 'text';
+                    pObj2.appendChild(txtPwd);
+                    pObj2.style.marginLeft = '10px';
+                    //p标签添加到div中
+                    dvObj.appendChild(pObj2);
+
+                    //添加到body中
+                    document.body.appendChild(dvObj);
+                }
+
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="登录" id="btnLogin" />
+</body>
+</html>

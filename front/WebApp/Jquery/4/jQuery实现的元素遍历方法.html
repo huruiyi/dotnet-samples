@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+</style>
+<script src="jquery-1.3.2.js" type="text/javascript" ></script>
+<script type="text/javascript" >
+$(function(){	
+	var $body = $("body");
+	var li = $body.children().eq(2).children()[0];
+	$(li).text("第1项").next().text("第2项").next().text("第3项")
+})
+</script>
+</head>
+<body>
+
+
+<h1>DOM文档对象模型</h1>
+<p>DOM是Document Object Model短语的缩写，中文翻译为文档对象模型，根据W3C DOM规范（http://www.w3.org/DOM/ ），DOM是一种与浏览器、平台、语言无关的接口，使用该接口可以访问页面其他的标准组件。</p>
+<ul>
+    <li>D是Document一词的简写，表示文档，它是DOM的表现层。</li>
+    <li>O是Object一词的简写，表示对象，它是DOM的的逻辑层。</li>
+    <li>M是Model一词的简写，表示模型，它是DOM的交互层。</li>
+</ul>
+
+
+</body>
+</html>

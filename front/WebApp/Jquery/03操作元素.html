@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var dvObj = document.getElementById('dv');
+
+            dvObj.style.border = '1px solid red';
+            dvObj.style.width = '300px';
+            dvObj.style.height = '200px';
+
+            //dom对象转juqery对象
+
+            var dvj = $(dvObj);
+            dvj.css('backgroundColor', 'yellow').css('width', '500px').css('height', '300px').css('border', '1px solid blue');
+            //jquery对象转dom
+            var dvooo = dvj[0]//.get(0);
+            dvooo.style.backgroundColor = 'black';
+        });
+    </script>
+</head>
+<body>
+    <div id="dv">
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+#main {
+    border-color: #D15B0D;
+}
+#nav li a {
+    color: #EEE;
+    border-color: #A8A8A8;
+}
+#logo {
+    background: transparent;
+    border-color: #D15B0D;
+}
+#logo h1 {
+    color: #D15B0D;
+}
+#content h3 {
+    background: transparent;
+    color: #8A8A8A;
+    border-color: #D15B0D;
+}
+#links a, #content a {
+    background: transparent;
+    color: #D15B0D;
+}
+#nav {
+    background: #B9896A;
+    color: #EEE;
+    border-color: #D15B0D;
+}
+#nav li a:hover, #nav li a.selected, #nav li a.selected:hover {
+    background: #D15B0D;
+    color: #EEE;
+    border-color: #A8A8A8;
+}
+.title {
+    color:#D15B0D;
+}

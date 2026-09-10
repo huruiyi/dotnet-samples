@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery带播放暂停按钮进度条代码 - 站长素材</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<body>
+<!-- 父级元素 -->
+<div>
+	<!-- 进度条 -->
+	<img src="pause.png" id="play">
+
+	<div class="barline" id="probar">
+		<span id="percent"></span>
+		<div id="line" w="100" style="width:0px;"></div>	
+	</div>
+</div>
+
+<script language="javascript">
+function si(){
+	var time = window.setInterval(function(){
+		a=$("#line").width();
+		b=(a/200*100).toFixed(0);
+		$("#percent").html(b+"%");
+		$("#percent").css({"left":(a-32)+"px"});
+		if(b==100) {
+			clearInterval(time);
+			
+			play.src = "pause.png";
+		}
+	},70);
+}
+
+function processerbar(time){
+	$("#probar").css({"display":"block"});
+	$("#line").each(function(i,item){
+		var a=parseInt($(item).attr("w"));
+		$(item).animate({
+			width: a+"%"
+		},time);
+	});
+   si();
+};
+
+
+	var onOff = true;
+	$("#play").click(function(){
+		
+		if(onOff === true){
+			processerbar(2000);
+			play.src = "play.png";
+			onOff= false;
+		}else{
+			$("#line").stop();
+			play.src = "pause.png";
+			onOff = true;
+		}
+		
+	});
+
+</script>
+
+<div style="text-align:center;margin:150px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>
+

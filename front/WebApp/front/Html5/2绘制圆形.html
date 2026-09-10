@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <canvas id="demoCanvas" width="500" height="500">
+        <p>爷，你还在上个世纪吧，现在都html5了，您还在ie6时代？</p>
+    </canvas>
+    <!---下面将演示一种绘制矩形的demo--->
+    <script type="text/javascript">
+        //第一步：获取canvas元素
+        var canvasDom = document.getElementById("demoCanvas");
+        //第二步：获取上下文
+        var context = canvasDom.getContext('2d');
+        for (var i = 1; i < 12; i++) {
+            context.beginPath();
+            //坐标x，坐标y,半径,开始画的角度，结束的角度，是否顺时针
+            context.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true);
+            context.closePath();
+            context.strokeStyle = "red";
+            context.stroke();
+            //            context.fillStle = "rgba(255,0,0,0.25)";
+            //            context.fill();
+        }
+    </script>
+</body>
+</html>

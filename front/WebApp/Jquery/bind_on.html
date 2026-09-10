@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <style type="text/css">
+        .All {
+            background-color: antiquewhite;
+        }
+
+        .Part {
+            background-color: azure;
+        }
+
+        .AllNumber {
+            background-color: Blue;
+        }
+
+        .PartNumber {
+            background-color: Lime;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            //$("input").on("hover",
+            //    function() {
+            //        $("#hidchangeBefore").val(this.value);
+            //    },
+            //    function() {
+            //        $("#hidchangeAfter").val(this.value);
+            //        if ($.trim($("#hidchangeBefore").val()) == $.trim($("#hidchangeAfter").val())) {
+            //            debugger;
+            //            $("#changeed").val(true);
+            //        }
+            //    });
+
+            //$(".editablenew").mouseover(function(){
+            //    $(".editablenew").css("background-color","yellow");
+            //});
+            //$(".editablenew").mouseout(function(){
+            //    $(".editablenew").css("background-color","#E9E9E4");
+            //});
+
+            //$("input").on("mouseover mouseout",
+            //    function(event) {
+            //        if (event.type == "mouseover") {
+            //            console.log("mouseover");
+            //            //鼠标悬浮
+            //        } else if (event.type == "mouseout") {
+            //            //鼠标离开
+            //            console.log("mouseout");
+            //        }
+            //    });
+
+            $(".infotext").on("blur", function () {
+                // alert("走好")
+            });
+
+            //对于动态添加的元素,事件也是起作用的
+            $("#divText").on("blur", "input", function () {
+                alert("走好")
+            });
+
+            $("#btnAddText").on("click", function () {
+                $("#divText").append("<input type='text' class='infotext' />")
+            });
+
+        })
+
+        function demo1() {
+            var NamePosition = $("#names");
+            var Member = ["Guo Hu", "Lei Hu", "Hunwen Li", "jinghao Liu", "Cheng Fang"];
+            //map()迭代数组中的每个元素,并为每个元素分别调用一次回调函数
+            Member = $.map(Member, function (n, i) {
+                return (i + 1 + "." + n.toUpperCase());
+            });
+            $.each(Member, function (index, value) {
+                NamePosition.append($("<li>" + value + "</li>"));
+            });
+        }
+        function demo2() {
+            var Member = ["Guo Hu", "Lei Hu", "Hunwen Li", "jinghao Liu", "Cheng Fang"];
+            $('p.All').append(Member.join('<br />'));
+            //grep()分析数组的所有元素，把不想要的元素过滤掉.
+            Member = $.grep(Member, function (n) {
+                return n.length > 10
+            });
+            $('p.Part').append(Member.join('<br />'));
+        }
+
+        function demo3() {
+            var Member = ["Guo Hu", "Lei Hu", "Hunwen Li", "jinghao Liu", "Cheng Fang"];
+            $('p.All').append(Member.join('<br />'));
+
+            $('p.Part').append(Member.sort().join('<br />'));
+
+            var Number = [12, 45, 8, 37, 113];
+            $('p.AllNumber').append(Number.join('<br />'));
+
+            //a,b两个值进行比较，大的那个排后
+            Number = Number.sort(function (a, b) {
+                return a - b;
+            });
+            $('p.PartNumber').append(Number.join('<br />'));
+        }
+        function demo4() {
+            var Member = ["Guo Hu", "Lei Hu", "Hunwen Li", "jinghao Liu", "Cheng Fang"];
+            $('p.All').append(Member.join('<br />'));
+            //第一个参数为索引开始，第二个参数为删除多少个，返回前2个成员到Filter数组中
+            var Filter = Member.splice(0, 2);
+
+            $('p.Part').append(Filter.join('<br />'));
+
+            $('p.Remain').append(Member.join('<br />'));
+        }
+
+        function demo5() {
+            var First = ["Guo Hu", "Lei Hu"];
+            var Second = ["Hunwen Li", "jinghao Liu", "Cheng Fang"];
+            $('p.First').append(First.join('<br />'));
+
+            $('p.Second').append(Second.join('<br />'));
+
+            var All = First.concat(Second);
+
+            $('p.All').append(All.join('<br />'));
+        }
+
+        function demo6() {
+            var Students = [
+                {
+                    name: "Guo Hu",
+                    Role: "Administrator",
+                    Email: "Guo Hu@Microsoft.com"
+                },
+                {
+                    name: "Lei Hu",
+                    Role: "Guest",
+                    Email: "Lei Hu@Microsoft.com"
+                },
+                {
+                    name: "Junwen Li",
+                    Role: "Guest",
+                    Email: "JWen Li@Microsoft.com"
+                }
+            ];
+
+            Students = Students.sort(function (a, b) {
+                if (a.name > b.name) {
+                    return 1
+                };
+                if (a.name < b.name) {
+                    return -1
+                };
+                return 0;
+
+            });
+
+            $.each(Students, function (index, value) {
+                $('p.All').append("<tr><td>" + value.name + "</td><td>" + value.Role + "</td><td>" + value.Email + "</td></tr>");
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" id="btnAddText" value="添加输入框" />
+        <div id="divText">
+            <input type='text' class='infotext' />
+            <input type='text' class='infotext' />
+            <input type='text' class='infotext' />
+        </div>
+        <p id="names"></p>
+
+        <h3>First Member Name</h3>
+        <p class="First"></p>
+
+        <h3>Second Name</h3>
+        <p class="Second"></p>
+
+        <h3>Member Name</h3>
+        <p class="All"></p>
+
+        <h3>Filter Member Name</h3>
+        <p class="Part"></p>
+
+        <h3>Number</h3>
+        <p class="AllNumber"></p>
+
+        <h3>Sort Number</h3>
+        <p class="PartNumber"></p>
+
+        <h3>Remain Name</h3>
+        <p class="Remain"></p>
+    </div>
+</body>
+</html>

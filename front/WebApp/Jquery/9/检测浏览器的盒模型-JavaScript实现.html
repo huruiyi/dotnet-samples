@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script type="text/javascript"> 
+
+
+function isBoxModel(){	
+	var div = document.createElement("div");
+	div.style.width = div.style.paddingLeft = "1px";
+	document.body.appendChild( div );
+	var width =  div.offsetWidth;
+	div.style.display = 'none';	
+	document.body.removeChild( div )
+	return width === 2;
+}
+
+window.onload = function(){
+	alert( isBoxModel() && "支持W3C标准盒模型" ||  "支持IE的怪异解析模式"  );
+}
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div></div>
+
+
+
+</body>
+</html>

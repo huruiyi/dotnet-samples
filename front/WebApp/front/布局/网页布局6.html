@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网页布局6</title>
+    <style type="text/css">
+        span {
+            text-align: center;
+        }
+
+        #top {
+            background-color: plum;
+            height: 60px;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        #container {
+            background-color: papayawhip;
+            height: 660px;
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        #center {
+            height: 500px;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        #left {
+            background-color: greenyellow;
+            height: 500px;
+            width: 300px;
+            float: left;
+        }
+
+        #right {
+            background-color: yellow;
+            float: left;
+            height: 500px;
+            width: 500px;
+        }
+
+        #bottom {
+            width: 800px;
+            height: 100px;
+            background-color: orange;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <div id="container">
+            <div id="top">
+                <span>top</span>
+            </div>
+            <div id="center">
+                <div id="left">
+                    <span>left</span>
+                </div>
+                <div id="right">
+                    <span>right</span>
+                </div>
+            </div>
+            <div id="bottom">
+                <span>bottom</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

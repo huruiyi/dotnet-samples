@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js">    </script>
+</head>
+<body>
+    <div ng-app="optionsExample">
+        <div ng-controller="ExampleController">
+            <form name="userForm">
+                Name:
+                <input type="text" name="userName"
+                       ng-model="user.name"
+                       ng-model-options="{ debounce: 1000 }" />
+                <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
+            </form>
+            <pre>user.name = <span ng-bind="user.name"></span></pre>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module('optionsExample', []);
+        app.controller('ExampleController', ['$scope', function ($scope) {
+            $scope.user = { name: 'say' };
+        }]);
+    </script>
+</body>
+</html>

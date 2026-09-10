@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script type="text/javascript"> 
+
+function each( object, callback, args ) {
+		var name, i = 0, length = object.length;
+
+		if ( args ) {
+			if ( length === undefined ) {
+				for ( name in object )
+					if ( callback.apply( object[ name ], args ) === false )
+						break;
+			} else
+				for ( ; i < length; )
+					if ( callback.apply( object[ i++ ], args ) === false )
+						break;
+
+		// A special, fast, case for the most common use of each
+		} else {
+			if ( length === undefined ) {
+				for ( name in object )
+					if ( callback.call( object[ name ], name, object[ name ] ) === false )
+						break;
+			} else
+				for ( var value = object[0];
+					i < length && callback.call( value, i, value ) !== false; value = object[++i] ){}
+		}
+
+		return object;
+};
+window.onload = function(){
+	var a = [
+		{width:400},
+		{height:300}
+	];
+	each(a, function(name,value){
+		alert("当前成员的名称：" + name + " = " + value);			 
+	});
+}
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div></div>
+
+
+
+</body>
+</html>

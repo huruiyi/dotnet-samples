@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#btn').click(function () {
+                //层里面的元素，无论是否嵌套,只要在层里就算
+                //$('div span').css('backgroundColor','green');
+                //层中直接的子元素（span）
+                //$('div>span').css('backgroundColor', 'green');
+                //必须是层后面的直接的兄弟元素
+                // $('div+span').css('backgroundColor', 'green');
+                //获取层下面的所有的兄弟元素(span)
+                //$('div~span').css('backgroundColor', 'green');
+                //和$('div+span')一样效果,方法
+                //$('div').next().css('backgroundColor', 'green');
+                //层下面的所有的元素
+                // $('div').nextAll().css('backgroundColor', 'green');
+                //层前面的紧邻着的那个元素
+                //$('div').prev().css('backgroundColor', 'green');
+                //层前面所有的元素
+                //$('div').prevAll().css('backgroundColor', 'green');
+                //层的所有兄弟元素
+                //$('div').siblings().css('backgroundColor', 'green');
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="显示颜色" id="btn" />
+    <br />
+    <span>第一个</span><br />
+    <span>层外面第二个span标签</span>
+    <div style="width: 300px; height: 200px; border: 1px solid red;">
+        <span>层中的span</span> <span>层中的span</span>
+        <p>
+            <span>哈哈</span>
+        </p>
+        <span>层中的span</span> <span>层中的span</span>
+    </div>
+    <span>层下的span</span>
+    <p>
+        层外的p
+    </p>
+    <span>层下的span</span> <span>层下的span</span> <span>层下的span</span>
+</body>
+</html>

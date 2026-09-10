@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function addDataToSessionStorage(data) {
+            window.sessionStorage.setItem(new Date().getTime(), data);
+        }
+
+        function addDataToLocalStorage(data) {
+            localStorage.setItem(new Date().getTime(), data);
+        }
+
+        function refreshData() {
+            var tblSession = document.getElementById("tblSession");
+            var tblLocal = document.getElementById("tblLocal");
+
+            tblSession.innerHTML = "";
+            tblLocal.innerHTML = "";
+
+            var key;
+            var value;
+            var i;
+            for (i = 0; i < window.sessionStorage.length; i++) {
+                key = window.sessionStorage.key(i);
+                value = window.sessionStorage.getItem(key);
+                tblSession.innerHTML += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+            }
+
+            for (i = 0; i < localStorage.length; i++) {
+                key = localStorage.key(i);
+                value = localStorage.getItem(key);
+                tblLocal.innerHTML += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="demoData" id="demoData" />
+    <hr />
+    <h3>SessionStorage</h3>
+
+    <input type="button" value="添加到会话缓存里面" onclick="addDataToSessionStorage(document.getElementById('demoData').value); alert('ok');" />
+
+    <hr />
+    <h3>LocalStorage</h3>
+    <input type="button" value="添加到本地缓存里面" onclick="addDataToLocalStorage(document.getElementById('demoData').value); alert('ok');" />
+    <hr />
+    <h3>缓存数据</h3>
+    <input type="button" value="刷新本地缓存数据" onclick="refreshData();" />
+    <h3>会话缓存</h3>
+    <table id="tblSession">
+        <tr>
+            <th>key</th>
+            <th>Value</th>
+        </tr>
+    </table>
+    <h3>本地缓存</h3>
+    <table id="tblLocal">
+        <tr>
+            <th>key</th>
+            <th>Value</th>
+        </tr>
+    </table>
+</body>
+</html>

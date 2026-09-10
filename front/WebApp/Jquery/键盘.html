@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <input id="whichkey" value="type something">
+    <div id="log"></div>
+    <script>
+        $('#whichkey').bind('keydown', function (e) {
+            $('#log').html(e.type + ': ' + e.which + " " + e.keyCode);
+        });
+    </script>
+</body>
+</html>

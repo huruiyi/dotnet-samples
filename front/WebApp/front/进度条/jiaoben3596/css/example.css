@@ -1,0 +1,72 @@
+body {
+	font-family: helvetica, sans-serif;
+	background-color:#EEE;
+}
+
+#swoopProgContainer2 .swoopDot {
+	background-color: #333;
+}
+
+#swoopProgContainer3 .swoopDot {
+	background-color: #CD94DD;
+}
+
+#container {
+	background-color: #FFF;
+	border:1px solid #DDD;
+	width: 900px;
+	margin: 0 auto;
+	padding:10px;
+}
+.swoopContainer  {
+    border: 8px solid #D8D2CD;
+    height: 40px;
+    border-radius: 4px;
+    margin: 0 auto 10px auto;
+    cursor: pointer;
+}
+
+.swoopContainer.selected {
+    border: 8px solid #2FABB5;
+}
+
+#progressReset{
+    background-color: #2FABB5;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #FFF;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 34px;
+    height: 32px;
+}
+
+#progressReset:active {
+    background-color: #000;
+}
+
+small {
+    font-size: 50%;
+    color: #007983;
+}
+
+#sampleCode, .padded {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#codeContents{
+    padding: 10px;
+}
+
+@media all and (max-width: 900px) {
+    #container {
+        width:  auto;
+        padding:0;
+    }
+
+    h1 {
+        font-size: 120%;
+    }
+}

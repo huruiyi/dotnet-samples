@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        var datas = {
+            "../../Images/user/1-1.jpg": ["../../Images/user//1.jpg", "老牛", "163cm"],
+            "../../Images/user//2-1.jpg": ["../../Images/user//2.jpg", "老马", "165cm"],
+            "../../Images/user//3-1.jpg": ["../../Images/user//3.jpg", "老蒋", "150cm"]
+        };
+
+        onload = function () {
+            //加载所有的小图
+            //创建图片标签
+            for (var key in datas) {
+                var imgSmall = document.createElement('img');
+                imgSmall.src = key;
+                //坑
+                imgSmall.setAttribute('key', key);
+                imgSmall.style.marginLeft = '10px';
+
+                imgSmall.style.cursor = 'pointer';
+                //把小图添加到层中
+                document.getElementById('dvSmall').appendChild(imgSmall);
+                //鼠标进入
+                imgSmall.onmouseover = function () {
+                    var dvObj = document.getElementById('dvBig');
+                    dvObj.style.display = 'block';
+                    dvObj.style.position = 'absolute';
+                    dvObj.style.left = this.offsetLeft + 'px';
+                    dvObj.style.top = this.offsetTop + this.offsetHeight + 'px';
+                    // for (var i = 0; i < datas[this.getAttribute('key')].length; i++) {
+                    document.getElementById('imBig').src = datas[this.getAttribute('key')][0];
+                    document.getElementById('spName').innerText = datas[this.getAttribute('key')][1];
+                    document.getElementById('spHeight').innerText = datas[this.getAttribute('key')][2];
+                    //  }
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="dvSmall">
+    </div>
+    <div id="dvBig" style="background-color: Orange; border: 1px solid green; width: 630px;
+        display: none;">
+        大头像:<br />
+        <img id="imBig" src="#" alt="Alternate Text" />
+        姓名:<span id="spName"></span><br />
+        身高:<span id="spHeight"></span>
+    </div>
+</body>
+</html>

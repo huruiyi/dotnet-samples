@@ -1,0 +1,258 @@
+﻿* {
+    padding: 5px;
+    margin: 5px;
+}
+
+body {
+    width: 70%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+div#divfloatmenu {
+    position: fixed;
+    right: 30px;
+    top: 5%;
+    border: 1px solid #0078d7;
+    width: 220px;
+}
+
+div#divfloatmenu ul {
+    margin: 0;
+    padding: 5px 5px;
+}
+
+div#divfloatmenu ul li {
+    list-style: none;
+    background-color: #0078d7;
+    height: 25px;
+    line-height: 25px;
+    margin: 2px 5px;
+    border-radius: 18px;
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+div#divfloatmenu ul li:hover {
+    background-color: mediumpurple;
+}
+
+div#divfloatmenu ul li a {
+    color: white;
+}
+
+fieldset {
+    border: #0078d7 1px solid;
+    margin-top: 7px;
+}
+
+fieldset legend {
+    width: 200px;
+    text-align: center;
+    margin: 0 40%;
+    background-color: #0078d7;
+    color: white;
+    display: inline-block;
+    height: 22px;
+    font-size: 15px;
+    border-radius: 11px;
+}
+
+#div-a {
+    /*height: 60px;*/
+    line-height: 60px;
+    text-align: center;
+    background-color: #0078d7;
+    color: white;
+}
+
+#cover {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: gray;
+}
+
+#coverShow {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -90px;
+}
+
+#coverShow img {
+    margin: 0 auto;
+    height: 180px;
+    width: 240px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: #0078d7 solid 1px;
+    width: 80px;
+    text-align: center;
+}
+
+div#divRotate {
+    margin: 50px 50px 165px;
+    height: 200px;
+}
+
+div.polaroid {
+    width: 294px;
+    padding: 10px 10px 20px 10px;
+    border: 1px solid #0078d7;
+    background-color: white;
+    box-shadow: 2px 2px 2px #0078d7;
+}
+
+div.rotate_left {
+    float: left;
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -moz-transform: rotate(7deg);
+    /* Firefox */
+    -webkit-transform: rotate(7deg); /* Safari and Chrome */
+    -o-transform: rotate(7deg);
+    /* Opera */
+    transform: rotate(29deg);
+}
+
+div.rotate_right {
+    float: left;
+    -ms-transform: rotate(-8deg);
+    /* IE 9 */
+    -moz-transform: rotate(-8deg); /* Firefox */
+    -webkit-transform: rotate(-8deg);
+    /* Safari and Chrome */
+    -o-transform: rotate(-8deg); /* Opera */
+    transform: rotate(-8deg);
+}
+
+div#t3t4 table, div#t1t2 {
+    float: left
+}
+
+table#t3, table#t1 {
+    margin-right: 20px;
+}
+
+div#divKey {
+    width: 700px;
+    height: 200px;
+    background-color: #0078d7;
+}
+
+div.demorect {
+    margin: 100px auto;
+    width: 300px;
+    height: 300px;
+    background: #ededed;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+div.demorect .fl {
+    width: 300px;
+    height: 145px;
+    background: #00cb99;
+}
+
+div.demorect .fr {
+    width: 300px;
+    height: 145px;
+    margin-top: 10px;
+    background: #0093b4;
+}
+
+div.demorect .pa {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    width: 150px;
+    height: 150px;
+    background-color: #f2f2f2;
+}
+
+input[type=button] {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#loginDiv {
+    background-color: #1e90ff;
+    position: fixed;
+    box-shadow: -1px 3px 15px #aaa;
+}
+
+div#idDiv {
+    background-color: #0078d7;
+    color: white;
+}
+
+.baidu {
+    font-size: 14px;
+    line-height: 24px;
+    font-family: arial
+}
+
+a, a:link {
+    color: #0000cc;
+}
+
+.baidu span {
+    color: #6f6f6f;
+    font-size: 12px
+}
+
+a.more {
+    color: #008000;
+}
+
+a.blk {
+    color: #000;
+    font-weight: bold;
+}
+
+table#tbContent td:last-child,
+table#tbInputContent td:last-child {
+    width: 600px;
+    text-align: left;
+}
+
+table#tbInputContent input#txtName, textarea#txtContent {
+    width: 500px;
+}
+
+.btnHaha {
+    height: 35px;
+    line-height: 20px;
+}
+
+div#divfloat {
+    background-color: #0078d7;
+    width: 500px;
+    height: 200px;
+}
+
+#divfly {
+    border: 1px solid #0094ff;
+    height: 100px;
+    width: 220px;
+}
+
+#spanfly {
+    position: relative;
+    top: -14px;
+    left: -40px;
+    color: rebeccapurple;
+}

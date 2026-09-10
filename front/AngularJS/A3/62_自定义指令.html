@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+        body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+    </style>
+</head>
+<body ng-app="mainApp">
+    <fieldset>
+        <div ng-controller="StudentController">
+            <student name="Mahesh"></student>
+            <br />
+            <student name="Piyush"></student>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.directive('student', function () {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.template = "Student: <b>{{student.name}}</b> , 编号: <b>{{student.rollno}}</b>";
+
+            directive.scope = {
+                student: "=name"
+            }
+
+            directive.compile = function (element, attributes) {
+                element.css("border", "1px solid #cccccc");
+
+                var linkFunction = function ($scope, element, attributes) {
+                    element.html("Student: <b>" + $scope.student.name + "</b> , 编号: <b>" + $scope.student.rollno + "</b><br/>");
+                    element.css("background-color", "#eee");
+                }
+
+                return linkFunction;
+            }
+
+            return directive;
+        });
+
+        mainApp.controller('StudentController', function ($scope) {
+            $scope.Mahesh = {};
+            $scope.Mahesh.name = "张学友";
+            $scope.Mahesh.rollno = 100;
+
+            $scope.Piyush = {};
+            $scope.Piyush.name = "陈奕迅";
+            $scope.Piyush.rollno = 102;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		jquery事件绑定
+	</title>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<script type="text/javascript">
+		// //////////////////////////////////////////////////////
+		// //以下四种方式可以依次执行,多次绑定
+		// $(function () {
+		// 	alert("Hello 1");
+		// })
+		// jQuery(function () {
+		// 	alert("Hello 2");
+		// });
+		// $(document).ready(function () {
+		// 	alert("Hello 3");
+		// });
+		// jQuery(document).ready(function () {
+		// 	alert("Hello 4");
+		// });
+		// //////////////////////////////////////////////////////
+
+		// window.onload = function () {
+		// 	alert("window.onload 1")
+		// };
+
+		// window.onload = function () {
+		// 	alert("window.onload 2")
+		// };
+
+		// $(window)[0].onload = function () {
+		// 	alert("$(windows)[0].onload 1")
+		// };
+
+		//新版jquery中已经废弃了$(window).load
+		// $(window).load(function () {
+		// 	alert("hello,我是jQuery!");
+		// });
+
+		$(document).ready(function () {
+			console.log("Hello")
+			$("#iptBtn").bind("click", function () {
+				alert("Hello World");
+			});
+			$("#btnhello").bind("click", function () {
+				alert("Hello World");
+			});
+		});
+
+		function compare() {
+			if ($(window)[0] == this.window) {
+				alert("$(window)[0]==this.window")
+			}
+			else {
+				alert("$(window)[0]<>this.window")
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<input type="button" class="btn btn-success" id="iptBtn" value="Input_Button_Say Hello" />
+	<input type="button" class="btn btn-success" id="btnhello" value="Button_Say Hello"/>
+	<input type="button" class="btn btn-success" id="btnbind" value="测试按钮" />
+</body>
+
+
+</html>

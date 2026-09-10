@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body onload="init();">
+<canvas width="500" height="500" id="c1">爷，你的浏览器不支持html5
+</canvas>
+<script type="text/javascript">
+    //1  拿到当前的画布
+    var cavnas = document.getElementById("c1");
+
+    //2  拿到画布的上下文
+    var context = cavnas.getContext('2d');
+
+    //3  初始化 画笔或者刷子的样式
+    context.strokeStyle = 'rgba(255,0,0,0.25)';
+
+    //4  绘画
+    context.strokeRect(10, 10, 100, 50);
+    //5  填充颜色，填充线
+
+    context.fillStyle = "red";
+    context.fillRect(200, 200, 130, 40);
+
+    //画线
+
+    context.strokeStyle = "black";
+
+    context.fillStyle = "green";
+
+    context.moveTo(200, 100);
+    context.lineTo(200, 300);
+    context.lineTo(400, 300);
+    context.lineTo(200, 100);
+
+    //context.stroke();
+    context.fill();
+</script>
+</body>
+</html>

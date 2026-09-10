@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-fileinput/css/fileinput.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-fileinput/css/fileinput-rtl.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap-fileinput/js/plugins/piexif.js"></script>
+    <script src="node_modules/bootstrap-fileinput/js/plugins/sortable.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="node_modules/bootstrap-fileinput/js/locales/zh.js"></script>
+</head>
+<body>
+<div class="col-md-4 offset-sm-4">
+        <div class="panel-body">
+            <input id="input-b1" name="input-b1" type="file" class="file" />
+            <br />
+            <input id="input-b2" name="input-b2" type="file" class="file" data-show-preview="false" />
+            <br />
+            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+            <br />
+            <input id="input-b4a" name="input-b4a" type="file" class="file" readonly="true" />
+            <br />
+            <input id="input-b4b" name="input-b4b" type="file" class="file" disabled="true" />
+            <br />
+            <input id="input-b5" name="input-b5[]" type="file" multiple class="file" />
+            <script>
+                $(document).on('ready',
+                    function () {
+                        $("#input-b5").fileinput({ showCaption: false });
+                    });
+            </script>
+            <br />
+            <div class="file-loading">
+                <input id="input-b6" name="input-b6[]" type="file" multiple class="file" />
+            </div>
+            <script>
+                $(document).on('ready',
+                    function () {
+                        $("#input-b6").fileinput({
+                            showUpload: false,
+                            maxFileCount: 10,
+                            mainClass: "input-group-lg"
+                        });
+                    });
+            </script>
+
+            <br />
+            <div class="file-loading">
+                <input id="input-b7" name="input-b7[]" multiple type="file" class="file" data-allowed-file-extensions='["csv", "txt"]' />
+            </div>
+            <br />
+            <div dir=rtl class="file-loading">
+                <!-- note the direction if you want to display file-loading indicator -->
+                <!-- note that your input must just set the `rtl` data property of the plugin or in your javascript code -->
+                <input id="input-b8" name="input-b8[]" multiple type="file" class="file">
+            </div>
+            <script>
+                $(document).on('ready',
+                    function () {
+                        $("#input-b8").fileinput({
+                            rtl: true,
+                            allowedFileExtensions: ["jpg", "png", "gif"]
+                        });
+                    });
+            </script>
+            <br />
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch Modal
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="file-loading">
+                                <input id="input-b9" name="input-b9[]" multiple type="file" class="file">
+                            </div>
+                            <div id="kartik-file-errors"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" title="Your custom upload logic">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(document).on('ready',
+                    function () {
+                        $("#input-b9").fileinput({
+                            showPreview: false,
+                            showUpload: false,
+                            elErrorContainer: '#kartik-file-errors',
+                            allowedFileExtensions: ["jpg", "png", "gif"]
+                            //uploadUrl: '/site/file-upload-single'
+                        });
+                    });
+            </script>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(".file").fileinput({
+            language: "zh",
+            showUpload: false, //不显示上传按钮
+            showPreview: false, //不显示预览按钮
+            showRemove: false  //不显示删除按钮
+        });
+
+        $("#btnCommit").bind("click", function () {
+            $("#input-b1").fileinput('upload');
+        });
+        $("#input-b1").fileinput({
+            uploadUrl: "Index.aspx",
+            language: 'zh', //设置语言
+            showUpload: false, //不显示上传按钮
+            showPreview: false, //不显示预览按钮
+            showRemove: false,  //不显示删除按钮
+            dropZoneEnabled: false,
+            uploadAsync: false,
+            showCaption: true, //是否显示标题
+            maxFileSize: 2000,
+            maxFileCount: 1,
+            layoutTemplates: {
+                progress: ""
+            },
+            uploadExtraData: function (previewId, index) { //额外参数的关键点
+                var data = getFormData();
+                console.log(data);
+                return data;
+            }
+        });
+
+        $("#input-b1").on('filebatchuploadcomplete', function (event, files, extra) {
+            console.log('File batch upload complete');
+        });
+        $("#input-b1").on('fileuploaded', function (event, data, previewId, index) {
+            var form = data.form, files = data.files, extra = data.extra,
+                res = data.response, reader = data.reader;
+            console.log('File uploaded triggered');
+        });
+        function getFormData() {
+            var data = {
+                Param1: "value10",
+                Param2: "value11",
+                Param3: "value12",
+                Param4: "value13",
+                Param5: "value14"
+            };
+            return data;
+        }
+    </script>
+</body>
+</html>

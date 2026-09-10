@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+
+        //jquery对象
+
+        //=================================================第一种
+        $(window).load(function () {
+            alert('哦买雷电嘎嘎闹!!!!');
+        });
+        //页面加载完了
+        jQuery(window).load(function () {
+
+            alert('哈哈1');
+        });
+        //====================================================第二种
+        $(document).ready(function () {
+            alert('这也可以?');
+        });
+        jQuery(document).ready(function () {
+            alert('这个行不行');
+        });
+
+        //============================================第三种
+
+        jQuery(function () {
+            alert('还能不能一起玩耍了');
+        });
+        $(function () {
+            alert('不敢直视');
+        });
+    </script>
+</head>
+<body>
+<input type="button" name="name" value="按钮" id="btn"/>
+</body>
+</html>

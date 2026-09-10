@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<style type="text/css">
+    div {
+        background-color: #ccc
+    }
+</style>
+
+<body>
+    <div>
+        <button onclick="fun1()">亲自试一试</button>
+        <ul id="myList">
+            <li>Coffee</li>
+            <li>Tea</li>
+        </ul>
+        <p>请点击按钮向列表中添加项目。</p>
+        <p>
+            <b>注释：</b>首先创建 LI 节点，然后创建文本节点，然后把这个文本节点追加到 LI 节点。最后把 LI 节点添加到列表中。</p>
+    </div>
+    <div>
+        <button onclick="fun2()">亲自试一试</button>
+        <ul id="myList1">
+            <li>Coffee</li>
+            <li>Tea</li>
+        </ul>
+        <ul id="myList2">
+            <li>Water</li>
+            <li>Milk</li>
+        </ul>
+        <p>请点击按钮把项目从一个列表移动到另一个列表中。</p>
+    </div>
+    <script type="text/javascript">
+        function fun1() {
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode("Water");
+            node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+        }
+
+        function fun2() {
+            var node = document.getElementById("myList2").lastChild;
+            document.getElementById("myList1").appendChild(node);
+        }
+    </script>
+</body>
+
+</html>

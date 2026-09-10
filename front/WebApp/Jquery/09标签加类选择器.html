@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //标签加类选择器
+            $('input.cls').css('backgroundColor', 'yellow');
+        });
+    </script>
+    <style type="text/css">
+        .cls {
+            width: 200px;
+            height: 200px;
+            background-color: Red;
+        }
+    </style>
+</head>
+<body>
+<div class="cls">
+</div>
+
+<input type="button" name="name" value="按钮" class="cls"/>
+</body>
+</html>

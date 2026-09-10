@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit">
+    <link rel="icon" href="images/favicon.ico">
+    <title>jQuery适应移动端选择银行下拉列表 - 站长素材</title>
+    <link href="css/bs.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+</head>
+<body class="bg-f2">
+<div class="container-fluid" id="con">
+    <div class="row bg-fff  par-top-40 pad-right-15" id="bank_show1">
+        <table class="table">
+            <tr>
+                <td class="form_td border-none td_bot">姓名</td>
+                <td class="border-none td_bot"><input type="text" class="form-control" placeholder="请输入姓名"/></td>
+            </tr>
+            <tr>
+                <td class="form_td border-none td_bot">身份证号</td>
+                <td class="border-none td_bot"><input type="text" class="form-control" placeholder="请输入身份证号"/></td>
+            </tr>
+            <tr>
+                <td class="form_td border-none td_bot">选择银行</td>
+                <td class="border-none td_bot">
+                    <div class="position-rel">
+                        <div class="position-rel">
+                            <input type="text" id="chose_input" class="form-control" placeholder="--储蓄卡--"/>
+                            <div class="bank_xljt"><img class="jt_xz" width="20" src="images/jtx.png" alt=""/></div>
+                            <div id="chose_bank" class="bank_xljt1"></div>
+                        </div>
+                        <div class="bank_xl" style="display: none">
+                            <ul>
+                                
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="中国农业银行">
+                                        <img src="images/zs1.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="中国建设银行">
+                                        <img src="images/zs2.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="中国工商银行">
+                                        <img src="images/zs3.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="中国银行">
+                                        <img src="images/zs4.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="中国光大银行">
+                                        <img src="images/zs5.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="华夏银行">
+                                        <img src="images/zs6.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="中国民生银行">
+                                        <img src="images/zs7.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="平安银行">
+                                        <img src="images/zs8.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                                <li class="hotBank-list">
+                                    <a href="javascript:" class="hotBank-list-ico " title="兴业银行">
+                                        <img src="images/zs9.png" width="150" alt=""/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        
+        </table>
+    
+    </div>
+
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bs.js"></script>
+<script>
+    $(function () {
+
+//        下拉银行卡
+
+        $(".hotBank-list-ico").bind('click', function () {
+            $('#chose_input').val($(this).attr('title'));
+            $('.bank_xl').hide();
+            $("#chose_bank").parent('div').find('img').addClass('jt_xz');
+        });
+        $("#chose_bank").click(function () {
+            $('.bank_xl').show();
+            $("#chose_bank").parent('div').find('img').removeClass('jt_xz');
+        });
+//        下拉银行卡
+
+    })
+</script>
+<script>
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement('style')
+        msViewportStyle.appendChild(
+            document.createTextNode(
+                '@-ms-viewport{width:auto!important}'
+            )
+        )
+        document.querySelector('head').appendChild(msViewportStyle)
+    }
+
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+    <p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+    <p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

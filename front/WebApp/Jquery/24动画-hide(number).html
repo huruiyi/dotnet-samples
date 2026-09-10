@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p").hide(1000);
+            });
+        });
+    </script>
+    <style type="text/css">
+        div {
+            width: 400px;
+            margin: 0;
+            text-align: center;
+            background: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button type="button">隐藏</button>
+    <div>
+        <p>这是一个段落。</p>
+        <p>这是另一个段落。</p>
+    </div>
+</body>
+</html>

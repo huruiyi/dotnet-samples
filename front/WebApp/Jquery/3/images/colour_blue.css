@@ -1,0 +1,36 @@
+#main {
+    border-color: #128CB4;
+}
+#nav li a {
+    color: #EEE;
+    border-color: #A8A8A8;
+}
+#logo {
+    background: transparent;
+    border-color: #128CB4;
+}
+#logo h1 {
+    color: #128CB4;
+}
+#content h3 {
+    background: transparent;
+    color: #8A8A8A;
+    border-color: #128CB4;
+}
+#links a, #content a {
+    background: transparent;
+    color: #128CB4;
+}
+#nav {
+    background: #6A8F9B;
+    color: #EEE;
+    border-color: #128CB4;
+}
+#nav li a:hover, #nav li a.selected, #nav li a.selected:hover {
+    background: #128CB4;
+    color: #EEE;
+    border-color: #A8A8A8;
+}
+.title {
+    color:#128CB4;
+}

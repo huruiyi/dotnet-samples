@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery-3.4.1.js"></script>
+  <script src="layer.js"></script>
+  <script src="../node_modules/jquery-ui-dist/jquery-ui.js"></script>
+
+  <script>
+    $(function () {
+      $(document.body).append("$(document).ready()2 is now been executed!!!<br /><br />");
+    });
+
+    $(function () {
+      $(document.body).append("$(document).ready()1 is now been executed!!!<br /><br />");
+    });
+
+    (function ($) {
+      //**********************************************************************************************************************************************
+      $.fn.extend({
+        dialog: function (options) {
+          //设置默认样式
+          const defaultStyles = {
+            width: 100,
+            height: 100,
+            backgroundColor: 'green'
+          };
+          //传过来的参数覆盖默认值
+          const style = $.extend({}, defaultStyles, options);
+
+          //console.log(style); //deafualt变为：{width: 200, height: 200}
+          $("#" + this[0].id).css(style)
+        }
+      });
+      //**********************************************************************************************************************************************
+      $.extend({
+        layer: function () {
+          const body = $('body');
+          const layerChild = '<div class="layer" style = " width: 100px; height: 100px;background: red; "></div>';
+          body.html(layerChild)
+        }
+      })
+      //**********************************************************************************************************************************************
+      $.fn.extend({
+        alertWhileClick: function () {
+          $(this).click(function () {
+            alert($(this).val());
+          });
+        }
+      });
+      //**********************************************************************************************************************************************
+    })(jQuery);
+
+
+    function extend_test() {
+      $.extend({
+        add: function (a, b) {
+          return a + b;
+        },
+        minus: function (a, b) {
+          return a - b
+        },
+        multiply: function (a, b) {
+          return a * b;
+        },
+        divide: function (a, b) {
+          return Math.floor(a / b);
+        }
+      })
+
+      jQuery.extend({
+        min: function (a, b) {
+          return a < b ? a : b;
+        },
+        max: function (a, b) {
+          return a > b ? a : b;
+        }
+      });
+      console.log(jQuery.min(2, 3))
+      console.log(jQuery.max(4, 5))
+      console.log($.add(12, 16))
+    }
+
+    function layer_test() {
+      $.layer()
+    }
+
+    function dialog_test() {
+      $("#dialog").dialog({
+        width: 200,
+        height: 200,
+        backgroundColor: 'red'
+      });
+    }
+
+    function query() {
+      const elements = document.querySelectorAll(".div1");
+      for (let i = 0; i < elements.length; i++) {
+        console.log(elements[i])
+      }
+      console.log(elements)
+
+      const ele = document.querySelector("#dialog");
+      console.log(ele)
+    }
+
+    function test() {
+      const defaultPara = {name: "lisi", age: 20, sex: "男", score: 99}
+      const options = {name: "hangman", age: 10}
+      const now = $.extend({}, defaultPara, options);
+      console.log(now)
+      //输出：{name: 'hangman', age: 10, sex: '男', score: 99}
+
+
+
+      $("#input1").alertWhileClick();
+
+      console.log(jQuery.fn === jQuery.prototype)
+    }
+  </script>
+  <link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css">
+  <link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.theme.css">
+</head>
+<body>
+
+<button onclick="query()">querySelector</button>
+<button onClick="extend_test()">extend test</button>
+<button onclick="layer_test()">layer test</button>
+<button onClick="dialog_test()">dialog test</button>
+<div class="div1"></div>
+<div class="div1"></div>
+<div class="div2"></div>
+<div id="dialog"></div>
+<div id="divDragger" style="background-color: lightcoral;width: 200px;height: 100px"></div>
+<input id="input1" value="123">
+</body>
+</html>

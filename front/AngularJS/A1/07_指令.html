@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="" ng-init="firstName='John';quantity=1;price=5;names=['Jani','Hege','Kai'];users=[{name:'Jani',country:'Norway'},{name:'Hege',country:'Sweden'},{name:'Kai',country:'Denmark'}]">
+        <h2>请输入FirstName：</h2>
+        <p>
+            姓名：<input type="text" ng-model="firstName">
+        </p>
+        <p>
+            你输入的为： {{ firstName }}
+        </p>
+
+        <h2>价格计算器</h2>
+        <p>
+            数量： <input type="number" ng-model="quantity">
+        </p>
+        <p>
+            价格： <input type="number" ng-model="price">
+        </p>
+        <p>
+            <b>总价：</b> {{ quantity * price }}
+        </p>
+
+
+        <h2>使用 ng-repeat 来循环数组</h2>
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x }}
+            </li>
+        </ul>
+        <h2>循环对象：</h2>
+        <ul>
+            <li ng-repeat="x	in users">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

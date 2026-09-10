@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <style type="text/css">
+        body {
+            color: #f0f;
+            background: #ffffff;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        table {
+            width: 600px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid mediumturquoise;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+
+            table tr:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+
+        legend {
+            color: #f0f;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+            ul li {
+                padding: 0;
+                list-style: none;
+            }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>ng-controller-ng-app-</legend>
+        <div ng-app="mainApp">
+            <p><a href="#添加">添加学生</a></p>
+            <p><a href="#查看">查看学生</a></p>
+            <div ng-view></div>
+            <script type="text/ng-template" id="aa">
+                <h2> 添加学生 </h2> {{message}}
+            </script>
+            <script type="text/ng-template" id="bb">
+                <h2> 查看学生 </h2> {{message}}
+            </script>
+        </div>
+    </fieldset>
+    <script>
+        var mainApp = angular.module("mainApp", ['ngRoute']);
+
+        mainApp.config(['$routeProvider',
+           function ($routeProvider) {
+               $routeProvider.
+                  when('/添加', {
+                      templateUrl: 'aa',
+                      controller: 'AddStudentController'
+                  }).
+                  when('/查看', {
+                      templateUrl: 'bb',
+                      controller: 'ViewStudentsController'
+                  }).
+                  otherwise({
+                      redirectTo: '/查看'
+                  });
+           }]);
+
+        mainApp.controller('AddStudentController', function ($scope) {
+            $scope.message = "AddStudentController............";
+        });
+
+        mainApp.controller('ViewStudentsController', function ($scope) {
+            $scope.message = "ViewStudentsController...................";
+        });
+    </script>
+</body>
+</html>

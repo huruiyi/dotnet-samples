@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+        body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+    </style>
+</head>
+<body ng-app="mainApp">
+    <fieldset>
+        <legend>简单表单</legend>
+        <div ng-app="mainApp" ng-controller="studentController">
+            <form name="studentForm" novalidate>
+                <table border="0">
+                    <tr>
+                        <td>姓氏:</td>
+                        <td>
+                            <input name="firstname" type="text" ng-model="firstName" required>
+                            <span style="color:red" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+                                <span ng-show="studentForm.firstname.$error.required">姓氏不可为空.</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>名字: </td>
+                        <td>
+                            <input name="lastname" type="text" ng-model="lastName" required>
+                            <span style="color:red" ng-show="studentForm.lastname.$dirty && studentForm.lastname.$invalid">
+                                <span ng-show="studentForm.lastname.$error.required">名字必填.</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td>
+                            <input name="email" type="email" ng-model="email" length="100" required>
+                            <span style="color:red" ng-show="studentForm.email.$dirty && studentForm.email.$invalid">
+                                <span ng-show="studentForm.email.$error.required">Email 必填.</span>
+                                <span ng-show="studentForm.email.$error.email">无效的Email地址.</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button ng-click="reset()">重置</button>
+                        </td>
+                        <td>
+                            <button ng-disabled="studentForm.firstname.$dirty && studentForm.firstname.$invalid ||
+			                                     studentForm.lastname.$dirty && studentForm.lastname.$invalid ||
+			                                     studentForm.email.$dirty && studentForm.email.$invalid" ng-click="submit()">
+                                提交
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller('studentController', function ($scope) {
+            $scope.reset = function () {
+                $scope.firstName = "Zhuo";
+                $scope.lastName = "Jar";
+                $scope.email = "yiibai.com@gmail.com";
+            }
+            $scope.reset();
+        });
+    </script>
+</body>
+</html>

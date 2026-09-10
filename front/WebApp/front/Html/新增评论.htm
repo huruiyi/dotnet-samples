@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+        }
+        .txtcomment {
+            width: 500px;
+            margin: 0 auto;
+        }
+        div.divcomment {
+            width: 600px;
+            margin: 0 auto;
+            background-color: teal;
+        }
+        .main {
+            margin: 0 auto;
+            background-color: aliceblue;
+        }
+
+        table {
+            border: 1px solid red;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 300px;
+            border: 1px solid red;
+        }
+
+        th {
+            border: 1px solid red;
+            width: 200px;
+        }
+
+        .lab {
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript">
+        function AddComment() {
+            //获取评论内容
+            var txtarea = document.getElementById("txtarea");
+            var commentText = txtarea.value
+            if (commentText.length == 0 || !commentText.trim()) {
+                alert("评论内容不能为空!");
+                return;
+            }
+
+            var table = document.getElementById("comment");
+
+            //添加tr
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+
+            //添加td
+            var td = document.createElement("td");
+            tr.appendChild(td);
+
+            //为td添加值
+            td.appendChild(document.createTextNode(commentText));
+        }
+
+        var IsCanSubmin = false;
+        function validateUserName(userName) {
+            var userNameAttention = document.getElementById("userNameAttention");
+            if (userName.length == 0) {
+                userNameAttention.innerHTML = " <font size='2' color='green'>用户名不能为空</font>";
+                IsCanSubmin = false;
+                return;
+            }
+            if (userName.length <= 3) {
+                userNameAttention.innerHTML = "<font size='2' color='red'>用户名长度必须大于3</font>";
+                IsCanSubmin = false;
+                return;
+            }
+            userNameAttention.innerHTML = "";
+            IsCanSubmin = true;
+        }
+
+        function ValidatePwdLength(pwd) {
+            var pwdA = document.getElementById("pwdAttention");
+            if (pwd.length <= 2) {
+                pwdA.innerHTML = "<font size='2' color='red'>密码长度不能小于3</font>";
+                IsCanSubmin = false;
+                return;
+            }
+            pwdA.innerHTML = "";
+            IsCanSubmin = true;
+        }
+
+        function validateUsePwd(rePwd) {
+            var password = document.getElementById("UserPwdId").value;
+            var labAtten = document.getElementById("passwordAttention");
+
+            if (rePwd != password) {
+                labAtten.innerHTML = "<font size='2' color='red'>密码不一致</font>";
+                IsCanSubmin = false;
+                return;
+            }
+            labAtten.innerHTML = "";
+            IsCanSubmin = true;
+        }
+
+        function ValidateEmail(email) {
+            var EmailAttention = document.getElementById("EmailAttention");
+            var Email = email;
+            var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            if (!Email.match(reg)) {
+                EmailAttention.innerHTML = "<font size='2' color='red'>不是一个合法的邮箱</font>";
+                IsCanSubmin = false;
+                return;
+            }
+            EmailAttention.innerHTML = "";
+            IsCanSubmin = true;
+        }
+
+        function ValidatePhone(phone) {
+            var Phone = phone;
+            var PhoneAttention = document.getElementById("PhoneAttention");
+            var IsNum = (Phone.match(/\D/) == null);
+            if (Phone.length != 11 || IsNum == false) {
+                PhoneAttention.innerHTML = "<font size='2' color='red'>号码位数或格式错误</font>";
+                IsCanSubmin = false;
+                return;
+            }
+            PhoneAttention.innerHTML = "";
+            IsCanSubmin = true;
+        }
+
+        function IsSubmit() {
+            if (IsCanSubmin == false) {
+                alert("aaaaa");
+                return;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <div class="divcomment">
+            <textarea cols="30" rows="5" id="txtarea" placeholder="请输入评论信息" class="txtcomment"></textarea>
+            <input type="button" value="评论" onclick="AddComment()" />
+        </div>
+        <table id="comment"></table>
+        <form action="HTMLPage1.htm">
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th colspan="2">
+                        用户注册
+                    </th>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        用户名:
+                    </td>
+                    <td>
+                        <input type="text" id="userNameId" name="UserName" onblur="validateUserName(this.value)" />
+                        <label id="userNameAttention">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        密码:
+                    </td>
+                    <td>
+                        <input type="password" id="UserPwdId" name="UserPwd" onblur="ValidatePwdLength(this.value)" />
+                        <label id="pwdAttention">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        确认密码:
+                    </td>
+                    <td>
+                        <input type="password" id="ConfirmUserPwd" name="UserPwd" onblur="validateUsePwd(this.value)" />
+                        <label id="passwordAttention">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        性别:
+                    </td>
+                    <td>
+                        <input type="radio" name="Sex" id="male" checked="checked" /><label for="male">男</label>
+                        <input type="radio" name="Sex" id="female" /><label for="female">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        地址:
+                    </td>
+                    <td>
+                        <select>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                        </select>
+                        <select>
+                            <option>A1</option>
+                            <option>A2</option>
+                            <option>A3</option>
+                            <option>A4</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        邮箱:
+                    </td>
+                    <td>
+                        <input type="text" name="Emali" id="EmailId" onblur="ValidateEmail(this.value)" />
+                        <label id="EmailAttention">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        手机号:
+                    </td>
+                    <td>
+                        <input type="text" name="PhoneNum" id="PhoneNumId" onblur="ValidatePhone(this.value)" />
+                        <label id="PhoneAttention">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        <input type="reset" value="重置" />
+                    </td>
+                    <td>
+                        <input type="submit" onclick="IsSubmit()" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

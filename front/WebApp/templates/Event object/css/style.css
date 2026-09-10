@@ -1,0 +1,11 @@
+.changeColor {
+    color: red;
+}
+
+#tooltip {
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background-color: teal;
+}

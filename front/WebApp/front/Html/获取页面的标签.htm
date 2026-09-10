@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        //要想获取页面中的标签必须要等到页面加载完
+        onload = function () {
+            //按钮对象--获取单个的元素
+            var btnObj = document.getElementById('btn');
+            alert(btnObj.value);
+            //第二种
+            //相当于对象的集合(数组)
+            var txts = document.getElementsByName('n');
+            var i;
+            for (i = 0; i < txts.length; i++) {
+                if (txts[i].type === 'text') {//判断是不是文本框
+                    alert(txts[i].value);
+                }
+            }
+            //第三种
+            //标签的名字,
+            var inputs = document.getElementsByTagName('input');
+            for (i = 0; i < inputs.length; i++) {
+                alert(inputs[i].value);
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="n" value="按钮啊" id="btn" />
+    <input type="text" name="n" value="1" />
+    <input type="text" name="n" value="2" />
+    <input type="text" name="n" value="3" />
+    <input type="text" name="n" value="4" />
+    <input type="text" name="n" value="5" />
+</body>
+</html>

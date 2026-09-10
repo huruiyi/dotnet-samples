@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .rect {
+            width: 400px;
+            height: 50px;
+            margin: 10px 0;
+        }
+
+        .c0 {
+            border: 1px solid red;
+        }
+
+        .c1 {
+            border: 1px solid green;
+        }
+
+        .c2 {
+            border: 1px solid blue;
+        }
+    </style>
+    <script src="select.js"></script>
+</head>
+<body>
+<div class="c3">
+    <div class="c1 rect">
+        <div class="c0" style="border: 1px dashed green;">123</div>
+    </div>
+    <div class="c2 rect"></div>
+    <div class="c0 rect"></div>
+    <div class="c1 rect"></div>
+</div>
+<hr/>
+<p>我是一个段落</p>
+<div>
+    <div class="c0 rect"></div>
+    <div class="c1 rect"></div>
+</div>
+<hr/>
+<div class="c3">
+    <div class="c0 rect"></div>
+</div>
+
+<div style="color: white;background-color: #2B81AF;display: inline;padding: 10px;">
+    Hello World, 世界你好!!!
+</div>
+</body>
+<script type="text/javascript">
+    var list = select('.c3 .c0, p');
+    for (var i = 0; i < list.length; i++) {
+        list[i].style.backgroundColor = 'green';
+    }
+</script>
+</html>

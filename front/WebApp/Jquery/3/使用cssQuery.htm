@@ -1,0 +1,24 @@
+<html>
+<head>
+<script src="cssQuery-p.js" type="text/javascript"></script>
+<script type="text/javascript">
+window.onload = function(){
+    var selector = "div#test .p1 span";
+    var elements = cssQuery(selector);
+    elements[0].style.color = "red";
+    selector = "a[href][title]";
+    elements = cssQuery(selector);
+    elements[0].style.color = "green";        
+}
+document.
+</script>
+</head>
+<body>
+<div id="test">
+    <p class="p1">
+        <span>文本</span>
+        <a href="#" title="测试超链接">超链接</a>
+    </p>
+</div>
+</body>
+</html>

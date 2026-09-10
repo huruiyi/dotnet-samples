@@ -1,0 +1,152 @@
+﻿<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.alert = function () {
+                window.IsShowMyAlert = true;
+                //var select = $("<select />").appendTo($("body"));
+                //$("<option value=\"1\">text1</option>").appendTo(select);
+                //$("<option value=\"2\">text2</option>").appendTo(select);
+                //$("<option value=\"3\">text3</option>").appendTo(select);
+
+                //$("<input type=\"text\">").css({ "width": "150px", "border": "1px lightgrey solid" }).appendTo($("body"));
+
+                //$("<a href='http://www.baidu.com'>百度</a>").appendTo($("body"));
+
+                var div = "<div class='alert-whole'>";
+                div += "<div class='alert-head'>提示</div>";
+                div += "<div class='alert-content'>这是个自定义的Alert弹框</div>";
+                div += "<div class='alert-foot'>尾部</div>";
+                div += "</did>";
+                $(div).appendTo($("body"));
+
+                var lh = document.getElementsByClassName("alert-whole")[0].offsetHeight;
+                var lw = document.getElementsByClassName("alert-whole")[0].offsetWidth;
+
+                var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+                var topp = ((h - lh) / 2) + "px";
+                document.getElementsByClassName("alert-whole")[0].style.top = topp;
+                var leftp = ((w - lw) / 2) + "px";
+                document.getElementsByClassName("alert-whole")[0].style.left = leftp;
+                console.log(topp + "  " + leftp);
+
+            }
+
+            $("#result").css({ "display": "none" });
+            $("#result li").hover(
+                function () {
+                    $(this).css("background-color", "#da70d6");
+                }
+                , function () {
+                    $(this).css("background-color", "#dda0dd");
+                });
+        });
+
+        function InputPIngo() {
+            var left = $("#pinfo").offset().left;
+            var top = $("#pinfo").offset().top;
+            var inputHeight = $("#pinfo")[0].offsetHeight;
+            var inputWidth = $("#pinfo")[0].offsetWidth;
+            $("#result").css({ "position": "absolute", "left": left, "top": top + inputHeight, "display": "block" });
+
+        }
+
+        function InputOblur() {
+            $("#result").css({ "display": "none" });
+        }
+
+        function TestFun() {
+            alert("xx");
+        }
+    </script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            list-style: none;
+            width: 155px;
+            height: 25px;
+            padding-left: 20px;
+            line-height: 25px;
+            border: 1px springgreen solid;
+            background-color: #dda0dd;
+        }
+
+        .alert-whole {
+            box-shadow: 0 2px 6px 3px rgba(0, 0, 0, .5);
+            width: 500px;
+            height: 500px;
+            background-color: #ff8c00;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        .alert-head {
+            background-color: #e6e6fa;
+            height: 50px;
+            line-height: 50px;
+            padding-left: 25px;
+        }
+
+            .alert-head:hover {
+                cursor: all-scroll;
+            }
+
+        .alert-foot {
+            background-color: #ffc0cb;
+            height: 50px;
+        }
+
+        .alert-content {
+            height: 400px;
+            background-color: #adff2f;
+        }
+
+        #pinfo {
+            height: 30px;
+            box-shadow: 0px 0px 2px #A32618;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="测试" style="background-color: #fff5ee;" onclick="TestFun()">
+    <div style="margin-left: 500px;margin-top: 100px;">
+        语言：
+        <input type="text" id="pinfo" onfocus="InputPIngo()" onblur="InputOblur()" />
+        <ul id="result">
+            <li>
+                <a href="#">Java</a>
+            </li>
+            <li>
+                <a href="#">C</a>
+            </li>
+            <li>
+                <a href="#">C++</a>
+            </li>
+            <li>
+                <a href="#">C#</a>
+            </li>
+            <li>
+                <a href="#">Python</a>
+            </li>
+            <li>
+                <a href="#">PHP</a>
+            </li>
+            <li>
+                <a href="#">Ruby</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

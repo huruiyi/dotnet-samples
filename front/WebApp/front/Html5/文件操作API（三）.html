@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        function init() {
+            var btn = document.getElementById("btnGetFileName");
+            btn.addEventListener("click", function (e) {
+                var fileList = document.getElementById("fileDemo").files;
+                for (var i = 0; i < fileList.length; i++) {
+                    var file = fileList[i];
+                    var size = file.size;
+                    var name = file.name;
+                    var type = file.type;
+                    var lastModifiedDate = file.lastModifiedDate;
+                    var d = document.getElementById("result");
+                    $("#result").append("<p>name: " + name + "  ---- size: " + size + " --- type:" + type + "--- lastModifiedData:" + lastModifiedDate + "</p>");
+                }
+            });
+        }
+    </script>
+</head>
+<body onload="init();">
+    <input type="file" multiple id="fileDemo" />
+    <input type="button" id="btnGetFileName" onclick="alert(arguments[0]);" value="获取上去文件的名字" />
+    <div id="result">
+    </div>
+</body>
+</html>

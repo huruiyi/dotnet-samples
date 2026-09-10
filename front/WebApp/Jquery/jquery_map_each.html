@@ -1,0 +1,77 @@
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		jquery事件绑定
+	</title>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#btn1").bind("click", function () {
+				map1();
+			});
+			$("#btn2").bind("click", function () {
+				map2();
+			})
+
+			$("#btn3").bind("click", function () {
+				each1();
+			})
+			$("#btn4").bind("click", function () {
+				each2();
+			})
+		});
+
+		function map1() {
+			var intArr = [10, 11, 12, 13];
+			//i:值
+			//j:索引
+			//
+			var newintArr = $.map(intArr, function (i, j, k) {
+				alert(arguments.length);
+				alert("i=" + i + " ,j=" + j);
+				return i * j;
+			});
+			console.log(newintArr); //输出结果:(4) [0, 11, 24, 39] ,产生一个新的数组
+		}
+
+		function map2() {
+			var employee = { "name": "黄山", "年龄": 500, "战斗力": 10000 };
+			$.map(employee, function (value, key, k) {
+				// alert(arguments.length);
+				alert("value=" + value + " ,key=" + key);
+			});
+		}
+
+		function each1() {
+			var arrInt = [10, 11, 12, 13];
+			$.each(arrInt, function (key, value) {
+				if (key == 2) {
+					//break;在$.each中跳出循环不能使用break;
+					//需要使用
+					return false; //跳出循环
+				}
+				//当使用each遍历，普通的数组的时候，索引就是键，值就是值。
+				alert(key + '    ,     ' + value);
+			});
+		}
+		function each2() {
+			var p = { "name": "黄山", "年龄": 500, "战斗力": 10000 };
+			$.each(p, function (k, v) {
+				alert(k + '   ,   ' + v);
+			});
+		}
+	</script>
+</head>
+
+<body>
+	<button class="btn btn-success" id="btn1">Map1 Test</button>
+	<button class="btn btn-danger" id="btn2">Map2 Test</button>
+	<button class="btn btn-default" id="btn3">Each1 Test</button>
+	<button class="btn btn-primary" id="btn4">Each2 Test</button>
+</body>
+
+</html>

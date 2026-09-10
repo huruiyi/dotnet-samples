@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{32B54A07-2B90-44DD-8C43-99722F67C7FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJs", "AngularJS\AngularJs.csproj", "{66205740-CF5B-48F8-8585-8362530633B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{93422781-E19B-4180-A046-1FB719F6275D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32B54A07-2B90-44DD-8C43-99722F67C7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B54A07-2B90-44DD-8C43-99722F67C7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B54A07-2B90-44DD-8C43-99722F67C7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B54A07-2B90-44DD-8C43-99722F67C7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66205740-CF5B-48F8-8585-8362530633B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93422781-E19B-4180-A046-1FB719F6275D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93422781-E19B-4180-A046-1FB719F6275D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93422781-E19B-4180-A046-1FB719F6275D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93422781-E19B-4180-A046-1FB719F6275D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {287F0FBE-D553-43DC-82F7-E41C5E683DA2}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#btn').click(function () {
+                $('ul:first li:lt(3)').css('font-weight', 'bolder');
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="字体变大" id="btn" />
+    <ul>
+        <li>罗永权办证</li>
+        <li>魏鑫游戏</li>
+        <li>廖荣斌做种</li>
+    </ul>
+
+    <ul>
+        <li>罗永权办证</li>
+        <li>魏鑫游戏</li>
+        <li>廖荣斌做种</li>
+    </ul>
+</body>
+</html>

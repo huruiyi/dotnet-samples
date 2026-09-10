@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <title></title>
+    <script type="text/javascript">
+        $(function () {
+            $("#shitColor").change(function () {
+                alert($(this).val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3></h3>
+    <hr />
+
+    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+        0
+        <input type="range" id="a" value="50">100
+        +<input type="number" id="b" value="50">
+        =<output name="x" for="a b"></output>
+    </form>
+
+    <form action="#" method="POST" id="frmdemo">
+        <input type="color" name="myColor" id="shitColor" />
+        <h3>日期</h3>
+        <input type="date" name="now" />
+
+        <h3>placeholder</h3>
+        <input type="text" name="placeholder" placeholder="demo 提示" />
+        <input type="text" name="placeholder" placeholder="demo 提示2222222222" />
+        <h3>自动完成</h3>
+
+        <hr />
+        <h3>智能化的input</h3>
+        <table>
+            <tr>
+                <td>Age</td>
+                <td>
+                    <input type="text" autofocus="autofocus" required="required" pattern="\d+" name="auto" placeholder="必填项测试" />
+                </td>
+            </tr>
+            <tr>
+                <td> url:</td>
+                <td> <input type="url" placeholder="请输入网址" name="url" /></td>
+            </tr>
+            <tr>
+                <td>email:</td>
+                <td> <input type="email" name="email" placeholder="请输入注册邮箱" /></td>
+            </tr>
+            <tr>
+                <td>time:</td>
+                <td> <input type="time" name="time" required="" /></td>
+            </tr>
+
+            <tr>
+                <td>datetime:</td>
+                <td> <input type="datetime" name="datetime" required="" /></td>
+            </tr>
+
+            <tr>
+                <td>number:</td>
+                <td> <input type="number" value="2" name="number" step="3" min="1" max="100" /></td>
+            </tr>
+            <tr>
+                <td>电话:</td>
+                <td> <input type="tel" placeholder="输入电话" name="phone" /></td>
+            </tr>
+
+            <tr>
+                <td>职务:</td>
+                <td>
+                    <input type="text" autocomplete="on" name="autoNames" list="autoNames" />
+                    <datalist id="autoNames">
+                        <option value="1职务"></option>
+                        <option value="2职务"></option>
+                        <option value="3职务"></option>
+                    </datalist>
+                </td>
+            </tr>
+
+            <tr>
+                <td>progressbar:</td>
+                <td>
+                    <progress id="pbar" value="30" name="pbar" max="100"><span>%</span></progress>
+                    <input type="button" value="设置值" onclick="document.getElementById('pbar').value += 1;" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="提交" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <input form="frmdemo" type="text" name="demoOtherForm" autofocus="autofocus" />
+</body>
+</html>

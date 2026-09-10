@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+
+</head>
+<body>
+    <fieldset>
+        <legend>checkbox 1</legend>
+        <input type="button" id="btn1" value="全选" />
+        <input type="button" id="btn2" value="取消全选" />
+        <input type="button" id="btn3" value="选中所有奇数" />
+        <input type="button" id="btn4" value="反选" />
+        <input type="button" id="btn5" value="获得选中的所有值" />
+        <br />
+        <input type="checkbox" name="checkbox" value="11" />
+        checkbox1
+        <input type="checkbox" name="checkbox" value="22" />
+        checkbox2
+        <input type="checkbox" name="checkbox" value="33" />
+        checkbox3
+        <input type="checkbox" name="checkbox" value="44" />
+        checkbox4
+        <input type="checkbox" name="checkbox" value="55" />
+        checkbox5
+        <input type="checkbox" name="checkbox" value="66" />
+        checkbox6
+        <input type="checkbox" name="checkbox" value="77" />
+        checkbox7
+        <input type="checkbox" name="checkbox" value="88" />
+        checkbox8
+        <script type="text/javascript">
+            $("#btn1").click(function () {
+                $("[name='checkbox']").attr("checked", 'true'); //全选
+            });
+            $("#btn2").click(function () {
+                $("[name='checkbox']").removeAttr("checked"); //取消全选
+            });
+
+            $("#btn3").click(function () {
+                $("[name='checkbox']:even").attr("checked", 'true'); //选中所有奇数
+            });
+            $("#btn4").click(function () {
+                $("[name='checkbox']").each(function () {
+                    if ($(this).attr("checked")) {
+                        $(this).removeAttr("checked");
+
+                    } else {
+                        $(this).attr("checked", 'true');
+                    }
+                });
+            });
+            $("#btn5").click(function () {
+                var str = "";
+                $("[name='checkbox']:checked").each(function () {
+                    str += $(this).val() + " ";
+                });
+                alert(str);
+            });
+        </script>
+    </fieldset>
+
+    <fieldset>
+        <legend>checkbox 2</legend>
+        <div>
+            <input name="chkItem" type="checkbox" value="今日话题" />今日话题
+            <input name="chkItem" type="checkbox" value="视觉焦点" />视觉焦点
+            <input name="chkItem" type="checkbox" value="财经" />财经
+            <input name="chkItem" type="checkbox" value="汽车" />汽车
+            <input name="chkItem" type="checkbox" value="科技" />科技
+            <input name="chkItem" type="checkbox" value="房产" />房产
+            <input name="chkItem" type="checkbox" value="旅游" />旅游
+        </div>
+        <div>
+            <input id="btnCheckAll" type="button" value="全选" />
+            <input id="btnCheckNone" type="button" value="全不选" />
+            <input id="btnCheckReverse" type="button" value="反选" />
+            <input id="btnSubmit" type="button" value="提交" />
+        </div>
+        <script type="text/javascript">
+            // 全选
+            $("#btnCheckAll").bind("click", function () {
+                $("[name = chkItem]:checkbox").attr("checked", true);
+            });
+
+            // 全不选
+            $("#btnCheckNone").bind("click", function () {
+                $("[name = chkItem]:checkbox").attr("checked", false);
+            });
+
+            // 反选
+            $("#btnCheckReverse").bind("click", function () {
+                $("[name = chkItem]:checkbox").each(function () {
+                    $(this).attr("checked", !$(this).attr("checked"));
+                });
+            });
+
+            // 全不选
+            $("#btnSubmit").bind("click", function () {
+                var result = new Array();
+                $("[name = chkItem]:checkbox").each(function () {
+                    if ($(this).is(":checked")) {
+                        result.push($(this).attr("value"));
+                    }
+                });
+
+                alert(result.join(","));
+            });
+
+            function test() {
+                var Ischecked = $("input[id='VariableIsRequired']").prop("checked");
+                //1、获取单个checkbox选中项(三种写法)
+                $("input:checkbox:checked").val()
+                $("input:[type='checkbox']:checked").val();
+                $("input:[name='ck']:checked").val();
+
+                //2、 获取多个checkbox选中项
+                $('input:checkbox').each(function () {
+                    if ($(this).attr('checked') == true) {
+                        alert($(this).val());
+                    }
+                });
+
+                //3、设置第一个checkbox 为选中值
+                $('input:checkbox:first').attr("checked", 'checked');
+                $('input:checkbox').eq(0).attr("checked", 'true');
+
+                //4、设置最后一个checkbox为选中值
+                $('input:radio:last').attr('checked', 'checked');
+                $('input:radio:last').attr('checked', 'true');
+
+                //5、根据索引值设置任意一个checkbox为选中值
+                $('input:checkbox).eq(索引值).attr('checked', 'true');索引值=0,1,2....
+                $('input:radio').slice(1, 2).attr('checked', 'true');
+
+                //6、选中多个checkbox同时选中第1个和第2个的checkbox
+                $('input:radio').slice(0, 2).attr('checked', 'true');
+
+                //7、根据Value值设置checkbox为选中值
+                $("input:checkbox[value='1']").attr('checked', 'true');
+
+                //8、删除Value = 1的checkbox
+                $("input:checkbox[value='1']").remove();
+
+                //9、删除第几个checkbox
+                //$("input:checkbox").eq(索引值).remove(); 索引值 = 0, 1, 2....
+                //如删除第3个checkbox:
+                $("input:checkbox").eq(2).remove();
+
+                //10、遍历checkbox
+                $('input:checkbox').each(function (index, domEle) {
+                    //写入代码
+                });
+
+                //11、全部选中
+                $('input:checkbox').each(function () {
+                    $(this).attr('checked', true);
+                });
+
+                //12、全部取消选择
+                $('input:checkbox').each(function () {
+                    $(this).attr('checked', false);
+                });
+            }
+        </script>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        //页面上有一个ul球队列表当鼠标移动到某个li上的时候改行背景颜色变红，当点击某个li的时候，让该li之前的所有li背景色变黄，之后的所有li背景色变蓝。自己不变色。
+
+        $(function () {
+
+            $('#u1 li').mouseover(function () {
+
+                $(this).css('backgroundColor', 'red');
+            }).click(function () {
+                //  $(this).prevAll().css('backgroundColor', 'yellow');
+                //$(this).nextAll().css('backgroundColor', 'blue');
+                //断链--end()修复断链
+                $(this).prevAll().css('backgroundColor', 'yellow').end().nextAll().css('backgroundColor', 'blue');
+            }).mouseout(function () {
+                $(this).css('backgroundColor', '');
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <ul id="u1">
+        <li>热火</li>
+        <li>火箭</li>
+        <li>雷霆</li>
+        <li>老牛</li>
+        <li>马刺</li>
+        <li>湖人</li>
+        <li>罗永权喜欢男人</li>
+    </ul>
+</body>
+</html>

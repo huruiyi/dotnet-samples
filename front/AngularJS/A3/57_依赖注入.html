@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <h2>AngularJS 简单应用</h2>
+
+    <div ng-app="mainApp" ng-controller="CalcController">
+        <p>输入一个数字: <input type="number" ng-model="number" /></p>
+        <button ng-click="square()">X<sup>2</sup></button>
+        <p>结果: {{result}}</p>
+    </div>
+
+    <script>
+        // 定义一个模块
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.config(function ($provide) {
+            $provide.provider('MathService', function () {
+                this.$get = function () {
+                    var factory = {};
+                    factory.multiply = function (a, b) {
+                        return a * b;
+                    }
+                    return factory;
+                };
+            });
+        });
+        // 创建 value 对象 "defaultInput" 并传递数据
+        mainApp.value("defaultInput", 5);
+
+        // 创建 factory "MathService" 用于两数的乘积 provides a method multiply to return multiplication of two numbers
+        mainApp.factory('MathService', function () {
+            var factory = {};
+            factory.multiply = function (a, b) {
+                return a * b;
+            }
+            return factory;
+        });
+        // 在 service 中注入 factory "MathService"
+        mainApp.service('CalcService', function (MathService) {
+            this.square = function (a) {
+                return MathService.multiply(a, a);
+            }
+        });
+        // 将 "defaultInput" 注入到控制器
+        mainApp.controller('CalcController', function ($scope, CalcService, defaultInput) {
+            $scope.number = defaultInput;
+            $scope.result = CalcService.square($scope.number);
+
+            $scope.square = function () {
+                $scope.result = CalcService.square($scope.number);
+            }
+        });
+    </script>
+</body>
+</html>

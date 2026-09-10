@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+<script language="javascript" type="text/javascript">
+(function(){
+    var window = this,
+    jQuery = window.jQuery = window.$ = function(selector, context){
+        return new jQuery.fn.init(selector, context);
+    };
+    jQuery.fn = jQuery.prototype = {
+        init : function(selector, context) {
+            alert(selector);
+        }
+    };
+})();
+window.onload = function() {
+
+    $("div.red");
+    $("div .red");
+    $(document.getElementById("wrap"));
+    $("#wrap", document.forms[0]);
+    $("<div>hello,world</div>");
+
+
+}
+</script>
+<div id="wrap"></div>
+
+
+</body>
+
+</html>

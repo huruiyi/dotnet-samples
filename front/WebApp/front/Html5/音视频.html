@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        fieldset {
+            border: purple 1px solid;
+            width: 400px;
+        }
+    </style>
+    <script type="text/javascript">
+        var obj = { id: 1, demo: 333 };
+        console.log(obj);
+
+        var str = JSON.stringify(obj);
+        console.log(str);
+
+        var obj2 = JSON.parse(str);
+        console.log(obj2.id);
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>视频</legend>
+        <video controls="controls" width="400">
+            不支持html5 video
+            <source src="../res/56.mp4" type="video/mp4" >
+        </video>
+    </fieldset>
+
+    <fieldset>
+        <legend>音频</legend>
+        <audio controls loop="loop">
+            <source src="../res/mass.mp3" type="audio/mpeg">
+        </audio>
+    </fieldset>
+</body>
+</html>

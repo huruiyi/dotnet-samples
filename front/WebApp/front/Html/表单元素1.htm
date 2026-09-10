@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>表单元素</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            //    document.write("你好呀");
+            //    document.writeln("嗯,你也好");
+            //    document.write("换行了<br>");
+            //    document.write("<font color:red>tian</font>");
+            intervalrId = setInterval(reg, 1000);
+        }
+        var intervalrId;
+        var time = 10;
+        function reg() {
+            time--;
+            var btn = document.getElementById("btn");
+            if (time === 0) {
+                btn.value = "注册";
+                // btn.removeAttribute("disabled");
+                btn.disabled = "";
+                clearInterval(intervalrId);
+            }
+            else {
+                btn.value = "请阅读此协议(" + time + "秒)";
+            }
+        }
+        function checkAll() {
+            var ckall = document.getElementById("checkall");
+
+            var ck = document.getElementsByTagName("input");
+            for (var i = 0; i < ck.length; i++) {
+                if (ck[i].type === "checkbox" && ck[i].id !== "checkall") {
+                    if (ckall.checked) {
+                        ck[i].checked = true;
+                    }
+                    else {
+                        ck[i].checked = false;
+                    }
+                }
+            }
+        }
+
+        function omover(btn) {
+            btn.value = "呜呜..";
+        }
+        function omout(btn) {
+            btn.value = "哈哈~";
+        }
+
+        function Calc() {
+            var sub1 = document.getElementById("sub1");
+            sub1value = sub1.value;
+            if (sub1 == "") {
+                alert("值不能为空");
+            }
+            if (isNaN(sub1value)) {
+                alert("sub1value为空");
+            }
+            var sub1 = parseInt(sub1.value);
+            var sub2 = document.getElementById("sub2");
+            var sub2 = parseInt(sub2.value);
+
+            var Sum = sub1 + sub2;
+            var sum = document.getElementById("sum");
+            sum.value = Sum;
+        }
+
+        function AddText() {
+            var text = document.createElement("input");
+            text.type = "text";
+            text.name = "uid";
+            text.value = "动态添加的文本框";
+
+            var pc = document.getElementById("pc");
+            pc.appendChild(text);
+        }
+        function AddLink() {
+            var link = document.createElement("a");
+            link.href = "http://www.baidu.com";
+            link.appendChild(document.createTextNode("百度"));
+
+            var pc = document.getElementById("pc");
+            pc.appendChild(link);
+        }
+
+        var proInfo = { "江苏": ["江苏1", "江苏2", "江苏3"], "安徽": ["安徽1", "安徽2", "安徽3"], "河南": ["河南1", "河南2", "河南3"] };
+
+        function proChange(pro) {
+            var cityNode = document.getElementById("city");
+            while (cityNode.childNodes.length > 0) {
+                cityNode.removeChild(cityNode.childNodes[0]);
+            }
+
+            var citys = proInfo[pro];
+            for (var i = 0; i < citys.length; i++) {
+                var cityName = citys[i];
+                var opt = document.createElement("option");
+                opt.value = cityName;
+                opt.appendChild(document.createTextNode(cityName));
+                cityNode.appendChild(opt);
+            }
+        }
+
+        function addWebSite() {
+            var siteName = document.getElementById("siteName").value;
+            var siteUrl = document.getElementById("siteUrl").value;
+            var table = document.getElementById("tblSites");
+
+            var tr = document.createElement("tr");
+
+            var td = document.createElement("td");
+            td.appendChild(document.createTextNode(siteName));
+            tr.appendChild(td);
+
+            var td = document.createElement("td");
+            var link = document.createElement("a");
+            link.href = siteUrl;
+            link.appendChild(document.createTextNode(siteUrl));
+            td.appendChild(link);
+            tr.appendChild(td);
+
+            table.appendChild(tr);
+        }
+
+        function onPClick(e) {
+            alert("P的事件被执行了.................");
+            stopBubble(e);
+        }
+
+        function onDivClick() {
+            alert("Div的事件被执行..........");
+        }
+
+        // 停止冒泡
+        function stopBubble(e) {
+            // 对应着非IE浏览器
+            if (e && e.stopPropagation) {
+                e.stopPropagation();
+            }
+            else {
+                //IE浏览器
+                window.event.cancelBubble = true;
+            }
+        }
+
+        function LoseSeachFocus(txt) {
+            txt.style.color = "gray";
+            if (txt.value === "") {
+                txt.value = "请输入关键字";
+            }
+            else {
+                txt.style.color = "black";
+            }
+        }
+
+        function GetSearchFoucus(txt) {
+            if (txt.value === "请输入关键字") {
+                txt.value = "";
+                txt.style.color = "black";
+            }
+        }
+    </script>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        fieldset {
+            border: 1px solid #4800ff;
+            margin-bottom: 15px;
+        }
+
+        td, th {
+            border: 1px solid red;
+            height: 30px;
+            width: 300px;
+            text-align: center;
+        }
+
+        body {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        table#tblSites {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <fieldset>
+        <legend>全选</legend>
+        <input type="checkbox" id="checkall" onchange="checkAll()" />
+        <label for="checkall" title="全选">全选</label>
+        <input type="checkbox" id="basketball" /><label for="basketball">篮球</label>
+        <input type="checkbox" id="football" /><label for="football">足球</label>
+        <input type="checkbox" id="pingpang" /><label for="pingpang">乒乓球</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>onmouseover-onmouseout</legend>
+        <input type="button" value="哈哈" onmouseover="omover(this)" onmouseout="omout(this)" />
+        <input type="button" id="btn" disabled="disabled" value="请阅读此协议(10秒)" onclick="javascript: alert('可以注册了!!')" />
+    </fieldset>
+
+    <fieldset>
+        <legend>计算</legend>
+        <input type="text" id="sub1" />+
+        <input type="text" id="sub2" />=
+        <input type="text" id="sum" />
+        <input type="button" value="计算" id="calc" onclick="Calc()" />
+    </fieldset>
+
+    <fieldset>
+        <legend>元素的创建与附加</legend>
+        <input type="button" value="添加文本框" onclick="AddText()" />
+        <input type="button" value="添加超链接" onclick="AddLink()" />
+        <p id="pc">    </p>
+    </fieldset>
+    <fieldset>
+        <legend>省市联动</legend>
+        <select id="pro" onchange="proChange(this.value)">
+            <option value="江苏">江苏</option>
+            <option value="安徽">安徽</option>
+            <option value="河南">河南</option>
+        </select>
+        <select id="city"></select>
+    </fieldset>
+
+    <fieldset>
+        <legend>表格新增</legend>
+        <table>
+            <tr>
+                <td> 网站名称</td>
+                <td><input type="text" id="siteName" /></td>
+                <td>网站地址</td>
+                <td>
+                    <input type="text" id="siteUrl" />
+                </td>
+                <td>
+                    <input type="button" value="增加" onclick="addWebSite()" />
+                </td>
+            </tr>
+        </table>
+        <table id="tblSites">
+            <tr>
+                <th>
+                    网站名称
+                </th>
+                <th>
+                    网站地址
+                </th>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>other</legend>
+        <div onclick="onDivClick()">
+            <p onclick="onPClick(event)">
+                我是一个段落
+            </p>
+        </div>
+        <input type="text" value="请输入关键字" style="color: Gray" onblur="LoseSeachFocus(this)" onfocus="GetSearchFoucus(this)" />
+        <input type="button" value="Search" />
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta charset="utf-8"/>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).bind('mousemove', function (e) {
+            $("#log").text("e.pageX: " + e.pageX + ", e.pageY: " + e.pageY);
+        });
+    </script>
+</head>
+<body>
+<div id="log"></div>
+</body>
+</html>

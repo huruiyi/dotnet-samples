@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+
+ul,li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+.tab_box{
+	width:90%;
+}
+
+.tab_box .tab_list{
+	border-bottom:1px solid #ccc;
+	float:left;
+	width:100%;
+}
+.tab_box .tab_list li{
+	float:left;
+	border-style:solid;
+	border-width:1px;
+	border-color:#ccc;
+	padding:3px 5px;
+	margin:0 5px;
+	background:#eee;
+	cursor:pointer;
+	border-bottom:none;
+}
+.tab_box .tab_list li.active{
+	background:#fff;
+	margin-bottom:-1px;
+	border-bottom:1px solid #fff;
+}
+.tab_box .tab_list li.disable{
+	background:#ff0000;
+	border-bottom:1px solid #999;
+	margin-bottom:-1px;
+}
+.tab_box .tab_content{
+	padding:10px;
+	border:1px solid #ccc;
+	border-top:none;
+	clear:both;
+}    
+    
+    </style>
+    <script src="images/jquery-1.3.2.js" type="text/javascript" ></script>
+    <script type="text/javascript"> 
+
+(function($) {
+    var isShow = false;
+    $.fn.tab = function(options) {
+        this.opts = $.extend({},$.fn.tab.defaults, options);
+		this._init();
+		this.disableArr=[];
+	};
+	$.fn.tab.prototype={
+		_init:function(){
+			var _this = this;
+			if($(_this.opts.tabList).length>0){
+				$(_this.opts.tabList).each(function(index){
+					$(this).bind(_this.opts.eventType,function(){
+						if($.inArray(index,_this.disableArr)==-1&&(!isShow)&&$(this).attr("class").indexOf(_this.opts.tabActiveClass)==-1){
+							if(_this.opts.callBackStartEvent){
+								_this.opts.callBackStartEvent(index);
+							}
+							$(_this.opts.tabList).removeClass(_this.opts.tabActiveClass);
+							$(this).addClass(_this.opts.tabActiveClass);
+							showContent(index,_this.opts);
+						}
+					});
+				});
+			}
+		},
+		setDisable:function(index){
+			var _this = this;
+			if($.inArray(index,this.disableArr)==-1){
+				this.disableArr.push(index);
+				$(_this.opts.tabList).eq(index).addClass(_this.opts.tabDisableClass);
+			}
+		},
+		setEnable:function(index){
+			var _this = this;
+			var i =$.inArray(index,this.disableArr);
+			if(i>-1){
+				this.disableArr.splice(i,1);
+				$(_this.opts.tabList).eq(index).removeClass(_this.opts.tabDisableClass);
+			}
+		},
+		triggleTab:function(index){
+			$(this.opts.tabList).eq(index).trigger(this.opts.eventType);
+		}
+	}
+    $.fn.tab.defaults = {
+		tabList:".tab_list li",
+		contentList:".tab_content",
+		tabActiveClass:"active",
+		tabDisableClass:"disable",
+		eventType:"click",
+		showType:"show",
+		showSpeed:200,
+		callBackStartEvent:null,
+		callBackHideEvent:null,
+		callBackShowEvent:null
+    };
+	function showContent(index,opts){
+		isShow = true;
+		var _this = this;
+		switch(opts.showType){
+			case "show":
+				$(opts.contentList+":visible").hide();
+				if(opts.callBackHideEvent){
+					opts.callBackHideEvent(index);
+				}
+				$(opts.contentList).eq(index).show();
+				if(opts.callBackShowEvent){
+					opts.callBackShowEvent(index);
+				}
+				isShow =false;
+				break;
+			case "fade":
+				$(opts.contentList+":visible").fadeOut(opts.showSpeed,function(){
+					if(opts.callBackHideEvent){
+						opts.callBackHideEvent(index);
+					}
+					$(opts.contentList).eq(index).fadeIn(function(){
+						if(opts.callBackShowEvent){
+							opts.callBackShowEvent(index);
+						}
+						isShow =false;
+					});
+				});
+				break;
+			case "slide":
+				$(opts.contentList+":visible").slideUp(opts.showSpeed,function(){
+					if(opts.callBackHideEvent){
+						opts.callBackHideEvent(index);
+					}
+					$(opts.contentList).eq(index).slideDown(function(){
+						if(opts.callBackShowEvent){
+							opts.callBackShowEvent(index);
+						}
+						isShow =false;
+					});
+				});
+				break;
+		}
+	};	
+})(jQuery);
+
+$(function(){
+	var tab = new $.fn.tab({
+		tabList:".tab_list li",
+		contentList:".tab_content",
+		eventType:"click",
+		showType:"slide",
+		callBackStartEvent:function(index){
+			alert("单击了第 "+ (index +1) + " 个选项" );
+		},
+		callBackHideEvent:function(index){
+			alert("隐藏了所有选项");
+		},
+		callBackShowEvent:function(index){
+			alert("显示了当前选项");
+		}
+	});
+})
+    </script>
+
+</head>
+<body>
+
+
+<div class="tab_box">
+    <ul class="tab_list">
+        <li class="active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class="sub_box">
+        <div class="tab_content">
+            <p><img src="images/bg5.jpg" height="300" /></p>
+        </div>
+        <div class="tab_content" style="display:none">
+			<p><img src="images/bg6.jpg" height="300" /></p>
+        </div>
+        <div class="tab_content" style="display:none">
+			<p><img src="images/bg7.jpg" height="300" /></p>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

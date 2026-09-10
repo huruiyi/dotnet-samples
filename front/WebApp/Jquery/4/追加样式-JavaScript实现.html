@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.red {
+	color:red;
+}
+.bold {
+	font-weight:bold;
+}
+.italic {
+	font-style:italic;
+}
+</style>
+<script type="text/javascript" >
+
+window.onload = function(){
+	var p = document.getElementsByTagName("p")[0];
+	var input = document.getElementsByTagName("input");
+	input[0].onclick = function(){
+		var a = p.getAttribute("class");
+		if(a){
+			p.setAttribute("class", a + " red");
+		}
+		else
+		{
+			p.setAttribute("class", "red");
+		}
+	}
+	input[1].onclick = function(){
+		var a = p.getAttribute("class");
+		if(a){
+			p.setAttribute("class", a + " bold");
+		}
+		else
+		{
+			p.setAttribute("class", "bold");
+		}			
+	}	
+	input[2].onclick = function(){
+		var a = p.getAttribute("class");
+		if(a){
+			p.setAttribute("class", a + " italic");
+		}
+		else
+		{
+			p.setAttribute("class", "italic");
+		}			
+	}	
+}
+
+</script>
+</head>
+<body>
+
+<p>段落文本</p>
+<input type="button" value="红色"  />
+<input type="button" value="加粗"  />
+<input type="button" value="斜体"  />
+
+
+</body>
+</html>
+

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可自定义刻度jQuery进度条 - 站长素材</title>
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" href="css/jquery.progressdots.css">
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" href="css/prism.css">
+<link rel="stylesheet" href="css/example.css">
+<!--[if IE]>
+	<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<br>
+<div class="htmleaf-container">
+	<div id="container">
+		<div class="padded">
+			<div id="progressHolder"></div>
+
+			<div id="progressReset">生成随机的风格</div>	
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.progressdots.js"></script>
+<script src="js/prism.js"></script>
+<script>
+	$(document).ready(function (){
+	
+		createSpots(1);
+
+		$("#progressReset").click( function (event) {
+			event.preventDefault();
+			createSpots(1);
+		});
+		
+		function createSpots( num )
+		{
+
+			for ( var i=0;i<num;i++ )
+			{
+
+				options = {
+					dotSize: random( 10, 20 ) + "px",
+					radius: random( 1, 7 ) * 10 + "%"
+				};
+
+				randomHtml = "";
+
+				if ( Math.random() < 0.5 )
+				{
+					options.randomColors = true;
+					randomHtml += "\n\trandomColors: " + options.randomColors + ", //use random colors";
+				}
+				else
+				{
+					options.dotColor = randomColor();
+
+					randomHtml += "\n\tdotColor: '" + options.dotColor + "', //set dot color (#HEX)";
+				}
+
+				if ( Math.random() < 0.3 )
+				{
+					options.progress = true;
+					options.percent = random(5,100);
+
+					randomHtml += "\n\tprogress: true, //enable progress";
+					randomHtml += "\n\tpercent: " + options.percent + ", //set initial percentage";
+				} else {
+					options.numDots = random( 3, 15 ); 
+
+					randomHtml += "\n\tnumDots: " + options.numDots + ", //number of dots";
+				}
+
+
+				string = "$( '#progressBox' ).dottify({\
+						\n\tdotSize: '" + options.dotSize + "', //set size of dot" +
+						randomHtml +
+						"\n\tradius: '" + options.radius + "' //set dot corner radius\
+				\n});";
+
+				var $container = $("<div class='swoopContainer'></div>").data( "setupString", JSON.stringify( string ) );
+
+				$("#progressHolder").append( $container.hide() );
+
+				$container.slideDown( function () {
+					$(this).css({overflow:"hidden"});
+				});
+
+				$container.click( function () {
+					$(".swoopContainer").removeClass("selected");
+					$(this).addClass("selected");
+					
+					$("#jsContents").html( JSON.parse( $(this).data("setupString") ) );
+
+					Prism.highlightAll();
+				});
+
+				$container.dottify( options );
+
+				$("#jsContents").html(string);
+				Prism.highlightAll();
+			}
+
+			$(".swoopContainer").removeClass("selected");
+			$(".swoopContainer").last().addClass("selected");
+		}
+	
+		function randomColor() {
+			return '#'+Math.floor(Math.random()*16777215).toString(16);
+		}
+
+		function random ( min, max ) {
+			return Math.floor( Math.random() * ( ( max - min ) + min ) + min );
+		}
+		
+	});
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

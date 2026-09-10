@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        // 移动元素
+        function moveHtml(id) {
+            var scroll_offset = $("#" + id).offset().top;
+            $("body, html").animate({
+                scrollTop: scroll_offset
+            }, 500);
+        }
+
+        //提交
+        function sub() {
+            var name = $("#selectPOS").val();
+
+            if (name == null || name == "") {
+                $("#adNameTips").text("广告名称不能为空");
+                moveHtml('selectPOS');
+                $("#adNameTips").show();
+            }
+        }
+
+        function hide() {
+            $("#adNameTips").text("");
+            $("#adNameTips").hide();
+        }
+    </script>
+</head>
+<body>
+    输入姓名：<input id="selectPOS" type="text" onfocus="hide()" />
+    <span id="adNameTips" style="display:none;color: red"></span>
+    <div style="height:1000px"></div>
+    <button onclick="sub()">测试移动</button>
+</body>
+</html>

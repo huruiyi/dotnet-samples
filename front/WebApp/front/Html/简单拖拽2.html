@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+        div#divObj {
+            color: palevioletred;
+            background-color: lightblue;
+            height: 500px;
+            width: 500px;
+        }
+    </style>
+    <script type="text/javascript">
+        function A(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondrag:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+
+            if (event.clientX <= 0) return;
+
+            var div = document.getElementById("divObj");
+            div.style.position = "absolute";
+            div.style.left = event.clientX + "px";
+            div.style.top = event.clientY + "px";
+
+        }
+
+        function B(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondragstart:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+        }
+
+        function C(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondragend:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+
+            if (event.clientX <= 0) return;
+            var div = document.getElementById("divObj");
+            div.style.position = "absolute";
+            div.style.left = event.clientX + "px";
+            div.style.top = event.clientY + "px";
+
+        }
+
+        function D(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondragenter:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+        }
+
+        function E(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondragover:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+        }
+
+        function F(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondragleave:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+        }
+
+        function G(event) {
+            var node = document.createElement("p");
+            var textNode = document.createTextNode("ondrop:X:" + event.clientX + ",Y:" + event.clientY);
+            node.appendChild(textNode);
+            document.getElementById("pointInfo").appendChild(node);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="divObj" ondrag="A(event)" ondragstart=" B(event)" ondragend=" C(event)" ondragenter=" D(event)" ondragover=" E(event)" ondragleave=" F(event)" ondrop=" G(event)" draggable="true"> </div>
+    <p id="pointInfo" style="width:300px;height:300px;overflow-x:scroll"></p>
+</body>
+</html>

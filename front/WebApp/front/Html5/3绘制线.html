@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <canvas id="demoCanvas" width="500" height="500">
+        <p>爷，你还在上个世纪吧，现在都html5了，您还在ie6时代？</p>
+    </canvas>
+    <!---下面将演示一种绘制矩形的demo--->
+    <script type="text/javascript">
+        //第一步：获取canvas元素
+        var canvasDom = document.getElementById("demoCanvas");
+        //第二步：获取上下文
+        var context = canvasDom.getContext('2d');
+        context.fillStyle = "red";
+        context.beginPath();
+        context.lineWidth = 2;
+        context.moveTo(1, 1);
+        context.lineTo(1, 101);
+        context.lineTo(101, 101);
+        context.lineTo(1, 1);
+        context.closePath();
+        context.fill();
+        context.strokeStyle = "red";
+        context.beginPath();
+        context.lineWidth = 4;
+        context.moveTo(200, 200);
+        context.lineTo(200, 301);
+        context.lineTo(300, 301);
+        context.lineTo(200, 200);
+        context.lineTo(250, 20);
+        context.closePath();
+        context.stroke();
+    </script>
+
+    <script type="text/javascript">
+
+        //第一步：获取canvas元素
+        var canvasDom = document.getElementById("demoCanvas");
+        //第二步：获取上下文
+        var context = canvasDom.getContext('2d');
+
+        context.fillStyle = "red";
+        context.beginPath();
+        context.lineWidth = 2;
+        context.moveTo(1, 1);
+        context.lineTo(1, 101);
+        context.lineTo(101, 101);
+        context.lineTo(201, 301);
+        context.lineTo(271, 201);
+        context.lineTo(1, 1);
+        context.closePath();
+        context.fill();
+
+        context.strokeStyle = "red";
+        context.beginPath();
+        context.lineWidth = 4;
+        context.moveTo(200, 200);
+        context.lineTo(200, 301);
+        context.lineTo(300, 301);
+        context.lineTo(200, 200);
+        context.lineTo(250, 20);
+        context.closePath();
+        context.stroke();
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <style type="text/css">
+        body {
+            color: #9622dc;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+
+        legend {
+            color: #e96cee;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp">
+        <fieldset ng-controller="myCtrl">
+            <legend>
+                module_controller
+            </legend>
+            <p>
+                姓名：  {{ firstName + " " + lastName }}
+            </p>
+        </fieldset>
+
+        <fieldset ng-controller="studentController">
+            <legend>ng-controller</legend>
+            <div>
+                <p>
+                    Enter first name:
+                    <input type="text" ng-model="student.firstName">
+                </p>
+                <p>
+                    Enter last name:
+                    <input type="text" ng-model="student.lastName">
+                </p>
+                <p>You are entering: {{student.fullName()}}</p>
+            </div>
+        </fieldset>
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+
+        app.controller('studentController', function ($scope) {
+            $scope.student = {
+                firstName: "李",
+                lastName: "刚",
+                fullName: function () {
+                    var studentObject;
+                    studentObject = $scope.student;
+                    return studentObject.firstName + " " + studentObject.lastName;
+                }
+            };
+        });
+    </script>
+</body>
+</html>

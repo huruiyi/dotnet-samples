@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        function ChangeVcode(obj) {
+            obj.src = "http://localhost:40143/Handler/OtherHandler.ashx?action=Vcode1&mr" + Math.random()
+        }
+    </script>
+
+</head>
+<body>
+    <img src="http://localhost:40143/Handler/OtherHandler.ashx?action=Vcode1" onclick="ChangeVcode(this)"/>
+</body>
+</html>

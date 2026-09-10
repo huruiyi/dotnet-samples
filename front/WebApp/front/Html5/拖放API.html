@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        div {
+            border-style: solid;
+            border-color: red;
+            border-width: thin;
+        }
+
+        #drag {
+            width: 50px;
+            height: 50px;
+        }
+
+        #targetDiv {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script type="text/javascript">
+        document.ondragover = function (e) {
+            e.preventDefault();
+        };
+        document.ondrop = function (e) {
+            e.preventDefault();
+        };
+
+        function initDrag() {
+            var fromDrag = document.getElementById("drag");
+            var target = document.getElementById("targetDiv");
+
+            fromDrag.addEventListener("dragstart", function (ev) {
+                //FF Chrom支持的比较好
+                var dt = ev.dataTransfer;
+                dt.effectAllowed = "all";
+                dt.setData("text/plain", this.id);
+
+                //alert(dt);
+            }, false);
+
+            target.addEventListener("dragend", function (ev) {
+                //FF Chrom支持的比较好
+                ev.preventDefault();
+            }, false);
+
+            target.addEventListener("drop", function (ev) {
+                //FF Chrom支持的比较好
+                var dt = ev.dataTransfer;
+                dt.effectAllowed = "all";
+                var data = dt.getData("text/plain");
+
+                target.innerHTML += data;
+
+                ev.preventDefault();
+                ev.stopPropagation();
+            }, false);
+        }
+    </script>
+</head>
+<body onload="initDrag();">
+    <div id="drag" draggable="true">
+        demo
+    </div>
+
+    <div id="targetDiv">
+        结果：<br />
+    </div>
+</body>
+</html>

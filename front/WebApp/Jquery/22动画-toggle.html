@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".flip").click(function () {
+                $(".panel").toggle();
+            });
+        });
+    </script>
+    <style type="text/css">
+        div.panel, p.flip {
+            width: 400px;
+            margin: 0;
+            padding: 5px;
+            text-align: center;
+            background: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="flip">点击这里，隐藏/显示面板</p>
+    <div class="panel" style="display: block;">
+        <p>一寸光阴一寸金，因此，我们为您提供快捷易懂的学习内容。</p>
+        <p>在这里，您可以通过一种易懂的便利的模式获得您需要的任何知识。</p>
+    </div>
+</body>
+</html>

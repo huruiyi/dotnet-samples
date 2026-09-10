@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <style type="text/css">
+        ul,
+        li {
+            list-style: none;
+        }
+
+        #nav li {
+            display: inline-block;
+            margin: 0 1px;
+            background: #ccc;
+            padding: 0 10px;
+            line-height: 24px;
+            font-size: 12px;
+        }
+
+        #nav li.h_nav_over {
+            background: rgb(23, 160, 93);
+            color: #fff;
+        }
+
+        #nav li.h_nav_over a {
+            color: #ccc;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#nav>ul>li").mouseover(function() {
+                $("#nav>ul>li").each(function(i) {
+                    $(this).removeClass("h_nav_over");
+                });
+                $(this).addClass("h_nav_over");
+            }).mouseout(function() {
+                $(this).addClass("h_nav_over");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="nav">
+        <ul>
+            <li><a href="#">AAAAAA</a></li>
+            <li><a href="#">BBBBBB</a></li>
+            <li><a href="#">CCCCCC</a></li>
+            <li><a href="#">DDDDDD</a></li>
+            <li><a href="#">EEEEEE</a></li>
+            <li><a href="#">FFFFFF</a></li>
+        </ul>
+    </div>
+</body>
+</html>

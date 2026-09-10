@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+</style>
+<script type="text/javascript" >
+
+var DOMextend = function(name, fn){
+	if( ! document.all)
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+DOMextend("first",function(){
+    var _this = this.firstChild;
+    while (_this && _this.nodeType != 1){
+        _this = _this.nextSibling;
+    }
+    return _this;
+})
+DOMextend("last",function(){
+    var _this = this.lastChild;
+    while (_this && _this.nodeType != 1){
+        _this = _this.previousSibling;
+    }
+    return _this;
+})
+
+
+
+window.onload = function(){
+	var ul= document.getElementsByTagName("ul")[0];
+	ul.first().innerHTML = "第一个子元素";
+	ul.last().innerHTML = "最后一个子元素";
+}
+
+
+
+</script>
+</head>
+<body>
+
+
+<ul>
+    <li>D是Document一词的简写，表示文档，它是DOM的表现层。</li>
+    <li>O是Object一词的简写，表示对象，它是DOM的的逻辑层。</li>
+    <li>M是Model一词的简写，表示模型，它是DOM的交互层。</li>
+</ul>
+
+
+
+</body>
+</html>

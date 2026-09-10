@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.red {
+	color:red;
+}
+</style>
+<script type="text/javascript" >
+
+window.onload = function(){
+	var n = document.styleSheets[0].length;
+	if(document.styleSheets[0].insertRule){ 		
+		document.styleSheets[0].insertRule("p{background-color:blue;color:#fff;}", n);
+	}else{
+		document.styleSheets[0].addRule("P", "background-color:blue;color:#fff;",n);
+	}
+}
+
+</script>
+</head>
+<body>
+
+<p class="red">段落文本</p>
+
+
+</body>
+</html>
+

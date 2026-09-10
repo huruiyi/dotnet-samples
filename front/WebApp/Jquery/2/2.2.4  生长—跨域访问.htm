@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+
+<script language="javascript" type="text/javascript">
+var $ =jQuery = function(){
+    return new jQuery.fn.init();
+}
+jQuery.fn = jQuery.prototype = {
+    init : function(){
+        this.length = 0;
+        this.test = function(){
+            return this.length;
+        }
+        return this;
+    },
+    jquery: "1.3.2",
+    length: 1,
+    size: function() {
+        return this.length;
+    }
+}
+jQuery.fn.init.prototype = jQuery.fn;     //使用jQuery的原型对象覆盖init的原型对象
+alert( $().jquery );     //返回"1.3.2"
+alert( $().test() );     //返回0
+alert( $().size() );     //返回0
+</script>
+
+
+</body>
+
+</html>

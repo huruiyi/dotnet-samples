@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+
+        //        $(function () {
+        //            $('#btn').click(function () {
+
+        //                $('p').text('我们都是最牛x的');
+        //                $('p').css('backgroundColor', 'red');
+        //                $('p').mouseover(function () {
+        //                    $(this).css('backgroundColor','blue');
+        //                });
+        //            });
+        //        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $('p').mouseover(function () {
+                $(this).css('backgroundColor', 'red').css('cursor', 'pointer');
+            }).click(function () {
+                $(this).css('fontSize', '50px');
+            }).mouseout(function () {
+                $(this).css('backgroundColor', '');
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="改变内容" id="btn" />
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+    <p>
+        哈哈
+    </p>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+div {
+    margin:20px 10px;
+    border:solid 2px blue;
+}
+</style>
+<script type="text/javascript" >
+window.onload = function(){
+	var div = document.getElementsByTagName('div');
+	for (var i = 0; i < div.length; ++i){
+		div[i].onmouseover = (function(i){
+			return function(){
+				div[i].style.borderColor = 'red';
+			}
+		})(i);
+	}
+	for (var i = 0; i < div.length; ++i){
+		div[i].onmouseout = (function(i){
+			return function(){
+				div[i].style.borderColor = 'white';
+			}
+		})(i);
+	}
+}
+
+</script>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <div>
+                <div>冒泡型事件</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

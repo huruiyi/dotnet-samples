@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+
+.tab ul, .tab ol {  
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.tab ul {
+    height:26px;
+    width:500px;
+}
+
+.tab ol {
+    height:auto;
+    width:500px;
+    padding:6px;
+    background:#1B8DD6;
+}
+.tab ul li {
+    float:left;
+    height:24px;
+    padding:0 1em;
+    cursor:pointer;
+}
+
+.normal {
+    color:#1f3a87;
+    background:#fff;
+    border:2px solid #1B8DD6;
+    border-bottom:0;
+}
+.hover {
+    color:#fff;
+    font-weight:bold;
+    background:#1B8DD6;
+    border:2px solid #1B8DD6;
+    border-bottom:0;
+}
+.show { display:block; }
+.none { display:none; }
+   
+    </style>
+
+    <script type="text/javascript">
+
+document.getElementsByClassName = function(className) { 
+    var el = [],
+        _el = document.getElementsByTagName('*');
+    for (var i=0; i<_el.length; i++ ) {
+       if (_el[i].className == className ) {
+           el[el.length] = _el[i];
+        }
+   }
+   return el;
+}
+
+
+
+window.onload = function(){
+
+    var tab = document.getElementsByClassName("tab")[0];
+    var ul = tab.getElementsByTagName("ul")[0];
+    var ol = tab.getElementsByTagName("ol")[0];
+    var uli = ul.getElementsByTagName("li");
+    var oli = ol.getElementsByTagName("li");
+    for(var i=0; i<uli.length; i++){
+        uli[i].className = "normal";
+    }
+    for(var i=0; i<oli.length; i++){
+        oli[i].className = "none";
+    }
+    uli[0].className = "hover";
+    oli[0].className = "show";
+    var addEvent=function(e, fn) {
+        if(document.addEventListener){
+            return e.addEventListener("mouseover", fn, false);
+        }
+        else if(document.attachEvent){
+            return e.attachEvent("onmouseover", fn);
+        }
+    };
+    for(var j = 0; j < uli.length; j ++ ){
+        (function(j,uli,oli){
+            addEvent(uli[j], function(){
+                for(var n = 0; n < uli.length; n ++ ){
+                    uli[n].className = "normal";
+                    oli[n].className = "none";
+                }
+                uli[j].className = "hover";
+                oli[j].className = "show";
+            });
+        })(j,uli,oli);
+    }
+}
+
+
+    </script>
+
+</head>
+<body>
+<div class="tab">
+    <ul>
+        <li>Tab1</li>
+        <li>Tab2</li>
+        <li>Tab3</li>
+    </ul>
+    <ol>
+        <li><img src="images/bg2.jpg" width="450" /></li>
+        <li><img src="images/bg3.jpg" width="450" /></li>
+        <li><img src="images/bg4.jpg" width="450" /></li>
+    </ol>
+</div>
+</body>
+</html>

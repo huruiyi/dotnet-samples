@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+</style>
+<script type="text/javascript" >
+
+var DOMextend = function(name, fn){
+	if( ! document.all)
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+DOMextend("val",function(v){
+	var _this = this;
+	if(v==undefined){
+		return _this.value;
+	}
+	var type = _this.getAttribute("type");
+	if(!type){
+		var o = _this.getElementsByTagName("option");
+		if(typeof v == "object"){
+			
+			for(var j=0; j<o.length;i++){
+				for(var i=0; i<v.length;i++){
+					if(o[j].innerHTML == v[i])
+						o[j].setAttribute("selected","selected");
+				}
+			}
+		}
+		else
+		{
+			for(var j=0; j<o.length;i++){
+					if(o[j].innerHTML == v)
+						o[j].setAttribute("selected","selected");
+			}			
+		}
+	}
+	else
+	{
+		if(typeof v == "object"){
+			
+	
+				for(var i=0; i<v.length;i++){
+					if(_this.value == v[i])
+						_this.setAttribute("checked","checked");
+				}
+
+		}
+		else
+		{
+					if(_this.value == v)
+						_this.setAttribute("checked","checked");	
+		}
+	
+	}
+
+
+})
+
+window.onload = function(){
+	var s1 = document.getElementsByTagName("select")[0];
+	var s2 = document.getElementsByTagName("select")[1];
+	var input1 = document.getElementsByTagName("input")[0];
+	var input2 = document.getElementsByTagName("input")[1];
+	var input3 = document.getElementsByTagName("input")[2];
+	var input4 = document.getElementsByTagName("input")[3];
+	var btn1 = document.getElementsByTagName("button")[0];	
+	var btn2 = document.getElementsByTagName("button")[1];	
+
+	btn1.onclick = function(){
+		alert(s1.val() + s2.val() + input1.val()  + input2.val() + input3.val() + input4.val());
+	}
+	btn2.onclick = function(){
+		s1.val("单选2");
+		s2.val(["多选2","多选3"]);
+		input1.val("6");
+		input3.val("8");
+	}
+	
+	
+		
+}
+
+</script>
+</head>
+<body>
+
+<form action="" method="get">
+    <select id="s1">
+      <option value="1" selected="selected">单选1</option>
+      <option value="2">单选2</option>
+    </select>
+    <select id="s2" size="3" multiple="multiple">
+      <option value="3" selected="selected">多选1</option>
+      <option value="4">多选2</option>
+      <option value="5" selected="selected">多选3</option>
+    </select>
+    <input type="checkbox" value="6"/>复选框1
+    <input type="checkbox" value="7" checked="checked"/>复选框2<br />
+    <input name="radio" type="radio" value="8"/>单选按钮1
+    <input name="radio"  type="radio" value="9" checked="checked"/>单选按钮2<br /><br />
+    <button>显示各个表单对象的值</button>
+    <button>设置各个表单对象的值</button>
+</form>
+
+
+
+</body>
+</html>
+

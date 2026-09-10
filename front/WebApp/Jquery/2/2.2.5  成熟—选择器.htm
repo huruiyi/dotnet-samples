@@ -1,0 +1,55 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+
+
+<div></div>
+<div></div>
+<div></div>
+<script language="javascript" type="text/javascript">
+var $ =jQuery = function(selector, context ){		//定义类
+    return new jQuery.fn.init(selector, context ); 	//返回选择器的实例
+}
+jQuery.fn = jQuery.prototype = {	//jQuery类的原型对象
+    init : function(selector, context){ 	//定义选择器构造器
+        selector = selector || document;		//设置默认值为document
+        context = context || document; 	//设置默认值为document
+        if ( selector.nodeType ) {	//如果选择符为节点对象
+            this[0] = selector; 	//把参数节点传递给实例对象的数组
+            this.length = 1; 	//并设置实例对象的length属性，定义包含元素个数
+            this.context = selector; 	//设置实例的属性，返回选择范围
+            return this; 	//返回当前实例
+        }
+        if ( typeof selector === "string" ) {	//如果选择符是字符串
+            var e = context.getElementsByTagName(selector); 	//获取指定名称的元素
+            for(var i = 0;i<e.length;i++){	//遍历元素集合，并把所有元素填入到当前实例数组中
+                this[i] = e[i];
+            }
+            this.length = e.length; 	//设置实例的length属性，即定义包含元素的个数
+            this.context = context; 	//设置实例的属性，返回选择范围
+            return this; 	//返回当前实例
+        } else{
+            this.length = 0; 	//否则，设置实例的length属性值为0
+            this.context = context; 	//设置实例的属性，返回选择范围
+            return this; 	//返回当前实例
+        }
+    },
+    jquery: "1.3.2",
+    size: function() {
+        return this.length;
+    }
+}
+jQuery.fn.init.prototype = jQuery.fn;
+alert( $("div").size() );	//返回3
+</script>
+
+
+</body>
+
+</html>

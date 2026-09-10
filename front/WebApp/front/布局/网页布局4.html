@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>网页布局4</title>
+    <style type="text/css">
+        #footerbig {
+            border: solid 2px red;
+            /*background: url(../images/footer_bg.gif) repeat-x 0 0 #2F2F1B;*/
+            color: #C3C491;
+            padding: 22px 0 22px 0;
+        }
+
+        #footer {
+            border: solid 2px green;
+            width: 954px;
+            margin: 0 auto;
+            padding: 0 0 23px 0;
+        }
+
+            #footer p {
+                text-align: center;
+                margin: 4px 0 0 0;
+                font-size: 11px;
+                line-height: 16px;
+            }
+
+                /*#region 超链接的效果 */
+
+                #footer p a {
+                    color: #FFFFFF;
+                    text-decoration: none;
+                }
+
+                    #footer p a:hover {
+                        color: #C3C491;
+                    }
+
+            /*#endregion */
+
+            #footer ul {
+                /*margin: 0 0 0 214px;*/
+                height: 22px;
+                width: 600px;
+                margin: 0 auto;
+            }
+
+                #footer ul li {
+                    float: left;
+                    padding: 0 3px;
+                    font-size: 12px;
+                    color: #FFFFFF;
+                    line-height: 22px;
+                    list-style: none;
+                }
+
+                    /*#region 超链接的效果 */
+                    #footer ul li a {
+                        color: #FFFFFF;
+                        line-height: 22px;
+                        text-decoration: none;
+                    }
+
+                        #footer ul li a:hover {
+                            color: #C3C491;
+                        }
+
+        /*#endregion */
+    </style>
+</head>
+<body>
+    <div id="footerbig">
+        <!--footer start -->
+        <div id="footer">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li>|</li>
+                <li><a href="#">About us</a></li>
+                <li>|</li>
+                <li><a href="#">Procidures</a></li>
+                <li>|</li>
+                <li><a href="#">Services</a></li>
+                <li>|</li>
+                <li><a href="#">Support</a></li>
+                <li>|</li>
+                <li><a href="#">Meeting</a></li>
+                <li>|</li>
+                <li><a href="#">Testimonials</a></li>
+                <li>|</li>
+                <li><a href="#">Future Plans</a></li>
+                <li>|</li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <p>Copyrioht © Eco Mania 2007 All Rights Reserved </p>
+            <p>Powered by <a href="#">TemplateKingdom.com</a> </p>
+        </div>
+        <!--footer end -->
+    </div>
+</body>
+</html>

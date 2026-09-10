@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+
+        //var arr = [1, 2, 3, 4, 5];
+        //        for (var i = 0; i < arr.length; i++) {
+        //            arr[i] = arr[i] + 1;
+        //        }
+        //        alert(arr);
+
+        //        $.map(arr, function (ele, index) {
+        //        //可以遍历,ele元素,index索引
+        //           alert(ele+'====='+index);
+        //        });
+        //        $.map(arr, function () {
+        //            alert(arguments.length);
+        //            alert(arguments[0]+'=='+arguments[1]+'==='+arguments[2]);
+        //        });
+
+        //        var arr = [10, 20, 30, 40, 50];
+        //        var newArr = $.map(arr, function (ele, index) {
+        //            return ++ele;
+        //        });
+
+        //        alert(newArr);
+
+        //        var scores = [10, 20, 30, 40, 50];
+        //        var newScore = [];
+        //        for (var i = 0; i < scores.length; i++) {
+        //            newScore[newScore.length] = scores[i] + 1;
+        //        }
+        //        alert(newScore);
+
+        //        var arr = [1, 2, 4];
+        //        arr = $.map(arr, function (ele, index) {
+        //            return ele * 2;
+        //        });
+        //        alert(arr);
+        //练习索引大于3的元素翻倍
+        //        var arr = [1, 2, 3, 4, 5, 6, 7, 8];
+        //        arr = $.map(arr, function (ele, index) {
+        //            return index > 3 ? ele * 2 : ele;
+        //        });
+
+        //        alert(arr);
+    </script>
+
+    <script type="text/javascript">
+
+        //遍历键值对
+
+        //        var dict = { "name": "小杨", "age": "18", "gender": "男", "email": "yhb@itcast.cn" };
+
+        //        $.each(dict, function (k, v) {
+        //            alert(k+'====='+v);
+        //        });
+        //        var arr = [1, 2, 4, 45];
+        //        $.each(arr, function (k, v) {
+        //            alert(k + '==' + v);
+        //            //k索引,v元素--值
+        //        });
+    </script>
+
+    <script type="text/javascript">
+
+        //切掉空格
+        //内部依然是正则表达式
+
+        var txt = '     船被扣了     ';
+        alert('=====' + $.trim(txt) + '=============');
+    </script>
+</head>
+<body>
+</body>
+</html>

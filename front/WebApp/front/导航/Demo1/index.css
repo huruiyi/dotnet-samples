@@ -1,0 +1,47 @@
+/**头部菜单**/
+.header_menu {
+    float: right;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.header_menu ul {
+    list-style: none;
+    height: 100%;
+}
+
+.header_menu ul li {
+    float: right;
+    width: 20%;
+    color: blueviolet;
+    font-size: 14px;
+    padding-top: 55px;
+    font-weight: bold;
+}
+
+.display {
+    display: none;
+}
+
+.display ul {
+    list-style: none;
+    width: 100px;
+}
+
+.display ul li {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.movediv {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    font-size: 14px;
+    border: 1px solid white;
+}

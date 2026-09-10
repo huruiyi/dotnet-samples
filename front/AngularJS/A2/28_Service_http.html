@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>欢迎信息:</p>
+        <h1>{{myWelcome}}</h1>
+    </div>
+    <p>
+        $http 服务向服务器请求信息，返回的值放入变量 "myWelcome" 中。
+    </p>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $http) {
+            $http.get("28_welcome.html").then(function (response) {
+                $scope.myWelcome = response.data;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //为某元素添加一个类样式
+            //  $('body').addClass('cls');
+            // $('div').addClass('cls cls1');
+            $('#btn').click(function () {
+                //移除一个类样式
+                // $('body').removeClass('cls');
+
+                //                if ($('body').hasClass('cls')) {//判断这个元素是否应用了这个类样式
+                //                    $('body').removeClass('cls');
+                //                } else {
+                //                    $('body').addClass('cls');
+                //                }
+                //              $('body').toggleClass('cls');//切换该类样式
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        .cls {
+            background-color: Black;
+        }
+
+        .cls1 {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" name="name" value="开灯" id="btn" />
+
+    <div style=" width:300px; height:200px;">
+    </div>
+</body>
+</html>

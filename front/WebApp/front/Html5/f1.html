@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSendMsg").click(function () {
+                for (var i = 0; i < window.parent.frames.length; i++) {
+                    if (window.parent.frames[i] != window) {
+                        window.parent.frames[i].postMessage($("#demo").val(), "http://localhost:4091/Html5/f2.html");
+                    }
+                }
+            });
+
+            window.addEventListener("message", function (ev) {
+
+                if (ev.source.name == window.name) {
+                    return;
+                }
+                $("#result").append("<p> from:" + ev.origin + "----message:" + ev.data + "</p>");
+                //ev.source.postMessage("Hello,这里是：" + ev.source.location+"  --to: " + ev.origin, ev.origin);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>这里是1 页面</h3>
+    <input type="text" id="demo" name="demo" />
+    <input type="button" value="发送消息" id="btnSendMsg" />
+    <hr />
+    <div id="result">
+    </div>
+</body>
+</html>

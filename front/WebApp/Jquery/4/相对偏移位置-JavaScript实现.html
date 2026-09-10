@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {
+	padding:0;
+	margin:0;
+}
+div {
+	height:60px;
+	width:200px;
+	border:solid 10px red;
+}
+</style>
+<script type="text/javascript" >
+
+var DOMextend = function(name, fn){
+	if( ! document.all)
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+
+DOMextend("position",function(){
+	var _this = this
+    if(_this.parentNode == _this.offsetParent){ 
+		var px = parseInt(getStyle(_this.parentNode,"borderLeftWidth")) || 0; 
+		var py = parseInt(getStyle(_this.parentNode,"borderTopWidth")) || 0; 
+        var x = _this.offsetLeft;
+        var y = _this.offsetTop;
+		if(document.all){
+        	x = _this.offsetLeft - px;
+        	y = _this.offsetTop - py; 
+		}
+    }
+    else{
+        var o = offset(_this);
+        var p = offset(_this.offsetParent);
+        var x = o.left - p.left;
+        var y = o.top - p.top;
+    }
+    return {
+        "left" : x, 
+        "top" : y 
+    };
+	function offset(_this){
+	    var left = 0, top = 0;
+		while(_this.offsetParent){
+			left += _this.offsetLeft;
+			top += _this.offsetTop; 
+			_this = _this.offsetParent;
+		}
+		return {
+			"left" : left, 
+			"top" : top
+		};
+	}
+	
+	function getStyle(e,n){
+		if(e.style[n]){ 
+			return e.style[n];
+		}
+		else if(e.currentStyle){ 
+			return e.currentStyle[n];
+		}
+		else if(document.defaultView && document.defaultView.
+	getComputedStyle){
+			n = n.replace(/([A-Z])/g,"-$1");
+			n = n.toLowerCase();
+			var s = document.defaultView.getComputedStyle(e,null); 
+			if(s)
+				return s.getPropertyValue(n);
+		}
+		else
+			return null;
+	}	
+	
+	
+})
+
+window.onload = function(){
+	var div = document.getElementsByTagName("div")[0];
+	var o = div.position();
+	div.innerHTML = "left: " + o.left + "<br />top: " + o.top ;
+	var div = document.getElementsByTagName("div")[2];
+	var o = div.position();
+	div.innerHTML = "left: " + o.left + "<br />top: " + o.top ;
+}
+
+</script>
+</head>
+<body>
+
+<div>盒子1</div>
+<div style=" position:relative; float:right; width:300px; height:100px; border-color:blue;">
+	<div>盒子2</div>
+</div>
+
+
+</body>
+</html>
+

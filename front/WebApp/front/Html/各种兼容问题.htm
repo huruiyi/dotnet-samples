@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
+
+        onload = function () {
+            document.getElementById('dv').onmousemove = function () {
+                //兼容的写法
+                if (arguments.length > 0) {
+                    //火狐
+                    document.title = arguments[0].clientX + '==' + arguments[0].clientY;
+                } else {
+                    //IE
+                    document.title = window.event.clientX + '==' + window.event.clientY;
+                }
+
+                alert(arguments.length);
+                alert(arguments[0]);
+
+                //火狐的写法
+                var x = arguments[0].clientX + '==' + arguments[0].clientY;
+                document.title = x;
+
+                //相对于页面的左上角的坐标,横坐标和纵坐标
+                var y = window.event.clientX + '==' + window.event.clientY;
+                document.title = y;
+
+                //相对于屏幕左上角的坐标
+                var m = window.event.screenX + '==' + window.event.screenY;
+                document.title = m;
+
+                //相对于当前层的左上角的坐标
+                var n = window.event.offsetX + '==' + window.event.offsetY;
+                document.title = n;
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="dv" style="height: 300px; width: 300px; background-color: mistyrose;"></div>
+</body>
+</html>

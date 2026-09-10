@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"> </style>
+    <script type="text/javascript">
+
+if (window.XMLHttpRequest){		// 兼容Mozilla、Safari等非IE浏览器
+    var xmlhttprequest = new XMLHttpRequest();
+}
+else if (window.ActiveXObject){	//  兼容IE浏览器
+    try{
+        var xmlhttprequest = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch (e){
+        try{
+            xmlhttprequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e)
+        { }
+    }
+}
+
+window.onload = function(){
+	var input = document.getElementsByTagName("input")[0];
+	input.onclick = function(){
+		xmlhttprequest.open("GET","test4.asp", false);
+		xmlhttprequest.onreadystatechange = response;
+		xmlhttprequest.send(null);
+	}
+}
+
+function response(){
+    if(xmlhttprequest.readyState == 4){
+        if (xmlhttprequest.status == 200 || xmlhttprequest.status == 0){
+            var data =  xmlhttprequest.responseText;
+			var obj = eval("(" + data + ")");
+			var text = obj.data;
+			alert(text); 
+        }
+    }
+}
+
+    </script>
+
+</head>
+<body>
+
+
+<input type="button" value="异步信息交互" />
+
+
+</body>
+</html>

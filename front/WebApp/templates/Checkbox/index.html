@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css"/>
+        <script src="js/script.js" async></script>  
+    </head>
+    <body> 
+        <form id="myForm">
+            <div>
+                <label><input type="checkbox" name="courseName" value="php">PHP</label>
+                <label><input type="checkbox" name="courseName" value="xhtmlicss">XHTML i CSS</label>
+                <label><input type="checkbox" name="courseName" value="gruntjs">Grunt.js</label>
+                <label><input type="checkbox" name="courseName" value="compass">Compass</label>
+                <label><input type="checkbox" name="courseName" value="sass">Sass</label>
+            </div>
+            <div>
+              Do you accept terms and condition?
+            </div>
+            <div>
+                <label><input type="radio" name="akceptacjaRegulaminu" value="false">YES</label>              
+                <label><input type="radio" name="akceptacjaRegulaminu" value="true" checked>NO</label>                
+            </div>
+            <input type="submit" value="Add" name="submitButton">
+        </form>
+        
+        <div id="info"></div>
+    </body>
+</html>

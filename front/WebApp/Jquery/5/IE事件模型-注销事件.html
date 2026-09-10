@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" >
+
+window.onload = function(){
+    var btn = document.getElementsByTagName("input")[0];
+	var p = document.getElementsByTagName("p")[0];
+	var i = 1;
+	do{
+		if(btn.addEventListener)
+			btn.addEventListener("click", function(){
+				p.innerHTML += "<br />("  + i++ + ")  "  + this.nodeName;
+				this.removeEventListener("click",arguments.callee,false);				
+			},false);
+		else{
+			btn.attachEvent("onclick", (function(btn){
+				return function(){
+					p.innerHTML += "<br />("  + i++ + ")  "  + btn.nodeName;
+					btn.detachEvent("onclick", arguments.callee);
+				}
+			})(btn));	
+		}	
+		btn = btn.parentNode;
+	} while(btn);
+}
+
+</script>
+</head>
+<body>
+
+<input type="button" value="Event对象" />
+<p>事件流传播过程：</p>
+
+
+
+
+</body>
+</html>

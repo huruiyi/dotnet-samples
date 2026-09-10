@@ -1,0 +1,14 @@
+#slideShow {
+    position: relative;
+    width: 384px;
+    height: 307px;
+}
+
+#slideShow img {
+    position: absolute;
+    opacity: 0;
+}
+
+#slideShow .current {
+    opacity: 1;
+}

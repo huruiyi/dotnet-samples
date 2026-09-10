@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button#bDemo").click(function () {
+                $("div#divDemo").animate({ left: "170px", opacity: "0.5" }, "slow");
+                $("div#divDemo").animate({ fontSize: "4em" }, "slow");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="bDemo">开始动画</button>
+    <div id="divDemo" style="background:#98bf21;height:100px;width:210px;position:relative;">jQuery</div>
+</body>
+</html>

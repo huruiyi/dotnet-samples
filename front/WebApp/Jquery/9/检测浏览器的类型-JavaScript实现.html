@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script type="text/javascript"> 
+
+
+function browser(str){
+	var userAgent = navigator.userAgent.toLowerCase();
+	switch (str){
+		case "ie":
+			return /msie/.test( userAgent ) && !/opera/.test( userAgent );
+		case "ff":
+			return /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent );
+		case "sa":
+			return /webkit/.test( userAgent );
+		case "op":
+			return /opera/.test( userAgent );
+		case "ch":
+			return /chrome/.test( userAgent );
+		default:
+			return false;
+	}
+}
+
+window.onload = function(){
+	browser("ie") && (useragent = "当前浏览器是IE浏览器") ||
+	browser("ff") && (useragent = "当前浏览器是Firefox浏览器") ||
+	browser("sa") && (useragent = "当前浏览器是safari浏览器") ||
+	browser("op") && (useragent = "当前浏览器是Opera浏览器") ||
+	browser("ch") && (useragent = "当前浏览器是Chrome浏览器");
+	alert(useragent);
+}
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div></div>
+
+
+
+</body>
+</html>

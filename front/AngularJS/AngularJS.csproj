@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66205740-CF5B-48F8-8585-8362530633B3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AngularJs</RootNamespace>
+    <AssemblyName>AngularJs</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="A1\04_expression_demo2.html" />
+    <Content Include="A1\17_Scope_5.html" />
+    <Content Include="A2\40_controller.js" />
+    <Content Include="A2\40_module.js" />
+    <Content Include="A2\40_ng-repeat2.html" />
+    <Content Include="A2\40_ng-repeat4.html" />
+    <Content Include="A2\40_ng-repeat3.html" />
+    <Content Include="A2\46_module_controller2.html" />
+    <Content Include="A2\49_form_validate2.html" />
+    <Content Include="A3\52_Include2.html" />
+    <Content Include="A3\52_main.html" />
+    <Content Include="A3\52_subjects.html" />
+    <Content Include="A3\59_路由.html" />
+    <Content Include="A3\60_路由.html" />
+    <Content Include="A3\test.html" />
+    <Content Include="A3\63_One_time_binding.html" />
+    <Content Include="A3\62_自定义指令.html" />
+    <Content Include="A4_form\form1.html" />
+    <Content Include="A4_form\form2.html" />
+    <Content Include="A4_form\form3.html" />
+    <Content Include="A4_form\form4.html" />
+    <Content Include="A4_form\form5.html" />
+    <Content Include="A4_form\form6.html" />
+    <Content Include="A4_form\form7.html" />
+    <Content Include="A4_form\form8.html" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="ng_demo\ngModelOptions\demo3.html" />
+    <Content Include="ng_demo\ngModelOptions\demo2.html" />
+    <Content Include="ng_demo\ngModelOptions\demo1.html" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="A2\34_Http_Get.html" />
+    <Content Include="A2\34_Http_Get_Json.json" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="A1\02_ng-bind_demo.html" />
+    <Content Include="A1\01_ng-model_demo.html" />
+    <Content Include="A1\03_data-ng-bind_demo.html" />
+    <Content Include="A1\04_expression_demo1.html" />
+    <Content Include="A1\05_ng-app_ng_controller.html" />
+    <Content Include="A1\06_ng-init.html" />
+    <Content Include="A1\07_指令.html" />
+    <Content Include="A1\08_创建自定义的指令.html" />
+    <Content Include="A1\09_ng-model 指令.html" />
+    <Content Include="A1\10_ng-model_验证.html" />
+    <Content Include="A1\11_ng-model_应用状态.html" />
+    <Content Include="A1\12_ng-model_CSS 类.html" />
+    <Content Include="A1\13_ng-model_demo.html" />
+    <Content Include="A1\16_Scope_3.html" />
+    <Content Include="A1\14_Scope_1.html" />
+    <Content Include="A1\15_Scope_2.html" />
+    <Content Include="A1\17_Scope_4.html" />
+    <Content Include="A1\18_controller.html" />
+    <Content Include="A1\19_controller_外部.html" />
+    <Content Include="A1\20_controller_外部.html" />
+    <Content Include="A1\21_过滤器.html" />
+    <Content Include="A1\22_过滤器_uppercase.html" />
+    <Content Include="A1\23_过滤器_lowercase.html" />
+    <Content Include="A1\24_过滤器_currency.html" />
+    <Content Include="A1\25_过滤器_orderBy.html" />
+    <Content Include="A1\26_过滤器_orderBy.html" />
+    <Content Include="A2\27_Service_location.html" />
+    <Content Include="A2\28_Service_http.html" />
+    <Content Include="A2\46_module_controller1.html" />
+    <Content Include="A2\47_factory_service.html" />
+    <Content Include="A2\48_form.html" />
+    <Content Include="A2\50_API.html" />
+    <Content Include="A2\49_form_validate1.html" />
+    <Content Include="A2\46_mycontroller.js" />
+    <Content Include="A2\46_mymodule.js" />
+    <Content Include="A2\34_sites.Html" />
+    <Content Include="A2\28_welcome.html" />
+    <Content Include="A2\29_Service_timeout.html" />
+    <Content Include="A2\30_Service_interval.html" />
+    <Content Include="A2\31_Service_自定义服务.html" />
+    <Content Include="A2\32_Service_Filter.html" />
+    <Content Include="A2\33_Service_Filter1.html" />
+    <Content Include="A2\34_Http.html" />
+    <Content Include="A2\35_ng-options_select.html" />
+    <Content Include="A2\36_ng-options_select1.html" />
+    <Content Include="A2\37_ng-options_select2.html" />
+    <Content Include="A2\38_ng-options_select3.html" />
+    <Content Include="A2\39_ng-options_select4.html" />
+    <Content Include="A2\40_ng-repeat1.html" />
+    <Content Include="A2\41_dom.html" />
+    <Content Include="A2\42_event.html" />
+    <Content Include="A2\43_event.html" />
+    <Content Include="A2\44_module.html" />
+    <Content Include="A2\45_module.html" />
+    <Content Include="A1\20_26_UsersController.js" />
+    <Content Include="A1\19_23_personController.js" />
+    <Content Include="A3\61_应用.html" />
+    <Content Include="A3\58_2_about.html" />
+    <Content Include="A3\58_1_home.html" />
+    <Content Include="A3\58_路由.html" />
+    <Content Include="A3\57_依赖注入.html" />
+    <Content Include="A3\56_Animate_ng_hide.html" />
+    <Content Include="A3\55_Animate_ng_hide.html" />
+    <Content Include="A3\54_Animate_ng_hide.html" />
+    <Content Include="A3\53_Animate_ng_hide.html" />
+    <Content Include="A3\52myUsers.js" />
+    <Content Include="A3\52_Include1.html" />
+    <Content Include="A3\51myUsers.js" />
+    <Content Include="A3\51_Bootstrap.html" />
+    <Content Include="A3\myNoteApp.js" />
+    <Content Include="A3\myNoteCtrl.js" />
+    <Content Include="A3\myUsers_Form.html" />
+    <Content Include="A3\myUsers_List.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\i18n\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3246</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3246/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

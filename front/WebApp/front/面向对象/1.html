@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+</body>
+<script type='text/javascript'>
+  var life = {}
+  for (life.age = 1; life.age <= 3; life.age++) {
+    switch (life.age) {
+      case 1:
+        life.body = '卵细胞';
+        life.say = function () {
+          alert(this.age + this.body)
+        }
+        break
+      case 2:
+        life.tail = '尾巴';
+        life.gill = '鳃';
+        life.body = '蝌蚪';
+        life.say = function () {
+          alert(this.age + this.body + '-' + this.tail + this.gill)
+        }
+        break
+      case 3:
+        delete life.tail;
+        delete life.gail;
+        life.lung = '肺';
+        life.legs = '四条腿';
+        life.body = '青蛙';
+        life.say = function () {
+          alert(this.age + this.body + '-' + this.lung + this.legs)
+        }
+        break
+    }
+    life.say()
+  }
+</script>
+
+</html>

@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>
+
+        this is h1
+    </h1>
+    <h2>this is h2</h2>
+    <h3>this is h3</h3>
+    <h4>this is h4</h4>
+    <h5>this is h5</h5>
+    <h6>this is h6</h6>
+
+    <p>this is p</p>
+    <p>this is p</p>
+    <p>this is p</p>
+    <p>this is p</p>
+
+    <a href="http://www.w3school.com.cn">This is a link</a>
+
+    <fieldset>
+        <legend>
+            文本格式化
+        </legend><strong>This text is strong</strong>
+        <br />
+        <big>This text is big</big>
+        <br />
+        <em>This text is emphasized</em>
+        <br />
+        <i>This text is italic</i>
+        <br />
+        <small>This text is small</small>
+        <br /> This text contains
+        <sub>subscript</sub>
+        <br /> This text contains
+        <sup>superscript</sup>
+    </fieldset>
+
+    <fieldset>
+        <legend>标签很适合显示计算机代码</legend>
+        <pre>
+        for i = 1 to 10
+             print i
+        next i
+        </pre>  
+    </fieldset>
+
+    <fieldset>
+
+        <legend>没有下划线的链接和引入外部样式的方法</legend>
+        <a href="/example/html/lastpage.html" style="text-decoration:none">
+            这是一个链接！
+        </a> @(new MvcHtmlString("
+        <link rel='stylesheet' type='text/css' href='/html/csstest1.css'>"))
+        <code></code>
+    </fieldset>
+
+    <section title="表单">
+        <script type="text/javascript">
+            window.onload = function () {
+                var provinces = [
+                    { "Id": "P001", "Name": "省份P001" },
+                    { "Id": "P002", "Name": "省份P002" },
+                    { "Id": "P003", "Name": "省份P003" },
+                    { "Id": "P004", "Name": "省份P004" }];
+                var ddlProvinceId = document.getElementById("ddlProvinceId");
+                ddlProvinceId.options.length = 0;//删除所有项
+                ddlProvinceId.add(new Option("请选择", "000"));
+                for (var i = 0; i < provinces.length; i++) {
+                    if (provinces[i].Id == "P003") {
+                        ddlProvinceId.add(new Option(provinces[i].Name, provinces[i].Id, "001", true));
+                    }
+                    else {
+                        ddlProvinceId.add(new Option(provinces[i].Name, provinces[i].Id));
+                    }
+
+                }
+                document.getElementById("ddlProvinceId").onchange = function () {
+                    var selectIndex = this.selectedIndex;//选中项的索引
+                    var ddlProvinceId = document.getElementById("ddlProvinceId");
+                    //  ddlProvinceId.options[selectIndex].remove();
+                    //  alert(this.selectedIndex + "  " + ddlProvinceId.options[selectIndex].value + "  " + ddlProvinceId.options[selectIndex].text)
+                    var cityIds = [
+                        {
+                            "ProvinceId": "P001",
+                            "Cities":
+                            [{ "CityId": "P1C001", "CityName": "CityP1C001" },
+                            { "CityId": "P1C002", "CityName": "CityP1C002" },
+                            { "CityId": "P1C003", "CityName": "CityP1C003" },
+                            { "CityId": "P1C004", "CityName": "CityP1C004" }]
+                        },
+                        {
+                            "ProvinceId": "P002",
+                            "Cities":
+                            [{ "CityId": "P2C001", "CityName": "CityP2C001" },
+                            { "CityId": "P2C002", "CityName": "CityP2C002" },
+                            { "CityId": "P2C003", "CityName": "CityP2C003" },
+                            { "CityId": "P2C004", "CityName": "CityP2C004" },
+                            { "CityId": "P2C005", "CityName": "CityP2C005" }],
+                        },
+                        {
+                            "ProvinceId": "P003",
+                            "Cities":
+                            [{ "CityId": "P3C001", "CityName": "CityP3C001" },
+                            { "CityId": "P3C002", "CityName": "CityP3C002" },
+                            { "CityId": "P3C003", "CityName": "CityP3C003" },
+                            { "CityId": "P3C004", "CityName": "CityP3C004" },
+                            { "CityId": "P3C005", "CityName": "CityP3C005" },
+                            { "CityId": "P3C006", "CityName": "CityP3C006" }]
+                        },
+                        {
+                            "ProvinceId": "P004",
+                            "Cities":
+                            [{ "CityId": "P4C001", "CityName": "CityP4C001" },
+                            { "CityId": "P4C002", "CityName": "CityP4C002" },
+                            { "CityId": "P4C003", "CityName": "CityP4C003" },
+                            { "CityId": "P4C004", "CityName": "CityP4C004" },
+                            { "CityId": "P4C005", "CityName": "CityP4C005" },
+                            { "CityId": "P4C006", "CityName": "CityP4C006" },
+                            { "CityId": "P4C007", "CityName": "CityP4C007" }]
+                        }
+
+                    ];
+                    for (var i = 0; i < cityIds.length; i++) {
+                        console.log(cityIds[i]);
+
+                        cityIds[0].ProvinceId
+                        cityIds[0]["ProvinceId"]
+
+                        cityIds[0].Cities
+                        cityIds[0].Cities.length;
+                    }
+
+                    for (var i in cityIds) {
+                        console.log(cityIds[i].ProvinceId + " " + cityIds[i] + "  " + i);
+                    }
+
+                    var ddlCityIds = document.getElementById("ddlCityId");
+                    ddlCityIds.options.length = 0;
+                    ddlCityIds.add(new Option("请选择", "C000"));
+                    for (var i = 0; i < cityIds.length; i++) {
+                        if (ddlProvinceId.options[selectIndex].value == cityIds[i].ProvinceId) {
+                            for (var j = 0; j < cityIds[i].Cities.length; j++) {
+                                ddlCityIds.add(new Option(cityIds[i].Cities[j].CityName, cityIds[i].Cities[j].CityId));
+                            }
+                        }
+                    }
+                }
+            }
+
+            function Register() {
+                var userName = document.getElementById("txtUserName").value;
+                var sexRadio = document.getElementsByName("Sex");
+                var sexValue = "";
+                if (sexRadio.length > 0) {
+                    for (var i = 0; i < sexRadio.length; i++) {
+                        if (sexRadio[i].checked) {
+                            sexValue = sexRadio[i].value;
+                        }
+                    }
+                }
+                var ddlhobbyList = document.getElementById("ddlhobby").value;
+                for (var i = 0; i < ddlhobbyList.length; i++) {
+                    if (ddlhobbyList[i].sele) {
+                        alert(ddlhobbyList[i].value);
+                    }
+                }
+                var specialityS = [];
+                var speciality = document.getElementsByName("Speciality");
+                for (var i = 0; i < speciality.length; i++) {
+                    if (speciality[i].checked) {
+                        specialityS.push(speciality[i].value);
+                    }
+                }
+                debugger;
+                alert(userName + " " + sexValue);
+                return false;
+            }
+        </script>
+        <style type="text/css">
+            table {
+                border-collapse: collapse;
+                border: 1px solid red;
+                /*
+            border-width:1px;
+            border-style:solid;
+            border-color:red;
+                     等价于： border:1px solid  red;
+            */
+            }
+
+                table td {
+                    border: 1px solid red;
+                    padding-right: 10px;
+                }
+
+            #RegisterForm td.lefttd {
+                text-align: right;
+            }
+
+            input[type=checkbox] {
+                color: red;
+            }
+        </style>
+        <form>
+            <table id="RegisterForm">
+                <tr>
+                    <td class="lefttd">姓名</td>
+                    <td><input type="text" id="txtUserName" name="UserName" /></td>
+                </tr>
+                <tr>
+                    <td class="lefttd">性别</td>
+                    <td>
+                        <label for="rdSex0">男</label> <input id="rdSex0" type="radio" value="0" name="Sex" />
+                        <label for="rdSex1">女</label> <input id="rdSex1" type="radio" value="1" name="Sex" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lefttd">爱好</td>
+                    <td>
+                        <select id="ddlhobby" style="width:170px;height:200px" multiple="multiple">
+                            <optgroup id="optgroup1" label="------optgroup1------"></optgroup>
+                            <option value="01a">optgroup1A</option>
+                            <option value="01b">optgroup1B</option>
+                            <option value="01c">optgroup1C</option>
+                            <option value="01d">optgroup1D</option>
+
+                            <optgroup id="optgroup2" label="------optgroup2------"></optgroup>
+                            <option value="02a">optgroup2A</option>
+                            <option value="02b">optgroup2B</option>
+                            <option value="o2c">optgroup2C</option>
+                            <option value="02d">optgroup2D</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lefttd">特长</td>
+                    <td>
+                        <input type="checkbox" name="Speciality" value="0" id="Speciality0">
+                        <label for="Speciality0">特长0</label> &nbsp;&nbsp;
+                        <input type="checkbox" name="Speciality" value="1" id="Speciality1">
+                        <label for="Speciality1">特长1</label> &nbsp;&nbsp;
+
+                        <input type="checkbox" name="Speciality" value="2" id="Speciality2">
+                        <label for="Speciality2">特长2</label> &nbsp;&nbsp;
+
+                        <input type="checkbox" name="Speciality" value="3" id="Speciality3">
+                        <label for="Speciality3">特长3</label> &nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lefttd">地址</td>
+                    <td>
+                        <select id="ddlProvinceId"></select>
+                        <select id="ddlCityId"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lefttd">密码</td>
+                    <td><input type="password" id="txtPassword" name="Password" /></td>
+                </tr>
+                <tr>
+                    <td class="lefttd">确认密码</td>
+                    <td><input type="password" id="txtRePassword" name="RePassword" /></td>
+                </tr>
+                <tr>
+                    <td class="lefttd">电子邮件</td>
+                    <td><input type="text" id="txtEmailAddress" name="EmailAddress" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <input type="submit" value="注册" onclick="return Register()" />
+                        <input type="reset" value="重置" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</body>
+</html>

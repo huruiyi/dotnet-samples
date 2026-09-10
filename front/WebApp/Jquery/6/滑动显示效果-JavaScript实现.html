@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css"></style>
+<script type="text/javascript">
+var DOMextend = function(name, fn){
+	if( ! document.all)
+		eval("HTMLElement.prototype." + name + " = fn");
+	else{
+		var _createElement = document.createElement;
+		document.createElement = function(tag){
+			var _elem = _createElement(tag);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementById = document.getElementById;
+		document.getElementById = function(id){
+			var _elem = _getElementById(id);
+			eval("_elem." + name + " = fn");
+			return _elem;
+		}
+		var _getElementsByTagName = document.getElementsByTagName;
+		document.getElementsByTagName = function(tag){
+			var _arr = _getElementsByTagName(tag);
+			for(var _elem = 0; _elem < _arr.length; _elem ++ )
+			eval("_arr[_elem]." + name + " = fn");
+			return _arr;
+		}
+	}
+};
+
+
+DOMextend("getStyle",function(n){
+	var _this = this
+	if(_this.style[n]){ 
+		return _this.style[n];
+	}
+	else if(_this.currentStyle){ 
+		return _this.currentStyle[n];
+	}
+	else if(document.defaultView && document.defaultView.
+getComputedStyle){
+		n = n.replace(/([A-Z])/g,"-$1");
+		n = n.toLowerCase();
+		var s = document.defaultView.getComputedStyle(_this,null); 
+		if(s)
+			return s.getPropertyValue(n);
+	}
+	else
+		return null;
+})
+
+DOMextend("fromStyle",function(w, p){
+	var _this = this
+    var p = arguments[2]; 
+    if( ! p) p = 1;
+    if(/px/.test(w) && parseInt(w) ) return parseInt(parseInt(w) * p); 
+    else if(/\%/.test(w) && parseInt(w)){ 
+        var b = parseInt(w) / 100;
+        if((p != 1) && p) b *= p; 
+        _this = _this.parentNode;
+        if(_this.tagName == "BODY") throw new Error("文档结构无尺寸，请使用其他方法获取尺寸."); 
+        w = _this.getStyle("width"); 
+        return arguments.callee(_this, w, b); 
+    }
+    else if(/auto/.test(w)){
+        var b = 1; 
+        if((p != 1) && p) b *= p; 
+        _this = _this.parentNode;
+        if(_this.tagName == "BODY") throw new Error("文档结构无尺寸，请使用其他方法获取尺寸.");
+        w = _this.getStyle("width");
+        return arguments.callee(_this, w , b); 
+    }
+    else
+        throw new Error("元素或其父元素的尺寸定义了特殊的单位.");
+})
+
+DOMextend("setCSS",function(o){
+	var _this = this
+    var a = {};
+    for(var i in o){
+        a[i] = _this.style[i];
+        _this.style[i] = o[i];
+    }
+    return a; 
+})
+
+DOMextend("resetCSS",function(o){
+	var _this = this
+    for(var i in o){
+        _this.style[i] = o[i];
+    }
+})
+
+
+DOMextend("width",function(){
+	var _this = this
+	if(_this.getStyle("display") != "none") return _this.offsetWidth || 
+	_this.fromStyle(_this.getStyle("width"));
+	var r = _this.setCSS({
+		display:"",
+		position:"absolute",
+		visibility:"hidden"
+	});
+	var w = _this.offsetWidth || _this.fromStyle(_this.getStyle("width"));
+	_this.resetCSS(r); 
+	return w; 		
+})
+
+DOMextend("height",function(){
+	var _this = this
+    if(_this.getStyle("display") != "none") return _this.offsetHeight || 
+_this.fromStyle(_this.getStyle("height"));
+    var r = _this.setCSS({
+        display:"",
+        position:"absolute",
+        visibility:"hidden"
+    });
+    var h = _this.offsetHeight || _this.fromStyle(_this.getStyle("height"));
+    _this.resetCSS(r); 
+    return h; 
+})
+
+
+
+DOMextend("offset",function(){
+	var _this = this
+    var left = 0, top = 0;
+    while(_this.offsetParent){
+        left += _this.offsetLeft;
+        top += _this.offsetTop; 
+        _this = _this.offsetParent;
+    }
+    return {
+        "left" : left, 
+        "top" : top
+    };
+})
+
+DOMextend("getPosition",function(o){
+	var _this = this
+	var left = 0;
+	var top  = 0;
+	while (_this.offsetParent){
+		var l = isNaN(parseInt(_this.currentStyle.borderLeftWidth))?0:this;
+		var t = isNaN(parseInt(_this.currentStyle.borderTopWidth))?0:this;
+		left += _this.offsetLeft + (_this.currentStyle?l:0);
+		top  += _this.offsetTop  + (_this.currentStyle?t:0);
+		_this  =  _this.offsetParent;
+	}
+	var l = isNaN(parseInt(_this.currentStyle.borderLeftWidth))?0:this;
+	var t = isNaN(parseInt(_this.currentStyle.borderTopWidth))?0:this;		
+	left += _this.offsetLeft + (_this.currentStyle?l:0);
+	top  += _this.offsetTop  + (_this.currentStyle?t:0);	
+	return {x:left, y:top};
+
+})
+
+DOMextend("slideDown",function(time, fn){
+	var _this = this;
+	var isShow = _this.getStyle("display");
+	if(isShow != "none")
+		return;
+		
+	var oldcss = _this.setCSS({
+		display : "",
+		visibility : "hidden"
+	})
+	var x = _this.offset().left;
+	var y = _this.offset().top;
+	var height = _this.height();
+	var width = _this.width();
+	
+	_this.resetCSS(oldcss);
+	_this.style.display = "";
+
+	var box = _this.cloneNode(true);
+	for(var i=0; i < box.childNodes.length; i++){
+		box.removeChild( box.childNodes[i]);
+	}
+	_this.parentNode.insertBefore(box, _this);
+	_this = _this.parentNode.removeChild(_this);
+	box.appendChild(_this);
+	
+	box.style.overflow = "hidden";
+	box.style.display = "";
+	box.style.height = 0;
+	box.style.width = width;
+
+	var step = 5;
+	var stepheight = step*height/time;
+	var curstep = 0;
+
+	var interval = setInterval(function(){					
+		if( curstep  >= height){
+			clearInterval(interval);
+			_this = _this.parentNode.removeChild(_this);
+			box.parentNode.insertBefore(_this, box);
+			box.parentNode.removeChild(box);
+
+			fn(); 
+		}else{
+			curstep += stepheight;
+			box.style.height  =  curstep + "px";
+		}
+	},step);
+})
+
+window.onload = function(){
+    var input = document.getElementsByTagName("input")[0];
+    var div = document.getElementsByTagName("div")[0];
+    input.onclick = function(){
+		div.slideDown(500,function(){
+			alert("ok");
+		});
+    };
+}
+    </script>
+</head>
+<body>
+
+<input type="button" value="显隐元素" />
+<div style="display:none;"><img src="/mysite/images/bg5.jpg" height="200" /></div>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="utf-8"/>
+    <title>Table Td遍历</title>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("table:eq(0) tr").each(function (index, element) {
+                var a = $(element).children();
+                for (var i = 0; i < a.length; i++) {
+                    console.log(a.eq(i).text());
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+<table width="400" border="1">
+    <tr>
+        <th align="left">消费项目</th>
+        <th align="right">一月</th>
+        <th align="right">二月</th>
+    </tr>
+    <tr>
+        <td align="left">衣服</td>
+        <td align="right">$241.10</td>
+        <td align="right">$50.20</td>
+    </tr>
+    <tr>
+        <td align="left">化妆品</td>
+        <td align="right">$30.00</td>
+        <td align="right">$44.45</td>
+    </tr>
+    <tr>
+        <td align="left">食物</td>
+        <td align="right">$730.40</td>
+        <td align="right">$650.00</td>
+    </tr>
+    <tr>
+        <th align="left">总计</th>
+        <th align="right">$1001.50</th>
+        <th align="right">$744.65</th>
+    </tr>
+</table>
+</body>
+
+</html>

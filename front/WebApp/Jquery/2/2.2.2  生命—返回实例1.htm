@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+<title></title>
+
+</head>
+
+<body>
+
+
+<script language="javascript" type="text/javascript">
+var $ =jQuery = function(){
+    return new jQuery();    //返回类的实例
+}
+jQuery.fn = jQuery.prototype = {
+    jquery: "1.3.2",
+    size: function() {
+        return this.length;
+    }
+}
+alert($().jquery );
+alert($().size() );
+</script>
+
+
+
+</body>
+
+</html>

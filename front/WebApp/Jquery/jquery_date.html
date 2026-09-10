@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>时间测试</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" id="item-template">
+        function To2LenString(num) {
+            if (typeof num == "number") {
+                if (num.toString().length <= 1) {
+                    return "0" + num.toString();
+                }
+                else {
+                    return num.toString();
+                }
+            }
+            return num;
+        }
+        function DateDemo() {
+            var date = new Date();
+            var lbltime = document.getElementById("lblTime");
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            lbltime.innerText = year + "-" + To2LenString(month) + "-" + To2LenString(day) + " " + To2LenString(hour) + ":" + To2LenString(minute) + ":" + To2LenString(second);
+            getAllFunc(date);
+            debugger;
+        }
+
+        function getAllFunc(data) {
+            var stack = [];
+            for (var key in data) {
+                if (typeof data[key] == 'function') {
+                    // 若当前属性是function，则进行存储
+                    stack.push(data[key]);
+                } else if (typeof data[key] == 'object') {
+                    // 若当前属性是object，则进行递归检查
+                    stack = stack.concat(getAllFunc(data[key]));
+                }
+                // 其他类型不进行操作
+            }
+            debugger;
+            return stack;
+        }
+
+        // var ent = {}; // 执行环境
+        // var obj = {}; // 包含属性方法的对象
+
+        // for (item in obj) {
+        //   if (typeof obj[item] === 'function') {
+        //     obj[item].apply(ent, arguments);
+        //   }
+        // }
+    </script>
+</head>
+
+<body class="container">
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <input class="btn btn-default" type="button" value="时间测试" onclick="DateDemo()" />
+            <label id="lblTime"></label>
+            <table class="dataintable table table-bordered">
+                <tr>
+                    <th style="width: 25%">方法</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">Date()</a>
+                    </td>
+                    <td>返回当日的日期和时间。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getDate()</a>
+                    </td>
+                    <td>从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getDay()</a>
+                    </td>
+                    <td>从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getMonth()</a>
+                    </td>
+                    <td>从 Date 对象返回月份 (0 ~ 11)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getFullYear()</a>
+                    </td>
+                    <td>从 Date 对象以四位数字返回年份。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getYear()</a>
+                    </td>
+                    <td>
+                        <span class="deprecated">请使用 getFullYear() 方法代替。</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getHours()</a>
+                    </td>
+                    <td>返回 Date 对象的小时 (0 ~ 23)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getMinutes()</a>
+                    </td>
+                    <td>返回 Date 对象的分钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getSeconds()</a>
+                    </td>
+                    <td>返回 Date 对象的秒数 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getMilliseconds()</a>
+                    </td>
+                    <td>返回 Date 对象的毫秒(0 ~ 999)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getTime()</a>
+                    </td>
+                    <td>返回 1970 年 1 月 1 日至今的毫秒数。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getTimezoneOffset()</a>
+                    </td>
+                    <td>返回本地时间与格林威治标准时间 (GMT) 的分钟差。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCDate()</a>
+                    </td>
+                    <td>根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCDay()</a>
+                    </td>
+                    <td>根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCMonth()</a>
+                    </td>
+                    <td>根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCFullYear()</a>
+                    </td>
+                    <td>根据世界时从 Date 对象返回四位数的年份。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCHours()</a>
+                    </td>
+                    <td>根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCMinutes()</a>
+                    </td>
+                    <td>根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCSeconds()</a>
+                    </td>
+                    <td>根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">getUTCMilliseconds()</a>
+                    </td>
+                    <td>根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">parse()</a>
+                    </td>
+                    <td>返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setDate()</a>
+                    </td>
+                    <td>设置 Date 对象中月的某一天 (1 ~ 31)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setMonth()</a>
+                    </td>
+                    <td>设置 Date 对象中月份 (0 ~ 11)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setFullYear()</a>
+                    </td>
+                    <td>设置 Date 对象中的年份（四位数字）。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setYear()</a>
+                    </td>
+                    <td>
+                        <span class="deprecated">请使用 setFullYear() 方法代替。</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setHours()</a>
+                    </td>
+                    <td>设置 Date 对象中的小时 (0 ~ 23)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setMinutes()</a>
+                    </td>
+                    <td>设置 Date 对象中的分钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setSeconds()</a>
+                    </td>
+                    <td>设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setMilliseconds()</a>
+                    </td>
+                    <td>设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setTime()</a>
+                    </td>
+                    <td>以毫秒设置 Date 对象。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCDate()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCMonth()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCFullYear()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中的年份（四位数字）。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCHours()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中的小时 (0 ~ 23)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCMinutes()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCSeconds()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">setUTCMilliseconds()</a>
+                    </td>
+                    <td>根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toSource()</a>
+                    </td>
+                    <td>返回该对象的源代码。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toString()</a>
+                    </td>
+                    <td>把 Date 对象转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toTimeString()</a>
+                    </td>
+                    <td>把 Date 对象的时间部分转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toDateString()</a>
+                    </td>
+                    <td>把 Date 对象的日期部分转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toGMTString()</a>
+                    </td>
+                    <td>
+                        <span class="deprecated">请使用 toUTCString() 方法代替。</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toUTCString()</a>
+                    </td>
+                    <td>根据世界时，把 Date 对象转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toLocaleString()</a>
+                    </td>
+                    <td>根据本地时间格式，把 Date 对象转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toLocaleTimeString()</a>
+                    </td>
+                    <td>根据本地时间格式，把 Date 对象的时间部分转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">toLocaleDateString()</a>
+                    </td>
+                    <td>根据本地时间格式，把 Date 对象的日期部分转换为字符串。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">UTC()</a>
+                    </td>
+                    <td>根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a  href="">valueOf()</a>
+                    </td>
+                    <td>返回 Date 对象的原始值。</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</body>
+</html>

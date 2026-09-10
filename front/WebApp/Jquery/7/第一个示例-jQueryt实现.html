@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"></style>
+    <script src="images/jquery-1.3.2.js" type="text/javascript" ></script>
+    <script type="text/javascript"> 
+$(function(){
+	$("input").click(function(){
+		$.get("test.asp", function(data){
+			alert("来自服务器端的问候: " + data);
+		});						  
+	});
+
+ 
+})
+    </script>
+
+</head>
+<body>
+
+
+<input type="button" value="向服务器发出异步请求" />
+
+
+</body>
+</html>

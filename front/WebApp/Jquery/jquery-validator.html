@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        .label-required {
+            background-color: azure;
+            text-align: right;
+            display: inline-block;
+            width: 300px
+        }
+
+        .error {
+            color: red
+        }
+    </style>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script type="text/javascript">
+
+        // 自定义规则函数
+        $.validator.addMethod("customRule", function (value) {
+            return /^[a-zA-Z]+$/.test(value);
+        }, "只能包含英文字母");
+
+        $.validator.addMethod("chinese", function (value, element) {
+            alert(this.optional(element));
+            var chinese = /^[\u4e00-\u9fa5]+$/;
+            debugger
+            return (chinese.test(value)) || this.optional(element);
+        }, "只能输入中文");
+
+        jQuery.validator.addMethod("byteRangeLength", function (value, element, param) {
+            var length = value.length;
+            for (var i = 0; i < value.length; i++) {
+                if (value.charCodeAt(i) > 127) {
+                    length++;
+                }
+            }
+            return this.optional(element) || (length >= param[0] && length <= param[1]);
+        }, $.validator.format("请确保输入的值在{0}-{1}个字节之间(一个中文字算2个字节)"));
+    </script>
+</head>
+<body>
+    <!--
+          https://www.runoob.com/jquery/jquery-plugin-validate.html -->
+    <form class="cmxform" id="commentForm" method="get" action="">
+        <fieldset>
+
+            <p>
+                <label class="label-required" for="username">Name </label>
+                <input id="username" type="text" name="username">
+            </p>
+            <p>
+                <label class="label-required" for="cemail">E-Mail </label>
+                <input id="cemail" type="email" name="email">
+            </p>
+            <p>
+                <label class="label-required" for="curl">URL</label>
+                <input id="curl" type="url" name="url">
+            </p>
+            <p>
+                <label class="label-required" for="ccomment">Your comment </label>
+                <textarea id="ccomment" name="comment"></textarea>
+            </p>
+            <p>
+                <input class="submit" type="submit" value="Submit">
+            </p>
+        </fieldset>
+    </form>
+    <script>
+        $(document).ready(function () {
+            // 初始化验证器并设置自定义规则
+            $('#commentForm').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        customRule: true // 这里调用自定义规则
+                    },
+                    email: {
+                        required: true,
+                    },
+                    url: {
+                        required: true,
+                    },
+                    comment: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    username: {
+                        required: "必填字段",
+                    },
+                    email: {
+                        required: "必填字段",
+                    },
+                    url: {
+                        required: "必填字段",
+                    },
+                    comment: {
+                        required: "必填字段",
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
